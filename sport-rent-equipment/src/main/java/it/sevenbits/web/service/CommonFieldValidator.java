@@ -94,12 +94,12 @@ public class CommonFieldValidator {
     ){
 
             try{
-                Integer.valueOf(value);
+                Double.valueOf(value);
             }catch(Exception e){
                 errors.put(field, key);
                 return;
             }
-        if(Integer.valueOf(value)<=0){
+        if(Double.valueOf(value)<=0){
             errors.put(field, key);
         }
     }

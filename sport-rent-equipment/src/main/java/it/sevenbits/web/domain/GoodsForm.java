@@ -7,7 +7,7 @@ public class GoodsForm {
     private String title;
     private String description;
     private String pledge;
-    private double pricePerHour, pricePerDay, pricePerWeek;
+    private String pricePerHour, pricePerDay, pricePerWeek;
     private String author;
     private String authorPhone;
 
@@ -35,27 +35,27 @@ public class GoodsForm {
         this.pledge = pledge;
     }
 
-    public double getPricePerHour() {
+    public String getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(double pricePerHour) {
+    public void setPricePerHour(String pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
-    public double getPricePerDay() {
+    public String getPricePerDay() {
         return pricePerDay;
     }
 
-    public void setPricePerDay(double pricePerDay) {
+    public void setPricePerDay(String pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
 
-    public double getPricePerWeek() {
+    public String getPricePerWeek() {
         return pricePerWeek;
     }
 
-    public void setPricePerWeek(double pricePerWeek) {
+    public void setPricePerWeek(String pricePerWeek) {
         this.pricePerWeek = pricePerWeek;
     }
 
