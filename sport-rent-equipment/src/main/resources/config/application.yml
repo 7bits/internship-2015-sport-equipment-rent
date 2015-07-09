@@ -1,0 +1,8 @@
+server:
+ port:9000
+
+spring:
+ datasource:
+  url: jdbc:postgresql://localhost:5432/sportequipmentrent
+  username: root
+  password: root
