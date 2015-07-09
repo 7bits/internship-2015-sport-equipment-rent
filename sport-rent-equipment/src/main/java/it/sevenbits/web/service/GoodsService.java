@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by awemath on 7/8/15.
  */
@@ -22,13 +24,24 @@ public class GoodsService {
         goods.setAuthorPhone(form.getAuthorPhone());
         goods.setDescription(form.getDescription());
         goods.setPledge(form.getPledge());
-        goods.setPricePerHour(form.getPricePerHour());
-        goods.setPricePerDay(form.getPricePerDay());
-        goods.setPricePerWeek(form.getPricePerWeek());
+        goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
+        goods.setPricePerDay(Double.valueOf(form.getPricePerDay()));
+        goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
         try {
             repository.save(goods);
         } catch (Exception e) {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
+
+    public List<Goods> findAll() throws GoodsException {
+        try {
+            List<Goods> goods = repository.findAll();
+            return goods;
+        } catch (Exception e) {
+            throw new GoodsException("An error occurred while retrieving subscriptions: " + e.getMessage(), e);
+        }
+
+    }
+
 }

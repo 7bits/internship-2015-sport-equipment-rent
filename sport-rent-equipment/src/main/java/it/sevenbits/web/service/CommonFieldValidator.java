@@ -86,23 +86,38 @@ public class CommonFieldValidator {
         }
     }
 
+    public void isNum(
+            final String value,
+            final Map<String, String> errors,
+            final String field,
+            final String key
+    ){
+        char c;
+        char buf[] = value.toCharArray();
+        for(int i=0;i<value.length();i++) {
+            c=buf[i];
+            if ((c<'0' || c>'9') && c!='-') {
+                errors.put(field, key);
+            }
+        }
+    }
+
     public void isPositiveNum(
             final String value,
             final Map<String, String> errors,
             final String field,
             final String key
     ){
-
-            try{
-                Double.valueOf(value);
-            }catch(Exception e){
+        char buf[] = value.toCharArray();
+        if(value.length()>0) {
+            if (buf[0] == '-' || Double.valueOf(value) <= 0) {
                 errors.put(field, key);
                 return;
             }
-        if(Double.valueOf(value)<=0){
-            errors.put(field, key);
         }
     }
+
+
 
 }
 

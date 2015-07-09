@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers;
 
+import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
 import it.sevenbits.web.service.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.GoodsException;
@@ -11,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,13 +31,18 @@ public class HomeController {
     @Autowired
     private AddNewGoodsFormValidator validator;
 
-    @RequestMapping(value ="/", method = RequestMethod.GET)
-    public String index(final Model model){
+
+    @RequestMapping(value = "/add_announcement", method = RequestMethod.GET)
+    public String index(final Model model) {
+        // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
-        return "home/index";
+        // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
+        // Если шаблона не будет найдено, то вернется 404 ошибка
+        return "home/add_announcement";
     }
 
-    @RequestMapping(value="/", method = RequestMethod.POST)
+
+    @RequestMapping(value="/add_announcement", method = RequestMethod.POST)
     public String submit(@ModelAttribute GoodsForm form, final Model model){
 
         final Map<String, String> errors = validator.validate(form);
@@ -43,7 +51,7 @@ public class HomeController {
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             LOG.info("Subscription form contains errors.");
-            return "home/index";
+            return "home/add_announcement";
         }
 
         try {
@@ -54,4 +62,17 @@ public class HomeController {
         model.addAttribute("goods", form);
         return "home/index";
     }
+
+
+    @RequestMapping(value="/", method = RequestMethod.GET)
+    public String mainPage(final Model model){
+        try {
+            model.addAttribute("goods", service.findAll());
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+        return "/home/index";
+    }
+
+
 }

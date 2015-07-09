@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head >
 
-<head>
-    <title>Add announcement</title>
+  <!--ссылка на jquery-ui-1.9.2.custom.js возможно прокатит с 1-->  
+  <!--ссылка на jquery css--> 
+    
+    <title>SeeListOfAnnouncement</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" th:href="@{/vendor/stylesheets/style.css}" type="text/css" media='all'/>
     <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap.min.css}"/>
@@ -10,133 +14,79 @@
     <script type="application/javascript" th:src="@{/vendor/scripts/jquery-2.1.4.min.js}"></script>
     <script type="application/javascript" th:src="@{/vendor/scripts/bootstrap.min.js}"></script>
     <script type="application/javascript" th:src="@{/scripts/app.js}"></script>
-</head>
-<body>
-
-<div class="container-fluid">
-
-    <div class="container">
+  
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container">
+      <div>
         <div class="row">
-            <div class="col-sm-1"><h1>logo</h1></div>
-            <div class="row">
-                <div class="col-sm-4"><label for="name" class="label-position">Дай погонять</label></div>
-                <div class="col-sm-7"><label for="name" class="label-position">Сервис по поиску и аренде спортивного
-                    оборудования</label></div>
-            </div>
-
-            <div role="alert" class="alert alert-danger" th:if="${errors != null}">
-                The form contains errors
-                <ul>
-                    <li th:each="error: ${errors}" th:text="${error.key} + ' ' + ${error.value}"></li>
-                </ul>
-            </div>
-
-            <form action="#" th:action="@{/}" th:object="${goods}" method="post">
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="name" class="label-position">Ваше имя<sup> *</sup> </label>
-                        </div>
-                        <div class="col-sm-3">
-                            <input id="name" class="form-control" th:field="*{author}" name="author"
-                                   placeholder="Введите имя" type="text"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="phoneNumber" class="label-position">Телефон<sup> *</sup></label>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="tel" class="form-control" id="phoneNumber" th:field="*{authorPhone}"
-                                   name="authorPhone" placeholder="Введите контактный номер телефона"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="announcementsName" class="label-position">Название объявления<sup>
-                                *</sup></label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="announcementsName" th:field="*{title}"
-                                   name="title" placeholder="Название объявления"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="announcementsDescription" class="label-position">Описание объявления</label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="announcementsDescription"
-                                   th:field="*{description}" name="description" placeholder="Описание объявления"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="PriceForHour" class="label-position">Цена за час<sup> *</sup></label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" id="PriceForHour" th:field="*{pricePerHour}"
-                                   name="pricePerHour" placeholder="Цена за час"/>
-                        </div>
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-1">
-                            <label for="pledge" class="label-position">Залог<sup> *</sup></label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" id="pledge" th:field="*{pledge}" name="pledge"
-                                   placeholder="Залог"/>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="PriceForHour" class="label-position">Цена за день<sup> *</sup></label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" id="PriceForDay" th:field="*{pricePerDay}"
-                                   name="pricePerDay" placeholder="Цена за день"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <label for="PriceForWeek" class="label-position">Цена за неделю<sup> *</sup></label>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="text" class="form-control" id="PriceForWeek" th:field="*{pricePerWeek}"
-                                   name="pricePerWeek" placeholder="Цена за неделю"/>
-                        </div>
-                    </div>
-                </div>
-
-
-
-        <div class="row">
-            <div class="col-sm-5"></div>
-            <div class="col-sm-2">
-                <button type="button" class="btn btn-info btn-block">Назад</button>
-            </div>
-            <div class="col-sm-3">
-                <button type="submit" class="btn btn-info btn-block">Подать объявление</button>
-
-            </div>
+          <div class="col-sm-1"><h1>logo</h1></div>
+        <div class="row">  
+          <div class="col-sm-4">
+            <label for="name"><h2><b>Дай погонять</b></h2></label>
+          </div>
+          <div class="col-sm-7">
+            <label for="name" class="lanelInTitle"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
+          </div>
+        </div> 
+        
+        <div class="row">   
+          <div class="col-sm-7">
+            <label for="name" class="label-position">Все объявления:</label>
+          </div>
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-2">
+            <a href="/add_announcement">
+              <button type="button" class="btn btn-info btn-block btn-lg">Дать объявление</button>
+            </a>
+          </div>
         </div>
-        </form>
-    </div>
-</div>
-    </div>
-</body>
-</html>
+
+        
+        <div class="row">   
+          <div class="col-sm-12">
+            <label for="announcementName" class="label-position"></label>
+          </div>
+        </div>
+
+
+        <ol>
+          <li th:each="Goods : ${goods}">
+            <div class="row">   
+              <div class="col-sm-7">
+        
+              
+                <table class="table table-condensed table-borderless">
+                  <thead></thead>
+                  <tbody>
+                    <tr>
+                      <td><p>Товар: </p></td>
+                      <td colspan="3"><p th:text="${Goods.title}"></p></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td><p>Цена </p></td>
+                      <td><p>час: </p><p th:text="${Goods.pricePerHour}"></p></td>
+                      <td><p>день: </p><p th:text="${Goods.pricePerDay}"></p></td>
+                      <td><p>неделя: </p><p th:text="${Goods.pricePerWeek}"></p></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td colspan="4"><p th:text="${Goods.description}"></p></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </li>
+          </ol>   
+        </div>
+        </div>
+      </div>
+      </div>
+    </body>
+  </html>
 
 
