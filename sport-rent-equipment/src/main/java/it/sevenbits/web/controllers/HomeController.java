@@ -59,7 +59,11 @@ public class HomeController {
         } catch (GoodsException e) {
            LOG.info(e.getMessage());
         }
-        model.addAttribute("goods", form);
+        try {
+            model.addAttribute("goods", service.findAll());
+        } catch (GoodsException e) {
+            LOG.error("Error at the picking goods");
+        }
         return "home/index";
     }
 
