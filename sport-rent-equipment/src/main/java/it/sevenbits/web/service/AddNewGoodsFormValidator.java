@@ -28,27 +28,28 @@ public class AddNewGoodsFormValidator {
         HashMap<String, String> errors = new HashMap<String, String>();
 
         validator.isNotNullOrEmpty(form.getAuthor(), errors, "name", "Поле не должно быть пустым");
-        validator.isNotNullOrEmpty(form.getAuthorPhone(), errors, "authorPhone", "Поле не должно быть пустым");
-        validator.isNotNullOrEmpty(form.getTitle(), errors, "title", "Поле не должно быть пустым");
-        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerHour()), errors, "pricePerHour", "Поле не должно быть пустым");
-        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerDay()), errors, "pricePerDay", "Поле не должно быть пустым");
-        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerWeek()), errors, "pricePerWeek", "Поле не должно быть пустым");
-        validator.isNotNullOrEmpty(form.getPledge(), errors, "pledge", "Поле не должно быть пустым");
+        validator.isNotNullOrEmpty(form.getAuthorPhone(), errors, "Поле телефон", "не может быть пустым");
+        validator.isNotNullOrEmpty(form.getTitle(), errors, "Поле заголовок", "не может быть пуст");
+        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerHour()), errors, "Поле цена за час", "не может быть пустым");
+        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerDay()), errors, "Поле цена за день", "не может быть пустым");
+        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "не может быть пустым");
+        validator.isNotNullOrEmpty(form.getPledge(), errors, "Поле залог", "не может быть пустым");
 
-        validator.shorterThan(form.getAuthor(), 50, errors, "author", "Поле должно быть короче чем 50 символов");
-        validator.shorterThan(form.getAuthorPhone(), 15, errors, "authorPhone", "Поле должно быть короче чем 15 символов");
-        validator.shorterThan(form.getTitle(), 255, errors, "title", "Поле должно быть короче чем 255 символов");
-        validator.shorterThan(form.getDescription(), 2048, errors, "description", "Поле должно быть короче чем 2048 символов");
-        validator.shorterThan(form.getPricePerHour(), 10, errors, "price per hour", "Поле должно быть короче чем 10 символов");
-        validator.shorterThan(form.getPricePerDay(), 10, errors, "price per day", "Поле должно быть короче чем 10 символов");
-        validator.shorterThan(form.getPricePerWeek(), 10, errors, "price per week", "Поле должно быть короче чем 10 символов");
-        validator.shorterThan(form.getPledge(), 50, errors, "pledge", "Поле должно быть короче чем 50 символов");
+        validator.shorterThan(form.getAuthor(), 50, errors, "Поле автор", "Поле должно быть короче чем 50 символов");
+        validator.shorterThan(form.getAuthorPhone(), 15, errors, "Поле телефон автора", "должно быть короче чем 15 символов");
+        validator.shorterThan(form.getTitle(), 255, errors, "Поле заголовок", "должно быть короче чем 255 символов");
+        validator.shorterThan(form.getDescription(), 2048, errors, "Поле описание", "должно быть короче чем 2048 символов");
+        validator.shorterThan(form.getPricePerHour(), 10, errors, "Поле цена за час", "должно быть короче чем 10 символов");
+        validator.shorterThan(form.getPricePerDay(), 10, errors, "Поле цена за день", "должно быть короче чем 10 символов");
+        validator.shorterThan(form.getPricePerWeek(), 10, errors, "Поле цена за неделю", "должно быть короче чем 10 символов");
+        validator.shorterThan(form.getPledge(), 50, errors, "Поле залог", "должно быть короче чем 50 символов");
 
-        validator.isNum(form.getPricePerHour(), errors, "pricePerHour", "Field should contain only numerics");
-        validator.isNum(form.getPricePerDay(), errors, "pricePerDay", "Field should contain only numerics");
-        validator.isNum(form.getPricePerWeek(), errors, "pricePerWeek", "Field should contain only numerics");
-        validator.isNum(form.getAuthorPhone(), errors, "phone", "Field should contain only numerics");
-        validator.isPositiveNum(String.valueOf(form.getAuthorPhone()), errors, "Phone", "Field shouldn`t contain symbol '-' ");
+        validator.isNum(form.getPricePerHour(), errors, "Поле цена за час", "должно содержать только цифры");
+        validator.isNum(form.getPricePerDay(), errors, "Поле цена за день", "должно содержать только цифры");
+        validator.isNum(form.getPricePerWeek(), errors, "Поле цена за неделю", "должно содержать только цифры");
+        validator.isNum(form.getAuthorPhone(), errors, "Поле телефон", "должно содержать только цифры");
+
+        validator.isPositiveNum(String.valueOf(form.getAuthorPhone()), errors, "Поле телефон", "Поле не должно содержать символы '-' ");
 
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",

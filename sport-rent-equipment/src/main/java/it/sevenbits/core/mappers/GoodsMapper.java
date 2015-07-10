@@ -12,11 +12,14 @@ import java.util.List;
  * Created by awemath on 7/8/15.
  */
 public interface GoodsMapper {
-    @Select("SELECT id, title, description FROM Goods")
+    @Select("SELECT id, title, description, price_per_hour, price_per_day, price_per_week FROM Goods")
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "title", property = "title"),
-            @Result(column="description", property="description")
+            @Result(column="description", property="description"),
+            @Result(column = "price_per_hour", property = "pricePerHour"),
+            @Result(column = "price_per_day", property = "pricePerDay"),
+            @Result(column = "price_per_week", property = "pricePerWeek")
     })
     List<Goods> findAll();
 

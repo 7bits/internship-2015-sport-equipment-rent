@@ -70,7 +70,8 @@ public class HomeController {
             model.addAttribute("goods", service.findAll());
         } catch (GoodsException e) {
             e.printStackTrace();
-        }
+    }
+
         return "/home/index";
     }
 
