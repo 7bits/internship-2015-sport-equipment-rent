@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -37,6 +38,12 @@ public class GoodsService {
     public List<Goods> findAll() throws GoodsException {
         try {
             List<Goods> goods = repository.findAll();
+            goods.sort(new Comparator<Goods>() {
+                @Override
+                public int compare(Goods o1, Goods o2) {
+                    return o1.getId()>o1.getId()?1:-1;
+                }
+            });
             return goods;
         } catch (Exception e) {
             throw new GoodsException("An error occurred while retrieving subscriptions: " + e.getMessage(), e);
