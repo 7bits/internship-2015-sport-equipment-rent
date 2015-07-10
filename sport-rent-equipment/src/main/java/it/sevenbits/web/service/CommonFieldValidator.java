@@ -79,7 +79,10 @@ public class CommonFieldValidator {
             final String field,
             final String key
     ) {
-        if (value != null && !errors.containsKey(field)) {
+        if(errors.containsKey(field)){
+            return;
+        }
+        if (value != null) {
             if (value.length() > maxLength) {
                 errors.put(field, key);
             }
@@ -93,6 +96,9 @@ public class CommonFieldValidator {
             final String key
     ){
         char c;
+        if(errors.containsKey(field)){
+            return;
+        }
         char buf[] = value.toCharArray();
         for(int i=0;i<value.length();i++) {
             c=buf[i];
@@ -108,6 +114,9 @@ public class CommonFieldValidator {
             final String field,
             final String key
     ){
+        if(errors.containsKey(field)){
+            return;
+        }
         char buf[] = value.toCharArray();
         if(value.length()>0) {
             if (buf[0] == '-' || Double.valueOf(value) <= 0) {

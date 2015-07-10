@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Announcement</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+     <!--ссылка на jquery-ui-1.9.2.custom.js возможно прокатит с 1-->  
+     <!--ссылка на jquery css--> 
+  
+    <link rel='stylesheet' href='bootstrap/dist/css/bootstrap.min.css' type='text/css' media='all'/>
+    <link rel="stylesheet" href="style.css" type="text/css" media='all'/>
+  </head>
+  <body>
+  <div class="container-fluid">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-1"><h1>logo</h1></div>
+        <div class="row">  
+          <div class="col-sm-4">
+            <label for="name"><h2><b>Дай погонять</b></h2></label>
+          </div>
+          <div class="col-sm-7">
+            <label for="name" class="lanelInTitle"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
+          </div>
+        </div> 
+        
+          
+      <div class="row">
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-info btn-block">Все объявления</button>
+        </div>
+      </div>
+      <div class="row">   
+              <div class="col-sm-12"> 
+                <p th:text="${Goods.title}"></p>
+              </div>
+      </div>
+      <div class="row">   
+        <div class="col-sm-5">
+          <div class='well'> 
+            <p th:text="${Goods.description}"></p>
+          </div>  
+        </div>
+        <div class="col-sm-7"> 
+          <div class="row">
+            <div class="col-sm-5">
+              Цена за час: 
+            </div>
+            <div class="col-sm-1">
+              <th:text="${Goods.pricePerHour}"> 
+            </div>
+            <div class="col-sm-1">
+              Руб
+            </div>  
+          </div>
+          <div class="row">      
+            <div class="col-sm-5">
+              Цена за день: 
+            </div>
+            <div class="col-sm-1">
+              <th:text="${Goods.pricePerDay}"> 
+            </div>
+            <div class="col-sm-1">
+              Руб
+            </div>  
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              Цена за неделю: 
+            </div>
+            <div class="col-sm-1">
+              <th:text="${Goods.pricePerWeek}"> 
+            </div>
+            <div class="col-sm-1">
+              Руб
+            </div>  
+          </div>
+          <div class="row">      
+            <div class="col-sm-5">
+              Арендодатель: 
+            </div>
+            <div class="col-sm-2">
+              <th:text="${Goods.author}"> 
+            </div>
+          </div>
+          <div class="row">      
+            <div class="col-sm-5">
+              Телефон:  
+            </div>
+            <div class="col-sm-2">
+              <th:text="${Goods.authorPhone}"> 
+            </div>
+          </div> 
+        </div>
+      </div>     
+  </div>
+</div>  
+</body>
+</html>
+
+
