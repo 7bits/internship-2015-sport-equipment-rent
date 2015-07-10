@@ -48,6 +48,7 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     }
 
     public Goods getGoods(long id) throws RepositoryException{
-        return null;
+        return mapper.getGoods(id);
+
     }
 }

@@ -1,6 +1,7 @@
 package it.sevenbits.web.service;
 
 import it.sevenbits.core.repository.GoodsRepository;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,14 +42,24 @@ public class GoodsService {
             goods.sort(new Comparator<Goods>() {
                 @Override
                 public int compare(Goods o1, Goods o2) {
-                    return o1.getId()>o1.getId()?1:-1;
+                    return o1.getId() > o1.getId() ? 1 : -1;
                 }
             });
             return goods;
         } catch (Exception e) {
-            throw new GoodsException("An error occurred while retrieving subscriptions: " + e.getMessage(), e);
+            throw new GoodsException("An error occurred while retrieving all goods: " + e.getMessage(), e);
         }
 
+    }
+
+    public Goods getGoods(long id) throws GoodsException{
+        Goods goods;
+        try{
+            goods = repository.getGoods(id);
+        } catch (RepositoryException e) {
+            throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
+        }
+        return goods;
     }
 
 }

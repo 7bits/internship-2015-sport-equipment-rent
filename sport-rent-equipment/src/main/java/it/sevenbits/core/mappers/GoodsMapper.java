@@ -23,7 +23,7 @@ public interface GoodsMapper {
     })
     List<Goods> findAll();
 
-    @Select("SELECT * FROM Goods")
+    @Select("SELECT * FROM Goods where id = #{id}")
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "title", property = "title"),

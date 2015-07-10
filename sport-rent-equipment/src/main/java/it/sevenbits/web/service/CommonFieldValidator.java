@@ -100,11 +100,15 @@ public class CommonFieldValidator {
             return;
         }
         char buf[] = value.toCharArray();
-        for(int i=0;i<value.length();i++) {
-            c=buf[i];
-            if ((c<'0' || c>'9') && c!='-') {
-                errors.put(field, key);
+        if(buf[0]=='-' || (buf[0]<'9' && buf[0]>'0') ) {
+            for (int i = 1; i < value.length(); i++) {
+                c = buf[i];
+                if ((c < '0' || c > '9')) {
+                    errors.put(field, key);
+                }
             }
+        }else{
+            errors.put(field, key);
         }
     }
 

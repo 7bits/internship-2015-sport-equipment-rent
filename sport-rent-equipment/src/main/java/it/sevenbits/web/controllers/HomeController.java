@@ -9,10 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -64,7 +61,7 @@ public class HomeController {
         } catch (GoodsException e) {
             LOG.error("Error at the picking goods");
         }
-        return "home/index";
+        return "/home/index";
     }
 
 
@@ -77,6 +74,17 @@ public class HomeController {
     }
 
         return "/home/index";
+    }
+
+    @RequestMapping(value="/see_announcement", method = RequestMethod.GET)
+    public String announcementPage(@RequestParam(value="announcement_id", required = false) String announcementId,  final Model model) {
+        try {
+            model.addAttribute("Goods", service.getGoods(Long.valueOf(announcementId)));
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+
+        return "/home/see_announcment";
     }
 
 

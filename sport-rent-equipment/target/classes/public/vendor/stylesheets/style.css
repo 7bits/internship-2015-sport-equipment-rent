@@ -7,13 +7,14 @@ margin: 3px;
 	margin-top: 8px;
 }
 
-.lanelInTitle{
-	margin-top: 27px;
+.motto-position{
+	margin-top: 50px;
 }
-.table-borderless td,
-.table-borderless th{ 
-    border: 0 !important
-}
-table td {
-    border-top: none !important;
+
+.btn-color{
+background-color: #5dc8cd; 
+color: white; 
+border-color:#5dc8cd;
+
+
 }

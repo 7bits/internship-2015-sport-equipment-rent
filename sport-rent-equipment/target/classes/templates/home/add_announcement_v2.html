@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Add announcement</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" th:href="@{/vendor/stylesheets/style.css}" type="text/css" media='all'/>
+    <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap-theme.min.css}"/>
+    <script type="application/javascript" th:src="@{/vendor/scripts/jquery-2.1.4.min.js}"></script>
+    <script type="application/javascript" th:src="@{/vendor/scripts/bootstrap.min.js}"></script>
+    <script type="application/javascript" th:src="@{/scripts/app.js}"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1"><h1>logo</h1></div>
+            <div class="row">
+                <div class="col-sm-4"><label for="name" class="label-position">Дай погонять</label></div>
+                <div class="col-sm-7"><label for="name" class="label-position">Сервис по поиску и аренде спортивного
+                    оборудования</label></div>
+            </div>
+
+            <div role="alert" class="alert alert-danger" th:if="${errors != null}">
+                The form contains errors
+                <ul>
+                    <li th:each="error: ${errors}" th:text="${error.key} + ' ' + ${error.value}"></li>
+                </ul>
+            </div>
+
+            <form action="#" th:action="@{/add_announcement}" th:object="${goods}" method="post">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="name" class="label-position">Ваше имя<sup> *</sup> </label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input id="name" class="form-control" th:field="*{author}" name="author"
+                                   placeholder="Введите имя" type="text"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="phoneNumber" class="label-position">Телефон<sup> *</sup></label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="tel" class="form-control" id="phoneNumber" th:field="*{authorPhone}"
+                                   name="authorPhone" placeholder="Введите контактный номер телефона"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="announcementsName" class="label-position">Название объявления<sup>
+                                *</sup></label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="announcementsName" th:field="*{title}"
+                                   name="title" placeholder="Название объявления"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="announcementsDescription" class="label-position">Описание объявления</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="announcementsDescription"
+                                   th:field="*{description}" name="description" placeholder="Описание объявления"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="PriceForHour" class="label-position">Цена за час<sup> *</sup></label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="PriceForHour" th:field="*{pricePerHour}"
+                                   name="pricePerHour" placeholder="Цена за час"/>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <label for="pledge" class="label-position">Залог<sup> *</sup></label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="pledge" th:field="*{pledge}" name="pledge"
+                                   placeholder="Залог"/>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="PriceForHour" class="label-position">Цена за день<sup> *</sup></label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="PriceForDay" th:field="*{pricePerDay}"
+                                   name="pricePerDay" placeholder="Цена за день"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                            <label for="PriceForWeek" class="label-position">Цена за неделю<sup> *</sup></label>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="PriceForWeek" th:field="*{pricePerWeek}"
+                                   name="pricePerWeek" placeholder="Цена за неделю"/>
+                        </div>
+                    </div>
+                </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-2">
+                <a href="/">
+                    <button type="button" class="btn btn-info btn-block">Назад</button>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-info btn-block">Подать объявление</button>
+
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+    </div>
+</body>
+</html>
+
+

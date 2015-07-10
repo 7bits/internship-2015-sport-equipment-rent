@@ -50,7 +50,9 @@ public class AddNewGoodsFormValidator {
         validator.isNum(form.getAuthorPhone(), errors, "Поле телефон", "должно содержать только цифры");
 
         validator.isPositiveNum(String.valueOf(form.getAuthorPhone()), errors, "Поле телефон", "Поле не должно содержать символы '-' ");
-
+        validator.isPositiveNum(String.valueOf(form.getPricePerHour()), errors, "Поле цена за час", "должно содержать положительное значение");
+        validator.isPositiveNum(String.valueOf(form.getPricePerDay()), errors, "Поле цена за день", "должно содержать положительное значение");
+        validator.isPositiveNum(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "должно содержать положительное значение");
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Announcement</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+     <!--ссылка на jquery-ui-1.9.2.custom.js возможно прокатит с 1-->  
+     <!--ссылка на jquery css-->
+
+    <link rel="stylesheet" th:href="@{/vendor/stylesheets/style.css}" type="text/css" media='all'/>
+    <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap-theme.min.css}"/>
+    <script type="application/javascript" th:src="@{/vendor/scripts/jquery-2.1.4.min.js}"></script>
+    <script type="application/javascript" th:src="@{/vendor/scripts/bootstrap.min.js}"></script>
+    <script type="application/javascript" th:src="@{/scripts/app.js}"></script>
+  </head>
+  <body>
+  <div class="container-fluid">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+           <!--нужна ссылка куда переходить-->
+            <a href="/" >
+              <img src="images/logo.png" align="left" width="512" height="134"/>
+            </a>
+          </div>
+          <div class="col-sm-6">
+            <label for="name" class = "motto-position"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
+          </div>
+        </div> 
+        
+          
+      <div class="row">
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-color btn-block">Все объявления</button>
+        </div>
+      </div>
+      <div class="row">   
+              <div class="col-sm-12"> 
+                <p th:text="${Goods.title}"></p>
+              </div>
+      </div>
+      <div class="row">   
+        <div class="col-sm-5">
+          <div class='well'> 
+            <p th:text="${Goods.description}"></p>
+          </div>  
+        </div>
+        <div class="col-sm-7"> 
+          <div class="row">
+            <div class="col-sm-5">
+              Цена за час: 
+            </div>
+            <div class="col-sm-1">
+              <text th:text="${Goods.pricePerHour}"></text>
+            </div>
+            <div class="col-sm-1">
+              Руб
+            </div>  
+          </div>
+          <div class="row">      
+            <div class="col-sm-5">
+              Цена за день: 
+            </div>
+            <div class="col-sm-1">
+              <text th:text="${Goods.pricePerDay}"></text>
+            </div>
+            <div class="col-sm-1">
+              Руб
+            </div>  
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              Цена за неделю: 
+            </div>
+            <div class="col-sm-1">
+              <text th:text="${Goods.pricePerWeek}"></text>
+            </div>
+            <div class="col-sm-1">
+              Руб
+            </div>  
+          </div>
+          <div class="row">      
+            <div class="col-sm-5">
+              Арендодатель: 
+            </div>
+            <div class="col-sm-2">
+              <text th:text="${Goods.author}"></text>
+            </div>
+          </div>
+          <div class="row">      
+            <div class="col-sm-5">
+              Телефон:  
+            </div>
+            <div class="col-sm-2">
+              <text th:text="${Goods.authorPhone}"></text>
+            </div>
+          </div> 
+        </div>
+      </div>     
+  </div>
+</div>  
+</body>
+</html>
+
+
