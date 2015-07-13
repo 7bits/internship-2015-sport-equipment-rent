@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+
+  <!--ссылка на jquery-ui-1.9.2.custom.js возможно прокатит с 1-->  
+  <!--ссылка на jquery css--> 
+    
+    <title>SeeListOfAnnouncement</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <link rel='stylesheet' href='bootstrap/dist/css/bootstrap.min.css' type='text/css' media='all'/>
+    <link rel="stylesheet" href="style.css" type="text/css" media='all'/>
+  
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="container">
+      
+        <div class="row">
+          <div class="col-sm-1"><h1>logo</h1></div>
+        <div class="row">  
+          <div class="col-sm-4">
+            <label for="name"><h2><b>Дай погонять</b></h2></label>
+          </div>
+          <div class="col-sm-7">
+            <label for="name" class="lanelInTitle"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
+          </div>
+        </div> 
+        
+        <div class="row">   
+          <div class="col-sm-7">
+            <label for="name" class="label-position">Все объявления:</label>
+          </div>
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-info btn-block btn-lg">Дать объявление</button>
+          </div>
+        </div>
+
+        <ol>
+          <li th:each="Goods : ${goods}">
+            <div class="row"> <!--строка где потом возможно будут кнопки-->  
+              <div class="col-sm-9">
+                <div class="row">   
+                  <div class="col-sm-1">
+                    Товар: 
+                  </div>
+                  <div class="col-sm-8">
+                    <p th:text="${Goods.title}">bvz</p>
+                  </div>  
+                </div>
+                <div class="row">   
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-1">Цена</div>
+                  <div class="col-sm-1">час: </div>
+                  <div class="col-sm-1"><th:text="${Goods.pricePerHour}">1</div>
+                  <div class="col-sm-1">день: </div>
+                  <div class="col-sm-1"><th:text="${Goods.pricePerDay}">3</div>
+                  <div class="col-sm-1">неделя: </div>
+                  <div class="col-sm-1"><th:text="${Goods.pricePerWeek}">5</div>  
+                </div>
+                <div class="row">   
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-8"> <p th:text="${Goods.description}"></p>ghjdhgdjghkjd hkutghkrsdghdfjhgjhkjfrhgkjhgkj</div>
+                </div>  
+              </div>
+            </div>
+          </li>
+        </ol>   
+      </div>
+    </div>
+  </body>
+</html>
+
+
