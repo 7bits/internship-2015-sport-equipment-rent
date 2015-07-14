@@ -1,97 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-
-  <!--ссылка на jquery-ui-1.9.2.custom.js возможно прокатит с 1-->  
-  <!--ссылка на jquery css--> 
-    
+<head>
+    <!--ссылка на jquery-ui-1.9.2.custom.js возможно прокатит с 1-->
+    <!--ссылка на jquery css-->
     <title>SeeListOfAnnouncement</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
     <link rel="stylesheet" th:href="@{/vendor/stylesheets/style.css}" type="text/css" media='all'/>
     <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/vendor/stylesheets/bootstrap-theme.min.css}"/>
     <script type="application/javascript" th:src="@{/vendor/scripts/jquery-2.1.4.min.js}"></script>
     <script type="application/javascript" th:src="@{/vendor/scripts/bootstrap.min.js}"></script>
     <script type="application/javascript" th:src="@{/scripts/app.js}"></script>
-  
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="container">
-      
+</head>
+<body>
+<div class="container-fluid">
+    <div class="container">
         <div class="row">
-          <div class="col-sm-6">
-            <a href="/" >
-              <img src="images/logo.png" align="left" width="512" height="134"/>
-            </a>
-          </div>
-          <div class="col-sm-6">
-            <label for="name" class = "motto-position"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
-          </div>
-        </div> 
-        
-        
-        <ol>
-        <div class="row">   
-          <div class="col-sm-9">
-            <label for="name" class="label-position">Все объявления:</label>
-          </div>
-          <div class="col-sm-2">
-            <a href="/add_announcement">
-              <button type="button" class="btn btn-color btn-block btn-lg">Дать объявление</button>
-            </a>
+            <div class="col-sm-6">
+                <a href="/" >
+                    <img src="images/logo.png" align="left" width="512" height="134"/>
+                </a>
             </div>
-
+            <div class="col-sm-6">
+                <label for="name" class = "motto-position"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
+            </div>
         </div>
-
-
-
-          <li th:each="Goods : ${goods}">
-            <div class="row">  
-              <div class="col-sm-9">
-                <div class="row">   
-                  <div class="col-sm-1">
-                    Товар: 
-                  </div>
-                  <div class="col-sm-8">
-                    <p th:text="${Goods.title}"></p>
-                  </div>  
-                </div>
-                <div class="row">   
-                  <div class="col-sm-1"></div>
-                  <div class="col-sm-1">Цена</div>
-                  <div class="col-sm-1">час: </div>
-                  <div class="col-sm-1"><text th:text="${Goods.pricePerHour}"></text></div>
-                  <div class="col-sm-1">день: </div>
-                  <div class="col-sm-1"><text th:text="${Goods.pricePerDay}"></text></div>
-                  <div class="col-sm-1">неделя: </div>
-                  <div class="col-sm-1"><text th:text="${Goods.pricePerWeek}"></text></div>  
-                </div>
-              </div>
-            </div>    
+        <ol>
             <div class="row">
-                <div class="col-sm-9"></div>
+                <div class="col-sm-9">
+                    <label for="name" class="label-position">Все объявления:</label>
+                </div>
                 <div class="col-sm-2">
-                  <a th:href="@{|/see_announcement?announcement_id=${Goods.id}|}">
-                    <button type="button" class="btn btn-color btn-block btn-lg">Подробнее</button>
-                  </a>
+                    <a href="/add_announcement">
+                        <button type="button" class="btn btn-color btn-block btn-lg">Дать объявление</button>
+                    </a>
                 </div>
-            </div>    
-            <div class="row">   
-              <div class="col-sm-9">
-                <div class="row">
-                  <div class="col-sm-1"></div>
-                  <div class="col-sm-8"> <p th:text="${Goods.description}"></p></div>
-                </div>
-              </div>  
             </div>
-          </li>
-        </ol>   
-      </div>
+            <li th:each="Goods : ${goods}">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                Товар:
+                            </div>
+                            <div class="col-sm-8">
+                                <p th:text="${Goods.title}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">Цена</div>
+                            <div class="col-sm-1">час: </div>
+                            <div class="col-sm-1"><text th:text="${Goods.pricePerHour}"></text></div>
+                            <div class="col-sm-1">день: </div>
+                            <div class="col-sm-1"><text th:text="${Goods.pricePerDay}"></text></div>
+                            <div class="col-sm-1">неделя: </div>
+                            <div class="col-sm-1"><text th:text="${Goods.pricePerWeek}"></text></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9"></div>
+                    <div class="col-sm-2">
+                        <a th:href="@{|/see_announcement?announcement_id=${Goods.id}|}">
+                            <button type="button" class="btn btn-color btn-block btn-lg">Подробнее</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-8"> <p th:text="${Goods.description}"></p></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ol>
     </div>
-  </body>
+</div>
+</body>
 </html>
-
-
