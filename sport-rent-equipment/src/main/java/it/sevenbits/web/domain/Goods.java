@@ -1,11 +1,22 @@
 package it.sevenbits.web.domain;
 
+import it.sevenbits.core.repository.RepositoryException;
+import it.sevenbits.core.repository.UserInPostgreSQLRepository;
+import it.sevenbits.core.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import java.io.Serializable;
 
 /**
  * Created by awemath on 7/8/15.
  */
 public class Goods implements Serializable {
+    @Autowired
+    @Qualifier(value="userInPostgreSQLrepository")
+    private UserRepository repository;
+
     Long id;
     String email;
     String title;
@@ -13,7 +24,8 @@ public class Goods implements Serializable {
     String pledge;
     double pricePerHour, pricePerDay, pricePerWeek;
     boolean status;
-    String author;
+    Long authorId;
+    String author;//name
     String authorPhone;
 
     public String getTitle() {
@@ -72,6 +84,14 @@ public class Goods implements Serializable {
         this.status = status;
     }
 
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -107,7 +127,7 @@ public class Goods implements Serializable {
     @Override
     public String toString(){
         return String.format("Goods[id=%d, title=%s, author=%s]",
-                + id, title, author);
+                + id, title, authorId);
     }
 
 }

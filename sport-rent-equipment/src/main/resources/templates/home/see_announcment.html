@@ -17,23 +17,20 @@
   <div class="container-fluid">
     <div class="container">
         <div class="row">
-          <div class="col-sm-6">
-           <!--нужна ссылка куда переходить-->
-            <a href="/" >
-              <img src="images/logo.png" align="left" width="512" height="134"/>
-            </a>
+          <div class="col-sm-1"><h1>logo</h1></div>
+        <div class="row">  
+          <div class="col-sm-4">
+            <label for="name"><h2><b>Дай погонять</b></h2></label>
           </div>
-          <div class="col-sm-6">
-            <label for="name" class = "motto-position"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
+          <div class="col-sm-7">
+            <label for="name" class="lanelInTitle"><h4>Сервис по поиску и аренде спортивного оборудования</h4></label>
           </div>
         </div> 
         
           
       <div class="row">
         <div class="col-sm-3">
-          <a href="/">
-            <button type="submit" class="btn btn-color btn-block">Все объявления</button>
-          </a>
+          <button type="submit" class="btn btn-info btn-block">Все объявления</button>
         </div>
       </div>
       <div class="row">   
@@ -52,8 +49,9 @@
             <div class="col-sm-5">
               Цена за час: 
             </div>
+
             <div class="col-sm-1">
-              <text th:text="${Goods.pricePerHour}"></text>
+              <text th:text="${Goods.pricePerHour}"/>
             </div>
             <div class="col-sm-1">
               Руб
@@ -64,7 +62,7 @@
               Цена за день: 
             </div>
             <div class="col-sm-1">
-              <text th:text="${Goods.pricePerDay}"></text>
+              <text th:text="${Goods.pricePerDay}"/>
             </div>
             <div class="col-sm-1">
               Руб
@@ -75,7 +73,7 @@
               Цена за неделю: 
             </div>
             <div class="col-sm-1">
-              <text th:text="${Goods.pricePerWeek}"></text>
+              <text th:text="${Goods.pricePerWeek}"/>
             </div>
             <div class="col-sm-1">
               Руб
@@ -86,7 +84,7 @@
               Арендодатель: 
             </div>
             <div class="col-sm-2">
-              <text th:text="${Goods.author}"></text>
+              <text th:text="${Goods.author}"/>
             </div>
           </div>
           <div class="row">      
@@ -94,13 +92,14 @@
               Телефон:  
             </div>
             <div class="col-sm-2">
-              <text th:text="${Goods.authorPhone}"></text>
+              <text th:text="${Goods.authorPhone}"/>
             </div>
           </div> 
         </div>
       </div>     
   </div>
-</div>  
+</div>
+    </div>
 </body>
 </html>
 

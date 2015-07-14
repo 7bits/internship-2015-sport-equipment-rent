@@ -1,5 +1,7 @@
 package it.sevenbits.config;
 
+import it.sevenbits.core.repository.UserInPostgreSQLRepository;
+import it.sevenbits.core.repository.UserRepository;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -18,7 +20,10 @@ public class DatabaseConfig {
     @Autowired
     private DataSource dataSource;
 
-
+   /* @Bean
+    public UserRepository userInPostgreSQLrepository() {
+        return new UserInPostgreSQLRepository();
+    }*/
 
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {

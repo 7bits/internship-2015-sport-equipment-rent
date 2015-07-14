@@ -4,8 +4,10 @@ import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
+import it.sevenbits.web.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -19,11 +21,18 @@ public class GoodsService {
     @Autowired
     @Qualifier(value="goodsInPostgreSQLrepository")
     private GoodsRepository repository;
+
+
+    @Autowired
+    private UserService userService;
+
     public void save(final GoodsForm form) throws GoodsException {
         final Goods goods = new Goods();
+        User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         goods.setTitle(form.getTitle());
-        goods.setAuthor(form.getAuthor());
-        goods.setAuthorPhone(form.getAuthorPhone());
+        goods.setAuthorId(user.getId());
+        goods.setAuthorPhone(user.getPhone());
+        goods.setAuthor(user.getFirstName());
         goods.setDescription(form.getDescription());
         goods.setPledge(form.getPledge());
         goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
@@ -56,6 +65,9 @@ public class GoodsService {
         Goods goods;
         try{
             goods = repository.getGoods(id);
+            User user = userService.getUser(goods.getAuthorId());
+            goods.setAuthor(user.getFirstName());
+            goods.setAuthorPhone(user.getPhone());
         } catch (RepositoryException e) {
             throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
         }

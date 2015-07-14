@@ -33,12 +33,11 @@ public interface GoodsMapper {
             @Result(column = "price_per_day", property = "pricePerDay"),
             @Result(column = "price_per_week", property = "pricePerWeek"),
             @Result(column = "status", property = "status"),
-            @Result(column = "author", property = "author"),
-            @Result(column = "phone_author", property = "authorPhone"),
+            @Result(column = "author_id", property = "authorId")
     })
     Goods getGoods(long id);
 
-    @Insert("INSERT INTO Goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author, phone_author)" +
-            " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{author}, #{authorPhone})")
+    @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author_id)" +
+            " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
     void save(final Goods goods);
 }
