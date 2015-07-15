@@ -65,6 +65,14 @@
       </dependency>
 
 
+
+
+      <dependency>
+          <groupId>com.domingosuarez.boot</groupId>
+          <artifactId>spring-boot-starter-jade4j</artifactId>
+          <version>0.2</version>
+      </dependency>
+
   </dependencies>
 
 </project>
