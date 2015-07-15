@@ -10,7 +10,7 @@ CREATE TABLE users(
 	second_name varchar(50) not null,
 	pass varchar(100) not null, 
 	phone varchar(50),
-	email varchar(50),
+	email varchar(50) not null,
 	users_role ROLE not null
 );
 CREATE TABLE goods(

@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/login")
 public class LoginController {
     private static Logger LOG = Logger.getLogger(HomeController.class);
-    @Autowired
-    private GoodsService service;
+
     @RequestMapping(method= RequestMethod.GET)
     public String login(){
         return "/login";
