@@ -21,18 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf()
-                .disable()
-                        // указываем правила запросов
-                        // по которым будет определятся доступ к ресурсам и остальным данным
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/**").permitAll()
-                .anyRequest().permitAll()
-                .and();
-
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/see_announcement" ,"/see_announcement/**").permitAll()
+                .antMatchers("/", "/index", "/see_announcement" ,"/see_announcement/**", "/resources/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
