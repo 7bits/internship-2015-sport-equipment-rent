@@ -1,0 +1,18 @@
+if isAuth==true
+    .row
+        .col-xs-8
+        .col-xs-2
+            a(href="/personal_area")
+                button.btn.btn-color.btn-block.btn-xs(type="button") Личный кабинет
+        .col-xs-2
+            a(href="/logout")
+                button.btn.btn-color.btn-block.btn-xs(type="button") Выйти
+else
+    .row
+        .col-xs-8
+        .col-xs-2
+            a(href="/registration")
+                button.btn.btn-color.btn-block.btn-xs(type="button") Регистрация
+        .col-xs-2
+            a(href="/login")
+                button.btn.btn-color.btn-block.btn-xs(type="button") Войти

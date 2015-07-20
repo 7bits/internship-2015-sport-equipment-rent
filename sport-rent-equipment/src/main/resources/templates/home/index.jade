@@ -1,37 +1,11 @@
 doctype html
 head
 	title Список объявлений
-	meta(name="viewport", content="width=device-width, initial-scale=1")
-	meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-	link(rel="stylesheet", href="resources/vendor/stylesheets/bootstrap.min.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/style.css", type="text/css", media="all")
+	include depending.jade
 body
 	.container
-		if isAuth==true
-			.row
-				.col-xs-8
-				.col-xs-2
-					a(href="/personal_area")
-						button.btn.btn-color.btn-block.btn-xs(type="button") Личный кабинет
-				.col-xs-2
-					a(href="/logout")
-						button.btn.btn-color.btn-block.btn-xs(type="button") Выйти
-		else
-			.row
-				.col-xs-8
-				.col-xs-2
-					a(href="/registration")
-						button.btn.btn-color.btn-block.btn-xs(type="button") Регистрация
-				.col-xs-2
-					a(href="/login")
-						button.btn.btn-color.btn-block.btn-xs(type="button") Войти
-		.row
-			.col-lg-6
-				a(href="/")
-					img(src="resources/images/logo.png", align="left", width="512", height="134")
-			.col-lg-6
-				label.motto-position(for="name")
-					h4.motto-color Сервис по поиску и аренде спортивного оборудования
+		include bottum_for_header.jade
+		include header.jade
 		include mixin_list_all_announcement.jade
 		+list(goods)
 
