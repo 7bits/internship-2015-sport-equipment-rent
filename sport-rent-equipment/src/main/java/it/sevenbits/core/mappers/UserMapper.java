@@ -39,12 +39,11 @@ public interface UserMapper {
             @Result(column = "id", property = "id"),
             @Result(column = "pass", property = "pass"),
             @Result(column = "first_name", property = "firstName"),
-            @Result(column = "second_name", property = "secondName"),
             @Result(column = "phone", property = "phone"),
     })
     User getUserById(Long id);
 
     @Insert("INSERT INTO users (first_name, second_name, pass, phone, email, users_role)" +
-            " VALUES (#{first_name}, 'null', #{pass}, #{phone}, #{email}, 'USER')")
+            " VALUES (#{firstName}, 'null', #{pass}, #{phone}, #{email}, 'USER')")
     void save(final User user);
 }

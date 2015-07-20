@@ -1,8 +1,20 @@
 server:
- port:9000
-
+  port: 9000
 spring:
  datasource:
   url: jdbc:postgresql://localhost:5432/sportequipmentrent
   username: root
   password: root
+mail:
+   username: sportequipmentrent@gmail.com
+   password: Sport!!1
+   protocol: smtp
+   host: smtp.gmail.com
+   port: 587
+   charset: UTF-8
+   smtp:
+       auth: true
+       starttls:
+           enable: true
+           required: true
+       debug: true

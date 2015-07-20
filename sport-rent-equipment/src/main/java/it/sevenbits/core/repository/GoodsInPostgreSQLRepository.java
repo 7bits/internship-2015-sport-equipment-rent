@@ -47,7 +47,15 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
         }
     }
 
+
+
+
     public Goods getGoods(long id) throws RepositoryException{
         return mapper.getGoods(id);
+    }
+
+    @Override
+    public List<Goods> getGoodsByAuthorId(long id) {
+        return mapper.getGoodsByAuthorId(id);
     }
 }

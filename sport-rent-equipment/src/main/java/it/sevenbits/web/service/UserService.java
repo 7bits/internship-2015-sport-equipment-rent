@@ -6,6 +6,7 @@ package it.sevenbits.web.service;
 
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.core.repository.UserRepository;
+import it.sevenbits.web.domain.RegistrationForm;
 import it.sevenbits.web.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -40,4 +41,16 @@ public class UserService {
         return user;
     }
 
+    public void save(RegistrationForm form) throws GoodsException {
+        final User user = new User();
+        user.setEmail(form.geteMail());
+        user.setFirstName(form.getFirstName());
+        user.setPass(form.getPassword());
+
+        try {
+            repository.save(user);
+        } catch (Exception e) {
+            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
+        }
+    }
 }

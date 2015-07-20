@@ -2,79 +2,62 @@ doctype html
 head
 	title Создание нового объявления
 	meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-	link(rel="stylesheet", href="bootstrap/dist/css/bootstrap.min.css", type="text/css", media="all")
-	link(rel="stylesheet", href="style.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/vendor/stylesheets/bootstrap.min.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/style.css", type="text/css", media="all")
 body
 	.container
 		.row
 			.col-lg-6
 				a(href="/")
-					img(src="images/logo.png", align="left", width="512", height="134")
+					img(src="resources/images/logo.png", align="left", width="512", height="134")
 			.col-lg-6
 				label.motto-position(for="name")
-					h4 Сервис по поиску и аренде спортивного оборудования
+					h4.motto-color Сервис по поиску и аренде спортивного оборудования
+		include mixin_er.jade
+		+err(errors)
 		.row
 			.col-lg-12
-				form(role="form")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="name") Ваше имя
-								sup  *
-							.col-lg-3
-								input#name.form-control(type="text", placeholder="Введите имя")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="phoneNumber") Ваш телефон
-								sup  *
-							.col-lg-3
-								input#phoneNumber.form-control(type="text", placeholder="Введите контактный номер телефона")
+				form(role="form", action="/add_announcement", method="post")
 					div.form-group
 						.row
 							.col-lg-3
 								label.label-position(for="announcementsName") Название объявления
-								sup  *
+								sup *
 							.col-lg-3
-								input#announcementsName.form-control(type="text", placeholder="Название объявления")
+								input#announcementsName.form-control(type="text", name="title", placeholder="Название объявления")
 					div.form-group
 						.row
 							.col-lg-3
 								label.label-position(for="announcementsDescription") Описание объявления
 							.col-lg-6
-								input#announcementsDescription.form-control(type="text", placeholder="Описание объявления")
+								input#announcementsDescription.form-control(type="text", name="description", placeholder="Описание объявления")
 					div.form-group
 						.row
 							.col-lg-3
-								label.label-position(for="PriceForHour") Цена за час
-								sup  *
-							.col-lg-2
-								input#PriceForHour.form-control(type="text", placeholder="Цена за час")
+								label.label-position(for="PriceForHour") Цена
 							.col-lg-1
+								input#PriceForHour.form-control(type="text", name="pricePerHour", placeholder="Цена за час")
 							.col-lg-1
+								час
+								sup *
+							.col-lg-1
+								input#PriceForDay.form-control(type="text", name="pricePerDay", placeholder="Цена за день")
+							.col-lg-1
+								label.label-position(for="PriceForDay")день
+								sup *
+							.col-lg-1
+								input#PriceForWeek.form-control(type="text", name="pricePerWeek", placeholder="Цена за неделю")
+							.col-lg-1
+								нед
+								sup *
+					div.form-group
+						.row
+							.col-lg-3
 								label.label-position(for="pledge") Залог
-								sup  *
-							.col-lg-2
-								input#pledge.form-control(type="text", placeholder="Залог")
-					div.form-group
+								sup*
+							.col-lg-1
+								input#pledge.form-control(type="text", name='pledge', placeholder="Залог")
 						.row
+							.col-lg-9
 							.col-lg-3
-								label.label-position(for="PriceForDay") Цена за день
-								sup  *
-							.col-lg-2
-								input#PriceForDay.form-control(type="text", placeholder="Цена за день")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="PriceForWeek") Цена за неделю
-								sup  *
-							.col-lg-2
-								input#PriceForWeek.form-control(type="text", placeholder="Цена за неделю")
-					.row
-						.col-lg-5
-						.col-lg-2
-							a(href="/")
-								button.btn.btn-color.btn-block.btn-lg(type="button") Назад
-						.col-lg-3
-							button.btn.btn-color.btn-block.btn-lg(type="submit") Подать объявление
-
+								button.btn.btn-color.btn-block.btn-lg(type="submit") Подать объявление

@@ -1,11 +1,13 @@
 package it.sevenbits.web.controllers;
 
 import it.sevenbits.web.domain.GoodsForm;
+import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.GoodsException;
 import it.sevenbits.web.service.GoodsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +36,7 @@ public class HomeController {
     public String index(final Model model) {
         // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
+        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
         // Если шаблона не будет найдено, то вернется 404 ошибка
         return "home/add_announcement";
@@ -48,6 +51,7 @@ public class HomeController {
             // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
+            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
             LOG.info("Subscription form contains errors.");
             return "home/add_announcement";
         }
@@ -70,6 +74,7 @@ public class HomeController {
     public String mainPage(final Model model){
         try {
             model.addAttribute("goods", service.findAll());
+            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         } catch (GoodsException e) {
             e.printStackTrace();
     }
@@ -77,14 +82,38 @@ public class HomeController {
         return "/home/index";
     }
 
+
+
+
     @RequestMapping(value="/see_announcement", method = RequestMethod.GET)
     public String announcementPage(@RequestParam(value="announcement_id", required = false) String announcementId,  final Model model) {
         try {
             model.addAttribute("Goods", service.getGoods(Long.valueOf(announcementId)));
+            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         } catch (GoodsException e) {
             e.printStackTrace();
         }
 
+        return "/home/see_announcement";
+    }
+
+    @Autowired
+    MailSubmissionController mailSubmissionController;
+
+
+    @RequestMapping(value="/getIt", method = RequestMethod.GET)
+    public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model) {
+        try {
+            mailSubmissionController.send(service.getGoods(Long.valueOf(announcementId)));
+        } catch (GoodsException e) {
+            LOG.error(e.getMessage());
+        }
+        try {
+            model.addAttribute("Goods", service.getGoods(Long.valueOf(announcementId)));
+            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
         return "/home/see_announcement";
     }
 

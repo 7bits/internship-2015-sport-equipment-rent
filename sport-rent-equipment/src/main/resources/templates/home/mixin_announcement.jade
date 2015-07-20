@@ -36,14 +36,7 @@ mixin announcement(Goods)
 					text=Goods.pledge
 				.col-lg-1
 			.row
-				.col-lg-7
-			.row
-				.col-lg-5
-					Арендодатель:
-				.col-lg-2
-					text=Goods.author
-			.row
-				.col-lg-5
-					Телефон:
-				.col-lg-2
-					text=Goods.authorPhone
+				.col-lg-9
+				.col-lg-4
+					a(href="/getIt?announcement_id=#{Goods.id}")
+						button.btn.btn-color.btn-block.btn-lg(type="button") Взять напрокат

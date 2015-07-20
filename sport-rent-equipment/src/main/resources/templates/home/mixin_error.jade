@@ -1,0 +1,8 @@
+mixin error(errors)
+	.alert.alert-danger(role='alert')
+		Форма содержит ошибки!
+		ul
+			each item in errors
+				li
+					item.value
+

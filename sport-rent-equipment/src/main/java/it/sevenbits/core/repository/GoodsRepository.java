@@ -11,4 +11,5 @@ public interface GoodsRepository {
         void save(final Goods goods) throws RepositoryException;
         List<Goods> findAll() throws RepositoryException;
         Goods getGoods(long id) throws RepositoryException;
+        List <Goods> getGoodsByAuthorId(long id);
 }

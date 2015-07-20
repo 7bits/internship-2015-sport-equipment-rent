@@ -45,6 +45,17 @@ public class GoodsService {
         }
     }
 
+    public List<Goods> getGoodsByAuthorId(long id){
+        List<Goods> goods = repository.getGoodsByAuthorId(id);
+        goods.sort(new Comparator<Goods>() {
+            @Override
+            public int compare(Goods o1, Goods o2) {
+                return o1.getId() > o1.getId() ? 1 : -1;
+            }
+        });
+        return goods;
+    }
+
     public List<Goods> findAll() throws GoodsException {
         try {
             List<Goods> goods = repository.findAll();
