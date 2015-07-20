@@ -7,6 +7,7 @@
 
   <version>1.0-SNAPSHOT</version>
   <name>sport-rent-equipment</name>
+  <packaging>jar</packaging>
 
   <parent>
       <groupId>org.springframework.boot</groupId>
@@ -46,12 +47,6 @@
       </dependency>
 
       <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context-support</artifactId>
-          <version>3.0.5.RELEASE</version>
-      </dependency>
-
-      <dependency>
           <groupId>org.mybatis</groupId>
           <artifactId>mybatis</artifactId>
           <version>3.2.3</version>
@@ -81,25 +76,10 @@
           <artifactId>javax.mail</artifactId>
       </dependency>
 
-      <!-- mybatis integration lib for spring -->
       <dependency>
-          <groupId>org.mybatis</groupId>
-          <artifactId>mybatis-spring</artifactId>
-          <version>1.2.2</version>
-      </dependency>
-
-      <dependency>
-          <groupId>org.postgresql</groupId>
-          <artifactId>postgresql</artifactId>
-          <version>9.3-1103-jdbc41</version>
-          <scope>runtime</scope>
-      </dependency>
-      <!-- HTML5 template engine for spring-boot -->
-
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context-support</artifactId>
-          <version>3.1.1.RELEASE</version>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
       </dependency>
   </dependencies>
 
@@ -110,19 +90,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>it.sevenbits.Application</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
