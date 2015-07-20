@@ -1,7 +1,6 @@
 package it.sevenbits.web.controllers;
 
 import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.GoodsException;
 import it.sevenbits.web.service.GoodsService;
@@ -66,7 +65,7 @@ public class HomeController {
         } catch (GoodsException e) {
             LOG.error("Error at the picking goods");
         }
-        return "/home/index";
+        return "home/index";
     }
 
 
@@ -79,7 +78,7 @@ public class HomeController {
             e.printStackTrace();
     }
 
-        return "/home/index";
+        return "home/index";
     }
 
 
@@ -94,7 +93,7 @@ public class HomeController {
             e.printStackTrace();
         }
 
-        return "/home/see_announcement";
+        return "home/see_announcement";
     }
 
     @Autowired
@@ -114,7 +113,7 @@ public class HomeController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-        return "/home/see_announcement";
+        return "home/see_announcement";
     }
 
 

@@ -22,7 +22,7 @@ public class LoginController {
     private GoodsService service;
     @RequestMapping(method= RequestMethod.GET)
     public String login(){
-        return "/home/login";
+        return "home/login";
     }
     @RequestMapping(method= RequestMethod.POST)
     public String submit(final Model model){
@@ -31,7 +31,7 @@ public class LoginController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-        return "/home/index";
+        return "home/index";
     }
 
 

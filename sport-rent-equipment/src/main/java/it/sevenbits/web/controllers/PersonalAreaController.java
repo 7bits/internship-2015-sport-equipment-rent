@@ -31,6 +31,6 @@ public class PersonalAreaController {
         }
         model.addAttribute("goods", goodsService.getGoodsByAuthorId(user.getId()));
         model.addAttribute("user", user);
-        return "/home/personal_area";
+        return "home/personal_area";
     }
 }

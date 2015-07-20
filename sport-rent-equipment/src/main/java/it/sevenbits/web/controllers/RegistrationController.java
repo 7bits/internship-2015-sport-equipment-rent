@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Map;
-
 /**
  * Created by awemath on 7/14/15.
  */
@@ -36,7 +34,7 @@ public class RegistrationController {
     @RequestMapping(method= RequestMethod.GET)
     public String login(final Model model){
         model.addAttribute("registration", new RegistrationForm());
-        return "/home/registration";
+        return "home/registration";
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -51,6 +49,6 @@ public class RegistrationController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-        return "/home/index";
+        return "home/index";
     }
 }
