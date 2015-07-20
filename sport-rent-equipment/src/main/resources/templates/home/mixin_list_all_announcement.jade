@@ -8,17 +8,16 @@ mixin list(goods)
 					button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявление
 		.row
 			.col-lg-12
-				li
-					each Goods in goods
+				each Goods in goods
+					li
 						.row
-							.col-lg-9
+							.col-lg-8
 								.row
 									.col-lg-1
 										Товар:
 									.col-lg-8
 										text=Goods.title
 								.row
-									.col-lg-1
 									.col-lg-1
 										Цена
 									.col-lg-1
@@ -33,15 +32,9 @@ mixin list(goods)
 										неделя:
 									.col-lg-1
 										text=Goods.pricePerWeek
-								.row
 									.col-lg-9
-									.col-lg-3
-										- announcement_id = Goods.id;
-										a(href="/see_announcement?announcement_id=#{announcement_id}")
-											button.btn.btn-color.btn-block.btn-lg(type="button") Подробнее
-								.row
-									.col-lg-9
-										.row
-											.col-sm-1
-											.col-sm-8
-												p.size-text-norap=Goods.description
+										p.size-text-norap=Goods.description
+							.col-md-3
+								- announcement_id = Goods.id;
+								a(href="/see_announcement?announcement_id=#{announcement_id}")
+									button.btn.btn-color.btn-block.btn-md(type="button") Подробнее
