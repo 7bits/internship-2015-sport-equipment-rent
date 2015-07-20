@@ -1,4 +1,4 @@
 .idea
 target
-*.yml
-.git
+*.iml
+

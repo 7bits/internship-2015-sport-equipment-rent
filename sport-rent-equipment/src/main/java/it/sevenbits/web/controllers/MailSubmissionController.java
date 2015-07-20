@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.charset.Charset;
+
 /**
  * Created by awemath on 7/17/15.
  */
@@ -33,8 +35,8 @@ class MailSubmissionController {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         try {
             mailMessage.setTo(userService.getUser(goods.getAuthorId()).getEmail());
-            mailMessage.setFrom("dart.fk712@gmail.com");
-            mailMessage.setSubject("Lorem ipsum");
+            mailMessage.setFrom("sportequipmentrent@gmail.com");
+            mailMessage.setSubject("");
             mailMessage.setText("Уважаемый " + goods.getAuthor() + ". Вашим объявлением: " + goods.getTitle() + " заинтересовались"
                     + " Пройдите по ссылке, чтобы узнать подробности" + "\n http://sport-equipment-rent.7bits.it/personal_area");
             javaMailSender.send(mailMessage);
