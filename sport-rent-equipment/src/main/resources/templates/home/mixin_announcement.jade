@@ -4,9 +4,10 @@ mixin announcement(Goods)
 			p=Goods.title
 	.row
 		.col-lg-5
-			.well
-				.size-text-rap
-					p=Goods.description
+			if !Goods.description.isEmpty()
+				.well
+					.size-text-rap
+						p=Goods.description
 		.col-lg-7
 			.row
 				.col-lg-5
