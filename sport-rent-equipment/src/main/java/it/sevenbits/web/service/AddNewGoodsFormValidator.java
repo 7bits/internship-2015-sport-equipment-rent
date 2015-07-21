@@ -12,10 +12,6 @@ import java.util.regex.Pattern;
  * Created by awemath on 7/9/15.
  */
 
-
-
-
-
 @Service
 public class AddNewGoodsFormValidator {
     @Autowired
