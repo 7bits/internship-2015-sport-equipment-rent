@@ -4,38 +4,26 @@ head
 	include depending.jade
 body
 	.container
-		.row
-			.col-ms-12
 		include header.jade
-		.row
-			.col-lg-12
-				form(role="form", action="/login", method="post")
-					div.form-group
-						.row
-							.col-lg-4
-							.col-lg-1
-								label.label-position(for="userEmail") Email
-								sup  *
-							.col-lg-3
-								input#userEmail.form-control(type="email", name="username", placeholder="Ваш email")
-							.col-lg-4
-					div.form-group
-						.row
-							.col-lg-4
-							.col-lg-1
-								label.label-position(for="passtext") Пароль
-								sup  *
-							.col-lg-3
-								input#passtext.form-control(type="password", name="password", placeholder="Ваш пароль")
-							.col-lg-4
-					.row
-						.col-lg-4
-						.col-lg-4
-							Еще не зарегистрированы?
-							a(href="/registration")
-								Регистрация
-						.col-lg-4
-					.row
-						.col-lg-5
-						.col-lg-2
-							button.btn.btn-color.btn-block.btn-lg(type="submit") Войти
+		form(role="form", action="/login", method="post")
+			div.form-group
+				.row
+					.col-lg-4
+					.col-lg-4
+						input.input-lg#userEmail.form-control(type="email", name="username", placeholder="Ваш email")
+			div.form-group
+				.row
+					.col-lg-4
+					.col-lg-4.col-centered
+						input.input-lg#passtext.form-control(type="password", name="password", placeholder="Ваш пароль")
+			.row
+				.col-lg-4
+				.col-lg-4
+					button.btn.btn-color.btn-block.btn-lg(type="submit") Войти
+			.row
+				.col-lg-4
+				.col-lg-4
+					p.text-center Еще не зарегистрированы?
+						a(href="/registration")
+							Регистрация
+				.col-lg-4
