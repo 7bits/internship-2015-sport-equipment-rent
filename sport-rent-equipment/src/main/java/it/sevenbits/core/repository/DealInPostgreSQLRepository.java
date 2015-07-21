@@ -20,6 +20,11 @@ public class DealInPostgreSQLRepository implements DealRepository {
         mapper.save(deal);
     }
     public Deal getDeal(long dealId) {
-        return null;
+        return mapper.getDeal(dealId);
+    }
+
+    @Override
+    public void update(Deal deal) {
+        mapper.update(deal);
     }
 }

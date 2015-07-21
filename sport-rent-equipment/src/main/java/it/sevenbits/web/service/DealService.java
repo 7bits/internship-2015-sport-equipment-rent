@@ -14,11 +14,17 @@ public class DealService {
     @Autowired
     @Qualifier(value="dealInPostgreSQLRepository")
     private DealRepository repository;
-    void save(Deal deal){
+
+    public void save(Deal deal){
         repository.save(deal);
     }
 
-    public Deal getDeal() {
-
+    public Deal getDeal(long dealId) {
+        return repository.getDeal(dealId);
     }
+
+    public void update(Deal deal){
+        repository.update(deal);
+    }
+
 }

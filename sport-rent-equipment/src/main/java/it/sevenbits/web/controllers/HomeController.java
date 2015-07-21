@@ -1,9 +1,9 @@
 package it.sevenbits.web.controllers;
 
+import it.sevenbits.web.domain.Deal;
+import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.service.AddNewGoodsFormValidator;
-import it.sevenbits.web.service.GoodsException;
-import it.sevenbits.web.service.GoodsService;
+import it.sevenbits.web.service.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -99,13 +99,22 @@ public class HomeController {
     @Autowired
     MailSubmissionController mailSubmissionController;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    DealService dealService;
 
     @RequestMapping(value="/getIt", method = RequestMethod.GET)
     public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model) {
         try {
-            mailSubmissionController.send(service.getGoods(Long.valueOf(announcementId)));
+            Goods goods = service.getGoods(Long.valueOf(announcementId));
+            Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
+                    goods.getId());
+            dealService.save(deal);
+            mailSubmissionController.send(goods, deal);
         } catch (GoodsException e) {
-            LOG.error(e.getMessage());
+            LOG.error("An error occured on the creating a deal: "+e.getMessage());
         }
         try {
             model.addAttribute("Goods", service.getGoods(Long.valueOf(announcementId)));

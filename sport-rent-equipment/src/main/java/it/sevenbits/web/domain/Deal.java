@@ -9,6 +9,26 @@ public class Deal {
     long rentingId;
     long goodsId;
     boolean isAccepted;
+    boolean isAnswered;
+
+    public Deal(){
+    }
+
+    public Deal(long landlordId, long rentingId, long goodsId){
+        this.landlordId = landlordId;
+        this.rentingId = rentingId;
+        this.goodsId = goodsId;
+        this.isAccepted = false;
+        this.isAnswered = false;
+    }
+
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setIsAnswered(boolean isAnswered) {
+        this.isAnswered = isAnswered;
+    }
 
     public long getId() {
         return id;
