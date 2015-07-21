@@ -1,40 +1,44 @@
 mixin list(goods)
+	.row
+		.col-lg-2
+		.col-lg-3
+			a(href="#seeAll")
+				button.btn.btn-color.btn-block.btn-lg(type="button") Смотреть объявки
+		.col-lg-1
+		.col-lg-3
+			a(href="/add_announcement")
+				button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявку
+		.col-lg-3
+	.transparent-block
 	ol
-		.row
-			.col-lg-9
-				label.label-position(for="name")Все объявления:
-			.col-lg-3
-				a(href="/add_announcement")
-					button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявление
-		.row
-			.col-lg-12
-				each Goods in goods
-					li
-						.row
-							.col-lg-8
-								.row
-									.col-lg-1
-										Товар:
-									.col-lg-8
-										text=Goods.title
-								.row
-									.col-lg-1
-										Цена
-									.col-lg-1
-										час:
-									.col-lg-1
-										text=Goods.pricePerHour
-									.col-lg-1
-										день:
-									.col-lg-1
-										text=Goods.pricePerDay
-									.col-lg-1
-										неделя:
-									.col-lg-1
-										text=Goods.pricePerWeek
-									.col-lg-9
-										p.size-text-norap=Goods.description
-							.col-md-3
-								- announcement_id = Goods.id;
-								a(href="/see_announcement?announcement_id=#{announcement_id}")
-									button.btn.btn-color.btn-block.btn-md(type="button") Подробнее
+		a(name="seeAll")
+			each Goods in goods
+				li
+					.row
+						.col-lg-8
+							.row
+								.col-lg-1
+									Товар:
+								.col-lg-8
+									text=Goods.title
+							.row
+								.col-lg-1
+									Цена
+								.col-lg-1
+									час:
+								.col-lg-1
+									text=Goods.pricePerHour
+								.col-lg-1
+									день:
+								.col-lg-1
+									text=Goods.pricePerDay
+								.col-lg-1
+									неделя:
+								.col-lg-1
+									text=Goods.pricePerWeek
+								.col-lg-9
+									p.size-text-norap=Goods.description
+						.col-md-3
+							- announcement_id = Goods.id;
+							a(href="/see_announcement?announcement_id=#{announcement_id}")
+								button.btn.btn-color.btn-block.btn-md(type="button") Подробнее
