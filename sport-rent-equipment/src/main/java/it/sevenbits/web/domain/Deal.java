@@ -5,9 +5,9 @@ package it.sevenbits.web.domain;
  */
 public class Deal {
     long id;
-    User landlord;
-    User renting;
-    Goods goods;
+    long landlordId;
+    long rentingId;
+    long goodsId;
     boolean isAccepted;
 
     public long getId() {
@@ -18,35 +18,28 @@ public class Deal {
         this.id = id;
     }
 
-    public User getLandlord() {
-        return landlord;
+    public long getLandlordId() {
+        return landlordId;
     }
 
-    public void setLandlord(User landlord) {
-        this.landlord = landlord;
+    public void setLandlordId(long landlordId) {
+        this.landlordId = landlordId;
     }
 
-    public long landlordId(){
-        return landlord.getId();
+    public long getRentingId() {
+        return rentingId;
     }
 
-    public User getRenting() {
-        return renting;
+    public void setRentingId(long rentingId) {
+        this.rentingId = rentingId;
     }
 
-    public void setRenting(User renting) {
-        this.renting = renting;
-    }
-    public long getRentingId(){
-        return renting.getId();
+    public long getGoodsId() {
+        return goodsId;
     }
 
-    public Goods getGoods() {
-        return goods;
-    }
-
-    public void setGoods(Goods goods) {
-        this.goods = goods;
+    public void setGoodsId(long goodsId) {
+        this.goodsId = goodsId;
     }
 
     public boolean isAccepted() {
