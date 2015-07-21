@@ -7,5 +7,6 @@ import it.sevenbits.web.domain.Deal;
  */
 public interface DealRepository {
     void save(Deal deal);
-
+    Deal getDeal(long dealId);
+    void update(Deal deal);
 }

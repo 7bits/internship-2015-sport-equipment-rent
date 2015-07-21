@@ -1,4 +1,4 @@
-
+drop table deals;
 drop table goods;
 drop table users;
 drop type role;
@@ -24,6 +24,14 @@ CREATE TABLE goods(
 	status boolean not null,
 	author_id integer REFERENCES users(id)
 );
+CREATE TABLE deals(
+	id bigserial PRIMARY KEY,
+	landlord_id integer REFERENCES users(id) not null,
+	renting_id integer REFERENCES users(id) not null,
+	goods_id integer REFERENCES goods(id) not null,
+	is_accepted boolean not null,
+	is_answered boolean not null
+);
 insert into users (first_name, second_name, pass, phone, email, users_role) values
 ('admin', 'admin', 'pass', '123456', 'admin', 'ADMIN');
 
@@ -31,9 +39,11 @@ insert into users (first_name, second_name, pass, phone, email, users_role) valu
 
  grant all privileges on sequence goods_id_seq to root;
  grant all privileges on sequence users_id_seq to root;
+ grant all privileges on sequence deals_id_seq to root;
 
  grant all privileges on table goods to root;
  grant all privileges on table users to root;
+ grant all privileges on table deals to root;
 
 
 
