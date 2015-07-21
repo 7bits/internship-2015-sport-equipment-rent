@@ -20,6 +20,8 @@ border-color:#5dc8cd;
 }
 a, a:hover{
 text-decoration: none;
+outline: none;
+color: #000000;
 }
 
 .center-block {
