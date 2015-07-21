@@ -130,7 +130,32 @@ public class CommonFieldValidator {
         }
     }
 
+    public void equalPasswords(
+            final String password,
+            final String passwordVerification,
+            final Map<String, String> errors,
+            final String key,
+            final String field
+    ){
+        if(!errors.containsKey(key)){
+            if(password!=passwordVerification){
+                errors.put(key, field);
+            }
+        }
+    }
 
+    public void isUniqueEmail(
+            final String email,
+            final UserService userService,
+            final Map<String, String> errors,
+            final String key,
+            final String field
+    ){
+        if(!errors.containsKey(key))
+        if(userService.getCountOfUsersWithThatEmail(email)!=0){
+            errors.put(key, field);
+        }
+    }
 
 }
 
