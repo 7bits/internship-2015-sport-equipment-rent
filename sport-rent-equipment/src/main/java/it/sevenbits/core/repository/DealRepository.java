@@ -9,4 +9,7 @@ public interface DealRepository {
     void save(Deal deal);
     Deal getDeal(long dealId);
     void update(Deal deal);
+    long getId(Deal deal);
+
+    boolean isExist(Deal deal);
 }

@@ -23,8 +23,15 @@ public class DealService {
         return repository.getDeal(dealId);
     }
 
+    public long getId(Deal deal){
+        return repository.getId(deal);
+    }
+
     public void update(Deal deal){
         repository.update(deal);
     }
 
+    public boolean isExist(Deal deal) {
+        return repository.isExist(deal);
+    }
 }
