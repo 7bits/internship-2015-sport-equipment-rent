@@ -6,6 +6,8 @@ body
 	.container
 		include header.jade
 		form(role="form", action="/login", method="post")
+			include mixin_er.jade
+			+err(errors)
 			div.form-group
 				.row
 					.col-lg-4

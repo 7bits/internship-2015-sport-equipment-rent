@@ -23,21 +23,18 @@ public class DealService {
         return repository.getDeal(dealId);
     }
 
-<<<<<<< HEAD
-=======
     public long getId(Deal deal){
         return repository.getId(deal);
     }
 
->>>>>>> deal-handler
+
     public void update(Deal deal){
         repository.update(deal);
     }
 
-<<<<<<< HEAD
-=======
+
     public boolean isExist(Deal deal) {
         return repository.isExist(deal);
     }
->>>>>>> deal-handler
+
 }
