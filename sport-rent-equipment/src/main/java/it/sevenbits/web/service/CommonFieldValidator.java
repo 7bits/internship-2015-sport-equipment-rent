@@ -100,7 +100,7 @@ public class CommonFieldValidator {
             return;
         }
         char buf[] = value.toCharArray();
-        if(buf[0]=='-' || (buf[0]<'9' && buf[0]>'0') ) {
+        if(buf[0]=='-' || (buf[0]<='9' && buf[0]>='0') ) {
             for (int i = 1; i < value.length(); i++) {
                 c = buf[i];
                 if ((c < '0' || c > '9')) {
@@ -130,7 +130,32 @@ public class CommonFieldValidator {
         }
     }
 
+    public void equalPasswords(
+            final String password,
+            final String passwordVerification,
+            final Map<String, String> errors,
+            final String key,
+            final String field
+    ){
+        if(!errors.containsKey(key)){
+            if(password.equals(passwordVerification)){
+                errors.put(key, field);
+            }
+        }
+    }
 
+    public void isUniqueEmail(
+            final String email,
+            final UserService userService,
+            final Map<String, String> errors,
+            final String key,
+            final String field
+    ){
+        if(!errors.containsKey(key))
+        if(userService.getCountOfUsersWithThatEmail(email)!=0){
+            errors.put(key, field);
+        }
+    }
 
 }
 

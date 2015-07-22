@@ -41,6 +41,10 @@ public class UserService {
         return user;
     }
 
+    public int getCountOfUsersWithThatEmail(String email){
+        return repository.getCountOfUsersWithThatEmail(email);
+    }
+
     public void save(RegistrationForm form) throws GoodsException {
         final User user = new User();
         user.setEmail(form.geteMail());
