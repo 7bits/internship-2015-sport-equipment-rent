@@ -27,4 +27,15 @@ public class DealInPostgreSQLRepository implements DealRepository {
     public void update(Deal deal) {
         mapper.update(deal);
     }
+
+    @Override
+    public long getId(Deal deal) {
+        return mapper.getId(deal);
+    }
+
+    @Override
+    public boolean isExist(Deal deal) {
+        return mapper.isExist(deal)!=0;
+    }
+
 }

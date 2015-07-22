@@ -111,8 +111,19 @@ public class HomeController {
             Goods goods = service.getGoods(Long.valueOf(announcementId));
             Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
                     goods.getId());
+
             dealService.save(deal);
             mailSubmissionController.send(goods, deal);
+
+            if(!dealService.isExist(deal)) {
+                dealService.save(deal);
+                deal.setId(dealService.getId(deal));
+                mailSubmissionController.send(goods, deal);
+            }else{
+                //error your deal allready exist
+            }
+
+
         } catch (GoodsException e) {
             LOG.error("An error occured on the creating a deal: "+e.getMessage());
         }
