@@ -33,4 +33,9 @@ public class UserInPostgreSQLRepository implements UserRepository{
     public User getUserById(long id) throws RepositoryException {
         return mapper.getUserById(id);
     }
+
+    @Override
+    public int getCountOfUsersWithThatEmail(String email) {
+        return mapper.getCountOfUserWithThatEmail(email);
+    }
 }

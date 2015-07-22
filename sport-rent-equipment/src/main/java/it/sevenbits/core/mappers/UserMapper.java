@@ -1,6 +1,5 @@
 package it.sevenbits.core.mappers;
 
-import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
@@ -43,7 +42,13 @@ public interface UserMapper {
     })
     User getUserById(Long id);
 
+    @Select("SELECT count(*) FROM users where email=#{email}")
+    int getCountOfUserWithThatEmail(String email);
+
+
     @Insert("INSERT INTO users (first_name, second_name, pass, phone, email, users_role)" +
             " VALUES (#{firstName}, 'null', #{pass}, #{phone}, #{email}, 'USER')")
     void save(final User user);
+
+
 }

@@ -11,6 +11,8 @@ body
 				h1.b Регистрация
 		.row
 			.col-lg-12
+				include mixin_er.jade
+				+err(errors)
 				form(role="form", action="/registration", method="post")
 					div.form-group
 						.row

@@ -9,4 +9,5 @@ public interface UserRepository {
     void save(final User user) throws RepositoryException;
     User getUser(final String email) throws RepositoryException;
     User getUserById(final long id) throws RepositoryException;
+    int getCountOfUsersWithThatEmail(String email);
 }

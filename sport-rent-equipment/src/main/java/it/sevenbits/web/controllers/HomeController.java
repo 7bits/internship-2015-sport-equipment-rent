@@ -44,7 +44,7 @@ public class HomeController {
 
     @RequestMapping(value="/add_announcement", method = RequestMethod.POST)
     public String submit(@ModelAttribute GoodsForm form, final Model model){
-
+        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         final Map<String, String> errors = validator.validate(form);
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
@@ -60,6 +60,7 @@ public class HomeController {
         } catch (GoodsException e) {
            LOG.info(e.getMessage());
         }
+
         try {
             model.addAttribute("goods", service.findAll());
         } catch (GoodsException e) {
