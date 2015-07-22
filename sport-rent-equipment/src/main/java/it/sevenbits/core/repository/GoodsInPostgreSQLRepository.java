@@ -58,4 +58,9 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     public List<Goods> getGoodsByAuthorId(long id) {
         return mapper.getGoodsByAuthorId(id);
     }
+
+    @Override
+    public void update(Goods form) {
+        mapper.update(form);
+    }
 }

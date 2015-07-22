@@ -85,4 +85,22 @@ public class GoodsService {
         return goods;
     }
 
+    public void update(GoodsForm form) throws GoodsException {
+        final Goods goods = new Goods();
+        User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        goods.setTitle(form.getTitle());
+        goods.setAuthorId(user.getId());
+        goods.setAuthorPhone(user.getPhone());
+        goods.setAuthor(user.getFirstName());
+        goods.setDescription(form.getDescription());
+        goods.setPledge(form.getPledge());
+        goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
+        goods.setPricePerDay(Double.valueOf(form.getPricePerDay()));
+        goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
+        try {
+            repository.update(goods);
+        } catch (Exception e) {
+            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
+        }
+    }
 }
