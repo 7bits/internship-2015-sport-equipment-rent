@@ -138,7 +138,7 @@ public class CommonFieldValidator {
             final String field
     ){
         if(!errors.containsKey(key)){
-            if(password!=passwordVerification){
+            if(password.equals(passwordVerification)){
                 errors.put(key, field);
             }
         }
