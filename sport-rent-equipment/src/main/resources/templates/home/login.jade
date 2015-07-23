@@ -13,7 +13,7 @@ body
 						h4.motto-color < НА ГЛАВНУЮ
 	.for-error-auth
 		include mixin_er.jade
-			+err(errors)
+		+err(errors)
 	.center-auth
 		a(href="/")
 			img(src="resources/images/logo.png", align="center", width="170", height="45")
@@ -23,10 +23,6 @@ body
 					input#userEmail.form-control(type="email", name='eMail',placeholder="E-MAIL")
 				.row
 					input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
-				.row
-					text.text-right.text-blue-color
-						a(href="/error_message")
-							Забыли пароль?
 				.row
 					button.btn.btn-color.btn-block(type="submit") ВОЙТИ
 				.row
