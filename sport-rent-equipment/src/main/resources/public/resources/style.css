@@ -1,3 +1,5 @@
+
+
 .row{
 padding: 3px;
 margin: 3px;
@@ -20,6 +22,8 @@ border-color:#5dc8cd;
 }
 a, a:hover{
 text-decoration: none;
+outline: none;
+color: #000000;
 }
 
 .center-block {
@@ -55,10 +59,12 @@ height: 250px;
 background-color: rgba(255, 255, 255, 0.75);
 }
 
+
+
 .size-text-rap {
-    word-wrap: break-word;
-    hyphens: auto;
-           }
+word-wrap: break-word;
+hyphens: auto;
+ }
 
 .size-text-norap {
 white-space: nowrap;
@@ -71,7 +77,10 @@ width: 100%;
 
 .motto-color{
 color: #5dc8cd;
+}
 
 
-
+* {
+	margin: 0;
+	padding: 0;
 }
