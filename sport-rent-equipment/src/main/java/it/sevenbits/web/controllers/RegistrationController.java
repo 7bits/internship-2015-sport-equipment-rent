@@ -1,9 +1,15 @@
 package it.sevenbits.web.controllers;
 
 import it.sevenbits.web.domain.RegistrationForm;
-import it.sevenbits.web.service.*;
+import it.sevenbits.web.service.AddNewRegistrationFormValidator;
+import it.sevenbits.web.service.GoodsException;
+import it.sevenbits.web.service.GoodsService;
+import it.sevenbits.web.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
@@ -37,9 +44,12 @@ public class RegistrationController {
         return "home/registration";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute RegistrationForm form, final Model model){
 
+    @Autowired
+    protected AuthenticationManager authenticationManager;
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String submit(@ModelAttribute RegistrationForm form, final Model model, HttpSession session){
         final Map<String, String> errors = validator.validate(form);
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
@@ -60,6 +70,11 @@ public class RegistrationController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-        return "home/index";
+
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(form.geteMail(), form.getPassword());
+        Authentication auth = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        return "redirect:/";
     }
 }
