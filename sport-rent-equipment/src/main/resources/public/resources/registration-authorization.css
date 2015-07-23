@@ -46,3 +46,30 @@ width: 35%;
 height:40%;
 margin: 0 auto;
 }
+
+
+.center-auth {
+width: 22%;
+height:25%;
+margin: 0 auto;
+}
+
+.for-error-auth{
+width: 22%;
+height:16%;
+margin: 0 auto;
+}
+.text-right{
+float: right;
+}
+
+a{
+color: #5dc8cd;
+}
+a:hover{
+color: black;
+}
+
+.text-white-color{
+color: white;
+}
