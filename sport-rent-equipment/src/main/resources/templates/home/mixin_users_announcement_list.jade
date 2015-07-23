@@ -1,42 +1,6 @@
 mixin list(goods)
-	ol
-		.row
-			.col-lg-9
-				h2 Ваши объявки:
-		.row
-			.col-lg-12
-				li
-					each Goods in goods
-						.row
-							.col-lg-9
-								.row
-									.col-lg-1
-										Товар:
-									.col-lg-8
-										text=Goods.title
-								.row
-									.col-lg-1
-									.col-lg-1
-										Цена
-									.col-lg-1
-										час:
-									.col-lg-1
-										text=Goods.pricePerHour
-									.col-lg-1
-										день:
-									.col-lg-1
-										text=Goods.pricePerDay
-									.col-lg-1
-										неделя:
-									.col-lg-1
-										text=Goods.pricePerWeek
-								.row
-									.col-lg-9
-									.col-lg-3
-										button.btn.btn-color.btn-block.btn-lg(type="button") Подтвердить
-								.row
-									.col-lg-9
-										.row
-											.col-sm-1
-											.col-sm-8
-												p.size-text-norap=Goods.description
+	.order
+		each Goods in goods
+			.white-box-for-text.shadow
+				text=Goods.title
+				p.size-text-norap=Goods.description
