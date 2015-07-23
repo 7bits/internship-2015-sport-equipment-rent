@@ -3,6 +3,7 @@ package it.sevenbits.web.controllers;
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
+import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,8 +89,16 @@ public class HomeController {
     @RequestMapping(value="/see_announcement", method = RequestMethod.GET)
     public String announcementPage(@RequestParam(value="announcement_id", required = false) String announcementId,  final Model model) {
         try {
-            model.addAttribute("Goods", service.getGoods(Long.valueOf(announcementId)));
-            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+            String name = SecurityContextHolder.getContext().getAuthentication().getName();
+            Goods goods = service.getGoods(Long.valueOf(announcementId));
+            User user = userService.getUser(name);
+            model.addAttribute("Goods", goods);
+            if(name!="anonymousUser") {
+                model.addAttribute("isAuthor", user.getId().equals(goods.getAuthor()));
+            }else{
+                model.addAttribute("isAuthor", false);
+            }
+            model.addAttribute("isAuth", name!="anonymousUser");
         } catch (GoodsException e) {
             e.printStackTrace();
         }
