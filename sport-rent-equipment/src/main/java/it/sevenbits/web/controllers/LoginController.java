@@ -4,7 +4,6 @@ package it.sevenbits.web.controllers;
  * Created by awemath on 7/14/15.
  */
 
-import it.sevenbits.web.service.GoodsException;
 import it.sevenbits.web.service.GoodsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +32,5 @@ public class LoginController {
             model.addAttribute("errors", errors);
         }
         return "home/login";
-
     }
-    @RequestMapping(method= RequestMethod.POST)
-    public String submit(final Model model){
-        try {
-            model.addAttribute("goods", service.findAll());
-        } catch (GoodsException e) {
-            e.printStackTrace();
-        }
-        return "home/index";
-    }
-
-
-
-
 }

@@ -7,6 +7,7 @@ import it.sevenbits.web.service.GoodsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import java.util.Map;
 /**
  * Created by awemath on 7/23/15.
  */
-@RequestMapping(value = "/add_announcement")
+@Controller
 public class AddAnnouncementController {
     @Autowired
     AddNewGoodsFormValidator validator;
@@ -27,7 +28,8 @@ public class AddAnnouncementController {
 
     Logger LOG=Logger.getLogger(AddAnnouncementController.class);
 
-    @RequestMapping(method = RequestMethod.GET)
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String index(final Model model) {
         // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
@@ -38,16 +40,17 @@ public class AddAnnouncementController {
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute GoodsForm form, final Model model){
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+    @RequestMapping(value= "/add_announcement", method = RequestMethod.POST)
+    public String submit(@ModelAttribute GoodsForm form, final Model model) {
+        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         final Map<String, String> errors = validator.validate(form);
+        boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
-            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
-            LOG.info("Subscription form contains errors.");
+            model.addAttribute("isAuth", isAuth);
+            LOG.info("Adding form contains errors.");
             return "home/add_announcement";
         }
 
@@ -56,13 +59,12 @@ public class AddAnnouncementController {
         } catch (GoodsException e) {
             LOG.info(e.getMessage());
         }
-
         try {
             model.addAttribute("goods", service.findAll());
         } catch (GoodsException e) {
             LOG.error("Error at the picking goods");
         }
-        return "home/index";
+        return "redirect:/";
     }
 
 }
