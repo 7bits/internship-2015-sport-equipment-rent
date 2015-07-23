@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
@@ -49,7 +48,7 @@ public class RegistrationController {
     protected AuthenticationManager authenticationManager;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute RegistrationForm form, final Model model, HttpSession session){
+    public String submit(@ModelAttribute RegistrationForm form, final Model model){
         final Map<String, String> errors = validator.validate(form);
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
@@ -75,6 +74,6 @@ public class RegistrationController {
         Authentication auth = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(auth);
 
-        return "redirect:/";
+        return "redirect:/confirm";
     }
 }

@@ -33,4 +33,8 @@ public class LoginController {
         }
         return "home/login";
     }
+    @RequestMapping(method = RequestMethod.POST)
+    public String submit(){
+        return "/";
+    }
 }

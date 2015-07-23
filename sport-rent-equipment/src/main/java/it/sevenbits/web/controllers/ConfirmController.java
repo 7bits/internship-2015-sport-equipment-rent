@@ -20,28 +20,29 @@ import java.util.Map;
  * Created by awemath on 7/23/15.
  */
 @Controller
-public class AddAnnouncementController {
-    @Autowired
-    AddNewGoodsFormValidator validator;
+@RequestMapping(value = "/confirm")
+public class ConfirmController {
+
+    Logger LOG = Logger.getLogger(ConfirmController.class);
 
     @Autowired
     GoodsService service;
 
-    Logger LOG=Logger.getLogger(AddAnnouncementController.class);
+    @Autowired
+    AddNewGoodsFormValidator validator;
 
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String index(final Model model) {
-        // В модель добавим новый объект формы подписки
-        model.addAttribute("goods", new GoodsForm());
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
-        // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
-        // Если шаблона не будет найдено, то вернется 404 ошибка
-        return "home/add_announcement";
+    @RequestMapping(method = RequestMethod.GET)
+    public String confirm(final Model model, HttpSession session){
+        GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
+        if(form==null) {
+            return "redirect:/";
+        }else{
+            model.addAttribute("goods", form);
+        }
+        return "home/confirm_announcement";
     }
-
-
-    @RequestMapping(value= "/add", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         final Map<String, String> errors = validator.validate(form);
@@ -52,18 +53,15 @@ public class AddAnnouncementController {
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", isAuth);
             LOG.info("Adding form contains errors.");
-            return "home/add_announcement";
+            return "home/confirm_announcement";
         }
-        if(isAuth){
-            try {
-                service.save(form);
-            } catch (GoodsException e) {
-                LOG.info(e.getMessage());
-            }
-        }else{
-            session.setAttribute("addNewGoods", form);
-            return "redirect:/login";
+
+        try {
+            service.save(form);
+        } catch (GoodsException e) {
+            LOG.info(e.getMessage());
         }
+
         try {
             model.addAttribute("goods", service.findAll());
         } catch (GoodsException e) {
@@ -71,5 +69,4 @@ public class AddAnnouncementController {
         }
         return "redirect:/";
     }
-
 }
