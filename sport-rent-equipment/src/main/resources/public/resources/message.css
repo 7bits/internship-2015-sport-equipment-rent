@@ -40,9 +40,8 @@ right:0;
 }
 
 .message-text{
-height: 356px;;
-line-height: 356px;
-text-align: center
+vertical-align:center;
+text-align: center;
 }
 
 h1 img{
@@ -60,11 +59,19 @@ height:356px;
 
 .background-gray{
 width: 100%;
-height:100%;
 min-height:100%;
 background-color: #f4f4f4;
 }
 
+.text-message-position {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.text-message-position-exept-err{
+    padding-top: 140px;
+    text-align: center;
+}
 
 .background-white{
 width: 100%;
@@ -74,4 +81,21 @@ background-color: white;
 
 .cancel-message-color{
 color: #b6b6b6;
+}
+
+.shadow{
+box-shadow: 0 3px 5px rgb(220,220,220);;
+}
+
+.box-oops{
+width: 50px;
+height:10px;
+margin-top: 166px;
+background-color: red;
+}
+
+.box-text{
+
+
+
 }
