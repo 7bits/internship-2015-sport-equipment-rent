@@ -32,10 +32,6 @@ color: #000000;
   margin-right: auto;
 }
 
-input, input[placeholder]{
-    text-align:center;
-
-}
 
 textarea{
   width: 100%;

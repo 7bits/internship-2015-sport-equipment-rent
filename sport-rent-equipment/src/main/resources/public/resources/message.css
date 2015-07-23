@@ -18,8 +18,8 @@ height:356px;
 margin: 0 auto;
 background-color: white;
 }
-.logo-position{
 
+.logo-position{
 margin-top: 15px;
 }
 
@@ -49,13 +49,6 @@ margin-left: 5px;
 margin-right: 5px;
 }
 
-.left-sh{
-margin-left:0;
-background-image: url('images/left-l.png');
-background-repeat: repeat-y;
-width: 3px;
-height:356px;
-}
 
 .background-gray{
 width: 100%;
@@ -85,17 +78,4 @@ color: #b6b6b6;
 
 .shadow{
 box-shadow: 0 3px 5px rgb(220,220,220);;
-}
-
-.box-oops{
-width: 50px;
-height:10px;
-margin-top: 166px;
-background-color: red;
-}
-
-.box-text{
-
-
-
 }
