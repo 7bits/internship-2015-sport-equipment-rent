@@ -63,4 +63,9 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     public void update(Goods form) {
         mapper.update(form);
     }
+
+    @Override
+    public void delete(Long id) {
+        mapper.delete(id);
+    }
 }

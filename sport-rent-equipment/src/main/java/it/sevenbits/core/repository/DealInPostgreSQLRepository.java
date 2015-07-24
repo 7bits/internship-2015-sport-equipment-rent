@@ -38,4 +38,9 @@ public class DealInPostgreSQLRepository implements DealRepository {
         return mapper.isExist(deal)!=0;
     }
 
+    @Override
+    public void deleteAllOnGoods(long goodsId) {
+        mapper.deleteAllOnGoods(goodsId);
+    }
+
 }

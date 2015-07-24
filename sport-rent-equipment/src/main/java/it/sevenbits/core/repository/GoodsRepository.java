@@ -13,4 +13,6 @@ public interface GoodsRepository {
         Goods getGoods(long id) throws RepositoryException;
         List <Goods> getGoodsByAuthorId(long id);
         void update(Goods form);
+
+        void delete(Long id);
 }

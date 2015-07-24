@@ -37,4 +37,7 @@ public class DealService {
         return repository.isExist(deal);
     }
 
+    public void deleteAllOnGoods(long goodsId) {
+        repository.deleteAllOnGoods(goodsId);
+    }
 }

@@ -14,4 +14,5 @@ public interface DealRepository {
 
     boolean isExist(Deal deal);
 
+    void deleteAllOnGoods(long goodsId);
 }

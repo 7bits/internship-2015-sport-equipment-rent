@@ -32,4 +32,6 @@ public interface DealMapper {
     @Select("SELECT count(id) FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and renting_id=#{rentingId} and is_answered=#{isAnswered}")
     long isExist(Deal deal);
 
+    @Delete("DELETE FROM deals where goods_id=#{goodsId}")
+    void deleteAllOnGoods(long goodsId);
 }

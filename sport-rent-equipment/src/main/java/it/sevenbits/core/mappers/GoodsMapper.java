@@ -57,4 +57,7 @@ public interface GoodsMapper {
             "(#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek})" +
             "  where id=#{id}")
     void update(Goods goods);
+
+    @Delete("DELETE FROM goods WHERE id=#{id}")
+    void delete(Long id);
 }
