@@ -72,7 +72,8 @@ public class UpdateController {
         } catch (GoodsException e) {
             LOG.error("An error occured while picking goods from database at UpdateController class: "+e.getMessage());
         }
-        return "home/see_announcement";
+
+        return "redirect:/";
     }
 
 }
