@@ -92,9 +92,9 @@ public class GoodsForm {
         form.setAuthor(goods.getAuthor());
         form.setPledge(goods.getPledge());
         form.setDescription(goods.getDescription());
-        form.setPricePerHour(String.valueOf(goods.getPricePerHour()));
-        form.setPricePerDay(String.valueOf(goods.getPricePerDay()));
-        form.setPricePerWeek(String.valueOf(goods.getPricePerWeek()));
+        form.setPricePerHour(String.valueOf((int)goods.getPricePerHour()));
+        form.setPricePerDay(String.valueOf((int)goods.getPricePerDay()));
+        form.setPricePerWeek(String.valueOf((int)goods.getPricePerWeek()));
         return form;
     }
 }
