@@ -35,6 +35,7 @@ public class ConfirmController {
     @RequestMapping(method = RequestMethod.GET)
     public String confirm(final Model model, HttpSession session){
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
+        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         if(form==null) {
             return "redirect:/";
         }else{
