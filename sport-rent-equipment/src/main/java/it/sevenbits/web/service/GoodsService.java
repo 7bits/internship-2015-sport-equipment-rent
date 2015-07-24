@@ -88,6 +88,7 @@ public class GoodsService {
     public void update(GoodsForm form) throws GoodsException {
         final Goods goods = new Goods();
         User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        goods.setId(form.getId());
         goods.setTitle(form.getTitle());
         goods.setAuthorId(user.getId());
         goods.setAuthorPhone(user.getPhone());
