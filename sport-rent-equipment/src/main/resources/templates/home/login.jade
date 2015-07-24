@@ -2,30 +2,31 @@ doctype html
 head
 	title Авторизация
 	include depending.jade
+	link(rel="stylesheet", href="resources/registration-authorization.css", type="text/css", media="all")
 body
-	.container
-		include header.jade
+	.background-line
+		.row
+			.col-lg-2
+			.col-lg-3
+				label.menu-position(for="name")
+					a(href="/")
+						h4.motto-color < НА ГЛАВНУЮ
+	.for-error-auth
+		include mixin_er.jade
+		+err(errors)
+	.center-auth
+		a(href="/")
+			img(src="resources/images/logo.png", align="center", width="170", height="45")
 		form(role="form", action="/login", method="post")
-			include mixin_er.jade
-			+err(errors)
 			div.form-group
 				.row
-					.col-lg-4
-					.col-lg-4
-						input.input-lg#userEmail.form-control(type="email", name="username", placeholder="Ваш email")
-			div.form-group
+					input#userEmail.form-control(type="email", name='eMail',placeholder="E-MAIL")
 				.row
-					.col-lg-4
-					.col-lg-4.col-centered
-						input.input-lg#passtext.form-control(type="password", name="password", placeholder="Ваш пароль")
-			.row
-				.col-lg-4
-				.col-lg-4
-					button.btn.btn-color.btn-block.btn-lg(type="submit") Войти
-			.row
-				.col-lg-4
-				.col-lg-4
-					p.text-center Еще не зарегистрированы?
+					input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+				.row
+					button.btn.btn-color.btn-block(type="submit") ВОЙТИ
+				.row
+					text.text-right.text-white-color
+						Еще не зарегистрированы?
 						a(href="/registration")
 							Регистрация
-				.col-lg-4
