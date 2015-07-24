@@ -1,6 +1,8 @@
 mixin list(goods)
 	.order
 		each Goods in goods
-			.white-box-for-text.shadow
-				p.size-text-norap=Goods.title
-				p.size-text-norap=Goods.description
+			- announcement_id = Goods.id;
+			a(href="/see_announcement?announcement_id=#{announcement_id}")
+				.white-box-for-text.shadow
+					p.size-text-norap=Goods.title
+					p.size-text-norap=Goods.description
