@@ -12,16 +12,21 @@ body
 				.logo-position
 					a(href="/")
 						img(src="resources/images/logo.png", align="left", width="170", height="45")
-			.col-lg-4
-			.col-lg-2
-				if (!isAuth)
-					label.motto-position(for="name")
-						a(href="/login")
-							h4.gray-color Вход
+			.col-lg-3
+			if (!isAuth)
+					.col-lg-2
+						label.motto-position(for="name")
+							a(href="/login")
+								h4.gray-color Вход
 				else
-					label.motto-position(for="name")
-						a(href="/personal_area")
-							h4.gray-color Личный кабинет
+					.col-lg-2
+						label.motto-position(for="name")
+							a(href="/personal_area")
+								h4.gray-color Личный кабинет
+					.col-lg-1
+						label.motto-position(for="name")
+							a(href="/logout")
+								h4.gray-color Выход
 	.pic-first
 		.center-block
 			h1.white-color.font-page ДАЙ ПОГОНЯТЬ
