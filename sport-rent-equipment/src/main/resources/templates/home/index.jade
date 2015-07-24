@@ -1,25 +1,36 @@
 doctype html
 head
-	title Список объявлений
+	title Подтверждение заявки
 	include depending.jade
+	link(rel="stylesheet", href="resources/message.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/main.css", type="text/css", media="all")
 body
-	.container
-		include bottum_for_header.jade
-		.transparent-block
+
+	.background-white.shadow
 		.row
+			.col-lg-2
 			.col-lg-4
+				.logo-position
+					a(href="/")
+						img(src="resources/images/logo.png", align="left", width="170", height="45")
 			.col-lg-4
-				a(href="/")
-					img(src="resources/images/logo.png", align="left", width="341", height="90")
-			.col-lg-4
-		.row
-			.col-lg-3
-			.col-lg-6
-				h4 Сервис по поиску и аренде спортивного оборудования
-			.col-lg-3
+			.col-lg-2
+				label.motto-position(for="name")
+					a(href="/login")
+						h4.gray-color Вход
+	.pic-first
+		.center-block
+			h1.white-color.font-page ДАЙ ПОГОНЯТЬ
+			h4.white-color Сервис по поиску и аренде спортивного оборудования
+			.space-block
+			.order
+				.sector1
+					a(href="#seeAll")
+						button.btn.btn-color-white.btn-block.btn-lg(type="button") Смотреть объявки
+				.sector2
+					a(href="/add_announcement")
+						button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявку
+	.white-block
+	.all-info-block
 		include mixin_list_all_announcement.jade
 		+list(goods)
-
-
-
