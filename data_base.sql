@@ -24,7 +24,6 @@ CREATE TABLE goods(
 	price_per_week double precision not null CHECK (price_per_week>=0),
 	status boolean not null,
 	author_id integer REFERENCES users(id) not null,
-	visible boolean not null
 );
 CREATE TABLE deals(
 	id bigserial PRIMARY KEY,
