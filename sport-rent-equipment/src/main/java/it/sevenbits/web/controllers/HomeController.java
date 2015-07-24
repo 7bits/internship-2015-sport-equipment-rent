@@ -79,15 +79,15 @@ public class HomeController {
             Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
                     goods.getId());
 
-            dealService.save(deal);
-            mailSubmissionController.send(goods, deal);
+            //dealService.save(deal);
+           // mailSubmissionController.send(goods, deal);
 
             if(!dealService.isExist(deal)) {
                 dealService.save(deal);
                 deal.setId(dealService.getId(deal));
                 mailSubmissionController.send(goods, deal);
             }else{
-                //error your deal allready exist
+                return "home/error_message";
             }
 
 
