@@ -33,10 +33,10 @@ class MailSubmissionController {
         try {
             mailMessage.setTo(userService.getUser(goods.getAuthorId()).getEmail());
             mailMessage.setFrom("sportequipmentrent@gmail.com");
-            mailMessage.setSubject("");
-            mailMessage.setText("Dear " + goods.getAuthor() + ". Your announcement " + goods.getTitle() + " was interesting"
-                    + " You may accept that deal: " + "\n http://sport-equipment-rent.7bits.it/deal?deal_id=" + deal.getId() + "&accept=true \n"
-                    + "Or denied: " + "\n  http://sport-equipment-rent.7bits.it/deal?deal_id=" + deal.getId() + "&accept=false");
+            mailMessage.setSubject("Your announcement on sportequipmentrent");
+            mailMessage.setText("Dear " + goods.getAuthor() + ". Your announcement " + goods.getTitle() + " was interested"
+                    + " You may accept that deal " + "\n http://sport-equipment-rent.7bits.it/deal?deal_id=" + deal.getId() + "&accept=true \n"
+                    + "or deny " + "\n  http://sport-equipment-rent.7bits.it/deal?deal_id=" + deal.getId() + "&accept=false");
             javaMailSender.send(mailMessage);
         } catch (GoodsException e) {
             e.printStackTrace();
