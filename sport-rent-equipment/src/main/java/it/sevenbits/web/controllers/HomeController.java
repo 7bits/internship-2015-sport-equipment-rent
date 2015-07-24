@@ -51,7 +51,7 @@ public class HomeController {
             User user = userService.getUser(name);
             model.addAttribute("Goods", goods);
             if(name!="anonymousUser") {
-                model.addAttribute("isAuthor", user.getId().equals(goods.getAuthor()));
+                model.addAttribute("isAuthor", user.getId().equals(goods.getAuthorId()));
             }else{
                 model.addAttribute("isAuthor", false);
             }

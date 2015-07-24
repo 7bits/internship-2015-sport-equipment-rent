@@ -44,7 +44,6 @@ public class ConfirmController {
     }
     @RequestMapping(method = RequestMethod.POST)
     public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         final Map<String, String> errors = validator.validate(form);
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
