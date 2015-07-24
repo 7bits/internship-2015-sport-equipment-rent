@@ -35,20 +35,23 @@ public class DealController {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (GoodsException e) {
             LOG.error("An errror occured on getting landlord from the database: "+e.getMessage());
-            //exception
+            return "home/error_message";
         }
         if(deal.getLandlordId() != landlord.getId()){
-            //exception
+            return "home/error_message";
         }
         if(deal.isAnswered()){
-            //error
+            return "home/error_message";
         } else {
             deal.setIsAccepted(isAccept);
             deal.setIsAnswered(true);
             dealService.update(deal);
-            //complete
+            if(isAccept) {
+                return "home/confirm_deal";
+            }else{
+                return "home/application_is_rejected";
+            }
         }
 
-        return null;
     }
 }

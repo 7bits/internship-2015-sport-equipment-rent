@@ -100,7 +100,7 @@ public class HomeController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-        return "home/see_announcement";
+        return "home/application_submitted";
     }
 
 
