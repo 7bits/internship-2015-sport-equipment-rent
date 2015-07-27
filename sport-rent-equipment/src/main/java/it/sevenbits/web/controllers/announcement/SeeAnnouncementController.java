@@ -68,7 +68,7 @@ public class SeeAnnouncementController {
 
             //dealService.save(deal);
             // mailSubmissionController.send(goods, deal);
-
+            //get estimated dates
             if(!dealService.isExist(deal)) {
                 dealService.save(deal);
                 deal.setId(dealService.getId(deal));

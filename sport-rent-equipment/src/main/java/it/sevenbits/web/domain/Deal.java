@@ -1,5 +1,7 @@
 package it.sevenbits.web.domain;
 
+import java.sql.Date;
+
 /**
  * Created by awemath on 7/21/15.
  */
@@ -8,8 +10,16 @@ public class Deal {
     long landlordId;
     long rentingId;
     long goodsId;
-    boolean isAccepted;
+    boolean isClosed;
     boolean isAnswered;
+    boolean isHanded;           //gave
+    boolean acceptedRenting;    //take
+    boolean acceptedReturn;     //return
+    Date estimateStartDate;
+    Date estimateEndDate;
+    Date realStartDate;
+    Date realEndDate;
+
 
     public Deal(){
     }
@@ -18,7 +28,7 @@ public class Deal {
         this.landlordId = landlordId;
         this.rentingId = rentingId;
         this.goodsId = goodsId;
-        this.isAccepted = false;
+        this.isHanded = false;
         this.isAnswered = false;
     }
 
@@ -62,11 +72,71 @@ public class Deal {
         this.goodsId = goodsId;
     }
 
-    public boolean isAccepted() {
-        return isAccepted;
+    public boolean isHanded() {
+        return isHanded;
     }
 
     public void setIsAccepted(boolean isAccepted) {
-        this.isAccepted = isAccepted;
+        this.isHanded = isAccepted;
+    }
+
+    public boolean isClosed() {
+        return isClosed;
+    }
+
+    public void setIsClosed(boolean isClosed) {
+        this.isClosed = isClosed;
+    }
+
+    public void setIsHanded(boolean isHanded) {
+        this.isHanded = isHanded;
+    }
+
+    public boolean isAcceptedRenting() {
+        return acceptedRenting;
+    }
+
+    public void setAcceptedRenting(boolean acceptedRenting) {
+        this.acceptedRenting = acceptedRenting;
+    }
+
+    public boolean isAcceptedReturn() {
+        return acceptedReturn;
+    }
+
+    public void setAcceptedReturn(boolean acceptedReturn) {
+        this.acceptedReturn = acceptedReturn;
+    }
+
+    public Date getEstimateStartDate() {
+        return estimateStartDate;
+    }
+
+    public void setEstimateStartDate(Date estimateStartDate) {
+        this.estimateStartDate = estimateStartDate;
+    }
+
+    public Date getEstimateEndDate() {
+        return estimateEndDate;
+    }
+
+    public void setEstimateEndDate(Date estimateEndDate) {
+        this.estimateEndDate = estimateEndDate;
+    }
+
+    public Date getRealStartDate() {
+        return realStartDate;
+    }
+
+    public void setRealStartDate(Date realStartDate) {
+        this.realStartDate = realStartDate;
+    }
+
+    public Date getRealEndDate() {
+        return realEndDate;
+    }
+
+    public void setRealEndDate(Date realEndDate) {
+        this.realEndDate = realEndDate;
     }
 }
