@@ -25,13 +25,20 @@ CREATE TABLE goods(
 	status boolean not null,
 	author_id integer REFERENCES users(id) not null
 );
-CREATE TABLE deals(
+CREATE TABLE deals( 
 	id bigserial PRIMARY KEY,
 	landlord_id integer REFERENCES users(id) not null,
 	renting_id integer REFERENCES users(id) not null,
 	goods_id integer REFERENCES goods(id) not null,
-	is_accepted boolean not null,
-	is_answered boolean not null
+	is_answered boolean not null,
+	estimated_start_date timestamp not null,
+	estimated_end_date timestamp not null,
+	real_start_date timestamp,
+	real_end_date timestamp,
+	is_closed boolean not null,
+	handed boolean not null,
+	accepted_renting boolean not null,
+	accepted_return boolean not null
 );
 insert into users (first_name, second_name, pass, phone, email, users_role) values
 ('admin', 'admin', 'pass', '123456', 'admin', 'ADMIN');
