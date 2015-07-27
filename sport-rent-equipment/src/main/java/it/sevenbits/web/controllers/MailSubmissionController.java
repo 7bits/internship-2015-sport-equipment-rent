@@ -2,8 +2,8 @@ package it.sevenbits.web.controllers;
 
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.service.GoodsException;
-import it.sevenbits.web.service.UserService;
+import it.sevenbits.web.service.goods.GoodsException;
+import it.sevenbits.web.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by awemath on 7/17/15.
  */
 @RestController
-class MailSubmissionController {
+public class MailSubmissionController {
 
 
     private final JavaMailSender javaMailSender;
@@ -28,7 +28,7 @@ class MailSubmissionController {
         this.javaMailSender = javaMailSender;
     }
     @ResponseStatus(HttpStatus.CREATED)
-    void send(Goods goods, Deal deal) {
+    public void send(Goods goods, Deal deal) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         try {
             mailMessage.setTo(userService.getUser(goods.getAuthorId()).getEmail());

@@ -1,6 +1,7 @@
-package it.sevenbits.core.repository;
+package it.sevenbits.core.repository.userrepository;
 
 import it.sevenbits.core.mappers.UserMapper;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

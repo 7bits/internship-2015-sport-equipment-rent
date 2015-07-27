@@ -1,6 +1,7 @@
-package it.sevenbits.core.repository;
+package it.sevenbits.core.repository.goodsrepository;
 
 import it.sevenbits.core.mappers.GoodsMapper;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.Goods;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

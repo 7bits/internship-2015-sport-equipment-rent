@@ -5,6 +5,7 @@ package it.sevenbits.web.service;
  */
 
 
+import it.sevenbits.web.service.users.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
