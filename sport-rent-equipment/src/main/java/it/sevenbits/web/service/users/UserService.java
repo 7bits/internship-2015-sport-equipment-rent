@@ -1,13 +1,14 @@
-package it.sevenbits.web.service;
+package it.sevenbits.web.service.users;
 
 /**
  * Created by awemath on 7/14/15.
  */
 
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.core.repository.UserRepository;
+import it.sevenbits.core.repository.userrepository.UserRepository;
 import it.sevenbits.web.domain.RegistrationForm;
 import it.sevenbits.web.domain.User;
+import it.sevenbits.web.service.goods.GoodsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class UserService {
     @Qualifier(value="userInPostgreSQLrepository")
     private UserRepository repository;
 
-    public User getUser(long id) throws GoodsException{
+    public User getUser(long id) throws GoodsException {
         User user;
         try{
             user = repository.getUserById(id);

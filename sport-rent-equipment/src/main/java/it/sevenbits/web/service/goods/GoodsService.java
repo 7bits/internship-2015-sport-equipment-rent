@@ -1,10 +1,11 @@
-package it.sevenbits.web.service;
+package it.sevenbits.web.service.goods;
 
-import it.sevenbits.core.repository.GoodsRepository;
+import it.sevenbits.core.repository.goodsrepository.GoodsRepository;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
 import it.sevenbits.web.domain.User;
+import it.sevenbits.web.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;

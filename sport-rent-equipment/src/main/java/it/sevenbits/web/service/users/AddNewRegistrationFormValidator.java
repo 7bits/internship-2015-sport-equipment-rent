@@ -1,6 +1,8 @@
-package it.sevenbits.web.service;
+package it.sevenbits.web.service.users;
 
 import it.sevenbits.web.domain.RegistrationForm;
+import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
+import it.sevenbits.web.service.CommonFieldValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

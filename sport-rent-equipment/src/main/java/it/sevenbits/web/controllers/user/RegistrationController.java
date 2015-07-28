@@ -1,10 +1,10 @@
-package it.sevenbits.web.controllers;
+package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.web.domain.RegistrationForm;
-import it.sevenbits.web.service.AddNewRegistrationFormValidator;
-import it.sevenbits.web.service.GoodsException;
-import it.sevenbits.web.service.GoodsService;
-import it.sevenbits.web.service.UserService;
+import it.sevenbits.web.service.users.AddNewRegistrationFormValidator;
+import it.sevenbits.web.service.goods.GoodsException;
+import it.sevenbits.web.service.goods.GoodsService;
+import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
