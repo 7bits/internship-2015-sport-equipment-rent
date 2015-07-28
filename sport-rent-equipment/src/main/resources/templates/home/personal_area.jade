@@ -27,6 +27,10 @@ body
 		.base-block
 			.green-line.shadow
 				h2.text-color-white Ваши объявления
-			include mixin_users_announcement_list.jade
-			+list(goods)
+			if goods==null
+				.white-box-for-text.shadow
+					text=Здесь могли бы быть ваши обявления
+			else
+				include mixin_users_announcement_list.jade
+				+list(goods)
 			.green-line.shadow
