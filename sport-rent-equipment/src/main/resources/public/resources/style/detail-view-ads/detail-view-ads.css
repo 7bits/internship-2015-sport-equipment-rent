@@ -162,6 +162,82 @@ text-decoration: none;
  behavior: url(border-radius.htc); /*IE */
 }
 
+.author-name{
+    width: 100%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 14.96%;
+    min-height:23px;
+    max-height:38px;
+    color: #6b6b6b;
+}
+
+/*выраваниет текст по горизонтали*/
+.text-position{
+    text-align: center;
+}
+/*блок для кнопки*/
+.button-comment-block{
+    width: 100%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 11.2362%;
+    min-height:6.2px;
+    max-height:26px;
+    margin-bottom: 4px;
+}
+
+/*кнопки*/
+.button-comment {
+    width: 100%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 100%;
+    min-height:6.2px;
+    max-height:26px;
+    margin-left: 2px;
+    background: #FFFFFF;
+    color: #c9c9c9;
+    padding: 1px 0 2px 0;
+    box-shadow:-1px 1px 3px #79797D;
+    font-size: 0.85em;
+    border-radius: 3px;
+}
+
+.button-comment:hover {
+    width: 100%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 100%;
+    min-height:6.2px;
+    max-height:26px;
+    margin-left: 2px;
+    background:#FFFFFF;
+    color: #6b6b6b;
+    padding: 1px 0 2px 0;
+    cursor: pointer;
+    font-size: 0.85em;
+    border-radius: 3px;
+}
+
+.button-comment:focus {
+    width: 100%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 1000%;
+    min-height:6.2px;
+    max-height:26px;
+    margin-left: 2px;
+    background:#F5F5F5;
+    color: #6b6b6b;
+    padding: 1px 0 2px 0;
+    cursor: pointer;
+    box-shadow:-1px 1px 3px #79797D inset;
+    font-size: 0.85em;
+    border-radius: 3px;
+}
+
+
 /*центральный сигмент*/
 .center-side{
     width: 45.9139%;
