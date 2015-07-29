@@ -17,13 +17,13 @@ button::-moz-focus-inner,
 	}
 /*импортируем шрифты*/
 @font-face {
-  font-family: RobotoLight;
-  src: url('fonts/RobotoLight/RobotoLight.ttf')  format("truetype");
+  font-family: RobotoMedium;
+  src: url('fonts/RobotoMedium/RobotoMedium.ttf')  format("truetype");
+  font-family: RobotoBold;
+  src: url('fonts/RobotoBold/RobotoBold.ttf')  format("truetype");
 }
 
-p, h4 {
-    font-family: RobotoLight, 'RobotoLight';
-}
+
 /*всегда писать эти 2 блока!!!*/
 body{
     font: 100/1.5em;
@@ -38,6 +38,10 @@ a{
 text-decoration: none;
 }
 
+a:hover{
+color: #353535;
+}
+
 .green-color{
     color: #019199;
 }
@@ -46,6 +50,10 @@ text-decoration: none;
     color: white;
 }
 
+.text-center{
+    text-align: center;
+    padding-top: 6px;
+}
 /*базовый контейнер*/
 .container{
     width: 100%;
@@ -112,6 +120,8 @@ text-decoration: none;
     height: 74px;
     min-height:74px;
     float:right;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
 }
 /*блок "Личный кабинет"*/
 .personal{
@@ -121,6 +131,8 @@ text-decoration: none;
     height: 74px;
     min-height:74px;
     float:right;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
 }
 
 .position{
@@ -155,6 +167,7 @@ text-decoration: none;
     height: 99.21%;
     min-height:63.5px;
     float:left;
+    font-size: 0.875em;
 }
 
 .ava-white-block{
@@ -166,6 +179,7 @@ text-decoration: none;
     max-height:136px;
     position: relative;
     background-color: white;
+    font-family: RobotoMedium, 'RobotoMedium';
 }
 /*выравнивает изображение по центру margin подбираются вручную родителю relative*/
 .image-vertical-position{
@@ -179,19 +193,19 @@ text-decoration: none;
 
 /*для закругления границ изображения*/
 .round {
- -moz-border-radius: 124px; /* Firefox */
- -webkit-border-radius: 124px; /* Safari, Chrome */
- -khtml-border-radius: 124px; /* KHTML */
- border-radius: 124px; /* CSS3 */
- behavior: url(border-radius.htc); /*IE */
+    -moz-border-radius: 124px; /* Firefox */
+    -webkit-border-radius: 124px; /* Safari, Chrome */
+    -khtml-border-radius: 124px; /* KHTML */
+    border-radius: 124px; /* CSS3 */
+    behavior: url(border-radius.htc); /*IE */
 }
 /*для закругления границ рамки*/
 .round-border {
- -moz-border-radius: 136px; /* Firefox */
- -webkit-border-radius: 136px; /* Safari, Chrome */
- -khtml-border-radius: 136px; /* KHTML */
- border-radius: 136px; /* CSS3 */
- behavior: url(border-radius.htc); /*IE */
+    -moz-border-radius: 136px; /* Firefox */
+    -webkit-border-radius: 136px; /* Safari, Chrome */
+    -khtml-border-radius: 136px; /* KHTML */
+    border-radius: 136px; /* CSS3 */
+    behavior: url(border-radius.htc); /*IE */
 }
 
 .author-name{
@@ -202,6 +216,8 @@ text-decoration: none;
     min-height:23px;
     max-height:38px;
     color: #6b6b6b;
+    font-size: 0.875em;
+    font-family: RobotoMedium, 'RobotoMedium';
 }
 
 /*выраваниет текст по горизонтали*/
@@ -224,45 +240,45 @@ text-decoration: none;
     width: 136px;
     height:26px;
     margin-left: 2px;
-
+    font-size: 0.875em;
     background: #FFFFFF;
     color: #c9c9c9;
     padding: 1px 0 2px 0;
-    font-size: 0.63em;
     border-radius: 5px;
     -moz-border-radius: 5px; /* Firefox */
     -webkit-border-radius: 5px; /* Safari, Chrome */
     -khtml-border-radius: 5px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoMedium, 'RobotoMedium';
 }
 
 .button-comment:hover {
     width: 136px;
     height:26px;
     margin-left: 2px;
-
+    font-size: 0.875em;
     background:#FFFFFF;
     color: #6b6b6b;
     padding: 1px 0 2px 0;
     cursor: pointer;
-    font-size: 0.63em;
     border-radius: 5px;
     -moz-border-radius: 5px; /* Firefox */
     -webkit-border-radius: 5px; /* Safari, Chrome */
     -khtml-border-radius: 5px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoMedium, 'RobotoMedium';
 }
 
 .button-comment:focus {
     width: 136px;
     height:26px;
     margin-left: 2px;
-
+    font-size: 0.875em;
     background:#F5F5F5;
     color: #6b6b6b;
     padding: 1px 0 2px 0;
     cursor: pointer;
-    font-size: 0.63em;
+    font-family: RobotoMedium, 'RobotoMedium';
     border-radius: 5px;
     -moz-border-radius: 5px; /* Firefox */
     -webkit-border-radius: 5px; /* Safari, Chrome */
@@ -279,6 +295,76 @@ text-decoration: none;
     min-height:431px;
     float: left;
 }
+
+.white-content{
+    width: 100%;
+    min-width: 106.75px;
+    max-width: 427px;
+    height: 328px;
+    min-height:328px;
+    background-color: white;
+}
+
+.header-info-block{
+    width: 79.1764%;
+    min-width: 77.75px;
+    max-width: 312px;
+    height: 100%;
+    margin: 0 auto;
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 0.875em;
+    color: white;
+}
+/*час*/
+.text-block-1{
+    min-width: 66px;
+    max-width: 66px;
+    height: 100%;
+    float: left;
+}
+/*сутки*/
+.text-block-2{
+    min-width: 151px;
+    max-width: 151px;
+    height: 151%;
+    float: left;
+}
+/*неделя*/
+.text-block-3{
+    min-width: 94px;
+    max-width: 94px;
+    height: 100%;
+    float: right;
+}
+/*заголовок*/
+.text-title{
+    width: 100%
+    min-width: 106.75px;
+    max-width: 427px;
+    height: 7.92%;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 1.125em;
+}
+
+.discr-block{
+    width: 100%
+    min-width: 106.75px;
+    max-width: 427px;
+    height: 55.79%;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
+}
+
+/*чтоб текст не выходил за границы блока*/
+.size-text-rap {
+    word-wrap: break-word;
+    hyphens: auto;
+ }
+
 
 /*правая сторона*/
 .r-side{
@@ -302,10 +388,11 @@ text-decoration: none;
 .green-line{
     width: 100%;
     min-width: 68px;
-    max-width: 272px;
     height: 30px;
     min-height:7px;
     background-color: #019199;
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 0.875em;
 }
 
 .green-line-shadow{
@@ -324,6 +411,8 @@ text-decoration: none;
     height: 110px;
     min-height:20px;
     background-color: white;
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 0.875em;
 }
 
 .input-block{
@@ -361,44 +450,47 @@ text-decoration: none;
     background: #6ccdd3;
     color: white;
     padding: 1px 0 2px 0;
-    font-size: 0.8em;
+    font-size: 1.125em;
     border-radius: 10px;
     -moz-border-radius: 10px; /* Firefox */
     -webkit-border-radius: 10px; /* Safari, Chrome */
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
 }
 
 .button-rent:hover {
     width: 250px;
-        height:58px;
-        margin-top: 10px;
-        background: #6ccdd3;
-        color: white;
-        padding: 1px 0 2px 0;
+    height:58px;
+    margin-top: 10px;
+    background: #6ccdd3;
+    color: #353535;
+    padding: 1px 0 2px 0;
     cursor: pointer;
-font-size: 0.8em;
+    font-size: 1.125em;
     border-radius: 10px;
     -moz-border-radius: 10px; /* Firefox */
     -webkit-border-radius: 10px; /* Safari, Chrome */
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
 }
 
 .button-rent:focus {
     width: 250px;
-        height:58px;
-        margin-top: 10px;
-        background: #6ccdd3;
-        color: white;
-        padding: 1px 0 2px 0;
+    height:58px;
+    margin-top: 10px;
+    background: #6ccdd3;
+    color: #353535;
+    padding: 1px 0 2px 0;
     cursor: pointer;
-font-size: 0.8em;
+    font-size: 1.125em;
     border-radius: 10px;
     -moz-border-radius: 10px; /* Firefox */
     -webkit-border-radius: 10px; /* Safari, Chrome */
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
 }
 
 

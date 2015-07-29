@@ -39,6 +39,33 @@ body
 							.button-comment-block
 								input.button-comment(type='button', value='ПОДЕЛИТЬСЯ')
 					.center-side
+						.white-content
+							.green-line.green-line-shadow
+								.header-info-block
+									.base
+										.order
+											.text-block-1
+												p.text-center
+													Час:
+													text=Goods.pricePerHour
+													р
+											.text-block-2
+												p.text-center
+													Сутки:
+													text=Goods.pricePerDay
+													р
+											.text-block-3
+												p.text-center
+													Неделя:
+													text=Goods.pricePerWeek
+													р
+							.text-title
+								p
+									Goods.title
+							.discr-block
+								if !Goods.description.isEmpty()
+									.size-text-rap
+										p=Goods.description
 					.r-side
 						.r-inside
 							form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
