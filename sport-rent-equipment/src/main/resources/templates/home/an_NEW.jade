@@ -41,8 +41,21 @@ body
 					.center-side
 					.r-side
 						.r-inside
-							.green-line.shadow
-								p
-									Время аренды
-
-
+							form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+								.white-form
+									.green-line.green-line-shadow
+										p.white-color.position-on-green-line
+											Время аренды
+									.base
+										.order
+											.input-block
+												p.green-color.position-on-green-line
+													Начало
+												.input-box
+													input.input-size#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+											.input-block
+												p.green-color.position-on-green-line
+													Завершение
+												.input-box
+													input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+								input.button-rent(type='submit', value='Забронировать')

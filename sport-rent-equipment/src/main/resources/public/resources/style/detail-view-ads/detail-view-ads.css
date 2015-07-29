@@ -15,15 +15,16 @@ button::-moz-focus-inner,
 	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
 	border: none;
 	}
-
+/*импортируем шрифты*/
 @font-face {
   font-family: RobotoLight;
   src: url('fonts/RobotoLight/RobotoLight.ttf')  format("truetype");
 }
+
 p, h4 {
     font-family: RobotoLight, 'RobotoLight';
 }
-
+/*всегда писать эти 2 блока!!!*/
 body{
     font: 100/1.5em;
     height: 100%;
@@ -39,6 +40,10 @@ text-decoration: none;
 
 .green-color{
     color: #019199;
+}
+
+.white-color{
+    color: white;
 }
 
 /*базовый контейнер*/
@@ -169,7 +174,7 @@ text-decoration: none;
     left: 50%;
     height: 91.1764%;
     width: 91.1764%;
-    margin: -47.5882% 0 0 -44.8882%;
+    margin: -48.5882% 0 0 -44.8882%;
 }
 
 /*для закругления границ изображения*/
@@ -214,14 +219,10 @@ text-decoration: none;
     margin-bottom: 4px;
 }
 
-/*кнопки*/
+/*кнопки серые*/
 .button-comment {
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 100%;
-    min-height:6.2px;
-    max-height:26px;
+    width: 136px;
+    height:26px;
     margin-left: 2px;
 
     background: #FFFFFF;
@@ -236,12 +237,8 @@ text-decoration: none;
 }
 
 .button-comment:hover {
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 100%;
-    min-height:6.2px;
-    max-height:26px;
+    width: 136px;
+    height:26px;
     margin-left: 2px;
 
     background:#FFFFFF;
@@ -257,12 +254,8 @@ text-decoration: none;
 }
 
 .button-comment:focus {
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 1000%;
-    min-height:6.2px;
-    max-height:26px;
+    width: 136px;
+    height:26px;
     margin-left: 2px;
 
     background:#F5F5F5;
@@ -286,6 +279,7 @@ text-decoration: none;
     min-height:431px;
     float: left;
 }
+
 /*правая сторона*/
 .r-side{
     width: 34.623655%;
@@ -313,6 +307,102 @@ text-decoration: none;
     min-height:7px;
     background-color: #019199;
 }
+
+.green-line-shadow{
+    box-shadow: 0 2px 3px #E6E6E6;
+}
+
+.position-on-green-line{
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.white-form{
+    width: 100%;
+    min-width: 68px;
+    max-width: 272px;
+    height: 110px;
+    min-height:20px;
+    background-color: white;
+}
+
+.input-block{
+    width: 50%;
+    min-width: 34px;
+    max-width: 134px;
+    height: 80px;
+    min-height:20px;
+    float:left;
+    font-weight: bold;
+}
+
+.input-box{
+    width: 97%;
+    min-width: 34px;
+    max-width: 134px;
+    height: 41px;
+    min-height:41px;
+    float:left;
+    padding-left: 10px;
+}
+
+.input-size{
+    width:100%;
+    height: 95%;
+}
+
+
+
+/*кнопка аренды*/
+.button-rent {
+    width: 250px;
+    height:58px;
+    margin-top: 10px;
+    background: #6ccdd3;
+    color: white;
+    padding: 1px 0 2px 0;
+    font-size: 0.8em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.button-rent:hover {
+    width: 250px;
+        height:58px;
+        margin-top: 10px;
+        background: #6ccdd3;
+        color: white;
+        padding: 1px 0 2px 0;
+    cursor: pointer;
+font-size: 0.8em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.button-rent:focus {
+    width: 250px;
+        height:58px;
+        margin-top: 10px;
+        background: #6ccdd3;
+        color: white;
+        padding: 1px 0 2px 0;
+    cursor: pointer;
+font-size: 0.8em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+
+
 /*адаптивность*/
 @media screen and (max-width: 500px){
     .center-of-header{
