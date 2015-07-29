@@ -1,3 +1,4 @@
+/*для всего*/
 *{
     margin:0;
     padding: 0;
@@ -13,6 +14,12 @@ body{
 a{
 text-decoration: none;
 }
+
+.green-color{
+    color: #019199;
+}
+
+/*базовый контейнер*/
 .container{
     width: 100%;
     min-width: 350px;
@@ -21,12 +28,17 @@ text-decoration: none;
     min-height:100%;
 }
 
+/*все от header*/
 .header{
     width: 100%;
     min-width: 350px;
     max-width: 1400px;
     height: 5.2857%;
     min-height:74px;
+}
+
+.shadow{
+    box-shadow: 0 3px 5px rgb(220,220,220);
 }
 
 .center-of-header{
@@ -38,23 +50,12 @@ text-decoration: none;
     margin: 0 auto;
 }
 
-.logo{
-    width: 170px;
-    min-width: 170px;
-    max-width: 170px;
-    height: 74px;
-    min-height:74px;
-    float:left;
-}
-
-.shadow{
-    box-shadow: 0 3px 5px rgb(220,220,220);
-}
-
+/*base & order обеспечивают блоки в ряд, порядок именно такой для вложенности*/
 .base{
     overflow:hidden;
     width: 100%;
     height:100%;
+
 }
 .order{
     white-space:nowrap;
@@ -63,6 +64,16 @@ text-decoration: none;
     height:100%;
 }
 
+/*логотип*/
+.logo{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:left;
+}
+/*блок "Вход"*/
 .profile{
     width: 52px;
     min-width: 52px;
@@ -71,7 +82,7 @@ text-decoration: none;
     min-height:74px;
     float:right;
 }
-
+/*блок "Личный кабинет"*/
 .personal{
     width: 170px;
     min-width: 170px;
@@ -80,14 +91,96 @@ text-decoration: none;
     min-height:74px;
     float:right;
 }
-.green-color{
-    color: #019199;
-}
 
 .position{
     padding-top: 28px;
 }
 
+/*контент*/
+.content{
+    width: 67%;
+    min-width: 232.5px;
+    max-width: 938px;
+    height: 100%;
+    min-height:100%;
+    margin: 0 auto;
+    padding-top: 18px;
+}
+/*левая сторона контента*/
+.l-side{
+    width: 16.989224%;
+    min-width: 39.5px;
+    max-width: 158px;
+    height: 256px;
+    min-height:64px;
+    float:left;
+}
+
+/*содержание левой стороны*/
+.l-inside{
+    width: 86.7088%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 99.21%;
+    min-height:63.5px;
+    float:left;
+}
+
+.ava-white-block{
+    width: 100%;
+    min-width: 34.25px;
+    max-width: 136px;
+    height: 53.54%;
+    min-height:34.25;
+    max-height:136px;
+    position: relative;
+}
+/*выравнивает изображение по центру margin подбираются вручную родителю relative*/
+.image-vertical-position{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 91.1764%;
+    width: 91.1764%;
+    margin: -47.5882% 0 0 -44.8882%;
+}
+
+/*для закругления границ изображения*/
+.round {
+ -moz-border-radius: 124px; /* Firefox */
+ -webkit-border-radius: 124px; /* Safari, Chrome */
+ -khtml-border-radius: 124px; /* KHTML */
+ border-radius: 124px; /* CSS3 */
+ behavior: url(border-radius.htc); /*IE */
+}
+/*для закругления границ рамки*/
+.round-border {
+ -moz-border-radius: 136px; /* Firefox */
+ -webkit-border-radius: 136px; /* Safari, Chrome */
+ -khtml-border-radius: 136px; /* KHTML */
+ border-radius: 136px; /* CSS3 */
+ behavior: url(border-radius.htc); /*IE */
+}
+
+/*центральный сигмент*/
+.center-side{
+    width: 45.9139%;
+    min-width: 106.75px;
+    max-width: 427px;
+    height: 431px;
+    min-height:431px;
+    float: left;
+}
+
+.r-side{
+    width: 34.623655%;
+    min-width: 80.5px;
+    max-width: 322px;
+    height: 197px;
+    min-height:197px;
+    float:left;
+}
+/*адаптивность*/
 @media screen and (max-width: 500px){
     .center-of-header{
         width: 100%;
