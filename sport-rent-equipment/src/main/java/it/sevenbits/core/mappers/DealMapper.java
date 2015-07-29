@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
  * Created by awemath on 7/21/15.
  */
 public interface DealMapper {
-    @Insert("INSERT INTO deals (landlord_id, renting_id, goods_id, is_handed, is_answered)" +
+    @Insert("INSERT INTO deals (landlord_id, renting_id, goods_id, handed, is_answered, )" +
             " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered})")
     void save(final Deal deal);
 
@@ -26,7 +26,7 @@ public interface DealMapper {
             @Result(column = "estimated_end_date", property = "estimatedEndDate"),
             @Result(column = "real_start_date", property = "realStartDate"),
             @Result(column = "real_end_date", property = "realEndDate"),
-            @Result(column = "is_handed", property = "isHanded"),
+            @Result(column = "handed", property = "isHanded"),
             @Result(column = "accepted_renting", property = "acceptedRenting"),
             @Result(column = "accepted_return", property = "acceptedReturn"),
             @Result(column = "is_closed", property = "isClosed")
@@ -41,4 +41,10 @@ public interface DealMapper {
 
     @Delete("DELETE FROM deals where goods_id=#{goodsId}")
     void deleteAllOnGoods(long goodsId);
+
+    @Update("UPDATE real_start_date SET clock_timestamp() where id=#{dealId}")
+    void updateRealStartDate(long dealId);
+
+    @Update("UPDATE real_end_date SET clock_timestamp() where id=#{dealId}")
+    void updateRealEndDate(long dealId);
 }

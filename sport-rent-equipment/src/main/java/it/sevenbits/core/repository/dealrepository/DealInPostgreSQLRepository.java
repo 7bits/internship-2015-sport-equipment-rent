@@ -43,4 +43,14 @@ public class DealInPostgreSQLRepository implements DealRepository {
         mapper.deleteAllOnGoods(goodsId);
     }
 
+    @Override
+    public void updateRealStartDate(long dealId) {
+        mapper.updateRealStartDate(dealId);
+    }
+
+    @Override
+    public void updateRealEndDate(long dealId) {
+        mapper.updateRealEndDate(dealId);
+    }
+
 }

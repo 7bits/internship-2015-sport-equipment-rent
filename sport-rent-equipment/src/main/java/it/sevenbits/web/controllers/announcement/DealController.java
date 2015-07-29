@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.DealService;
@@ -27,8 +28,15 @@ public class DealController {
     UserService userService;
 
     Logger LOG = Logger.getLogger(DealController.class);
-    @RequestMapping(method = RequestMethod.GET)
-    public String deal(@RequestParam(value="deal_id", required = false) long dealId, @RequestParam(value="accept", required = false) boolean isAccept, final Model model) {
+
+
+    @Autowired
+    MailSubmissionController mail;
+
+    @RequestMapping(value = "/handed", method = RequestMethod.GET)
+    public String deal(@RequestParam(value="deal_id", required = false) long dealId,
+                       @RequestParam(value="accept", required = false) boolean isHanded,
+                       final Model model) {
         Deal deal = dealService.getDeal(dealId);
         User landlord = null;
         try {
@@ -43,10 +51,11 @@ public class DealController {
         if(deal.isAnswered()){
             return "home/error_message";
         } else {
-            deal.setIsAccepted(isAccept);
+            deal.setIsHanded(isHanded);
             deal.setIsAnswered(true);
             dealService.update(deal);
-            if(isAccept) {
+            if(isHanded) {
+                mail.sendHandleOk(deal);
                 return "home/confirm_deal";
             }else{
                 return "home/application_is_rejected";
@@ -54,4 +63,33 @@ public class DealController {
         }
 
     }
+
+
+    @RequestMapping(value = "/give", method = RequestMethod.GET)
+    public String giveGoods(@RequestParam(value="deal_id", required = false) long dealId){
+        Deal deal = dealService.getDeal(dealId);
+        mail.sendConfirmationMail(deal);
+
+        return ""; //all is good
+    }
+
+    @RequestMapping(value="/accept", method = RequestMethod.GET)
+    public String accept(@RequestParam(value="deal_id", required = false) long dealId){
+        Deal deal = dealService.getDeal(dealId);
+        try {
+            mail.sendClose(deal);
+            dealService.updateRealStartDate(dealId);
+        }catch (Exception e){
+            LOG.error("An error occured on accepting deal: "+e.getMessage());
+        }
+        return ""; //start of the using
+    }
+
+    @RequestMapping(value = "/close", method=RequestMethod.GET)
+    public String close(@RequestParam(value="deal_id", required = false) long dealId){
+        Deal deal = dealService.getDeal(dealId);
+        dealService.updateRealEndDate(dealId);
+        return "redirect:/";
+    }
+
 }

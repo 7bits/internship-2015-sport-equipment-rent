@@ -40,4 +40,12 @@ public class DealService {
     public void deleteAllOnGoods(long goodsId) {
         repository.deleteAllOnGoods(goodsId);
     }
+
+    public void updateRealStartDate(long dealId) {
+        repository.updateRealStartDate(dealId);
+    }
+
+    public void updateRealEndDate(long dealId) {
+        repository.updateRealEndDate(dealId);
+    }
 }

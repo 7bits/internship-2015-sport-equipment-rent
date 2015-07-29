@@ -15,4 +15,8 @@ public interface DealRepository {
     boolean isExist(Deal deal);
 
     void deleteAllOnGoods(long goodsId);
+
+    void updateRealStartDate(long dealId);
+
+    void updateRealEndDate(long dealId);
 }

@@ -30,6 +30,7 @@ public class Deal {
         this.goodsId = goodsId;
         this.isHanded = false;
         this.isAnswered = false;
+
     }
 
     public boolean isAnswered() {

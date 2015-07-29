@@ -43,4 +43,48 @@ public class MailSubmissionController {
         }
 
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendHandleOk(Deal deal) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        try {
+            mailMessage.setTo(userService.getUser(deal.getLandlordId()).getEmail());
+            mailMessage.setFrom("sportequipmentrent@gmail.com");
+            mailMessage.setSubject("Your announcement on sportequipmentrent");
+            mailMessage.setText("Press "+ "http://sport-equipment-rent.7bits.it/deal/give?deal_id=" + String.valueOf(deal.getId())
+                              + " to confirm, that you gave goods");
+            javaMailSender.send(mailMessage);
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendConfirmationMail(Deal deal){
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        try{
+            mailMessage.setTo(userService.getUser(deal.getRentingId()).getEmail());
+            mailMessage.setFrom("sportequipmentrent@gmail.com");
+            mailMessage.setSubject("Your deal on sportequipmentrent");
+            mailMessage.setText("Press " + "http://sport-equipment-rent.7bits.it/deal/accept?deal_id=" + deal.getId()
+                    + " to confirm, that you take goods");
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendClose(Deal deal) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        try {
+            mailMessage.setTo(userService.getUser(deal.getLandlordId()).getEmail());
+            mailMessage.setFrom("sportequipmentrent@gmail.com");
+            mailMessage.setSubject("Your announcement on sportequipmentrent");
+            mailMessage.setText("Press " + "http://sport-equipment-rent.7bits.it/deal/close?deal_id=" + String.valueOf(deal.getId())
+                    + " if you take your goods back");
+            javaMailSender.send(mailMessage);
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+    }
 }
