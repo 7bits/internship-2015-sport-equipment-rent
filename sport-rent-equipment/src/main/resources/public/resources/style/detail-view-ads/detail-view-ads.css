@@ -9,6 +9,11 @@
 
 body{
     font: 100/1.5em;
+    height: 100%;
+}
+
+html{
+height: 100%;
 }
 
 a{
@@ -26,6 +31,9 @@ text-decoration: none;
     max-width: 1400px;
     height: 100%;
     min-height:100%;
+    background-image: url('images/bk-an.jpg');
+    background-repeat: repeat;
+    background-position: right bottom;
 }
 
 /*все от header*/
@@ -35,10 +43,11 @@ text-decoration: none;
     max-width: 1400px;
     height: 5.2857%;
     min-height:74px;
+    background-color: white;
 }
 
 .shadow{
-    box-shadow: 0 3px 5px rgb(220,220,220);
+    box-shadow: 0 3px 5px #B0B0B0;
 }
 
 .center-of-header{
@@ -134,6 +143,7 @@ text-decoration: none;
     min-height:34.25;
     max-height:136px;
     position: relative;
+    background-color: white;
 }
 /*выравнивает изображение по центру margin подбираются вручную родителю relative*/
 .image-vertical-position{
@@ -185,6 +195,7 @@ text-decoration: none;
     min-height:6.2px;
     max-height:26px;
     margin-bottom: 4px;
+    border-radius: 3px;
 }
 
 /*кнопки*/
