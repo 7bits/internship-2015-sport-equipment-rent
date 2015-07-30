@@ -1,4 +1,4 @@
-package it.sevenbits.core.repository;
+package it.sevenbits.core.repository.dealrepository;
 
 import it.sevenbits.core.mappers.DealMapper;
 import it.sevenbits.web.domain.Deal;

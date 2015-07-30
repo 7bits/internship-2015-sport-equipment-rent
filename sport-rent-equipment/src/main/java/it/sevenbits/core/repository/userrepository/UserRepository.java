@@ -1,5 +1,6 @@
-package it.sevenbits.core.repository;
+package it.sevenbits.core.repository.userrepository;
 
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.User;
 
 /**

@@ -1,4 +1,4 @@
-package it.sevenbits.web.service;
+package it.sevenbits.web.service.goods;
 
 
 /**

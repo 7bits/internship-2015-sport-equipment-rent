@@ -1,10 +1,10 @@
-package it.sevenbits.web.controllers;
+package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.DealService;
-import it.sevenbits.web.service.GoodsException;
-import it.sevenbits.web.service.UserService;
+import it.sevenbits.web.service.goods.DealService;
+import it.sevenbits.web.service.goods.GoodsException;
+import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,6 +1,6 @@
-package it.sevenbits.web.service;
+package it.sevenbits.web.service.goods;
 
-import it.sevenbits.core.repository.DealRepository;
+import it.sevenbits.core.repository.dealrepository.DealRepository;
 import it.sevenbits.web.domain.Deal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

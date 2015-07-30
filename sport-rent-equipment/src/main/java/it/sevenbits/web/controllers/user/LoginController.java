@@ -1,10 +1,11 @@
-package it.sevenbits.web.controllers;
+package it.sevenbits.web.controllers.user;
 
 /**
  * Created by awemath on 7/14/15.
  */
 
-import it.sevenbits.web.service.GoodsService;
+import it.sevenbits.web.controllers.HomeController;
+import it.sevenbits.web.service.goods.GoodsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
