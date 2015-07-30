@@ -28,13 +28,8 @@ margin: 0 auto;
 
 
 .sector1{
-width: 49%;
+width: 100%;
 float: left;
-}
-
-.sector2{
-width: 49%;
-float: right;
 }
 
 .image-to-center{
