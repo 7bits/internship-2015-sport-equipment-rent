@@ -11,6 +11,7 @@ public interface DealMapper {
             "estimated_end_date, is_closed, accepted_renting, accepted_return)" +
             " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{estimateStartDate}, #{estimateEndDate}, #{isClosed}" +
             ", #{acceptedRenting}, #{acceptedReturn})")
+
     void save(final Deal deal);
 
     @Update("UPDATE deals SET (renting_id, landlord_id, goods_id, is_accepted, is_answered)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered})" +
