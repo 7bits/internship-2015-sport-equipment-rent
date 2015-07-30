@@ -2,7 +2,9 @@ package it.sevenbits.web.controllers;
 
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.Goods;
+import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.GoodsException;
+import it.sevenbits.web.service.goods.GoodsService;
 import it.sevenbits.web.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -90,12 +92,18 @@ public class MailSubmissionController {
         }
     }
 
-    void sendHtmlEmail(Goods goods){
+    @Autowired
+    GoodsService goodsService;
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendHtmlEmail(Deal deal){
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = null;
         try {
             helper = new MimeMessageHelper(message, true,"UTF-8");
-            helper.setTo("dart.fk712@gmail.com");
+            User landlord = userService.getUser(deal.getLandlordId());
+            User renter = userService.getUser(deal.getRentingId());
+            Goods goods = goodsService.getGoods(deal.getGoodsId());
+            helper.setTo(landlord.getEmail());
             String str = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                     "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                     "    <head>\n" +
@@ -150,7 +158,7 @@ public class MailSubmissionController {
                     "                                                ВАШИМ ОБЪЯВЛЕНИЕМ ЗАИНТЕРЕСОВАЛИСЬ\n" +
                     "                                            </p>\n" +
                     "                                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 0\" align=\"left\">\n" +
-                    "                                                Пользователь <!--имя пользователя который подал заявку --> намерен взять в аренду <!--наз-е арендуемого товара-->\n" +
+                    "                                                Пользователь "+renter.getFirstName()+" намерен взять в аренду "+ goods.getTitle()+ " \n" +
                     "                                            </p>\n" +
                     "                                        </td>\n" +
                     "                                    </tr>\n" +
@@ -165,7 +173,7 @@ public class MailSubmissionController {
                     "                                        <td>\n" +
                     "                                            <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding: 0 5px 5px 0\" style=\"width: 100%; max-width: 175px\">\n" +
                     "                                                <tr>\n" +
-                    "                                                    <a href=\"ссылка куда переходить при передаче\" style=\"text-decoration: none;\">\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Передал\n" +
@@ -176,7 +184,7 @@ public class MailSubmissionController {
                     "                                            </table>\n" +
                     "                                            <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\"  style=\"padding: 5px 5px 0 0\" style=\"width: 100%; max-width: 175px; a: none\">\n" +
                     "                                                <tr>\n" +
-                    "                                                    <a href=\"ссылка куда переходить при отклонении\" style=\"text-decoration: none;\">\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Отклонил\n" +
@@ -209,6 +217,8 @@ public class MailSubmissionController {
                     "\n";
             helper.setText(str, true);
         } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (GoodsException e) {
             e.printStackTrace();
         }
 

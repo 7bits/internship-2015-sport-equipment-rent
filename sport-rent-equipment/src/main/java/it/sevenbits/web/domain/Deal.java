@@ -139,4 +139,5 @@ public class Deal {
     public void setRealEndDate(String realEndDate) {
         this.realEndDate = realEndDate;
     }
+
 }

@@ -75,7 +75,7 @@ public class SeeAnnouncementController {
             if(!dealService.isExist(deal)) {
                 dealService.save(deal);
                 deal.setId(dealService.getId(deal));
-                mailSubmissionController.send(goods, deal);
+                mailSubmissionController.sendHtmlEmail(deal);
             }else{
                 return "home/error_message";
             }

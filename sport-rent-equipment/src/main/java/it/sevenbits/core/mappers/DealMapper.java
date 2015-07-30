@@ -14,7 +14,7 @@ public interface DealMapper {
 
     void save(final Deal deal);
 
-    @Update("UPDATE deals SET (renting_id, landlord_id, goods_id, is_accepted, is_answered)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered})" +
+    @Update("UPDATE deals SET (renting_id, landlord_id, goods_id, handed, is_answered)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered})" +
             " WHERE id = #{id}")
     void update(final Deal deal);
 
@@ -25,8 +25,8 @@ public interface DealMapper {
             @Result(column = "landlord_id", property = "landlordId"),
             @Result(column = "goods_id", property = "goodsId"),
             @Result(column = "is_answered", property = "isAnswered"),
-            @Result(column = "estimated_start_date", property = "estimatedStartDate"),
-            @Result(column = "estimated_end_date", property = "estimatedEndDate"),
+            @Result(column = "estimated_start_date", property = "estimateStartDate"),
+            @Result(column = "estimated_end_date", property = "estimateEndDate"),
             @Result(column = "real_start_date", property = "realStartDate"),
             @Result(column = "real_end_date", property = "realEndDate"),
             @Result(column = "handed", property = "isHanded"),
