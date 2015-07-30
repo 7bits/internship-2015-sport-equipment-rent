@@ -14,17 +14,17 @@ body
 		include header.jade
 		.pic-first
 			.center-block
-				h1.white-color.font-page ДАЙ ПОГОНЯТЬ
-				h4.white-color Сервис по поиску и аренде спортивного оборудования
+				h1.white-color.set-font-rounds.set-font-size-60 ДАЙ ПОГОНЯТЬ
+				p.white-color.set-font-profile-roboto.set-font-size-20 Сервис по поиску и аренде спортивного оборудования
 				.space-block
 				.order
-					.sector1
+					.sector1.set-font-size-14.set-font-profile-roboto
 						a(href="#seeAll")
-							button.btn.btn-color-white.btn-block.btn-lg(type="button") Смотреть объявления
-					.sector2
+							button.btn.btn-color-white.btn-block.btn-lg.buttom-round(type="button") Смотреть объявления
+					.sector2.set-font-size-14.set-font-profile-roboto
 						a(href="/add")
-							button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявление
+							button.btn.btn-color.btn-block.btn-lg.buttom-round(type="button") Дать объявление
 		.white-block
-		.all-info-block
+		.all-info-block.set-font-profile-roboto
 			include mixin_list_all_announcement.jade
 			+list(goods)

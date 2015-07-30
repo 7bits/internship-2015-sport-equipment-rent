@@ -18,9 +18,10 @@ button::-moz-focus-inner,
 /*импортируем шрифты*/
 @font-face {
   font-family: RobotoMedium;
-  src: url('fonts/RobotoMedium/RobotoMedium.ttf')  format("truetype");
+  src: url('style/detail-view-ads/fonts/RobotoMedium/RobotoMedium.ttf')  format("truetype");
   font-family: RobotoBold;
-  src: url('fonts/RobotoBold/RobotoBold.ttf')  format("truetype");
+  src: url('style/detail-view-ads/fonts/RobotoBold/RobotoBold.ttf')  format("truetype");
+
 }
 html{
     height: 100%;
@@ -40,4 +41,12 @@ a:hover{
 body{
     font: 100/1.5em;
     height: 100%;
+}
+
+p, text{
+    padding-right: 2px;
+}
+
+text{
+    padding-left: 2px;
 }

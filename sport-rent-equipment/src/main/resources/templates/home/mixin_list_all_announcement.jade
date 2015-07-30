@@ -1,32 +1,31 @@
 mixin list(goods)
 	.transparent-block
-		ol
-			a(name="seeAll")
-				each Goods in goods
-					.row
-						.col-lg-1
-						.col-lg-9
-							.row
-								.col-lg-3
-									Товар:
-									text=Goods.title
-							.row
-								.col-md-2
-									Цена час:
-								.col-md-1
-									text=Goods.pricePerHour
-								.col-md-1
-									день:
-								.col-md-1
-									text=Goods.pricePerDay
-								.col-md-1
-									неделя:
-								.col-md-1
-									text=Goods.pricePerWeek
-							.row
-								.col-md-6
-									p.size-text-norap=Goods.description
-						.col-lg-2
-							- announcement_id = Goods.id;
-							a(href="/see_announcement?announcement_id=#{announcement_id}")
-								button.btn.btn-color.btn-block.btn-md(type="button") Подробнее
+		a(name="seeAll")
+			each Goods in goods
+				.row.black-color
+					.col-lg-1
+					.col-lg-9
+						.row
+							.col-lg-3
+								Товар:
+								text=Goods.title
+						.row
+							.col-md-2
+								Цена час:
+							.col-md-1
+								text=Goods.pricePerHour
+							.col-md-1
+								день:
+							.col-md-1
+								text=Goods.pricePerDay
+							.col-md-1
+								неделя:
+							.col-md-1
+								text=Goods.pricePerWeek
+						.row
+							.col-md-6
+								p.size-text-norap=Goods.description
+					.col-lg-2
+						- announcement_id = Goods.id;
+						a(href="/see_announcement?announcement_id=#{announcement_id}")
+							button.btn.btn-color.btn-block.btn-md(type="button") Подробнее

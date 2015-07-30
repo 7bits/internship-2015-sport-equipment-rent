@@ -15,3 +15,44 @@ min-height:100px;
 overflow:hidden;
 }
 
+.set-font-profile-roboto{
+    font-family: RobotoMedium, 'RobotoMedium';
+
+}
+
+.set-font-size-14{
+font-size: 0.875em;
+}
+
+.buttom-round{
+  border-radius: 30px;
+  -moz-border-radius: 30px; /* Firefox */
+  -webkit-border-radius: 30px; /* Safari, Chrome */
+  -khtml-border-radius: 30px; /* KHTML */
+}
+
+/*импортируем шрифты*/
+@font-face {
+  font-family: RoundsBlack;
+  src: url('fonts/RoundsBlack/RoundsBlack.ttf')  format("truetype");
+}
+
+.set-font-rounds{
+    font-family: RoundsBlack, 'RoundsBlack';
+}
+
+.set-font-size-60{
+font-size: 3.750em;
+}
+
+.set-font-size-16{
+font-size: 1em;
+}
+
+.set-font-size-20{
+font-size: 1.250em;
+}
+
+.black-color{
+color: black;
+}
