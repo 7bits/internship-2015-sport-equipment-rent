@@ -24,6 +24,9 @@ body
 							.personal
 								a.green-color(href="/personal_area")
 									h4.position ЛИЧНЫЙ КАБИНЕТ
+							.exit
+								a.green-color(href="/personal_area")
+									h4.position ВЫЙТИ
 		.content
 			.base
 				.order
@@ -57,10 +60,8 @@ body
 												p.text-center
 													Неделя:
 													text=Goods.pricePerWeek
-													p
-							.text-title
-								p
-									Goods.title
+													р
+							p.text-title.green-color=Goods.title
 							.discr-block
 								text.size-text-rap=Goods.description
 							.bottom-block

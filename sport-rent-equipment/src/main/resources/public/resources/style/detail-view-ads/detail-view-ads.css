@@ -29,6 +29,18 @@ body{
     font: 100/1.5em;
     height: 100%;
 }
+p, text{
+    padding-right: 2px;
+}
+
+text{
+    padding-left: 2px;
+}
+
+.set-font-title{
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 1.125em;
+}
 
 html{
 height: 100%;
@@ -123,6 +135,19 @@ color: #353535;
     font-family: RobotoMedium, 'RobotoMedium';
     font-size: 0.875em;
 }
+
+/*блок "Выход"*/
+.exit{
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
+}
+
 /*блок "Личный кабинет"*/
 .personal{
     width: 170px;
@@ -306,7 +331,7 @@ color: #353535;
 }
 
 .header-info-block{
-    width: 79.1764%;
+    width: 81%;
     min-width: 77.75px;
     max-width: 312px;
     height: 100%;
@@ -317,22 +342,19 @@ color: #353535;
 }
 /*час*/
 .text-block-1{
-    min-width: 66px;
-    max-width: 66px;
+    width: 66px;
     height: 100%;
     float: left;
 }
 /*сутки*/
 .text-block-2{
-    min-width: 151px;
-    max-width: 151px;
+    width: 141px;
     height: 151%;
     float: left;
 }
 /*неделя*/
 .text-block-3{
-    min-width: 94px;
-    max-width: 94px;
+    width: 96px;
     height: 100%;
     float: right;
 }
@@ -430,7 +452,7 @@ color: #353535;
     font-size: 0.875em;
 }
 
-
+/*блок для редатировать удалить и тп*/
 .white-form-for-owner{
     width: 100%;
     max-width: 272px;
@@ -455,7 +477,7 @@ color: #353535;
     min-height:20px;
     float:left;
 }
-
+/*блок для кнопок*/
 .input-box{
     width: 100%;
     min-width: 34px;
