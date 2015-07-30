@@ -368,6 +368,8 @@ color: #353535;
     margin-top: 20px;
     font-family: RobotoBold, 'RobotoBold';
     font-size: 1.125em;
+    padding-left: 20px;
+
 }
 
 .discr-block{
@@ -379,6 +381,8 @@ color: #353535;
     margin-top: 20px;
     font-family: RobotoMedium, 'RobotoMedium';
     font-size: 0.875em;
+    padding-left: 20px;
+    padding-right: 20px;
     /*для переноса слов*/
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
