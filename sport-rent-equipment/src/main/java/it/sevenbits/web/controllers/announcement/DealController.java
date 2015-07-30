@@ -55,7 +55,7 @@ public class DealController {
             deal.setIsAnswered(true);
             dealService.update(deal);
             if(isHanded) {
-                mail.sendHandleOk(deal);
+                mail.sendConfirmationMail(deal);
                 return "home/confirm_deal";
             }else{
                 return "home/application_is_rejected";
