@@ -45,7 +45,21 @@ public class HomeController {
     @Autowired
     DealService dealService;
 
+    @RequestMapping(value="/getIt", method = RequestMethod.GET)
+    public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model) {
+        try {
+            Goods goods = service.getGoods(Long.valueOf(announcementId));
+            Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
+                    goods.getId());
 
+            //dealService.save(deal);
+           // mailSubmissionController.send(goods, deal);
 
-
+            if(!dealService.isExist(deal)) {
+                dealService.save(deal);
+                deal.setId(dealService.getId(deal));
+                mailSubmissionController.sendHtmlEmail(goods);
+            }else{
+                return "home/error_message";
+            }
 }
