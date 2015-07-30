@@ -85,7 +85,7 @@ public class HomeController {
             if(!dealService.isExist(deal)) {
                 dealService.save(deal);
                 deal.setId(dealService.getId(deal));
-                mailSubmissionController.send(goods, deal);
+                mailSubmissionController.sendHtmlEmail(goods);
             }else{
                 return "home/error_message";
             }
