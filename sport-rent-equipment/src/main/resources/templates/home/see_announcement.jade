@@ -75,6 +75,8 @@ body
 									.one-foto-box
 										img.one-foto-position(src="https://placekitten.com/g/500/300", height="98", width="128")
 										img.one-foto-position(src="resources/style/detail-view-ads/images/bk-gr.png", height="98", width="128")
+										.text-on-foto
+											ПРОСМОТР
 						.update-delete-block
 							if isAuthor
 								a(href="/update?announcement_id=#{Goods.id}")
@@ -87,8 +89,13 @@ body
 								form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
 									.white-form
 										.green-line.green-line-shadow
-											p.white-color.position-on-green-line
-												Время аренды
+											.base
+												.order
+													.time-to-rent-text
+														p.white-color.position-on-green-line
+															Время аренды
+													.time-to-rent-ico
+														img(src="resources/style/detail-view-ads/images/calendar-ico.png")
 										.input-block
 											p.green-color.position-on-green-line
 												Начало

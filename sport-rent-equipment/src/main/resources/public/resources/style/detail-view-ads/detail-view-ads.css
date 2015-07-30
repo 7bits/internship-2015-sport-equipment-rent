@@ -428,11 +428,24 @@ color: #353535;
     font-size: 0.875em;
     position:relative;
 }
-
+/*для наложения на изображение сверху*/
 .one-foto-position{
     position: absolute;
     top: 0px;
     left: 0px;
+}
+/*ЗАКОНЧИТЬ*/
+.text-on-foto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -48.5882% 0 0 -44.8882%;
+    display:block;
+    width:100%;
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 0.875em;
+    color: white;
+
 }
 /*блок для кнопок скрыть редактирование удаление */
 .update-delete-block{
@@ -473,6 +486,7 @@ color: #353535;
     background-color: #019199;
     font-family: RobotoBold, 'RobotoBold';
     font-size: 0.875em;
+    padding-top: 4px;
 }
 
 .green-line-shadow{
@@ -482,6 +496,19 @@ color: #353535;
 .position-on-green-line{
     padding-top: 2px;
     padding-left: 10px;
+}
+
+.time-to-rent-text{
+    width: 80%;
+    height: 100%;
+    float: left;
+}
+
+.time-to-rent-ico{
+    width: 20%;
+    height: 100%;
+    float: left;
+    text-align: center;
 }
 
 .white-form{
