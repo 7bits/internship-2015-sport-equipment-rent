@@ -459,6 +459,121 @@ color: #353535;
 }
 
 
+/*кнопка скрыть/удалить*/
+.button-delete {
+    width: 112px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: white;
+    padding: 1px 0 2px 0;
+    font-size: 1.125em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
+}
+
+.button-delete:hover {
+    width: 112px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: #353535;
+    padding: 1px 0 2px 0;
+    cursor: pointer;
+    font-size: 1.125em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
+}
+
+.button-delete:focus {
+    width: 112px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: #353535;
+    padding: 1px 0 2px 0;
+    cursor: pointer;
+    font-size: 1.125em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
+}
+
+/*кнопка редактировать*/
+.button-update {
+    width: 160px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: white;
+    padding: 1px 0 2px 0;
+    font-size: 1.125em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
+}
+
+.button-update:hover {
+    width: 160px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: #353535;
+    padding: 1px 0 2px 0;
+    cursor: pointer;
+    font-size: 1.125em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
+}
+
+.button-update:focus {
+    width: 160px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: #353535;
+    padding: 1px 0 2px 0;
+    cursor: pointer;
+    font-size: 1.125em;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-family: RobotoBold, 'RobotoBold';
+}
+
+
 /*правая сторона*/
 .r-side{
     width: 34.623655%;
@@ -529,7 +644,7 @@ color: #353535;
     min-height:20px;
     float:left;
 }
-/*блок для кнопок*/
+/*блок для input*/
 .input-box{
     width: 100%;
     min-width: 34px;

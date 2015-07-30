@@ -64,7 +64,6 @@ body
 							p.text-title.green-color=Goods.title
 							.discr-block
 								text.size-text-rap=Goods.description
-							.bottom-block
 						.foto-block
 							.base
 								.order
@@ -79,10 +78,12 @@ body
 											ПРОСМОТР
 						.update-delete-block
 							if isAuthor
+								a(href="/hide?announcement_id=#{Goods.id}")
+									input.button-delete(type='button', value='Скрыть')
 								a(href="/update?announcement_id=#{Goods.id}")
-									input.button-rent(type='button', value='Редактировать')
+									input.button-update(type='button', value='Редактировать')
 								a(href="/delete?announcement_id=#{Goods.id}")
-									input.button-rent(type='button', value='Удалить')
+									input.button-delete(type='button', value='Удалить')
 					.r-side
 						.r-inside
 							if !isAuthor
