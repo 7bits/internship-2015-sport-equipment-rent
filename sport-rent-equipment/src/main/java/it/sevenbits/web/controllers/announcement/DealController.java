@@ -42,7 +42,7 @@ public class DealController {
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (GoodsException e) {
-            LOG.error("An errror occured on getting landlord from the database: "+e.getMessage());
+            LOG.error("An error occured on getting landlord from the database: "+e.getMessage());
             return "home/error_message";
         }
         if(deal.getLandlordId() != landlord.getId()){
