@@ -45,9 +45,9 @@ public interface DealMapper {
     @Delete("DELETE FROM deals where goods_id=#{goodsId}")
     void deleteAllOnGoods(long goodsId);
 
-    @Update("UPDATE real_start_date SET clock_timestamp() where id=#{dealId}")
+    @Update("UPDATE deals SET real_start_date=clock_timestamp() where id=#{dealId}")
     void updateRealStartDate(long dealId);
 
-    @Update("UPDATE real_end_date SET clock_timestamp() where id=#{dealId}")
+    @Update("UPDATE deals SET real_end_date=clock_timestamp() where id=#{dealId}")
     void updateRealEndDate(long dealId);
 }

@@ -76,6 +76,15 @@ public class DealController {
     @RequestMapping(value="/accept", method = RequestMethod.GET)
     public String accept(@RequestParam(value="deal_id", required = false) long dealId){
         Deal deal = dealService.getDeal(dealId);
+        User renting = null;
+        try {
+            renting = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+        if(renting.getId()!= deal.getRentingId()){
+            return "home/error_message";
+        }
         try {
             mail.sendClose(deal);
             dealService.updateRealStartDate(dealId);
@@ -89,6 +98,8 @@ public class DealController {
     public String close(@RequestParam(value="deal_id", required = false) long dealId){
         Deal deal = dealService.getDeal(dealId);
         dealService.updateRealEndDate(dealId);
+        deal.setIsClosed(true);
+        dealService.update(deal);
         return "redirect:/";
     }
 

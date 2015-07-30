@@ -148,24 +148,28 @@ public class MailSubmissionController {
                     "                    <td>\n" +
                     "                        <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding: 0 5px 5px 0\" style=\"width: 100%; max-width: 175px\">\n" +
                     "                            <tr>\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/deal/handed?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
+
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
+                    "                                <a href=\"sport-equipment-rent.7bits.it/deal/accept?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Принял\n" +
                     "                                        </p>\n" +
-                    "                                    </td>\n" +
                     "                                </a>\n" +
+                    "                                    </td>\n" +
+
                     "                            </tr>\n" +
                     "                        </table>\n" +
                     "                        <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\"  style=\"padding: 5px 5px 0 0\" style=\"width: 100%; max-width: 175px; a: none\">\n" +
                     "                            <tr>\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/deal/handed?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
+
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
+                    "                                <a href=\"sport-equipment-rent.7bits.it/deal/accept?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Отклонил\n" +
                     "                                        </p>\n" +
-                    "                                    </td>\n" +
                     "                                </a>\n" +
+                    "                                    </td>\n" +
+
                     "                            </tr>\n" +
                     "                        </table>\n" +
                     "                    </td>\n" +
@@ -293,24 +297,27 @@ public class MailSubmissionController {
                     "                                        <td>\n" +
                     "                                            <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding: 0 5px 5px 0\" style=\"width: 100%; max-width: 175px\">\n" +
                     "                                                <tr>\n" +
-                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/deal/handed?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Передал\n" +
+                    "                                                    </a>\n" +
                     "                                                            </p>\n" +
                     "                                                        </td>\n" +
-                    "                                                    </a>\n" +
+
                     "                                                </tr>\n" +
                     "                                            </table>\n" +
                     "                                            <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\"  style=\"padding: 5px 5px 0 0\" style=\"width: 100%; max-width: 175px; a: none\">\n" +
                     "                                                <tr>\n" +
-                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
+
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/deal/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Отклонил\n" +
                     "                                                            </p>\n" +
-                    "                                                        </td>\n" +
                     "                                                    </a>\n" +
+                    "                                                        </td>\n" +
+
                     "                                                </tr>\n" +
                     "                                            </table>        \n" +
                     "                                        </td>\n" +
