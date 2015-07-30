@@ -44,8 +44,4 @@ public class HomeController {
 
     @Autowired
     DealService dealService;
-
-
-
-
 }
