@@ -364,8 +364,17 @@ color: #353535;
     word-wrap: break-word;
     hyphens: auto;
  }
-
-
+/*низ для иконок*/
+.bottom-block{
+    width: 100%
+    min-width: 106.75px;
+    max-width: 427px;
+    height: 8.8167%;
+    max-height: 38px;
+    margin-top: 20px;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
+}
 /*правая сторона*/
 .r-side{
     width: 34.623655%;
@@ -413,6 +422,23 @@ color: #353535;
     background-color: white;
     font-family: RobotoBold, 'RobotoBold';
     font-size: 0.875em;
+}
+
+
+.white-form-for-owner{
+    width: 100%;
+    max-width: 272px;
+    height: 180px;
+    min-height:50px;
+    background-color: white;
+    font-family: RobotoBold, 'RobotoBold';
+    font-size: 0.875em;
+}
+/*блок для кнопок редатирования и уделения*/
+.bot-box{
+    width: 250px;
+    height:58px;
+    margin-top: 5px;
 }
 
 .input-block{

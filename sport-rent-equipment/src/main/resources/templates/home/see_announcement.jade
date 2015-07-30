@@ -1,14 +1,96 @@
 doctype html
 head
-	title Объявление
-	include depending.jade
+	title Обявление
+	meta(charset='utf-8')
+	meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+
+	script(src='js/jquery-2.0.3.min.js')
+	script(src='js/sstu_script.js')
+	link(rel="stylesheet", href="resources/style/detail-view-ads/detail-view-ads.css", type="text/css", media="all")
 body
 	.container
-		include bottum_for_header.jade
-		include header.jade
-		.row
-			.col-lg-3
-				a(href="/")
-					button.btn.btn-color.btn-block.btn-lg(type="button") Все объявления
-		include mixin_announcement.jade
-		+announcement(Goods,isAuthor)
+		.header.shadow
+			.center-of-header
+				.base
+					.order
+						.logo
+							a(href="/")
+								img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+						if (!isAuth)
+							.profile
+								a.green-color(href="/login")
+									h4.position ВХОД
+						else
+							.personal
+								a.green-color(href="/personal_area")
+									h4.position ЛИЧНЫЙ КАБИНЕТ
+		.content
+			.base
+				.order
+					.l-side
+						.l-inside
+							.ava-white-block.round-border
+								img.round.image-vertical-position(src="resources/images/avatar.jpg", height="124", width="124")
+							.author-name
+								p.text-position=user.firstName
+							.button-comment-block
+								input.button-comment(type='button', value='ОСТАВИТЬ ОТЗЫВ', onclick="/")
+							.button-comment-block
+								input.button-comment(type='button', value='ПОДЕЛИТЬСЯ')
+					.center-side
+						.white-content
+							.green-line.green-line-shadow
+								.header-info-block
+									.base
+										.order
+											.text-block-1
+												p.text-center
+													Час:
+													text=Goods.pricePerHour
+													р
+											.text-block-2
+												p.text-center
+													Сутки:
+													text=Goods.pricePerDay
+													р
+											.text-block-3
+												p.text-center
+													Неделя:
+													text=Goods.pricePerWeek
+													p
+							.text-title
+								p
+									Goods.title
+							.discr-block
+								text.size-text-rap=Goods.description
+							.bottom-block
+					.r-side
+						.r-inside
+							if !isAuthor
+								form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+									.white-form
+										.green-line.green-line-shadow
+											p.white-color.position-on-green-line
+												Время аренды
+										.base
+											.order
+												.input-block
+													p.green-color.position-on-green-line
+														Начало
+													.input-box
+														input.input-size#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+												.input-block
+													p.green-color.position-on-green-line
+														Завершение
+													.input-box
+														input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+									input.button-rent(type='submit', value='Забронировать')
+							else
+								.white-form-for-owner
+									.green-line.green-line-shadow
+									.but-box
+										a(href="/update?announcement_id=#{Goods.id}")
+											input.button-rent(type='button', value='Редактировать')
+									.but-box
+										a(href="/delete?announcement_id=#{Goods.id}")
+											input.button-rent(type='button', value='Удалить')
