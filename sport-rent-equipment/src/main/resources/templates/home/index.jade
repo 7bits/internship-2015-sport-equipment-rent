@@ -1,45 +1,30 @@
 doctype html
 head
-	title Подтверждение заявки
+	title Главная
 	include depending.jade
-	link(rel="stylesheet", href="resources/message.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/main.css", type="text/css", media="all")
+
+
+	link(rel="stylesheet", href="resources/header-style.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/style/main-page/index-style.css", type="text/css", media="all")
+
 body
-	.background-white.shadow
-		.row
-			.col-lg-2
-			.col-lg-4
-				.logo-position
-					a(href="/")
-						img(src="resources/images/logo.png", align="left", width="170", height="45")
-			.col-lg-3
-			if (!isAuth)
-					.col-lg-2
-						label.motto-position(for="name")
-							a(href="/login")
-								h4.gray-color Вход
-				else
-					.col-lg-2
-						label.motto-position(for="name")
-							a(href="/personal_area")
-								h4.gray-color Личный кабинет
-					.col-lg-1
-						label.motto-position(for="name")
-							a(href="/logout")
-								h4.gray-color Выход
-	.pic-first
-		.center-block
-			h1.white-color.font-page ДАЙ ПОГОНЯТЬ
-			h4.white-color Сервис по поиску и аренде спортивного оборудования
-			.space-block
-			.order
-				.sector1
-					a(href="#seeAll")
-						button.btn.btn-color-white.btn-block.btn-lg(type="button") Смотреть объявления
-				.sector2
-					a(href="/add")
-						button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявление
-	.white-block
-	.all-info-block
-		include mixin_list_all_announcement.jade
-		+list(goods)
+	.container
+		include header.jade
+		.pic-first
+			.center-block
+				h1.white-color.font-page ДАЙ ПОГОНЯТЬ
+				h4.white-color Сервис по поиску и аренде спортивного оборудования
+				.space-block
+				.order
+					.sector1
+						a(href="#seeAll")
+							button.btn.btn-color-white.btn-block.btn-lg(type="button") Смотреть объявления
+					.sector2
+						a(href="/add")
+							button.btn.btn-color.btn-block.btn-lg(type="button") Дать объявление
+		.white-block
+		.all-info-block
+			include mixin_list_all_announcement.jade
+			+list(goods)

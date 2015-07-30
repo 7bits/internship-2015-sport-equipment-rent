@@ -1,10 +1,18 @@
-.row
-    .col-lg-1
-    .col-lg-4
-        a(href="/")
-            img(src="resources/images/logo.png", align="left", width="341", height="90")
-    .col-lg-6
-        label.motto-position(for="name")
-            h4.motto-color Сервис по поиску и аренде спортивного оборудования
-.line
-
+.header.shadow
+    .center-of-header
+        .base
+            .order
+                .logo
+                    a(href="/")
+                        img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+                if (!isAuth)
+                    .profile
+                        a.green-color(href="/login")
+                            h4.position ВХОД
+                else
+                    .personal
+                        a.green-color(href="/personal_area")
+                            h4.position ЛИЧНЫЙ КАБИНЕТ
+                    .exit
+                        a.green-color(href="/logout")
+                            h4.position ВЫЙТИ

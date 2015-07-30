@@ -1,0 +1,43 @@
+/*для всего*/
+*{
+    margin:0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz--box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*убирает рамку пунктиром вокруг кнопок*/
+button::-moz-focus-inner,
+	input[type="reset"]::-moz-focus-inner,
+	input[type="button"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
+	border: none;
+	}
+/*импортируем шрифты*/
+@font-face {
+  font-family: RobotoMedium;
+  src: url('fonts/RobotoMedium/RobotoMedium.ttf')  format("truetype");
+  font-family: RobotoBold;
+  src: url('fonts/RobotoBold/RobotoBold.ttf')  format("truetype");
+}
+html{
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #353535;
+}
+
+
+
+/*всегда писать эти 2 блока!!!*/
+body{
+    font: 100/1.5em;
+    height: 100%;
+}
