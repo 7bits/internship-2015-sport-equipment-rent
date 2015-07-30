@@ -357,6 +357,12 @@ color: #353535;
     margin-top: 20px;
     font-family: RobotoMedium, 'RobotoMedium';
     font-size: 0.875em;
+    /*для переноса слов*/
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+
 }
 
 /*чтоб текст не выходил за границы блока*/
@@ -417,7 +423,7 @@ color: #353535;
     width: 100%;
     min-width: 68px;
     max-width: 272px;
-    height: 110px;
+    height: 190px;
     min-height:20px;
     background-color: white;
     font-family: RobotoBold, 'RobotoBold';
@@ -428,7 +434,7 @@ color: #353535;
 .white-form-for-owner{
     width: 100%;
     max-width: 272px;
-    height: 180px;
+    height: 190px;
     min-height:50px;
     background-color: white;
     font-family: RobotoBold, 'RobotoBold';
@@ -442,19 +448,18 @@ color: #353535;
 }
 
 .input-block{
-    width: 50%;
+    width: 100%;
     min-width: 34px;
-    max-width: 134px;
+    max-width: 240px;
     height: 80px;
     min-height:20px;
     float:left;
-    font-weight: bold;
 }
 
 .input-box{
-    width: 97%;
+    width: 100%;
     min-width: 34px;
-    max-width: 134px;
+    max-width: 240px;
     height: 41px;
     min-height:41px;
     float:left;
