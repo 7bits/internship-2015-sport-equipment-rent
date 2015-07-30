@@ -3,6 +3,8 @@ head
 	title Авторизация
 	include depending.jade
 	link(rel="stylesheet", href="resources/registration-authorization.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
+
 body
 	.background-line
 		.row
@@ -10,7 +12,7 @@ body
 			.col-lg-3
 				label.menu-position(for="name")
 					a(href="/")
-						h4.motto-color < НА ГЛАВНУЮ
+						p.motto-color.set-font-profile-roboto.set-font-size-14 < НА ГЛАВНУЮ
 	.for-error-auth
 		include mixin_er.jade
 		+err(errors)
@@ -23,9 +25,9 @@ body
 					input#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
 				.row
 					input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
-				.row
+				.row.set-font-profile-roboto-reg.set-font-size-15
 					button.btn.btn-color.btn-block(type="submit") ВОЙТИ
-				.row
+				.row.set-font-profile-roboto-reg.set-font-size-16
 					text.text-right.text-white-color
 						Еще не зарегистрированы?
 						a(href="/registration")

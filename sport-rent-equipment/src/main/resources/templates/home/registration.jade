@@ -3,6 +3,8 @@ head
 	title Регистрация
 	include depending.jade
 	link(rel="stylesheet", href="resources/registration-authorization.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
+
 body
 	.background-line
 		.row
@@ -10,7 +12,7 @@ body
 			.col-lg-3
 				label.menu-position(for="name")
 					a(href="/")
-						h4.motto-color < НА ГЛАВНУЮ
+						p.motto-color.set-font-profile-roboto.set-font-size-14 < НА ГЛАВНУЮ
 	.for-error
 		include mixin_er.jade
 		+err(errors)
@@ -27,5 +29,5 @@ body
 					.sector1
 						input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
 				.row
-					button.btn.btn-color.btn-block(type="submit") РЕГИСТРАЦИЯ
+					button.btn.btn-color.btn-block.set-font-profile-roboto-reg.set-font-size-15(type="submit") РЕГИСТРАЦИЯ
 
