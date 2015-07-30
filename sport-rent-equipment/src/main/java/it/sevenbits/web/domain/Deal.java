@@ -1,7 +1,5 @@
 package it.sevenbits.web.domain;
 
-import java.sql.Date;
-
 /**
  * Created by awemath on 7/21/15.
  */
@@ -15,10 +13,10 @@ public class Deal {
     boolean isHanded;           //gave
     boolean acceptedRenting;    //take
     boolean acceptedReturn;     //return
-    Date estimateStartDate;
-    Date estimateEndDate;
-    Date realStartDate;
-    Date realEndDate;
+    String estimateStartDate;
+    String estimateEndDate;
+    String realStartDate;
+    String realEndDate;
 
 
     public Deal(){
@@ -30,6 +28,7 @@ public class Deal {
         this.goodsId = goodsId;
         this.isHanded = false;
         this.isAnswered = false;
+        this.isClosed = false;
 
     }
 
@@ -109,35 +108,35 @@ public class Deal {
         this.acceptedReturn = acceptedReturn;
     }
 
-    public Date getEstimateStartDate() {
+    public String getEstimateStartDate() {
         return estimateStartDate;
     }
 
-    public void setEstimateStartDate(Date estimateStartDate) {
+    public void setEstimateStartDate(String estimateStartDate) {
         this.estimateStartDate = estimateStartDate;
     }
 
-    public Date getEstimateEndDate() {
+    public String getEstimateEndDate() {
         return estimateEndDate;
     }
 
-    public void setEstimateEndDate(Date estimateEndDate) {
+    public void setEstimateEndDate(String estimateEndDate) {
         this.estimateEndDate = estimateEndDate;
     }
 
-    public Date getRealStartDate() {
+    public String getRealStartDate() {
         return realStartDate;
     }
 
-    public void setRealStartDate(Date realStartDate) {
+    public void setRealStartDate(String realStartDate) {
         this.realStartDate = realStartDate;
     }
 
-    public Date getRealEndDate() {
+    public String getRealEndDate() {
         return realEndDate;
     }
 
-    public void setRealEndDate(Date realEndDate) {
+    public void setRealEndDate(String realEndDate) {
         this.realEndDate = realEndDate;
     }
 }

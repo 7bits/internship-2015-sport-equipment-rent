@@ -1,27 +1,25 @@
 package it.sevenbits.web.domain;
 
-import java.sql.Date;
-
 /**
  * Created by awemath on 7/30/15.
  */
 public class DateForm {
-    Date from;
-    Date to;
+    String from;
+    String to;
 
-    public Date getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(Date from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public Date getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(Date to) {
+    public void setTo(String to) {
         this.to = to;
     }
 }
