@@ -368,7 +368,7 @@ color: #353535;
     margin-top: 20px;
     font-family: RobotoBold, 'RobotoBold';
     font-size: 1.125em;
-    padding-left: 20px;
+    padding-left: 32px;
 
 }
 
@@ -381,14 +381,13 @@ color: #353535;
     margin-top: 20px;
     font-family: RobotoMedium, 'RobotoMedium';
     font-size: 0.875em;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 32px;
+    padding-right: 27px;
     /*для переноса слов*/
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
-
 }
 
 /*чтоб текст не выходил за границы блока*/
@@ -407,6 +406,46 @@ color: #353535;
     font-family: RobotoMedium, 'RobotoMedium';
     font-size: 0.875em;
 }
+
+/*блок для фоток*/
+.foto-block{
+    width: 100%
+    width: 427px;
+    height: 23.66%;
+    max-height: 102px;
+    margin-top: 4px;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
+}
+/*блок для 1 фото*/
+.one-foto-box{
+    width: 131px;
+    height: 100px;
+    padding-right: 2px;
+    padding-left: 2px;
+    float: left;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
+    position:relative;
+}
+
+.one-foto-position{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+/*блок для кнопок скрыть редактирование удаление */
+.update-delete-block{
+    width: 100%
+    width: 427px;
+    height: 23.66%;
+    max-height: 102px;
+    margin-top: 4px;
+    font-family: RobotoMedium, 'RobotoMedium';
+    font-size: 0.875em;
+}
+
+
 /*правая сторона*/
 .r-side{
     width: 34.623655%;
@@ -454,23 +493,6 @@ color: #353535;
     background-color: white;
     font-family: RobotoBold, 'RobotoBold';
     font-size: 0.875em;
-}
-
-/*блок для редатировать удалить и тп*/
-.white-form-for-owner{
-    width: 100%;
-    max-width: 272px;
-    height: 190px;
-    min-height:50px;
-    background-color: white;
-    font-family: RobotoBold, 'RobotoBold';
-    font-size: 0.875em;
-}
-/*блок для кнопок редатирования и уделения*/
-.bot-box{
-    width: 250px;
-    height:58px;
-    margin-top: 5px;
 }
 
 .input-block{
