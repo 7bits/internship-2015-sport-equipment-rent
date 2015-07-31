@@ -98,10 +98,10 @@ public class MailSubmissionController {
                     "            <table bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" width=\"375\" align=\"left\" height=\"150\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
                     "                <tr>\n" +
                     "                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#019199\">\n" +
-                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                            ВАШУ ЗАЯВКУ ОТКЛОНИЛИ\n" +
                     "                        </p>\n" +
-                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                            Пользователь "+landlord.getFirstName()+" отклонил вашу заявку на "+goods.getTitle()+"\n" +
                     "                        </p>\n" +
                     "                    </td>\n" +
@@ -200,10 +200,10 @@ public class MailSubmissionController {
                     "            <table bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" width=\"375\" align=\"left\" height=\"150\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
                     "                <tr>\n" +
                     "                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#019199\">\n" +
-                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                            ВАМ ПРЕДОСТАВИЛИ ТОВАР В АРЕНДУ\n" +
                     "                        </p>\n" +
-                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                            Пользователь " + landlord.getFirstName() +" предоставил вам "+goods.getTitle()+"\n" +
                     "                        </p>\n" +
                     "                    </td>\n" +
@@ -220,7 +220,7 @@ public class MailSubmissionController {
                     "                        <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding: 0 5px 5px 0\" style=\"width: 100%; max-width: 175px\">\n" +
                     "                            <tr>\n" +
 
-                    "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
+                    "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;style=\"text-decoration: none;\">\n" +
                     "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=true\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Принял\n" +
@@ -234,7 +234,7 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
 
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=false\">\n" +
+                    "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Отклонил\n" +
                     "                                        </p>\n" +
@@ -332,10 +332,10 @@ public class MailSubmissionController {
                     "            <table bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" width=\"375\" align=\"left\" height=\"150\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
                     "                <tr>\n" +
                     "                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#019199\">\n" +
-                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                            Подтвердите завершение аренды\n" +
                     "                        </p>\n" +
-                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                            Пользователь \"+renting.getFirstName()+\" вернул вам \"+goods.getTitle()+\"\n" +
                     "                        </p>\n" +
                     "                    </td>\n" +
@@ -353,7 +353,7 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
                     "                                \n" +
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
-                    "                                        <a href=\"sport-equipment-rent.7bits.it/close?deal_id="+deal.getId()+"\">\n" +
+                    "                                        <a href=\"sport-equipment-rent.7bits.it/close?deal_id="+deal.getId()+"\" style=\"text-decoration: none;\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Завершить аренду\n" +
                     "                                        </p>\n" +
@@ -452,10 +452,10 @@ public class MailSubmissionController {
                     "                                <table bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" width=\"375\" align=\"left\" height=\"150\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
                     "                                    <tr>\n" +
                     "                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#019199\">\n" +
-                    "                                            <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                                            <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                                                ВАШИМ ОБЪЯВЛЕНИЕМ ЗАИНТЕРЕСОВАЛИСЬ\n" +
                     "                                            </p>\n" +
-                    "                                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
                     "                                                Пользователь "+renter.getFirstName()+" намерен взять в аренду "+ goods.getTitle()+ " \n" +
                     "                                            </p>\n" +
                     "                                        </td>\n" +
