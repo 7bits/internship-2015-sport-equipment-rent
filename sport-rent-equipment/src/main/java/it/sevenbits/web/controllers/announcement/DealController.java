@@ -87,6 +87,8 @@ public class DealController {
             } catch (Exception e) {
                 LOG.error("An error occured on accepting deal: " + e.getMessage());
             }
+        }else{
+            return "home/message_deny_in_rent";
         }
         return "home/confirm_get"; //start of the using
     }

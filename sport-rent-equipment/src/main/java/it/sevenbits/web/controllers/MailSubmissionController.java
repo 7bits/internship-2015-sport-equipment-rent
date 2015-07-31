@@ -102,7 +102,7 @@ public class MailSubmissionController {
                     "                            ВАШУ ЗАЯВКУ ОТКЛОНИЛИ\n" +
                     "                        </p>\n" +
                     "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
-                    "                            Пользователь "+landlord.getFirstName()+" отклонил вашу заявку на "+goods.getTitle()+"\n" +
+                    "                            Пользователь " + landlord.getFirstName() + " отклонил вашу заявку на " + goods.getTitle() + "\n" +
                     "                        </p>\n" +
                     "                    </td>\n" +
                     "                </tr>\n" +
@@ -114,7 +114,7 @@ public class MailSubmissionController {
                     "\n" +
                     "</body>\n" +
                     "</html>\n" +
-                    "\n");
+                    "\n", true);
             javaMailSender.send(message);
         } catch (GoodsException e) {
             e.printStackTrace();
@@ -445,7 +445,7 @@ public class MailSubmissionController {
                     "                                                ВАШИМ ОБЪЯВЛЕНИЕМ ЗАИНТЕРЕСОВАЛИСЬ\n" +
                     "                                            </p>\n" +
                     "                                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
-                    "                                                Пользователь "+renter.getFirstName()+" намерен взять в аренду "+ goods.getTitle()+ " \n" +
+                    "                                                Пользователь "+renter.getFirstName()+" намерен взять в аренду "+ goods.getTitle()+ " с "+deal.getEstimateStartDate()+" по "+deal.getEstimateEndDate()+"\n" +
                     "                                            </p>\n" +
                     "                                        </td>\n" +
                     "                                    </tr>\n" +
