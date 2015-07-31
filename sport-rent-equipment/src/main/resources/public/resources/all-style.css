@@ -68,6 +68,10 @@ font-size: 0.938em;
 font-size: 1.250em;
 }
 
+.set-font-size-24{
+font-size: 1.5em;
+}
+
 .set-font-profile-roboto{
     font-family: RobotoMedium, 'RobotoMedium';
 
@@ -78,6 +82,12 @@ font-size: 1.250em;
 
 }
 
+
+
+.set-font-profile-roboto-bold{
+    font-family: RobotoBold, 'RobotoBold';
+
+}
 
 .set-font-size-14{
 font-size: 0.875em;
