@@ -341,27 +341,40 @@ public class MailSubmissionController {
                     "                    </td>\n" +
                     "                </tr>\n" +
                     "            </table>\n" +
+                    "            " +
+                    "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+                    "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+                    "<head>\n" +
+                    "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
+                    "    <title>Approve or reject request</title>\n" +
+                    "</head>\n" +
+                    "<body yahoo bgcolor=\"white\" style=\"margin: 0; padding: 0; min-width: 100%!important;\">\n" +
+                    "<!-- <table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                    "    <tr>\n" +
+                    "        <td> -->\n" +
+                    "<!--[if (gte mso 9)|(IE)]>\n" +
+                    "<table width=\"600\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
+                    "    <tr>\n" +
+                    "        <td>\n" +
+                    "<![endif]-->\n" +
+                    "<table class=\"content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width: 100%; max-width: 600px;\">\n" +
+                    "    <tr>\n" +
+                    "        <td>\n" +
+                    "            <table width=\"192\" height=\"70\" align=\"left\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                    "                <tr>\n" +
+                    "                    <td width=\"192\" style=\"padding: 10px 0 10px 10px\">\n" +
+                    "                        <img src=\"http://s014.radikal.ru/i326/1507/dd/0931dbf5a686.png\" width=\"192\" height=\"51\" border=\"0\" alt=\"\" / >\n" +
+                    "                    </td>\n" +
+                    "                </tr>\n" +
+                    "            </table>\n" +
                     "            <!--[if (gte mso 9)|(IE)]>\n" +
-                    "            <table width=\"175\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
+                    "            <table width=\"383\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
                     "                <tr>\n" +
                     "                    <td>\n" +
                     "            <![endif]-->\n" +
-                    "            <table align=\"center\" border=\"0\" width=\"200\" bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" height=\"150\" cellpadding=\"0\" cellspacing=\"0\" style=\"width: 100%; max-width: 175px\">\n" +
+                    "            <table class=\"col383\" align=\"right\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width: 100%; max-width: 383px;\">\n" +
                     "                <tr>\n" +
                     "                    <td>\n" +
-                    "                        <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding: 0 5px 5px 0\" style=\"width: 100%; max-width: 175px\">\n" +
-                    "                            <tr>\n" +
-                    "                                \n" +
-                    "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
-                    "                                        <a href=\"sport-equipment-rent.7bits.it/close?deal_id="+deal.getId()+"\" style=\"text-decoration: none;\">\n" +
-                    "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
-                    "                                            Завершить аренду\n" +
-                    "                                        </p>\n" +
-                    "                                        </a>\n" +
-                    "                                    </td>\n" +
-                    "                                \n" +
-                    "                            </tr>\n" +
-                    "                        </table>\n" +
                     "                    </td>\n" +
                     "                </tr>\n" +
                     "            </table>\n" +
@@ -372,6 +385,38 @@ public class MailSubmissionController {
                     "            <![endif]-->\n" +
                     "        </td>\n" +
                     "    </tr>\n" +
+                    "    <tr>\n" +
+                    "        <td>\n" +
+                    "            <table bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" width=\"375\" align=\"left\" height=\"150\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                    "                <tr>\n" +
+                    "                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#019199\">\n" +
+                    "                        <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                            Подтвердите завершение аренды\n" +
+                    "                        </p>\n" +
+                    "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 0\" align=\"left\">\n" +
+                    "                            Пользователь \"+renting.getFirstName()+\" вернул вам \"+goods.getTitle()+\"\n" +
+                    "                        </p>\n" +
+                    "                    </td>\n" +
+                    "                </tr>\n" +
+                    "            </table>\n" +
+                    "    </td>\n" +
+                    "    </tr>\n" +
+                    "    <tr>\n" +
+                    "        <td>\n" +
+                    "            <table bgcolor=\"white\" style=\"padding: 1px 0 1px 0\" width=\"375\" align=\"left\" height=\"65\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
+                    "                <tr>\n" +
+                    "                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220); text-align: center;\" bgcolor=\"#6ccdd3\" >\n" +
+                    "                    <a href=\"sport-equipment-rent.7bits.it/close?deal_id=\"+deal.getId()+\"\" style=\"text-decoration: none;\">\n" +
+                    "                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
+                    "                                            Завершить аренду\n" +
+                    "                                        </p>\n" +
+                    "                     </a>                   \n" +
+                    "                    </td>\n" +
+                    "                </tr>\n" +
+                    "            </table>\n" +
+                    "    </td>\n" +
+                    "    </tr>\n" +
+                    "\n" +
                     "</table>\n" +
                     "<!--[if (gte mso 9)|(IE)]>\n" +
                     "</td>\n" +
