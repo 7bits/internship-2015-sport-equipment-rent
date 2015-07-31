@@ -100,7 +100,7 @@ public class DealController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-        if(landlord.getId()!= deal.getRentingId()){
+        if(landlord.getId()!= deal.getLandlordId()){
             return "home/error_message";
         }
         dealService.updateRealEndDate(dealId);

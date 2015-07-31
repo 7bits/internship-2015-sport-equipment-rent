@@ -485,7 +485,7 @@ public class MailSubmissionController {
                     "                                                <tr>\n" +
 
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
-                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Отклонил\n" +
                     "                                                            </p>\n" +
