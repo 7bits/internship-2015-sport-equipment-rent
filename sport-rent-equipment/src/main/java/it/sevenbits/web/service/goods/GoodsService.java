@@ -51,7 +51,7 @@ public class GoodsService {
         goods.sort(new Comparator<Goods>() {
             @Override
             public int compare(Goods o1, Goods o2) {
-                return o1.getId() > o2.getId() ? 1 : -1;
+                return o1.getId() < o2.getId() ? 1 : -1;
             }
         });
         return goods;
@@ -63,7 +63,7 @@ public class GoodsService {
             goods.sort(new Comparator<Goods>() {
                 @Override
                 public int compare(Goods o1, Goods o2) {
-                    return o1.getId() > o2.getId() ? 1 : -1;
+                    return o1.getId() < o2.getId() ? 1 : -1;
                 }
             });
             return goods;

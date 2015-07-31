@@ -91,22 +91,25 @@ public class DealController {
         return "home/confirm_get"; //start of the using
     }
 
-    @RequestMapping(value = "/close", method=RequestMethod.GET)
-    public String close(@RequestParam(value="deal_id", required = false) long dealId){
-        Deal deal = dealService.getDeal(dealId);
+    @RequestMapping(value="/close", method = RequestMethod.GET)
+    public String close_first_step(@RequestParam(value="deal_id", required = false) long dealId, final Model model) {
         User landlord = null;
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (GoodsException e) {
             e.printStackTrace();
         }
+
+        Deal deal= dealService.getDeal(dealId);
+        dealService.updateRealEndDate(dealId);
+        deal.setIsClosed(true);
         if(landlord.getId()!= deal.getLandlordId()){
             return "home/error_message";
         }
-        dealService.updateRealEndDate(dealId);
-        deal.setIsClosed(true);
         dealService.update(deal);
-        return "redirect:/";
+        return "home/message_when_rent_is_end";
     }
+
+
 
 }

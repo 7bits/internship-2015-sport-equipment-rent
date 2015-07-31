@@ -46,6 +46,7 @@ public class SeeAnnouncementController {
             String name = SecurityContextHolder.getContext().getAuthentication().getName();
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             User user = userService.getUser(name);
+            User landlord = userService.getUser(goods.getAuthorId());
             model.addAttribute("Goods", goods);
             if(name!="anonymousUser") {
                 model.addAttribute("isAuthor", user.getId().equals(goods.getAuthorId()));
@@ -53,6 +54,7 @@ public class SeeAnnouncementController {
                 model.addAttribute("isAuthor", false);
             }
             model.addAttribute("isAuth", name!="anonymousUser");
+            model.addAttribute("user", landlord);
         } catch (GoodsException e) {
             e.printStackTrace();
         }
