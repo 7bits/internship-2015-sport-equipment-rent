@@ -129,7 +129,7 @@ public class MailSubmissionController {
             mailMessage.setTo(userService.getUser(deal.getLandlordId()).getEmail());
             mailMessage.setFrom("sportequipmentrent@gmail.com");
             mailMessage.setSubject("Your announcement on sportequipmentrent");
-            mailMessage.setText("Press "+ "http://sport-equipment-rent.7bits.it/deal/give?deal_id=" + String.valueOf(deal.getId())
+            mailMessage.setText("Press "+ "http://sport-equipment-rent.7bits.it/give?deal_id=" + String.valueOf(deal.getId())
                               + " to confirm, that you gave goods");
             javaMailSender.send(mailMessage);
         } catch (GoodsException e) {
@@ -221,7 +221,7 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
 
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/deal/accept?deal_id="+deal.getId()+"&accept=true\">\n" +
+                    "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=true\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Принял\n" +
                     "                                        </p>\n" +
@@ -234,7 +234,7 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
 
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/deal/accept?deal_id="+deal.getId()+"&accept=false\">\n" +
+                    "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=false\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Отклонил\n" +
                     "                                        </p>\n" +
@@ -353,7 +353,7 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
                     "                                \n" +
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
-                    "                                        <a href=\"sport-equipment-rent.7bits.it/deal/close?deal_id="+deal.getId()+"\">\n" +
+                    "                                        <a href=\"sport-equipment-rent.7bits.it/close?deal_id="+deal.getId()+"\">\n" +
                     "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                            Завершить аренду\n" +
                     "                                        </p>\n" +
@@ -472,7 +472,7 @@ public class MailSubmissionController {
                     "                                            <table align=\"center\" border=\"0\" width=\"100%\" height=\"65\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding: 0 5px 5px 0\" style=\"width: 100%; max-width: 175px\">\n" +
                     "                                                <tr>\n" +
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;>\n" +
-                    "                                                    <a href=\"sport-equipment-rent.7bits.it/deal/handed?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id="+deal.getId()+"&accept=true\" style=\"text-decoration: none;\">\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Передал\n" +
                     "                                                    </a>\n" +
@@ -485,7 +485,7 @@ public class MailSubmissionController {
                     "                                                <tr>\n" +
 
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
-                    "                                                    <a href=\"sport-equipment-rent.7bits.it/deal/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Отклонил\n" +
                     "                                                            </p>\n" +
