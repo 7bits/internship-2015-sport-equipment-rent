@@ -14,7 +14,7 @@ public interface DealMapper {
 
     void save(final Deal deal);
 
-    @Update("UPDATE deals SET (renting_id, landlord_id, goods_id, handed, is_answered)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered})" +
+    @Update("UPDATE deals SET (landlord_id, renting_id,  goods_id, handed, is_answered, is_closed)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{isClosed})" +
             " WHERE id = #{id}")
     void update(final Deal deal);
 

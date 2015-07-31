@@ -58,6 +58,7 @@ public class DealController {
                 mail.sendConfirmationMail(deal);
                 return "home/confirm_deal";
             }else{
+                mail.sendDeny(deal);
                 return "home/application_is_rejected";
             }
         }
@@ -65,13 +66,7 @@ public class DealController {
     }
 
 
-    @RequestMapping(value = "/give", method = RequestMethod.GET)
-    public String giveGoods(@RequestParam(value="deal_id", required = false) long dealId){
-        Deal deal = dealService.getDeal(dealId);
-        mail.sendConfirmationMail(deal);
 
-        return ""; //all is good
-    }
 
     @RequestMapping(value="/accept", method = RequestMethod.GET)
     public String accept(@RequestParam(value="deal_id", required = false) long dealId){

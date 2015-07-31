@@ -47,10 +47,10 @@
                 <tr>
                     <td style="box-shadow: 0 3px 5px rgb(220,220,220);" bgcolor="#019199">
                         <p style="color: white; font-size: 1.5em; padding: 0 0 0 0" align="left">
-                            ВАМ ПРОДОСТАВИЛИ ТОВАР В АРЕНДУ
+                            Подтвердите завершение аренды
                         </p>
                         <p style="color: white; font-size: 1em; padding: 0 0 0 0" align="left">
-                            Пользователь <!--имя пользователя который отдал товар --> предоставил вам <!--наз-е арендуемого товара-->
+                            Пользователь "+renting.getFirstName()+" вернул вам "+goods.getTitle()+"
                         </p>
                     </td>
                 </tr>
@@ -65,14 +65,15 @@
                     <td>
                         <table align="center" border="0" width="100%" height="65" cellpadding="0" cellspacing="0" style="padding: 0 5px 5px 0" style="width: 100%; max-width: 175px">
                             <tr>
-                                <a href="ссылка куда переходить при принятии" style="text-decoration: none;">
+
                                     <td style="box-shadow: 0 3px 5px rgb(220,220,220);" bgcolor="#6ccdd3" text-align: center;>
+                                        <a href="sport-equipment-rent.7bits.it/deal/close?deal_id=">
                                         <p style="text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;">
                                             Завершить аренду
-                                            <!--у нас возможно разные страницы в зависимости от того истек ли срок аренды уже-->
                                         </p>
+                                        </a>
                                     </td>
-                                </a>
+
                             </tr>
                         </table>
                     </td>
