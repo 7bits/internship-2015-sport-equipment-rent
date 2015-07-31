@@ -33,7 +33,9 @@ overflow:hidden;
     font-family: RoundsBlack, 'RoundsBlack';
 }
 
-
+a: active,  a:hover{
+outline: none;
+}
 .black-color{
 color: black;
 }
