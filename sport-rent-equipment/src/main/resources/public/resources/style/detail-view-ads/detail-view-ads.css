@@ -315,7 +315,7 @@ color: #353535;
     width: 45.9139%;
     min-width: 106.75px;
     max-width: 427px;
-    height: 431px;
+    height: 100%;
     min-height:431px;
     float: left;
 }
@@ -446,6 +446,8 @@ color: #353535;
     color: white;
 
 }
+
+
 /*блок для кнопок скрыть редактирование удаление */
 .update-delete-block{
     width: 100%
