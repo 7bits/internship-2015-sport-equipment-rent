@@ -7,11 +7,14 @@ import org.apache.ibatis.annotations.*;
  * Created by awemath on 7/21/15.
  */
 public interface DealMapper {
-    @Insert("INSERT INTO deals (landlord_id, renting_id, goods_id, is_accepted, is_answered)" +
-            " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isAccepted}, #{isAnswered})")
+    @Insert("INSERT INTO deals (landlord_id, renting_id, goods_id, handed, is_answered, estimated_start_date, " +
+            "estimated_end_date, is_closed, accepted_renting, accepted_return)" +
+            " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{estimateStartDate}, #{estimateEndDate}, #{isClosed}" +
+            ", #{acceptedRenting}, #{acceptedReturn})")
+
     void save(final Deal deal);
 
-    @Update("UPDATE deals SET (renting_id, landlord_id, goods_id, is_accepted, is_answered)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isAccepted}, #{isAnswered})" +
+    @Update("UPDATE deals SET (landlord_id, renting_id,  goods_id, handed, is_answered, is_closed)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{isClosed})" +
             " WHERE id = #{id}")
     void update(final Deal deal);
 
@@ -21,8 +24,15 @@ public interface DealMapper {
             @Result(column = "renting_id", property = "rentingId"),
             @Result(column = "landlord_id", property = "landlordId"),
             @Result(column = "goods_id", property = "goodsId"),
-            @Result(column = "is_accepted", property = "isAccepted"),
-            @Result(column = "is_answered", property = "isAnswered")
+            @Result(column = "is_answered", property = "isAnswered"),
+            @Result(column = "estimated_start_date", property = "estimateStartDate"),
+            @Result(column = "estimated_end_date", property = "estimateEndDate"),
+            @Result(column = "real_start_date", property = "realStartDate"),
+            @Result(column = "real_end_date", property = "realEndDate"),
+            @Result(column = "handed", property = "isHanded"),
+            @Result(column = "accepted_renting", property = "acceptedRenting"),
+            @Result(column = "accepted_return", property = "acceptedReturn"),
+            @Result(column = "is_closed", property = "isClosed")
     })
     Deal getDeal(long dealId);
 
@@ -34,4 +44,10 @@ public interface DealMapper {
 
     @Delete("DELETE FROM deals where goods_id=#{goodsId}")
     void deleteAllOnGoods(long goodsId);
+
+    @Update("UPDATE deals SET real_start_date=clock_timestamp() where id=#{dealId}")
+    void updateRealStartDate(long dealId);
+
+    @Update("UPDATE deals SET real_end_date=clock_timestamp() where id=#{dealId}")
+    void updateRealEndDate(long dealId);
 }

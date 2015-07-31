@@ -7,8 +7,8 @@
 
   <version>1.0-SNAPSHOT</version>
   <name>sport-rent-equipment</name>
-  <packaging>jar</packaging>
-
+  <packaging>war</packaging>
+  <url>http://maven.apache.org</url>
   <parent>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-parent</artifactId>
@@ -45,6 +45,8 @@
           <artifactId>spring-boot-starter-jade4j</artifactId>
           <version>0.2</version>
       </dependency>
+
+
 
       <dependency>
           <groupId>org.mybatis</groupId>
@@ -96,7 +98,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <server>tomcat7_staging</server>
+                    <server>tomcat7_manager</server>
+                    <path>/</path>
                 </configuration>
             </plugin>
             <plugin>

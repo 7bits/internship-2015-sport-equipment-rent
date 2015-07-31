@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.DealService;
@@ -27,14 +28,21 @@ public class DealController {
     UserService userService;
 
     Logger LOG = Logger.getLogger(DealController.class);
-    @RequestMapping(method = RequestMethod.GET)
-    public String deal(@RequestParam(value="deal_id", required = false) long dealId, @RequestParam(value="accept", required = false) boolean isAccept, final Model model) {
+
+
+    @Autowired
+    MailSubmissionController mail;
+
+    @RequestMapping(value = "/handed", method = RequestMethod.GET)
+    public String deal(@RequestParam(value="deal_id", required = false) long dealId,
+                       @RequestParam(value="accept", required = false) boolean isHanded,
+                       final Model model) {
         Deal deal = dealService.getDeal(dealId);
         User landlord = null;
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (GoodsException e) {
-            LOG.error("An errror occured on getting landlord from the database: "+e.getMessage());
+            LOG.error("An error ocured on getting landlord from the database: "+e.getMessage());
             return "home/error_message";
         }
         if(deal.getLandlordId() != landlord.getId()){
@@ -43,15 +51,51 @@ public class DealController {
         if(deal.isAnswered()){
             return "home/error_message";
         } else {
-            deal.setIsAccepted(isAccept);
+            deal.setIsHanded(isHanded);
             deal.setIsAnswered(true);
             dealService.update(deal);
-            if(isAccept) {
+            if(isHanded) {
+                mail.sendConfirmationMail(deal);
                 return "home/confirm_deal";
             }else{
+                mail.sendDeny(deal);
                 return "home/application_is_rejected";
             }
         }
 
     }
+
+
+
+
+    @RequestMapping(value="/accept", method = RequestMethod.GET)
+    public String accept(@RequestParam(value="deal_id", required = false) long dealId){
+        Deal deal = dealService.getDeal(dealId);
+        User renting = null;
+        try {
+            renting = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+        if(renting.getId()!= deal.getRentingId()){
+            return "home/error_message";
+        }
+        try {
+            mail.sendClose(deal);
+            dealService.updateRealStartDate(dealId);
+        }catch (Exception e){
+            LOG.error("An error occured on accepting deal: "+e.getMessage());
+        }
+        return ""; //start of the using
+    }
+
+    @RequestMapping(value = "/close", method=RequestMethod.GET)
+    public String close(@RequestParam(value="deal_id", required = false) long dealId){
+        Deal deal = dealService.getDeal(dealId);
+        dealService.updateRealEndDate(dealId);
+        deal.setIsClosed(true);
+        dealService.update(deal);
+        return "redirect:/";
+    }
+
 }
