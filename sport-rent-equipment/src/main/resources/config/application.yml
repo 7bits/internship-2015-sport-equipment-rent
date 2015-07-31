@@ -18,3 +18,4 @@ mail:
            enable: true
            required: true
        debug: true
+logging.path: ~/spring

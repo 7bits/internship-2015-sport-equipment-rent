@@ -1,6 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.web.controllers.MailSubmissionController;
+import it.sevenbits.web.domain.DateForm;
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.User;
@@ -55,24 +56,26 @@ public class SeeAnnouncementController {
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-
+        model.addAttribute("date", new DateForm());
         return "home/see_announcement";
     }
 
-    @RequestMapping(value="/getIt", method = RequestMethod.GET)
-    public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model) {
+    @RequestMapping(value="/getIt", method = RequestMethod.POST)
+    public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model, final DateForm form) {
         try {
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
                     goods.getId());
 
-            //dealService.save(deal);
-            // mailSubmissionController.send(goods, deal);
+            String from = form.getFrom().split("T")[0]+" "+form.getFrom().split("T")[1];
+            String to = form.getTo().split("T")[0]+" "+form.getTo().split("T")[1];
+            deal.setEstimateStartDate(from);
+            deal.setEstimateEndDate(to);
 
             if(!dealService.isExist(deal)) {
                 dealService.save(deal);
                 deal.setId(dealService.getId(deal));
-                mailSubmissionController.send(goods, deal);
+                mailSubmissionController.sendHtmlEmail(deal);
             }else{
                 return "home/error_message";
             }

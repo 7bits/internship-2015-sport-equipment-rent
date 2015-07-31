@@ -30,7 +30,7 @@ public class HomeController {
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         } catch (GoodsException e) {
             e.printStackTrace();
-    }
+        }
 
         return "home/index";
     }
@@ -44,8 +44,4 @@ public class HomeController {
 
     @Autowired
     DealService dealService;
-
-
-
-
 }
