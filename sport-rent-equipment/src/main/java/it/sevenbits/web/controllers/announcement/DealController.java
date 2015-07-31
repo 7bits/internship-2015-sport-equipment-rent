@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by awemath on 7/21/15.
  */
 @Controller
-@RequestMapping(value = "/deal")
 public class DealController {
     @Autowired
     DealService dealService;
@@ -69,7 +68,8 @@ public class DealController {
 
 
     @RequestMapping(value="/accept", method = RequestMethod.GET)
-    public String accept(@RequestParam(value="deal_id", required = false) long dealId){
+    public String accept(@RequestParam(value="deal_id", required = false) long dealId,
+                         @RequestParam(value="accept", required = false) boolean isGet){
         Deal deal = dealService.getDeal(dealId);
         User renting = null;
         try {
@@ -80,18 +80,29 @@ public class DealController {
         if(renting.getId()!= deal.getRentingId()){
             return "home/error_message";
         }
-        try {
-            mail.sendClose(deal);
-            dealService.updateRealStartDate(dealId);
-        }catch (Exception e){
-            LOG.error("An error occured on accepting deal: "+e.getMessage());
+        if(isGet) {
+            try {
+                mail.sendClose(deal);
+                dealService.updateRealStartDate(dealId);
+            } catch (Exception e) {
+                LOG.error("An error occured on accepting deal: " + e.getMessage());
+            }
         }
-        return ""; //start of the using
+        return "home/confirm_get"; //start of the using
     }
 
     @RequestMapping(value = "/close", method=RequestMethod.GET)
     public String close(@RequestParam(value="deal_id", required = false) long dealId){
         Deal deal = dealService.getDeal(dealId);
+        User landlord = null;
+        try {
+            landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+        if(landlord.getId()!= deal.getRentingId()){
+            return "home/error_message";
+        }
         dealService.updateRealEndDate(dealId);
         deal.setIsClosed(true);
         dealService.update(deal);
