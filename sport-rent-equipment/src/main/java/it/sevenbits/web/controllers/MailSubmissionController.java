@@ -452,7 +452,7 @@ public class MailSubmissionController {
                     "                                <table bgcolor=\"white\" style=\"padding: 10px 0 10px 0\" width=\"375\" align=\"left\" height=\"150\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n" +
                     "                                    <tr>\n" +
                     "                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#019199\">\n" +
-                    "                                            <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 15px\" align=\"left\">\n" +
+                    "                                            <p style=\"color: white; font-size: 1.5em; padding: 0 0 0 15px;\" align=\"left\">\n" +
                     "                                                ВАШИМ ОБЪЯВЛЕНИЕМ ЗАИНТЕРЕСОВАЛИСЬ\n" +
                     "                                            </p>\n" +
                     "                                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
