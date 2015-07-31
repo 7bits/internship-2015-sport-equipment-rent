@@ -221,11 +221,11 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
 
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#6ccdd3\" text-align: center;style=\"text-decoration: none;\">\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=true\">\n" +
-                    "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
-                    "                                            Принял\n" +
-                    "                                        </p>\n" +
-                    "                                </a>\n" +
+                    "                                       <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=true\">\n" +
+                        "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
+                        "                                            Принял\n" +
+                        "                                        </p>\n" +
+                    "                                       </a>\n" +
                     "                                    </td>\n" +
 
                     "                            </tr>\n" +
@@ -234,11 +234,11 @@ public class MailSubmissionController {
                     "                            <tr>\n" +
 
                     "                                    <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
-                    "                                <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
-                    "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
-                    "                                            Отклонил\n" +
-                    "                                        </p>\n" +
-                    "                                </a>\n" +
+                    "                                       <a href=\"sport-equipment-rent.7bits.it/accept?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
+                        "                                        <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
+                        "                                            Отклонил\n" +
+                        "                                        </p>\n" +
+                    "                                       </a>\n" +
                     "                                    </td>\n" +
 
                     "                            </tr>\n" +
@@ -336,7 +336,7 @@ public class MailSubmissionController {
                     "                            Подтвердите завершение аренды\n" +
                     "                        </p>\n" +
                     "                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
-                    "                            Пользователь \"+renting.getFirstName()+\" вернул вам \"+goods.getTitle()+\"\n" +
+                    "                            Пользователь "+renter.getFirstName()+" вернул вам \"+goods.getTitle()+\"\n" +
                     "                        </p>\n" +
                     "                    </td>\n" +
                     "                </tr>\n" +
@@ -530,7 +530,7 @@ public class MailSubmissionController {
                     "                                                <tr>\n" +
 
                     "                                                        <td style=\"box-shadow: 0 3px 5px rgb(220,220,220);\" bgcolor=\"#d1d1d1\" text-align: center;>\n" +
-                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id=\"+deal.getId()+\"&accept=false\" style=\"text-decoration: none;\">\n" +
+                    "                                                    <a href=\"sport-equipment-rent.7bits.it/handed?deal_id="+deal.getId()+"&accept=false\" style=\"text-decoration: none;\">\n" +
                     "                                                            <p style=\"text-align: center; color: white; font-size: 1.25em; padding: 0 0 0 0;\">\n" +
                     "                                                                Отклонил\n" +
                     "                                                            </p>\n" +
