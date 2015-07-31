@@ -36,8 +36,6 @@ import java.util.Map;
         validator.shorterThan(form.getFirstName(), 50, errors, "Поле имя", "Поле имя должно быть короче 50 символов");
         validator.shorterThan(form.getPassword(), 100, errors, "Поле пароль", "Пароль должен быть короче 100 символов");
 
-        validator.equalPasswords(form.getPassword(), form.getPasswordVerification(), errors, "Подтверждение пароля", "Подтверждение пароля должно совпадать с паролем");
-
         validator.isUniqueEmail(form.geteMail(), userService, errors, "Поле emai", "Пользователь с таким email уже существует");
 
         for (Map.Entry<String, String> entry : errors.entrySet()) {
