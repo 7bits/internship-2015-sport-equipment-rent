@@ -1,0 +1,71 @@
+html{
+height: 100%;
+width: 100%;
+}
+
+body{
+height: 100%;
+width: 100%;
+background-color: #e3e3e3;
+background-image: url('images/reg-bk.jpg');
+}
+
+.background-line{
+width: 100%;
+height:90px;
+}
+
+h4{
+padding-top: 20%;
+}
+
+.for-error{
+width: 35%;
+height:16%;
+margin: 0 auto;
+}
+
+
+
+.sector1{
+width: 100%;
+float: left;
+}
+
+.image-to-center{
+text-align: center; /* Выравнивание по центру */
+}
+
+.center {
+width: 35%;
+height:40%;
+margin: 0 auto;
+}
+
+
+.center-auth {
+width: 22%;
+height:25%;
+margin: 0 auto;
+}
+
+.for-error-auth{
+width: 22%;
+height:16%;
+margin: 0 auto;
+}
+.text-right{
+float: right;
+}
+
+a{
+color: #5dc8cd;
+}
+
+a:hover{
+color: black;
+}
+
+.text-white-color{
+color: white;
+}

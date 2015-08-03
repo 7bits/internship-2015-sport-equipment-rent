@@ -1,3 +1,5 @@
+
+
 .row{
 padding: 3px;
 margin: 3px;
@@ -8,7 +10,7 @@ margin: 3px;
 }
 
 .motto-position{
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 .btn-color{
@@ -20,12 +22,45 @@ border-color:#5dc8cd;
 }
 a, a:hover{
 text-decoration: none;
+outline: none;
 }
 
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+textarea{
+  width: 100%;
+  min-width:100%;
+  max-width:100%;
+  height:12em;
+  min-height: 12em;
+  max-height:12em;
+}
+
+.line{
+margin-top: 10px;
+margin-bottom: 50px;
+width: 100%;
+height: 2px;
+background-color: black;
+}
+
+.transparent-block{
+width: 100%;
+height: 250px;
+background-color: rgba(255, 255, 255, 0.75);
+}
+
+
+
 .size-text-rap {
-    word-wrap: break-word;
-    hyphens: auto;
-           }
+word-wrap: break-word;
+hyphens: auto;
+ }
 
 .size-text-norap {
 white-space: nowrap;
@@ -38,7 +73,10 @@ width: 100%;
 
 .motto-color{
 color: #5dc8cd;
+}
 
 
-
+* {
+	margin: 0;
+	padding: 0;
 }

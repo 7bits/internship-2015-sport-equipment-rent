@@ -1,50 +1,33 @@
 doctype html
 head
 	title Регистрация
-	meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-	link(rel="stylesheet", href="resources/vendor/stylesheets/bootstrap.min.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/style.css", type="text/css", media="all")
+	include depending.jade
+	link(rel="stylesheet", href="resources/registration-authorization.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
+
 body
-	.container
+	.background-line
 		.row
-			.col-lg-6
-				a(href="/")
-					img(src="resources/images/logo.png", align="left", width="512", height="134")
-			.col-lg-6
-				label.motto-position(for="name")
-					h4.motto-color Сервис по поиску и аренде спортивного оборудования
-		.row
-			.col-lg-12
-				form(role="form", action="/registration", method="post")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="name") Имя
-								sup  *
-							.col-lg-4
-								input#name.form-control(type="text", name='firstName',placeholder="Ваше имя")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="userEmail") Email
-								sup  *
-							.col-lg-4
-								input#userEmail.form-control(type="email", name='eMail', placeholder="Ваш email")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="passtext") Пароль
-								sup  *
-							.col-lg-4
-								input#passtext.form-control(type="password", name='password', placeholder="Ваш пароль")
-					div.form-group
-						.row
-							.col-lg-3
-								label.label-position(for="passSecond") Подтверждение пароля
-								sup  *
-							.col-lg-4
-								input#passSecond.form-control(type="password", name='passSecond', placeholder="Подтверждение пароля")
-					.row
-						.col-lg-5
-						.col-lg-3
-							button.btn.btn-color.btn-block(type="submit") Зарегистрироваться
+			.col-lg-2
+			.col-lg-3
+				label.menu-position(for="name")
+					a(href="/")
+						p.motto-color.set-font-profile-roboto.set-font-size-14 < НА ГЛАВНУЮ
+	.for-error
+		include mixin_er.jade
+		+err(errors)
+	.center
+		a(href="/")
+			img(src="resources/images/logo.png", align="center", width="170", height="45")
+		form(role="form", action="/registration", method="post")
+			div.form-group
+				.row
+					input#name.form-control(type="text", name='firstName', placeholder="ИМЯ")
+				.row
+					input#userEmail.form-control(type="email", name='eMail',placeholder="E-MAIL")
+				.row
+					.sector1
+						input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+				.row
+					button.btn.btn-color.btn-block.set-font-profile-roboto-reg.set-font-size-15(type="submit") РЕГИСТРАЦИЯ
+

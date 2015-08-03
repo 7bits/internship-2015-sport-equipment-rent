@@ -1,17 +1,36 @@
 doctype html
 head
-	title Регистрация
-	meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-	link(rel="stylesheet", href="resources/vendor/stylesheets/bootstrap.min.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/style.css", type="text/css", media="all")
+	title Личный кабинет
+	include depending.jade
+	link(rel="stylesheet", href="resources/message.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/personal-area.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/user.css", type="text/css", media="all")
 body
-	.container
-		.row
-			.col-lg-6
-				a(href="/")
-					img(src="resources/images/logo.png", align="left", width="512", height="134")
-			.col-lg-6
-				label.motto-position(for="name")
-					h4.motto-color Сервис по поиску и аренде спортивного оборудования
-		include mixin_personal_area.jade
-		+info(goods, user)
+	.background-gray
+		.background-white
+			.row
+				.col-lg-2
+				.col-lg-4
+					.logo-position
+						a(href="/")
+							img(src="resources/images/logo.png", align="left", width="170", height="45")
+				.col-lg-3
+				.col-lg-1
+					label.motto-position(for="name")
+						a(href="/logout")
+							h4.motto-color ВЫХОД
+				.col-lg-2
+					label.motto-position(for="name")
+						a(href="/")
+							h4.motto-color НА ГЛАВНУЮ >
+		.gray-line
+		.base-block
+			.green-line.shadow
+				h2.text-color-white Ваши объявления
+			if goods==null
+				.white-box-for-text.shadow
+					text=Здесь могли бы быть ваши обявления
+			else
+				include mixin_users_announcement_list.jade
+				+list(goods)
+			.green-line.shadow

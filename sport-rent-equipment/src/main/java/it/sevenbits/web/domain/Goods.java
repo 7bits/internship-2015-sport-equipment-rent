@@ -1,21 +1,11 @@
 package it.sevenbits.web.domain;
 
-import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.core.repository.UserInPostgreSQLRepository;
-import it.sevenbits.core.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import java.io.Serializable;
 
 /**
  * Created by awemath on 7/8/15.
  */
 public class Goods implements Serializable {
-    @Autowired
-    @Qualifier(value="userInPostgreSQLrepository")
-    private UserRepository repository;
 
     Long id;
     String email;
@@ -27,6 +17,16 @@ public class Goods implements Serializable {
     Long authorId;
     String author;//name
     String authorPhone;
+    boolean visible;
+
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public String getTitle() {
         return title;

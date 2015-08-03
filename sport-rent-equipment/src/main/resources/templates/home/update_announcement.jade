@@ -1,0 +1,62 @@
+doctype html
+head
+	title Создание нового объявления
+	link(rel="stylesheet", href="resources/header-style.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
+	include depending.jade
+body
+	include header.jade
+	.row
+		.col-lg-12
+	.row
+		.col-lg-12
+	.row
+		.col-lg-12
+	.row
+		.col-lg-12
+	include mixin_er.jade
+	+err(errors)
+	form(role="form", action="/update?announcement_id=#{goods.id}", method="post")
+		div.form-group
+			.row
+				.col-lg-2
+					Название объявления
+					sup *
+				.col-lg-5
+					input#announcementsName.form-control(type="text", value="#{goods.title}", name="title")
+		div.form-group
+			.row
+				.col-lg-2
+					Описание объявления
+					sup *
+				.col-lg-5
+					textarea#announcementsDescription.form-control(type="text", name="description")
+						#{goods.description}
+		div.form-group
+			.row
+				.col-lg-2
+					Цена
+					sup *
+				.col-lg-2
+					input#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour")
+				.col-lg-1
+					час
+				.col-lg-2
+					input#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay")
+				.col-lg-1
+					день
+				.col-lg-2
+					input#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek")
+				.col-lg-1
+					неделя
+		div.form-group
+			.row
+				.col-lg-2
+					Залог
+					sup*
+				.col-lg-2
+					input#pledge.form-control(type="text", value="#{goods.pledge}", name='pledge')
+			.row
+				.col-lg-8
+				.col-lg-3
+					button.btn.btn-color.btn-block(type="submit") Изменить объявление

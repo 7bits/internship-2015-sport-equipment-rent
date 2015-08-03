@@ -1,10 +1,7 @@
 package it.sevenbits.core.mappers;
 
 import it.sevenbits.web.domain.Goods;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -55,4 +52,12 @@ public interface GoodsMapper {
     @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author_id)" +
             " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
     void save(final Goods goods);
+
+    @Update("UPDATE goods SET (title, description, pledge, price_per_hour, price_per_day, price_per_week)=" +
+            "(#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek})" +
+            "  where id=#{id}")
+    void update(Goods goods);
+
+    @Delete("DELETE FROM goods WHERE id=#{id}")
+    void delete(Long id);
 }

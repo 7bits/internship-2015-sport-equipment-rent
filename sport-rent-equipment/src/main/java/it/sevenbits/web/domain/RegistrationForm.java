@@ -8,6 +8,7 @@ public class RegistrationForm {
     private String secondName;
     private String eMail;
     private String password;
+    private String passwordVerification;
 
     public String getFirstName() {
         return firstName;
@@ -39,5 +40,13 @@ public class RegistrationForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordVerification() {
+        return passwordVerification;
+    }
+
+    public void setPasswordVerification(String passwordVerification) {
+        this.passwordVerification = passwordVerification;
     }
 }
