@@ -6,8 +6,10 @@ package it.sevenbits.web.service;
 
 
 import it.sevenbits.web.service.users.UserService;
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -167,6 +169,16 @@ public class CommonFieldValidator {
         if(!errors.containsKey(key))
         if(firstString.equals(secondString)){
             errors.put(key, field);
+        }
+    }
+
+    public void isTooEarlyDate(String from, String to, HashMap<String, String> errors, String key, String field) {
+        if(errors.isEmpty()) {
+            DateTime start = DateTime.parse(from);
+            DateTime end = DateTime.parse(to);
+            if (start.getMillis() < DateTime.now().getMillis()) {
+                errors.put(key, field);
+            }
         }
     }
 }
