@@ -181,5 +181,15 @@ public class CommonFieldValidator {
             }
         }
     }
+
+    public void isEndAfterStart(String from, String to, HashMap<String, String> errors, String key, String field){
+        if(errors.isEmpty()) {
+            DateTime start = DateTime.parse(from);
+            DateTime end = DateTime.parse(to);
+            if(start.getMillis()>end.getMillis()){
+                errors.put(key, field);
+            }
+        }
+    }
 }
 

@@ -31,6 +31,8 @@ public class TakeGoodsValidator {
 
         validator.isTooEarlyDate(form.getFrom(), form.getTo(), errors, "", "");
         validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "", "");
+
+        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "");
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));
