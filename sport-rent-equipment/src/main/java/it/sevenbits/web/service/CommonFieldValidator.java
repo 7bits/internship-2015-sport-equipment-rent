@@ -157,6 +157,17 @@ public class CommonFieldValidator {
             errors.put(key, field);
         }
     }
-
+    public void isNotEqualStrings(
+            final String firstString,
+            final String secondString,
+            final Map<String, String> errors,
+            final String key,
+            final String field
+    ){
+        if(!errors.containsKey(key))
+        if(firstString.equals(secondString)){
+            errors.put(key, field);
+        }
+    }
 }
 
