@@ -8,6 +8,7 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.DealService;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
+import it.sevenbits.web.service.goods.TakeGoodsValidator;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * Created by awemath on 7/27/15.
@@ -62,24 +65,32 @@ public class SeeAnnouncementController {
         return "home/see_announcement";
     }
 
+    @Autowired
+    TakeGoodsValidator validator;
+
     @RequestMapping(value="/getIt", method = RequestMethod.POST)
     public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model, final DateForm form) {
         try {
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
                     goods.getId());
+            final Map<String, String> errors =validator.validate(form);
+            if(errors.isEmpty()) {
+                String from = form.getFrom().split("T")[0] + " " + form.getFrom().split("T")[1];
+                String to = form.getTo().split("T")[0] + " " + form.getTo().split("T")[1];
 
-            String from = form.getFrom().split("T")[0]+" "+form.getFrom().split("T")[1];
-            String to = form.getTo().split("T")[0]+" "+form.getTo().split("T")[1];
-            deal.setEstimateStartDate(from);
-            deal.setEstimateEndDate(to);
+                deal.setEstimateStartDate(from);
+                deal.setEstimateEndDate(to);
 
-            if(!dealService.isExist(deal)) {
-                dealService.save(deal);
-                deal.setId(dealService.getId(deal));
-                mailSubmissionController.sendHtmlEmail(deal);
+                if (!dealService.isExist(deal)) {
+                    dealService.save(deal);
+                    deal.setId(dealService.getId(deal));
+                    mailSubmissionController.sendHtmlEmail(deal);
+                } else {
+                    return "home/error_message";
+                }
             }else{
-                return "home/error_message";
+                return "redirect:/getIt/announcement_id="+announcementId;
             }
 
 
