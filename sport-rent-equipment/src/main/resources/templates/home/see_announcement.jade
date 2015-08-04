@@ -29,10 +29,11 @@ body
 				.order
 					.l-side
 						.l-inside
-							.ava-white-block.round-border.green-line-shadow
-								img.round.image-vertical-position(src="https://placekitten.com/g/124/124", height="124", width="124")
-							.author-name
-								p.text-position=user.firstName
+							a(href="/profile?user_id=#{user.id}")
+								.ava-white-block.round-border.green-line-shadow
+									img.round.image-vertical-position(src="https://placekitten.com/g/124/124", height="124", width="124")
+								.author-name
+									p.text-position=user.firstName
 							.button-comment-block
 								input.button-comment(type='button', value='ОСТАВИТЬ ОТЗЫВ', onclick="/")
 							.button-comment-block
