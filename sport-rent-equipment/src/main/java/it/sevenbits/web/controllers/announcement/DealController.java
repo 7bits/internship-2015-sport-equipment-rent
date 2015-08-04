@@ -7,6 +7,7 @@ import it.sevenbits.web.service.goods.DealService;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -94,15 +95,30 @@ public class DealController {
     }
 
     @RequestMapping(value="/close", method = RequestMethod.GET)
-    public String close_first_step(@RequestParam(value="deal_id", required = false) long dealId, final Model model) {
+    public String closeFirstStep(@RequestParam(value="deal_id", required = false) long dealId, final Model model) {
+
+
+
+        Deal deal= dealService.getDeal(dealId);
+        DateTime estimateStart = DateTime.parse(deal.getEstimateStartDate());
+        DateTime estimateEnd = DateTime.parse(deal.getEstimateEndDate());
+        if(estimateEnd.getMillis() > DateTime.now().getMillis()){
+            model.addAttribute("id", deal.getId());
+            return "home/message_when_rent_not_end";
+        }else{
+            return "redirect:/finally_close?deal_id="+deal.getId();
+        }
+    }
+
+    @RequestMapping(value = "/finally_close", method = RequestMethod.GET)
+    public String closeEnd(@RequestParam(value="deal_id", required = false) long dealId, final Model model){
         User landlord = null;
+        Deal deal= dealService.getDeal(dealId);
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (GoodsException e) {
             e.printStackTrace();
         }
-
-        Deal deal= dealService.getDeal(dealId);
         dealService.updateRealEndDate(dealId);
         deal.setIsClosed(true);
         if(landlord.getId()!= deal.getLandlordId()){
@@ -111,7 +127,6 @@ public class DealController {
         dealService.update(deal);
         return "home/message_when_rent_is_end";
     }
-
 
 
 }

@@ -14,8 +14,8 @@ body
 					Срок аренды еще не закончен.
 					br
 					Вы уверены что хотете закончить аренду?
-				a.set-padding-a-left(href="/update?announcement_id=#{Goods.id}")
+				a.set-padding-a-left(href="/finally_close?deal_id=#{id}")
 					input.button-delete(type='button', value='Да')
-				a.set-padding-a-right(href="/update?announcement_id=#{Goods.id}")
+				a.set-padding-a-right(href="/")
 					input.button-delete(type='button', value='Нет')
 
