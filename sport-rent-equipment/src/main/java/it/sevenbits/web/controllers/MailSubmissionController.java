@@ -445,7 +445,8 @@ public class MailSubmissionController {
                     "                                                ВАШИМ ОБЪЯВЛЕНИЕМ ЗАИНТЕРЕСОВАЛИСЬ\n" +
                     "                                            </p>\n" +
                     "                                        <p style=\"color: white; font-size: 1em; padding: 0 0 0 15px\" align=\"left\">\n" +
-                    "                                                Пользователь "+renter.getFirstName()+" намерен взять в аренду "+ goods.getTitle()+ " с "+deal.getEstimateStartDate()+" по "+deal.getEstimateEndDate()+"\n" +
+                    "                                                Пользователь "+renter.getFirstName()+" намерен взять в аренду "+ goods.getTitle()+ " с "+deal.getEstimateStartDate().split("T")[0]+" "+deal.getEstimateStartDate().split("T")[1]+" по " +
+                    ""+deal.getEstimateEndDate().split("T")[0]+" "+deal.getEstimateEndDate().split("T")[1]+"\n" +
                     "                                            </p>\n" +
                     "                                        </td>\n" +
                     "                                    </tr>\n" +

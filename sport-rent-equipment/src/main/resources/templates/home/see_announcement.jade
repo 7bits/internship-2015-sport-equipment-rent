@@ -84,6 +84,9 @@ body
 					.r-side
 						.r-inside
 							if !isAuthor
+								.for-error
+										include mixin_er.jade
+										+err(errors)
 								form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
 									.white-form
 										.green-line.green-line-shadow

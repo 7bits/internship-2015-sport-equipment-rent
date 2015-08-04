@@ -5,11 +5,14 @@ package it.sevenbits.web.service;
  */
 
 
+import it.sevenbits.web.domain.Deal;
+import it.sevenbits.web.service.goods.DealService;
 import it.sevenbits.web.service.users.UserService;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -190,6 +193,29 @@ public class CommonFieldValidator {
                 errors.put(key, field);
             }
         }
+    }
+
+    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field){
+         if(errors.isEmpty()){
+             DateTime start = DateTime.parse(from);
+             DateTime end = DateTime.parse(to);
+             List<Deal> openDeals = service.getOpenWithId(goodsId);
+             Deal deal;
+             for(int i=0;i<openDeals.size();i++){
+                 deal=openDeals.get(i);
+                 DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
+                 DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
+                 if(estimatedStart.getMillis()<start.getMillis() && estimatedEnd.getMillis()>end.getMillis()){
+                     errors.put(key, field);
+                     return;
+                 }
+                 if(start.getMillis()<estimatedStart.getMillis() && end.getMillis()>estimatedEnd.getMillis()){
+                     errors.put(key, field);
+                     return;
+                 }
+
+             }
+         }
     }
 }
 

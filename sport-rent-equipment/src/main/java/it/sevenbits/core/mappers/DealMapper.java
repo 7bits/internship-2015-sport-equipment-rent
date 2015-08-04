@@ -3,6 +3,8 @@ package it.sevenbits.core.mappers;
 import it.sevenbits.web.domain.Deal;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * Created by awemath on 7/21/15.
  */
@@ -50,4 +52,20 @@ public interface DealMapper {
 
     @Update("UPDATE deals SET real_end_date=clock_timestamp() where id=#{dealId}")
     void updateRealEndDate(long dealId);
+
+    @Select("SELECT * from deals where is_closed=false and goods_id=#{goodsId} and is_answered=true")
+    @Results({
+            @Result(column = "id", property = "id"),
+            @Result(column = "goods_id", property = "goodsId"),
+            @Result(column = "is_answered", property = "isAnswered"),
+            @Result(column = "estimated_start_date", property = "estimateStartDate"),
+            @Result(column = "estimated_end_date", property = "estimateEndDate"),
+            @Result(column = "real_start_date", property = "realStartDate"),
+            @Result(column = "real_end_date", property = "realEndDate"),
+            @Result(column = "handed", property = "isHanded"),
+            @Result(column = "accepted_renting", property = "acceptedRenting"),
+            @Result(column = "accepted_return", property = "acceptedReturn"),
+            @Result(column = "is_closed", property = "isClosed")
+    })
+    List<Deal> getOpenWithId(long goodsId);
 }

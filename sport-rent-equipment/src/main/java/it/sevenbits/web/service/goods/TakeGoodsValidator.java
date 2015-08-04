@@ -20,7 +20,10 @@ public class TakeGoodsValidator {
 
     private static final Logger LOG = Logger.getLogger(TakeGoodsValidator.class);
 
-    public HashMap<String, String> validate(final DateForm form) {
+    @Autowired
+    DealService dealService;
+
+    public HashMap<String, String> validate(final DateForm form, long goodsId) {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
         validator.isNotNullOrEmpty(form.getFrom(), errors, "Поле заголовок", "Поле заголовок не может быть пустым");
@@ -33,6 +36,9 @@ public class TakeGoodsValidator {
         validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "", "");
 
         validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "");
+
+        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "");
+
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));

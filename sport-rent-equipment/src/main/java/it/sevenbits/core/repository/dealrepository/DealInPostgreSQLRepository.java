@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by awemath on 7/21/15.
  */
@@ -51,6 +53,11 @@ public class DealInPostgreSQLRepository implements DealRepository {
     @Override
     public void updateRealEndDate(long dealId) {
         mapper.updateRealEndDate(dealId);
+    }
+
+    @Override
+    public List<Deal> getOpenWithId(long goodsId) {
+        return mapper.getOpenWithId(goodsId);
     }
 
 }

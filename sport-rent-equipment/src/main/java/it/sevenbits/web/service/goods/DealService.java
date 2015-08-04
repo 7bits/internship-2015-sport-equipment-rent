@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by awemath on 7/21/15.
  */
@@ -47,5 +49,9 @@ public class DealService {
 
     public void updateRealEndDate(long dealId) {
         repository.updateRealEndDate(dealId);
+    }
+
+    public List<Deal> getOpenWithId(long goodsId) {
+        return repository.getOpenWithId(goodsId);
     }
 }

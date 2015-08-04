@@ -74,10 +74,10 @@ public class SeeAnnouncementController {
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
                     goods.getId());
-            final Map<String, String> errors =validator.validate(form);
+            final Map<String, String> errors =validator.validate(form, Long.valueOf(announcementId));
             if(errors.isEmpty()) {
-                String from = form.getFrom().split("T")[0] + " " + form.getFrom().split("T")[1];
-                String to = form.getTo().split("T")[0] + " " + form.getTo().split("T")[1];
+                String from = form.getFrom();
+                String to = form.getTo();
 
                 deal.setEstimateStartDate(from);
                 deal.setEstimateEndDate(to);
@@ -90,7 +90,21 @@ public class SeeAnnouncementController {
                     return "home/error_message";
                 }
             }else{
-                return "redirect:/getIt/announcement_id="+announcementId;
+                String name = SecurityContextHolder.getContext().getAuthentication().getName();
+                User user = userService.getUser(name);
+                User landlord = userService.getUser(goods.getAuthorId());
+                model.addAttribute("Goods", goods);
+                if(name!="anonymousUser") {
+                    model.addAttribute("isAuthor", user.getId().equals(goods.getAuthorId()));
+                }else{
+                    model.addAttribute("isAuthor", false);
+                }
+                model.addAttribute("isAuth", name!="anonymousUser");
+                model.addAttribute("user", landlord);
+                model.addAttribute(goods);
+                model.addAttribute("errors", errors);
+                model.addAttribute("date", new DateForm());
+                return "home/see_announcement";
             }
 
 
