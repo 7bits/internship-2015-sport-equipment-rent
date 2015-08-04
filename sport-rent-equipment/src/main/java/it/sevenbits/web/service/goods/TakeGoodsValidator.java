@@ -26,18 +26,18 @@ public class TakeGoodsValidator {
     public HashMap<String, String> validate(final DateForm form, long goodsId) {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
-        validator.isNotNullOrEmpty(form.getFrom(), errors, "Поле заголовок", "Поле заголовок не может быть пустым");
-        validator.isNotNullOrEmpty(form.getTo(), errors, "", "");
+        validator.isNotNullOrEmpty(form.getFrom(), errors,"Поле начало", "Начало аренды не может быть пустым");
+        validator.isNotNullOrEmpty(form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть пустым");
 
-        validator.isNotEqualStrings(form.getTo(), form.getFrom(), errors, "", "");
+        validator.isNotEqualStrings(form.getTo(), form.getFrom(), errors, "Поле окончание", "Начало и окончание аренды не могут совпадать");
 
 
-        validator.isTooEarlyDate(form.getFrom(), form.getTo(), errors, "", "");
-        validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "", "");
+        validator.isTooEarlyDate(form.getFrom(), form.getTo(), errors, "Поле начало", "Начало аренды не может быть раньше настоящего");
+        validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть раньше настоящего");
 
-        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "");
+        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "Окончание аренды должно быть после начала");
 
-        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "");
+        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "К сожалению, это время уже занято");
 
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
