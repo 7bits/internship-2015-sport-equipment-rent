@@ -1,0 +1,411 @@
+*{
+    margin:0;
+    padding: 0;
+}
+/*убирает рамку пунктиром вокруг кнопок*/
+button::-moz-focus-inner,
+	input[type="reset"]::-moz-focus-inner,
+	input[type="button"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
+	border: none;
+	}
+/*импортируем шрифты*/
+@font-face {
+  font-family: RobotoRegular;
+  src: url('fonts/RobotoRegular.ttf')  format("truetype");
+
+  font-family: RobotoBold;
+  src: url('fonts/RobotoBold/RobotoBold.ttf')  format("truetype");
+  font-family: RoundsBlack;
+  src: url('fonts/RoundsBlack/RoundsBlack.ttf')  format("truetype");
+
+}
+
+
+/*всегда писать эти 2 блока!!!*/
+body{
+    font: 100/1.5em;
+    height: 100%;
+}
+p, text{
+    padding-right: 2px;
+}
+
+.set-font-roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
+.set-font-round{
+    font-family: RoundsBlack, 'RoundsBlack';
+}
+
+
+.set-font-size-22{
+    font-size: 1.375em;
+}
+
+.set-font-size-69{
+    font-size: 4.313em;
+}
+
+.set-font-color-white{
+    color: white;
+}
+
+html{
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  color: #353535;
+}
+
+/*базовый контейнер*/
+.container{
+  width: 100%;
+  height:100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/*1 блок*/
+.header-block{
+  width: 100%;
+  background-color: #5cc9cc;
+  height: 800px;
+}
+
+.header-block-inside{
+  width: 1400px;
+  height:100%;
+  margin: 0 auto;
+  background-image: url('images/1-block-png.png');
+}
+
+
+.logo{
+  padding-top: 58px;
+  padding-bottom: 33px;
+  margin: 0 auto;
+  width: 27.36%;
+  height: 142px;
+  max-width: 159px;
+}
+
+img {
+  width: 100%; /* ширина картинки */
+  height: auto; /* высота картинки */
+}
+
+.set-padding-give-to-arrive{
+  padding-bottom: 8px;
+}
+
+.title{
+  margin: 0 auto;
+  width: 100%;
+  height: 164px;
+}
+
+.buttom-blk{
+  margin: 0 auto;
+  width: 305px;
+  height: 68px;
+}
+
+/*кнопкa*/
+.try-button, 
+.try-button:active, 
+.try-button:focus{
+width: 305px;
+    height:68px;
+    font-size: 1.125em;
+    background: #edd04e;
+    color: #005764;
+    padding: 3px 0 3px 0;
+    border-radius: 10px;
+    -moz-border-radius: 10px; /* Firefox */
+    -webkit-border-radius: 10px; /* Safari, Chrome */
+    -khtml-border-radius: 10px; /* KHTML */
+    box-shadow: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    border-width: 3px;
+    border-color: #005764;
+    border-style: solid;
+    outline: none;
+}
+
+
+.try-button:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.try-button:focus {
+    border-style: inset;
+  }
+
+/*2 блок "как это работает?"*/
+.how-it-work-block{
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  height: 650px;
+}
+
+.how-it-work-title{
+  width: 100%;
+  margin: 0 auto;
+  height: 60px;
+  padding-top: 60px;
+  color: #5cc9cc;
+  font-family: RoundsBlack, 'RoundsBlack';
+  font-size: 2.500em;
+}
+/*base & order обеспечивают блоки в ряд, порядок именно такой для вложенности*/
+.base{
+    overflow:hidden;
+    width: 100%;
+    height:100%;
+
+}
+.order{
+    white-space:nowrap;
+    display:inline-block;
+    width: 100%;
+    height:100%;
+}
+
+
+.economy{
+  float: left;
+  width: 29.21%;
+  height:557px;
+}
+
+.how-it-work-pic-1{
+  float: right;
+  width: 100%;
+  max-width: 410px;
+  height: 343px;
+}
+
+.economy-title{
+    float: right;
+    width: 83.86%;
+    max-width: 293px;
+    height:18px;
+    padding-top: 59px;
+    padding-bottom: 17px;
+    color: #5cc9cc;
+    font-size: 1.500em;
+    font-family: RoundsBlack, 'RoundsBlack';
+  }
+
+.economy-text{
+  float: right;
+  width: 83.86%;
+  max-width: 293px;
+  height:46px;
+  color: #005764;
+  font-size: 1.000em;
+  font-family: 'Roboto', sans-serif;
+}
+
+.to-friends{
+    float: left;
+    width: 41.5%;
+    height:557px;
+}
+
+
+.how-it-work-pic-2{
+  width: 70.56%;
+  max-width: 410px;
+  margin: 0 auto;
+  height: 343px;
+}
+
+.to-friends-title{
+    width: 100%;
+    max-width: 581px;
+    height:18px;
+    padding-top: 59px;
+    padding-bottom: 17px;
+    color: #5cc9cc;
+    font-size: 1.500em;
+    font-family: RoundsBlack, 'RoundsBlack';
+  }
+
+.to-friends-text{
+  width: 100%;
+  max-width: 581px;
+  height:46px;
+  color: #005764;
+  font-size: 1.000em;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.be-fit{
+    float: left;
+    width: 29.21%;
+    height:557px;
+}
+
+.how-it-work-pic-3{
+  float: left;
+  width: 100%;
+  max-width: 410px;
+  height: 343px;
+}
+
+.be-fit-title{
+    float: left;
+    width: 83.86%;
+    max-width: 293px;
+    height:18px;
+    padding-top: 59px;
+    padding-bottom: 17px;
+    color: #5cc9cc;
+    font-size: 1.500em;
+    font-family: RoundsBlack, 'RoundsBlack';
+  }
+
+.be-fit-text{
+  float: left;
+  width: 83.86%;
+  max-width: 293px;
+  height:46px;
+  color: #005764;
+  font-size: 1.000em;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*создавайте и размещайте объявления*/
+.create-and-set-announcement{
+  width: 100%;
+  height: 650px;
+}
+
+.create-and-set-announcement-pic-block{
+  float: left;
+  width: 35.71%;
+  height:650px;
+  max-width: 500px;
+  background-color: #5cc9cc;
+}
+
+.create-and-set-announcement-info-block{
+  float: left;
+  width: 64%;
+  height:650px;
+  max-width: 900px;
+  background-image: url('images/create-and-set-announcement-bk.jpg');
+ -moz-background-size: 100%; /* Firefox 3.6+ */
+  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%; /* Opera 9.6+ */
+  background-size: 100%;
+  background-repeat: repeat-y;
+}
+
+.create-and-set-announcement-title-block{
+  width: 75.77%;
+  height: 77px;
+  padding-top: 138px;
+  padding-left: 96px;
+  padding-bottom: 32px;
+  color: white;
+  font-family: RoundsBlack, 'RoundsBlack';
+  font-size: 2.500em;
+}
+
+
+
+.create-and-set-announcement-text-block{
+  width: 75.77%;
+  height:44px;
+  color: white;
+  font-size: 1.125em;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 96px;
+  
+}
+
+.find-near{
+  width: 100%;
+  height: 124px;
+  background-color: white;
+}
+
+.find-near-text{
+  width: 100%;
+  height: 30px;
+  padding-top: 38px;
+  padding-bottom: 50px;
+  color: #5cc9cc;
+  font-size: 2.500em;
+  font-family: RoundsBlack, 'RoundsBlack';
+}
+
+.find-near-line{
+  width: 100%;
+  height: 4px;
+  background-color: #5cc9cc;
+}
+
+.map{
+  width: 100%;
+  height: 615px;
+  background-color: white;
+  background-image: url('images/map.png');
+}
+
+
+.question-title{
+  width: 100%;
+  height: 90px;
+  background-color: #5cc9cc;
+}
+
+.question-title-text{
+  width: 100%;
+  height: 30px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: white;
+  font-size: 2.500em;
+  font-family: RoundsBlack, 'RoundsBlack';
+}
+
+
+.question{
+  width: 100%;
+  height: 453px;
+  background-color: white;
+}
+
+.try-first{
+  width: 100%;
+  height: 507px;
+  background-color: #5cc9cc;
+  background-image: url('images/try-first.png');
+}
+
+.buttom-padding{
+  padding-top: 150px;
+}
+.last-line{
+  width: 100%;
+  height: 90px;
+  background-color: white;
+  background-image: url('images/line.png');
+
+}
