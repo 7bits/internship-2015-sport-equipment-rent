@@ -328,14 +328,14 @@ width: 305px;
 }
 
 .create-and-set-announcement-left{
-  width: 35%;
+  width: 29.21%;
   height: 100%;
   float: left;
   background-color: #5cc9cc;
 }
 
 .create-and-set-announcement-right{
-  width: 65%;
+  width: 70%;
   height: 650px;
   float: left;
   background-image: url('images/create-and-set-announcement-bk.jpg');
