@@ -317,25 +317,29 @@ width: 305px;
 }
 
 .create-and-set-announcement-left{
-  width: 50%;
-  height: 650px;
+  width: 35%;
+  height: 100%;
   float: left;
   background-color: #5cc9cc;
 }
 
 .create-and-set-announcement-right{
-  width: 50%;
+  width: 65%;
   height: 650px;
-  float: right;
+  float: left;
   background-image: url('images/create-and-set-announcement-bk.jpg');
   background-repeat: repeat;
 }
 
+
 .create-and-set-announcement-pic-block{
+  width: 100%;
+  height: 100%;
   float: right;
-  width: 71.42%;
-  max-width: 500px;
-  height:651px;
+  background-image: url('images/create-and-set-announcement.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position-x: right;
 }
 
 .create-and-set-announcement-info-block{
@@ -435,6 +439,8 @@ width: 305px;
   height: 453px;
   background-color: white;
 }
+
+
 
 .try-first{
   width: 100%;
