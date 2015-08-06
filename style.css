@@ -82,8 +82,12 @@ a:hover{
 
 .header-block-inside{
   height:100%;
+  
   margin: 0 auto;
   background-image: url('images/1-block-png.png');
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 
 
@@ -152,6 +156,13 @@ width: 305px;
 
 /*2 блок "как это работает?"*/
 .how-it-work-block{
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  height: 650px;
+}
+
+.how-it-work-block-inside{
   width: 100%;
   margin: 0 auto;
   background-color: white;
@@ -454,6 +465,9 @@ width: 305px;
   background-image: url('images/try-first.png');
   background-repeat: no-repeat;
   margin: 0 auto;
+  background-size: auto;
+  
+  background-position-x: center;
 }
 
 .buttom-padding{
@@ -501,7 +515,7 @@ width: 305px;
 }
 
 .footer-contacts{
-  width: 6%;
+  width: 10%;
   height: 24px;
   float: left;
 }
