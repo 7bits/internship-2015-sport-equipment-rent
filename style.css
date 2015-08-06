@@ -81,7 +81,6 @@ a:hover{
 }
 
 .header-block-inside{
-  width: 1400px;
   height:100%;
   margin: 0 auto;
   background-image: url('images/1-block-png.png');
@@ -314,27 +313,36 @@ width: 305px;
 .create-and-set-announcement{
   width: 100%;
   height: 650px;
+  margin: 0 auto;
+}
+
+.create-and-set-announcement-left{
+  width: 50%;
+  height: 650px;
+  float: left;
+  background-color: #5cc9cc;
+}
+
+
+.create-and-set-announcement-right{
+  width: 50%;
+  height: 650px;
+  float: right;
+  background-image: url('images/create-and-set-announcement-bk.jpg');
+  background-repeat: repeat;
 }
 
 .create-and-set-announcement-pic-block{
-  float: left;
+  float: right;
   width: 35.71%;
-  height:650px;
   max-width: 500px;
-  background-color: #5cc9cc;
+  height:650px;
 }
 
 .create-and-set-announcement-info-block{
   float: left;
-  width: 64%;
+  width: 65%;
   height:650px;
-  max-width: 900px;
-  background-image: url('images/create-and-set-announcement-bk.jpg');
- -moz-background-size: 100%; /* Firefox 3.6+ */
-  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-  -o-background-size: 100%; /* Opera 9.6+ */
-  background-size: 100%;
-  background-repeat: repeat-y;
 }
 
 .create-and-set-announcement-title-block{
@@ -386,11 +394,25 @@ width: 305px;
   width: 100%;
   height: 615px;
   background-color: white;
+}
+
+.map-inside{
+  width: 100%;
+  max-width: 1400px;
+  height: 575px;
+  background-color: white;
   background-image: url('images/map.png');
   background-repeat: no-repeat;
   margin: 0 auto;
 }
 
+.line-after-map{
+  width: 100%;
+  height: 575px;
+  background-color: white;
+  background-image: url('images/map-line.png');
+  background-repeat: repeat;
+}
 
 .question-title{
   width: 100%;
