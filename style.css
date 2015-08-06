@@ -70,7 +70,6 @@ a:hover{
 .container{
   width: 100%;
   height:100%;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -190,34 +189,42 @@ width: 305px;
   height:557px;
 }
 
-.how-it-work-pic-1{
+.economy-inside{
   float: right;
+  width: 96.82%;
+  max-width: 397px;
+  height: 100%;
+}
+.how-it-work-pic-1{
+  margin: 0 auto;
   width: 100%;
-  max-width: 410px;
-  height: 343px;
+  max-width: 397px;
+  height: 290px;
 }
 
 .economy-title{
-    float: right;
-    width: 83.86%;
-    max-width: 293px;
+    margin: 0 auto;
+    float: left;
+    width: 100%;
     height:18px;
     padding-top: 59px;
     padding-bottom: 17px;
     color: #5cc9cc;
     font-size: 1.500em;
     font-family: RoundsBlack, 'RoundsBlack';
+
   }
 
 .economy-text{
-  float: right;
-  width: 83.86%;
-  max-width: 293px;
+  margin: 0 auto;
+  float: left;
+  width: 100%;
   height:46px;
   color: #005764;
   font-size: 1.000em;
   font-family: 'Roboto', sans-serif;
 }
+
 
 .to-friends{
     float: left;
@@ -226,16 +233,22 @@ width: 305px;
 }
 
 
-.how-it-work-pic-2{
-  width: 70.56%;
-  max-width: 410px;
+.to-friends-inside{
   margin: 0 auto;
-  height: 343px;
+  width: 96.82%;
+  max-width: 397px;
+  height: 100%;
+}
+
+.how-it-work-pic-2{
+  width: 100%;
+  margin: 0 auto;
+  height: 290px;
 }
 
 .to-friends-title{
     width: 100%;
-    max-width: 581px;
+    margin: 0 auto;
     height:18px;
     padding-top: 59px;
     padding-bottom: 17px;
@@ -246,7 +259,7 @@ width: 305px;
 
 .to-friends-text{
   width: 100%;
-  max-width: 581px;
+  margin: 0 auto;
   height:46px;
   color: #005764;
   font-size: 1.000em;
@@ -260,17 +273,26 @@ width: 305px;
     height:557px;
 }
 
+.be-fit-inside{
+  float: left;
+  width: 96.82%;
+  max-width: 397px;
+  height: 100%;
+}
+
+
 .how-it-work-pic-3{
   float: left;
   width: 100%;
-  max-width: 410px;
-  height: 343px;
+  max-width: 397px;
+  height: 290px;
+  margin: 0 auto;
 }
 
 .be-fit-title{
     float: left;
-    width: 83.86%;
-    max-width: 293px;
+    width: 100%;
+    margin: 0 auto;
     height:18px;
     padding-top: 59px;
     padding-bottom: 17px;
@@ -281,8 +303,7 @@ width: 305px;
 
 .be-fit-text{
   float: left;
-  width: 83.86%;
-  max-width: 293px;
+  width: 100%;
   height:46px;
   color: #005764;
   font-size: 1.000em;
@@ -366,6 +387,8 @@ width: 305px;
   height: 615px;
   background-color: white;
   background-image: url('images/map.png');
+  background-repeat: no-repeat;
+  margin: 0 auto;
 }
 
 
