@@ -41,7 +41,7 @@ public interface DealMapper {
     @Select("SELECT id FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and renting_id=#{rentingId} and is_answered=#{isAnswered}")
     long getId(Deal deal);
 
-    @Select("SELECT count(id) FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and renting_id=#{rentingId} and is_answered=#{isAnswered}")
+    @Select("SELECT count(id) FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and renting_id=#{rentingId} and is_answered=false")
     long isExist(Deal deal);
 
     @Delete("DELETE FROM deals where goods_id=#{goodsId}")
