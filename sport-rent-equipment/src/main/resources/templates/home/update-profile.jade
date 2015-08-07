@@ -8,7 +8,6 @@ head
 	link(rel="stylesheet", href="resources/style/update-profile/update-profile.css", type="text/css", media="all")
 body
 	.container
-<<<<<<< HEAD
 		.header.shadow
 			.center-of-header
 				.base
@@ -45,22 +44,3 @@ body
 							input.update-content-pass-block#from.form-control(type="password", value="#{user.pass}", name="pass",placeholder="Текущий пароль")
 							input.update-content-new-pass-block#from.form-control(type="password", value="#{user.newPass}", name="newPass",placeholder="Новый пароль")
 					input.button-update(type='submit', value='CОХРАНИТЬ')
-=======
-		include header.jade
-		.pic-first
-			.center-block
-				h1.white-color.set-font-rounds.set-font-size-60 ДАЙ  ПОГОНЯТЬ
-				p.white-color.set-font-profile-roboto-reg.set-font-size-20 Сервис по поиску и аренде спортивного оборудования
-				.space-block
-				.order
-					.sector1.set-font-size-14.set-font-profile-roboto
-						a(href="#seeAll")
-							button.btn.btn-color-white.btn-block.btn-lg.buttom-round.set-font-profile-roboto-bold(type="button") СМОТРЕТЬ ОБЪЯВЛЕНИЯ
-					.sector2.set-font-size-14.set-font-profile-roboto
-						a(href="/add")
-							button.btn.btn-color.btn-block.btn-lg.buttom-round.set-font-profile-roboto-bold(type="button") ДАТЬ ОБЪЯВЛЕНИЕ
-		.white-block
-		.all-info-block.set-font-profile-roboto
-			include mixin_list_all_announcement.jade
-			+list(goods)
->>>>>>> 82ddabe4586db35d5dedca08bcd57d414db29e52
