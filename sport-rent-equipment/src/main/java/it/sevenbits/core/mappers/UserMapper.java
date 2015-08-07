@@ -1,10 +1,7 @@
 package it.sevenbits.core.mappers;
 
 import it.sevenbits.web.domain.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -51,4 +48,8 @@ public interface UserMapper {
     void save(final User user);
 
 
+    @Update("UPDATE users SET (first_name, phone, image_url)=+\n" +
+            "(#{firstName}, #{phone}, #{imageUrl})+\n" +
+            "  where id=#{id}")
+    void update(User user);
 }

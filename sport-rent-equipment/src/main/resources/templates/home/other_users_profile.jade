@@ -3,7 +3,7 @@ head
 	title Обявление
 	meta(charset='utf-8')
 	meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-	link(rel="stylesheet", href="resources/style/personal-area/personal-area.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/style/profile/profile.css", type="text/css", media="all")
 	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
 body
 	.container
@@ -28,20 +28,13 @@ body
 		.content
 			.base
 				.order
-					.photo-info
+					.personal-info.shadow
 						.ava-white-block.round-border.shadow
-							img.round.ava(src="http://st-im.kinopoisk.ru/im/kadr/1/3/8/kinopoisk.ru-Le-mac-1380720.jpg", height="120", width="120")
-						.personal-info
-							.blue-line-info.blue-line-shadow
-								.header-info-block
-									.base
-										.order
-											.text-block-1
-												p.text-center
-													b
-														Ваши данные
-											img(src="resources/style/personal-area/images/info-icon.png", width="17", height="17")
-
+							img.round.ava(src=user.getImageUrl, height="120", width="120")
+						.line
+							hr
+						.author-name
+							p.text-position=user.firstName
 					.white-content
 						.blue-line.blue-line-shadow
 							.header-info-block

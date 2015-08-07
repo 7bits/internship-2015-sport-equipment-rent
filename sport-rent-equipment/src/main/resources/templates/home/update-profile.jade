@@ -1,0 +1,46 @@
+doctype html
+head
+	title Обявление
+	meta(charset='utf-8')
+	meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+	link(rel="stylesheet", href="resources/normalize.css", type="text/css", media="all")
+	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
+	link(rel="stylesheet", href="resources/style/update-profile/update-profile.css", type="text/css", media="all")
+body
+	.container
+		.header.shadow
+			.center-of-header
+				.base
+					.order
+						.logo
+							a(href="/")
+								img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+						if (!isAuth)
+							.profile
+								a.green-color(href="/login")
+									h4.position ВХОД
+						else
+							.personal
+								a.green-color(href="/personal_area")
+									h4.position ЛИЧНЫЙ КАБИНЕТ
+							.exit
+								a.green-color(href="/logout")
+									h4.position ВЫЙТИ
+		.content
+			.update-block
+				.update-block-header
+					.update-block-header-text
+						b
+							Редактирование профиля
+				form(role="form", action="/update_profile", method="post")
+					input.update-block-content-first-text#from.form-control(type="text", value="#{user.firstName}", name="firstName",placeholder="Имя")
+					input.update-block-content-another-text#from.form-control(type="text", value="#{user.phone}", name="phone",placeholder="Телефон")
+					input.update-block-content-another-text#from.form-control(type="text", value="#{user.imageUrl}", name="imageUrl",placeholder="URL изображения")
+					.update-content-change-pass
+						b
+							Смена пароля
+					.base
+						.order
+							input.update-content-pass-block#from.form-control(type="password", value="#{user.pass}", name="pass",placeholder="Текущий пароль")
+							input.update-content-new-pass-block#from.form-control(type="password", value="#{user.newPass}", name="newPass",placeholder="Новый пароль")
+					input.button-update(type='submit', value='CОХРАНИТЬ')

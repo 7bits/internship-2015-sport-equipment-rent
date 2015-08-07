@@ -39,4 +39,9 @@ public class UserInPostgreSQLRepository implements UserRepository{
     public int getCountOfUsersWithThatEmail(String email) {
         return mapper.getCountOfUserWithThatEmail(email);
     }
+
+    @Override
+    public void update(User user) {
+        mapper.update(user);
+    }
 }

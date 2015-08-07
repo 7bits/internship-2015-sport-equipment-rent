@@ -4,5 +4,10 @@ mixin list(goods)
 			- announcement_id = Goods.id;
 			a(href="/see_announcement?announcement_id=#{announcement_id}")
 				.white-box-for-text.shadow
-					p.size-text-norap=Goods.title
-					p.size-text-norap=Goods.description
+					.one-foto-box
+						img(src="http://muted.muted.netdna-cdn.com/wp-content/uploads/2013/11/Shinola-x-Filson-Bixby-Bicycle-1-1024x682.jpg")
+					.title
+						b
+							p=Goods.title
+					.description
+						p=Goods.description
