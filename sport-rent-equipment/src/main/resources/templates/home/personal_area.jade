@@ -1,36 +1,56 @@
 doctype html
 head
-	title Личный кабинет
-	include depending.jade
-	link(rel="stylesheet", href="resources/message.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/personal-area.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/user.css", type="text/css", media="all")
+	title Обявление
+	meta(charset='utf-8')
+	meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+	link(rel="stylesheet", href="resources/style/personal-area/personal-area.css", type="text/css", media="all")
+	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
 body
-	.background-gray
-		.background-white
-			.row
-				.col-lg-2
-				.col-lg-4
-					.logo-position
-						a(href="/")
-							img(src="resources/images/logo.png", align="left", width="170", height="45")
-				.col-lg-3
-				.col-lg-1
-					label.motto-position(for="name")
-						a(href="/logout")
-							h4.motto-color ВЫХОД
-				.col-lg-2
-					label.motto-position(for="name")
-						a(href="/")
-							h4.motto-color НА ГЛАВНУЮ >
-		.gray-line
-		.base-block
-			.green-line.shadow
-				h2.text-color-white Ваши объявления
-			if goods==null
-				.white-box-for-text.shadow
-					text=Здесь могли бы быть ваши обявления
-			else
-				include mixin_users_announcement_list.jade
-				+list(goods)
-			.green-line.shadow
+	.container
+		.header.shadow
+			.center-of-header
+				.base
+					.order
+						.logo
+							a(href="/")
+								img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+						if (!isAuth)
+							.profile
+								a.green-color(href="/login")
+									h4.position ВХОД
+						else
+							.personal
+								a.green-color(href="/personal_area")
+									h4.position ЛИЧНЫЙ КАБИНЕТ
+							.exit
+								a.green-color(href="/logout")
+									h4.position ВЫЙТИ
+		.content
+			.base
+				.order
+					.photo-info
+						.ava-white-block.round-border.shadow
+							img.round.ava(src="http://st-im.kinopoisk.ru/im/kadr/1/3/8/kinopoisk.ru-Le-mac-1380720.jpg", height="120", width="120")
+						.personal-info
+							.blue-line-info.blue-line-shadow
+								.header-info-block
+									.base
+										.order
+											.text-block-1
+												p.text-center
+													b
+														Ваши данные
+											img(src="resources/style/personal-area/images/info-icon.png", width="17", height="17")
+
+					.white-content
+						.blue-line.blue-line-shadow
+							.header-info-block
+								.base
+									.order
+										.text-block-1
+											p.text-center
+												b
+													Объявления
+						include mixin_users_announcement_list.jade
+						.announcement-list
+							+list(goods)
