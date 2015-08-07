@@ -27,6 +27,7 @@ public interface UserMapper {
             @Result(column = "first_name", property = "firstName"),
             @Result(column = "second_name", property = "secondName"),
             @Result(column = "phone", property = "phone"),
+            @Result(column = "image_url", property = "imageUrl")
     })
     User getUser(String email);
 
@@ -36,6 +37,7 @@ public interface UserMapper {
             @Result(column = "pass", property = "pass"),
             @Result(column = "first_name", property = "firstName"),
             @Result(column = "phone", property = "phone"),
+            @Result(column = "image_url", property = "imageUrl")
     })
     User getUserById(Long id);
 
@@ -48,8 +50,8 @@ public interface UserMapper {
     void save(final User user);
 
 
-    @Update("UPDATE users SET (first_name, phone, image_url)=+\n" +
-            "(#{firstName}, #{phone}, #{imageUrl})+\n" +
-            "  where id=#{id}")
+    @Update("UPDATE users SET (first_name, phone, image_url)=\n" +
+            "(#{firstName}, #{phone}, #{imageUrl})\n" +
+            " where id=#{id}")
     void update(User user);
 }

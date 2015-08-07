@@ -4,6 +4,7 @@ import it.sevenbits.web.domain.UpdateUserForm;
 import it.sevenbits.web.service.CommonFieldValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Map;
 /**
  * Created by awemath on 8/7/15.
  */
+@Service
 public class UpdateFieldValidator {
     @Autowired
     private CommonFieldValidator validator;
