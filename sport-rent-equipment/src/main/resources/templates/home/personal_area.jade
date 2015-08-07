@@ -33,24 +33,27 @@ body
 							img.round.ava(src="http://st-im.kinopoisk.ru/im/kadr/1/3/8/kinopoisk.ru-Le-mac-1380720.jpg", height="120", width="120")
 						.personal-info
 							.blue-line-info.blue-line-shadow
-								.header-info-block
-									.base
-										.order
-											.text-block-1
-												p.text-center
-													b
-														Ваши данные
+								.base
+									.order
+										.your-info-title-block
+											b
+												p
+													Ваши данные
+										.your-info-ico-block
 											img(src="resources/style/personal-area/images/info-icon.png", width="17", height="17")
-
+							.your-info-name-block
+								p=user.firstName
+							.your-info-line
+							.your-info-name-block
+								p=user.phone
+							.your-info-line
 					.white-content
 						.blue-line.blue-line-shadow
 							.header-info-block
-								.base
-									.order
-										.text-block-1
-											p.text-center
-												b
-													Объявления
+								.your-info-title-block-content
+									p
+										b
+											Ваши объявления
 						include mixin_users_announcement_list.jade
 						.announcement-list
 							+list(goods)

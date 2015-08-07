@@ -66,9 +66,7 @@ color: #353535;
 /*базовый контейнер*/
 .container{
     width: 100%;
-    min-width: 350px;
-    max-width: 1400px;
-    min-height:100%;
+    height:100%;
     background-image: url('images/bk-an.jpg');
     background-repeat: repeat;
     background-position: right bottom;
@@ -162,49 +160,25 @@ color: #353535;
 
 /*контент*/
 .content{
-    width: 52,35714285714286%;
-    min-width: 232.5px;
-    max-width: 733px;
+    width: 57.35714285714286%;
     height: 100%;
-    min-height:100%;
+    height: 100%;
     margin: 0 auto;
     padding-top: 18px;
-}
-/*левая сторона контента*/
-.l-side{
-    width: 38,14285714285714%;
-    min-width: 39.5px;
-    max-width: 534px;
-    height: 256px;
-    min-height:64px;
-    float:left;
-}
-
-/*содержание левой стороны*/
-.l-inside{
-    width: 86.7088%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 99.21%;
-    min-height:63.5px;
-    float:left;
-    font-size: 0.875em;
 }
 
 .ava-white-block{
     width: 132px;
     height: 132px;
     margin: 0 auto;
-    margin-top:12px;
+    margin-bottom: 10px;
     background-color: white;
-    font-family: 'Roboto', sans-serif;
 }
 
 
 .ava{
     margin: 7px 0 0 6px;
     float: none;
-
 }
 
 .line{
@@ -251,13 +225,65 @@ color: #353535;
     font-family: 'Roboto', sans-serif;
 }
 
-.text-block-1{
-    width: 66px;
-    height: 100%;
+.your-info-title-block{
+    width: 60%;
+    height: 10px;
     float: left;
     font-family: 'Roboto', sans-serif;
-    padding-left:12px;
+    padding-top: 5px;
+    padding-bottom:11px;
+    padding-left:18px;
+    padding-right:26px;
+    color: white;
+    font-size: 0.875em;
 }
+
+.your-info-title-block-content{
+    width: 60%;
+    height: 10px;
+    float: left;
+    font-side: 18px;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 2px;
+    padding-left:20px;
+    color: white;
+    font-size: 1.125em;
+}
+
+.your-info-ico-block{
+    width: 17px;
+    height: 17px;
+    float: right;
+    font-family: 'Roboto', sans-serif;
+    padding-right:13px;
+}
+
+.your-info-name-block{
+    width: 100%;
+    height: 10px;
+    float: left;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    padding-left: 18px;
+    color: #6b6b6b;
+}
+
+
+
+.your-info-line{
+    width: 82.71%;
+    height: 1px;
+    float: left;
+    margin-bottom: 6px;
+    background-color: #6b6b6b;
+    margin: 0 auto;
+    margin-left: 13px;
+    margin-top: 6px;
+
+
+}
+
 
 /*выраваниет текст по горизонтали*/
 .text-position{
@@ -325,22 +351,12 @@ color: #353535;
 }
 
 
-/*центральный сигмент*/
-.center-side{
-    width: 52,35714285714286%;
-    min-width: 106.75px;
-    max-width: 733px;
-    height: 100%;
-    min-height:431px;
-    float: left;
-    margin:0 auto;
-}
 
 .white-content{
-    width: 76.39836289222374%;
-    min-width: 106.75px;
-    max-width: 560px;
+    width: 570px;
     float: right;
+    height: 100%;
+
 }
 .white-box-for-text{
     margin: 0 auto;
@@ -370,17 +386,23 @@ a{
 }
 
 .header-info-block{
-    width: 100%;
-    min-width: 77.75px;
-    max-width: 312px;
-    height: 100%;
+    width: 30%;
+    height: 20px;
     font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
+    padding-left: 18px;
+    padding-top: 10px;
+    padding-bottom: 11px;
     color: white;
+    float: left;
 }
 
 .header-info-block img{
-    padding-right:10px;
+    width: 17px;
+    height: 17px;
+    float: right;
+    padding-left: 26px;
+    padding-right:13px;
 }
 
 /*заголовок*/
@@ -504,7 +526,7 @@ a{
 
 .blue-line{
     width: 100%;
-    min-width: 68px;
+    max-width: 558px;
     height: 45px;
     min-height:7px;
     background-color: #6eb2b3;
@@ -624,8 +646,8 @@ a{
 }
 
 .personal-info{
-    width: 164px;
-    height: 100%;
+    width: 100%;
+    height: 130px;
     float: left;
     background-color: white;
     font-size: 0.875em;
@@ -636,7 +658,8 @@ a{
     -khtml-border-radius: 3px; /* KHTML */
 }
 .photo-info{
-width: 158px;
+    width: 162px;
+    height: 104px;
     height: 100%;
     float: left;
 
