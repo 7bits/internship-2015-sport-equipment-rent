@@ -11,4 +11,6 @@ public interface UserRepository {
     User getUser(final String email) throws RepositoryException;
     User getUserById(final long id) throws RepositoryException;
     int getCountOfUsersWithThatEmail(String email);
+
+    void update(User user);
 }

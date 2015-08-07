@@ -58,4 +58,8 @@ public class UserService {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
+
+    public void update(User user) {
+        repository.update(user);
+    }
 }

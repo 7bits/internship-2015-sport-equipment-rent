@@ -12,6 +12,7 @@ public class User implements Serializable {
     String phone;
     String email;
     String pass;
+    String imageUrl;
     public Long getId() {
         return id;
     }
@@ -58,5 +59,21 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public static User valueOf(UpdateUserForm form) {
+        User user = new User();
+        user.setFirstName(form.getFirstName());
+        user.setPhone(form.getPhone());
+        user.setImageUrl(form.getImageUrl());
+        return user;
     }
 }
