@@ -367,6 +367,11 @@ color: #353535;
     height: auto;
     background-color: white;
     float: left;
+        /*для переноса слов*/
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
 }
 .white-box-for-text:hover{
 
