@@ -200,28 +200,6 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field) {
-        if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
-            DateTime end = DateTime.parse(to);
-            List<Deal> openDeals = service.getOpenWithId(goodsId);
-            Deal deal;
-            for (int i = 0; i < openDeals.size(); i++) {
-                deal = openDeals.get(i);
-                DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
-                DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
-                if (estimatedStart.getMillis() < start.getMillis() && estimatedEnd.getMillis() > end.getMillis()) {
-                    errors.put(key, field);
-                    return;
-                }
-                if (start.getMillis() < estimatedStart.getMillis() && end.getMillis() > estimatedEnd.getMillis()) {
-                    errors.put(key, field);
-                    return;
-                }
-
-            }
-        }
-    }
 
     public void isEarlierThenWeek(String from, HashMap<String, String> errors, String key, String value) {
         if (errors.isEmpty()) {
@@ -253,12 +231,34 @@ public class CommonFieldValidator {
     }
 
     public void isImage(String imageUrl, HashMap<String, String> errors, String key, String field) {
-        if(errors.containsKey(key)){
+        if (errors.containsKey(key)) {
             return;
         }
-        if(!(imageUrl.contains(".jpg")||imageUrl.contains(".bmp") || imageUrl.contains(".jpeg") || imageUrl.contains(".png")||imageUrl.contains(".gif"))){
+        if (!(imageUrl.contains(".jpg") || imageUrl.contains(".bmp") || imageUrl.contains(".jpeg") || imageUrl.contains(".png") || imageUrl.contains(".gif"))) {
             errors.put(key, field);
         }
+    }
+    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field){
+         if(errors.isEmpty()){
+             DateTime start = DateTime.parse(from);
+             DateTime end = DateTime.parse(to);
+             List<Deal> openDeals = service.getOpenWithId(goodsId);
+             Deal deal;
+             for(int i=0;i<openDeals.size();i++){
+                 deal=openDeals.get(i);
+                 DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
+                 DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
+                 if(estimatedStart.getMillis()<=start.getMillis() && estimatedEnd.getMillis()>=start.getMillis()){
+                     errors.put(key, field);
+                     return;
+                 }
+                 if(start.getMillis()<=estimatedStart.getMillis() && end.getMillis()>=estimatedStart.getMillis()){
+                     errors.put(key, field);
+                     return;
+                 }
+
+             }
+         }
     }
 }
 
