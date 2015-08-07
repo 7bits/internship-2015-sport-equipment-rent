@@ -39,6 +39,10 @@ public class TakeGoodsValidator {
 
         validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "К сожалению, это время уже занято");
 
+        validator.isEarlierThenWeek(form.getFrom(), errors, "", "Срок начала аренды не может начинаться позже, чем через неделю после момента бронирования. ");
+        validator.isRentTimeLessMonth(form.getFrom(), form.getTo(), errors, "", "Продолжительность аренды может составлять от 1 часа до 1 месяца.");
+        validator.isRentTimeMoreHour(form.getFrom(), form.getTo(), errors, "", "Продолжительность аренды может составлять от 1 часа до 1 месяца.");
+
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));

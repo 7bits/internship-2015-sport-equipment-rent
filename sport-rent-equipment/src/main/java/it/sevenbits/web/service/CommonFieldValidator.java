@@ -20,11 +20,15 @@ import java.util.regex.Pattern;
 @Service
 public class CommonFieldValidator {
 
-    /** Email exists pattern */
+    /**
+     * Email exists pattern
+     */
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile(
             "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE
     );
-    /** Pattern for whitespaces */
+    /**
+     * Pattern for whitespaces
+     */
     private static final String WHITESPACE_PATTERN = "\\s+";
 
     /**
@@ -62,7 +66,7 @@ public class CommonFieldValidator {
      */
     public void isEmail(final String value, final Map<String, String> errors, final String field, final String key) {
         if (value != null && !errors.containsKey(field)) {
-            Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(value);
+            Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(value);
             if (!matcher.find()) {
                 errors.put(field, key);
             }
@@ -85,7 +89,7 @@ public class CommonFieldValidator {
             final String field,
             final String key
     ) {
-        if(errors.containsKey(field)){
+        if (errors.containsKey(field)) {
             return;
         }
         if (value != null) {
@@ -100,20 +104,20 @@ public class CommonFieldValidator {
             final Map<String, String> errors,
             final String field,
             final String key
-    ){
+    ) {
         char c;
-        if(errors.containsKey(field)){
+        if (errors.containsKey(field)) {
             return;
         }
         char buf[] = value.toCharArray();
-        if(buf[0]=='-' || (buf[0]<='9' && buf[0]>='0') ) {
+        if (buf[0] == '-' || (buf[0] <= '9' && buf[0] >= '0')) {
             for (int i = 1; i < value.length(); i++) {
                 c = buf[i];
                 if ((c < '0' || c > '9')) {
                     errors.put(field, key);
                 }
             }
-        }else{
+        } else {
             errors.put(field, key);
         }
     }
@@ -123,12 +127,12 @@ public class CommonFieldValidator {
             final Map<String, String> errors,
             final String field,
             final String key
-    ){
-        if(errors.containsKey(field)){
+    ) {
+        if (errors.containsKey(field)) {
             return;
         }
         char buf[] = value.toCharArray();
-        if(value.length()>0) {
+        if (value.length() > 0) {
             if (buf[0] == '-' || Double.valueOf(value) <= 0) {
                 errors.put(field, key);
                 return;
@@ -142,9 +146,9 @@ public class CommonFieldValidator {
             final Map<String, String> errors,
             final String key,
             final String field
-    ){
-        if(!errors.containsKey(key)){
-            if(!password.equals(passwordVerification)){
+    ) {
+        if (!errors.containsKey(key)) {
+            if (!password.equals(passwordVerification)) {
                 errors.put(key, field);
             }
         }
@@ -156,27 +160,28 @@ public class CommonFieldValidator {
             final Map<String, String> errors,
             final String key,
             final String field
-    ){
-        if(!errors.containsKey(key))
-        if(userService.getCountOfUsersWithThatEmail(email)!=0){
-            errors.put(key, field);
-        }
+    ) {
+        if (!errors.containsKey(key))
+            if (userService.getCountOfUsersWithThatEmail(email) != 0) {
+                errors.put(key, field);
+            }
     }
+
     public void isNotEqualStrings(
             final String firstString,
             final String secondString,
             final Map<String, String> errors,
             final String key,
             final String field
-    ){
-        if(!errors.containsKey(key))
-        if(firstString.equals(secondString)){
-            errors.put(key, field);
-        }
+    ) {
+        if (!errors.containsKey(key))
+            if (firstString.equals(secondString)) {
+                errors.put(key, field);
+            }
     }
 
     public void isTooEarlyDate(String from, String to, HashMap<String, String> errors, String key, String field) {
-        if(errors.isEmpty()) {
+        if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime end = DateTime.parse(to);
             if (start.getMillis() < DateTime.now().getMillis()) {
@@ -185,37 +190,66 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isEndAfterStart(String from, String to, HashMap<String, String> errors, String key, String field){
-        if(errors.isEmpty()) {
+    public void isEndAfterStart(String from, String to, HashMap<String, String> errors, String key, String field) {
+        if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime end = DateTime.parse(to);
-            if(start.getMillis()>end.getMillis()){
+            if (start.getMillis() > end.getMillis()) {
                 errors.put(key, field);
             }
         }
     }
 
-    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field){
-         if(errors.isEmpty()){
-             DateTime start = DateTime.parse(from);
-             DateTime end = DateTime.parse(to);
-             List<Deal> openDeals = service.getOpenWithId(goodsId);
-             Deal deal;
-             for(int i=0;i<openDeals.size();i++){
-                 deal=openDeals.get(i);
-                 DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
-                 DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
-                 if(estimatedStart.getMillis()<start.getMillis() && estimatedEnd.getMillis()>end.getMillis()){
-                     errors.put(key, field);
-                     return;
-                 }
-                 if(start.getMillis()<estimatedStart.getMillis() && end.getMillis()>estimatedEnd.getMillis()){
-                     errors.put(key, field);
-                     return;
-                 }
+    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field) {
+        if (errors.isEmpty()) {
+            DateTime start = DateTime.parse(from);
+            DateTime end = DateTime.parse(to);
+            List<Deal> openDeals = service.getOpenWithId(goodsId);
+            Deal deal;
+            for (int i = 0; i < openDeals.size(); i++) {
+                deal = openDeals.get(i);
+                DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
+                DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
+                if (estimatedStart.getMillis() < start.getMillis() && estimatedEnd.getMillis() > end.getMillis()) {
+                    errors.put(key, field);
+                    return;
+                }
+                if (start.getMillis() < estimatedStart.getMillis() && end.getMillis() > estimatedEnd.getMillis()) {
+                    errors.put(key, field);
+                    return;
+                }
 
-             }
-         }
+            }
+        }
+    }
+
+    public void isEarlierThenWeek(String from, HashMap<String, String> errors, String key, String value) {
+        if (errors.isEmpty()) {
+            DateTime start = DateTime.parse(from);
+            if(DateTime.now().plusWeeks(1).getMillis()<start.getMillis()){
+                errors.put(key, value);
+            }
+        }
+    }
+
+    public void isRentTimeLessMonth(String from, String to, HashMap<String, String> errors, String key, String field) {
+        if(errors.isEmpty()){
+            DateTime start = DateTime.parse(from);
+            DateTime finish = DateTime.parse(to);
+            if(start.plusMonths(1).getMillis()<finish.getMillis()){
+                errors.put(key, field);
+            }
+        }
+    }
+
+    public void isRentTimeMoreHour(String from, String to, HashMap<String, String> errors, String key, String field) {
+        if(errors.isEmpty()){
+            DateTime start = DateTime.parse(from);
+            DateTime finish = DateTime.parse(to);
+            if(start.plusHours(1).getMillis()>finish.getMillis()){
+                errors.put(key, field);
+            }
+        }
     }
 }
 
