@@ -205,11 +205,11 @@ public class CommonFieldValidator {
                  deal=openDeals.get(i);
                  DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
                  DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
-                 if(estimatedStart.getMillis()<start.getMillis() && estimatedEnd.getMillis()>end.getMillis()){
+                 if(estimatedStart.getMillis()<=start.getMillis() && estimatedEnd.getMillis()>=start.getMillis()){
                      errors.put(key, field);
                      return;
                  }
-                 if(start.getMillis()<estimatedStart.getMillis() && end.getMillis()>estimatedEnd.getMillis()){
+                 if(start.getMillis()<=estimatedStart.getMillis() && end.getMillis()>=estimatedStart.getMillis()){
                      errors.put(key, field);
                      return;
                  }
