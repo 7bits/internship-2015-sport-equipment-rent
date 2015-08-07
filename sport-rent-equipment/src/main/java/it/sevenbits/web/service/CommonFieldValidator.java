@@ -217,5 +217,14 @@ public class CommonFieldValidator {
              }
          }
     }
+
+    public void isImage(String imageUrl, HashMap<String, String> errors, String key, String field) {
+        if(errors.containsKey(key)){
+            return;
+        }
+        if(!(imageUrl.contains(".jpg")||imageUrl.contains(".bmp") || imageUrl.contains(".jpeg") || imageUrl.contains(".png")||imageUrl.contains(".gif"))){
+            errors.put(key, field);
+        }
+    }
 }
 
