@@ -26,6 +26,15 @@ margin: 0 auto;
 }
 
 
+.set-roboto{
+
+    font-family: 'Roboto', sans-serif;
+}
+
+.set-18{
+
+font-size: 1.125em;
+}
 
 .sector1{
 width: 100%;
@@ -37,16 +46,22 @@ text-align: center; /* Выравнивание по центру */
 }
 
 .center {
-width: 35%;
-height:40%;
-margin: 0 auto;
-}
+width: 22%;
+min-width: 170px;
+ height:40%;
+ margin-left: 38%;
+ margin-right: 38%;
+margin-top: 145px;
+ }
 
 
 .center-auth {
 width: 22%;
+min-width: 170px;
 height:25%;
-margin: 0 auto;
+margin-left: 38%;
+margin-right: 38%;
+margin-top: 145px;
 }
 
 .for-error-auth{
@@ -58,14 +73,44 @@ margin: 0 auto;
 float: right;
 }
 
-a{
-color: #5dc8cd;
-}
-
-a:hover{
-color: black;
-}
-
 .text-white-color{
 color: white;
+}
+
+input{
+padding-left: 10px;
+color: #949494;
+}
+
+
+input::-webkit-input-placeholder {
+
+font-family: 'Roboto', sans-serif;
+font-size: 1em;
+}
+/*деалет внутренннюю тень*/
+input:focus{
+box-shadow: 0 0 8px #E6E6E6 inset;
+}
+/*убирает подстветку placeholder*/
+input:focus:-ms-input-placeholder{
+    color: transparent;
+
+}
+
+input:focus::-moz-placeholder{
+    color: transparent;
+
+}
+input:focus:-moz-placeholder{
+    color: transparent;
+
+}
+input:focus::-webkit-input-placeholder{
+    color: transparent;
+
+}
+input:focus:placeholder-shown{
+    color: transparent;
+
 }

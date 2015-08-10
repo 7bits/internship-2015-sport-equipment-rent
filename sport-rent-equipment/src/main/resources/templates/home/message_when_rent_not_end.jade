@@ -5,6 +5,7 @@ head
 	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
 	link(rel="stylesheet", href="/resources/header-style.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/message/mes-style.css", type="text/css", media="all")
+	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
 body
 	.container
 		.header.shadow
@@ -19,7 +20,7 @@ body
 				p.set-font-profile-roboto.set-font-size-24.set-padding-to-p.gray-color
 					Срок аренды еще не закончен.
 					br
-					Вы уверены что хотете закончить аренду?
+					Вы уверены что хотите закончить аренду?
 				a.set-padding-a-left(href="/finally_close?deal_id=#{id}")
 					input.button-delete(type='button', value='Да')
 				a.set-padding-a-right(href="/")
