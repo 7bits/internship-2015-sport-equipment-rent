@@ -661,10 +661,12 @@ a{
     float:left;
     width:100%;
     font-size: 0.688em;
-    margin-left:9px;
+    padding-left:9px;
+    padding-right :9px;
     color: #a2a2a2;
     font-family: 'Roboto', sans-serif;
     padding-top:10px;
+
 }
 
 
