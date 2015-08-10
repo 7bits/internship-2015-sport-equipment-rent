@@ -26,18 +26,18 @@ public class TakeGoodsValidator {
     public HashMap<String, String> validate(final DateForm form, long goodsId) {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
-        validator.isNotNullOrEmpty(form.getFrom(), errors,"Поле начало", "Начало аренды не может быть пустым");
-        validator.isNotNullOrEmpty(form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть пустым");
+        validator.isNotNullOrEmpty(form.getFrom(), errors,"Поле начало", "Начало аренды не может быть пустым!");
+        validator.isNotNullOrEmpty(form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть пустым!");
 
-        validator.isNotEqualStrings(form.getTo(), form.getFrom(), errors, "Поле окончание", "Начало и окончание аренды не могут совпадать");
+        validator.isNotEqualStrings(form.getTo(), form.getFrom(), errors, "Поле окончание", "Начало и окончание аренды не могут совпадать!");
 
 
-        validator.isTooEarlyDate(form.getFrom(), form.getTo(), errors, "Поле начало", "Начало аренды не может быть раньше настоящего");
-        validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть раньше настоящего");
+        validator.isTooEarlyDate(form.getFrom(), form.getTo(), errors, "Поле начало", "Начало аренды не может быть раньше настоящего момента времени!");
+        validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть раньше настоящего момента времени!");
 
-        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "Окончание аренды должно быть после начала");
+        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "Окончание аренды должно быть после начала аренды!");
 
-        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "К сожалению, это время уже занято");
+        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "К сожалению, это время уже занято!");
 
         validator.isEarlierThenWeek(form.getFrom(), errors, "", "Срок начала аренды не может начинаться позже, чем через неделю после момента бронирования. ");
         validator.isRentTimeLessMonth(form.getFrom(), form.getTo(), errors, "", "Продолжительность аренды может составлять от 1 часа до 1 месяца.");

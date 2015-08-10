@@ -1,0 +1,35 @@
+.error-block{
+    width: 90%;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px solid #eed256;
+    background-color: #fbf9f9;
+    color: #eed256;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+    font-size: 0.750em;
+    font-family: 'Roboto', sans-serif;
+
+     -moz-border-radius: 4px; /* Firefox */
+        -webkit-border-radius: 4px; /* Safari, Chrome */
+        -khtml-border-radius: 4px; /* KHTML */
+        border-radius: 4px; /* CSS3 */
+}
+
+.error-block p{
+
+    margin-bottom: 10px;
+    text-alight: center;
+}
+
+.error-block li {
+    list-style-type: none; /* Убираем маркеры */
+   }

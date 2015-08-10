@@ -4,7 +4,8 @@ head
 	include depending.jade
 	link(rel="stylesheet", href="resources/registration-authorization.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
-
+	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
+	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
 body
 	.background-line
 		.row
@@ -13,12 +14,11 @@ body
 				label.menu-position(for="name")
 					a(href="/")
 						p.motto-color.set-font-profile-roboto.set-font-size-14 < НА ГЛАВНУЮ
-	.for-error-auth
-		include mixin_er.jade
-		+err(errors)
 	.center-auth
 		a(href="/")
 			img(src="resources/images/logo.png", align="center", width="170", height="45")
+		include mixin_er.jade
+		+err(errors)
 		form(role="form", action="/login", method="post")
 			div.form-group
 				.row
