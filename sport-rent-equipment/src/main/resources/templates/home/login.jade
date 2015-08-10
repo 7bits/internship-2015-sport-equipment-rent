@@ -9,11 +9,13 @@ head
 body
 	.background-line
 		.row
+			.col-lg-12
+		.row
 			.col-lg-2
 			.col-lg-3
 				label.menu-position(for="name")
 					a(href="/")
-						p.motto-color.set-font-profile-roboto.set-font-size-14 < НА ГЛАВНУЮ
+						p.motto-color.set-roboto.set-18 < НА ГЛАВНУЮ
 	.center-auth
 		a(href="/")
 			img(src="resources/images/logo.png", align="center", width="170", height="45")
@@ -25,10 +27,10 @@ body
 					input#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
 				.row
 					input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
-				.row.set-font-profile-roboto-reg.set-font-size-15
+				.row.set-roboto.set-font-size-15
 					button.btn.btn-color.btn-block(type="submit") ВОЙТИ
-				.row.set-font-profile-roboto-reg.set-font-size-16
+				.row.set-roboto.set-font-size-16
 					text.text-right.text-white-color
 						Еще не зарегистрированы?
-						a(href="/registration")
+						a(href="/registration", style="color: #5dc8cd;")
 							Регистрация
