@@ -18,6 +18,15 @@ button::-moz-focus-inner,
 
 
 
+.size-text-norap {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+padding: 5px;
+-o-text-overflow: ellipsis;
+width: 100%;
+}
+
 /*всегда писать эти 2 блока!!!*/
 body{
     font: 100/1.5em;
@@ -712,10 +721,11 @@ a{
 .description p{
     float:left;
     width:100%;
-    margin-left:9px;
     color: #a2a2a2;
     font-size: 0.688em;
     padding-top:10px;
+    padding-left:9px;
+    padding-right :9px;
 }
 
 
