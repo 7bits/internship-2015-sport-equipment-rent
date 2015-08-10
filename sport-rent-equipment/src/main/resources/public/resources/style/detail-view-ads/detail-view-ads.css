@@ -630,11 +630,11 @@ color: #353535;
     width: 100%;
     min-width: 68px;
     max-width: 272px;
-    height: 190px;
-    min-height:20px;
+    height: auto;
     background-color: white;
     font-family: RobotoBold, 'RobotoBold';
     font-size: 0.875em;
+    overflow:auto;
 }
 
 .input-block{

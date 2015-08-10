@@ -1,7 +1,7 @@
 mixin err(errors)
 	if errors!=null
-		.alert.alert-danger(role="alert")
-			ul
+		ul
+			.error-block
 				each item in errors
 					li
-						text=item
+						p=item
