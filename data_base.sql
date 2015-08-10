@@ -43,7 +43,11 @@ CREATE TABLE deals(
 insert into users (first_name, second_name, pass, phone, email, users_role) values
 ('admin', 'admin', 'pass', '123456', 'admin', 'ADMIN');
 
-
+CREATE TABLE image_url(
+	id bigserial PRIMARY KEY,
+	goods_id integer REFERENCES goods(id) not null,
+	image_url varchar(1024)
+);
 
  grant all privileges on sequence goods_id_seq to root;
  grant all privileges on sequence users_id_seq to root;
