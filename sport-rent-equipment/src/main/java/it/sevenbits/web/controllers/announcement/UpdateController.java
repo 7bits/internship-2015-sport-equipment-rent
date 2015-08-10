@@ -73,7 +73,7 @@ public class UpdateController {
             LOG.error("An error occured while picking goods from database at UpdateController class: "+e.getMessage());
         }
 
-        return "redirect:/";
+        return "redirect:/see_announcement?announcement_id="+announcementId;
     }
 
 }

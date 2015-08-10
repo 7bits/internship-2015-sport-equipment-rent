@@ -100,6 +100,15 @@ public class DealController {
 
 
         Deal deal= dealService.getDeal(dealId);
+        User user = null;
+        try {
+            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
+        if(user.getId()!= deal.getLandlordId()){
+            return "home/error_message";
+        }
         DateTime estimateStart = DateTime.parse(deal.getEstimateStartDate());
         DateTime estimateEnd = DateTime.parse(deal.getEstimateEndDate());
         if(estimateEnd.getMillis() > DateTime.now().getMillis()){

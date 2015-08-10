@@ -166,6 +166,13 @@ color: #353535;
     margin: 0 auto;
     padding-top: 18px;
 }
+.size-text-norap {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+-o-text-overflow: ellipsis;
+width: 20px;
+}
 
 .ava-white-block{
     width: 132px;

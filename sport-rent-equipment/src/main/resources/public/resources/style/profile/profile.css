@@ -16,7 +16,14 @@ button::-moz-focus-inner,
 	border: none;
 	}
 
-
+.size-text-norap {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+padding: 5px;
+-o-text-overflow: ellipsis;
+width: 100%;
+}
 
 /*всегда писать эти 2 блока!!!*/
 body{
