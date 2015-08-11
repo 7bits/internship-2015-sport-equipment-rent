@@ -1,0 +1,31 @@
+extends layout.jade
+block title
+	title Добавить объявление
+block depending
+	link(rel="stylesheet", href="resources/style/add_announcement/add_announcement.css", type="text/css", media="all")
+block content
+	.my-content
+		form(role="form", action="/add", method="post")
+			.content-inside-block
+				.content-block-header
+					p
+						Ваше объявление
+				.content-block-inside-info
+					.your-inventory-title-block
+						p
+							Ваш инвентарь
+					input.input-name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+					textarea.textarea-discription-announcement#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+						#{goods.description}
+					.your-inventory-price-block
+						p
+							Цена
+				.help-block
+					.order
+						.base
+							input.input-price#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+							input.input-price#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+							input.input-price#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+				.your-inventory-foto-block
+					p
+						Фотографии
