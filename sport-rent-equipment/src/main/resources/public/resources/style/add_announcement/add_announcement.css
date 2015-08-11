@@ -1,0 +1,154 @@
+
+/*контент*/
+.my-content{
+    width: 100%;
+    background-image: url("images/pattern-gr.jpg");
+    padding-top: 17px;
+    padding-bottom: 0;
+}
+
+
+/*внутренность блока с выравниванием*/
+.content-inside-block{
+    width: 34.5%;
+    height: 567px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+/*заголовок "ваше объявление"*/
+.content-block-header{
+    width: 100%;
+    height: 45px;
+    background-color: #6fb2b4;
+    box-shadow: 0 2px 3px #E6E6E6;
+    vertical-align: top;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125em;
+    color: white;
+    float: left;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content-block-header p{
+    padding-top: 12px;
+    text-shadow: 0 2px 3px #a19d9d;
+}
+
+/*блок со всеми input*/
+.content-block-inside-info{
+    width: 83.85%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 57px;
+
+}
+
+
+/*Ваш инвернтарь, цена*/
+.your-inventory-title-block, .your-inventory-price-block, .your-inventory-foto-block {
+    width: 100%;
+    height: 41px;
+    text-shadow: 0 1px 1px #d4cfcf;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.953em;
+    color: #7cced1;
+    float: left;
+}
+
+.your-inventory-price-block, .your-inventory-foto-block{
+   padding-bottom: 13px;
+
+}
+
+.your-inventory-foto-block{
+padding-left: 39px;
+padding-top: 9px;
+}
+/*input-ы*/
+.input-name-announcement, .textarea-discription-announcement, .input-price {
+    float: left;
+    margin-bottom: 11px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875em;
+    border-color: #c7c7c7;
+    border-style: solid;
+    border-width:1px;
+}
+
+.help-block{
+    width: 85.92%;
+    height: auto;
+    margin-left: 39px;
+    margin-right: 29px;
+    float: left;
+}
+
+.input-price{
+    width: 30.6024%;
+    height: 34px;
+    margin-right: 10px;
+}
+
+.input-name-announcement{
+    width: 67.90%;
+    height: 34px;
+}
+
+.textarea-discription-announcement{
+    width: 100%;
+    resize: none;
+    height: 152px;
+    margin-bottom: 19px;
+}
+
+
+.input-name-announcement,.textarea-discription-announcement, .input-price : focus, hover{
+     border-color: #c7c7c7;
+     border-style: solid;
+     border-width: 2px;
+
+}
+
+textarea{
+    padding-top: 13px;
+}
+
+input, textarea{
+    padding-left: 10px;
+    color: #949494;
+}
+
+
+input::-webkit-input-placeholder, textarea:: -webkit-input-placeholder {
+
+font-family: 'Roboto', sans-serif;
+font-size: 1em;
+}
+/*деалет внутренннюю тень*/
+input:focus, textarea: focus{
+box-shadow: 0 0 8px #E6E6E6 inset;
+}
+/*убирает подстветку placeholder*/
+input:focus:-ms-input-placeholder, , textarea: focus:-ms-textarea-placeholder{
+    color: transparent;
+
+}
+
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder{
+    color: transparent;
+
+}
+input:focus:-moz-placeholder, textarea:focus:-moz-placeholder{
+    color: transparent;
+
+}
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder{
+    color: transparent;
+
+}
+input:focus:placeholder-shown, textarea:focus:placeholder-shown{
+    color: transparent;
+
+}

@@ -15,13 +15,6 @@ button::-moz-focus-inner,
 	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
 	border: none;
 	}
-/*импортируем шрифты*/
-@font-face {
-  font-family: RobotoMedium;
-  src: url('fonts/RobotoMedium/RobotoMedium.ttf')  format("truetype");
-  font-family: RobotoBold;
-  src: url('fonts/RobotoBold/RobotoBold.ttf')  format("truetype");
-}
 /*убирает выделени input в хроме и сафари*/
   input, textarea {
     outline:none;
