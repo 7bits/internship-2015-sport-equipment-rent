@@ -56,9 +56,9 @@ p{
 
 /*все от header*/
 .header{
+    margin:0 auto;
     width: 100%;
     min-width: 350px;
-    max-width: 1400px;
     height: 5.2857%;
     min-height:74px;
     background-color: white;
