@@ -52,10 +52,12 @@ CREATE TABLE image_url(
  grant all privileges on sequence goods_id_seq to root;
  grant all privileges on sequence users_id_seq to root;
  grant all privileges on sequence deals_id_seq to root;
+ grant all privileges on sequence announcement_image_id_seq to root;
 
  grant all privileges on table goods to root;
  grant all privileges on table users to root;
  grant all privileges on table deals to root;
+ grant all privileges on table announcement_image to root;
 
 
 

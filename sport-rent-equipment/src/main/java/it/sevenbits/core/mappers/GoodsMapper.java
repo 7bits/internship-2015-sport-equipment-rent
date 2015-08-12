@@ -1,6 +1,7 @@
 package it.sevenbits.core.mappers;
 
 import it.sevenbits.web.domain.Goods;
+import it.sevenbits.web.domain.ImageUrl;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -65,8 +66,9 @@ public interface GoodsMapper {
     void update(Goods goods);
 
 
-    @Select("SELECT goods_id, image_url from announcement_image where goods_id=#{goodsId}")
-    List getImages(long goodsId);
+    @Select("SELECT image_url from announcement_image where goods_id=#{goodsId}")
+    @Results({@Result(column = "image_url", property = "url")})
+    List<ImageUrl> getImages(long goodsId);
 
     @Delete("DELETE FROM goods WHERE id=#{id}")
     void delete(Long id);

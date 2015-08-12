@@ -3,11 +3,13 @@ package it.sevenbits.core.repository.goodsrepository;
 import it.sevenbits.core.mappers.GoodsMapper;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.Goods;
+import it.sevenbits.web.domain.ImageUrl;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -73,7 +75,12 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
 
     @Override
     public List<String> imageUrl(long goodsId) {
-        return mapper.getImages(goodsId);
+        List<ImageUrl> images = mapper.getImages(goodsId);
+        List<String> url = new LinkedList<String>();
+        for(int i=0;i<images.size();i++){
+            url.add(images.get(i).getUrl());
+        }
+        return url;
     }
 
     @Override

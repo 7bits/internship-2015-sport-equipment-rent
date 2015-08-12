@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -48,6 +49,16 @@ public class GoodsService {
 
     public List<Goods> getGoodsByAuthorId(long id){
         List<Goods> goods = repository.getGoodsByAuthorId(id);
+        for(int i=0;i<goods.size();i++){
+            List<String> images = new LinkedList<String>();
+            String url = getImageForGoods(goods.get(i).getId());
+            if(url!=null)
+                images.add(url);
+            if(images.size()==0 || images.get(0)==null){
+                images.add("https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png");
+            }
+            goods.get(i).setImageUrl(images);
+        }
         goods.sort(new Comparator<Goods>() {
             @Override
             public int compare(Goods o1, Goods o2) {
@@ -66,6 +77,14 @@ public class GoodsService {
                     return o1.getId() < o2.getId() ? 1 : -1;
                 }
             });
+            for(int i=0;i<goods.size();i++){
+                List<String> images = new LinkedList<String>();
+                images.add(getImageForGoods(goods.get(i).getId()));
+                if(images.size()==0){
+                    images.add("https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png");
+                }
+                goods.get(i).setImageUrl(images);
+            }
             return goods;
         } catch (Exception e) {
             throw new GoodsException("An error occurred while retrieving all goods: " + e.getMessage(), e);
@@ -75,11 +94,19 @@ public class GoodsService {
 
     public Goods getGoods(long id) throws GoodsException{
         Goods goods;
-        try{
+        try {
             goods = repository.getGoods(id);
             User user = userService.getUser(goods.getAuthorId());
             goods.setAuthor(user.getFirstName());
             goods.setAuthorPhone(user.getPhone());
+
+            List<String> images = getImagesForGoods(goods.getId());
+            int bufSize = images.size();
+            for(int i=0;i<3-bufSize;i++){
+                images.add("https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png");
+            }
+            goods.setImageUrl(images);
+
         } catch (RepositoryException e) {
             throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
         }
