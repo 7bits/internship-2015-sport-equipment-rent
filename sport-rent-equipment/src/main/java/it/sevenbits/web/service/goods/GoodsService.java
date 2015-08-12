@@ -106,6 +106,14 @@ public class GoodsService {
         }
     }
 
+    public List<String> getImagesForGoods(long id){
+        return repository.imageUrl(id);
+    }
+
+    public String getImageForGoods(long id){
+        return repository.getImageForGoods(id);
+    }
+
     public void delete(Long id) {
         repository.delete(id);
     }

@@ -49,6 +49,12 @@ public interface GoodsMapper {
     })
     List<Goods> getGoodsByAuthorId(long id);
 
+    @Select("SELECT * FROM announcement_image where goods_id = #{id} ORDER BY id LIMIT 1")
+    @Results({
+            @Result(column = "image_url", property = "getImageForGoods")
+    })
+    String getImageForGoods(long id);
+
     @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author_id)" +
             " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
     void save(final Goods goods);
@@ -57,6 +63,10 @@ public interface GoodsMapper {
             "(#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek})" +
             "  where id=#{id}")
     void update(Goods goods);
+
+
+    @Select("SELECT goods_id, image_url from announcement_image where goods_id=#{goodsId}")
+    List getImages(long goodsId);
 
     @Delete("DELETE FROM goods WHERE id=#{id}")
     void delete(Long id);

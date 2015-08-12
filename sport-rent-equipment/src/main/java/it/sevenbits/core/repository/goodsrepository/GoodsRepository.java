@@ -16,4 +16,7 @@ public interface GoodsRepository {
         void update(Goods form);
 
         void delete(Long id);
+        List<String> imageUrl(long goodsId);
+
+        String getImageForGoods(long id);
 }

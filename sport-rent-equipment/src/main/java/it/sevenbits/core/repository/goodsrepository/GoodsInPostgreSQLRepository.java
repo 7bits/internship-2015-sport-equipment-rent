@@ -52,6 +52,7 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
 
 
     public Goods getGoods(long id) throws RepositoryException{
+
         return mapper.getGoods(id);
     }
 
@@ -68,5 +69,15 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     @Override
     public void delete(Long id) {
         mapper.delete(id);
+    }
+
+    @Override
+    public List<String> imageUrl(long goodsId) {
+        return mapper.getImages(goodsId);
+    }
+
+    @Override
+    public String getImageForGoods(long id) {
+        return mapper.getImageForGoods(id);
     }
 }
