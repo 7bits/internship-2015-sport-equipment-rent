@@ -5,7 +5,7 @@
     height: 100%;
     background-image: url("images/pattern-gr.jpg");
     padding-top: 17px;
-    padding-bottom: 0;
+
 }
 
 
@@ -45,7 +45,6 @@
     padding-top: 57px;
 
 }
-
 
 /*Ваш инвернтарь, цена*/
 .your-inventory-title-block, .your-inventory-price-block, .your-inventory-foto-block {
@@ -231,3 +230,41 @@ font-size: 14px;
    cursor: pointer;
    padding-left: 0;
 }
+
+
+.content-button-block{
+    width: 34.5%;
+    margin: 0 auto;
+    height: 40px;
+}
+
+
+/*кнопка разместить*/
+.button-update, .button-update:focus, .button-update:hover {
+    width: 162px;
+    height:40px;
+    margin-top: 10px;
+    background: #edd04e;
+    float: right;
+    color: white;
+    padding: 1px 0 2px 0;
+    font-size: 0.875em;
+    border-radius: 5px;
+    box-shadow: none;
+    font-width: bold;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-update:hover {
+    color: #949494;
+    cursor: pointer;
+}
+
+.button-update:focus {
+    color: #949494;
+    cursor: pointer;
+}
+
