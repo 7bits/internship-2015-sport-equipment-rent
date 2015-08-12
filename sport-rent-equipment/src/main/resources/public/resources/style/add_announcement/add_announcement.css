@@ -2,7 +2,7 @@
 /*контент*/
 .my-content{
     width: 100%;
-    height: 100%;
+    height:100%;
     background-image: url("images/pattern-gr.jpg");
     padding-top: 17px;
 
@@ -15,6 +15,7 @@
     height: 615px;
     margin: 0 auto;
     background-color: white;
+    margin-bottom: 10px;
 }
 
 /*заголовок "ваше объявление"*/
@@ -243,7 +244,6 @@ font-size: 14px;
 .button-update, .button-update:focus, .button-update:hover {
     width: 162px;
     height:40px;
-    margin-top: 10px;
     background: #edd04e;
     float: right;
     color: white;
