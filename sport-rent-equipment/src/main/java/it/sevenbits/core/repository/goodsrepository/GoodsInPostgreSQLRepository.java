@@ -87,4 +87,9 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     public String getImageForGoods(long id) {
         return mapper.getImageForGoods(id);
     }
+
+    @Override
+    public void addImage(long goodsId, String url) {
+        mapper.addImage(goodsId, url);
+    }
 }

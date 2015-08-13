@@ -19,4 +19,6 @@ public interface GoodsRepository {
         List<String> imageUrl(long goodsId);
 
         String getImageForGoods(long id);
+
+        void addImage(long goodsId, String url);
 }

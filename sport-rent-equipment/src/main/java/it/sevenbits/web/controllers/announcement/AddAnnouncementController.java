@@ -15,8 +15,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +55,10 @@ public class AddAnnouncementController {
 
 
     @RequestMapping(value= "/add", method = RequestMethod.POST)
-    public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
+    public String submit(@ModelAttribute GoodsForm form, final Model model,
+                         @RequestParam("firstImage") MultipartFile firstImage,
+                         @RequestParam("secondImage") MultipartFile secondImage,
+                         @RequestParam("thirdImage") MultipartFile thirdImage, HttpSession session) {
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         final Map<String, String> errors = validator.validate(form);
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
@@ -70,6 +78,9 @@ public class AddAnnouncementController {
             }
         }else{
             session.setAttribute("addNewGoods", form);
+            session.setAttribute("firstImage", firstImage);
+            session.setAttribute("secondImage", secondImage);
+            session.setAttribute("thirdImage", thirdImage);
             return "redirect:/login";
         }
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -86,7 +97,56 @@ public class AddAnnouncementController {
                     return o1.getId()<o2.getId()?1:-1;
             }
         });
+        if(firstImage!=null)
+            try {
+                byte[] bytes = firstImage.getBytes();
+                String fileName= "src/main/resources/public/img/upload/img/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
+                String nameForBase = "img/upload/img/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
+
+                File file = new File(fileName);
+
+                BufferedOutputStream stream =
+                        new BufferedOutputStream(new FileOutputStream(file));
+                stream.write(bytes);
+                stream.close();
+                service.addImage(goods.get(0).getId(), nameForBase);
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
+        if(secondImage!=null)
+            try {
+                byte[] bytes = secondImage.getBytes();
+                String fileName= "src/main/resources/public/img/upload/img/" + goods.get(0).getId()+"_2"+secondImage.getOriginalFilename();
+                String nameForBase = "img/upload/img/" + goods.get(0).getId()+"_2"+secondImage.getOriginalFilename();
+
+                File file = new File(fileName);
+
+                BufferedOutputStream stream =
+                        new BufferedOutputStream(new FileOutputStream(file));
+                stream.write(bytes);
+                stream.close();
+                service.addImage(goods.get(0).getId(), nameForBase);
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
+        if(thirdImage!=null)
+        try {
+            byte[] bytes = thirdImage.getBytes();
+            String fileName= "src/main/resources/public/img/upload/img/" + goods.get(0).getId()+"_3"+thirdImage.getOriginalFilename();
+            String nameForBase = "img/upload/img/" + goods.get(0).getId()+"_3"+thirdImage.getOriginalFilename();
+
+            File file = new File(fileName);
+
+            BufferedOutputStream stream =
+                    new BufferedOutputStream(new FileOutputStream(file));
+            stream.write(bytes);
+            stream.close();
+            service.addImage(goods.get(0).getId(), nameForBase);
+        } catch (Exception e) {
+            LOG.error(e.getMessage());
+        }
         return "redirect:/see_announcement?announcement_id="+goods.get(0).getId();
     }
+
 
 }

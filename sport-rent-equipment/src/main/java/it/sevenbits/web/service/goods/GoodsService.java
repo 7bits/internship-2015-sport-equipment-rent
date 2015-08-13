@@ -113,6 +113,10 @@ public class GoodsService {
         return goods;
     }
 
+    public void addImage(long goodsId, String url){
+        repository.addImage(goodsId, url);
+    }
+
     public void update(GoodsForm form) throws GoodsException {
         final Goods goods = new Goods();
         User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());

@@ -7,10 +7,11 @@ public class GoodsForm {
     private long id;
     private String title;
     private String description;
-    private String pledge;
+    private String pledge = "no";
     private String pricePerHour, pricePerDay, pricePerWeek;
     private String author;
     private String authorPhone;
+    private String firstImage, secondImage, thirdImage;
 
 
     public long getId() {
@@ -96,5 +97,29 @@ public class GoodsForm {
         form.setPricePerDay(String.valueOf((int)goods.getPricePerDay()));
         form.setPricePerWeek(String.valueOf((int)goods.getPricePerWeek()));
         return form;
+    }
+
+    public String getFirstImage() {
+        return firstImage;
+    }
+
+    public void setFirstImage(String firstImage) {
+        this.firstImage = firstImage;
+    }
+
+    public String getSecondImage() {
+        return secondImage;
+    }
+
+    public void setSecondImage(String secondImage) {
+        this.secondImage = secondImage;
+    }
+
+    public String getThirdImage() {
+        return thirdImage;
+    }
+
+    public void setThirdImage(String thirdImage) {
+        this.thirdImage = thirdImage;
     }
 }
