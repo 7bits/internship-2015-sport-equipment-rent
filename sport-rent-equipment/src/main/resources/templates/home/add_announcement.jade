@@ -1,6 +1,8 @@
 extends layout.jade
 block title
 	title Добавить объявление
+block scripts
+	script(src='resources/style/add_announcement/add_announcement_script.js')
 block depending
 	link(rel="stylesheet", href="resources/style/add_announcement/add_announcement.css", type="text/css", media="all")
 block content
@@ -41,7 +43,8 @@ block content
 												br
 											p(style="padding-top: 4px;")
 												фото
-										input.fileInputText(type='text', disabled='')
+										.block-file-name-text
+											input.fileInputText(type='text', disabled='')
 									input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.foto-block-inside
@@ -52,7 +55,8 @@ block content
 												br
 											p(style="padding-top: 4px;")
 												фото
-										input.fileInputText(type='text', disabled='')
+										.block-file-name-text
+											input.fileInputText(type='text', disabled='')
 									input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.foto-block-inside
@@ -63,7 +67,8 @@ block content
 												br
 											p(style="padding-top: 4px;")
 												фото
-										input.fileInputText(type='text', disabled='')
+										.block-file-name-text
+											input.fileInputText(type='text', disabled='')
 									input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='РАЗМЕСТИТЬ')
