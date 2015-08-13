@@ -11,7 +11,7 @@ public class GoodsForm {
     private String pricePerHour, pricePerDay, pricePerWeek;
     private String author;
     private String authorPhone;
-    private String firstImage, secondImage, thirdImage;
+    //private String firstImage, secondImage, thirdImage;
 
 
     public long getId() {
@@ -99,7 +99,7 @@ public class GoodsForm {
         return form;
     }
 
-    public String getFirstImage() {
+    /*public String getFirstImage() {
         return firstImage;
     }
 
@@ -121,5 +121,5 @@ public class GoodsForm {
 
     public void setThirdImage(String thirdImage) {
         this.thirdImage = thirdImage;
-    }
+    }*/
 }

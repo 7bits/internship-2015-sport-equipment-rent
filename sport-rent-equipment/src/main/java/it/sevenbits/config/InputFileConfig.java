@@ -15,8 +15,8 @@ public class InputFileConfig {
     @Bean
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setMaxFileSize("5MB");
-        factory.setMaxRequestSize("5MB");
+        factory.setMaxFileSize("15MB");
+        factory.setMaxRequestSize("15MB");
         return factory.createMultipartConfig();
     }
 

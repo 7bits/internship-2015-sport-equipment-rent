@@ -100,8 +100,8 @@ public class AddAnnouncementController {
         if(firstImage!=null)
             try {
                 byte[] bytes = firstImage.getBytes();
-                String fileName= "src/main/resources/public/img/upload/img/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
-                String nameForBase = "img/upload/img/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
+                String fileName= "src/main/resources/public/img/upload/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
+                String nameForBase = "img/upload/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
 
                 File file = new File(fileName);
 
