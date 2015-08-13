@@ -12,7 +12,7 @@
 /*внутренность блока с выравниванием*/
 .content-inside-block{
     width: 34.5%;
-    min-width: 428px;
+    min-width: 429px;
     height: 615px;
     margin: 0 auto;
     background-color: white;
@@ -82,9 +82,7 @@ padding-top: 9px;
 .help-block{
     width: 85.92%;
     height: auto;
-    margin-left: 39px;
-    margin-right: 29px;
-    float: left;
+    margin: 0 auto;
 }
 
 .input-price{
@@ -161,7 +159,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     margin-top: 12px;
     margin-left: 39px;
     margin-right: 29px;
-    float: left;
+    margin: 0 auto;
 }
 
 
@@ -299,4 +297,57 @@ background-color: white;
 background-image: none;
 }
 
+}
+
+@media screen and (max-width: 408px){
+
+.your-inventory-title-block{
+    text-align: center;
+}
+
+.textarea-discription-announcement{
+    height: 75px;
+}
+.content-inside-block{
+    width: 100%;
+    min-width: 320px;
+}
+
+.input-name-announcement{
+    width: 100%;
+}
+
+.your-inventory-price-block{
+    text-align: center;
+}
+
+.input-price{
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 12px;
+}
+.help-block{
+width: 330px;
+}
+.your-inventory-foto-block{
+    margin: 0 auto;
+    text-align: center;
+    width: 408px;
+    padding-right: 39px;
+}
+.help-foto-block{
+width: 330px;
+}
+
+.foto-block{
+    margin: 0 auto;
+    display: block;
+    float:none;
+    margin-bottom:12px;
+    width:100%;
+}
+.button-update{
+margin: 0 auto;
+float: none;
+}
 }
