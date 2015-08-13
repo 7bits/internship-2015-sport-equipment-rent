@@ -1,5 +1,7 @@
 package it.sevenbits;
 
+import it.sevenbits.sport_rent_equipment.MainPageElementsAreAvailable;
+import it.sevenbits.sport_rent_equipment.MainSignInTestLink;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -25,7 +27,10 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+        return new TestSuite(
+                MainPageElementsAreAvailable.class,
+                MainSignInTestLink.class
+        );
     }
 
     /**
