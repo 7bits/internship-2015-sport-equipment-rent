@@ -1,31 +1,51 @@
 mixin list(goods)
-	.transparent-block
-		a(name="seeAll")
-			each Goods in goods
-				.row.black-color
-					.col-lg-1
-					.col-lg-9
-						.row
-							.col-lg-3
-								Товар:
-								text=Goods.title
-						.row
-							.col-md-2
-								Цена час:
-							.col-md-1
-								text=Goods.pricePerHour
-							.col-md-1
-								день:
-							.col-md-1
-								text=Goods.pricePerDay
-							.col-md-1
-								неделя:
-							.col-md-1
-								text=Goods.pricePerWeek
-						.row
-							.col-md-6
-								p.size-text-norap=Goods.description
-					.col-lg-2
-						- announcement_id = Goods.id;
-						a(href="/see_announcement?announcement_id=#{announcement_id}")
-							button.btn.btn-color.btn-block.btn-md(type="button") Подробнее
+	.list-content
+		.list-content-inside
+			a(name="seeAll")
+				each Goods in goods
+					- announcement_id = Goods.id;
+					a(href="/see_announcement?announcement_id=#{announcement_id}")
+						.list-content-inside-one-position
+							.list-block-separate-line
+							.list-block
+								.base
+									.order
+										.info-block
+											.announcement-title
+												.base
+													.order
+														.announcement-title-text
+															b
+																p=Goods.title
+														.ready-to-rent-text
+															p
+																К аренде готов!
+														.ready-to-rent-ico
+															img(src="resources/style/main/image/ready-ico.png", width="22", height="22")
+											.announcement-discription
+												p=Goods.description
+											.price-block
+												.base
+													.order
+														.price-block-hour
+															text(style="padding-right: 4px;")
+																Час:
+															b
+																text(style="padding-right: 4px;")=Goods.pricePerHour
+														.price-block-day
+															text(style="padding-right: 4px;")
+																Сутки:
+															b
+																text(style="padding-right: 4px;")=Goods.pricePerDay
+														.price-block-week
+															text(style="padding-right: 4px;")
+																Неделя:
+															b
+																text(style="padding-right: 4px;")=Goods.pricePerWeek
+										.photo-block
+											.photo-inventory
+												img(src="https://placekitten.com/g/147/147", width="147", height="147")
+							.avatar-border
+								.avatar-photo
+									img(src="https://placekitten.com/g/52/52", width="52", height="52")
+							.list-block-separate-end-line

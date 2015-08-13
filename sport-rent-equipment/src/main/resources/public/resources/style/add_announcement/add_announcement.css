@@ -2,7 +2,7 @@
 /*контент*/
 .my-content{
     width: 100%;
-    height: 100%;
+    height:100%;
     background-image: url("images/pattern-gr.jpg");
     padding-top: 17px;
 
@@ -12,9 +12,11 @@
 /*внутренность блока с выравниванием*/
 .content-inside-block{
     width: 34.5%;
+    min-width: 429px;
     height: 615px;
     margin: 0 auto;
     background-color: white;
+    margin-bottom: 10px;
 }
 
 /*заголовок "ваше объявление"*/
@@ -80,9 +82,7 @@ padding-top: 9px;
 .help-block{
     width: 85.92%;
     height: auto;
-    margin-left: 39px;
-    margin-right: 29px;
-    float: left;
+    margin: 0 auto;
 }
 
 .input-price{
@@ -159,7 +159,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     margin-top: 12px;
     margin-left: 39px;
     margin-right: 29px;
-    float: left;
+    margin: 0 auto;
 }
 
 
@@ -209,12 +209,18 @@ font-size: 14px;
     width: 100%;
     background-image: none;
     background-color: transparent;
-    display: block;
     border: none;
     font-size: 14px;
     color:  #c7c7c7;
     margin-top: 20px;
     position: relative;
+    text-decoration: none;
+    /*обрезка с многоточнием*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    padding-right: 5px;
 }
 
 /*реальная кнопка*/
@@ -243,7 +249,6 @@ font-size: 14px;
 .button-update, .button-update:focus, .button-update:hover {
     width: 162px;
     height:40px;
-    margin-top: 10px;
     background: #edd04e;
     float: right;
     color: white;
@@ -268,3 +273,81 @@ font-size: 14px;
     cursor: pointer;
 }
 
+
+.block-file-name-text{
+width:100%
+height: 20px;
+}
+
+
+
+/*адаптивность*/
+
+@media screen and (max-width: 450px){
+.my-content{
+width: 100%;
+height: 100%;
+background-color: white;
+background-image: none;
+}
+.content-inside-block{
+width: 100%;
+height: 100%;
+background-color: white;
+background-image: none;
+}
+
+}
+
+@media screen and (max-width: 408px){
+
+.your-inventory-title-block{
+    text-align: center;
+}
+
+.textarea-discription-announcement{
+    height: 75px;
+}
+.content-inside-block{
+    width: 100%;
+    min-width: 320px;
+}
+
+.input-name-announcement{
+    width: 100%;
+}
+
+.your-inventory-price-block{
+    text-align: center;
+}
+
+.input-price{
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 12px;
+}
+.help-block{
+width: 330px;
+}
+.your-inventory-foto-block{
+    margin: 0 auto;
+    text-align: center;
+    width: 408px;
+    padding-right: 39px;
+}
+.help-foto-block{
+width: 330px;
+}
+
+.foto-block{
+    margin: 0 auto;
+    display: block;
+    float:none;
+    margin-bottom:12px;
+    width:100%;
+}
+.button-update{
+margin: 0 auto;
+float: none;
+}
+}
