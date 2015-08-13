@@ -59,8 +59,7 @@ p{
     margin:0 auto;
     width: 100%;
     min-width: 350px;
-    height: 5.2857%;
-    min-height:74px;
+    height:74px;
     background-color: white;
     box-shadow: 0 3px 30px #d4cfcf;
     position:relative;
@@ -141,4 +140,36 @@ a.header-a-color:visited{
 
 a.header-a-color:hover{
     color: #949494;
+}
+
+@media screen and (max-width: 623px){
+.header{
+    height:140px;
+}
+/*блок "Личный кабинет"*/
+.to-personal-area{
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width:100%;
+}
+}
+
+@media screen and (max-width: 400px){
+.header{
+    height:210px;
+}
+
+/*блок "Выход"*/
+.exit{
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width:100%;
+}
+.logo{
+margin: 0 auto;}
+.center-of-header{
+    width: 100%;
+}
 }
