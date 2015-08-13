@@ -11,7 +11,7 @@ public class GoodsForm {
     private String pricePerHour, pricePerDay, pricePerWeek;
     private String author;
     private String authorPhone;
-    //private String firstImage, secondImage, thirdImage;
+    private String firstImageUrl, secondImageUrl, thirdImageUrl;
 
 
     public long getId() {
@@ -99,27 +99,42 @@ public class GoodsForm {
         return form;
     }
 
-    /*public String getFirstImage() {
-        return firstImage;
+    public String getFirstImageUrl() {
+        return firstImageUrl;
     }
 
-    public void setFirstImage(String firstImage) {
-        this.firstImage = firstImage;
+    public void setFirstImageUrl(String firstImageUrl) {
+        this.firstImageUrl = firstImageUrl;
     }
 
-    public String getSecondImage() {
-        return secondImage;
+    public String getSecondImageUrl() {
+        return secondImageUrl;
     }
 
-    public void setSecondImage(String secondImage) {
-        this.secondImage = secondImage;
+    public void setSecondImageUrl(String secondImageUrl) {
+        this.secondImageUrl = secondImageUrl;
     }
 
-    public String getThirdImage() {
-        return thirdImage;
+    public String getThirdImageUrl() {
+        return thirdImageUrl;
     }
 
-    public void setThirdImage(String thirdImage) {
-        this.thirdImage = thirdImage;
-    }*/
+    public void setThirdImageUrl(String thirdImageUrl) {
+        this.thirdImageUrl = thirdImageUrl;
+    }
+
+    public Goods toGoods(User user){
+        GoodsForm form = this;
+        Goods goods = new Goods();
+        goods.setTitle(form.getTitle());
+        goods.setAuthorId(user.getId());
+        goods.setAuthorPhone(user.getPhone());
+        goods.setAuthor(user.getFirstName());
+        goods.setDescription(form.getDescription());
+        goods.setPledge(form.getPledge());
+        goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
+        goods.setPricePerDay(Double.valueOf(form.getPricePerDay()));
+        goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
+        return goods;
+    }
 }

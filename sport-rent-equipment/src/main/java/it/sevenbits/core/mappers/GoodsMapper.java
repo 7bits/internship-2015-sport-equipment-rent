@@ -50,6 +50,7 @@ public interface GoodsMapper {
     })
     List<Goods> getGoodsByAuthorId(long id);
 
+    @Options(useGeneratedKeys = true)
     @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author_id)" +
             " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
     void save(final Goods goods);

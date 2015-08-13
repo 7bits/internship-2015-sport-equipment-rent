@@ -22,9 +22,10 @@ import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Comparator;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by awemath on 7/23/15.
@@ -47,7 +48,7 @@ public class AddAnnouncementController {
     public String index(final Model model) {
         // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
         // Если шаблона не будет найдено, то вернется 404 ошибка
         return "home/add_announcement";
@@ -77,10 +78,38 @@ public class AddAnnouncementController {
                 LOG.info(e.getMessage());
             }
         }else{
+
+            String hash = getHash();
+
+            if(firstImage!=null && !firstImage.isEmpty()) {
+                try {
+                    String firstImagePath = "img/upload/" + hash + firstImage.getOriginalFilename();
+                    saveImage(firstImage, "src/main/resources/public/" + firstImagePath);
+                    form.setFirstImageUrl("src/main/resources/public/" + firstImagePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if(secondImage!=null && !secondImage.isEmpty()) {
+                try {
+                    String secondImagePath = "img/upload/" + hash + secondImage.getOriginalFilename();
+                    saveImage(secondImage, "src/main/resources/public/" + secondImagePath);
+                    form.setSecondImageUrl(secondImagePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(thirdImage!=null && !thirdImage.isEmpty()) {
+                try {
+                    String thirdImagePath = "img/upload/" + hash + thirdImage.getOriginalFilename();
+                    saveImage(thirdImage, "src/main/resources/public/" + thirdImagePath);
+                    form.setThirdImageUrl(thirdImagePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             session.setAttribute("addNewGoods", form);
-            session.setAttribute("firstImage", firstImage);
-            session.setAttribute("secondImage", secondImage);
-            session.setAttribute("thirdImage", thirdImage);
             return "redirect:/login";
         }
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -91,61 +120,61 @@ public class AddAnnouncementController {
             e.printStackTrace();
         }
         List<Goods> goods = service.getGoodsByAuthorId(user.getId());
-        goods.sort(new Comparator<Goods>() {
-            @Override
-            public int compare(Goods o1, Goods o2) {
-                    return o1.getId()<o2.getId()?1:-1;
-            }
-        });
-        if(firstImage!=null)
+        goods.sort((o1, o2) -> o1.getId() < o2.getId() ? 1 : -1);
+
+        if(firstImage!=null && !firstImage.isEmpty()) {
             try {
-                byte[] bytes = firstImage.getBytes();
-                String fileName= "src/main/resources/public/img/upload/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + goods.get(0).getId()+"_1"+firstImage.getOriginalFilename();
-
-                File file = new File(fileName);
-
-                BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(file));
-                stream.write(bytes);
-                stream.close();
+                String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                String nameForBase = "img/upload/img/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
-        if(secondImage!=null)
+        }
+        if(secondImage!=null && !secondImage.isEmpty()) {
             try {
-                byte[] bytes = secondImage.getBytes();
-                String fileName= "src/main/resources/public/img/upload/img/" + goods.get(0).getId()+"_2"+secondImage.getOriginalFilename();
-                String nameForBase = "img/upload/img/" + goods.get(0).getId()+"_2"+secondImage.getOriginalFilename();
-
-                File file = new File(fileName);
-
-                BufferedOutputStream stream =
-                        new BufferedOutputStream(new FileOutputStream(file));
-                stream.write(bytes);
-                stream.close();
+                String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                String nameForBase = "img/upload/img/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
-        if(thirdImage!=null)
-        try {
-            byte[] bytes = thirdImage.getBytes();
-            String fileName= "src/main/resources/public/img/upload/img/" + goods.get(0).getId()+"_3"+thirdImage.getOriginalFilename();
-            String nameForBase = "img/upload/img/" + goods.get(0).getId()+"_3"+thirdImage.getOriginalFilename();
-
-            File file = new File(fileName);
-
-            BufferedOutputStream stream =
-                    new BufferedOutputStream(new FileOutputStream(file));
-            stream.write(bytes);
-            stream.close();
-            service.addImage(goods.get(0).getId(), nameForBase);
-        } catch (Exception e) {
-            LOG.error(e.getMessage());
+        }
+        if(thirdImage!=null && !thirdImage.isEmpty()) {
+            try {
+                String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                String nameForBase = "img/upload/img/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                saveImage(thirdImage, fileName);
+                service.addImage(goods.get(0).getId(), nameForBase);
+            } catch (Exception e) {
+                LOG.error(e.getMessage());
+            }
         }
         return "redirect:/see_announcement?announcement_id="+goods.get(0).getId();
+    }
+
+
+    public String getHash(){
+        Random random = new Random();
+        char[] bufArray = new char[16];
+        for(int i=0;i<16;i++){
+            bufArray[i] = (char) (48+random.nextInt(125-48));
+        }
+        return String.valueOf(bufArray);
+    }
+
+    public void saveImage(MultipartFile image, String path) throws IOException {
+        byte[] bytes = image.getBytes();
+
+
+        File file = new File(path);
+
+        BufferedOutputStream stream =
+                new BufferedOutputStream(new FileOutputStream(file));
+        stream.write(bytes);
+        stream.close();
     }
 
 

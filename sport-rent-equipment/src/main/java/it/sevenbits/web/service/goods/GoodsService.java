@@ -148,4 +148,12 @@ public class GoodsService {
     public void delete(Long id) {
         repository.delete(id);
     }
+
+    public void save(Goods goods) throws GoodsException {
+        try {
+            repository.save(goods);
+        } catch (RepositoryException e) {
+            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
+        }
+    }
 }
