@@ -720,7 +720,7 @@ a{
 .title p{
     color: #009198;
     font-size: 0.875em;
-
+    padding-right: 15px;
     float:left;
     width:100%;
     margin-left:9px;
