@@ -125,7 +125,7 @@ public class AddAnnouncementController {
         if(firstImage!=null && !firstImage.isEmpty()) {
             try {
                 String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
-                String nameForBase = "img/upload/img/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                String nameForBase = "img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
@@ -135,7 +135,7 @@ public class AddAnnouncementController {
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
                 String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
-                String nameForBase = "img/upload/img/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                String nameForBase = "img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
@@ -145,7 +145,7 @@ public class AddAnnouncementController {
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
                 String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
-                String nameForBase = "img/upload/img/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                String nameForBase = "img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 saveImage(thirdImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
@@ -158,9 +158,13 @@ public class AddAnnouncementController {
 
     public String getHash(){
         Random random = new Random();
-        char[] bufArray = new char[16];
-        for(int i=0;i<16;i++){
-            bufArray[i] = (char) (48+random.nextInt(125-48));
+        char[] bufArray = new char[32];
+        for(int i=0;i<32;i++){
+            int buf =(48+random.nextInt(122-48));
+            while((buf<65&&buf>57) || (buf>90 && buf<97)){
+                buf = (48+random.nextInt(122-48));
+            }
+            bufArray[i] = (char) buf;
         }
         return String.valueOf(bufArray);
     }
