@@ -32,10 +32,16 @@ block content
 				.help-foto-block
 					.order
 						.base
-							each image in Goods.imageUrl
+							each image in goods.imageUrl
 								.foto-block
 									.foto-block-inside
-										img(src=image, width="147", height="147")
+										img(src=goods.firstImageUrl, width="147", height="147")
+								.foto-block
+									.foto-block-inside
+										img(src=goods.secondImageUrl, width="147", height="147")
+								.foto-block
+									.foto-block-inside
+										img(src=goods.thirdImageUrl, width="147", height="147")
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block
