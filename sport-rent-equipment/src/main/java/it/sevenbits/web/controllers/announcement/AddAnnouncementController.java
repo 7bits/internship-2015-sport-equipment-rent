@@ -85,7 +85,7 @@ public class AddAnnouncementController {
                 try {
                     String firstImagePath = "img/upload/" + hash + firstImage.getOriginalFilename();
                     saveImage(firstImage, "src/main/resources/public/" + firstImagePath);
-                    form.setFirstImageUrl("src/main/resources/public/" + firstImagePath);
+                    form.setFirstImageUrl(firstImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

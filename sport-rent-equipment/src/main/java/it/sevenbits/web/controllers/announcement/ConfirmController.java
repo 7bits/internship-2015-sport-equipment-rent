@@ -41,10 +41,14 @@ public class ConfirmController {
     public String confirm(final Model model, HttpSession session){
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
         session.removeAttribute("addNewGoods");
+
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         if(form==null) {
             return "redirect:/";
         }else{
+            session.setAttribute("firstImage", form.getFirstImageUrl());
+            session.setAttribute("secondImage", form.getSecondImageUrl());
+            session.setAttribute("thirdImage", form.getThirdImageUrl());
             model.addAttribute("goods", form);
         }
         return "home/confirm_announcement";
@@ -52,6 +56,11 @@ public class ConfirmController {
     @RequestMapping(method = RequestMethod.POST)
     public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
         final Map<String, String> errors = validator.validate(form);
+
+        form.setFirstImageUrl((String) session.getAttribute("firstImage"));
+        form.setSecondImageUrl((String) session.getAttribute("secondImage"));
+        form.setThirdImageUrl((String) session.getAttribute("thirdImage"));
+
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
