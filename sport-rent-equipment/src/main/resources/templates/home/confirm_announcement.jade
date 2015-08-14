@@ -1,13 +1,11 @@
 extends layout.jade
 block title
-	title Добавить объявление
-block scripts
-	script(src='resources/style/add_announcement/add_announcement_script.js')
+	title Подтвердить объявление
 block depending
-	link(rel="stylesheet", href="resources/style/add_announcement/add_announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/style/confirm_announcement/confirm_announcement.css", type="text/css", media="all")
 block content
 	.my-content
-		form(role="form", action="/add", method="post", enctype="multipart/form-data")
+		form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
@@ -46,6 +44,5 @@ block content
 			.content-button-block
 				input.button-update(type='submit', value='РАЗМЕСТИТЬ')
 			.content-button-block
-				a(href="/")
+				a(href = "/")
 					input.button-update(type='button', value='ОТМЕНА')
-
