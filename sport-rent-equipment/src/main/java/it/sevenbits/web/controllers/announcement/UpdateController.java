@@ -44,6 +44,9 @@ public class UpdateController {
             return "home/error";
         }
         GoodsForm form = GoodsForm.valueOf(goods);
+        form.setFirstImageUrl(goods.getImageUrl().get(0));
+        form.setSecondImageUrl(goods.getImageUrl().get(1));
+        form.setThirdImageUrl(goods.getImageUrl().get(2));
 
         model.addAttribute("goods", form);
         return "home/update_announcement";

@@ -84,7 +84,7 @@ public class AddAnnouncementController {
             if(firstImage!=null && !firstImage.isEmpty()) {
                 try {
                     String firstImagePath = "img/upload/" + hash + firstImage.getOriginalFilename();
-                    saveImage(firstImage, "src/main/resources/public/" + firstImagePath);
+                    saveImage(firstImage, "/home/sport-equipment-rent/public/" + firstImagePath);
                     form.setFirstImageUrl(firstImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -94,7 +94,7 @@ public class AddAnnouncementController {
             if(secondImage!=null && !secondImage.isEmpty()) {
                 try {
                     String secondImagePath = "img/upload/" + hash + secondImage.getOriginalFilename();
-                    saveImage(secondImage, "src/main/resources/public/" + secondImagePath);
+                    saveImage(secondImage, "/home/sport-equipment-rent/public/" + secondImagePath);
                     form.setSecondImageUrl(secondImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -103,7 +103,7 @@ public class AddAnnouncementController {
             if(thirdImage!=null && !thirdImage.isEmpty()) {
                 try {
                     String thirdImagePath = "img/upload/" + hash + thirdImage.getOriginalFilename();
-                    saveImage(thirdImage, "src/main/resources/public/" + thirdImagePath);
+                    saveImage(thirdImage, "/home/sport-equipment-rent/public/" + thirdImagePath);
                     form.setThirdImageUrl(thirdImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -124,7 +124,7 @@ public class AddAnnouncementController {
 
         if(firstImage!=null && !firstImage.isEmpty()) {
             try {
-                String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
@@ -134,7 +134,7 @@ public class AddAnnouncementController {
         }
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
-                String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
@@ -144,7 +144,7 @@ public class AddAnnouncementController {
         }
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
-                String fileName = "src/main/resources/public/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 saveImage(thirdImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
@@ -174,7 +174,6 @@ public class AddAnnouncementController {
 
 
         File file = new File(path);
-
         BufferedOutputStream stream =
                 new BufferedOutputStream(new FileOutputStream(file));
         stream.write(bytes);
