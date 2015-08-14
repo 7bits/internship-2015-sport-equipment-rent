@@ -328,8 +328,8 @@ color: #353535;
 
 .white-content{
     width: 401px;
-    height: 328px;
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .header-info-block{
