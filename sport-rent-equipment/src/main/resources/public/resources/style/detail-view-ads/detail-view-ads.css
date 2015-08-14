@@ -168,6 +168,9 @@ color: #353535;
     background-image: url("images/pattern-gr.jpg");
 }
 
+
+
+
 /*контент*/
 .content-inside{
     width: 840px;
@@ -393,6 +396,14 @@ color: #353535;
 .size-text-rap {
     word-wrap: break-word;
     hyphens: auto;
+ }
+ .size-text-norap
+ {
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     -o-text-overflow: ellipsis;
+     padding-right: 5px;
  }
 /*низ для иконок*/
 .bottom-block{
