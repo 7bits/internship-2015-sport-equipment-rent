@@ -60,6 +60,10 @@ public class AddAnnouncementController {
                          @RequestParam("firstImage") MultipartFile firstImage,
                          @RequestParam("secondImage") MultipartFile secondImage,
                          @RequestParam("thirdImage") MultipartFile thirdImage, HttpSession session) {
+        File file = new File("src/main/resources/public/img/upload");
+        file.mkdir();
+        file.mkdirs();
+        file.delete();
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         final Map<String, String> errors = validator.validate(form);
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
