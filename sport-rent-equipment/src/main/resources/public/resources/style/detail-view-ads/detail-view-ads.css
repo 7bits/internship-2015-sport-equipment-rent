@@ -165,11 +165,8 @@ color: #353535;
 
 /*контент*/
 .content{
-    width: 67%;
-    min-width: 232.5px;
-    max-width: 938px;
+    width: 840px;
     height: 100%;
-    min-height:100%;
     margin: 0 auto;
     padding-top: 18px;
 }
@@ -274,6 +271,7 @@ color: #353535;
     -khtml-border-radius: 5px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     font-family: 'Roboto', sans-serif;
+      border: none;
 }
 
 .button-comment:hover {
@@ -291,6 +289,7 @@ color: #353535;
     -khtml-border-radius: 5px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     font-family: 'Roboto', sans-serif;
+      border: none;
 }
 
 .button-comment:focus {
@@ -307,25 +306,21 @@ color: #353535;
     -moz-border-radius: 5px; /* Firefox */
     -webkit-border-radius: 5px; /* Safari, Chrome */
     -khtml-border-radius: 5px; /* KHTML */
+      border: none;
 }
 
 
 /*центральный сигмент*/
 .center-side{
-    width: 45.9139%;
-    min-width: 106.75px;
-    max-width: 427px;
+    width: 415px;
     height: 100%;
-    min-height:431px;
     float: left;
+    margin-left: 12px;
 }
 
 .white-content{
-    width: 100%;
-    min-width: 106.75px;
-    max-width: 427px;
+    width: 401px;
     height: 328px;
-    min-height:328px;
     background-color: white;
 }
 
@@ -408,10 +403,8 @@ color: #353535;
 
 /*блок для фоток*/
 .foto-block{
-    width: 100%
-    width: 427px;
-    height: 23.66%;
-    max-height: 102px;
+    width: 405px;
+    height: 100px;
     margin-top: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
@@ -420,16 +413,17 @@ color: #353535;
 .one-foto-box{
     width: 131px;
     height: 100px;
-    padding-right: 2px;
-    padding-left: 2px;
+    margin-right: 4px;
     float: left;
-     font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
     position:relative;
+    top: 0;
+    left: 0;
 }
 /*для наложения на изображение сверху*/
 .one-foto-position{
-    position: absolute;
+    position:absolute;
     top: 0px;
     left: 0px;
 }
@@ -477,6 +471,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+        border: none;
 }
 
 .button-delete:hover {
@@ -496,6 +491,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+        border: none;
 }
 
 .button-delete:focus {
@@ -515,6 +511,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+        border: none;
 }
 
 /*кнопка редактировать*/
@@ -534,6 +531,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+        border: none;
 }
 
 .button-update:hover {
@@ -553,6 +551,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+        border: none;
 }
 
 .button-update:focus {
@@ -572,24 +571,21 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+      border: none;
 }
 
 
 /*правая сторона*/
 .r-side{
-    width: 34.623655%;
-    min-width: 80.5px;
-    max-width: 322px;
+    width: 250px;
     height: 197px;
-    min-height:197px;
     float:left;
+    margin-left: 20px;
 }
 
 .r-inside{
-    width: 84.4720%;
-    min-width: 68px;
-    max-width: 272px;
-    min-height:197px;
+    width: 250px;
+    height:197px;
     float:right;
 }
 
@@ -678,6 +674,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+      border: none;
 }
 
 .button-rent:hover {
@@ -695,6 +692,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+      border: none;
 }
 
 .button-rent:focus {
@@ -712,6 +710,7 @@ color: #353535;
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
       font-family: 'Roboto', sans-serif;
+      border: none;
 }
 
 
