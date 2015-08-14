@@ -1,23 +1,22 @@
-doctype html
-head
-	title Обявление
-	meta(charset='utf-8')
-	meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+extends layout.jade
+block title
+	title Дай погонять
+block depending
 	link(rel="stylesheet", href="resources/style/personal-area/personal-area.css", type="text/css", media="all")
-	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-body
-	.container
-		.header.shadow
-			.center-of-header
-				.base
-					.order
-						.logo
-							a(href="/")
-								img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
-						.exit
-							a.green-color(href="/logout")
-								p.position ВЫЙТИ
-		.content
+block header
+	.header.shadow
+		.center-of-header
+			.base
+				.order
+					.logo
+						a(href="/")
+							img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+					.exit
+						a.green-color(href="/logout")
+							p.position ВЫЙТИ
+block content
+	.my-content
+		.content-inside
 			.base
 				.order
 					.photo-info

@@ -1,64 +1,43 @@
-doctype html
-head
-	title Создание нового объявления
-	link(rel="stylesheet", href="resources/header-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
-	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-	include depending.jade
-body
-	include header.jade
-	.row
-		.col-lg-12
-	.row
-		.col-lg-12
-	.row
-		.col-lg-12
-	.row
-		.col-lg-12
-	include mixin_er.jade
-	+err(errors)
-	form(role="form", action="/update?announcement_id=#{goods.id}", method="post")
-		div.form-group
-			.row
-				.col-lg-2
-					Название объявления
-					sup *
-				.col-lg-5
-					input#announcementsName.form-control(type="text", value="#{goods.title}", name="title")
-		div.form-group
-			.row
-				.col-lg-2
-					Описание объявления
-					sup *
-				.col-lg-5
-					textarea#announcementsDescription.form-control(type="text", name="description")
+extends layout.jade
+block title
+	title Обновить объявление
+block depending
+	link(rel="stylesheet", href="resources/style/update_announcement/update_announcement.css", type="text/css", media="all")
+block content
+	.my-content
+		form(role="form", action="/add", method="post", enctype="multipart/form-data")
+			.content-inside-block
+				.content-block-header
+					p
+						Ваше объявление
+				.content-block-inside-info
+					.your-inventory-title-block
+						p
+							Ваш инвентарь
+					input.input-name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+					textarea.textarea-discription-announcement#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
 						#{goods.description}
-		div.form-group
-			.row
-				.col-lg-2
-					Цена
-					sup *
-				.col-lg-2
-					input#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour")
-				.col-lg-1
-					час
-				.col-lg-2
-					input#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay")
-				.col-lg-1
-					день
-				.col-lg-2
-					input#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek")
-				.col-lg-1
-					неделя
-		div.form-group
-			.row
-				.col-lg-2
-					Залог
-					sup*
-				.col-lg-2
-					input#pledge.form-control(type="text", value="#{goods.pledge}", name='pledge')
-			.row
-				.col-lg-8
-				.col-lg-3
-					button.btn.btn-color.btn-block(type="submit") Изменить объявление
+					.your-inventory-price-block
+						p
+							Цена
+				.help-block
+					.order
+						.base
+							input.input-price#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+							input.input-price#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+							input.input-price#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+				.your-inventory-foto-block
+					p
+						Фотографии
+				.help-foto-block
+					.order
+						.base
+							each image in Goods.imageUrl
+								.foto-block
+									.foto-block-inside
+										img(src=image, width="147", height="147")
+			.content-button-block
+				input.button-update(type='submit', value='СОХРАНИТЬ')
+			.content-button-block
+				a(href="/")
+					input.button-update(type='button', value='ОТМЕНА')
