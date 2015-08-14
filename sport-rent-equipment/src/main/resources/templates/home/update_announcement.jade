@@ -34,37 +34,13 @@ block content
 						.base
 							.foto-block
 								.foto-block-inside
-									.download-mask
-										button.send-file
-											p
-												Добавить
-												br
-											p(style="padding-top: 4px;")
-												фото
-										input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+									img(src=goods.firstImageUrl)
 							.foto-block
 								.foto-block-inside
-									.download-mask
-										button.send-file
-											p
-												Добавить
-												br
-											p(style="padding-top: 4px;")
-												фото
-										input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+									img(src=goods.secondImageUrl)
 							.foto-block
 								.foto-block-inside
-									.download-mask
-										button.send-file
-											p
-												Добавить
-												br
-											p(style="padding-top: 4px;")
-												фото
-										input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+									img(src=goods.thirdImageUrl)
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block
