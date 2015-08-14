@@ -2,7 +2,6 @@
 /*контент*/
 .my-content{
     width: 100%;
-    height:100%;
     background-image: url("images/pattern-gr.jpg");
     padding-top: 17px;
 
@@ -11,12 +10,12 @@
 
 /*внутренность блока с выравниванием*/
 .content-inside-block{
-    width: 34.5%;
-    min-width: 429px;
+    width: 429px;
     height: 615px;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 10px;
+
 }
 
 /*заголовок "ваше объявление"*/
