@@ -34,6 +34,7 @@ public class HomeController {
                 goods.get(i).setAuthorImage(userService.getUser(goods.get(i).getAuthorId()).getImageUrl());
             }
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+            model.addAttribute("goods", goods);
         } catch (GoodsException e) {
             e.printStackTrace();
         }

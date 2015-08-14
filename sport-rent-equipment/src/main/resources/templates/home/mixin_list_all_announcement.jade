@@ -48,6 +48,5 @@ mixin list(goods)
 													img(src=image, width="147", height="147")
 							.avatar-border
 								.avatar-photo
-									each image-author in Goods.authorImage
-										img(src=image-author, width="52", height="52")
+									img(src=Goods.authorImage, width="52", height="52")
 							.list-block-separate-end-line
