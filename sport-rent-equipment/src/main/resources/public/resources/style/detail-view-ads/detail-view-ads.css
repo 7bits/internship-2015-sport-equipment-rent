@@ -328,8 +328,8 @@ color: #353535;
 
 .white-content{
     width: 401px;
-    height: 328px;
     background-color: white;
+    padding-bottom: 20px;
 }
 
 .header-info-block{
@@ -385,6 +385,7 @@ color: #353535;
     font-size: 0.875em;
     padding-left: 32px;
     padding-right: 27px;
+    color: #6b6b6b;
     /*для переноса слов*/
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
@@ -671,6 +672,7 @@ color: #353535;
     min-height:41px;
     float:left;
     padding-left: 10px;
+    color: #6b6b6b;
 }
 
 .input-size{
@@ -766,3 +768,5 @@ color: #353535;
     display: block;
     }
 }
+
+
