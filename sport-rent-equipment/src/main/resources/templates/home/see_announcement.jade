@@ -51,15 +51,9 @@ block content
 						.foto-block
 							.base
 								.order
-									.one-foto-box
-										img(src="https://placekitten.com/g/500/300", height="98", width="128")
-									.one-foto-box
-										img(src="https://placekitten.com/g/500/300", height="98", width="128")
-									.one-foto-box
-										img.one-foto-position(src="https://placekitten.com/g/500/300", height="98", width="128")
-										img.one-foto-position(src="resources/style/detail-view-ads/images/bk-gr.png", height="98", width="128")
-										.text-on-foto
-											ПРОСМОТР
+									each image in Goods.imageUrl
+										.one-foto-box
+											img(src=image)
 						.update-delete-block
 							if isAuthor
 								a(href="/")

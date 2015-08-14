@@ -7,7 +7,7 @@ block depending
 	link(rel="stylesheet", href="resources/style/add_announcement/add_announcement.css", type="text/css", media="all")
 block content
 	.my-content
-		form(role="form", action="/add", method="post")
+		form(role="form", action="/add", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
@@ -43,9 +43,8 @@ block content
 												br
 											p(style="padding-top: 4px;")
 												фото
-										.block-file-name-text
-											input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+										input.fileInputText(type='text', disabled='')
+									input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.foto-block-inside
 									.download-mask
@@ -55,9 +54,8 @@ block content
 												br
 											p(style="padding-top: 4px;")
 												фото
-										.block-file-name-text
-											input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+										input.fileInputText(type='text', disabled='')
+									input#first-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.foto-block-inside
 									.download-mask
@@ -67,8 +65,7 @@ block content
 												br
 											p(style="padding-top: 4px;")
 												фото
-										.block-file-name-text
-											input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+										input.fileInputText(type='text', disabled='')
+									input#first-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='РАЗМЕСТИТЬ')

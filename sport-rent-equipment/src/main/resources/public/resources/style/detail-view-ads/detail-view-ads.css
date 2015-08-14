@@ -426,6 +426,11 @@ color: #353535;
     top: 0;
     left: 0;
 }
+
+.one-foto-box img{
+    width:100%;
+    height: 81.3px;
+}
 /*для наложения на изображение сверху*/
 .one-foto-position{
     position:absolute;

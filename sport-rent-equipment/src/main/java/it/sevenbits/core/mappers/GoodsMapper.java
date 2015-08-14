@@ -1,6 +1,7 @@
 package it.sevenbits.core.mappers;
 
 import it.sevenbits.web.domain.Goods;
+import it.sevenbits.web.domain.ImageUrl;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public interface GoodsMapper {
     })
     List<Goods> getGoodsByAuthorId(long id);
 
+    @Options(useGeneratedKeys = true)
     @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author_id)" +
             " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
     void save(final Goods goods);
@@ -58,6 +60,21 @@ public interface GoodsMapper {
             "  where id=#{id}")
     void update(Goods goods);
 
+
     @Delete("DELETE FROM goods WHERE id=#{id}")
     void delete(Long id);
+
+    //goods images
+    @Select("SELECT image_url from announcement_image where goods_id=#{goodsId}")
+    @Results({@Result(column = "image_url", property = "url")})
+    List<ImageUrl> getImages(long goodsId);
+
+    @Select("SELECT * FROM announcement_image where goods_id = #{id} ORDER BY id LIMIT 1")
+    @Results({
+            @Result(column = "image_url", property = "getImageForGoods")
+    })
+    String getImageForGoods(long id);
+
+    @Insert("INSERT INTO announcement_image (goods_id, image_url) VALUES (#{goodsId}, #{imageUrl})")
+    void addImage(@Param("goodsId")  long goodsId, @Param("imageUrl")  String imageUrl);
 }
