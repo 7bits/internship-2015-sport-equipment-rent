@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers;
 
+import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.service.goods.DealService;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 /**
  * Created by awemath on 7/7/15.
@@ -26,8 +29,12 @@ public class HomeController {
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String mainPage(final Model model){
         try {
-            model.addAttribute("goods", service.findAll());
+            List<Goods> goods = service.findAll();
+            for(int i=0;i<goods.size();i++){
+                goods.get(i).setAuthorImage(userService.getUser(goods.get(i).getAuthorId()).getImageUrl());
+            }
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+            model.addAttribute("goods", goods);
         } catch (GoodsException e) {
             e.printStackTrace();
         }
