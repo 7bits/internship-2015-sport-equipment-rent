@@ -162,9 +162,14 @@ color: #353535;
 .position{
     padding-top: 28px;
 }
+/*контент*/
+.my-content{
+    width: 100%;
+    background-image: url("images/pattern-gr.jpg");
+}
 
 /*контент*/
-.content{
+.content-inside{
     width: 840px;
     height: 100%;
     margin: 0 auto;
