@@ -67,6 +67,9 @@
 padding-left: 39px;
 padding-top: 9px;
 }
+
+
+
 /*input-ы*/
 .input-name-announcement, .textarea-discription-announcement, .input-price {
     float: left;
@@ -103,15 +106,28 @@ padding-top: 9px;
 }
 
 
-.input-name-announcement,.textarea-discription-announcement, .input-price : focus, hover{
-     border-color: #c7c7c7;
-     border-style: solid;
-     border-width: 2px;
-
-}
 
 textarea{
     padding-top: 13px;
+}
+
+
+.input-name-announcement:focus,
+.input-name-announcement:hover,
+.textarea-discription-announcement:focus,
+.textarea-discription-announcement:hover,
+.input-price:focus,
+.input-price:hover{
+     border-color: #c7c7c7;
+     border-style: solid;
+     border-width: 1px;
+}
+
+/*деалет внутренннюю тень*/
+.input-name-announcement:focus,
+.textarea-discription-announcement:focus,
+.input-price:focus{
+    box-shadow: 0 0 8px #E6E6E6 inset;
 }
 
 input, textarea{
@@ -121,35 +137,23 @@ input, textarea{
 
 
 input::-webkit-input-placeholder, textarea:: -webkit-input-placeholder {
-
-font-family: 'Roboto', sans-serif;
-font-size: 1em;
-}
-/*деалет внутренннюю тень*/
-input:focus, textarea: focus{
-box-shadow: 0 0 8px #E6E6E6 inset;
+    font-size: 1em;
 }
 /*убирает подстветку placeholder*/
 input:focus:-ms-input-placeholder, , textarea: focus:-ms-textarea-placeholder{
     color: transparent;
-
 }
-
 input:focus::-moz-placeholder, textarea:focus::-moz-placeholder{
     color: transparent;
-
 }
 input:focus:-moz-placeholder, textarea:focus:-moz-placeholder{
     color: transparent;
-
 }
 input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder{
     color: transparent;
-
 }
 input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     color: transparent;
-
 }
 
 .help-foto-block{
