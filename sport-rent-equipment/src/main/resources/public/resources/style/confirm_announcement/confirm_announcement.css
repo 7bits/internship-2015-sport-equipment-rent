@@ -339,7 +339,13 @@ width: 330px;
     display: block;
     float:none;
     margin-bottom:12px;
-    width:100%;
+    width: 147px;
+    height: 147px;
+}
+.foto-block-inside img{
+    width: 147px;
+    height: 147px;
+    padding:0 0 0 0;
 }
 .button-update{
 margin: 0 auto;

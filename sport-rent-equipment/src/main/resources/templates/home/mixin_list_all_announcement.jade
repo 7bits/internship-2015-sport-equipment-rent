@@ -1,4 +1,4 @@
-mixin list(goods, landlord)
+mixin list(goods)
 	.list-content
 		.list-content-inside
 			a(name="seeAll")
@@ -48,5 +48,6 @@ mixin list(goods, landlord)
 													img(src=image, width="147", height="147")
 							.avatar-border
 								.avatar-photo
-									img(src=landlord.imageUrl, width="52", height="52")
+									each image-author in Goods.authorImage
+										img(src=image-author, width="52", height="52")
 							.list-block-separate-end-line
