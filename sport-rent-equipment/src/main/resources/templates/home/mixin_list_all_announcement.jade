@@ -1,4 +1,4 @@
-mixin list(goods)
+mixin list(goods, landlord)
 	.list-content
 		.list-content-inside
 			a(name="seeAll")
@@ -44,8 +44,9 @@ mixin list(goods)
 																text(style="padding-right: 4px;")=Goods.pricePerWeek
 										.photo-block
 											.photo-inventory
-												img(src="https://placekitten.com/g/147/147", width="147", height="147")
+												each image in Goods.imageUrl
+													img(src=image, width="147", height="147")
 							.avatar-border
 								.avatar-photo
-									img(src="https://placekitten.com/g/52/52", width="52", height="52")
+									img(src=landlord.imageUrl, width="52", height="52")
 							.list-block-separate-end-line
