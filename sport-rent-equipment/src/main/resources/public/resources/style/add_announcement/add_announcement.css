@@ -11,7 +11,6 @@
 /*внутренность блока с выравниванием*/
 .content-inside-block{
     width: 429px;
-    height: 615px;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 10px;
@@ -162,6 +161,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     margin-top: 12px;
     margin-left: 39px;
     margin-right: 29px;
+    padding-bottom: 20px;
     margin: 0 auto;
 }
 
