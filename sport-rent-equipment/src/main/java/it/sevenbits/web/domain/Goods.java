@@ -20,7 +20,7 @@ public class Goods implements Serializable {
     String authorPhone;
     boolean visible;
     List<String> imageUrl;
-
+    String authorImage;
 
     public boolean isVisible() {
         return visible;
@@ -132,6 +132,15 @@ public class Goods implements Serializable {
 
     public void setImageUrl(List<String> imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+
+    public String getAuthorImage() {
+        return authorImage;
+    }
+
+    public void setAuthorImage(String authorImage) {
+        this.authorImage = authorImage;
     }
 
     @Override
