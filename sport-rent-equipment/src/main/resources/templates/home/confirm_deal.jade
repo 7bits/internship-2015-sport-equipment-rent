@@ -1,21 +1,31 @@
-doctype html
-head
-	title Подтверждение заявки
-	include depending.jade
-	link(rel="stylesheet", href="resources/message.css", type="text/css", media="all")
-body
-	.background-gray
-		.background-white
-			.row
-				.col-lg-2
-				.col-lg-4
-					.logo-position
+extends layout.jade
+block title
+	title Заявка отправлена
+block depending
+	link(rel="stylesheet", href="resources/style/message/message-all.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/style/message/application_submitted.css", type="text/css", media="all")
+block header
+	.header
+		.center-of-header
+			.base
+				.order
+					.logo
 						a(href="/")
-							img(src="resources/images/logo.png", align="left", width="170", height="45")
-		.gray-line
-		.content
-			.centered
-				.text-message-position-exept-err
-					h1.motto-color.message-text
-						Заявка подтверждена
-						img(src="resources/icons/confim.png",align="center", width="36", height="35")
+							img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+					.exit
+						a.header-a-color(href="/logout")
+							b
+								p
+									ВЫХОД
+block content
+	.my-content
+		.message-block
+			.message-block-inside
+				.message-block-text
+					.base
+						.order
+							.message-block-text-info
+								p
+									Заявка подтверждена
+							.message-block-text-ico
+								img(src="resources/style/message/images/confirm_deal.png")
