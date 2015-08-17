@@ -26,7 +26,6 @@ public class AddNewGoodsFormValidator {
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerHour()), errors, "Поле цена за час", "Поле цена за час не может быть пустым");
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerDay()), errors, "Поле цена за день", "Поле цена за день не может быть пустым");
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "Поле цена за неделю не может быть пустым");
-        validator.isNotNullOrEmpty(form.getPledge(), errors, "Поле залог", "Поле залог не может быть пустым");
 
         validator.shorterThan(form.getTitle(), 255, errors, "Поле заголовок", "Поле заголовок должно быть короче чем 255 символов");
         validator.shorterThan(form.getDescription(), 2048, errors, "Поле описание", "Поле описание должно быть короче чем 2048 символов");

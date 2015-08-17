@@ -149,6 +149,7 @@ color: #353535;
     float:right;
     font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
+    margin-top: -23px;
 }
 
 /*блок "Личный кабинет"*/
@@ -168,7 +169,14 @@ color: #353535;
 }
 
 /*контент*/
-.content{
+.my-content{
+    width: 100%;
+    background-image: url("images/pattern-gr.jpg");
+}
+
+
+/*контент*/
+.content-inside{
     width: 745px;
     height: 100%;
     height: 100%;
@@ -489,7 +497,7 @@ a{
 /*блок для 1 фото*/
 .one-foto-box{
     width: 178px;
-    height: auto;
+    height: 115.3px;
     margin-bottom:10px;
     float: left;
     overflow:hidden;
@@ -500,7 +508,7 @@ a{
 
 .one-foto-box img{
     width: 100%;
-    height: auto;
+    height: 115.3px;
     padding:0 0 0 0;
 }
 /*для наложения на изображение сверху*/
@@ -712,7 +720,7 @@ a{
 .title p{
     color: #009198;
     font-size: 0.875em;
-
+    padding-right: 15px;
     float:left;
     width:100%;
     margin-left:9px;

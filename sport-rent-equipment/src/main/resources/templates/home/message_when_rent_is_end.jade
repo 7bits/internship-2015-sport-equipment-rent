@@ -1,27 +1,18 @@
-doctype html
-head
-	title Окончание срока аренды
-	meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
-	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/header-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/style/message/mes-style.css", type="text/css", media="all")
-	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-body
-	.container
-		.header.shadow
-            .center-of-header
-                .base
-                    .order
-                        .logo
-                            a(href="/")
-                                img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
-		.content
-			.mes-centered.mes-shadow
-				p.set-font-profile-roboto.set-font-size-24.set-padding-to-p.gray-color
-					Мы надеемся, наш сервис был полезен для Вас.
-					br
-					Срок аренды закончен.
-				a.set-padding-a-left(href="/")
-					input.button-delete(type='button', value='Все хорошо')
-				a.set-padding-a-right(href="/")
+extends layout.jade
+block title
+	title Подтвердить окончание аренды
+block depending
+	link(rel="stylesheet", href="resources/style/message-refactor/message-refactor.css", type="text/css", media="all")
+block content
+	.my-content
+		.message-block
+			.message-block-inside
+				.message-block-text
+					p
+						Мы надеемся, наш сервис был полезен для Вас.
+						br
+						Срок аренды закончен.
+					a(href="/")
+						input.button-delete(type='button', value='Все хорошо')
+					a(href="/")
 					input.button-delete(type='button', value='Пожаловаться')

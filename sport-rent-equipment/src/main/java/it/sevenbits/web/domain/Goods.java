@@ -1,6 +1,7 @@
 package it.sevenbits.web.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by awemath on 7/8/15.
@@ -18,7 +19,8 @@ public class Goods implements Serializable {
     String author;//name
     String authorPhone;
     boolean visible;
-
+    List<String> imageUrl;
+    String authorImage;
 
     public boolean isVisible() {
         return visible;
@@ -122,6 +124,23 @@ public class Goods implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<String> getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(List<String> imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+
+    public String getAuthorImage() {
+        return authorImage;
+    }
+
+    public void setAuthorImage(String authorImage) {
+        this.authorImage = authorImage;
     }
 
     @Override

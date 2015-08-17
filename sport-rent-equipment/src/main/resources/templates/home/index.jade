@@ -1,30 +1,28 @@
-doctype html
-head
-	title Главная
-	include depending.jade
-	link(rel="stylesheet", href="resources/main.css", type="text/css", media="all")
-
-
-	link(rel="stylesheet", href="resources/header-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/style/main-page/index-style.css", type="text/css", media="all")
-
-body
-	.container
-		include header.jade
-		.pic-first
-			.center-block
-				h1.white-color.set-font-rounds.set-font-size-60 ДАЙ  ПОГОНЯТЬ
-				p.white-color.set-font-profile-roboto-reg.set-font-size-20 Сервис по поиску и аренде спортивного оборудования
-				.space-block
-				.order
-					.sector1.set-font-size-14.set-font-profile-roboto
-						a(href="#seeAll")
-							button.btn.btn-color-white.btn-block.btn-lg.buttom-round.set-font-profile-roboto-bold(type="button") Смотреть объявления
-					.sector2.set-font-size-14.set-font-profile-roboto
-						a(href="/add")
-							button.btn.btn-color.btn-block.btn-lg.buttom-round.set-font-profile-roboto-bold(type="button") Дать объявление
-		.white-block
-		.all-info-block.set-font-profile-roboto
-			include mixin_list_all_announcement.jade
-			+list(goods)
+extends layout.jade
+block title
+	title Дай погонять
+block depending
+	link(rel="stylesheet", href="resources/style/main/index.css", type="text/css", media="all")
+block content
+	.my-content
+		.name-service-and-motto-block-base-color
+			.name-service-and-motto-block-background-image
+				.name-service
+					p.set-font-rounds
+						Дай погонять
+				.service-motto
+					p
+						Сервис по поиску и аренде спортивного оборудования
+				.name-service-and-motto-block-inside
+					a(href="/add")
+						button.button-add-announcement(type='button')
+							b
+								p
+									ДАТЬ ОБЪЯВЛЕНИЕ
+						a(href="/#seeAll")
+							button.button-see-announcement(type='button')
+								b
+									p
+										ВСЕ ОБЪЯВЛЕНИЯ
+		include mixin_list_all_announcement.jade
+		+list(goods)

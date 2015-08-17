@@ -7,10 +7,11 @@ public class GoodsForm {
     private long id;
     private String title;
     private String description;
-    private String pledge;
+    private String pledge = "no";
     private String pricePerHour, pricePerDay, pricePerWeek;
     private String author;
     private String authorPhone;
+    private String firstImageUrl, secondImageUrl, thirdImageUrl;
 
 
     public long getId() {
@@ -96,5 +97,44 @@ public class GoodsForm {
         form.setPricePerDay(String.valueOf((int)goods.getPricePerDay()));
         form.setPricePerWeek(String.valueOf((int)goods.getPricePerWeek()));
         return form;
+    }
+
+    public String getFirstImageUrl() {
+        return firstImageUrl;
+    }
+
+    public void setFirstImageUrl(String firstImageUrl) {
+        this.firstImageUrl = firstImageUrl;
+    }
+
+    public String getSecondImageUrl() {
+        return secondImageUrl;
+    }
+
+    public void setSecondImageUrl(String secondImageUrl) {
+        this.secondImageUrl = secondImageUrl;
+    }
+
+    public String getThirdImageUrl() {
+        return thirdImageUrl;
+    }
+
+    public void setThirdImageUrl(String thirdImageUrl) {
+        this.thirdImageUrl = thirdImageUrl;
+    }
+
+    public Goods toGoods(User user){
+        GoodsForm form = this;
+        Goods goods = new Goods();
+        goods.setTitle(form.getTitle());
+        goods.setAuthorId(user.getId());
+        goods.setAuthorPhone(user.getPhone());
+        goods.setAuthor(user.getFirstName());
+        goods.setDescription(form.getDescription());
+        goods.setPledge(form.getPledge());
+        goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
+        goods.setPricePerDay(Double.valueOf(form.getPricePerDay()));
+        goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
+        return goods;
     }
 }
