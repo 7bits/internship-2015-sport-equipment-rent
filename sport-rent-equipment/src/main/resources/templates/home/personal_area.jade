@@ -4,7 +4,7 @@ block title
 block depending
 	link(rel="stylesheet", href="resources/style/personal-area/personal-area.css", type="text/css", media="all")
 block header
-	.header.shadow
+	.header
 		.center-of-header
 			.base
 				.order
@@ -12,40 +12,45 @@ block header
 						a(href="/")
 							img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
 					.exit
-						a.green-color(href="/logout")
-							p.position ВЫЙТИ
+						a.header-a-color(href="/logout")
+							b
+								p
+									ВЫХОД
 block content
 	.my-content
-		.content-inside
+		.my-content-inside
 			.base
 				.order
-					.photo-info
-						.ava-white-block.round-border.shadow
-							img.round.ava(src=user.imageUrl, height="120", width="120")
-						.personal-info
-							.blue-line-info.blue-line-shadow
+					.user-info
+						.ava-border-block
+							img.ava-image-position(src=user.imageUrl, height="120", width="120")
+						.user-info-block
+							.user-info-block-title
 								.base
 									.order
-										.your-info-title-block
+										.user-info-block-title-text
 											b
 												p
 													Ваши данные
-										.your-info-ico-block
+										.user-info-block-ico
 											a(href="/update_profile")
 												img(src="resources/style/personal-area/images/info-icon.png", width="17", height="17")
-							.your-info-name-block
-								p=user.firstName
-							.your-info-line
-							.your-info-name-block
-								p=user.phone
-							.your-info-line
-					.white-content
-						.blue-line.blue-line-shadow
-							.header-info-block
-								.your-info-title-block-content
+							.user-name
+								p.size-text-norap=user.firstName
+							if user.phone!=null
+								.user-info-line
+								.user-phone
+									p.size-text-norap=user.phone
+								.user-info-line
+								.empty-line
+							else
+								.user-info-line
+								.empty-line
+					include mixins/mixin_users_announcement_list.jade
+					.user-announcement
+						.user-announcement-title
+							.user-announcement-title-text
+								b
 									p
-										b
-											Ваши объявления
-						include mixins/mixin_users_announcement_list.jade
-						.announcement-list
-							+list(goods)
+										Ваши объявления
+						+list(goods)

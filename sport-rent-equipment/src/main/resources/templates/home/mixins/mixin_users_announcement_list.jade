@@ -1,15 +1,15 @@
 mixin list(goods)
-	.order
-		each Goods in goods
-			- announcement_id = Goods.id;
-			a(href="/see_announcement?announcement_id=#{announcement_id}")
-				.white-box-for-text.shadow
-					.one-foto-box
-						each image in Goods.imageUrl
-							img(src=image)
-					.title
-						b
-							p.size-text-norap=Goods.title
-					.description
-						b
+	.base
+		.order
+			each Goods in goods
+				- announcement_id = Goods.id;
+				a(href="/see_announcement?announcement_id=#{announcement_id}")
+					.one-announcement-block
+						.one-announcement-block-photo
+							each image in Goods.imageUrl
+								img(src=image, height="120", width="178")
+						.one-announcement-block-title
+							b
+								p.size-text-norap=Goods.title
+						.one-announcement-block-text
 							p.size-text-norap=Goods.description
