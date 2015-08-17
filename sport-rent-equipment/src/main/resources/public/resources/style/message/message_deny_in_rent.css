@@ -1,0 +1,15 @@
+
+.message-block-inside{
+ position: relative;
+}
+
+
+.message-block-text{
+    color: #b6b6b6;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}

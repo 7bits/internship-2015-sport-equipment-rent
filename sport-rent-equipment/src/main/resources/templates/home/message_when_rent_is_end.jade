@@ -5,7 +5,7 @@ block depending
 	link(rel="stylesheet", href="resources/style/message/message-all.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/message/message_when_rent_is_end.css", type="text/css", media="all")
 block header
-	include mixin_message_header.jade
+	include mixins/mixin_message_header.jade
 	+create-header()
 block content
 	.my-content

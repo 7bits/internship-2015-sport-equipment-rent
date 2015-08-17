@@ -1,21 +1,16 @@
-doctype html
-head
-	title Подтверждение заявки
-	include depending.jade
-	link(rel="stylesheet", href="resources/message.css", type="text/css", media="all")
-	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-body
-	.background-gray
-		.background-white
-			.row
-				.col-lg-2
-				.col-lg-4
-					.logo-position
-						a(href="/")
-							img(src="resources/images/logo.png", align="left", width="170", height="45")
-		.gray-line
-		.content
-			.centered.shadow
-				.text-message-position
-					h1.cancel-message-color
+extends layout.jade
+block title
+	title Отказ принят
+block depending
+	link(rel="stylesheet", href="resources/style/message/message-all.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/style/message/message_deny_in_rent.css", type="text/css", media="all")
+block header
+	include mixins/mixin_message_header.jade
+	+create-header()
+block content
+	.my-content
+		.message-block
+			.message-block-inside
+				.message-block-text
+					p
 						Ваш отказ принят
