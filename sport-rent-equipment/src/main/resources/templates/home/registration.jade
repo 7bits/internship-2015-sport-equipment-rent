@@ -1,35 +1,17 @@
-doctype html
-head
-	title Регистрация
-	include depending.jade
-	link(rel="stylesheet", href="resources/registration-authorization.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/all-style.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
-	link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-body
-	.background-line
-		.row
-			.col-lg-12
-		.row
-			.col-lg-2
-			.col-lg-3
-				label.menu-position(for="name")
-					a(href="/")
-						p.motto-color.set-roboto.set-18 < НА ГЛАВНУЮ
-	.center
-		a(href="/")
-			img(src="resources/images/logo.png", align="center", width="170", height="45")
+extends registration-authorization.jade
+block title
+	title Авторизация
+block depending
+	link(rel="stylesheet", href="resources/style/registration-authorization/registration.css", type="text/css", media="all")
+block content
+	.login-form
+		.login-form-logo
+			a(href="/")
+				img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
 		include mixin_er.jade
 		+err(errors)
 		form(role="form", action="/registration", method="post")
-			div.form-group
-				.row
-					input#name.form-control(type="text", name='firstName', placeholder="ИМЯ")
-				.row
-					input#userEmail.form-control(type="email", name='eMail',placeholder="E-MAIL")
-				.row
-					.sector1
-						input#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
-				.row
-					button.btn.btn-color.btn-block.set-roboto-reg.set-font-size-15(type="submit") РЕГИСТРАЦИЯ
-
+			input.input-email#name.form-control(type="text", name='firstName', placeholder="ИМЯ")
+			input.input-email#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
+			input.input-password#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+			input.button-registration(type='submit', value='РЕГИСТРАЦИЯ')

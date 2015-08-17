@@ -40,6 +40,7 @@ p{
 .my-container{
     width: 100%;
     background-image: url("images/reg-bk.jpg");
+    background-size: cover;
     position:relative;
     height:100%;
 }
