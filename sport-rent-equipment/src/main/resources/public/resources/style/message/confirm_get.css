@@ -4,8 +4,8 @@
 
 
 .message-block-text{
-    color: #b6b6b6;
-    width: 301px;
+    color: #5dc8cd;
+    width: 396px;
     margin: 0 auto;
     position: absolute;
     top: 40%;
@@ -14,10 +14,10 @@
 }
 
 .message-block-text-info{
-    width: 250px;
+    width: 360px;
     float: left;
     padding-right: 4px;
-    padding-top: 4px;
+    padding-top: 6px;
 }
 
 .message-block-text-ico{

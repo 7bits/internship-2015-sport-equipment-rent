@@ -5,7 +5,7 @@
 
 .message-block-text{
     color: #5dc8cd;
-    width: 335px;
+    width: 336px;
     margin: 0 auto;
     position: absolute;
     top: 40%;
@@ -21,7 +21,7 @@
 }
 
 .message-block-text-ico{
-    width: 35px;
+    width: 36px;
     height:35px;
     float: left;
 }
