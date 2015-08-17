@@ -1,6 +1,6 @@
 extends layout.jade
 block title
-	title Заявка отправлена
+	title Заявка подтверждена
 block depending
 	link(rel="stylesheet", href="resources/style/message/message-all.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/message/confirm_deal.css", type="text/css", media="all")
@@ -17,6 +17,11 @@ block header
 							b
 								p
 									ВЫХОД
+					.to-personal-area
+						a.header-a-color(href="/personal_area")
+							b
+								p
+									ЛИЧНЫЙ КАБИНЕТ
 block content
 	.my-content
 		.message-block
