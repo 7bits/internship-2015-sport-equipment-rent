@@ -51,7 +51,7 @@ mixin list(goods)
 										.photo-block
 											.photo-inventory
 												each image in Goods.imageUrl
-													img(src=image, width="147", height="147")
+													img(src=image, style='visibility: hidden', onload="with (this) {if (offsetHeight < offsetWidth) style.height = '147px'; else style.width = '147px')
 							.avatar-border
 								.avatar-photo
 									img(src=Goods.authorImage, width="52", height="52")
