@@ -1,28 +1,27 @@
-(function($){
-    $('.one-foto-box img').each(
-        function(){
-            var $this=$(this);
-            var h=$this.height();
-            var w=$this.width();
-            var nh=100;   //высота до которой нужно масштабировать
-            var nw=131;  //ну и ширина
-            var k1=nh/nw;
-            var k2=h/w;
+jQuery(function ($) {
+    function fix_size() {
+        var images = $('.one-foto-box-photo img');
+        images.each(setsize);
 
-            if (k1>k2)
-            {
-                h=h*(nw/w);
-                w=nw;
-            } else {
-                w=w*(nh/h);
-                h=nh;
-            }
-            $this.width(w);
-            $this.height(h);
-            if (h<nh) //Если картинка была слишком широкой, то при пропорциональном сжатии теряем в высоте, знач нужно выровнять по высоте
-            {
-                $this.css('margin-top',(nh-h)/2);
+        function setsize() {
+            var img = $(this),
+                img_dom = img.get(0),
+                container = img.parents('.one-foto-box-photo');
+            if (img_dom.complete) {
+                resize();
+            } else img.one('load', resize);
+
+            function resize() {
+                if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
+                    img.width('100%');
+                    img.height('auto');
+                    return;
+                }
+                img.height('100%');
+                img.width('auto');
             }
         }
-    );
-})(jQuery);
+    }
+    $(window).on('resize', fix_size);
+    fix_size();
+});

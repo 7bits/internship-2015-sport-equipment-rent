@@ -54,7 +54,13 @@ block content
 							.base
 								.order
 									each image in Goods.imageUrl
-										img.one-foto-box(src=image)
+										.one-foto-box
+											if image=="resources/images/photo-ico.png"
+												.one-foto-box-ico
+													img(src=image, width="42", height="42")
+											else
+												.one-foto-box-photo
+													img(src=image)
 						.update-delete-block
 							if isAuthor
 								.update-block-inside

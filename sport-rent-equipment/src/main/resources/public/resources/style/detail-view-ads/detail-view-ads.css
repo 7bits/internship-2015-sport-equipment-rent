@@ -282,6 +282,7 @@
     margin-top: 4px;
     font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
+    margin-bottom: 5px;
 }
 /*блок для 1 фото*/
 .one-foto-box{
@@ -294,12 +295,42 @@
     position:relative;
     top: 0;
     left: 0;
+
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+        -khtml-border-radius: 3px; /* KHTML */
+        border-width: 1px;
+        border-color: rgba(212, 212, 212, 1);
+        border-style: solid;
+        position: relative;
+
+}
+.one-foto-box-photo{
+    width:100%;
+    height:100%;
 }
 
-.one-foto-box img{
-    width:100%;
-    height: 81.3px;
+.one-foto-box-photo img{
+    width: 131px;
+    max-height:100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
 /*для наложения на изображение сверху*/
 .one-foto-position{
     position:absolute;
