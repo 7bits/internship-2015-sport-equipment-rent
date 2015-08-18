@@ -6,7 +6,7 @@ block depending
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block content
 	.my-content
-		form(role="form", action="/add", method="post")
+		form(role="form", action="/add", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
