@@ -57,7 +57,8 @@ mixin list(goods)
 													else
 														.one-foto-box-photo
 															img(src=image)
-							.avatar-border
-								.avatar-photo
-									img(src=Goods.authorImage, width="52", height="52")
+							a(href="/profile?user_id=#{Goods.authorId}")
+								.avatar-border
+									.avatar-photo
+										img(src=Goods.authorImage, width="52", height="52")
 							.list-block-separate-end-line
