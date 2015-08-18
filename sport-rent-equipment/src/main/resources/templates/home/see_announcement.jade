@@ -16,7 +16,7 @@ block content
 									img.round.image-vertical-position(src=user.imageUrl, height="124", width="124")
 								.author-name
 									b
-										p.text-position=user.firstName
+										p.size-text-norap.text-position=user.firstName
 							.button-comment-block
 								input.button-comment(type='button', value='ОСТАВИТЬ ОТЗЫВ', onclick="/")
 							.button-comment-block
@@ -56,12 +56,9 @@ block content
 											img(src=image)
 						.update-delete-block
 							if isAuthor
-								a(href="/")
-									input.button-delete(type='button', value='Скрыть')
-								a(href="/update?announcement_id=#{Goods.id}")
-									input.button-update(type='button', value='Редактировать')
-								a(href="/delete?announcement_id=#{Goods.id}")
-									input.button-delete(type='button', value='Удалить')
+								.update-block-inside
+									a(href="/update?announcement_id=#{Goods.id}")
+										input.button-update(type='button', value='Редактировать')
 					if !isAuthor
 						.r-side
 							.r-inside

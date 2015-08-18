@@ -457,7 +457,7 @@ color: #353535;
     margin: -48.5882% 0 0 -44.8882%;
     display:block;
     width:100%;
-      font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
     color: white;
 
@@ -465,84 +465,22 @@ color: #353535;
 
 
 /*блок для кнопок скрыть редактирование удаление */
-.update-delete-block{
+.update-block{
     width: 100%
     width: 427px;
-    height: 23.66%;
-    max-height: 102px;
-    margin-top: 4px;
-      font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.875em;
 }
 
-
-/*кнопка скрыть/удалить*/
-.button-delete {
-    width: 112px;
-    height:58px;
-    margin-top: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background: #6ccdd3;
-    color: white;
-    padding: 1px 0 2px 0;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      font-family: 'Roboto', sans-serif;
-        border: none;
-}
-
-.button-delete:hover {
-    width: 112px;
-    height:58px;
-    margin-top: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background: #6ccdd3;
-    color: #353535;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      font-family: 'Roboto', sans-serif;
-        border: none;
-}
-
-.button-delete:focus {
-    width: 112px;
-    height:58px;
-    margin-top: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background: #6ccdd3;
-    color: #353535;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      font-family: 'Roboto', sans-serif;
-        border: none;
+.update-block-inside{
+    width: 160px;
+    margin: 0 auto;
 }
 
 /*кнопка редактировать*/
-.button-update {
+.button-update, .button-update:hover, .button-update:focus {
     width: 160px;
     height:58px;
-    margin-top: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
     background: #6ccdd3;
     color: white;
     padding: 1px 0 2px 0;
@@ -552,48 +490,19 @@ color: #353535;
     -webkit-border-radius: 10px; /* Safari, Chrome */
     -khtml-border-radius: 10px; /* KHTML */
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      font-family: 'Roboto', sans-serif;
-        border: none;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    align: center;
 }
 
 .button-update:hover {
-    width: 160px;
-    height:58px;
-    margin-top: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background: #6ccdd3;
     color: #353535;
-    padding: 1px 0 2px 0;
     cursor: pointer;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      font-family: 'Roboto', sans-serif;
-        border: none;
 }
 
 .button-update:focus {
-    width: 160px;
-    height:58px;
-    margin-top: 4px;
-    margin-left: 1px;
-    margin-right: 1px;
-    background: #6ccdd3;
     color: #353535;
-    padding: 1px 0 2px 0;
     cursor: pointer;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-      font-family: 'Roboto', sans-serif;
-      border: none;
 }
 
 
