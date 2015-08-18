@@ -5,9 +5,14 @@ mixin list(goods)
 				- announcement_id = Goods.id;
 				a(href="/see_announcement?announcement_id=#{announcement_id}")
 					.one-announcement-block
-						.one-announcement-block-photo
-							each image in Goods.imageUrl
-								img(src=image, height="120", width="178")
+						each image in Goods.imageUrl
+							.one-announcement-block-photo
+								if image=="resources/images/photo-ico.png"
+									.one-foto-box-ico
+										img(src=image, width="42", height="42")
+								else
+									.one-foto-box-photo
+										img(src=image)
 						.one-announcement-block-title
 							b
 								p.size-text-norap=Goods.title

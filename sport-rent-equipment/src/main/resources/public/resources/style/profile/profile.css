@@ -138,6 +138,39 @@ background-color: rgba(77, 150, 154, 0.8);
     -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
     box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
 
+
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+        -khtml-border-radius: 3px; /* KHTML */
+        border-width: 1px;
+        border-color: rgba(212, 212, 212, 1);
+        border-style: solid;
+        position: relative;
+
+}
+.one-foto-box-photo{
+    width:100%;
+    height:100%;
+}
+
+.one-foto-box-photo img{
+    width: 178px;
+    max-height:120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .one-announcement-block-title{
