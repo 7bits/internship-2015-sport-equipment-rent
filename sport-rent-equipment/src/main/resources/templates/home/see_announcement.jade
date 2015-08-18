@@ -11,18 +11,12 @@ block content
 		.content-inside
 			.base
 				.order
-					.l-side
-						.l-inside
-							a(href="/profile?user_id=#{user.id}")
-								.ava-white-block.round-border.green-line-shadow
-									img.round.image-vertical-position(src=user.imageUrl, height="124", width="124")
-								.author-name
-									b
-										p.size-text-norap.text-position=user.firstName
-							.button-comment-block
-								input.button-comment(type='button', value='ОСТАВИТЬ ОТЗЫВ', onclick="/")
-							.button-comment-block
-								input.button-comment(type='button', value='ПОДЕЛИТЬСЯ')
+					.user-info
+						.ava-border-block
+							img.ava-image-position(src=user.imageUrl, height="120", width="120")
+						.user-info-line
+						.user-name
+							p.size-text-norap=user.firstName
 					.center-side
 						.white-content
 							.green-line.green-line-shadow

@@ -36,146 +36,79 @@
     margin: 0 auto;
     padding-top: 18px;
 }
-/*левая сторона контента*/
-.l-side{
-    width: 16.989224%;
-    min-width: 39.5px;
-    max-width: 158px;
-    height: 256px;
-    min-height:64px;
-    float:left;
+
+.user-info{
+    width:  156px;
+    float: left;
+    background-color: rgba(249, 249, 249, 0.8);
+    border-radius: 3px;
+    -moz-border-radius: 3px; /* Firefox */
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+    -khtml-border-radius: 3px; /* KHTML */
+    border-width: 1px;
+    border-color: rgba(212, 212, 212, 0.4);
+    border-style: solid;
 }
 
-/*содержание левой стороны*/
-.l-inside{
-    width: 86.7088%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 99.21%;
-    min-height:63.5px;
-    float:left;
-    font-size: 0.875em;
-}
-
-.ava-white-block{
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 53.54%;
-    min-height:34.25;
-    max-height:136px;
+.ava-border-block{
+    width: 132px;
+    height: 132px;
+    margin: 0 auto;
     position: relative;
     background-color: white;
-    font-family: 'Roboto', sans-serif;
+    -moz-border-radius: 132px; /* Firefox */
+    -webkit-border-radius: 132px; /* Safari, Chrome */
+    -khtml-border-radius: 132px; /* KHTML */
+    border-radius: 132px; /* CSS3 */
+    behavior: url(border-radius.htc); /*IE */
+    margin-top: 10px;
+-webkit-box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+-moz-box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
 }
-/*выравнивает изображение по центру margin подбираются вручную родителю relative*/
-.image-vertical-position{
+
+.ava-image-position{
+    width: 120px;
+    height: 120px;
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 91.1764%;
-    width: 91.1764%;
-    margin: -48.5882% 0 0 -44.8882%;
+    transform: translate(-50%, -50%);
+    -moz-border-radius: 120px; /* Firefox */
+    -webkit-border-radius: 120px; /* Safari, Chrome */
+    -khtml-border-radius: 120px; /* KHTML */
+    border-radius: 120px; /* CSS3 */
+    behavior: url(border-radius.htc); /*IE */
+
 }
 
-/*для закругления границ изображения*/
-.round {
-    -moz-border-radius: 124px; /* Firefox */
-    -webkit-border-radius: 124px; /* Safari, Chrome */
-    -khtml-border-radius: 124px; /* KHTML */
-    border-radius: 124px; /* CSS3 */
-    behavior: url(border-radius.htc); /*IE */
-}
-/*для закругления границ рамки*/
-.round-border {
-    -moz-border-radius: 136px; /* Firefox */
-    -webkit-border-radius: 136px; /* Safari, Chrome */
-    -khtml-border-radius: 136px; /* KHTML */
-    border-radius: 136px; /* CSS3 */
-    behavior: url(border-radius.htc); /*IE */
+.user-info-line{
+    width: 132px;
+    height: 1px;
+    margin: 0 auto;
+    background-color: rgba(221, 221, 221, 0.9);
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.author-name{
+@font-face {
+    font-family: MyriadProRegular;
+    src: url('fonts/MyriadProRegular/MyriadProRegular.ttf')  format("truetype");
+}
+
+.user-name p{
+    font-family: MyriadProRegular, 'MyriadProRegular';
+}
+
+
+.user-name{
     width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 14.96%;
-    min-height:23px;
-    max-height:38px;
-    color: #6b6b6b;
-    font-size: 0.875em;
-    font-family: 'Roboto', sans-serif;
-}
-
-/*выраваниет текст по горизонтали*/
-.text-position{
+    margin-bottom: 10px;
     text-align: center;
+    color: #747474;
+    font-size: 14px;
+    text-shadow: 0px 2px 5px #b1b1b1;
 }
-/*блок для кнопки*/
-.button-comment-block{
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 11.2362%;
-    min-height:6.2px;
-    max-height:26px;
-    margin-bottom: 4px;
-}
-
-/*кнопки серые*/
-.button-comment {
-    width: 136px;
-    height:26px;
-    margin-left: 2px;
-    font-size: 0.875em;
-    background: #FFFFFF;
-    color: #c9c9c9;
-    padding: 1px 0 2px 0;
-    border-radius: 5px;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-      border: none;
-}
-
-.button-comment:hover {
-    width: 136px;
-    height:26px;
-    margin-left: 2px;
-    font-size: 0.875em;
-    background:#FFFFFF;
-    color: #6b6b6b;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    border-radius: 5px;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-      border: none;
-}
-
-.button-comment:focus {
-    width: 136px;
-    height:26px;
-    margin-left: 2px;
-    font-size: 0.875em;
-    background:#F5F5F5;
-    color: #6b6b6b;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 5px;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-      border: none;
-}
-
-
 /*центральный сигмент*/
 .center-side{
     width: 415px;
@@ -399,7 +332,6 @@
     width: 250px;
     height: 197px;
     float:left;
-    margin-left: 20px;
 }
 
 .r-inside{
