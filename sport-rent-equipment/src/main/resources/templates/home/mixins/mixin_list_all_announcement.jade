@@ -31,17 +31,23 @@ mixin list(goods)
 															text(style="padding-right: 4px;")
 																Час:
 															b
-																text(style="padding-right: 4px;")=Goods.pricePerHour
+																text(style="padding-right: 2px;")=Goods.pricePerHour
+																text
+																	р
 														.price-block-day
 															text(style="padding-right: 4px;")
 																Сутки:
 															b
-																text(style="padding-right: 4px;")=Goods.pricePerDay
+																text(style="padding-right: 2px;")=Goods.pricePerDay
+																text
+																	р
 														.price-block-week
 															text(style="padding-right: 4px;")
 																Неделя:
 															b
 																text(style="padding-right: 4px;")=Goods.pricePerWeek
+																text
+																	р
 										.photo-block
 											.photo-inventory
 												each image in Goods.imageUrl
