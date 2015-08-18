@@ -1,12 +1,13 @@
 extends layout.jade
 block title
 	title Просмотр объявление
-block scripts
-	script(src='resources/style/detail-view-ads/image-photo-script.js')
-	script(src='resources/style/detail-view-ads/image-ava-script.js')
 block depending
+	link(rel="stylesheet", href="resources/qb/qb.css", type="text/css")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/detail-view-ads/detail-view-ads.css", type="text/css", media="all")
+block scripts
+	script(src="resources/style/detail-view-ads/image-photo-script.js")
+	script(src="resources/qb/js/qb.js")
 block content
 	.my-content
 		.content-inside
@@ -56,7 +57,8 @@ block content
 													img(src=image, width="42", height="42")
 											else
 												.one-foto-box-photo
-													img(src=image)
+													a.quickbox(href="#{image}")
+														img(src=image)
 						.update-delete-block
 							if isAuthor
 								.update-block-inside
