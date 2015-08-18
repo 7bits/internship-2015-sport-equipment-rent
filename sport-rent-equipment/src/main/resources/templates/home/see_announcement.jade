@@ -1,6 +1,8 @@
 extends layout.jade
 block title
 	title Просмотр объявление
+block scripts
+	script(src='resources/style/detail-view-ads/image-script.js')
 block depending
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/detail-view-ads/detail-view-ads.css", type="text/css", media="all")
@@ -52,8 +54,7 @@ block content
 							.base
 								.order
 									each image in Goods.imageUrl
-										.one-foto-box
-											img(src=image)
+										img.one-foto-box(src=image)
 						.update-delete-block
 							if isAuthor
 								.update-block-inside
