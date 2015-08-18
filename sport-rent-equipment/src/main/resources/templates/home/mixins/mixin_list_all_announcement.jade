@@ -49,9 +49,14 @@ mixin list(goods)
 																text
 																	р
 										.photo-block
-											.photo-inventory
-												each image in Goods.imageUrl
-													img(src=image, height = '147', width = '147')
+											each image in Goods.imageUrl
+												.photo-inventory
+													if image=="resources/images/photo-ico.png"
+														.one-foto-box-ico
+															img(src=image, width="42", height="42")
+													else
+														.one-foto-box-photo
+															img(src=image)
 							.avatar-border
 								.avatar-photo
 									img(src=Goods.authorImage, width="52", height="52")
