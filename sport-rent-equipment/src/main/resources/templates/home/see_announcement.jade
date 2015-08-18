@@ -11,12 +11,13 @@ block content
 		.content-inside
 			.base
 				.order
-					.user-info
-						.ava-border-block
-							img.ava-image-position(src=user.imageUrl, height="120", width="120")
-						.user-info-line
-						.user-name
-							p.size-text-norap=user.firstName
+					a(href="/profile?user_id=#{user.id}")
+						.user-info
+							.ava-border-block
+								img.ava-image-position(src=user.imageUrl, height="120", width="120")
+							.user-info-line
+							.user-name
+								p.size-text-norap=user.firstName
 					.center-side
 						.white-content
 							.green-line.green-line-shadow
