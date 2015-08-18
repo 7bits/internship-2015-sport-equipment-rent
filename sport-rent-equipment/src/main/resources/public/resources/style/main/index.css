@@ -270,12 +270,12 @@
     height: 56px;
     position: relative;
     z-index: 99998;
-    top: -28px;
+    top: -13px;
     right: 0;
     background-color: white;
     margin-top: -190px;
     float: right;
-    margin-right: 35px;
+    margin-right: 60px;
     /*закругление*/
     -moz-border-radius: 56px; /* Firefox */
     -webkit-border-radius: 56px; /* Safari, Chrome */
