@@ -3,6 +3,7 @@ block title
 	title Просмотр объявление
 block scripts
 	script(src='resources/style/detail-view-ads/image-photo-script.js')
+	script(src='resources/style/detail-view-ads/image-ava-script.js')
 block depending
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/detail-view-ads/detail-view-ads.css", type="text/css", media="all")
@@ -13,8 +14,8 @@ block content
 				.order
 					a(href="/profile?user_id=#{user.id}")
 						.user-info
-							.ava-border-block
-								img.ava-image-position(src=user.imageUrl, height="120", width="120")
+							.ava-image-position
+								img.round(src=user.imageUrl, width="120", height="120")
 							.user-info-line
 							.user-name
 								p.size-text-norap=user.firstName
