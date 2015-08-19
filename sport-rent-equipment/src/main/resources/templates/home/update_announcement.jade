@@ -49,7 +49,7 @@ block content
 										.one-foto-box-photo
 											img(src=goods.firstImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									if goods.secondImageUrl=="resources/images/photo-ico.png"
@@ -61,7 +61,7 @@ block content
 										.one-foto-box-photo
 											img(src=goods.secondImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', value="#{goods.secondImageUrl}", name='secondImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#second-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									if goods.thirdImageUrl=="resources/images/photo-ico.png"
@@ -74,7 +74,7 @@ block content
 										.one-foto-box-photo
 											img(src=goods.thirdImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file', value="#{goods.thirdImageUrl}", name='thirdImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#third-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block
