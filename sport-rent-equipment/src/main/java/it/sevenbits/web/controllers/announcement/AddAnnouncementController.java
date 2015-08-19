@@ -6,6 +6,7 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
+import it.sevenbits.web.service.goods.ImageController;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +82,7 @@ public class AddAnnouncementController {
             if(firstImage!=null && !firstImage.isEmpty()) {
                 try {
                     String firstImagePath = "img/upload/" + hash + firstImage.getOriginalFilename();
-                    saveImage(firstImage, "/home/sport-equipment-rent/public/" + firstImagePath);
+                    ImageController.saveImage(firstImage, "/home/sport-equipment-rent/public/" + firstImagePath);
                     form.setFirstImageUrl(firstImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -94,7 +92,7 @@ public class AddAnnouncementController {
             if(secondImage!=null && !secondImage.isEmpty()) {
                 try {
                     String secondImagePath = "img/upload/" + hash + secondImage.getOriginalFilename();
-                    saveImage(secondImage, "/home/sport-equipment-rent/public/" + secondImagePath);
+                    ImageController.saveImage(secondImage, "/home/sport-equipment-rent/public/" + secondImagePath);
                     form.setSecondImageUrl(secondImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -103,7 +101,7 @@ public class AddAnnouncementController {
             if(thirdImage!=null && !thirdImage.isEmpty()) {
                 try {
                     String thirdImagePath = "img/upload/" + hash + thirdImage.getOriginalFilename();
-                    saveImage(thirdImage, "/home/sport-equipment-rent/public/" + thirdImagePath);
+                    ImageController.saveImage(thirdImage, "/home/sport-equipment-rent/public/" + thirdImagePath);
                     form.setThirdImageUrl(thirdImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -126,31 +124,37 @@ public class AddAnnouncementController {
             try {
                 String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
-                saveImage(firstImage, fileName);
+                ImageController.saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
+        } else{
+            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
         }
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
                 String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
-                saveImage(secondImage, fileName);
+                ImageController.saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
+        }else{
+            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
         }
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
                 String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
-                saveImage(thirdImage, fileName);
+                ImageController.saveImage(thirdImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
+        }else{
+            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
         }
         return "redirect:/see_announcement?announcement_id="+goods.get(0).getId();
     }
@@ -169,16 +173,7 @@ public class AddAnnouncementController {
         return String.valueOf(bufArray);
     }
 
-    public void saveImage(MultipartFile image, String path) throws IOException {
-        byte[] bytes = image.getBytes();
 
-
-        File file = new File(path);
-        BufferedOutputStream stream =
-                new BufferedOutputStream(new FileOutputStream(file));
-        stream.write(bytes);
-        stream.close();
-    }
 
 
 }

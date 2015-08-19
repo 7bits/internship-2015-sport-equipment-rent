@@ -1,7 +1,7 @@
 package it.sevenbits.core.mappers;
 
 import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.ImageUrl;
+import it.sevenbits.web.domain.Image;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -66,16 +66,26 @@ public interface GoodsMapper {
     void delete(Long id);
 
     //goods images
-    @Select("SELECT image_url from announcement_image where goods_id=#{goodsId}")
-    @Results({@Result(column = "image_url", property = "url")})
-    List<ImageUrl> getImages(long goodsId);
+    @Select("SELECT * from announcement_image where goods_id=#{goodsId}")
+    @Results({@Result(column = "image_url", property = "url"),
+                @Result(column = "id", property = "id"),
+                @Result(column = "goods_id", property = "goodsId")})
+    List<Image> getImages(@Param("goodsId") long goodsId);
 
     @Select("SELECT * FROM announcement_image where goods_id = #{id} ORDER BY id LIMIT 1")
     @Results({
-            @Result(column = "image_url", property = "getImageForGoods")
+            @Result(column = "image_url", property = "url"),
+            @Result(column = "id", property = "id"),
+            @Result(column = "goods_id", property = "goodsId")
     })
-    String getImageForGoods(long id);
+    Image getImageForGoods(long id);
 
     @Insert("INSERT INTO announcement_image (goods_id, image_url) VALUES (#{goodsId}, #{imageUrl})")
     void addImage(@Param("goodsId")  long goodsId, @Param("imageUrl")  String imageUrl);
+
+    @Update("UPDATE announcement_image SET (image_url)=(#{newPath}) where id=#{id}")
+    void updateImage(@Param("newPath") String newPath, @Param("id")long id);
+
+    @Select("SELECT count(*) FROM deals where goods_id=#{id} and is_closed=false")
+    int dealsCount(Goods goods);
 }
