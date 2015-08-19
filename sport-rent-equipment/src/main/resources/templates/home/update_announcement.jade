@@ -4,6 +4,9 @@ block title
 block depending
 	link(rel="stylesheet", href="resources/style/update_announcement/update_announcement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
+block scripts
+	script(src='resources/style/update_announcement/update-announcement-script.js')
+	script(src="resources/style/update_announcement/image-photo-script.js")
 block content
 	.my-content
 		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
@@ -36,38 +39,42 @@ block content
 					.order
 						.base
 							.foto-block
-								.foto-block-inside
-									.download-mask
-										button.send-file
-											p
-												Добавить
-												br
-											p(style="padding-top: 4px;")
-												фото
-										input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								.download-mask
+									if goods.firstImageUrl=="resources/images/photo-ico.png"
+										.one-foto-box-ico
+											img(src=goods.firstImageUrl, width="42", height="42")
+									else
+										.icon-delete-photo
+											input.input-delete(type='radio', name='firstImageUrlDelete')
+										.one-foto-box-photo
+											img(src=goods.firstImageUrl)
+									input.fileInputText(type='text', disabled='')
+								input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
-								.foto-block-inside
-									.download-mask
-										button.send-file
-											p
-												Добавить
-												br
-											p(style="padding-top: 4px;")
-												фото
-										input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								.download-mask
+									if goods.secondImageUrl=="resources/images/photo-ico.png"
+										.one-foto-box-ico
+											img(src=goods.secondImageUrl, width="42", height="42")
+									else
+										.icon-delete-photo
+											input.input-delete(type='radio', name='secondImageUrlDelete')
+										.one-foto-box-photo
+											img(src=goods.secondImageUrl)
+									input.fileInputText(type='text', disabled='')
+								input#second-file.custom-file-input(type='file', value="#{goods.secondImageUrl}", name='secondImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
-								.foto-block-inside
-									.download-mask
-										button.send-file
-											p
-												Добавить
-												br
-											p(style="padding-top: 4px;")
-												фото
-										input.fileInputText(type='text', disabled='')
-									input#first-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								.download-mask
+									if goods.thirdImageUrl=="resources/images/photo-ico.png"
+										.one-foto-box-ico
+											img(src=goods.thirdImageUrl, width="42", height="42")
+									else
+										.icon-delete-photo
+											input.input-delete(type='radio', name='secondImageUrlDelete')
+										input(type='radio', name='thirdImageUrlDelete')
+										.one-foto-box-photo
+											img(src=goods.thirdImageUrl)
+									input.fileInputText(type='text', disabled='')
+								input#third-file.custom-file-input(type='file', value="#{goods.thirdImageUrl}", name='thirdImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block
