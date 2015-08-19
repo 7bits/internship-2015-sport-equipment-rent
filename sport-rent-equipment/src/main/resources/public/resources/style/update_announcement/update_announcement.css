@@ -261,7 +261,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
    position: relative;
    top: -128px;
    left: 0;
-   z-index: 99999;
+   z-index: 99998;
    cursor: pointer;
    padding-left: 0;
 }
@@ -276,6 +276,29 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 .set-anvisible{
    opacity: 0;
    visibility:hidden;
+}
+.input-delete{
+   opacity: 0;
+   width: 100%;
+   height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+}
+.input-delete:hover{
+    cursor: pointer;
+}
+.input-delete:focus{
+    cursor: pointer;
+}
+.icon-delete-photo{
+    width: 19px;
+    height: 19px;
+    top: 0;
+    right: 0;
+    background-image: url("images/delete.png");
+    position: absolute;
 }
 
 /*кнопка разместить*/

@@ -44,6 +44,8 @@ block content
 										.one-foto-box-ico
 											img(src=goods.firstImageUrl, width="42", height="42")
 									else
+										.icon-delete-photo
+											input.input-delete(type='radio', name='firstImageUrlDelete')
 										.one-foto-box-photo
 											img(src=goods.firstImageUrl)
 									input.fileInputText(type='text', disabled='')
@@ -54,6 +56,8 @@ block content
 										.one-foto-box-ico
 											img(src=goods.secondImageUrl, width="42", height="42")
 									else
+										.icon-delete-photo
+											input.input-delete(type='radio', name='secondImageUrlDelete')
 										.one-foto-box-photo
 											img(src=goods.secondImageUrl)
 									input.fileInputText(type='text', disabled='')
@@ -64,6 +68,9 @@ block content
 										.one-foto-box-ico
 											img(src=goods.thirdImageUrl, width="42", height="42")
 									else
+										.icon-delete-photo
+											input.input-delete(type='radio', name='secondImageUrlDelete')
+										input(type='radio', name='thirdImageUrlDelete')
 										.one-foto-box-photo
 											img(src=goods.thirdImageUrl)
 									input.fileInputText(type='text', disabled='')
