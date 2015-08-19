@@ -46,7 +46,7 @@ block content
 										input.input-delete(type='radio', name='firstImageDelete')
 									.one-foto-box-photo
 										if goods.firstImage!="resources/images/photo-ico.png"
-											img(src=goods.firstImage, title='notDefault')
+											img(src=goods.firstImage)
 									input.fileInputText(type='text', disabled='')
 								input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
@@ -57,7 +57,7 @@ block content
 										input.input-delete(type='radio', name='secondImageDelete')
 									.one-foto-box-photo
 										if goods.secondImage!="resources/images/photo-ico.png"
-											img(src=goods.secondImage, title='notDefault')
+											img(src=goods.secondImage)
 									input.fileInputText(type='text', disabled='')
 								input#second-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
@@ -68,7 +68,7 @@ block content
 										input.input-delete(type='radio', name='thirdImageDelete')
 									.one-foto-box-photo
 										if goods.thirdImage!="resources/images/photo-ico.png"
-											img(src=goods.thirdImage, title='notDefault')
+											img(src=goods.thirdImage)
 									input.fileInputText(type='text', disabled='')
 								input#third-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
