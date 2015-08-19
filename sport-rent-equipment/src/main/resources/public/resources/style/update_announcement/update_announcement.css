@@ -167,26 +167,50 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     height: 128px;
     margin-right: 10px;
     float: left;
-    border-color: #c7c7c7;
+    border-color: #c5c5c5;
     border-style: solid;
     border-width: 1px;
-    position: relative;
+    background-color: #f6f6f6;
+
+}
+.foto-block:hover{
+-webkit-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+-moz-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
-.foto-block-inside{
-width: 100%;
-height: 100%;
-marginx-top: 12 px;
-align: center;
-text-align: center;
-text-decoration: underline;
-font-size: 14px;
+
+.one-foto-box-photo{
+    width:100%;
+    height:100%;
+}
+
+.one-foto-box-photo img{
+    width: 131px;
+    max-height:100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 /*контейнер для маски*/
 .download-mask{
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
+    position: relative;
 }
 /*маска*/
 .send-file{
@@ -201,33 +225,43 @@ font-size: 14px;
 }
 
 .fileInputText {
+    text-align: center;
     width: 100%;
+    margin-right: 10px;
+    float: left;
+    border-color: #c5c5c5;
+    border-style: solid;
+    border-width: 1px;
     background-image: none;
     background-color: transparent;
     border: none;
     font-size: 14px;
     color:  #c7c7c7;
-    margin-top: 20px;
-    position: relative;
     text-decoration: none;
     /*обрезка с многоточнием*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
+    padding-left: 5px;
     padding-right: 5px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*реальная кнопка*/
 .custom-file-input {
-   width: 66px;
-   height: 86px;
+   width: 100%;
+   height: 100%;
    opacity: 0;
    filter: alpha(opacity=0);
    position: relative;
-   top: -86px;
+   top: -128px;
    left: 0;
-   z-index: 99999;
+   z-index: 99998;
    cursor: pointer;
    padding-left: 0;
 }
@@ -239,6 +273,33 @@ font-size: 14px;
     height: 40px;
 }
 
+.set-anvisible{
+   opacity: 0;
+   visibility:hidden;
+}
+.input-delete{
+   opacity: 0;
+   width: 100%;
+   height: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+}
+.input-delete:hover{
+    cursor: pointer;
+}
+.input-delete:focus{
+    cursor: pointer;
+}
+.icon-delete-photo{
+    width: 19px;
+    height: 19px;
+    top: 0;
+    right: 0;
+    background-image: url("images/delete.png");
+    position: absolute;
+}
 
 /*кнопка разместить*/
 .button-update, .button-update:focus, .button-update:hover {
@@ -346,3 +407,4 @@ margin: 0 auto;
 float: none;
 }
 }
+
