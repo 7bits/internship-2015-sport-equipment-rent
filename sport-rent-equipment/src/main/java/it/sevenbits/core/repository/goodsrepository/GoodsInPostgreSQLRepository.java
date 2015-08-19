@@ -3,13 +3,12 @@ package it.sevenbits.core.repository.goodsrepository;
 import it.sevenbits.core.mappers.GoodsMapper;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.ImageUrl;
+import it.sevenbits.web.domain.Image;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -74,22 +73,23 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     }
 
     @Override
-    public List<String> imageUrl(long goodsId) {
-        List<ImageUrl> images = mapper.getImages(goodsId);
-        List<String> url = new LinkedList<String>();
-        for(int i=0;i<images.size();i++){
-            url.add(images.get(i).getUrl());
-        }
-        return url;
+    public List<Image> imageUrl(long goodsId) {
+        List<Image> images = mapper.getImages(goodsId);
+        return images;
     }
 
     @Override
-    public String getImageForGoods(long id) {
+    public Image getImageForGoods(long id) {
         return mapper.getImageForGoods(id);
     }
 
     @Override
     public void addImage(long goodsId, String url) {
         mapper.addImage(goodsId, url);
+    }
+
+    @Override
+    public void updateImage(String nameForBase, Image image) {
+        mapper.updateImage(nameForBase, image.getId());
     }
 }

@@ -6,7 +6,7 @@ block depending
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block content
 	.my-content
-		form(role="form", action="/add", method="post", enctype="multipart/form-data")
+		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
@@ -37,13 +37,37 @@ block content
 						.base
 							.foto-block
 								.foto-block-inside
-									img(src=goods.firstImageUrl, width="147", height="147")
+									.download-mask
+										button.send-file
+											p
+												Добавить
+												br
+											p(style="padding-top: 4px;")
+												фото
+										input.fileInputText(type='text', disabled='')
+									input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.foto-block-inside
-									img(src=goods.secondImageUrl, width="147", height="147")
+									.download-mask
+										button.send-file
+											p
+												Добавить
+												br
+											p(style="padding-top: 4px;")
+												фото
+										input.fileInputText(type='text', disabled='')
+									input#first-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.foto-block-inside
-									img(src=goods.thirdImageUrl, width="147", height="147")
+									.download-mask
+										button.send-file
+											p
+												Добавить
+												br
+											p(style="padding-top: 4px;")
+												фото
+										input.fileInputText(type='text', disabled='')
+									input#first-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block

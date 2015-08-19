@@ -1,9 +1,10 @@
 package it.sevenbits.web.service.goods;
 
-import it.sevenbits.core.repository.goodsrepository.GoodsRepository;
 import it.sevenbits.core.repository.RepositoryException;
+import it.sevenbits.core.repository.goodsrepository.GoodsRepository;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
+import it.sevenbits.web.domain.Image;
 import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,10 @@ public class GoodsService {
         List<Goods> goods = repository.getGoodsByAuthorId(id);
         for(int i=0;i<goods.size();i++){
             List<String> images = new LinkedList<String>();
-            String url = getImageForGoods(goods.get(i).getId());
+            Image image =getImageForGoods(goods.get(i).getId());
+            String url = null;
+            if(image!=null)
+                url = image.getUrl();
             if(url!=null)
                 images.add(url);
             if(images.size()==0 || images.get(0)==null){
@@ -79,7 +83,9 @@ public class GoodsService {
             });
             for(int i=0;i<goods.size();i++){
                 List<String> images = new LinkedList<String>();
-                images.add(getImageForGoods(goods.get(i).getId()));
+                Image image =getImageForGoods(goods.get(i).getId());
+                if(image!=null)
+                    images.add(image.getUrl());
                 if(images.size()==0){
                     images.add("resources/images/photo-ico.png");
                 }
@@ -100,12 +106,17 @@ public class GoodsService {
             goods.setAuthor(user.getFirstName());
             goods.setAuthorPhone(user.getPhone());
 
-            List<String> images = getImagesForGoods(goods.getId());
-            int bufSize = images.size();
-            for(int i=0;i<3-bufSize;i++){
-                images.add("resources/images/photo-ico.png");
+            List<Image> images = getImagesForGoods(goods.getId());
+            List<String> imagesUrl = new LinkedList<String>();
+            for(int i=0;i<images.size();i++){
+                imagesUrl.add(images.get(i).getUrl());
             }
-            goods.setImageUrl(images);
+            int bufSize = images.size();
+            for(int i=0;i<3-bufSize; i++) {
+                imagesUrl.add("resources/images/photo-ico.png");
+            }
+
+            goods.setImageUrl(imagesUrl);
 
         } catch (RepositoryException e) {
             throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
@@ -115,6 +126,11 @@ public class GoodsService {
 
     public void addImage(long goodsId, String url){
         repository.addImage(goodsId, url);
+    }
+
+
+    public void updateImage(long announcementId, String nameForBase, Image image) {
+        repository.updateImage(nameForBase ,image);
     }
 
     public void update(GoodsForm form) throws GoodsException {
@@ -137,11 +153,11 @@ public class GoodsService {
         }
     }
 
-    public List<String> getImagesForGoods(long id){
+    public List<Image> getImagesForGoods(long id){
         return repository.imageUrl(id);
     }
 
-    public String getImageForGoods(long id){
+    public Image getImageForGoods(long id){
         return repository.getImageForGoods(id);
     }
 
