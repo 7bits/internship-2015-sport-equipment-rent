@@ -66,6 +66,9 @@ public class UpdateController {
                          @RequestParam("firstImage") MultipartFile firstImage,
                          @RequestParam("secondImage") MultipartFile secondImage,
                          @RequestParam("thirdImage") MultipartFile thirdImage,
+                         @RequestParam(value = "firstImageDelete", required = false) boolean firstImageDelete,
+                         @RequestParam(value = "secondImageDelete", required = false) boolean secondImageDelete,
+                         @RequestParam(value = "thirdImageDelete", required = false) boolean thirdImageDelete,
                          final Model model, @ModelAttribute GoodsForm form){
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         final Map<String, String> errors = validator.validate(form);
@@ -79,6 +82,27 @@ public class UpdateController {
             return "home/update_announcement";
         }
         form.setId(announcementId);
+        if(firstImageDelete){
+            if(images.size()>0) {
+                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(0));
+            }else{
+                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+            }
+        }
+        if(secondImageDelete){
+            if(images.size()>1) {
+                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(1));
+            }else{
+                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+            }
+        }
+        if(thirdImageDelete){
+            if(images.size()>2) {
+                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(2));
+            }else{
+                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+            }
+        }
         if(firstImage!=null && !firstImage.isEmpty()) {
             try {
                 String fileName = "/home/sport-equipment-rent/public/img/upload/" + announcementId + "_1" + firstImage.getOriginalFilename();
