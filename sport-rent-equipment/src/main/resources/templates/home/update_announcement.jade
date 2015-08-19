@@ -9,7 +9,7 @@ block scripts
 	script(src="resources/style/update_announcement/image-photo-script.js")
 block content
 	.my-content
-		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
+		form(role="form", action="/add", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
@@ -40,39 +40,35 @@ block content
 						.base
 							.foto-block
 								.download-mask
-									if goods.firstImageUrl=="resources/images/photo-ico.png"
-										.one-foto-box-ico
-											img(src=goods.firstImageUrl, width="42", height="42")
-									else
-										.icon-delete-photo
-											input.input-delete(type='radio', name='firstImageDelete')
-										.one-foto-box-photo
-											img(src=goods.firstImageUrl)
+									.one-foto-box-ico
+										img(src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='firstImageDelete')
+									.one-foto-box-photo
+										if goods.firstImage!="resources/images/photo-ico.png"
+											img(src=goods.firstImage, title='notDefault')
 									input.fileInputText(type='text', disabled='')
 								input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
-									if goods.secondImageUrl=="resources/images/photo-ico.png"
-										.one-foto-box-ico
-											img(src=goods.secondImageUrl, width="42", height="42")
-									else
-										.icon-delete-photo
-											input.input-delete(type='radio', name='secondImageDelete')
-										.one-foto-box-photo
-											img(src=goods.secondImageUrl)
+									.one-foto-box-ico
+										img(src=src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='secondImageDelete')
+									.one-foto-box-photo
+										if goods.secondImage!="resources/images/photo-ico.png"
+											img(src=goods.secondImage, title='notDefault')
 									input.fileInputText(type='text', disabled='')
 								input#second-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
-									if goods.thirdImageUrl=="resources/images/photo-ico.png"
-										.one-foto-box-ico
-											img(src=goods.thirdImageUrl, width="42", height="42")
-									else
-										.icon-delete-photo
-											input.input-delete(type='radio', name='secondImageDelete')
-										input(type='radio', name='thirdImageUrlDelete')
-										.one-foto-box-photo
-											img(src=goods.thirdImageUrl)
+									.one-foto-box-ico
+										img(src=src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='thirdImageDelete')
+									.one-foto-box-photo
+										if goods.thirdImage!="resources/images/photo-ico.png"
+											img(src=goods.thirdImage, title='notDefault')
 									input.fileInputText(type='text', disabled='')
 								input#third-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
