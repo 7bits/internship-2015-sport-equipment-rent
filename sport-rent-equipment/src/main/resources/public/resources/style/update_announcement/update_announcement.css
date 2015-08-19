@@ -152,6 +152,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
 
 }
 
+/*фотки*/
 .help-foto-block{
     width: 85.92%;
     height: auto;
@@ -161,7 +162,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     margin: 0 auto;
 }
 
-
+/*!базовый! блок 1 для вывода 1 фотки*/
 .foto-block{
     width: 30.6024%;
     height: 128px;
@@ -179,7 +180,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
 box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
-
+/*само изображение*/
 .one-foto-box-photo{
     width:100%;
     height:100%;
@@ -193,7 +194,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+/*деволтная иконка (блок)*/
 .one-foto-box-ico{
     width:42px;
     height:42px;
@@ -223,7 +224,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     text-decoration: underline;
 
 }
-
+/*для вывода текста названия подргуженного файла*/
 .fileInputText {
     text-align: center;
     width: 100%;
@@ -266,43 +267,21 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
    padding-left: 0;
 }
 
-
+/*блок для кнопки отмены*/
 .content-button-block{
     width: 34.5%;
     margin: 0 auto;
     height: 40px;
 }
-
-.set-anvisible{
-   opacity: 0;
-   visibility:hidden;
-}
-.set-visible{
-   opacity: 1;
-   visibility: visible;
-}
-
-.set-size-ico{
-width: 42px;
-height: 42px;
-}
+/*иконка удаления и ее input*/
 .input-delete{
-   opacity: 0;
-   width: 100%;
-   height: 100%;
-      position: relative;
-      top: 0;
-      left: 0;
-      z-index: 99999;
-
-}
-
-/*видимость и невидимость картинок*/
-.set-anvisible-image{
-    display: none;
-}
-.set-visible-image{
-    display: inline-block;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 99999;
 }
 
 .input-delete:hover{
@@ -318,7 +297,6 @@ height: 42px;
     right: 0;
     background-image: url("images/delete.png");
     position: absolute;
-
 }
 
 
