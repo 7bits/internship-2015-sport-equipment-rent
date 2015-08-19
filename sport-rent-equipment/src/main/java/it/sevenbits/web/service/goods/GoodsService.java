@@ -62,6 +62,7 @@ public class GoodsService {
                 images.add("resources/images/photo-ico.png");
             }
             goods.get(i).setImageUrl(images);
+            //checkStatus(goods.get(i));
         }
         goods.sort(new Comparator<Goods>() {
             @Override
@@ -90,6 +91,7 @@ public class GoodsService {
                     images.add("resources/images/photo-ico.png");
                 }
                 goods.get(i).setImageUrl(images);
+                //checkStatus(goods.get(i));
             }
             return goods;
         } catch (Exception e) {
@@ -115,6 +117,7 @@ public class GoodsService {
             for(int i=0;i<3-bufSize; i++) {
                 imagesUrl.add("resources/images/photo-ico.png");
             }
+            //checkStatus(goods);
 
             goods.setImageUrl(imagesUrl);
 
@@ -171,5 +174,9 @@ public class GoodsService {
         } catch (RepositoryException e) {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
+    }
+
+    public void checkStatus(Goods goods){
+        goods.setStatus(repository.checkStatus(goods));
     }
 }

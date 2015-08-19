@@ -24,4 +24,6 @@ public interface GoodsRepository {
         void addImage(long goodsId, String url);
 
         void updateImage(String nameForBase, Image image);
+
+        boolean checkStatus(Goods goods);
 }

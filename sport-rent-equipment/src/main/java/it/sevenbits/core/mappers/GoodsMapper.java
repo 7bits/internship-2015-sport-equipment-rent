@@ -86,5 +86,6 @@ public interface GoodsMapper {
     @Update("UPDATE announcement_image SET (image_url)=(#{newPath}) where id=#{id}")
     void updateImage(@Param("newPath") String newPath, @Param("id")long id);
 
-
+    @Select("SELECT count(*) FROM deals where goods_id=#{goodsId} and is_closed=false")
+    int dealsCount(Goods goods);
 }

@@ -3,6 +3,7 @@ package it.sevenbits.web.controllers.announcement;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
 import it.sevenbits.web.domain.Image;
+import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
@@ -40,6 +41,12 @@ public class UpdateController {
     public String update(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model){
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         String name =  SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = null;
+        try {
+            user = userService.getUser(name);
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        }
         Goods goods = null;
         try {
             goods =  goodsService.getGoods(Long.valueOf(announcementId));
@@ -47,7 +54,7 @@ public class UpdateController {
             LOG.error("An error occured while picking goods from database at UpdateController class: "+e.getMessage());
             return "home/error";
         }
-        if(name!= goods.getAuthor()){
+        if(user.getId()!= goods.getAuthorId()){
             return "redirect:/see_announcement?announcement_id="+announcementId;
         }
         GoodsForm form = GoodsForm.valueOf(goods);

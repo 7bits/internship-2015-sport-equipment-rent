@@ -92,4 +92,9 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
     public void updateImage(String nameForBase, Image image) {
         mapper.updateImage(nameForBase, image.getId());
     }
+
+    @Override
+    public boolean checkStatus(Goods goods) {
+        return mapper.dealsCount(goods)==0;
+    }
 }
