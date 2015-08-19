@@ -1,0 +1,20 @@
+mixin list(goods)
+	.base
+		.order
+			each Goods in goods
+				- announcement_id = Goods.id;
+				a(href="/see_announcement?announcement_id=#{announcement_id}")
+					.one-announcement-block
+						each image in Goods.imageUrl
+							.one-announcement-block-photo
+								if image=="resources/images/photo-ico.png"
+									.one-foto-box-ico
+										img(src=image, width="42", height="42")
+								else
+									.one-foto-box-photo
+										img(src=image)
+						.one-announcement-block-title
+							b
+								p.size-text-norap=Goods.title
+						.one-announcement-block-text
+							p.size-text-norap=Goods.description

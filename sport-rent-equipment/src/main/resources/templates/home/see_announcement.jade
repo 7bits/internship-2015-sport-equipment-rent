@@ -2,25 +2,24 @@ extends layout.jade
 block title
 	title Просмотр объявление
 block depending
+	link(rel="stylesheet", href="resources/qb/qb.css", type="text/css")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/style/detail-view-ads/detail-view-ads.css", type="text/css", media="all")
+block scripts
+	script(src="resources/style/detail-view-ads/image-photo-script.js")
+	script(src="resources/qb/js/qb.js")
 block content
 	.my-content
 		.content-inside
 			.base
 				.order
-					.l-side
-						.l-inside
-							a(href="/profile?user_id=#{user.id}")
-								.ava-white-block.round-border.green-line-shadow
-									img.round.image-vertical-position(src=user.imageUrl, height="124", width="124")
-								.author-name
-									b
-										p.text-position=user.firstName
-							.button-comment-block
-								input.button-comment(type='button', value='ОСТАВИТЬ ОТЗЫВ', onclick="/")
-							.button-comment-block
-								input.button-comment(type='button', value='ПОДЕЛИТЬСЯ')
+					a(href="/profile?user_id=#{user.id}")
+						.user-info
+							.ava-image-position
+								img.round(src=user.imageUrl, width="120", height="120")
+							.user-info-line
+							.user-name
+								p.size-text-norap=user.firstName
 					.center-side
 						.white-content
 							.green-line.green-line-shadow
@@ -53,15 +52,18 @@ block content
 								.order
 									each image in Goods.imageUrl
 										.one-foto-box
-											img(src=image)
+											if image=="resources/images/photo-ico.png"
+												.one-foto-box-ico
+													img(src=image, width="42", height="42")
+											else
+												.one-foto-box-photo
+													a.quickbox(href="#{image}")
+														img(src=image)
 						.update-delete-block
 							if isAuthor
-								a(href="/")
-									input.button-delete(type='button', value='Скрыть')
-								a(href="/update?announcement_id=#{Goods.id}")
-									input.button-update(type='button', value='Редактировать')
-								a(href="/delete?announcement_id=#{Goods.id}")
-									input.button-delete(type='button', value='Удалить')
+								.update-block-inside
+									a(href="/update?announcement_id=#{Goods.id}")
+										input.button-update(type='button', value='Редактировать')
 					if !isAuthor
 						.r-side
 							.r-inside
@@ -77,7 +79,7 @@ block content
 													.time-to-rent-ico
 														img(src="resources/style/detail-view-ads/images/calendar-ico.png")
 										if !isAuthor
-											include mixin_er.jade
+											include mixins/mixin_er.jade
 											+err(errors)
 										.input-block
 											p.green-color.position-on-green-line

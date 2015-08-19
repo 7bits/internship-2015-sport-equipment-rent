@@ -1,0 +1,172 @@
+*{
+    margin:0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz--box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*убирает рамку пунктиром вокруг кнопок*/
+button::-moz-focus-inner,
+	input[type="reset"]::-moz-focus-inner,
+	input[type="button"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
+	border: none;
+}
+
+/*убирает выделени input в хроме и сафари*/
+input, textarea {
+    outline:none;
+}
+
+body{
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+/*контент*/
+.my-container{
+    width: 100%;
+    background-image: url("images/reg-bk.jpg");
+    background-size: cover;
+    position:relative;
+    height:100%;
+}
+.my-content{
+    width: 100%;
+}
+
+.my-header{
+    margin:0 auto;
+    width: 100%;
+    height:74px;
+}
+
+.my-center-of-header{
+    width: 67%;
+    max-width: 938px;
+    height: 100%;
+    min-height:74px;
+    margin: 0 auto;
+}
+
+/*блок "на главную"*/
+.to-main{
+    width: 100px;
+    min-width: 100px;
+    height: 74px;
+    font-size: 14px;
+    padding-top: 27px;
+    color: #5cc8cd;
+}
+
+a.local-a-color:visited{
+    color: #5dc8cd;
+}
+
+a.local-a-color:hover{
+    color: white;
+}
+
+/*блоки для input*/
+
+.input-email, .input-password {
+    width: 100%;
+    height: 37px;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14.96px;
+    border-color: #c7c7c7;
+    border-style: solid;
+    border-width:1px;
+    box-shadow: none;
+    border-radius: 5px;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+}
+
+
+.input-password:focus,
+.input-password:hover,
+.input-email:focus,
+.input-email:hover{
+     border-color: #c7c7c7;
+     border-style: solid;
+     border-width: 1px;
+}
+
+/*деалет внутренннюю тень*/
+.input-email:focus,
+.input-password:focus{
+    box-shadow: 0 0 8px #E6E6E6 inset;
+}
+
+input{
+    padding-left: 18px;
+    color: #949494;
+}
+
+
+input::-webkit-input-placeholder{
+    font-size: 14.96px;
+}
+/*убирает подстветку placeholder*/
+input:focus:-ms-input-placeholder, , textarea: focus:-ms-textarea-placeholder{
+    color: transparent;
+}
+input:focus::-moz-placeholder, textarea:focus::-moz-placeholder{
+    color: transparent;
+}
+input:focus:-moz-placeholder, textarea:focus:-moz-placeholder{
+    color: transparent;
+}
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+input:focus:placeholder-shown, textarea:focus:placeholder-shown{
+    color: transparent;
+}
+
+/*блок для кнопки*/
+
+.button-registration, .button-registration:focus, .button-registration:hover {
+    width: 100%;
+    height:42px;
+    background: #5cc8cd;
+    color: white;
+    padding: 1px 0 2px 0;
+    font-size: 14.96px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(110,109,110,1);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(110,109,110,1);
+    box-shadow: 0px 0px 3px 1px rgba(110,109,110,1);
+    font-width: bold;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+    font-family: 'Roboto', sans-serif;
+    border: none;
+}
+
+.button-registration:hover {
+    color: #949494;
+    cursor: pointer;
+}
+
+.button-registration:focus {
+    color: #949494;
+    cursor: pointer;
+}

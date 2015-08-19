@@ -55,7 +55,7 @@ public class GoodsService {
             if(url!=null)
                 images.add(url);
             if(images.size()==0 || images.get(0)==null){
-                images.add("https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png");
+                images.add("resources/images/photo-ico.png");
             }
             goods.get(i).setImageUrl(images);
         }
@@ -81,7 +81,7 @@ public class GoodsService {
                 List<String> images = new LinkedList<String>();
                 images.add(getImageForGoods(goods.get(i).getId()));
                 if(images.size()==0){
-                    images.add("https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png");
+                    images.add("resources/images/photo-ico.png");
                 }
                 goods.get(i).setImageUrl(images);
             }
@@ -103,7 +103,7 @@ public class GoodsService {
             List<String> images = getImagesForGoods(goods.getId());
             int bufSize = images.size();
             for(int i=0;i<3-bufSize;i++){
-                images.add("https://upload.wikimedia.org/wikipedia/commons/9/9a/%D0%9D%D0%B5%D1%82_%D1%84%D0%BE%D1%82%D0%BE.png");
+                images.add("resources/images/photo-ico.png");
             }
             goods.setImageUrl(images);
 

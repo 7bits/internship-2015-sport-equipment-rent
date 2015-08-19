@@ -1,0 +1,15 @@
+.login-form{
+    width: 343px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.login-form-logo{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+}

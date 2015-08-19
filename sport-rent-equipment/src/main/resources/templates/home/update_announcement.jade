@@ -3,6 +3,7 @@ block title
 	title Обновить объявление
 block depending
 	link(rel="stylesheet", href="resources/style/update_announcement/update_announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block content
 	.my-content
 		form(role="form", action="/add", method="post", enctype="multipart/form-data")
@@ -11,6 +12,8 @@ block content
 					p
 						Ваше объявление
 				.content-block-inside-info
+					include mixins/mixin_er.jade
+					+err(errors)
 					.your-inventory-title-block
 						p
 							Ваш инвентарь

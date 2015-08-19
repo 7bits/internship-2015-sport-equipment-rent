@@ -1,703 +1,186 @@
-/*для всего*/
-*{
-    margin:0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz--box-sizing: border-box;
-    box-sizing: border-box;
-}
-/*убирает рамку пунктиром вокруг кнопок*/
-button::-moz-focus-inner,
-	input[type="reset"]::-moz-focus-inner,
-	input[type="button"]::-moz-focus-inner,
-	input[type="submit"]::-moz-focus-inner,
-	input[type="submit"]::-moz-focus-inner,
-	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
-	border: none;
-	}
-
-.size-text-norap {
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
-padding: 5px;
--o-text-overflow: ellipsis;
-width: 100%;
-}
-
-/*всегда писать эти 2 блока!!!*/
-body{
-    font: 100/1.5em;
-    height: 100%;
-}
-p, text{
-    padding-right: 2px;
-}
-
-text{
-    padding-left: 2px;
-}
-
-.set-font-title{
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.125em;
-}
-
-html{
-height: 100%;
-}
-
-a{
-text-decoration: none;
-}
-
-a:hover{
-color: #353535;
-}
-
-.green-color{
-    color: #019199;
-}
-
-.white-color{
-    color: white;
-}
-
-.text-center{
-    text-align: center;
-    margin: 15% 0 0 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.125em;
-}
-
-/*базовый контейнер*/
-.container{
-    width: 100%;
-    min-width: 350px;
-    max-width: 1400px;
-    min-height:100%;
-    background-image: url('images/bk-an.jpg');
-    background-repeat: repeat;
-    background-position: right bottom;
-}
-
-/*все от header*/
-.header{
-    width: 100%;
-    min-width: 350px;
-    max-width: 1400px;
-    height: 5.2857%;
-    min-height:74px;
-    background-color: white;
-}
-
-.shadow{
-    box-shadow: 0 3px 5px #B0B0B0;
-}
-
-.center-of-header{
-    width: 67%;
-    min-width: 223px;
-    max-width: 938px;
-    height: 100%;
-    min-height:74px;
-    margin: 0 auto;
-}
-
-/*base & order обеспечивают блоки в ряд, порядок именно такой для вложенности*/
-.base{
-    overflow:hidden;
-    width: 100%;
-    height:100%;
-
-}
-.order{
-    white-space:nowrap;
-    display:inline-block;
-    width: 100%;
-    height:100%;
-}
-
-/*логотип*/
-.logo{
-    width: 170px;
-    min-width: 170px;
-    max-width: 170px;
-    height: 74px;
-    min-height:74px;
-    float:left;
-}
-/*блок "Вход"*/
-.profile{
-    width: 60px;
-    min-width: 60px;
-    max-width: 60px;
-    height: 74px;
-    min-height:74px;
-    float:right;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-}
-
-/*блок "Выход"*/
-.exit{
-    width: 80px;
-    min-width: 80px;
-    max-width: 80px;
-    height: 74px;
-    min-height:74px;
-    float:right;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-}
-
-/*блок "Личный кабинет"*/
-.personal{
-    width: 170px;
-    min-width: 170px;
-    max-width: 170px;
-    height: 74px;
-    min-height:74px;
-    float:right;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-}
-
-.position{
-    padding-top: 28px;
-}
-
 /*контент*/
-.content{
-    width: 52,35714285714286%;
-    min-width: 232.5px;
-    max-width: 733px;
+.my-content{
+    width: 100%;
+    background-image: url("images/pattern-gr.jpg");
+    min-height: 100%;
+}
+
+.my-content-inside{
+    width: 752px;
     height: 100%;
-    min-height:100%;
     margin: 0 auto;
     padding-top: 18px;
 }
-/*левая сторона контента*/
-.l-side{
-    width: 38,14285714285714%;
-    min-width: 39.5px;
-    max-width: 534px;
-    height: 256px;
-    min-height:64px;
-    float:left;
-}
 
-/*содержание левой стороны*/
-.l-inside{
-    width: 86.7088%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 99.21%;
-    min-height:63.5px;
-    float:left;
-    font-size: 0.875em;
-}
-
-.ava-white-block{
-    width: 132px;
-    height: 132px;
-    margin: 0 auto;
-    margin-top:12px;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-}
-
-
-.ava{
-    margin: 7px 0 0 6px;
-    float: none;
-
-}
-
-.line{
-    width:80.76%;
-    margin: 0 auto;
-}
-
-.line hr{
-    margin-top:10px;
-    color:#c7c7c7;
-    margin-bottom:10px;
-}
-
-
-/*для закругления границ изображения*/
-.round {
-    -moz-border-radius: 124px; /* Firefox */
-    -webkit-border-radius: 124px; /* Safari, Chrome */
-    -khtml-border-radius: 124px; /* KHTML */
-    border-radius: 124px; /* CSS3 */
-    behavior: url(border-radius.htc); /*IE */
-}
-/*для закругления границ рамки*/
-.round-border {
-    -moz-border-radius: 136px; /* Firefox */
-    -webkit-border-radius: 136px; /* Safari, Chrome */
-    -khtml-border-radius: 136px; /* KHTML */
-    border-radius: 136px; /* CSS3 */
-    behavior: url(border-radius.htc); /*IE */
-}
-
-.author-name{
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 14.96%;
-    min-height:23px;
-    max-height:38px;
-    text-shadow: 0px 2px 5px #b1b1b1;
-    margin:0 auto;
-    padding-bottom:12px;
-    color: #6b6b6b;
-    font-size: 0.875em;
-    font-family: 'Roboto', sans-serif;
-}
-
-.text-block-1{
-    width: 66px;
-    height: 100%;
+.user-info{
+    width:  156px;
     float: left;
-    font-family: 'Roboto', sans-serif;
+    margin-right: 20px;
+    background-color: rgba(249, 249, 249, 0.8);
+    border-radius: 3px;
+    -moz-border-radius: 3px; /* Firefox */
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+    -khtml-border-radius: 3px; /* KHTML */
+    border-width: 1px;
+    border-color: rgba(212, 212, 212, 0.4);
+    border-style: solid;
 }
-
-/*выраваниет текст по горизонтали*/
-.text-position{
-    text-align: center;
-}
-/*блок для кнопки*/
-.button-comment-block{
-    width: 100%;
-    min-width: 34.25px;
-    max-width: 136px;
-    height: 11.2362%;
-    min-height:6.2px;
-    max-height:26px;
-    margin-bottom: 4px;
-}
-
-/*кнопки серые*/
-.button-comment {
-    width: 136px;
-    height:26px;
-    margin-left: 2px;
-    font-size: 0.875em;
-    background: #FFFFFF;
-    color: #c9c9c9;
-    padding: 1px 0 2px 0;
-    border-radius: 5px;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-}
-
-.button-comment:hover {
-    width: 136px;
-    height:26px;
-    margin-left: 2px;
-    font-size: 0.875em;
-    background:#FFFFFF;
-    color: #6b6b6b;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    border-radius: 5px;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-}
-
-.button-comment:focus {
-    width: 136px;
-    height:26px;
-    margin-left: 2px;
-    font-size: 0.875em;
-    background:#F5F5F5;
-    color: #6b6b6b;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 5px;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-}
-
-
-/*центральный сигмент*/
-.center-side{
-    width: 52,35714285714286%;
-    min-width: 106.75px;
-    max-width: 733px;
-    height: 100%;
-    min-height:431px;
-    float: left;
-    margin:0 auto;
-}
-
-.white-content{
-    width: 76.39836289222374%;
-    min-width: 106.75px;
-    max-width: 560px;
-    float: right;
-}
-.white-box-for-text{
+.ava-image-position{
+    width: 120px;
+    height: 120px;
     margin: 0 auto;
     margin-top: 10px;
-    margin-right:12px;
-    padding-bottom:10px;
-    width: 178px;
-    height: auto;
-    background-color: white;
-    float: left;
-        /*для переноса слов*/
-        white-space: pre-wrap;
-        white-space: -moz-pre-wrap;
-        white-space: -o-pre-wrap;
-        word-wrap: break-word;
 }
-.white-box-for-text:hover{
+.round{
+    -moz-border-radius: 120px; /* Firefox */
+    -webkit-border-radius: 120px; /* Safari, Chrome */
+    -khtml-border-radius: 120px; /* KHTML */
+    border-radius: 120px; /* CSS3 */
+    behavior: url(border-radius.htc); /*IE */
+            border-width: 3px;
+            border-color: white;
+            border-style: solid;
+-webkit-box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+-moz-box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+}
+
+.user-info-line{
+    width: 132px;
+    height: 1px;
+    margin: 0 auto;
+    background-color: rgba(221, 221, 221, 0.9);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@font-face {
+    font-family: MyriadProRegular;
+    src: url('fonts/MyriadProRegular/MyriadProRegular.ttf')  format("truetype");
+}
+
+.user-name p{
+    font-family: MyriadProRegular, 'MyriadProRegular';
+}
+
+
+.user-name{
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #747474;
+    font-size: 14px;
+    text-shadow: 0px 2px 5px #b1b1b1;
+}
+/*объявления*/
+.user-announcement{
+    width: 570px;
+    float: left;
+}
+
+.user-announcement-title{
+    width: 558px;
+    background-color: #6fb2b4;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+}
+
+.user-announcement-title-text{
+    width: 558px;
+    color: white;
+    font-size: 18px;
+    text-shadow: 0px 1px 2px #616061;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 21px;
+}
+
+/*объявления*/
+.one-announcement-block{
+    width: 178px;
+    margin-right: 12px;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    float: left;
+    margin-top: 10px;
+}
+
+
+.one-announcement-block: hover{
+background-color: rgba(77, 150, 154, 0.8);
+}
+
+.one-announcement-block: focus{
+background-color: rgba(77, 150, 154, 0.8);
+}
+
+.one-announcement-block-photo{
+    width: 178px;
+    height: 120px;
+    margin-bottom: 8px;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
+    box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
+
+
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+        -khtml-border-radius: 3px; /* KHTML */
+        border-width: 1px;
+        border-color: rgba(212, 212, 212, 1);
+        border-style: solid;
+        position: relative;
 
 }
-.img{
+.one-foto-box-photo{
     width:100%;
     height:100%;
 }
 
-.announcement-list{
-    width:572px;
-}
-
-a{
-    text-decoration: none;
-    color: #353535;
-}
-
-.header-info-block{
-    width: 81%;
-    min-width: 77.75px;
-    max-width: 312px;
-    height: 100%;
-    padding-left:22px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    color: white;
-}
-/*заголовок*/
-.text-title{
-    width: 100%
-    min-width: 106.75px;
-    max-width: 427px;
-    height: 7.92%;
-    margin: 0 auto;
-    margin-top: 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.125em;
-    padding-left: 32px;
-
-}
-
-.discr-block{
-    width: 100%
-    min-width: 106.75px;
-    max-width: 427px;
-    height: 55.79%;
-    margin: 0 auto;
-    margin-top: 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    padding-left: 32px;
-    padding-right: 27px;
-    /*для переноса слов*/
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-}
-
-/*чтоб текст не выходил за границы блока*/
-.size-text-rap {
-    word-wrap: break-word;
-    hyphens: auto;
- }
-/*низ для иконок*/
-.bottom-block{
-    width: 100%
-    min-width: 106.75px;
-    max-width: 427px;
-    height: 8.8167%;
-    max-height: 38px;
-    margin-top: 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-}
-
-/*блок для фоток*/
-.foto-block{
-    width: 100%
-    width: 427px;
-    height: 23.66%;
-    max-height: 102px;
-    margin-top: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-}
-/*блок для 1 фото*/
-.one-foto-box{
+.one-foto-box-photo img{
     width: 178px;
-    height: 115.3px;
-    margin-bottom:10px;
-    float: left;
-    overflow:hidden;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    position:relative;
-}
-
-.one-foto-box img{
-    width: 100%;
-    height: 115.3px;
-    padding:0 0 0 0;
-}
-/*для наложения на изображение сверху*/
-.one-foto-position{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-/*ЗАКОНЧИТЬ*/
-.text-on-foto {
+    max-height:120px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -48.5882% 0 0 -44.8882%;
-    display:block;
-    width:100%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    color: white;
-
+    transform: translate(-50%, -50%);
 }
 
-
-
-/*правая сторона*/
-.r-side{
-    width: 21,85714285714286%;
-    min-width: 80.5px;
-    max-width: 306px;
-    height: 197px;
-    min-height:197px;
-    float:left;
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.r-inside{
-    width: 84.4720%;
-    min-width: 68px;
-    max-width: 272px;
-    min-height:197px;
-    float:right;
-}
-
-.blue-line{
-    width: 100%;
-    min-width: 68px;
-    height: 45px;
-    min-height:7px;
-    background-color: #6eb2b3;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    padding-top: 4px;
-}
-
-.blue-line-shadow{
-    box-shadow: 0 2px 3px #E6E6E6;
-}
-
-.position-on-green-line{
-    padding-top: 2px;
-    padding-left: 10px;
-}
-
-.time-to-rent-text{
-    width: 80%;
-    height: 100%;
-    float: left;
-}
-
-.time-to-rent-ico{
-    width: 20%;
-    height: 100%;
-    float: left;
-    text-align: center;
-}
-
-.white-form{
-    width: 100%;
-    min-width: 68px;
-    max-width: 272px;
-    height: 190px;
-    min-height:20px;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-}
-
-.input-block{
-    width: 100%;
-    min-width: 34px;
-    max-width: 240px;
-    height: 80px;
-    min-height:20px;
-    float:left;
-}
-/*блок для input*/
-.input-box{
-    width: 100%;
-    min-width: 34px;
-    max-width: 240px;
-    height: 41px;
-    min-height:41px;
-    float:left;
-    padding-left: 10px;
-}
-
-.input-size{
-    width:100%;
-    height: 95%;
-}
-
-
-
-/*кнопка аренды*/
-.button-rent {
-    width: 250px;
-    height:58px;
-    margin-top: 10px;
-    background: #6ccdd3;
-    color: white;
-    padding: 1px 0 2px 0;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-}
-
-.button-rent:hover {
-    width: 250px;
-    height:58px;
-    margin-top: 10px;
-    background: #6ccdd3;
-    color: #353535;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-}
-
-.button-rent:focus {
-    width: 250px;
-    height:58px;
-    margin-top: 10px;
-    background: #6ccdd3;
-    color: #353535;
-    padding: 1px 0 2px 0;
-    cursor: pointer;
-    font-size: 1.125em;
-    border-radius: 10px;
-    -moz-border-radius: 10px; /* Firefox */
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-    -khtml-border-radius: 10px; /* KHTML */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    font-family: 'Roboto', sans-serif;
-}
-
-.personal-info{
-    width: 158px;
-    height: 100%;
-    float: left;
-    background-color: white;
-    font-size: 0.875em;
-    border:1px solid;
-    border-color:#d4d4d4;
-    -moz-border-radius: 3px; /* Firefox */
-    -webkit-border-radius: 3px; /* Safari, Chrome */
-    -khtml-border-radius: 3px; /* KHTML */
-}
-
-.set-18{
- font-size: 1.125em;
- }
-
-.photo-and-name{
-    margin: 0 auto;
-}
-
-.title p{
+.one-announcement-block-title{
+    width: 178px;
+    margin-bottom: 8px;
     color: #009198;
-    font-size: 0.875em;
-    font-family: 'Roboto', sans-serif;
-    float:left;
-    width:100%;
-    margin-left:9px;
+    font-size: 14px;
 }
 
-.description p{
-    float:left;
-    width:100%;
-    font-size: 0.688em;
-    padding-left:9px;
-    padding-right :9px;
+.one-announcement-block-text{
+    width: 178px;
+    margin-bottom: 14px;
     color: #a2a2a2;
-    font-family: 'Roboto', sans-serif;
-    padding-top:10px;
-
+    font-size: 11px;
 }
 
+ .size-text-norap
+ {
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     -o-text-overflow: ellipsis;
+    padding-left: 8px;
+    padding-right: 8px;
 
-
-/*адаптивность*/
-@media screen and (max-width: 500px){
-    .center-of-header{
-        width: 100%;
-        min-width: 223px;
-        max-width: 938px;
-        height: 148px;
-        min-height:148px;
-        margin: 0 auto;}
-
-    .profile{
-        float:none;
-        margin: 0 auto;
-    }
-    .personal{
-        float:none;
-        margin: 0 auto;
-    }
-    .logo{
-        float:none;
-        margin: 0 auto;
-    }
-    .base{
-        overflow: auto;
-    }
-    .order{
-        white-space:normal;
-        display: block;
-    }
-}
+ }
