@@ -86,4 +86,5 @@ public interface GoodsMapper {
     @Update("UPDATE announcement_image SET (image_url)=(#{newPath}) where id=#{id}")
     void updateImage(@Param("newPath") String newPath, @Param("id")long id);
 
+
 }
