@@ -41,12 +41,12 @@ block content
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
-										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
+										img(src="resources/images/photo-ico.png", width="42", height="42")
 									.icon-delete-photo
 										input.input-delete(type='radio', name='firstImageUrlDelete')
 									.one-foto-box-photo
 										if goods.firstImageUrl!="resources/images/photo-ico.png"
-											img(id="photo", src=goods.firstImageUrl, data-full="resources/images/photo-ico.png")
+											img(src=goods.firstImageUrl, title='notDefault')
 									input.fileInputText(type='text', disabled='')
 								input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
@@ -57,7 +57,7 @@ block content
 										input.input-delete(type='radio', name='secondImageUrlDelete')
 									.one-foto-box-photo
 										if goods.secondImageUrl!="resources/images/photo-ico.png"
-											img(src=goods.secondImageUrl)
+											img(src=goods.secondImageUrl, title='notDefault')
 									input.fileInputText(type='text', disabled='')
 								input#second-file.custom-file-input(type='file', value="#{goods.secondImageUrl}", name='secondImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
@@ -68,7 +68,7 @@ block content
 										input.input-delete(type='radio', name='thirdImageUrlDelete')
 									.one-foto-box-photo
 										if goods.thirdImageUrl!="resources/images/photo-ico.png"
-											img(src=goods.thirdImageUrl)
+											img(src=goods.thirdImageUrl, title='notDefault')
 									input.fileInputText(type='text', disabled='')
 								input#third-file.custom-file-input(type='file', value="#{goods.thirdImageUrl}", name='thirdImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block

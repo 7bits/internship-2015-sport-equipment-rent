@@ -12,7 +12,7 @@
 .content-inside-block{
     width: 34.5%;
     min-width: 429px;
-    height: 615px;
+    min-iconheight: 615px;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 10px;
@@ -276,6 +276,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 /*иконка удаления и ее input*/
 .input-delete{
     opacity: 0;
+
     width: 100%;
     height: 100%;
     position: relative;
@@ -295,9 +296,11 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     height: 19px;
     top: 0;
     right: 0;
+
     background-image: url("images/delete.png");
     position: absolute;
 }
+
 
 
 /*кнопка разместить*/

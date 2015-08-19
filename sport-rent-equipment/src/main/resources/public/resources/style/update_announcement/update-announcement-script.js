@@ -20,9 +20,11 @@
     		if (realVal==""){
     			if (fileVal!=''){
     				$(this).prev('.download-mask').find('.fileInputText').val(fileVal);
+    				$(this).val(fileVal);
     			}
     		}
     	});
+
 	$('.download-mask').on('click', '.input-delete',  function() {
 		    $(this).closest('.download-mask').find('.fileInputText').val('');
 
@@ -37,4 +39,17 @@
 
 
 	});
+
+
+$(document).ready(function(){
+	$(".help-foto-block .foto-block").each(function() {
+		var bufImgSrc = $(this).children(".download-mask").find('.one-foto-box-photo img').attr("src");
+		if (bufImgSrc==undefined){
+			$(this).children(".download-mask").find('.input-delete').hide();
+			$(this).children(".download-mask").find('.icon-delete-photo').hide();
+		}
+	})
+	})
+
 })(jQuery);
+
