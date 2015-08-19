@@ -277,6 +277,15 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
    opacity: 0;
    visibility:hidden;
 }
+.set-visible{
+   opacity: 1;
+   visibility: visible;
+}
+
+.set-size-ico{
+width: 42px;
+height: 42px;
+}
 .input-delete{
    opacity: 0;
    width: 100%;
@@ -285,7 +294,17 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
       top: 0;
       left: 0;
       z-index: 99999;
+
 }
+
+/*видимость и невидимость картинок*/
+.set-anvisible-image{
+    display: none;
+}
+.set-visible-image{
+    display: inline-block;
+}
+
 .input-delete:hover{
     cursor: pointer;
 }
@@ -299,7 +318,9 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     right: 0;
     background-image: url("images/delete.png");
     position: absolute;
+
 }
+
 
 /*кнопка разместить*/
 .button-update, .button-update:focus, .button-update:hover {

@@ -4,16 +4,37 @@
     });
     $(document).ready(function(){
     	$('.custom-file-input').on('change', function() {
+    		fileVal=$(this).prev('.download-mask').find('.fileInputText').val();
     		realVal = $(this).val();
     		lastIndex = realVal.lastIndexOf('\\') + 1;
-    		if(lastIndex !== -1) {
+    		if(realVal!=="") {
     			realVal = realVal.substr(lastIndex);
     			$(this).prev('.download-mask').find('.fileInputText').val(realVal);
-    			$(this).prev('.download-mask').find('.one-foto-box-ico').toggleClass('set-anvisible');
-    			$(this).prev('.download-mask').find('.one-foto-box-ico img').toggleClass('set-anvisible');
-    			$(this).prev('.download-mask').find('.one-foto-box-photo').toggleClass('set-anvisible');
-    			$(this).prev('.download-mask').find('.one-foto-box-photo img').toggleClass('set-anvisible');
+    			$(this).prev('.download-mask').find('.one-foto-box-photo img').detach();
+
+				$(this).prev('.download-mask').find('.one-foto-box-ico img').hide();
+
+    			$(this).prev('.download-mask').find('.input-delete').show();
+				$(this).prev('.download-mask').find('.icon-delete-photo').show();
+    		}
+    		if (realVal==""){
+    			if (fileVal!=''){
+    				$(this).prev('.download-mask').find('.fileInputText').val(fileVal);
+    			}
     		}
     	});
-    });
+	$('.download-mask').on('click', '.input-delete',  function() {
+		    $(this).closest('.download-mask').find('.fileInputText').val('');
+
+		    $(this).closest('.download-mask').find('.one-foto-box-ico img').show();
+
+            $(this).closest('.download-mask').find('.one-foto-box-photo img').detach();
+
+            $(this).closest('.download-mask').find('.input-delete').hide();
+			$(this).closest('.download-mask').find('.icon-delete-photo').hide();
+
+            });
+
+
+	});
 })(jQuery);

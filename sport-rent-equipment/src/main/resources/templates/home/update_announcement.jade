@@ -40,14 +40,12 @@ block content
 						.base
 							.foto-block
 								.download-mask
-									if goods.firstImageUrl=="resources/images/photo-ico.png"
-										.one-foto-box-ico
-											img(src=goods.firstImageUrl, width="42", height="42")
-									else
-										.icon-delete-photo
-											input.input-delete(type='radio', name='firstImageUrlDelete')
-										.one-foto-box-photo
-											img(src=goods.firstImageUrl)
+									.one-foto-box-ico
+										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='firstImageUrlDelete')
+									.one-foto-box-photo
+										img(id="photo", src=goods.firstImageUrl, data-full="resources/images/photo-ico.png")
 									input.fileInputText(type='text', disabled='')
 								input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
