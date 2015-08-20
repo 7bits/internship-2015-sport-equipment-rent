@@ -67,9 +67,11 @@ table{
 
  .empty-table{
 width: 100%;
-font-size: 16px;
-color: red;
+font-size: 36px;
+color: #6eb2b3;
+padding-top: 50px;
 text-align: center;
+text-shadow: 0px 1px 1px #D0CDCD;
  }
 
 tbody tr:nth-child (odd) {
