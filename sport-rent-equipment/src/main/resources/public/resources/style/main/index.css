@@ -1,4 +1,16 @@
 
+.to-give-announcement{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+
+
 /*контент*/
 .my-content{
     width: 100%;

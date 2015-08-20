@@ -40,34 +40,34 @@ block content
 									.one-foto-box-ico
 										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
 									.icon-delete-photo
-										input.input-delete(type='radio', name='firstImageUrlDelete')
+										input.input-delete(type='radio', name='firstImageDelete')
 									.one-foto-box-photo
-										if goods.firstImageUrl!="resources/images/photo-ico.png"
-											img(id="photo", src=goods.firstImageUrl, data-full="resources/images/photo-ico.png")
+										if goods.firstImage!="resources/images/photo-ico.png"
+											img(id="photo", src=goods.firstImage, data-full="resources/images/photo-ico.png")
 									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', value="#{goods.firstImageUrl}", name='firstImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
 										img(src=src="resources/images/photo-ico.png", width="42", height="42")
 									.icon-delete-photo
-										input.input-delete(type='radio', name='secondImageUrlDelete')
+										input.input-delete(type='radio', name='secondImageDelete')
 									.one-foto-box-photo
-										if goods.secondImageUrl!="resources/images/photo-ico.png"
-											img(src=goods.secondImageUrl)
+										if goods.secondImage!="resources/images/photo-ico.png"
+											img(src=goods.secondImage)
 									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', value="#{goods.secondImageUrl}", name='secondImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#second-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
 										img(src=src="resources/images/photo-ico.png", width="42", height="42")
 									.icon-delete-photo
-										input.input-delete(type='radio', name='thirdImageUrlDelete')
+										input.input-delete(type='radio', name='thirdImageDelete')
 									.one-foto-box-photo
-										if goods.thirdImageUrl!="resources/images/photo-ico.png"
-											img(src=goods.thirdImageUrl)
+										if goods.thirdImage!="resources/images/photo-ico.png"
+											img(src=goods.thirdImage)
 									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file', value="#{goods.thirdImageUrl}", name='thirdImageUrl', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#third-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='РАЗМЕСТИТЬ')
 			.content-button-block
