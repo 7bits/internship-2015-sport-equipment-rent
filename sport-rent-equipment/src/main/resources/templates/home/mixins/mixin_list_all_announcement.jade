@@ -17,7 +17,7 @@ mixin list(goods)
 														.announcement-title-text
 															b
 																p=Goods.title
-														if (goods.status)
+														if (!goods.status)
 															.ready-to-rent-text
 																p
 																	К аренде готов!
