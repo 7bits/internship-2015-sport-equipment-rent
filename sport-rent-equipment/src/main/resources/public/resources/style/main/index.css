@@ -149,6 +149,7 @@
     height: 1px;
     background-color: #5cc9cc;
     margin-bottom: 12px;
+    margin-top: -15px;
 }
 /*внутренность блока*/
 
@@ -160,9 +161,7 @@
 }
 
 .photo-block{
-    width: 21.65%;
-
-    height: 100%;
+    width: 147px;
     float: left;
 }
 /*содержимое info-block*/
