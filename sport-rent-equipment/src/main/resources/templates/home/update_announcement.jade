@@ -9,7 +9,7 @@ block scripts
 	script(src="resources/style/update_announcement/image-photo-script.js")
 block content
 	.my-content
-		form(role="form", action="/add", method="post", enctype="multipart/form-data")
+		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
@@ -48,7 +48,7 @@ block content
 										if goods.firstImage!="resources/images/photo-ico.png"
 											img(src=goods.firstImage)
 									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#first-file.custom-file-input(type='file', name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
@@ -59,7 +59,7 @@ block content
 										if goods.secondImage!="resources/images/photo-ico.png"
 											img(src=goods.secondImage)
 									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#second-file.custom-file-input(type='file', name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
@@ -70,7 +70,7 @@ block content
 										if goods.thirdImage!="resources/images/photo-ico.png"
 											img(src=goods.thirdImage)
 									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#third-file.custom-file-input(type='file', name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block
