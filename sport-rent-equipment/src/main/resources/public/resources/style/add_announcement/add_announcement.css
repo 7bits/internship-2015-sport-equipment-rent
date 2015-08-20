@@ -131,7 +131,7 @@ textarea{
 .input-name-announcement:focus,
 .textarea-discription-announcement:focus,
 .input-price:focus{
-    box-shadow: 0 0 8px #E6E6E6 inset;
+    box-shadow: 0 0 8px #d7e9e9 inset;
 }
 
 input, textarea{
