@@ -3,10 +3,13 @@
 .my-content{
     width: 100%;
     background-image: url("images/pattern-gr.jpg");
-    padding-top: 17px;
+
 
 }
 
+.my-content form{
+    padding-top: 17px;
+}
 
 /*внутренность блока с выравниванием*/
 .content-inside-block{
@@ -127,7 +130,7 @@ textarea{
 .input-name-announcement:focus,
 .textarea-discription-announcement:focus,
 .input-price:focus{
-    box-shadow: 0 0 8px #E6E6E6 inset;
+    box-shadow: 0 0 8px #d7e9e9 inset;
 }
 
 input, textarea{
@@ -270,14 +273,9 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
    z-index: 99998;
    cursor: pointer;
    padding-left: 0;
+
 }
 
-/*блок для кнопки отмены*/
-.content-button-block{
-    width: 34.5%;
-    margin: 0 auto;
-    height: 40px;
-}
 /*иконка удаления и ее input*/
 .input-delete{
     opacity: 0;
@@ -305,25 +303,11 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
 
-/*реальная кнопка*/
-.custom-file-input {
-   width: 66px;
-   height: 86px;
-   opacity: 0;
-   filter: alpha(opacity=0);
-   position: relative;
-   top: -86px;
-   left: 0;
-   z-index: 99999;
-   cursor: pointer;
-   padding-left: 0;
-}
-
-
 .content-button-block{
-    width: 34.5%;
+    width: 429px;
     margin: 0 auto;
     height: 40px;
+    padding-bottom: 20px;
 }
 
 
@@ -343,6 +327,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     -webkit-border-radius: 5px; /* Safari, Chrome */
     -khtml-border-radius: 5px; /* KHTML */
     font-family: 'Roboto', sans-serif;
+
 }
 
 .button-update:hover {

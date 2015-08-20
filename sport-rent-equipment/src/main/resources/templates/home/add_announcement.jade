@@ -2,7 +2,7 @@ extends layout.jade
 block title
 	title Добавить объявление
 block scripts
-	script(src='resources/style/update_announcement/update-announcement-script.js')
+	script(src='resources/style/add_announcement/add-announcement-script.js')
 	script(src="resources/style/update_announcement/image-photo-script.js")
 block depending
 	link(rel="stylesheet", href="resources/style/add_announcement/add_announcement.css", type="text/css", media="all")
@@ -48,7 +48,7 @@ block content
 										if goods.firstImage!="resources/images/photo-ico.png"
 											img(src=goods.firstImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#first-file.custom-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
@@ -59,7 +59,7 @@ block content
 										if goods.secondImage!="resources/images/photo-ico.png"
 											img(src=goods.secondImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#second-file.custom-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
@@ -70,6 +70,6 @@ block content
 										if goods.thirdImage!="resources/images/photo-ico.png"
 											img(src=goods.thirdImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file',  name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#third-file.custom-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='РАЗМЕСТИТЬ')

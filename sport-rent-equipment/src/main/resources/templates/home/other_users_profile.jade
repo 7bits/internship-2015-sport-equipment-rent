@@ -1,6 +1,8 @@
 extends layout.jade
 block title
 	title Дай погонять
+block scripts
+	script(src='resources/style/personal-area/image-photo-script.js')
 block depending
 	link(rel="stylesheet", href="resources/style/profile/profile.css", type="text/css", media="all")
 block content
@@ -21,5 +23,5 @@ block content
 								b
 									p
 									Объявления пользователя
-									text(style="margin-left: 4px;")=user.firstName
+									text.size-text-norap(style="margin-left: 4px;")=user.firstName
 						+list(goods)

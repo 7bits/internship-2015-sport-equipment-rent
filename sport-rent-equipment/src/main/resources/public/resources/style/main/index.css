@@ -149,6 +149,7 @@
     height: 1px;
     background-color: #5cc9cc;
     margin-bottom: 12px;
+    margin-top: -15px;
 }
 /*внутренность блока*/
 
@@ -160,9 +161,7 @@
 }
 
 .photo-block{
-    width: 21.65%;
-
-    height: 100%;
+    width: 147px;
     float: left;
 }
 /*содержимое info-block*/
@@ -190,13 +189,13 @@
     padding-right: 5px;
 }
 
-.ready-to-rent-ico{
+.status-ico{
     width: 22px;
     height: 22px;
     float: right;
 }
 
-.ready-to-rent-text{
+.status-text{
     width: 118px;
     height: 22px;
     font-size: 14px;

@@ -160,27 +160,47 @@ background-color: rgba(77, 150, 154, 0.8);
     transform: translate(-50%, -50%);
 }
 
-.one-announcement-block-title{
+
+ .one-announcement-block-text{
+     width: 150px;
+     margin-bottom: 14px;
+     color: #a2a2a2;
+     font-size: 11px;
+ }
+
+ /*статусы*/
+ .title-with-status{
     width: 178px;
+    height: 30px;
     margin-bottom: 8px;
+ }
+
+.one-announcement-block-title{
+    width: 144px;
+    height: 30px;
+    float: left;
     color: #009198;
     font-size: 14px;
+    padding-top: 8px;
 }
 
-.one-announcement-block-text{
-    width: 178px;
-    margin-bottom: 14px;
-    color: #a2a2a2;
-    font-size: 11px;
-}
-
- .size-text-norap
- {
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     -o-text-overflow: ellipsis;
-    padding-left: 8px;
-    padding-right: 8px;
-
+ .status-ico{
+     width: 22px;
+     height: 30px;
+     float: left;
+     margin-left:6px;
+     margin-right: 4px;
+    padding-top:2px;
  }
+/*обрезки*/
+  .size-text-norap
+  {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+     padding-left: 8px;
+     padding-right: 8px;
+
+  }
+

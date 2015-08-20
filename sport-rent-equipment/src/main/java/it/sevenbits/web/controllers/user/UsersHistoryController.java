@@ -66,7 +66,7 @@ public class UsersHistoryController {
             table.add(row);
         }
         model.addAttribute("isAuth", true);
-        model.addAttribute("table", table);
+        model.addAttribute("userHistory", table);
         return "home/history";
     }
 }

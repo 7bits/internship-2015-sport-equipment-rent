@@ -4,30 +4,35 @@ block title
 block depending
 	link(rel="stylesheet", href="resources/style/history/history.css", type="text/css", media="all")
 block content
-	.whole-table
-		.content
-			table
-				tr(BGCOLOR="#6eb2b3", height="45").shadow
-					th
-						p.head-table
-							Начало
-					th
-						p.head-table
-							Завершение
-					th
-						p.head-table
-							Название объявления
-					th
-						p.head-table
-							Арендатор
-				tr(height="40")
-				each row in table
+	.my-content
+		.whole-table
+			if userHistory
+				table(style='border: 30px solid #6eb2b3; border-left: none; border-right: none; border-top: none;')
+					tr(BGCOLOR="#6eb2b3", height="44", style='border: 2px solid rgba(207, 207, 207, 0.5); border-left: none; border-right: none; border-top: none;')
+						th
+							p.head-table
+								Дата начала
+						th
+							p.head-table
+								Дата завершения
+						th
+							p.head-table
+								Название объявления
+						th
+							p.head-table
+								Арендатор
 					tr(height="40")
-						td
-							p=row.startDate
-						td
-							p=row.endDate
-						td
-							p=row.title
-						td
-							p=row.renting
+						each row in userHistory
+							tr(height="40")
+								td.data-start
+									p.size-text-norap=row.startDate
+								td.data-end
+									p.size-text-norap=row.endDate
+								td.thing-name
+									p.size-text-norap=row.title
+								td.person-rent-name
+									p.size-text-norap=row.renting
+			else
+				.empty-table
+					p
+						Здесь могла бы быть история ваших сделок

@@ -205,20 +205,38 @@ background-color: rgba(77, 150, 154, 0.8);
     transform: translate(-50%, -50%);
 }
 
-.one-announcement-block-title{
-    width: 178px;
-    margin-bottom: 8px;
-    color: #009198;
-    font-size: 14px;
-}
-
 .one-announcement-block-text{
     width: 178px;
     margin-bottom: 14px;
     color: #a2a2a2;
     font-size: 11px;
 }
+/*статусы*/
+ .title-with-status{
+    width: 178px;
+    height: 30px;
+    margin-bottom: 8px;
+ }
 
+.one-announcement-block-title{
+    width: 140px;
+    height: 30px;
+    float: left;
+    color: #009198;
+    font-size: 14px;
+    padding-top: 6px;
+}
+
+ .status-ico{
+     width: 22px;
+     height: 30px;
+     float: left;
+     margin-left:6px;
+     margin-right: 4px;
+    padding-top:2px;
+ }
+
+/*обрезки*/
  .size-text-norap
  {
      white-space: nowrap;
@@ -229,3 +247,21 @@ background-color: rgba(77, 150, 154, 0.8);
     padding-right: 8px;
 
  }
+
+.history{
+    width: 558px;
+    text-decoration: underline;
+    font-width: 13px;
+    text-shadow: 0px 1px 1px #B1B0B1;
+    padding-top: 8px;
+    margin-bottom: -5px;
+    text-align: right;
+}
+
+.a-history{
+    color: #6fb2b4;
+}
+
+.a-history:hover{
+text-shadow: none;
+}

@@ -4,6 +4,7 @@
     width: 100%;
     background-image: url("images/pattern-gr.jpg");
     padding-top: 17px;
+    height: 100%;
 
 }
 
@@ -11,8 +12,9 @@
 /*внутренность блока с выравниванием*/
 .content-inside-block{
     width: 34.5%;
+    min-height: 615px;
     min-width: 429px;
-    height: 615px;
+    min-iconheight: 615px;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 10px;
@@ -127,7 +129,7 @@ font-size: 1em;
 }
 /*деалет внутренннюю тень*/
 input:focus, textarea: focus{
-box-shadow: 0 0 8px #E6E6E6 inset;
+box-shadow: 0 0 8px #d7e9e9 inset;
 }
 /*убирает подстветку placeholder*/
 input:focus:-ms-input-placeholder, , textarea: focus:-ms-textarea-placeholder{
@@ -152,6 +154,7 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
 
 }
 
+/*фотки*/
 .help-foto-block{
     width: 85.92%;
     height: auto;
@@ -161,32 +164,56 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     margin: 0 auto;
 }
 
-
+/*!базовый! блок 1 для вывода 1 фотки*/
 .foto-block{
     width: 30.6024%;
     height: 128px;
     margin-right: 10px;
     float: left;
-    border-color: #c7c7c7;
+    border-color: #c5c5c5;
     border-style: solid;
     border-width: 1px;
-    position: relative;
+    background-color: #f6f6f6;
+
+}
+.foto-block:hover{
+-webkit-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+-moz-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
-.foto-block-inside{
-width: 100%;
-height: 100%;
-marginx-top: 12 px;
-align: center;
-text-align: center;
-text-decoration: underline;
-font-size: 14px;
+/*само изображение*/
+.one-foto-box-photo{
+    width:100%;
+    height:100%;
+}
+
+.one-foto-box-photo img{
+    width: 131px;
+    max-height:100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*деволтная иконка (блок)*/
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 /*контейнер для маски*/
 .download-mask{
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
+    position: relative;
 }
 /*маска*/
 .send-file{
@@ -199,45 +226,83 @@ font-size: 14px;
     text-decoration: underline;
 
 }
-
+/*для вывода текста названия подргуженного файла*/
 .fileInputText {
+    text-align: center;
     width: 100%;
+    margin-right: 10px;
+    float: left;
+    border-color: #c5c5c5;
+    border-style: solid;
+    border-width: 1px;
     background-image: none;
     background-color: transparent;
     border: none;
     font-size: 14px;
     color:  #c7c7c7;
-    margin-top: 20px;
-    position: relative;
     text-decoration: none;
     /*обрезка с многоточнием*/
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
+    padding-left: 5px;
     padding-right: 5px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*реальная кнопка*/
 .custom-file-input {
-   width: 66px;
-   height: 86px;
+   width: 100%;
+   height: 100%;
    opacity: 0;
    filter: alpha(opacity=0);
    position: relative;
-   top: -86px;
+   top: -128px;
    left: 0;
-   z-index: 99999;
+   z-index: 99998;
    cursor: pointer;
    padding-left: 0;
 }
 
-
+/*блок для кнопки отмены*/
 .content-button-block{
     width: 34.5%;
     margin: 0 auto;
     height: 40px;
 }
+/*иконка удаления и ее input*/
+.input-delete{
+    opacity: 0;
+
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+
+.input-delete:hover{
+    cursor: pointer;
+}
+.input-delete:focus{
+    cursor: pointer;
+}
+.icon-delete-photo{
+    width: 19px;
+    height: 19px;
+    top: 0;
+    right: 0;
+
+    background-image: url("images/delete.png");
+    position: absolute;
+}
+
 
 
 /*кнопка разместить*/
@@ -339,16 +404,11 @@ width: 330px;
     display: block;
     float:none;
     margin-bottom:12px;
-    width: 147px;
-    height: 147px;
-}
-.foto-block-inside img{
-    width: 147px;
-    height: 147px;
-    padding:0 0 0 0;
+    width:100%;
 }
 .button-update{
 margin: 0 auto;
 float: none;
 }
 }
+
