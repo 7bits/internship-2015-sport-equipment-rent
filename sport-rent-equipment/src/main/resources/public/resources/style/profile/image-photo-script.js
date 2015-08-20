@@ -13,11 +13,11 @@ jQuery(function ($) {
 
             function resize() {
                 if ((container.width() / container.height()) < (img_dom.width / img_dom.height)) {
-                    img.width('100%');
+                    img.width('178');
                     img.height('auto');
                     return;
                 }
-                img.height('100%');
+                img.height('120');
                 img.width('auto');
             }
         }

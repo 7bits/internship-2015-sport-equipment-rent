@@ -17,7 +17,7 @@ jQuery(function ($) {
                     img.height('auto');
                     return;
                 }
-                img.height('100%');
+                img.height('125');
                 img.width('auto');
             }
         }
