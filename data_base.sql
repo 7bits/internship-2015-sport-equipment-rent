@@ -1,3 +1,4 @@
+drop table announcement_image;
 drop table deals;
 drop table goods;
 drop table users;
@@ -43,7 +44,7 @@ CREATE TABLE deals(
 insert into users (first_name, second_name, pass, phone, email, users_role) values
 ('admin', 'admin', 'pass', '123456', 'admin', 'ADMIN');
 
-CREATE TABLE image_url(
+CREATE TABLE announcement_image(
 	id bigserial PRIMARY KEY,
 	goods_id integer REFERENCES goods(id) not null,
 	image_url varchar(1024)

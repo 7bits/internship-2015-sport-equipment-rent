@@ -5,6 +5,36 @@ block scripts
 	script(src='resources/style/main/image-photo-script.js')
 block depending
 	link(rel="stylesheet", href="resources/style/main/index.css", type="text/css", media="all")
+block header
+	.header
+		.center-of-header
+			.base
+				.order
+					.logo
+						a(href="/")
+							img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+					if (!isAuth)
+						.to-profile
+							a.header-a-color(href="/login")
+								b
+									p
+										ВХОД
+					else
+						.exit
+							a.header-a-color(href="/logout")
+								b
+									p
+										ВЫХОД
+						.to-personal-area
+							a.header-a-color(href="/personal_area")
+								b
+									p
+										ЛИЧНЫЙ КАБИНЕТ
+						.to-give-announcement
+							a.header-a-color(href="/add")
+								b
+									p
+										ДАТЬ ОБЪЯВЛЕНИЕ
 block content
 	.my-content
 		if(!isAuth)
