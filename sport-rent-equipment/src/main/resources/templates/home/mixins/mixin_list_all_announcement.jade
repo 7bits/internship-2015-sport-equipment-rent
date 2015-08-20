@@ -18,16 +18,16 @@ mixin list(goods)
 															b
 																p=Goods.title
 														if (!goods.status)
-															.ready-to-rent-text
+															.status-text
 																p
 																	К аренде готов!
-															.ready-to-rent-ico
+															.status-ico
 																img(src="resources/images/ready-ico.png", width="22", height="22")
 														else
-															.ready-to-rent-text
+															.status-text
 																p
 																	Уже арендован.
-															.ready-to-rent-ico
+															.status-ico
 																img(src="resources/images/not-ready-ico.png", width="22", height="22")
 											.announcement-discription
 												p=Goods.description

@@ -190,13 +190,13 @@
     padding-right: 5px;
 }
 
-.ready-to-rent-ico{
+.status-ico{
     width: 22px;
     height: 22px;
     float: right;
 }
 
-.ready-to-rent-text{
+.status-text{
     width: 118px;
     height: 22px;
     font-size: 14px;

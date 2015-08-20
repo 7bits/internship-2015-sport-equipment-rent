@@ -47,6 +47,20 @@ block content
 							p.text-title.green-color.size-text-norap=Goods.title
 							.discr-block
 								text.size-text-rap=Goods.description
+							.status-block
+								if (Goods.status)
+									.status-text
+										p
+											К аренде готов!
+									.status-ico
+										img(src="resources/images/ready-ico.png", width="22", height="22")
+								else
+									.status-text
+										p
+											Уже арендован.
+									.status-ico
+										img(src="resources/images/not-ready-ico.png", width="22", height="22")
+
 						.foto-block
 							.base
 								.order
