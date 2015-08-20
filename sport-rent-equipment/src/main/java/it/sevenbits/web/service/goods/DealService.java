@@ -54,4 +54,8 @@ public class DealService {
     public List<Deal> getOpenWithId(long goodsId) {
         return repository.getOpenWithId(goodsId);
     }
+
+    public List<Deal> getDealsOfUser(Long id) {
+        return repository.getDealsOfUser(id);
+    }
 }

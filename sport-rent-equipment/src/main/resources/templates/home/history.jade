@@ -1,0 +1,33 @@
+extends layout.jade
+block title
+	title История сделок
+block depending
+	link(rel="stylesheet", href="resources/style/history/history.css", type="text/css", media="all")
+block content
+	.whole-table
+		.content
+			table
+				tr(BGCOLOR="#6eb2b3", height="45").shadow
+					th
+						p.head-table
+							Начало
+					th
+						p.head-table
+							Завершение
+					th
+						p.head-table
+							Название объявления
+					th
+						p.head-table
+							Арендатор
+				tr(height="40")
+				each row in table
+					tr(height="40")
+						td
+							p=row.startDate
+						td
+							p=row.endDate
+						td
+							p=row.title
+						td
+							p=row.renting

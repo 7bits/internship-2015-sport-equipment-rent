@@ -68,4 +68,14 @@ public interface DealMapper {
             @Result(column = "is_closed", property = "isClosed")
     })
     List<Deal> getOpenWithId(long goodsId);
+
+    @Select("SELECT * from deals where landlord_id=#{id} and is_closed=true")
+    @Results({
+            @Result(column = "id", property = "id"),
+            @Result(column = "goods_id", property = "goodsId"),
+            @Result(column = "renting_id", property = "rentingId"),
+            @Result(column = "real_start_date", property = "realStartDate"),
+            @Result(column = "real_end_date", property = "realEndDate"),
+    })
+    List<Deal> getDealsOfUser(Long id);
 }
