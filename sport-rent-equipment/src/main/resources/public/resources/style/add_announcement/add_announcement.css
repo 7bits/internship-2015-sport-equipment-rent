@@ -3,11 +3,14 @@
 .my-content{
     width: 100%;
     background-image: url("images/pattern-gr.jpg");
-    padding-top: 17px;
     height: 100%;
 
 }
 
+.my-content form{
+    padding-top: 17px;
+    background-image: url("images/pattern-gr.jpg");
+}
 
 /*внутренность блока с выравниванием*/
 .content-inside-block{
@@ -273,12 +276,6 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
    padding-left: 0;
 }
 
-/*блок для кнопки отмены*/
-.content-button-block{
-    width: 34.5%;
-    margin: 0 auto;
-    height: 40px;
-}
 /*иконка удаления и ее input*/
 .input-delete{
     opacity: 0;
@@ -325,6 +322,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     width: 34.5%;
     margin: 0 auto;
     height: 40px;
+    padding-bottom: 20px;
 }
 
 
@@ -344,6 +342,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     -webkit-border-radius: 5px; /* Safari, Chrome */
     -khtml-border-radius: 5px; /* KHTML */
     font-family: 'Roboto', sans-serif;
+    
 }
 
 .button-update:hover {
