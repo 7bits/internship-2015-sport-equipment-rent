@@ -1,0 +1,32 @@
+.head-table{
+    font-size:20px;
+    color:white;
+    margin: 0 auto;
+    margin-top:14px;
+}
+td{
+    width:20%;
+    height:30px;
+    text-align:center;
+    color:#298c92;
+    font-size: 19px;
+}
+.whole-table{
+    width: 58.92857142857143%;
+    margin:0 auto;
+}
+.table-head p{
+    float:right;
+}
+th{
+    color:white;
+    text-align:center;
+}
+table{
+    width:100%;
+    margin:0 auto;
+    margin-top: 20px;
+}
+.shadow{
+box-shadow: 0 3px 30px #cfcfcf;
+}

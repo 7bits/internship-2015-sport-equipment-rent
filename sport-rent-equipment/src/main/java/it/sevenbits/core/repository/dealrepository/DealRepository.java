@@ -23,4 +23,6 @@ public interface DealRepository {
     void updateRealEndDate(long dealId);
 
     List<Deal> getOpenWithId(long goodsId);
+
+    List<Deal> getDealsOfUser(Long id);
 }
