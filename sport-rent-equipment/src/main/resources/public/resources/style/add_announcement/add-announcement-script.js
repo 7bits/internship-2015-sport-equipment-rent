@@ -35,7 +35,7 @@
             $(this).closest('.download-mask').find('.input-delete').hide();
 			$(this).closest('.download-mask').find('.icon-delete-photo').hide();
 			$(this).closest('.foto-block').children('.custom-file-input').val('');
-			});
+            });
 
 
 	});
