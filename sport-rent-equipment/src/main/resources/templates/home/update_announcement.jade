@@ -46,9 +46,9 @@ block content
 										input.input-delete(type='radio', name='firstImageDelete')
 									.one-foto-box-photo
 										if goods.firstImage!="resources/images/photo-ico.png"
-											img(src=goods.firstImage)
+											img(src=goods.firstImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', value="#{goods.firstImage}", name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#first-file.custom-file-input(type='file', name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
@@ -57,9 +57,9 @@ block content
 										input.input-delete(type='radio', name='secondImageDelete')
 									.one-foto-box-photo
 										if goods.secondImage!="resources/images/photo-ico.png"
-											img(src=goods.secondImage)
+											img(src=goods.secondImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', value="#{goods.secondImage}", name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#second-file.custom-file-input(type='file', name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 							.foto-block
 								.download-mask
 									.one-foto-box-ico
@@ -68,9 +68,9 @@ block content
 										input.input-delete(type='radio', name='thirdImageDelete')
 									.one-foto-box-photo
 										if goods.thirdImage!="resources/images/photo-ico.png"
-											img(src=goods.thirdImage)
+											img(src=goods.thirdImageUrl)
 									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file', value="#{goods.thirdImage}", name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+								input#third-file.custom-file-input(type='file', name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
 			.content-button-block
 				input.button-update(type='submit', value='СОХРАНИТЬ')
 			.content-button-block

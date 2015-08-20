@@ -44,9 +44,10 @@
 $(document).ready(function(){
 	$(".help-foto-block .foto-block").each(function() {
 		var bufImgSrc = $(this).children(".download-mask").find('.one-foto-box-photo img').attr("src");
-		if (bufImgSrc==undefined){
+		if (bufImgSrc=="resources/images/photo-ico.png"){
 			$(this).children(".download-mask").find('.input-delete').hide();
 			$(this).children(".download-mask").find('.icon-delete-photo').hide();
+			$(this).children(".download-mask").find('.one-foto-box-photo img').hide();
 		}
 	})
 	})
