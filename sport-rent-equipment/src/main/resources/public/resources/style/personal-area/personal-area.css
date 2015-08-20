@@ -247,3 +247,21 @@ background-color: rgba(77, 150, 154, 0.8);
     padding-right: 8px;
 
  }
+
+.history{
+    width: 558px;
+    text-decoration: underline;
+    font-width: 13px;
+    text-shadow: 0px 1px 1px #B1B0B1;
+    padding-top: 8px;
+    margin-bottom: -5px;
+    text-align: right;
+}
+
+.a-history{
+    color: #6fb2b4;
+}
+
+.a-history:hover{
+text-shadow: none;
+}

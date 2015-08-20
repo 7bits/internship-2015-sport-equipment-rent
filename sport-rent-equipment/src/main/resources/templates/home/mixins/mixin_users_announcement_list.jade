@@ -19,7 +19,7 @@ mixin list(goods)
 									.one-announcement-block-title
 										b
 											p.size-text-norap=Goods.title
-									if (!goods.status)
+									if (Goods.status)
 										.status-ico
 											img(src="resources/images/ready-ico.png", width="22", height="22")
 									else
