@@ -9,7 +9,7 @@ block scripts
 	script(src="resources/style/update_announcement/image-photo-script.js")
 block content
 	.my-content
-		form(role="form", action="/add", method="post", enctype="multipart/form-data")
+		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
 			.content-inside-block
 				.content-block-header
 					p
