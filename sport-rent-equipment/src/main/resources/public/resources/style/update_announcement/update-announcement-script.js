@@ -49,6 +49,9 @@ $(document).ready(function(){
 			$(this).children(".download-mask").find('.icon-delete-photo').hide();
 			$(this).children(".download-mask").find('.one-foto-box-photo img').hide();
 		}
+		else{
+		$(this).children(".custom-file-input").val(bufImgSrc);
+		}
 	})
 	})
 
