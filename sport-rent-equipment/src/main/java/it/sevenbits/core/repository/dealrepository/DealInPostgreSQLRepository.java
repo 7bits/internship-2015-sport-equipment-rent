@@ -60,4 +60,9 @@ public class DealInPostgreSQLRepository implements DealRepository {
         return mapper.getOpenWithId(goodsId);
     }
 
+    @Override
+    public List<Deal> getDealsOfUser(Long id) {
+        return mapper.getDealsOfUser(id);
+    }
+
 }
