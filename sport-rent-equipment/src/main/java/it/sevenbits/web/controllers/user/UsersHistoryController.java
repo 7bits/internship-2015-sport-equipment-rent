@@ -47,8 +47,8 @@ public class UsersHistoryController {
         List<HistoryTable> table = new LinkedList<HistoryTable>();
         for(int i=0;i<deals.size();i++){
             HistoryTable row = new HistoryTable();
-            row.setStartDate(deals.get(i).getRealStartDate());
-            row.setEndDate(deals.get(i).getRealEndDate());
+            row.setStartDate(deals.get(i).getRealStartDate().substring(0, deals.get(i).getRealStartDate().indexOf('.')));
+            row.setEndDate(deals.get(i).getRealEndDate().substring(0, deals.get(i).getRealEndDate().indexOf('.')));
             User renting = null;
             try {
                 renting = userService.getUser(deals.get(i).getRentingId());
