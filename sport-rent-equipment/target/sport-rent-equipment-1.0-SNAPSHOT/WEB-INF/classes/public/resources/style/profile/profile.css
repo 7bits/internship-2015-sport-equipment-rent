@@ -1,0 +1,206 @@
+/*контент*/
+.my-content{
+    width: 100%;
+    background-image: url("images/pattern-gr.jpg");
+    min-height: 100%;
+}
+
+.my-content-inside{
+    width: 752px;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 18px;
+}
+
+.user-info{
+    width:  156px;
+    float: left;
+    margin-right: 20px;
+    background-color: rgba(249, 249, 249, 0.8);
+    border-radius: 3px;
+    -moz-border-radius: 3px; /* Firefox */
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+    -khtml-border-radius: 3px; /* KHTML */
+    border-width: 1px;
+    border-color: rgba(212, 212, 212, 0.4);
+    border-style: solid;
+}
+.ava-image-position{
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.round{
+    -moz-border-radius: 120px; /* Firefox */
+    -webkit-border-radius: 120px; /* Safari, Chrome */
+    -khtml-border-radius: 120px; /* KHTML */
+    border-radius: 120px; /* CSS3 */
+    behavior: url(border-radius.htc); /*IE */
+            border-width: 3px;
+            border-color: white;
+            border-style: solid;
+-webkit-box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+-moz-box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+box-shadow: 0px 0px 5px 1px rgba(207,205,207,0.2);
+}
+
+.user-info-line{
+    width: 132px;
+    height: 1px;
+    margin: 0 auto;
+    background-color: rgba(221, 221, 221, 0.9);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@font-face {
+    font-family: MyriadProRegular;
+    src: url('fonts/MyriadProRegular/MyriadProRegular.ttf')  format("truetype");
+}
+
+.user-name p{
+    font-family: MyriadProRegular, 'MyriadProRegular';
+}
+
+
+.user-name{
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #747474;
+    font-size: 14px;
+    text-shadow: 0px 2px 5px #b1b1b1;
+}
+/*объявления*/
+.user-announcement{
+    width: 570px;
+    float: left;
+}
+
+.user-announcement-title{
+    width: 558px;
+    background-color: #6fb2b4;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+}
+
+.user-announcement-title-text{
+    width: 558px;
+    color: white;
+    font-size: 18px;
+    text-shadow: 0px 1px 2px #616061;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 21px;
+}
+
+/*объявления*/
+.one-announcement-block{
+    width: 178px;
+    margin-right: 12px;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.5);
+    float: left;
+    margin-top: 10px;
+}
+
+
+.one-announcement-block: hover{
+background-color: rgba(77, 150, 154, 0.8);
+}
+
+.one-announcement-block: focus{
+background-color: rgba(77, 150, 154, 0.8);
+}
+
+.one-announcement-block-photo{
+    width: 178px;
+    height: 120px;
+    margin-bottom: 8px;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
+    box-shadow: 0px 1px 1px 1px rgba(153,151,153,0.1);
+
+
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+        -khtml-border-radius: 3px; /* KHTML */
+        border-width: 1px;
+        border-color: rgba(212, 212, 212, 1);
+        border-style: solid;
+        position: relative;
+
+}
+.one-foto-box-photo{
+    width:100%;
+    height:100%;
+}
+
+.one-foto-box-photo img{
+    width: 178px;
+    max-height:120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+ .one-announcement-block-text{
+     width: 150px;
+     margin-bottom: 14px;
+     color: #a2a2a2;
+     font-size: 11px;
+ }
+
+ /*статусы*/
+ .title-with-status{
+    width: 178px;
+    height: 30px;
+    margin-bottom: 8px;
+ }
+
+.one-announcement-block-title{
+    width: 144px;
+    height: 30px;
+    float: left;
+    color: #009198;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+ .status-ico{
+     width: 22px;
+     height: 30px;
+     float: left;
+     margin-left:6px;
+     margin-right: 4px;
+    padding-top:2px;
+ }
+/*обрезки*/
+  .size-text-norap
+  {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+     padding-left: 8px;
+     padding-right: 8px;
+
+  }
+

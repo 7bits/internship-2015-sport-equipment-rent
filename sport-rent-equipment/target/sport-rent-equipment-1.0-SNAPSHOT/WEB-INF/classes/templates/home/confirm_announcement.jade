@@ -1,0 +1,75 @@
+extends layout.jade
+block title
+	title Подтвердить объявление
+block depending
+	link(rel="stylesheet", href="resources/style/confirm_announcement/confirm_announcement.css", type="text/css", media="all")
+block scripts
+	script(src='resources/style/update_announcement/update-announcement-script.js')
+	script(src="resources/style/update_announcement/image-photo-script.js")
+block content
+	.my-content
+		form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
+			.content-inside-block
+				.content-block-header
+					p
+						Ваше объявление
+				.content-block-inside-info
+					.your-inventory-title-block
+						p
+							Ваш инвентарь
+					input.input-name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+					textarea.textarea-discription-announcement#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+						#{goods.description}
+					.your-inventory-price-block
+						p
+							Цена
+				.help-block
+					.order
+						.base
+							input.input-price#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+							input.input-price#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+							input.input-price#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+				.your-inventory-foto-block
+					p
+						Фотографии
+				.help-foto-block
+					.order
+						.base
+							.foto-block
+								.download-mask
+									.one-foto-box-ico
+										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='firstImageDelete')
+									.one-foto-box-photo
+										if goods.firstImage!="resources/images/photo-ico.png"
+											img(src=goods.firstImageUrl)
+									input.fileInputText(type='text', disabled='')
+								input#first-file.custom-file-input(type='file', name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+							.foto-block
+								.download-mask
+									.one-foto-box-ico
+										img(src=src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='secondImageDelete')
+									.one-foto-box-photo
+										if goods.secondImage!="resources/images/photo-ico.png"
+											img(src=goods.secondImageUrl)
+									input.fileInputText(type='text', disabled='')
+								input#second-file.custom-file-input(type='file', name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+							.foto-block
+								.download-mask
+									.one-foto-box-ico
+										img(src=src="resources/images/photo-ico.png", width="42", height="42")
+									.icon-delete-photo
+										input.input-delete(type='radio', name='thirdImageDelete')
+									.one-foto-box-photo
+										if goods.thirdImage!="resources/images/photo-ico.png"
+											img(src=goods.thirdImageUrl)
+									input.fileInputText(type='text', disabled='')
+								input#third-file.custom-file-input(type='file', name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
+			.content-button-block
+				input.button-update(type='submit', value='РАЗМЕСТИТЬ')
+			.content-button-block
+				a(href = "/")
+					input.button-update(type='button', value='ОТМЕНА')

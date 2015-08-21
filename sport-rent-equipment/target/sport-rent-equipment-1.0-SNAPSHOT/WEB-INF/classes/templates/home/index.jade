@@ -1,0 +1,61 @@
+extends layout.jade
+block title
+	title Дай погонять
+block scripts
+	script(src='resources/style/main/image-photo-script.js')
+block depending
+	link(rel="stylesheet", href="resources/style/main/index.css", type="text/css", media="all")
+block header
+	.header
+		.center-of-header
+			.base
+				.order
+					.logo
+						a(href="/")
+							img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
+					if (!isAuth)
+						.to-profile
+							a.header-a-color(href="/login")
+								b
+									p
+										ВХОД
+					else
+						.exit
+							a.header-a-color(href="/logout")
+								b
+									p
+										ВЫХОД
+						.to-personal-area
+							a.header-a-color(href="/personal_area")
+								b
+									p
+										ЛИЧНЫЙ КАБИНЕТ
+						.to-give-announcement
+							a.header-a-color(href="/add")
+								b
+									p
+										ДАТЬ ОБЪЯВЛЕНИЕ
+block content
+	.my-content
+		if(!isAuth)
+			.name-service-and-motto-block-base-color
+				.name-service-and-motto-block-background-image
+					.name-service
+						p.set-font-rounds
+							Дай погонять
+					.service-motto
+						p
+							Сервис по поиску и аренде спортивного оборудования
+					.name-service-and-motto-block-inside
+						a(href="/add")
+							button.button-add-announcement(type='button')
+								b
+									p
+										ДАТЬ ОБЪЯВЛЕНИЕ
+							a(href="/#seeAll")
+								button.button-see-announcement(type='button')
+									b
+										p
+											ВСЕ ОБЪЯВЛЕНИЯ
+		include mixins/mixin_list_all_announcement.jade
+		+list(goods)
