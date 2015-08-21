@@ -8,7 +8,6 @@
 
 .name-service-and-motto-block-base-color{
     width: 100%;
-    height:582px;
     background-color: #5cc9cc;
     margin-bottom: 19px;
 }
@@ -347,4 +346,180 @@ background-color: white;
 .list-content-inside-one-position:hover .list-block-separate-end-line{
 
 background-color: white;
+}
+
+@media screen and (min-width: 1200px){
+    .name-service-and-motto-block-background-image
+    {
+        height:582px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .name-service-and-motto-block-background-image
+    {
+        height:520px;
+        background-size: contain;
+    }
+
+.button-add-announcement,
+.button-add-announcement:focus,
+.button-add-announcement:hover,
+.button-see-announcement,
+.button-see-announcement:hover,
+.button-see-announcement:focus {
+    width: 169.6px;
+    height:46.4px;
+    font-size: 12px;
+}
+.name-service-and-motto-block-inside{
+width: 400px;
+}
+.name-service{
+font-size: 50px;
+}
+.name-service-and-motto-block-inside{
+    width: 400px;
+}
+.service-motto{
+font-size:16px;
+}
+}
+
+@media screen and (max-width: 1187px){
+    .name-service-and-motto-block-background-image
+    {
+        height:500px;
+    }
+    .name-service{
+    padding-top: 50px;
+    }
+}
+
+
+@media screen and (max-width: 1126px){
+    .name-service-and-motto-block-background-image
+    {
+        height:450px;
+    }
+    .name-service{
+    padding-top: 45px;
+    }
+}
+
+
+@media screen and (max-width: 1022px){
+    .name-service-and-motto-block-background-image
+    {
+        height:400px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .name-service{
+    padding-top: 40px;
+    }
+}
+
+@media screen and (max-width: 905px){
+    .name-service-and-motto-block-background-image
+    {
+        height:380px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+
+@media screen and (max-width: 876px){
+    .name-service-and-motto-block-background-image
+    {
+        height:360px;
+    }
+    .name-service{
+    padding-top: 30px;
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    .name-service-and-motto-block-background-image
+    {
+        height:340px;
+    }
+    .name-service{
+    padding-top: 25px;
+    }
+}
+
+@media screen and (max-width: 748px){
+    .name-service-and-motto-block-background-image
+    {
+        height:320px;
+    }
+    .service-motto{
+    margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 703px){
+    .name-service-and-motto-block-background-image
+    {
+        height:300px;
+    }
+}
+
+@media screen and (max-width: 732px){
+
+.button-add-announcement,
+.button-add-announcement:focus,
+.button-add-announcement:hover,
+.button-see-announcement,
+.button-see-announcement:hover,
+.button-see-announcement:focus {
+    width: 118.6px;
+    height: 32.62px;
+    font-size: 9px;
+}
+.name-service-and-motto-block-inside{
+width: 300px;
+}
+.name-service{
+    font-size: 40px;
+    }
+.service-motto{
+font-size:14px;
+}
+}
+
+
+@media screen and (max-width: 641px){
+    .name-service-and-motto-block-background-image
+    {
+        height:280px;
+    }
+}
+
+@media screen and (max-width: 580px){
+    .name-service-and-motto-block-background-image
+    {
+        height:260px;
+    }
+}
+
+@media screen and (max-width: 538px){
+    .name-service-and-motto-block-background-image
+    {
+        height:240px;
+        background-size: cover;
+    }
+}
+
+
+@media screen and (max-width: 350px){
+.name-service{
+    font-size: 36px;
+    }
+.service-motto{
+font-size:12px;
+}
 }
