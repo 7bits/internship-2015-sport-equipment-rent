@@ -13,7 +13,7 @@ public class Goods implements Serializable {
     String title;
     String description;
     String pledge;
-    double pricePerHour, pricePerDay, pricePerWeek;
+    int pricePerHour, pricePerDay, pricePerWeek;
     boolean status;
     Long authorId;
     String author;//name
@@ -54,28 +54,28 @@ public class Goods implements Serializable {
         this.pledge = pledge;
     }
 
-    public double getPricePerHour() {
+    public int getPricePerHour() {
         return pricePerHour;
     }
 
     public void setPricePerHour(double pricePerHour) {
-        this.pricePerHour = pricePerHour;
+        this.pricePerHour = (int)pricePerHour;
     }
 
-    public double getPricePerDay() {
+    public int getPricePerDay() {
         return pricePerDay;
     }
 
     public void setPricePerDay(double pricePerDay) {
-        this.pricePerDay = pricePerDay;
+        this.pricePerDay = (int)pricePerDay;
     }
 
-    public double getPricePerWeek() {
+    public int getPricePerWeek() {
         return pricePerWeek;
     }
 
     public void setPricePerWeek(double pricePerWeek) {
-        this.pricePerWeek = pricePerWeek;
+        this.pricePerWeek = (int)pricePerWeek;
     }
 
     public boolean isStatus() {
