@@ -239,13 +239,6 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 }
 }
 
-@media screen and (max-width: 1001px){
-
-.announcement-title-text{
-    width: 100%;
-    text-align: center;
-}
-}
 
 
 @media screen and (max-width: 434px){
