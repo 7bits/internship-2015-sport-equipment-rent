@@ -47,31 +47,32 @@ block content
 		.my-content-inside
 			.base
 				.order
-					.user-info
-						.ava-image-position
-							img.round(src=user.imageUrl, height="120", width="120")
-						.user-info-block
-							.user-info-block-title
-								.base
-									.order
-										.user-info-block-title-text
-											b
-												p
-													Ваши данные
-										.user-info-block-ico
-											a(href="/update_profile")
-												img(src="resources/style/personal-area/images/info-icon.png", width="17", height="17")
-							.user-name
-								p.size-text-norap=user.firstName
-							if user.phone!=null
-								.user-info-line
-								.user-phone
-									p.size-text-norap=user.phone
-								.user-info-line
-								.empty-line
-							else
-								.user-info-line
-								.empty-line
+					.user
+						.user-info
+							.ava-image-position
+								img.round(src=user.imageUrl, height="120", width="120")
+							.user-info-block
+								.user-info-block-title
+									.base
+										.order
+											.user-info-block-title-text
+												b
+													p
+														Ваши данные
+											.user-info-block-ico
+												a(href="/update_profile")
+													img(src="resources/style/personal-area/images/info-icon.png", width="17", height="17")
+								.user-name
+									p.size-text-norap=user.firstName
+								if user.phone!=null
+									.user-info-line
+									.user-phone
+										p.size-text-norap=user.phone
+									.user-info-line
+									.empty-line
+								else
+									.user-info-line
+									.empty-line
 					include mixins/mixin_users_announcement_list.jade
 					.user-announcement
 						.user-announcement-title

@@ -412,3 +412,58 @@ float: none;
 }
 }
 
+
+/*адаптивность*/
+
+@media screen and (max-width: 450px){
+.my-content{
+width: 100%;
+background-color: white;
+background-image: none;
+}
+.content-inside-block{
+width: 100%;
+background-color: white;
+background-image: none;
+min-height: 615px;
+}
+.input-name-announcement{
+width: 100%
+}
+}
+@media screen and (max-width: 468px){
+
+.content-button-block{
+width: 100%;
+margin-top: 10px;
+}
+.button-update, .button-update:focus, .button-update:hover {
+width: 100%;
+
+}
+}
+
+@media screen and (max-width: 428px){
+.input-price{
+width: 250px;
+}
+.foto-block{
+width: 110px;
+padding-right: 5px;
+}
+.help-foto-block{
+width: 360px;
+margin: 0 auto;
+}
+}
+
+@media screen and (max-width: 368px){
+.foto-block{
+width: 85px;
+padding-right: 5px;
+}
+.help-foto-block{
+width: 310px;
+margin: 0 auto;
+}
+}

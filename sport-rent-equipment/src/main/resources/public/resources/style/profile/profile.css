@@ -203,4 +203,50 @@ background-color: rgba(77, 150, 154, 0.8);
      padding-right: 8px;
 
   }
+@media screen and (max-width: 572px){
 
+.user-announcement{
+    width: 100%;
+}
+.user-announcement-title{
+    width: 100%;
+    text-align: center;
+}
+.user-announcement-title-text{
+    width: 100%;
+    text-align: center;
+}
+.history{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+    .my-content-inside{
+    width: 100%;
+}
+
+
+.user-info{
+    width:  162px;
+    float: none;
+    margin: 0 auto;
+}
+.user-announcement{
+    width: 100%;
+    float: none;
+    padding-top: 10px;
+    margin: 0 auto;
+}
+}
+
+@media screen and (max-width: 373px){
+.one-announcement-block-help{
+    width: 100%;
+}
+
+.one-announcement-block{
+    margin: 0 auto;
+    float: none;
+    }
+}
