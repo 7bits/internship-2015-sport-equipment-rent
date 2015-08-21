@@ -60,6 +60,14 @@ public class AddAnnouncementController {
                          @RequestParam("thirdImage") MultipartFile thirdImage, HttpSession session) {
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         final Map<String, String> errors = validator.validate(form);
+        if(!firstImage.getOriginalFilename().endsWith(".jpeg") && !firstImage.getOriginalFilename().endsWith(".jpg") &&
+                !firstImage.getOriginalFilename().endsWith(".png") && !firstImage.getOriginalFilename().endsWith(".bmp") &&
+                !secondImage.getOriginalFilename().endsWith(".jpeg") && !secondImage.getOriginalFilename().endsWith(".jpg") &&
+                !secondImage.getOriginalFilename().endsWith(".png") && !secondImage.getOriginalFilename().endsWith(".bmp") &&
+                !thirdImage.getOriginalFilename().endsWith(".jpeg") && !thirdImage.getOriginalFilename().endsWith(".jpg") &&
+                !thirdImage.getOriginalFilename().endsWith(".png") && !thirdImage.getOriginalFilename().endsWith(".bmp")){
+            errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
+        }
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
