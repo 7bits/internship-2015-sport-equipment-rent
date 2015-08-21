@@ -45,7 +45,7 @@ public class UpdateProfileController {
     public String submit(@ModelAttribute UpdateUserForm form, final Model model){
         final Map<String, String> errors =validator.validate(form);
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (form.getPass() != "") {
+        if (form.getPass() != "" && form.getPass()!=null) {
             User user = null;
             try {
                 user = userService.getUser(name);
