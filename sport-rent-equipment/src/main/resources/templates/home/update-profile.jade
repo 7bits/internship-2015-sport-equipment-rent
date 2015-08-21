@@ -3,6 +3,7 @@ block title
 	title Редактирование профиля
 block depending
 	link(rel="stylesheet", href="resources/style/update-profile/update-profile.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block header
 	.header
 		.center-of-header
@@ -24,6 +25,8 @@ block content
 					.update-block-header-text
 						b
 							Редактирование профиля
+				include mixins/mixin_er.jade
+				+err(errors)
 				form(role="form", action="/update_profile", method="post")
 					input.update-block-content-first-text#from.form-control(type="text", value="#{user.firstName}", name="firstName",placeholder="Имя")
 					input.update-block-content-another-text#from.form-control(type="text", value="#{user.phone}", name="phone",placeholder="Телефон")

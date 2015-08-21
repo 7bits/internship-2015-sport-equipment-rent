@@ -53,7 +53,7 @@ public interface DealMapper {
     @Update("UPDATE deals SET real_end_date=clock_timestamp() where id=#{dealId}")
     void updateRealEndDate(long dealId);
 
-    @Select("SELECT * from deals where goods_id=#{goodsId} and real_start_date is not null and real_end_date is null")
+    @Select("SELECT * from deals where is_closed=false and goods_id=#{goodsId} and is_answered=true")
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "goods_id", property = "goodsId"),
