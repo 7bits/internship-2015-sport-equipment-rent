@@ -157,7 +157,14 @@ public class GoodsService {
     }
 
     public List<Image> getImagesForGoods(long id){
-        return repository.imageUrl(id);
+        List<Image> images = repository.imageUrl(id);
+        images.sort(new Comparator<Image>() {
+            @Override
+            public int compare(Image o1, Image o2) {
+                return o1.getUrl()=="resources/images/photo-ico.png"?-1:1;
+            }
+        });
+        return images;
     }
 
     public Image getImageForGoods(long id){

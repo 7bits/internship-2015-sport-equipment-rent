@@ -72,7 +72,7 @@ public interface GoodsMapper {
                 @Result(column = "goods_id", property = "goodsId")})
     List<Image> getImages(@Param("goodsId") long goodsId);
 
-    @Select("SELECT * FROM announcement_image where goods_id = #{id} ORDER BY id LIMIT 1")
+    @Select("SELECT * FROM announcement_image where goods_id = #{id} and image_url!='resources/images/photo-ico.png' ORDER BY id LIMIT 1")
     @Results({
             @Result(column = "image_url", property = "url"),
             @Result(column = "id", property = "id"),

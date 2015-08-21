@@ -93,6 +93,9 @@ public class SeeAnnouncementController {
                 String name = SecurityContextHolder.getContext().getAuthentication().getName();
                 User user = userService.getUser(name);
                 User landlord = userService.getUser(goods.getAuthorId());
+                if(user.getEmail().equals(landlord.getEmail())){
+                    return "redirect:/";
+                }
                 model.addAttribute("Goods", goods);
                 if(name!="anonymousUser") {
                     model.addAttribute("isAuthor", user.getId().equals(goods.getAuthorId()));
