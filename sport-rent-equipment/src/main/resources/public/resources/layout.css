@@ -248,8 +248,9 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
     text-align: center;
 }
 .logo{
-display: none;}
+    display: none;}
+
 .small-logo{
-display: block;
+    display: block;
 }
 }

@@ -13,3 +13,10 @@
     height: 74px;
     min-height:74px;
 }
+@media screen and (max-width: 446px){
+
+form{
+    width: 170;
+}
+
+}

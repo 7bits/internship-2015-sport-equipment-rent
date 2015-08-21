@@ -170,3 +170,11 @@ input:focus:placeholder-shown, textarea:focus:placeholder-shown{
     color: #949494;
     cursor: pointer;
 }
+
+@media screen and (max-width: 446px){
+
+.to-main{
+    width: 100%;
+}
+
+}
