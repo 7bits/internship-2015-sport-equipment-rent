@@ -265,3 +265,15 @@ background-color: rgba(77, 150, 154, 0.8);
 .a-history:hover{
 text-shadow: none;
 }
+
+.to-give-announcement{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+

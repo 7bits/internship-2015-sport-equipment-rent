@@ -28,6 +28,8 @@ block content
 				include mixins/mixin_er.jade
 				+err(errors)
 				form(role="form", action="/update_profile", method="post")
+					include mixins/mixin_er.jade
+					+err(errors)
 					input.update-block-content-first-text#from.form-control(type="text", value="#{user.firstName}", name="firstName",placeholder="Имя")
 					input.update-block-content-another-text#from.form-control(type="text", value="#{user.phone}", name="phone",placeholder="Телефон")
 					.update-content-change-url-recomendation
