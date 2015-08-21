@@ -58,7 +58,7 @@ p{
 .header{
     margin:0 auto;
     width: 100%;
-    min-width: 350px;
+    min-width: 320px;
     height:74px;
     background-color: white;
     box-shadow: 0 3px 30px #d4cfcf;
@@ -134,6 +134,11 @@ p{
     padding-top: 27px;
 }
 
+a.header-a-color{
+   padding-top: 2px;
+   padding-bottom: 2px;
+
+   }
 a.header-a-color:visited{
     color: #019199;
 }
@@ -142,40 +147,116 @@ a.header-a-color:hover{
     color: #949494;
 }
 
-@media screen and (max-width: 623px){
-.header{
-    height:140px;
+/*логотип*/
+.small-logo{
+    width: 43px;
+    min-width: 43px;
+    max-width: 43px;
+    height: 37px;
+    min-height: 37px;
+    float:left;
+    padding-top: 5px;
+    display: none;
 }
-/*блок "Личный кабинет"*/
-.to-personal-area{
-    display: block;
-    text-align: center;
-    width: 100%;
-    max-width:100%;
+
+.to-give-announcement{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+
+/*
+	LEVEL ONE (бутерброд)
+*/
+ul.dropdown                         { position: relative; z-index: 99999;   font-size: 0.875em;}
+ul.dropdown li                      { float: right; padding-top: 10px; }
+ul.dropdown a:hover		            { color: #8c8c8c; }
+ul.dropdown a:active                { color: #8c8c8c; }
+ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333;
+                                      }
+ul.dropdown li:last-child a         { border-right: none;  } /* Doesn't work in IE */
+ul.dropdown li.hover,
+ul.dropdown li:hover                {  position: relative; right: 0;}
+ul.dropdown li.hover a              { }
+
+
+/*
+	LEVEL TWO(пyнкты)
+*/
+ul.dropdown ul 						{ width: 200px; visibility: hidden; position: absolute; top: 100%; right: 0;}
+ul.dropdown ul li 					{ font-weight: normal; background: #f6f6f6;
+									  border-bottom: 1px solid white; float: none; }
+
+                                    /* IE 6 & 7 Needs Inline Block */
+ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block;  }
+
+/*
+	LEVEL THREE
+*/
+ul.dropdown ul ul 					{ left: 100%; top: 0; }
+ul.dropdown li:hover > ul 			{ visibility: visible; }
+
+
+
+@media screen and (max-width: 750px){
+    .dropdown{
+        visibility: visible;
+    }
+    .display-size{
+        display: none;
+    }
+    .center-of-header .base{
+        overflow: visible;
+    }
+}
+
+@media screen and (min-width: 750px){
+    .dropdown{
+        visibility: hidden;
+    }
+
+}
+
+@media screen and (max-width: 945px){
+    .center-of-header{
+        width: 90%;
+
+
+    }
+
+}
+
+
+@media screen and (max-width: 1123px){
+
+.announcement-title-text{
+    width: 40%;
 }
 }
 
-@media screen and (max-width: 400px){
-.header{
-    height:210px;
+@media screen and (max-width: 1001px){
+
+.announcement-title-text{
+    width: 100%;
+    text-align: center;
+}
 }
 
-/*блок "Выход"*/
-.exit{
-    display: block;
-    text-align: center;
+
+@media screen and (max-width: 434px){
+
+.announcement-title-text{
     width: 100%;
-    max-width:100%;
+    text-align: center;
 }
 .logo{
-margin: 0 auto;}
-.center-of-header{
-    width: 100%;
+display: none;}
+.small-logo{
+display: block;
 }
-}
-
-@media screen and (max-width: 408px){
-
-
-
 }

@@ -1,20 +1,9 @@
 
-.to-give-announcement{
-    width: 170px;
-    min-width: 170px;
-    max-width: 170px;
-    height: 74px;
-    min-height:74px;
-    float:right;
-    font-size: 0.875em;
-    padding-top: 27px;
-}
-
-
 /*контент*/
 .my-content{
     width: 100%;
     height:100%;
+
 }
 
 .name-service-and-motto-block-base-color{
@@ -304,7 +293,7 @@
     width: 56px;
     height: 56px;
     position: relative;
-    z-index: 99998;
+    z-index: 99997;
     top: -13px;
     right: 0;
     background-color: white;
@@ -324,7 +313,7 @@
     width: 52px;
     height: 52px;
     position: relative;
-    z-index: 99999;
+    z-index: 99998;
     top: 2px;
     left: 2px;
 }
@@ -358,21 +347,4 @@ background-color: white;
 .list-content-inside-one-position:hover .list-block-separate-end-line{
 
 background-color: white;
-}
-
-@media screen and (max-width: 1150px){
-.announcement-title-text{
-width: 60%;
-}
-}
-
-@media screen and (max-width: 850px){
-.announcement-title-text{
-width: 50%;
-}
-
-
-@media screen and (max-width: 680px){
-.announcement-title-text{
-width: 40%;
 }
