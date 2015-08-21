@@ -62,4 +62,8 @@ public class UserService {
     public void update(User user) {
         repository.update(user);
     }
+
+    public void updatePass(User user) {
+        repository.updatePass(user);
+    }
 }

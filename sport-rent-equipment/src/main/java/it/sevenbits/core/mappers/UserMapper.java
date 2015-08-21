@@ -50,8 +50,13 @@ public interface UserMapper {
     void save(final User user);
 
 
-    @Update("UPDATE users SET (first_name, phone, image_url, pass)=" +
-            "(#{firstName}, #{phone}, #{imageUrl}, #{pass})" +
+    @Update("UPDATE users SET (first_name, phone, image_url)=" +
+            "(#{firstName}, #{phone}, #{imageUrl})" +
             " where id=#{id}")
     void update(User user);
+
+    @Update("UPDATE users SET (pass)=" +
+            "(#{pass})" +
+            " where id=#{id}")
+    void updatePass(User user);
 }

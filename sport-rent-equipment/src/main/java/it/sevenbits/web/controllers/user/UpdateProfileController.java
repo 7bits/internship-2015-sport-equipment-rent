@@ -52,10 +52,10 @@ public class UpdateProfileController {
             } catch (GoodsException e) {
                 e.printStackTrace();
             }
-            if(user.getPass()==form.getPass()){
+            if(user.getPass().equals(form.getPass())){
                 if(form.getNewPass().length()>0){
                     user.setPass(form.getNewPass());
-                    userService.update(user);
+                    userService.updatePass(user);
                 }else{
                     errors.put("", "Заполните новый пароль");
                 }

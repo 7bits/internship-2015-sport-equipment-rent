@@ -13,4 +13,6 @@ public interface UserRepository {
     int getCountOfUsersWithThatEmail(String email);
 
     void update(User user);
+
+    void updatePass(User user);
 }
