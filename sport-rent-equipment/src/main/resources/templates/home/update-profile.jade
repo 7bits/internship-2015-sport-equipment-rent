@@ -25,6 +25,8 @@ block content
 					.update-block-header-text
 						b
 							Редактирование профиля
+				include mixins/mixin_er.jade
+				+err(errors)
 				form(role="form", action="/update_profile", method="post")
 					include mixins/mixin_er.jade
 					+err(errors)

@@ -45,13 +45,18 @@ public interface UserMapper {
     int getCountOfUserWithThatEmail(String email);
 
 
-    @Insert("INSERT INTO users (first_name, second_name, pass, phone, email, users_role)" +
-            " VALUES (#{firstName}, 'null', #{pass}, #{phone}, #{email}, 'USER')")
+    @Insert("INSERT INTO users (first_name, second_name, pass, phone, email, users_role, image_url)" +
+            " VALUES (#{firstName}, 'null', #{pass}, #{phone}, #{email}, 'USER', #{imageUrl})")
     void save(final User user);
 
 
-    @Update("UPDATE users SET (first_name, phone, image_url)=\n" +
-            "(#{firstName}, #{phone}, #{imageUrl})\n" +
+    @Update("UPDATE users SET (first_name, phone, image_url)=" +
+            "(#{firstName}, #{phone}, #{imageUrl})" +
             " where id=#{id}")
     void update(User user);
+
+    @Update("UPDATE users SET (pass)=" +
+            "(#{pass})" +
+            " where id=#{id}")
+    void updatePass(User user);
 }

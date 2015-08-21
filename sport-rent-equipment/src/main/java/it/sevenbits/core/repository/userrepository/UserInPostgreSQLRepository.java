@@ -44,4 +44,9 @@ public class UserInPostgreSQLRepository implements UserRepository{
     public void update(User user) {
         mapper.update(user);
     }
+
+    @Override
+    public void updatePass(User user) {
+        mapper.updatePass(user);
+    }
 }

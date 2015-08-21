@@ -45,9 +45,28 @@ public class UpdateProfileController {
     public String submit(@ModelAttribute UpdateUserForm form, final Model model){
         final Map<String, String> errors =validator.validate(form);
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (form.getPass() != "" && form.getPass()!=null) {
+            User user = null;
+            try {
+                user = userService.getUser(name);
+            } catch (GoodsException e) {
+                e.printStackTrace();
+            }
+            if(user.getPass().equals(form.getPass())){
+                if(form.getNewPass().length()>0){
+                    user.setPass(form.getNewPass());
+                    userService.updatePass(user);
+                }else{
+                    errors.put("", "Заполните новый пароль");
+                }
+            }else{
+                errors.put("", "Неверно введен текущий пароль");
+            }
+        }
         if(!errors.isEmpty()) {
             model.addAttribute("errors", errors);
-             return "home/update-profile";
+            model.addAttribute("user", form);
+            return "home/update-profile";
 
         }
         User user = User.valueOf(form);

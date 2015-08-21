@@ -51,7 +51,7 @@ public class UserService {
         user.setEmail(form.geteMail());
         user.setFirstName(form.getFirstName());
         user.setPass(form.getPassword());
-
+        user.setImageUrl("http://s017.radikal.ru/i424/1508/69/880c33f843b3.jpg");
         try {
             repository.save(user);
         } catch (Exception e) {
@@ -61,5 +61,9 @@ public class UserService {
 
     public void update(User user) {
         repository.update(user);
+    }
+
+    public void updatePass(User user) {
+        repository.updatePass(user);
     }
 }
