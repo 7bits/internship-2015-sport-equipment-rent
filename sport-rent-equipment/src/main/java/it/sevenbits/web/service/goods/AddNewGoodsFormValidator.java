@@ -28,7 +28,7 @@ public class AddNewGoodsFormValidator {
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "Поле цена за неделю не может быть пустым");
 
         validator.shorterThan(form.getTitle(), 255, errors, "Поле заголовок", "Поле заголовок должно быть короче чем 255 символов");
-        validator.shorterThan(form.getDescription(), 2048, errors, "Поле описание", "Поле описание должно быть короче чем 2048 символов");
+        validator.shorterThan(form.getDescription(), 2040, errors, "Поле описание", "Поле описание должно быть короче чем 2048 символов");
         validator.shorterThan(form.getPricePerHour(), 10, errors, "Поле цена за час", "Поле цена за час должно быть короче чем 10 символов");
         validator.shorterThan(form.getPricePerDay(), 10, errors, "Поле цена за день", "Поле цена за день должно быть короче чем 10 символов");
         validator.shorterThan(form.getPricePerWeek(), 10, errors, "Поле цена за неделю", "Поле цена за неделю должно быть короче чем 10 символов");

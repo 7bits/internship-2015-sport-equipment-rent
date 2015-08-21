@@ -66,8 +66,10 @@ public class AddAnnouncementController {
                 !secondImage.getOriginalFilename().endsWith(".png") && !secondImage.getOriginalFilename().endsWith(".bmp") &&
                 !thirdImage.getOriginalFilename().endsWith(".jpeg") && !thirdImage.getOriginalFilename().endsWith(".jpg") &&
                 !thirdImage.getOriginalFilename().endsWith(".png") && !thirdImage.getOriginalFilename().endsWith(".bmp")){
+            if((firstImage!=null && !firstImage.isEmpty())||(secondImage!=null && !secondImage.isEmpty())||(thirdImage!=null && !thirdImage.isEmpty()))
             errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
         }
+
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
