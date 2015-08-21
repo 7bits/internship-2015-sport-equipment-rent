@@ -350,7 +350,7 @@ width: 305px;
   background-image: url('images/create-and-set-announcement.png');
   background-repeat: no-repeat;
   background-size: auto;
-  background-position: right;
+  background-position-x: right;
 }
 
 .create-and-set-announcement-info-block{
