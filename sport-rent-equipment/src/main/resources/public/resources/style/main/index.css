@@ -667,8 +667,8 @@ display: none;
 }}
 @media screen and (max-width: 637px){
 .photo-block{
-width: 100%;
-margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
 }
 .info-block{
 width: 100%;
@@ -678,12 +678,20 @@ left: 50%;
 padding-right:0;
 }
 .avatar-border {
-top: 10px;
-right: 220px;
+    top: 10px;
+    right: 220px;
 
 }
 .photo-inventory{
 left: 50%;
     transform: translate(-50%, 0);
+}
+}
+
+@media screen and (max-width: 387px){
+.avatar-border {
+    top: 10px;
+    right: 50px;
+
 }
 }

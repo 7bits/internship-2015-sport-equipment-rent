@@ -32,7 +32,7 @@
 /*контент*/
 .content-inside{
     width: 840px;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     padding-top: 18px;
 }
