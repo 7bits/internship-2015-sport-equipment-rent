@@ -2,11 +2,11 @@ extends layout.jade
 block title
 	title Просмотр объявление
 block depending
-	link(rel="stylesheet", href="resources/qb/qb.css", type="text/css")
+	link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/pages/detail-view-ads/detail-view-ads.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
 block scripts
-	script(src="resources/pages/detail-view-ads/image-photo-script.js")
+	script(src="resources/pages/see_announcement/image-photo-script.js")
 	script(src="resources/vendor/scripts/qb/js/qb.js")
 block content
 	.my-content
@@ -53,13 +53,13 @@ block content
 										p
 											К аренде готов!
 									.status-ico
-										img(src="resources/images/ready-ico.png", width="22", height="22")
+										img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
 								else
 									.status-text
 										p
 											Уже арендован.
 									.status-ico
-										img(src="resources/images/not-ready-ico.png", width="22", height="22")
+										img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
 
 						.foto-block
 							.base
