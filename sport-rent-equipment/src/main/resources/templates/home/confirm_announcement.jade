@@ -2,10 +2,10 @@ extends layout.jade
 block title
 	title Подтвердить объявление
 block depending
-	link(rel="stylesheet", href="resources/style/confirm_announcement/confirm_announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/pages/confirm_announcement/confirm_announcement.css", type="text/css", media="all")
 block scripts
-	script(src='resources/style/update_announcement/update-announcement-script.js')
-	script(src="resources/style/update_announcement/image-photo-script.js")
+	script(src='resources/pages/update_announcement/update-announcement-script.js')
+	script(src="resources/pages/update_announcement/image-photo-script.js")
 block content
 	.my-content
 		form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
