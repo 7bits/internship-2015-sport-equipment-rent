@@ -170,6 +170,7 @@ a.header-a-color:hover{
     padding-top: 27px;
 }
 
+.small-logo img{display: none;}
 /*
 	LEVEL ONE (бутерброд)
 */
@@ -203,54 +204,5 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 
 
 
-@media screen and (max-width: 750px){
-    .dropdown{
-        visibility: visible;
-    }
-    .display-size{
-        display: none;
-    }
-    .center-of-header .base{
-        overflow: visible;
-    }
-}
-
-@media screen and (min-width: 750px){
-    .dropdown{
-        visibility: hidden;
-    }
-
-}
-
-@media screen and (max-width: 945px){
-    .center-of-header{
-        width: 90%;
 
 
-    }
-
-}
-
-
-@media screen and (max-width: 1123px){
-
-.announcement-title-text{
-    width: 40%;
-}
-}
-
-
-
-@media screen and (max-width: 434px){
-
-.announcement-title-text{
-    width: 100%;
-    text-align: center;
-}
-.logo{
-    display: none;}
-
-.small-logo{
-    display: block;
-}
-}

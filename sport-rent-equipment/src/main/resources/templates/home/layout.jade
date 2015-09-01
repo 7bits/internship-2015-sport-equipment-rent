@@ -26,9 +26,6 @@ html
 								.logo
 									a(href="/")
 										img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
-								.small-logo
-									a(href="/")
-										img(src="resources/images/ad-logo.png", width="43", height="37", style="margin-top: 12px")
 								if (!isAuth)
 									.to-profile
 										a.header-a-color(href="/login")
@@ -36,40 +33,19 @@ html
 												p
 													ВХОД
 								else
-									.display-size
-										.exit
-											a.header-a-color(href="/logout")
-												b
-													p
-														ВЫХОД
-										.to-personal-area
-											a.header-a-color(href="/personal_area")
-												b
-													p
-														ЛИЧНЫЙ КАБИНЕТ
-										.to-give-announcement
-											a.header-a-color(href="/add")
-												b
-													p
-														ДАТЬ ОБЪЯВЛЕНИЕ
-									ul.dropdown
-										li
-											a(href="#")
-												img(src="resources/images/menu.png", width="25", height="15", style="margin-top: 12px")
-											ul.sub_menu
-												li
-													a.header-a-color(href="/logout")
-														b
-															p
-																ВЫХОД
-												li
-													a.header-a-color(href="/personal_area")
-														b
-															p
-																ЛИЧНЫЙ КАБИНЕТ
-												li
-													a.header-a-color(href="/add")
-														b
-															p
-																ДАТЬ ОБЪЯВЛЕНИЕ
+									.exit
+										a.header-a-color(href="/logout")
+											b
+												p
+													ВЫХОД
+									.to-personal-area
+										a.header-a-color(href="/personal_area")
+											b
+												p
+													ЛИЧНЫЙ КАБИНЕТ
+									.to-give-announcement
+										a.header-a-color(href="/add")
+											b
+												p
+													ДАТЬ ОБЪЯВЛЕНИЕ
 			block content
