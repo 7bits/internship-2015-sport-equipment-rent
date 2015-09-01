@@ -89,6 +89,15 @@
           <artifactId>spring-boot-starter-tomcat</artifactId>
           <scope>provided</scope>
       </dependency>
+
+      <!-- Crypto dependency -->
+      <dependency>
+          <groupId>org.mindrot</groupId>
+          <artifactId>jbcrypt</artifactId>
+          <version>0.3m</version>
+      </dependency>
+
+
   </dependencies>
 
     <!-- Package as an executable jar -->

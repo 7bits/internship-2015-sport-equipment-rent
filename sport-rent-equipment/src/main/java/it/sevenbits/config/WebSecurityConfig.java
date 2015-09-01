@@ -1,4 +1,5 @@
 package it.sevenbits.config;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -43,8 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
                         "select email, pass, '1' from users where email=?")
-                .authoritiesByUsernameQuery(
-                        "select email,  users_role from users where email=?");
+                        .passwordEncoder(new BCryptPasswordEncoder())
+        .authoritiesByUsernameQuery(
+                "select email,  users_role from users where email=?");
     }
 
     @Override

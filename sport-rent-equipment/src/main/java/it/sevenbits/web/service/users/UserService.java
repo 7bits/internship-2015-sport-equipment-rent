@@ -9,6 +9,7 @@ import it.sevenbits.core.repository.userrepository.UserRepository;
 import it.sevenbits.web.domain.RegistrationForm;
 import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.GoodsException;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -50,7 +51,7 @@ public class UserService {
         final User user = new User();
         user.setEmail(form.geteMail());
         user.setFirstName(form.getFirstName());
-        user.setPass(form.getPassword());
+        user.setPass(BCrypt.hashpw(form.getPassword(), BCrypt.gensalt()));
         user.setImageUrl("http://s017.radikal.ru/i424/1508/69/880c33f843b3.jpg");
         try {
             repository.save(user);
@@ -64,6 +65,7 @@ public class UserService {
     }
 
     public void updatePass(User user) {
+        user.setPass(BCrypt.hashpw(user.getPass(), BCrypt.gensalt()));
         repository.updatePass(user);
     }
 }

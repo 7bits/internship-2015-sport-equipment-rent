@@ -5,6 +5,7 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.users.UpdateFieldValidator;
 import it.sevenbits.web.service.users.UserService;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -52,7 +53,7 @@ public class UpdateProfileController {
             } catch (GoodsException e) {
                 e.printStackTrace();
             }
-            if(user.getPass().equals(form.getPass())){
+            if(BCrypt.checkpw(form.getPass(), user.getPass())){
                 if(form.getNewPass().length()>0){
                     user.setPass(form.getNewPass());
                     userService.updatePass(user);
