@@ -2,11 +2,11 @@ extends layout.jade
 block title
 	title Обновить объявление
 block depending
-	link(rel="stylesheet", href="resources/style/update_announcement/update_announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/pages/update_announcement/update_announcement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block scripts
-	script(src='resources/style/update_announcement/update-announcement-script.js')
-	script(src="resources/style/update_announcement/image-photo-script.js")
+	script(src='resources/pages/update_announcement/update-announcement-script.js')
+	script(src="resources/pages/update_announcement/image-photo-script.js")
 block content
 	.my-content
 		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
