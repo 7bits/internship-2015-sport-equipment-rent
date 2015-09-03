@@ -147,6 +147,76 @@ a.header-a-color:hover{
     color: #949494;
 }
 
+.b-form-content_input__style{
+    font-size: 0.875em;
+    border-color: #c7c7c7;
+    border-style: solid;
+    border-width:1px;
+    height: 34px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+textarea{
+    padding-top: 13px;
+    resize: none;
+}
+
+.b-form-content_input__style: focus,
+.b-form-content_input__style: hover{
+     border-color: #c7c7c7;
+     border-style: solid;
+     border-width: 1px;
+}
+
+/*деалет внутренннюю тень*/
+.b-form-content_input__style:focus{
+    box-shadow: 0 0 8px #d7e9e9 inset;
+}
+
+input, textarea{
+    padding-left: 10px;
+    color: #949494;
+}
+
+
+input::-webkit-input-placeholder,
+textarea:: -webkit-input-placeholder{
+    font-size: 1em;
+}
+
+/*убирает подстветку placeholder*/
+input:focus:-ms-input-placeholder,
+textarea: focus:-ms-textarea-placeholder{
+    color: transparent;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder{
+    color: transparent;
+}
+
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder{
+    color: transparent;
+}
+
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+
+input:focus:placeholder-shown,
+textarea:focus:placeholder-shown{
+    color: transparent;
+}
+
+
+
+
+
+
+
 /*логотип*/
 .small-logo{
     width: 43px;
@@ -169,6 +239,11 @@ a.header-a-color:hover{
     font-size: 0.875em;
     padding-top: 27px;
 }
+
+
+
+
+
 
 .small-logo img{display: none;}
 /*
@@ -201,7 +276,6 @@ ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block
 */
 ul.dropdown ul ul 					{ left: 100%; top: 0; }
 ul.dropdown li:hover > ul 			{ visibility: visible; }
-
 
 
 

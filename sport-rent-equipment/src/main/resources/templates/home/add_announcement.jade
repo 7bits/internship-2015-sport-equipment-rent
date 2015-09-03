@@ -5,37 +5,40 @@ block scripts
 	script(src='resources/pages/add_announcement/add-announcement-script.js')
 	script(src="resources/pages/update_announcement/image-photo-script.js")
 block depending
-	link(rel="stylesheet", href="resources/pages/add_announcement/add_announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/pages/add-update-confirm-announcement/add-update-confirm-announcement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block content
-	.my-content
+	.b-content
 		form(role="form", action="/add", method="post", enctype="multipart/form-data")
-			.content-inside-block
-				.content-block-header
+			.b-content-form
+				.b-form-header
 					p
 						Ваше объявление
-				.content-block-inside-info
+				.b-form-content
 					include mixins/mixin_er.jade
 					+err(errors)
-					.your-inventory-title-block
+					.b-form-content_title
 						p
 							Ваш инвентарь
-					input.input-name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
-					textarea.textarea-discription-announcement#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+					input.b-form-content_input__style.b-input_name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+					textarea.b-form-content_input__style.b-form_textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
 						#{goods.description}
-					.your-inventory-price-block
+					.b-form-content_title
 						p
 							Цена
-				.help-block
+				.b-set-fields
 					.base
 						.order
-							input.input-price#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
-							input.input-price#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
-							input.input-price#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
-				.your-inventory-foto-block
-					p
-						Фотографии
-				.help-foto-block
+							.b-set-fields_input
+								input.b-form-content_input__style#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+							.b-set-fields_input
+								input.b-form-content_input__style#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+							.b-set-fields_input
+								input.b-form-content_input__style#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+					.b-form-content_title
+						p
+							Фотографии
+				.b-set-fields
 					.order
 						.base
 							.foto-block
