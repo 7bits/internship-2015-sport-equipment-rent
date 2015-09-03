@@ -2,7 +2,6 @@
 /*контент*/
 .my-content{
     width: 100%;
-    background-image: url("images/pattern-gr.jpg");
     padding-top: 17px;
 
 
@@ -299,7 +298,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     top: 0;
     right: 0;
 
-    background-image: url("images/delete.png");
+    background-image: url("../../images/delete-photo-icon.png");
     position: absolute;
 }
 
