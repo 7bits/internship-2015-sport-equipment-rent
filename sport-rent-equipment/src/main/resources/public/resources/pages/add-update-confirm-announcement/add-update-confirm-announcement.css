@@ -21,6 +21,7 @@
     color: white;
     text-align: center;
     text-shadow: 0 2px 3px #a19d9d;
+    margin-bottom: 30px;
 }
 
 .b-form-header p{
@@ -30,7 +31,6 @@
 .b-form-content{
     width: 360px;
     margin: 0 auto;
-    padding-top: 30px;
 }
 
 .b-form-content_title{
@@ -55,8 +55,8 @@
 
 .b-set-fields{
     width: 370px;
-    padding-left: 34.5px;
-    margin-bottom: 11px;
+    margin-left: 34.5px;
+    margin-bottom: 10px;
 }
 
 .b-set-fields_input{
@@ -66,30 +66,32 @@
 }
 
 /*!базовый! блок 1 для вывода 1 фотки*/
-.foto-block{
-    width: 30.6024%;
-    height: 128px;
+.b-photo{
+    width: 113px;
     margin-right: 10px;
+    height: 128px;
     float: left;
+    margin-bottom: 20px;
     border-color: #c5c5c5;
     border-style: solid;
     border-width: 1px;
+
     background-color: #f6f6f6;
 
 }
-.foto-block:hover{
--webkit-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
--moz-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+.b-photo:hover{
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+    -moz-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+    box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
 /*само изображение*/
-.one-foto-box-photo{
+.b-photo-image{
     width:100%;
     height:100%;
 }
 
-.one-foto-box-photo img{
+.b-photo-image img{
     width: 131px;
     max-height:100px;
     position: absolute;
@@ -97,8 +99,8 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     left: 50%;
     transform: translate(-50%, -50%);
 }
-/*деволтная иконка (блок)*/
-.one-foto-box-ico{
+/*дефолтная иконка (блок)*/
+.b-photo-image-default{
     width:42px;
     height:42px;
     position: absolute;
@@ -109,26 +111,16 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
 /*контейнер для маски*/
-.download-mask{
+.b-download-mask{
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     position: relative;
 }
-/*маска*/
-.send-file{
-    background-image: none;
-    background-color: transparent;
-    border: none;
-    text-align: center;
-    font-size: 14px;
-    color:  #c7c7c7;
-    text-decoration: underline;
 
-}
 /*для вывода текста названия подргуженного файла*/
-.fileInputText {
+.b-download-mask_input-file-name{
     text-align: center;
     width: 100%;
     margin-right: 10px;
@@ -157,7 +149,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
 /*реальная кнопка*/
-.custom-file-input {
+.b-download-mask_real-file-input{
    width: 100%;
    height: 100%;
    opacity: 0;
@@ -172,7 +164,7 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
 /*иконка удаления и ее input*/
-.input-delete{
+.b-delete-photo_input-delete{
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -182,13 +174,14 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
     z-index: 99999;
 }
 
-.input-delete:hover{
+.b-delete-photo_input-delete:hover{
     cursor: pointer;
 }
-.input-delete:focus{
+.b-delete-photo_input-delete:focus{
     cursor: pointer;
 }
-.icon-delete-photo{
+
+.b-delete-photo{
     width: 19px;
     height: 19px;
     top: 0;
@@ -198,52 +191,27 @@ box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
 }
 
 
-.content-button-block{
+.b-form-button{
     width: 429px;
     margin: 0 auto;
     height: 40px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
-
-
-/*кнопка разместить*/
-.button-update, .button-update:focus, .button-update:hover {
-    width: 162px;
-    height:40px;
+/*желтая кнопка*/
+.b-form_button__yellow-style, .b-form_button__yellow-style:focus, .b-form_button__yellow-style:hover {
     background: #edd04e;
-    float: right;
     color: white;
-    padding: 1px 0 2px 0;
-    font-size: 0.875em;
-    border-radius: 5px;
-    box-shadow: none;
-    font-width: bold;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-    font-family: 'Roboto', sans-serif;
-
+    float: right;
 }
 
-.button-update:hover {
+.b-form_button__yellow-style:hover{
     color: #949494;
-    cursor: pointer;
 }
-
-.button-update:focus {
+.b-form_button__yellow-style:focus{
     color: #949494;
-    cursor: pointer;
 }
 
-
-.block-file-name-text{
-width:100%
-height: 20px;
-}
-
-
-
-/*адаптивность*/
+/*ПЕРЕКУРИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!адаптивность*/
 
 @media screen and (max-width: 450px){
 .my-content{

@@ -46,7 +46,6 @@ p{
 .container{
     width: 100%;
     min-width: 320px;
-    height: 100%;
     min-height:100%;
     position:absolute;
     top:0;
@@ -211,8 +210,28 @@ textarea:focus:placeholder-shown{
     color: transparent;
 }
 
+/*кнопка*/
+.b-form_button__style, .b-form_button__style:focus, .b-form_button__style:hover {
+    width: 162px;
+    height: 40px;
+    padding: 1px 0 2px 0;
+    font-size: 0.875em;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px #d4cfcf;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+    font-family: 'Roboto', sans-serif;
+    border: none;
+}
 
+.b-form_button__style:focus{
+    cursor: pointer;
+}
 
+.b-form_button__style:hover{
+    cursor: pointer;
+}
 
 
 

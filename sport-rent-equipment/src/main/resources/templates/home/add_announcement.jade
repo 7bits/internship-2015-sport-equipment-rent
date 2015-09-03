@@ -35,44 +35,45 @@ block content
 								input.b-form-content_input__style#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
 							.b-set-fields_input
 								input.b-form-content_input__style#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+				.b-form-content
 					.b-form-content_title
 						p
 							Фотографии
 				.b-set-fields
 					.order
 						.base
-							.foto-block
-								.download-mask
-									.one-foto-box-ico
+							.b-photo
+								.b-download-mask
+									.b-photo-image-default
 										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
-									.icon-delete-photo
-										input.input-delete(type='radio', name='firstImageDelete')
-									.one-foto-box-photo
+									.b-delete-photo
+										input.b-delete-photo_input-delete(type='radio', name='firstImageDelete')
+									.b-photo-image
 										if goods.firstImage!="resources/images/photo-ico.png"
 											img(src=goods.firstImageUrl)
-									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-							.foto-block
-								.download-mask
-									.one-foto-box-ico
+									input.b-download-mask_input-file-name(type='text', disabled='')
+								input#first-file.b-download-mask_real-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+							.b-photo
+								.b-download-mask
+									.b-photo-image-default
 										img(src=src="resources/images/photo-ico.png", width="42", height="42")
-									.icon-delete-photo
-										input.input-delete(type='radio', name='secondImageDelete')
-									.one-foto-box-photo
+									.b-delete-photo
+										input.b-delete-photo_input-delete(type='radio', name='secondImageDelete')
+									.b-photo-image
 										if goods.secondImage!="resources/images/photo-ico.png"
 											img(src=goods.secondImageUrl)
-									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-							.foto-block
-								.download-mask
-									.one-foto-box-ico
+									input.b-download-mask_input-file-name(type='text', disabled='')
+								input#second-file.b-download-mask_real-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+							.b-photo
+								.b-download-mask
+									.b-photo-image-default
 										img(src=src="resources/images/photo-ico.png", width="42", height="42")
-									.icon-delete-photo
-										input.input-delete(type='radio', name='thirdImageDelete')
-									.one-foto-box-photo
+									.b-delete-photo
+										input.b-delete-photo_input-delete(type='radio', name='thirdImageDelete')
+									.b-photo-image
 										if goods.thirdImage!="resources/images/photo-ico.png"
 											img(src=goods.thirdImageUrl)
-									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-			.content-button-block
-				input.button-update(type='submit', value='РАЗМЕСТИТЬ')
+									input.b-download-mask_input-file-name(type='text', disabled='')
+								input#third-file.b-download-mask_real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+			.b-form-button
+				input.b-form_button__style.b-form_button__yellow-style(type='submit', value='РАЗМЕСТИТЬ')
