@@ -6,8 +6,9 @@ block depending
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
 block scripts
+	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
+	//- должен подгружаться тут
 	script(src="resources/pages/see_announcement/image-photo-script.js")
-	script(src="resources/vendor/scripts/qb/js/qb.js")
 block content
 	.my-content
 		.content-inside
@@ -60,7 +61,6 @@ block content
 											Уже арендован.
 									.status-ico
 										img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-
 						.foto-block
 							.base
 								.order
@@ -106,3 +106,6 @@ block content
 											.input-box
 												input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
 									input.button-rent(type='submit', value='Забронировать')
+block dynamic-scripts
+	//- сторонний плагин нужен для увличенного просмотра фотографий по клику
+	script(src="resources/vendor/scripts/qb/js/qb.js")
