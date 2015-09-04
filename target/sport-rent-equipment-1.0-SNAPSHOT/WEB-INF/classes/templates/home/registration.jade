@@ -1,0 +1,17 @@
+extends registration-authorization.jade
+block title
+	title Авторизация
+block depending
+	link(rel="stylesheet", href="resources/pages/registration-authorization/registration.css", type="text/css", media="all")
+block content
+	.login-form
+		.login-form-logo
+			a(href="/")
+				img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
+		include mixins/mixin_er.jade
+		+err(errors)
+		form(role="form", action="/registration", method="post")
+			input.input-email#name.form-control(type="text", name='firstName', placeholder="ИМЯ")
+			input.input-email#userEmail.form-control(type="email", name='eMail',placeholder="E-MAIL")
+			input.input-password#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+			input.button-registration(type='submit', value='РЕГИСТРАЦИЯ')

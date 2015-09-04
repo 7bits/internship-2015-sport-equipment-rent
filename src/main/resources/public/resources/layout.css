@@ -1,0 +1,301 @@
+*{
+    margin:0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz--box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*убирает рамку пунктиром вокруг кнопок*/
+button::-moz-focus-inner,
+	input[type="reset"]::-moz-focus-inner,
+	input[type="button"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="file"] > input[type="button"]::-moz-focus-inner {/* */
+	border: none;
+}
+
+/*убирает выделени input в хроме и сафари*/
+input, textarea {
+    outline:none;
+}
+
+/*всегда писать эти 2 блока!!!*/
+body{
+    height: 100%;
+}
+
+html{
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.profile, .personal, .exit a:hover{
+    color: #949494;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*базовый контейнер*/
+.container{
+    width: 100%;
+    min-width: 320px;
+    min-height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background-image: url("images/layout/pattern-gr.jpg");
+}
+
+/*все от header*/
+.header{
+    margin:0 auto;
+    width: 100%;
+    min-width: 320px;
+    height:74px;
+    background-color: white;
+    box-shadow: 0 3px 30px #d4cfcf;
+    position:relative;
+}
+
+.center-of-header{
+    width: 67%;
+    max-width: 938px;
+    height: 100%;
+    min-height:74px;
+    margin: 0 auto;
+}
+
+/*base & order обеспечивают блоки в ряд, порядок именно такой для вложенности*/
+
+.base{
+    overflow:hidden;
+    width: 100%;
+    height:100%;
+
+}
+.order{
+    white-space:nowrap;
+    display:inline-block;
+    width: 100%;
+    height:100%;
+}
+
+/*логотип*/
+.logo{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:left;
+
+}
+/*блок "Вход"*/
+.to-profile{
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+
+/*блок "Личный кабинет"*/
+.to-personal-area{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+
+/*блок "Выход"*/
+.exit{
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+
+a.header-a-color{
+   padding-top: 2px;
+   padding-bottom: 2px;
+
+   }
+a.header-a-color:visited{
+    color: #019199;
+}
+
+a.header-a-color:hover{
+    color: #949494;
+}
+
+.b-form-content_input__style{
+    font-size: 0.875em;
+    border-color: #c7c7c7;
+    border-style: solid;
+    border-width:1px;
+    height: 34px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+textarea{
+    padding-top: 13px;
+    resize: none;
+}
+
+.b-form-content_input__style: focus,
+.b-form-content_input__style: hover{
+     border-color: #c7c7c7;
+     border-style: solid;
+     border-width: 1px;
+}
+
+/*деалет внутренннюю тень*/
+.b-form-content_input__style:focus{
+    box-shadow: 0 0 8px #d7e9e9 inset;
+}
+
+input, textarea{
+    padding-left: 10px;
+    color: #949494;
+}
+
+
+input::-webkit-input-placeholder,
+textarea:: -webkit-input-placeholder{
+    font-size: 1em;
+}
+
+/*убирает подстветку placeholder*/
+input:focus:-ms-input-placeholder,
+textarea: focus:-ms-textarea-placeholder{
+    color: transparent;
+}
+
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder{
+    color: transparent;
+}
+
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder{
+    color: transparent;
+}
+
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder{
+    color: transparent;
+}
+
+input:focus:placeholder-shown,
+textarea:focus:placeholder-shown{
+    color: transparent;
+}
+
+/*кнопка*/
+.b-form_button__style, .b-form_button__style:focus, .b-form_button__style:hover {
+    width: 162px;
+    height: 40px;
+    padding: 1px 0 2px 0;
+    font-size: 0.875em;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px #d4cfcf;
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+    font-family: 'Roboto', sans-serif;
+    border: none;
+}
+
+.b-form_button__style:focus{
+    cursor: pointer;
+}
+
+.b-form_button__style:hover{
+    cursor: pointer;
+}
+
+
+
+
+/*логотип*/
+.small-logo{
+    width: 43px;
+    min-width: 43px;
+    max-width: 43px;
+    height: 37px;
+    min-height: 37px;
+    float:left;
+    padding-top: 5px;
+    display: none;
+}
+
+.to-give-announcement{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height:74px;
+    float:right;
+    font-size: 0.875em;
+    padding-top: 27px;
+}
+
+
+
+
+
+
+.small-logo img{display: none;}
+/*
+	LEVEL ONE (бутерброд)
+*/
+ul.dropdown                         { position: relative; z-index: 99999;   font-size: 0.875em;}
+ul.dropdown li                      { float: right; padding-top: 10px; }
+ul.dropdown a:hover		            { color: #8c8c8c; }
+ul.dropdown a:active                { color: #8c8c8c; }
+ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333;
+                                      }
+ul.dropdown li:last-child a         { border-right: none;  } /* Doesn't work in IE */
+ul.dropdown li.hover,
+ul.dropdown li:hover                {  position: relative; right: 0;}
+ul.dropdown li.hover a              { }
+
+
+/*
+	LEVEL TWO(пyнкты)
+*/
+ul.dropdown ul 						{ width: 200px; visibility: hidden; position: absolute; top: 100%; right: 0;}
+ul.dropdown ul li 					{ font-weight: normal; background: #f6f6f6;
+									  border-bottom: 1px solid white; float: none; }
+
+                                    /* IE 6 & 7 Needs Inline Block */
+ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block;  }
+
+/*
+	LEVEL THREE
+*/
+ul.dropdown ul ul 					{ left: 100%; top: 0; }
+ul.dropdown li:hover > ul 			{ visibility: visible; }
+
+
+
+

@@ -1,0 +1,75 @@
+@import 'vars';
+
+div.quickbox {
+	font-family: Arial;
+	display: none;
+	text-align: center;
+	.qb-close {
+		top: 0;
+		z-index: $zIndex+3;
+		position: absolute;
+		color: darken($colorWhite, 55%);
+		font-size: $fontSize*3;
+		cursor: pointer;
+		&:hover { color: darken($colorWhite, 5%); }
+	}
+	.qb-navigate {
+		position: absolute;
+		color: $colorWhite; 
+		font-size: $fontSize*2;
+		width: $fontSize*3;
+		height: $fontSize*3;
+		z-index: $zIndex+2;
+		cursor: pointer;
+		color: darken($colorWhite, 55%);
+		&.qb-left 	{ left: 0; text-align: right; }
+		&.qb-right 	{ right: 0; text-align: left; }
+		&:hover { color: darken($colorWhite, 5%); }
+	}
+	.qb-inside {
+		@include border-radius(7px);
+		position: absolute;
+		background: $bgLight;
+		top: 0;
+		left: 0;
+		z-index: $zIndex+2;
+		width: 650px;
+		height: 300px;
+		.qb-txt {
+			height: $fontSize*3;
+			overflow: hidden;
+			font-size: $fontSize*1.1;
+			color: lighten($colorTxt, 20%); 
+			padding: $fontSize*0.7 0 0 0;
+			width: 100%;
+			z-index: $zIndex+5;
+			position: absolute;
+			bottom: 0;
+		}
+		.qb-img {
+			overflow: hidden;
+			z-index: $zIndex+5;
+			position: absolute;
+			img { cursor: pointer; }
+		}
+		.qb-loading {
+			margin: 0 auto;
+			color: $colorTxt;
+			z-index: $zIndex+4;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url("loader.gif") center center no-repeat; 
+		}
+	}
+	.qb-bg { // back
+		@include opacity(80);
+		background: #000;
+		z-index: $zIndex+1;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}

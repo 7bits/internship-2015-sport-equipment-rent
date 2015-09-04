@@ -1,0 +1,29 @@
+extends layout.jade
+block title
+	title Дай погонять
+block scripts
+	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
+	//- должен подгружаться тут
+	script(src='resources/pages/personal-area/image-photo-script.js')
+block depending
+	link(rel="stylesheet", href="resources/pages/profile/profile.css", type="text/css", media="all")
+block content
+	.my-content
+		.my-content-inside
+			.base
+				.order
+					.user-info
+						.ava-image-position
+							img.round(src=user.imageUrl, height="120", width="120")
+						.user-info-line
+						.user-name
+							p.size-text-norap=user.firstName
+					include mixins/mixin_users_announcement_list.jade
+					.user-announcement
+						.user-announcement-title
+							.user-announcement-title-text
+								b
+									p
+									Объявления пользователя
+									text.size-text-norap(style="margin-left: 4px;")=user.firstName
+						+list(goods)
