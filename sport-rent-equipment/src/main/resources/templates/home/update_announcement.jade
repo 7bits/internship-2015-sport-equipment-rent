@@ -2,77 +2,87 @@ extends layout.jade
 block title
 	title Обновить объявление
 block depending
-	link(rel="stylesheet", href="resources/pages/update_announcement/update_announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/pages/add-update-confirm-announcement/add-update-confirm-announcement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block scripts
-	script(src='resources/pages/update_announcement/update-announcement-script.js')
-	script(src="resources/pages/update_announcement/image-photo-script.js")
+	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
+	//- должен подгружаться тут
+	script(src="resources/pages/add-update-confirm-announcement/scripts/image-photo-script.js")
+	//- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений и заполняет название файла
+	//- должен подгружаться тут
+	script(src="resources/pages/add-update-confirm-announcement/scripts/past-filename-hide-delete-ico.js")
 block content
-	.my-content
+	.b-content
 		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
-			.content-inside-block
-				.content-block-header
+			.b-content-form
+				.b-form-header
 					p
 						Ваше объявление
-				.content-block-inside-info
+				.b-form-content
 					include mixins/mixin_er.jade
 					+err(errors)
-					.your-inventory-title-block
+					.b-form-content_title
 						p
 							Ваш инвентарь
-					input.input-name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
-					textarea.textarea-discription-announcement#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+					input.b-form-content_input__style.b-input_name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+					textarea.b-form-content_input__style.b-form_textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
 						#{goods.description}
-					.your-inventory-price-block
+					.b-form-content_title
 						p
 							Цена
-				.help-block
+				.b-set-fields
+					.base
+						.order
+							.b-set-fields_input
+								input.b-form-content_input__style#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+							.b-set-fields_input
+								input.b-form-content_input__style#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+							.b-set-fields_input
+								input.b-form-content_input__style#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+				.b-form-content
+					.b-form-content_title
+						p
+							Фотографии
+				.b-set-fields
 					.order
 						.base
-							input.input-price#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
-							input.input-price#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
-							input.input-price#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
-				.your-inventory-foto-block
-					p
-						Фотографии
-				.help-foto-block
-					.order
-						.base
-							.foto-block
-								.download-mask
-									.one-foto-box-ico
-										img(src="resources/images/photo-ico.png", width="42", height="42")
-									.icon-delete-photo
-										input.input-delete(type='radio', name='firstImageDelete')
-									.one-foto-box-photo
+							.b-photo
+								.b-download-mask
+									.b-photo-image-default
+										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
+									.b-delete-photo
+										input.b-delete-photo_input-delete(type='radio', name='firstImageDelete')
+									.b-photo-image
 										if goods.firstImage!="resources/images/photo-ico.png"
 											img(src=goods.firstImageUrl)
-									input.fileInputText(type='text', disabled='')
-								input#first-file.custom-file-input(type='file', name='firstImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
-							.foto-block
-								.download-mask
-									.one-foto-box-ico
+									input.b-download-mask_input-file-name(type='text', disabled='')
+								input#first-file.b-download-mask_real-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+							.b-photo
+								.b-download-mask
+									.b-photo-image-default
 										img(src=src="resources/images/photo-ico.png", width="42", height="42")
-									.icon-delete-photo
-										input.input-delete(type='radio', name='secondImageDelete')
-									.one-foto-box-photo
+									.b-delete-photo
+										input.b-delete-photo_input-delete(type='radio', name='secondImageDelete')
+									.b-photo-image
 										if goods.secondImage!="resources/images/photo-ico.png"
 											img(src=goods.secondImageUrl)
-									input.fileInputText(type='text', disabled='')
-								input#second-file.custom-file-input(type='file', name='secondImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
-							.foto-block
-								.download-mask
-									.one-foto-box-ico
+									input.b-download-mask_input-file-name(type='text', disabled='')
+								input#second-file.b-download-mask_real-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+							.b-photo
+								.b-download-mask
+									.b-photo-image-default
 										img(src=src="resources/images/photo-ico.png", width="42", height="42")
-									.icon-delete-photo
-										input.input-delete(type='radio', name='thirdImageDelete')
-									.one-foto-box-photo
+									.b-delete-photo
+										input.b-delete-photo_input-delete(type='radio', name='thirdImageDelete')
+									.b-photo-image
 										if goods.thirdImage!="resources/images/photo-ico.png"
 											img(src=goods.thirdImageUrl)
-									input.fileInputText(type='text', disabled='')
-								input#third-file.custom-file-input(type='file', name='thirdImage', accept="image/jpeg,image/png,image/jpg,image/bmp")
-			.content-button-block
-				input.button-update(type='submit', value='СОХРАНИТЬ')
-			.content-button-block
+									input.b-download-mask_input-file-name(type='text', disabled='')
+								input#third-file.b-download-mask_real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+			.b-form-button
+				input.b-form_button__style.b-form_button__yellow-style(type='submit', value='РАЗМЕСТИТЬ')
+			.b-form-button
 				a(href="/")
-					input.button-update(type='button', value='ОТМЕНА')
+					input.b-form_button__style.b-form_button__yellow-style(type='submit', value='ОТМЕНА')
+block dynamic-scripts
+	script(src='resources/pages/add-update-confirm-announcement/scripts/add-photo.js')

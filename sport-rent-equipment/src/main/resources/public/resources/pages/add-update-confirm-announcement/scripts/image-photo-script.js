@@ -1,12 +1,12 @@
 jQuery(function ($) {
     function fix_size() {
-        var images = $('.one-foto-box-photo img');
+        var images = $('.b-photo-image img');
         images.each(setsize);
 
         function setsize() {
             var img = $(this),
                 img_dom = img.get(0),
-                container = img.parents('.one-foto-box-photo');
+                container = img.parents('.b-photo-image');
             if (img_dom.complete) {
                 resize();
             } else img.one('load', resize);
