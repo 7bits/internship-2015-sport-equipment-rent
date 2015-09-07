@@ -1,6 +1,8 @@
 server:
   port: 9000
 spring:
+ profiles:
+  active: dev
  datasource:
   url: jdbc:postgresql://localhost:5432/sportequipmentrent
   username: #your username at data base
@@ -18,4 +20,32 @@ mail:
            enable: true
            required: true
        debug: true
+resources:
+   path: #path for your resources on local computer
+logging.path: ~/spring
+
+server:
+  port: 9000
+spring:
+ profiles:
+  active: prod
+ datasource:
+  url: jdbc:postgresql://localhost:5432/sportequipmentrent
+  username: #your username at data base
+  password: #password by your data base
+mail:
+   username: #type your email here
+   password: #type your password here
+   protocol: smtp
+   host: smtp.gmail.com
+   port: 587
+   charset: UTF-8
+   smtp:
+       auth: true
+       starttls:
+           enable: true
+           required: true
+       debug: true
+resources:
+   path: #path to your resources on server
 logging.path: ~/spring

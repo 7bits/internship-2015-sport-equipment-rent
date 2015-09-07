@@ -10,6 +10,7 @@ import it.sevenbits.web.service.goods.ImageController;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,10 @@ import java.util.Random;
  */
 @Controller
 public class AddAnnouncementController {
+
+    @Value("${resources.path}")
+    private String resourcesPath;
+
     @Autowired
     AddNewGoodsFormValidator validator;
 
@@ -92,7 +97,7 @@ public class AddAnnouncementController {
             if(firstImage!=null && !firstImage.isEmpty()) {
                 try {
                     String firstImagePath = "img/upload/" + hash + firstImage.getOriginalFilename();
-                    ImageController.saveImage(firstImage, "/home/sport-equipment-rent/public/" + firstImagePath);
+                    ImageController.saveImage(firstImage, resourcesPath + firstImagePath);
                     form.setFirstImageUrl(firstImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -102,7 +107,7 @@ public class AddAnnouncementController {
             if(secondImage!=null && !secondImage.isEmpty()) {
                 try {
                     String secondImagePath = "img/upload/" + hash + secondImage.getOriginalFilename();
-                    ImageController.saveImage(secondImage, "/home/sport-equipment-rent/public/" + secondImagePath);
+                    ImageController.saveImage(secondImage, resourcesPath + secondImagePath);
                     form.setSecondImageUrl(secondImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -111,7 +116,7 @@ public class AddAnnouncementController {
             if(thirdImage!=null && !thirdImage.isEmpty()) {
                 try {
                     String thirdImagePath = "img/upload/" + hash + thirdImage.getOriginalFilename();
-                    ImageController.saveImage(thirdImage, "/home/sport-equipment-rent/public/" + thirdImagePath);
+                    ImageController.saveImage(thirdImage, resourcesPath + thirdImagePath);
                     form.setThirdImageUrl(thirdImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -132,7 +137,7 @@ public class AddAnnouncementController {
 
         if(firstImage!=null && !firstImage.isEmpty()) {
             try {
-                String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                String fileName = resourcesPath + "/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 ImageController.saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
@@ -144,7 +149,7 @@ public class AddAnnouncementController {
         }
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
-                String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                String fileName = resourcesPath + "/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 ImageController.saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
@@ -156,7 +161,7 @@ public class AddAnnouncementController {
         }
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
-                String fileName = "/home/sport-equipment-rent/public/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                String fileName = resourcesPath + "/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 String nameForBase = "img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 ImageController.saveImage(thirdImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
