@@ -29,7 +29,7 @@
 
 
 /*желтая кнопка*/
-.b-button__yellow-style,
+.b-button__yellow,
 .b-button__yellow:focus,
 .b-button__yellow:hover{
     float: right;

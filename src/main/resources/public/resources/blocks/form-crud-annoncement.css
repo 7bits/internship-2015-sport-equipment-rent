@@ -1,19 +1,13 @@
-.b-content{
-    width: 100%;
-    padding-top: 17px;
-}
-
-
-.b-content-form{
+.b-form-crud-announcement{
     width: 429px;
     margin: 0 auto;
     margin-bottom: 10px;
-
+    margin-top: 17px;
     background-color: white;
 }
 
 
-.b-form-header{
+.b-form-crud-announcement-header{
     font-size: 1.125em;
 
     width: 100%;
@@ -30,18 +24,18 @@
 }
 
 
-.b-form-header p{
+.b-form-crud-announcement-header p{
     padding-top: 12px;
 }
 
 
-.b-form-content{
+.b-form-crud-announcement-content{
     width: 360px;
     margin: 0 auto;
 }
 
 
-.b-form-content_title{
+.b-form-crud-announcement-content_title{
     font-size: 0.953em;
 
     width: 100%;
@@ -171,9 +165,6 @@
 
     color: #c7c7c7;
     border: none;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #c5c5c5;
     background-color: transparent;
     background-image: none;
 
@@ -237,7 +228,7 @@
 }
 
 
-.b-form-button{
+.b-form-crud-announcement-button{
     width: 429px;
     height: 40px;
     margin: 0 auto;

@@ -13,77 +13,76 @@ block scripts
 	//- должен подгружаться тут
 	script(src="resources/pages/add-update-confirm-announcement/scripts/past-filename-hide-delete-ico.js")
 block content
-	.b-content
-		form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
-			.b-content-form
-				.b-form-header
+	form(role="form", action="/add", method="post", enctype="multipart/form-data")
+		.b-form-crud-announcement
+			.b-form-crud-announcement-header
+				p
+					Ваше объявление
+			.b-form-crud-announcement-content
+				include mixins/mixin_er.jade
+				+err(errors)
+				.b-form-crud-announcement-content_title
 					p
-						Ваше объявление
-				.b-form-content
-					include mixins/mixin_er.jade
-					+err(errors)
-					.b-form-content_title
-						p
-							Ваш инвентарь
-					input.b-form-content_input__style.b-input_name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
-					textarea.b-form-content_input__style.b-form_textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
-						#{goods.description}
-					.b-form-content_title
-						p
-							Цена
-				.b-set-fields
-					.base
-						.order
-							.b-set-fields_input
-								input.b-form-content_input__style#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
-							.b-set-fields_input
-								input.b-form-content_input__style#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
-							.b-set-fields_input
-								input.b-form-content_input__style#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
-				.b-form-content
-					.b-form-content_title
-						p
-							Фотографии
-				.b-set-fields
+						Ваш инвентарь
+				input.b-input__default.b-input_name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+				textarea.b-input__default.b-form_textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+					#{goods.description}
+				.b-form-crud-announcement-content_title
+					p
+						Цена
+			.b-set-fields
+				.base
 					.order
-						.base
-							.b-photo
-								.b-download-mask
-									.b-photo-image-default
-										img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
-									.b-delete-photo
-										input.b-delete-photo_input-delete(type='radio', name='firstImageDelete')
-									.b-photo-image
-										if goods.firstImage!="resources/images/photo-ico.png"
-											img(src=goods.firstImageUrl)
-									input.b-download-mask_input-file-name(type='text', disabled='')
-								input#first-file.b-download-mask_real-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-							.b-photo
-								.b-download-mask
-									.b-photo-image-default
-										img(src=src="resources/images/photo-ico.png", width="42", height="42")
-									.b-delete-photo
-										input.b-delete-photo_input-delete(type='radio', name='secondImageDelete')
-									.b-photo-image
-										if goods.secondImage!="resources/images/photo-ico.png"
-											img(src=goods.secondImageUrl)
-									input.b-download-mask_input-file-name(type='text', disabled='')
-								input#second-file.b-download-mask_real-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-							.b-photo
-								.b-download-mask
-									.b-photo-image-default
-										img(src=src="resources/images/photo-ico.png", width="42", height="42")
-									.b-delete-photo
-										input.b-delete-photo_input-delete(type='radio', name='thirdImageDelete')
-									.b-photo-image
-										if goods.thirdImage!="resources/images/photo-ico.png"
-											img(src=goods.thirdImageUrl)
-									input.b-download-mask_input-file-name(type='text', disabled='')
-								input#third-file.b-download-mask_real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-			.b-form-button
-				input.b-button__default.b-button__yellow(type='submit', value='РАЗМЕСТИТЬ')
-			.b-form-button
-				a(href="/")
-					input.b-button__default.b-button__yellow(type='submit', value='ОТМЕНА')
+						.b-set-fields_input
+							input.b-input__default#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+						.b-set-fields_input
+							input.b-input__default#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+						.b-set-fields_input
+							input.b-input__default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+			.b-form-crud-announcement-content
+				.b-form-crud-announcement-content_title
+					p
+						Фотографии
+			.b-set-fields
+				.order
+					.base
+						.b-photo
+							.b-download-mask
+								.b-photo-image-default
+									img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
+								.b-delete-photo
+									input.b-delete-photo_input-delete(type='radio', name='firstImageDelete')
+								.b-photo-image
+									if goods.firstImage!="resources/images/photo-ico.png"
+										img(src=goods.firstImageUrl)
+								input.b-download-mask_input-file-name(type='text', disabled='')
+							input#first-file.b-download-mask_real-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+						.b-photo
+							.b-download-mask
+								.b-photo-image-default
+									img(src=src="resources/images/photo-ico.png", width="42", height="42")
+								.b-delete-photo
+									input.b-delete-photo_input-delete(type='radio', name='secondImageDelete')
+								.b-photo-image
+									if goods.secondImage!="resources/images/photo-ico.png"
+										img(src=goods.secondImageUrl)
+								input.b-download-mask_input-file-name(type='text', disabled='')
+							input#second-file.b-download-mask_real-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+						.b-photo
+							.b-download-mask
+								.b-photo-image-default
+									img(src=src="resources/images/photo-ico.png", width="42", height="42")
+								.b-delete-photo
+									input.b-delete-photo_input-delete(type='radio', name='thirdImageDelete')
+								.b-photo-image
+									if goods.thirdImage!="resources/images/photo-ico.png"
+										img(src=goods.thirdImageUrl)
+								input.b-download-mask_input-file-name(type='text', disabled='')
+							input#third-file.b-download-mask_real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+		.b-form-crud-announcement-button
+			input.b-button__default.b-button__yellow(type='submit', value='РАЗМЕСТИТЬ')
+		.b-form-crud-announcement-button
+			a(href="/")
+				input.b-button__default.b-button__yellow(type='submit', value='ОТМЕНА')
 block dynamic-scripts
 	script(src='resources/pages/add-update-confirm-announcement/scripts/add-photo.js')
