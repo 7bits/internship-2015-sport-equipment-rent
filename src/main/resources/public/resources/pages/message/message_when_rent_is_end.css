@@ -1,0 +1,36 @@
+.message-block-text{
+    color: #b6b6b6;
+    padding-top: 100px;
+}
+
+/*кнопка все хорошо/жаловаться*/
+.button-end, .button-end:focus, .button-end:hover {
+    width: 125px;
+    height:58px;
+    margin-top: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+    background: #6ccdd3;
+    color: white;
+    padding: 1px 0 2px 0;
+    font-size: 16px;
+    border-radius: 15px;
+    -moz-border-radius: 15px; /* Firefox */
+    -webkit-border-radius: 15px; /* Safari, Chrome */
+    -khtml-border-radius: 15px; /* KHTML */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    font-width: bold;
+    border: none;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.button-end:hover {
+    color: #353535;
+    cursor: pointer;
+}
+
+.button-end:focus {
+    color: #353535;
+    cursor: pointer;
+}

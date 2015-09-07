@@ -1,0 +1,22 @@
+extends layout.jade
+block title
+	title Подтвердить окончание аренды
+block depending
+	link(rel="stylesheet", href="resources/pages/message/message-all.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/pages/message/message_when_rent_is_end.css", type="text/css", media="all")
+block header
+	include mixins/mixin_message_header.jade
+	+create-header()
+block content
+	.my-content
+		.message-block
+			.message-block-inside
+				.message-block-text
+					p
+						Срок аренды еще не закончен.
+						br
+						Вы уверены, что хотите закончить аренду?
+					a(href="/finally_close?deal_id=#{id}")
+						input.button-end(type='button', value='Да')
+					a(href="/")
+					input.button-end(type='button', value='Нет')

@@ -1,0 +1,30 @@
+/*when rent is end*/
+
+.my-content{
+    width: 100%;
+    height:100%;
+}
+
+.message-block{
+    width: 560px;
+    height: 416px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+
+.message-block-inside{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.message-block-text{
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 24px;
+}
