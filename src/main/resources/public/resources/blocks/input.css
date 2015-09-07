@@ -1,4 +1,4 @@
-.b-form-content_input__style{
+.b-input__default{
     font-size: 0.875em;
 
     width: 100%;
@@ -18,15 +18,15 @@ textarea{
 }
 
 
-.b-form-content_input__style:focus,
-.b-form-content_input__style:hover{
+.b-input__default:focus,
+.b-input__default:hover{
     border-width: 1px;
     border-style: solid;
     border-color: #c7c7c7;
 }
 
 
-.b-form-content_input__style:focus{
+.b-input__default:focus{
     box-shadow: 0 0 8px #d7e9e9 inset;
 }
 

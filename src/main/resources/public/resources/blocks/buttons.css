@@ -1,6 +1,6 @@
-.b-form_button__style,
-.b-form_button__style:focus,
-.b-form_button__style:hover{
+.b-button__default,
+.b-button__default:focus,
+.b-button__default:hover{
     font-family: 'Roboto', sans-serif;
     font-size: .875em;
 
@@ -18,15 +18,34 @@
 }
 
 
-.b-form_button__style:focus{
+.b-button__default:focus{
     cursor: pointer;
 }
 
 
-.b-form_button__style:hover{
+.b-button__default:hover{
     cursor: pointer;
 }
 
 
+/*желтая кнопка*/
+.b-button__yellow-style,
+.b-button__yellow:focus,
+.b-button__yellow:hover{
+    float: right;
+
+    color: white;
+    background: #edd04e;
+}
+
+
+.b-button__yellow:hover{
+    color: #949494;
+}
+
+
+.b-button__yellow:focus{
+    color: #949494;
+}
 
 
