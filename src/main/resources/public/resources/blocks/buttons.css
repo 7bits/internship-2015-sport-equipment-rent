@@ -1,0 +1,32 @@
+.b-form_button__style,
+.b-form_button__style:focus,
+.b-form_button__style:hover{
+    font-family: 'Roboto', sans-serif;
+    font-size: .875em;
+
+    width: 162px;
+    height: 40px;
+    padding: 1px 0 2px 0;
+
+    border: none;
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+     -khtml-border-radius: 5px; /* KHTML */
+       -moz-border-radius: 5px; /* Firefox */
+            border-radius: 5px;
+
+    box-shadow: 0 3px 3px #d4cfcf;
+}
+
+
+.b-form_button__style:focus{
+    cursor: pointer;
+}
+
+
+.b-form_button__style:hover{
+    cursor: pointer;
+}
+
+
+
+

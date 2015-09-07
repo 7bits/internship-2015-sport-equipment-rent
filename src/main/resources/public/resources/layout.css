@@ -20,7 +20,6 @@ input, textarea {
     outline:none;
 }
 
-/*всегда писать эти 2 блока!!!*/
 body{
     height: 100%;
 }
@@ -42,7 +41,6 @@ p{
 }
 
 
-/*базовый контейнер*/
 .container{
     width: 100%;
     min-width: 320px;
@@ -145,97 +143,6 @@ a.header-a-color:visited{
 a.header-a-color:hover{
     color: #949494;
 }
-
-.b-form-content_input__style{
-    font-size: 0.875em;
-    border-color: #c7c7c7;
-    border-style: solid;
-    border-width:1px;
-    height: 34px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-textarea{
-    padding-top: 13px;
-    resize: none;
-}
-
-.b-form-content_input__style: focus,
-.b-form-content_input__style: hover{
-     border-color: #c7c7c7;
-     border-style: solid;
-     border-width: 1px;
-}
-
-/*деалет внутренннюю тень*/
-.b-form-content_input__style:focus{
-    box-shadow: 0 0 8px #d7e9e9 inset;
-}
-
-input, textarea{
-    padding-left: 10px;
-    color: #949494;
-}
-
-
-input::-webkit-input-placeholder,
-textarea:: -webkit-input-placeholder{
-    font-size: 1em;
-}
-
-/*убирает подстветку placeholder*/
-input:focus:-ms-input-placeholder,
-textarea: focus:-ms-textarea-placeholder{
-    color: transparent;
-}
-
-input:focus::-moz-placeholder,
-textarea:focus::-moz-placeholder{
-    color: transparent;
-}
-
-input:focus:-moz-placeholder,
-textarea:focus:-moz-placeholder{
-    color: transparent;
-}
-
-input:focus::-webkit-input-placeholder,
-textarea:focus::-webkit-input-placeholder{
-    color: transparent;
-}
-
-input:focus:placeholder-shown,
-textarea:focus:placeholder-shown{
-    color: transparent;
-}
-
-/*кнопка*/
-.b-form_button__style, .b-form_button__style:focus, .b-form_button__style:hover {
-    width: 162px;
-    height: 40px;
-    padding: 1px 0 2px 0;
-    font-size: 0.875em;
-    border-radius: 5px;
-    box-shadow: 0 3px 3px #d4cfcf;
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-    -khtml-border-radius: 5px; /* KHTML */
-    font-family: 'Roboto', sans-serif;
-    border: none;
-}
-
-.b-form_button__style:focus{
-    cursor: pointer;
-}
-
-.b-form_button__style:hover{
-    cursor: pointer;
-}
-
-
-
-
 /*логотип*/
 .small-logo{
     width: 43px;

@@ -1,50 +1,62 @@
-/*#content*/
 .b-content{
     width: 100%;
     padding-top: 17px;
 }
 
+
 .b-content-form{
     width: 429px;
     margin: 0 auto;
-    background-color: white;
     margin-bottom: 10px;
+
+    background-color: white;
 }
 
+
 .b-form-header{
+    font-size: 1.125em;
+
     width: 100%;
     height: 45px;
-    background-color: #6fb2b4;
-    box-shadow: 0 2px 3px #E6E6E6;
-    vertical-align: top;
-    font-size: 1.125em;
-    color: white;
-    text-align: center;
-    text-shadow: 0 2px 3px #a19d9d;
     margin-bottom: 30px;
+
+    text-align: center;
+    vertical-align: top;
+
+    color: white;
+    background-color: #6fb2b4;
+    box-shadow: 0 2px 3px #e6e6e6;
+    text-shadow: 0 2px 3px #a19d9d;
 }
+
 
 .b-form-header p{
     padding-top: 12px;
 }
+
 
 .b-form-content{
     width: 360px;
     margin: 0 auto;
 }
 
+
 .b-form-content_title{
+    font-size: 0.953em;
+
     width: 100%;
     height: 40px;
-    text-shadow: 0 1px 1px #d4cfcf;
-    font-size: 0.953em;
-    color: #7cced1;
     padding-bottom: 13px;
+
+    color: #7cced1;
+    text-shadow: 0 1px 1px #d4cfcf;
 }
+
 
 .b-input_name-announcement{
     width: 70%;
 }
+
 
 .b-form_textarea{
     width: 100%;
@@ -55,158 +67,200 @@
 
 .b-set-fields{
     width: 370px;
-    margin-left: 34.5px;
     margin-bottom: 10px;
+    margin-left: 34.5px;
 }
 
+
 .b-set-fields_input{
+    float: left;
+
     width: 113px;
     margin-right: 10px;
-    float: left;
 }
+
 
 /*!базовый! блок 1 для вывода 1 фотки*/
 .b-photo{
-    width: 113px;
-    margin-right: 10px;
-    height: 128px;
     float: left;
+
+    width: 113px;
+    height: 128px;
+    margin-right: 10px;
     margin-bottom: 20px;
-    border-color: #c5c5c5;
-    border-style: solid;
+
     border-width: 1px;
-
+    border-style: solid;
+    border-color: #c5c5c5;
     background-color: #f6f6f6;
+}
 
-}
+
 .b-photo:hover{
-    -webkit-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
-    -moz-box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
-    box-shadow: 0px 0px 5px 3px rgba(214,214,214,0.39);
+    -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+       -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+            box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
 }
+
 
 /*само изображение*/
 .b-photo-image{
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
+
 
 .b-photo-image img{
-    width: 131px;
-    max-height:100px;
     position: absolute;
     top: 50%;
     left: 50%;
+
+    width: 131px;
+    max-height: 100px;
+
     transform: translate(-50%, -50%);
 }
+
+
 /*дефолтная иконка (блок)*/
 .b-photo-image-default{
-    width:42px;
-    height:42px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
 
+    width: 42px;
+    height: 42px;
+
+    transform: translate(-50%, -50%);
 }
+
 
 /*контейнер для маски*/
 .b-download-mask{
-    width: 100%;
-    height: 100%;
+    position: relative;
     top: 0;
     left: 0;
-    position: relative;
+
+    width: 100%;
+    height: 100%;
 }
+
 
 /*для вывода текста названия подргуженного файла*/
 .b-download-mask_input-file-name{
-    text-align: center;
-    width: 100%;
-    margin-right: 10px;
-    float: left;
-    border-color: #c5c5c5;
-    border-style: solid;
-    border-width: 1px;
-    background-image: none;
-    background-color: transparent;
-    border: none;
     font-size: 14px;
-    color:  #c7c7c7;
-    text-decoration: none;
-    /*обрезка с многоточнием*/
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-    padding-left: 5px;
-    padding-right: 5px;
 
     position: absolute;
     top: 50%;
     left: 50%;
+
+    float: left;
+    overflow: hidden;
+
+    width: 100%;
+    margin-right: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+
     transform: translate(-50%, -50%);
+    text-align: center;
+    /*обрезка с многоточнием*/
+    white-space: nowrap;
+    text-decoration: none;
+       text-overflow: ellipsis;
+
+    color: #c7c7c7;
+    border: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c5c5c5;
+    background-color: transparent;
+    background-image: none;
+
+    -o-text-overflow: ellipsis;
 }
+
 
 /*реальная кнопка*/
 .b-download-mask_real-file-input{
-   width: 100%;
-   height: 100%;
-   opacity: 0;
-   filter: alpha(opacity=0);
-   position: relative;
-   top: -128px;
-   left: 0;
-   z-index: 99998;
-   cursor: pointer;
-   padding-left: 0;
+    position: relative;
+    z-index: 99998;
+    top: -128px;
+    left: 0;
 
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    filter: alpha(opacity=0);
 }
+
 
 /*иконка удаления и ее input*/
 .b-delete-photo_input-delete{
-    opacity: 0;
-    width: 100%;
-    height: 100%;
     position: relative;
+    z-index: 99999;
     top: 0;
     left: 0;
-    z-index: 99999;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
 }
+
 
 .b-delete-photo_input-delete:hover{
     cursor: pointer;
 }
+
+
 .b-delete-photo_input-delete:focus{
     cursor: pointer;
 }
 
+
+
 .b-delete-photo{
-    width: 19px;
-    height: 19px;
+    position: absolute;
     top: 0;
     right: 0;
-    background-image: url("../../images/delete-photo-icon.png");
-    position: absolute;
+
+    width: 19px;
+    height: 19px;
+
+    background-image: url('../../images/delete-photo-icon.png');
 }
 
 
 .b-form-button{
     width: 429px;
-    margin: 0 auto;
     height: 40px;
+    margin: 0 auto;
     margin-bottom: 20px;
 }
+
+
 /*желтая кнопка*/
-.b-form_button__yellow-style, .b-form_button__yellow-style:focus, .b-form_button__yellow-style:hover {
-    background: #edd04e;
-    color: white;
+.b-form_button__yellow-style,
+.b-form_button__yellow-style:focus,
+.b-form_button__yellow-style:hover{
     float: right;
+
+    color: white;
+    background: #edd04e;
 }
+
 
 .b-form_button__yellow-style:hover{
     color: #949494;
 }
+
+
 .b-form_button__yellow-style:focus{
     color: #949494;
 }
