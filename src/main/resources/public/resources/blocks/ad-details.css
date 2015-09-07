@@ -1,0 +1,132 @@
+.b-ad-details{
+    width: 415px;
+    float: left;
+}
+
+.b-ad-details-content{
+    width: 400px;
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+.b-ad-details_time{
+    width: 127px;
+    float: left;
+    font-size: 0.875em;
+    margin-right: 5px;
+
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         -o-text-overflow: ellipsis;
+         padding-right: 2px;
+}
+
+
+.b-ad-details_product-title{
+    width: 100%
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125em;
+    padding-left: 32px;
+    margin-top: 10px;
+    color: #019199;
+         white-space: nowrap;
+             overflow: hidden;
+             text-overflow: ellipsis;
+             -o-text-overflow: ellipsis;
+             padding-right: 32px;
+
+}
+
+.b-ad-details_product-description{
+    width: 100%
+    min-height: 570px;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875em;
+    padding-left: 32px;
+    padding-right: 27px;
+    color: #6b6b6b;
+
+    /*для переноса слов*/
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+/*///////#DOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
+/*блок для фоток*/
+.foto-block{
+    width: 405px;
+    height: 100px;
+    margin-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875em;
+    margin-bottom: 5px;
+}
+/*блок для 1 фото*/
+.one-foto-box{
+    width: 131px;
+    height: 100px;
+    margin-right: 4px;
+    float: left;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875em;
+    position:relative;
+    top: 0;
+    left: 0;
+
+        background-color: rgba(249, 249, 249, 1);
+        border-radius: 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+        -khtml-border-radius: 3px; /* KHTML */
+        border-width: 1px;
+        border-color: rgba(212, 212, 212, 1);
+        border-style: solid;
+
+
+}
+.one-foto-box-photo{
+    width:100%;
+    height:100%;
+}
+
+.one-foto-box-photo img{
+    width: 131px;
+    max-height:100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.one-foto-box-ico{
+    width:42px;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+/*для наложения на изображение сверху*/
+.one-foto-position{
+    position:absolute;
+    top: 0px;
+    left: 0px;
+}
+/*ЗАКОНЧИТЬ*/
+.text-on-foto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -48.5882% 0 0 -44.8882%;
+    display:block;
+    width:100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.875em;
+    color: white;
+
+}

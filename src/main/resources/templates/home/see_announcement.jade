@@ -6,6 +6,8 @@ block depending
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/ad-details.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
 block scripts
 	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
@@ -22,33 +24,30 @@ block content
 						.b-user-info_dividing-line
 						.b-user-info_name
 							p=user.firstName
-				.center-side
-					.white-content
-						.green-line.green-line-shadow
-							.header-info-block
-								.base
-									.order
-										.text-block-1
-											b
-												p.text-center
-													Час:
-													text=Goods.pricePerHour
-													р
-										.text-block-2
-											b
-												p.text-center
-													Сутки:
-													text=Goods.pricePerDay
-													р
-										.text-block-3
-											b
-												p.text-center
-													Неделя:
-													text=Goods.pricePerWeek
-													р
-						p.text-title.green-color.size-text-norap=Goods.title
-						.discr-block
-							text.size-text-rap=Goods.description
+				.b-ad-details
+					.b-ad-details-content
+						.b-title_default
+							.base
+								.order
+									.b-ad-details_time
+										b
+											p
+												Час:
+												text=Goods.pricePerHour
+									.b-ad-details_time
+										b
+											p
+												Сутки:
+												text=Goods.pricePerDay
+									.b-ad-details_time
+										b
+											p
+												Неделя:
+												text=Goods.pricePerWeek
+						.b-ad-details_product-title
+							p=Goods.title
+						.b-ad-details_product-description
+							text=Goods.description
 						.status-block
 							if (Goods.status)
 								.status-text

@@ -8,10 +8,11 @@ block scripts
 block depending
 	link(rel="stylesheet", href="resources/blocks/form-crud-annoncement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
 block content
 	form(role="form", action="/add", method="post", enctype="multipart/form-data")
 		.b-form-crud-announcement
-			.b-form-crud-announcement-header
+			.b-title_default
 				p
 					Ваше объявление
 			.b-form-crud-announcement-content
