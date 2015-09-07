@@ -4,108 +4,109 @@ block title
 block depending
 	link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
 block scripts
 	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
 	//- должен подгружаться тут
 	script(src="resources/pages/see_announcement/image-photo-script.js")
 block content
-	.my-content
-		.content-inside
-			.base
-				.order
-					a(href="/profile?user_id=#{user.id}")
-						.user-info
-							.ava-image-position
-								img.round(src=user.imageUrl, width="120", height="120")
-							.user-info-line
-							.user-name
-								p.size-text-norap=user.firstName
-					.center-side
-						.white-content
-							.green-line.green-line-shadow
-								.header-info-block
-									.base
-										.order
-											.text-block-1
-												b
-													p.text-center
-														Час:
-														text=Goods.pricePerHour
-														р
-											.text-block-2
-												b
-													p.text-center
-														Сутки:
-														text=Goods.pricePerDay
-														р
-											.text-block-3
-												b
-													p.text-center
-														Неделя:
-														text=Goods.pricePerWeek
-														р
-							p.text-title.green-color.size-text-norap=Goods.title
-							.discr-block
-								text.size-text-rap=Goods.description
-							.status-block
-								if (Goods.status)
-									.status-text
-										p
-											К аренде готов!
-									.status-ico
-										img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
-								else
-									.status-text
-										p
-											Уже арендован.
-									.status-ico
-										img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-						.foto-block
-							.base
-								.order
-									each image in Goods.imageUrl
-										.one-foto-box
-											if image=="resources/images/photo-ico.png"
-												.one-foto-box-ico
-													img(src=image, width="42", height="42")
-											else
-												.one-foto-box-photo
-													a.quickbox(href="#{image}")
-														img(src=image)
-						.update-delete-block
-							if isAuthor
-								.update-block-inside
-									a(href="/update?announcement_id=#{Goods.id}")
-										input.button-update(type='button', value='Редактировать')
-					if !isAuthor
-						.r-side
-							.r-inside
-								form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
-									.white-form
-										.green-line.green-line-shadow
-											.base
-												.order
-													.time-to-rent-text
-														b
-															p.white-color.position-on-green-line
-																Время аренды
-													.time-to-rent-ico
-														img(src="resources/pages/see_announcement/images/calendar-ico.png")
-										if !isAuthor
-											include mixins/mixin_er.jade
-											+err(errors)
-										.input-block
-											p.green-color.position-on-green-line
-												Начало
-											.input-box
-												input.input-size#from.form-control(type="datetime-local", value="#{date.from}", name="from")
-										.input-block
-											p.green-color.position-on-green-line
-												Завершение
-											.input-box
-												input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
-									input.button-rent(type='submit', value='Забронировать')
+	.b-content-inside
+		.base
+			.order
+				a(href="/profile?user_id=#{user.id}")
+					.b-user-info
+						.b-user-info_ava
+							img(src=user.imageUrl, width="120", height="120")
+						.b-user-info_dividing-line
+						.b-user-info_name
+							p=user.firstName
+				.center-side
+					.white-content
+						.green-line.green-line-shadow
+							.header-info-block
+								.base
+									.order
+										.text-block-1
+											b
+												p.text-center
+													Час:
+													text=Goods.pricePerHour
+													р
+										.text-block-2
+											b
+												p.text-center
+													Сутки:
+													text=Goods.pricePerDay
+													р
+										.text-block-3
+											b
+												p.text-center
+													Неделя:
+													text=Goods.pricePerWeek
+													р
+						p.text-title.green-color.size-text-norap=Goods.title
+						.discr-block
+							text.size-text-rap=Goods.description
+						.status-block
+							if (Goods.status)
+								.status-text
+									p
+										К аренде готов!
+								.status-ico
+									img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
+							else
+								.status-text
+									p
+										Уже арендован.
+								.status-ico
+									img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+					.foto-block
+						.base
+							.order
+								each image in Goods.imageUrl
+									.one-foto-box
+										if image=="resources/images/photo-ico.png"
+											.one-foto-box-ico
+												img(src=image, width="42", height="42")
+										else
+											.one-foto-box-photo
+												a.quickbox(href="#{image}")
+													img(src=image)
+					.update-delete-block
+						if isAuthor
+							.update-block-inside
+								a(href="/update?announcement_id=#{Goods.id}")
+									input.button-update(type='button', value='Редактировать')
+				if !isAuthor
+					.r-side
+						.r-inside
+							form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+								.white-form
+									.green-line.green-line-shadow
+										.base
+											.order
+												.time-to-rent-text
+													b
+														p.white-color.position-on-green-line
+															Время аренды
+												.time-to-rent-ico
+													img(src="resources/pages/see_announcement/images/calendar-ico.png")
+									if !isAuthor
+										include mixins/mixin_er.jade
+										+err(errors)
+									.input-block
+										p.green-color.position-on-green-line
+											Начало
+										.input-box
+											input.input-size#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+									.input-block
+										p.green-color.position-on-green-line
+											Завершение
+										.input-box
+											input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+								input.button-rent(type='submit', value='Забронировать')
 block dynamic-scripts
 	//- сторонний плагин нужен для увличенного просмотра фотографий по клику
 	script(src="resources/vendor/scripts/qb/js/qb.js")

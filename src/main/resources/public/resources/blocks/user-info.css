@@ -1,0 +1,76 @@
+.b-user-info{
+    float: left;
+
+    width: 156px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(212, 212, 212, .4);
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+    -khtml-border-radius: 3px; /* KHTML */
+        -moz-border-radius: 3px; /* Firefox */
+            border-radius: 3px;
+    background-color: rgba(249, 249, 249, .8);
+
+}
+
+.b-user-info_ava{
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.b-user-info_ava img{
+    border-width: 3px;
+    border-style: solid;
+    border-color: white;
+    -webkit-border-radius: 120px; /* Safari, Chrome */
+    -khtml-border-radius: 120px; /* KHTML */
+    behavior: url(border-radius.htc); /*IE */
+       -moz-border-radius: 120px; /* Firefox */
+            border-radius: 120px; /* CSS3 */
+    -webkit-box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
+       -moz-box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
+            box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
+}
+
+.b-user-info_dividing-line{
+    width: 132px;
+    height: 1px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: rgba(221, 221, 221, .9);
+}
+
+
+@font-face{
+    font-family: MyriadProRegular;
+
+    src: url('fonts/MyriadProRegular/MyriadProRegular.ttf')  format('truetype');
+}
+
+
+.b-user-info_name{
+    font-family: MyriadProRegular, 'MyriadProRegular';
+    font-size: 14px;
+
+    overflow: hidden;
+
+    width: 100%;
+    margin-bottom: 10px;
+    padding-right: 2px;
+    padding-right: 5px;
+    padding-left: 3px;
+
+    text-align: center;
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    color: #747474;
+    text-shadow: 0 2px 5px #b1b1b1;
+
+    -o-text-overflow: ellipsis;
+}
