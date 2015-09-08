@@ -9,10 +9,6 @@ block depending
 	link(rel="stylesheet", href="resources/blocks/ad-details.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
-block scripts
-	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
-	//- должен подгружаться тут
-	script(src="resources/pages/see_announcement/image-photo-script.js")
 block content
 	.b-content-inside
 		.base
@@ -61,23 +57,17 @@ block content
 										Уже арендован.
 								.status-ico
 									img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-					.foto-block
+					.b-photo-set
 						.base
 							.order
 								each image in Goods.imageUrl
-									.one-foto-box
+									.b-photo-set_photo
 										if image=="resources/images/photo-ico.png"
-											.one-foto-box-ico
+											.b-photo-set_ico
 												img(src=image, width="42", height="42")
 										else
-											.one-foto-box-photo
-												a.quickbox(href="#{image}")
-													img(src=image)
-					.update-delete-block
-						if isAuthor
-							.update-block-inside
-								a(href="/update?announcement_id=#{Goods.id}")
-									input.button-update(type='button', value='Редактировать')
+											a.quickbox(href="#{image}")
+												img(src=image)
 				if !isAuthor
 					.r-side
 						.r-inside
@@ -106,6 +96,11 @@ block content
 										.input-box
 											input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
 								input.button-rent(type='submit', value='Забронировать')
+				else
+					.r-side
+						.r-inside
+							a(href="/update?announcement_id=#{Goods.id}")
+								input.button-update(type='button', value='Редактировать')
 block dynamic-scripts
 	//- сторонний плагин нужен для увличенного просмотра фотографий по клику
 	script(src="resources/vendor/scripts/qb/js/qb.js")

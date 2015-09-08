@@ -1,132 +1,119 @@
 .b-ad-details{
-    width: 415px;
     float: left;
+
+    width: 415px;
 }
+
 
 .b-ad-details-content{
     width: 400px;
-    background-color: white;
     padding-bottom: 20px;
+
+    background-color: white;
 }
 
-.b-ad-details_time{
-    width: 127px;
-    float: left;
-    font-size: 0.875em;
-    margin-right: 5px;
 
-         white-space: nowrap;
-         overflow: hidden;
-         text-overflow: ellipsis;
-         -o-text-overflow: ellipsis;
-         padding-right: 2px;
+.b-ad-details_time{
+    font-size: .875em;
+
+    float: left;
+    overflow: hidden;
+
+    width: 127px;
+    margin-right: 5px;
+    padding-right: 2px;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
 }
 
 
 .b-ad-details_product-title{
-    width: 100%
-    font-family: 'Roboto', sans-serif;
     font-size: 1.125em;
-    padding-left: 32px;
-    margin-top: 10px;
-    color: #019199;
-         white-space: nowrap;
-             overflow: hidden;
-             text-overflow: ellipsis;
-             -o-text-overflow: ellipsis;
-             padding-right: 32px;
 
+    overflow: hidden;
+
+    width: 100%
+    margin-top: 10px;
+    padding-right: 32px;
+    padding-left: 32px;
+
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+
+    color: #019199;
 }
 
+
 .b-ad-details_product-description{
+    font-size: 0.875em;
+
     width: 100%
     min-height: 570px;
     margin-top: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    padding-left: 32px;
     padding-right: 27px;
-    color: #6b6b6b;
-
+    padding-left: 32px;
     /*для переноса слов*/
-    white-space: pre-wrap;
+
+    white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
+    white-space:   -o-pre-wrap;
     word-wrap: break-word;
+
+    color: #6b6b6b;
 }
-/*///////#DOOOOOOOOOOOOOOOOOOOOOOOOOOOO*/
-/*блок для фоток*/
-.foto-block{
+
+
+.b-photo-set{
     width: 405px;
     height: 100px;
     margin-top: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
     margin-bottom: 5px;
 }
-/*блок для 1 фото*/
-.one-foto-box{
+
+
+.b-photo-set_photo{
+    position: relative;
+
+    float: left;
+
     width: 131px;
     height: 100px;
     margin-right: 4px;
-    float: left;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    position:relative;
-    top: 0;
-    left: 0;
 
-        background-color: rgba(249, 249, 249, 1);
-        border-radius: 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-        -khtml-border-radius: 3px; /* KHTML */
-        border-width: 1px;
-        border-color: rgba(212, 212, 212, 1);
-        border-style: solid;
-
-
-}
-.one-foto-box-photo{
-    width:100%;
-    height:100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(212, 212, 212, 1);
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+     -khtml-border-radius: 3px; /* KHTML */
+       -moz-border-radius: 3px; /* Firefox */
+            border-radius: 3px;
+    background-color: rgba(249, 249, 249, 1);
 }
 
-.one-foto-box-photo img{
-    width: 131px;
-    max-height:100px;
+
+.b-photo-set_photo img{
     position: absolute;
     top: 50%;
     left: 50%;
+
+    max-width: 131px;
+    max-height: 100px;
+
     transform: translate(-50%, -50%);
 }
 
-.one-foto-box-ico{
-    width:42px;
-    height:42px;
+
+.b-photo-set_ico img{
     position: absolute;
     top: 50%;
     left: 50%;
+
+    max-width: 42px;
+    max-height: 42px;
+
     transform: translate(-50%, -50%);
-
-}
-
-/*для наложения на изображение сверху*/
-.one-foto-position{
-    position:absolute;
-    top: 0px;
-    left: 0px;
-}
-/*ЗАКОНЧИТЬ*/
-.text-on-foto {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -48.5882% 0 0 -44.8882%;
-    display:block;
-    width:100%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.875em;
-    color: white;
-
 }
