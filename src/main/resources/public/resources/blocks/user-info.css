@@ -50,12 +50,15 @@
 @font-face{
     font-family: MyriadProRegular;
 
-    src: url('fonts/MyriadProRegular/MyriadProRegular.ttf')  format('truetype');
+    src: url('../../vendor/fonts/MyriadProRegular/MyriadProRegular.ttf')  format('truetype');
 }
 
 
-.b-user-info_name{
+.b-user-info_name p{
     font-family: MyriadProRegular, 'MyriadProRegular';
+}
+
+.b-user-info_name{
     font-size: 14px;
 
     overflow: hidden;
