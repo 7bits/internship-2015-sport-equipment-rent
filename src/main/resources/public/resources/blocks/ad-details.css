@@ -8,7 +8,7 @@
 .b-ad-details-content{
     width: 400px;
     padding-bottom: 20px;
-
+    min-height: 155px;
     background-color: white;
 }
 

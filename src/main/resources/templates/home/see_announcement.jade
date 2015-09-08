@@ -8,6 +8,8 @@ block depending
 	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/ad-details.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/form-product-book.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
 block content
 	.b-content-inside
@@ -44,18 +46,18 @@ block content
 							p=Goods.title
 						.b-ad-details_product-description
 							text=Goods.description
-						.status-block
+						.b-status
 							if (Goods.status)
-								.status-text
+								.b-status_text
 									p
 										К аренде готов!
-								.status-ico
+								.b-status_ico
 									img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
 							else
-								.status-text
+								.b-status_text
 									p
 										Уже арендован.
-								.status-ico
+								.b-status_ico
 									img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
 					.b-photo-set
 						.base
@@ -69,38 +71,39 @@ block content
 											a.quickbox(href="#{image}")
 												img(src=image)
 				if !isAuthor
-					.r-side
-						.r-inside
-							form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
-								.white-form
-									.green-line.green-line-shadow
-										.base
-											.order
-												.time-to-rent-text
-													b
-														p.white-color.position-on-green-line
-															Время аренды
-												.time-to-rent-ico
-													img(src="resources/pages/see_announcement/images/calendar-ico.png")
-									if !isAuthor
-										include mixins/mixin_er.jade
-										+err(errors)
-									.input-block
-										p.green-color.position-on-green-line
+					.b-form-product-book
+						form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+							.b-form-product-book-backing
+								.b-title_default
+									.base
+										.order
+											.b-form-product-book_title
+												b
+													p
+														Время аренды
+											.b-form-product-book_ico
+												img(src="resources/images/calendar-ico.png")
+								if !isAuthor
+									include mixins/mixin_er.jade
+									+err(errors)
+								.b-form-product-book-input
+									.b-form-product-book-input_title
+										p
 											Начало
-										.input-box
-											input.input-size#from.form-control(type="datetime-local", value="#{date.from}", name="from")
-									.input-block
-										p.green-color.position-on-green-line
+									.b-form-product-book-input_input
+										input.b-input__default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+								.b-form-product-book-input
+									.b-form-product-book-input_title
+										p
 											Завершение
-										.input-box
-											input.input-size#to.form-control(type="datetime-local", value="#{date.to}", name="to")
-								input.button-rent(type='submit', value='Забронировать')
+									.b-form-product-book-input_input
+										input.b-input__default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+							.b-form-product-book_button
+								input.b-button__default.b-button__blue(type='submit', value='Забронировать')
 				else
-					.r-side
-						.r-inside
-							a(href="/update?announcement_id=#{Goods.id}")
-								input.button-update(type='button', value='Редактировать')
+					.b-form-product-book
+						a(href="/update?announcement_id=#{Goods.id}")
+							input.b-button__default.b-button__blue(type='button', value='Редактировать')
 block dynamic-scripts
 	//- сторонний плагин нужен для увличенного просмотра фотографий по клику
 	script(src="resources/vendor/scripts/qb/js/qb.js")
