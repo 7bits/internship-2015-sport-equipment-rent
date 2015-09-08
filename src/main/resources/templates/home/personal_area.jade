@@ -3,7 +3,12 @@ block title
 	title Дай погонять
 block depending
 	link(rel="stylesheet", href="resources/blocks/header.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/pages/personal-area/personal-area.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block header
 	.b-header
 		.b-header-content
@@ -23,45 +28,34 @@ block header
 								p
 									ДАТЬ ОБЪЯВЛЕНИЕ
 block content
-	.my-content
-		.my-content-inside
-			.base
-				.order
-					.user
-						.user-info
-							.ava-image-position
-								img.round(src=user.imageUrl, height="120", width="120")
-							.user-info-block
-								.user-info-block-title
-									.base
-										.order
-											.user-info-block-title-text
-												b
-													p
-														Ваши данные
-											.user-info-block-ico
-												a(href="/update_profile")
-													img(src="resources/pages/personal-area/images/info-icon.png", width="17", height="17")
-								.user-name
-									p.size-text-norap=user.firstName
-								if user.phone!=null
-									.user-info-line
-									.user-phone
-										p.size-text-norap=user.phone
-									.user-info-line
-									.empty-line
-								else
-									.user-info-line
-									.empty-line
-					include mixins/mixin_users_announcement_list.jade
-					.user-announcement
-						.user-announcement-title
-							.user-announcement-title-text
-								b
+	.b-content-inside
+		.base
+			.order
+				.b-user-info
+					.b-user-info_ava
+						img(src=user.imageUrl, width="120", height="120")
+					.b-personal-area-title
+						.base
+							.order
+								.b-personal-area-title_title
 									p
-										Ваши объявления
-						.history
-							a.a-history(href="/history")
+										Ваши данные
+								.b-personal-area-title_ico-update
+									a(href="/update_profile")
+										img(src="resources/pages/personal-area/images/ico2.png", width="17", height="17")
+					.b-user-info_dividing-line
+					.b-user-info_info
+						p=user.firstName
+					if user.phone!=null
+						.b-user-info_dividing-line
+							.b-user-info_info
+								p=user.phone
+						.b-user-info_dividing-line.b-user-info_dividing-line__last
+				include mixins/mixin_users_announcement_list.jade
+				.b-user-list-announcements
+					.b-title__default.b-title__user-list-announcement
+						.b-user-list-announcements_title
+							b
 								p
-									История
-						+list(goods)
+								Ваши объявления
+					+list(goods)
