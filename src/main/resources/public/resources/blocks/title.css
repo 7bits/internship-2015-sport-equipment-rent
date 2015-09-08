@@ -1,4 +1,4 @@
-.b-title_default{
+.b-title__default{
     font-size: 1.125em;
 
     width: 100%;
@@ -13,4 +13,9 @@
     background-color: #6fb2b4;
     box-shadow: 0 2px 3px #e6e6e6;
     text-shadow: 0 2px 3px #a19d9d;
+}
+
+
+.b-title__user-list-announcement{
+    margin-bottom: 0px;
 }

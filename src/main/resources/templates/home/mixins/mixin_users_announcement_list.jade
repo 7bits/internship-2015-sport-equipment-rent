@@ -4,27 +4,25 @@ mixin list(goods)
 			each Goods in goods
 				- announcement_id = Goods.id;
 				a(href="/see_announcement?announcement_id=#{announcement_id}")
-					.one-announcement-block-help
-						.one-announcement-block
-							each image in Goods.imageUrl
-								.one-announcement-block-photo
-									if image=="resources/images/photo-ico.png"
-										.one-foto-box-ico
-											img(src=image, width="42", height="42")
-									else
-										.one-foto-box-photo
-											img(src=image)
-							.title-with-status
-								.base
-									.order
-										.one-announcement-block-title
-											b
-												p.size-text-norap=Goods.title
+					.b-user-announcement
+						each image in Goods.imageUrl
+							.b-user-announcement-photo
+								if image=="resources/images/photo-ico.png"
+									.b-user-announcement-photo_ico
+										img(src=image, width="42", height="42")
+								else
+									.b-user-announcement-photo_image
+										img(src=image)
+						.b-user-announcement-product-title-status
+							.base
+								.order
+									.b-user-announcement_product-title
+										b
+											p=Goods.title
+									.b-status_ico
 										if (Goods.status)
-											.status-ico
-												img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
+											img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
 										else
-											.status-ico
-												img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-							.one-announcement-block-text
-								p.size-text-norap=Goods.description
+											img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+						.b-user-announcement_product-description
+							p=Goods.description
