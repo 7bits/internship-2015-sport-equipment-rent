@@ -2,17 +2,18 @@ extends layout.jade
 block title
 	title Редактирование профиля
 block depending
+	link(rel="stylesheet", href="resources/blocks/header.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/pages/update-profile/update-profile.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 block header
-	.header
-		.center-of-header
+	.b-header
+		.b-header-content
 			.base
 				.order
-					.logo
+					.b-logo
 						a(href="/")
 							img(src="resources/images/logo.png", width="170", height="45", style="margin-top: 12px")
-					.exit
+					.b-header_exit
 						a.header-a-color(href="/logout")
 							b
 								p
