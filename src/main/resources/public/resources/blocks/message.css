@@ -1,34 +1,44 @@
 .b-message{
+    position: relative;
+
     width: 560px;
     height: 416px;
     margin: 0 auto;
     margin-top: 60px;
+
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    position: relative;
 }
 
+
 .b-message-text{
-    padding-top: 50px;
-    width: 301px;
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%)
+
+    width: 301px;
+    padding-top: 50px;
+
+    transform: translate(-50%, -50%);
 }
 
 
 .b-message-text_text{
-    text-align: center;
     font-size: 24px;
-    color: #b6b6b6;
+
     float: left;
+
     padding-top: 3px;
 
+    text-align: center;
+
+    color: #b6b6b6;
 }
 
+
 .b-message-block-text_ico{
-    width: 36px;
-    height:35px;
     float: left;
+
+    width: 36px;
+    height: 35px;
 }
