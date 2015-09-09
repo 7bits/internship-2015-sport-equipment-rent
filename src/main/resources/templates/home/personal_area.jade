@@ -8,6 +8,7 @@ block depending
 	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/history-link.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block header
 	.b-header
@@ -48,8 +49,8 @@ block content
 						p=user.firstName
 					if user.phone!=null
 						.b-user-info_dividing-line
-							.b-user-info_info
-								p=user.phone
+						.b-user-info_info
+							p=user.phone
 						.b-user-info_dividing-line.b-user-info_dividing-line__last
 				include mixins/mixin_users_announcement_list.jade
 				.b-user-list-announcements
@@ -58,4 +59,8 @@ block content
 							b
 								p
 								Ваши объявления
+					.b-history-link
+						a.a-history(href="/history")
+							p
+								История
 					+list(goods)

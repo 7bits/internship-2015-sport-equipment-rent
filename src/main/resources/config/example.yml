@@ -24,6 +24,8 @@ resources:
    path: #path for your resources on local computer
 logging.path: ~/spring
 
+---
+
 server:
   port: 9000
 spring:
