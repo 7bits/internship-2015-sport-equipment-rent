@@ -2,20 +2,12 @@ extends layout.jade
 block title
 	title Заявка отклонена
 block depending
-	link(rel="stylesheet", href="resources/pages/message/message-all.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/pages/message/application_is_rejected.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
 block header
 	include mixins/mixin_message_header.jade
 	+create-header()
 block content
-	.my-content
-		.message-block
-			.message-block-inside
-				.message-block-text
-					.base
-						.order
-							.message-block-text-info
-								p
-									Вы отклонили заявку
-							.message-block-text-ico
-								img(src="resources/style/message/images/application_is_rejected.png")
+	include mixins/mixin_message.jade
+	- message-src = "resources/pages/message/images/application_is_rejected.png";
+	- message-text = "Вы отклонили заявку";
+	+create_message(message-text,message-src)
