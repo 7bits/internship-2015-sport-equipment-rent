@@ -1,0 +1,35 @@
+
+.b-update{
+    width: 343px;
+margin-top: 19px;
+    margin: 0 auto;
+    background-color: white;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.b-update-form{
+    width: 306px;
+    padding-top: 10px;
+    margin: 0 auto;
+    margin-bottom:10px;
+}
+
+.b-update-form_title{
+    font-size: 0.953em;
+
+    width: 100%;
+    margin-bottom: 10px;
+
+    color: #7cced1;
+    text-shadow: 0 1px 1px #d4cfcf;
+}
+
+.b-avatar-recommendation{
+    width: 100%;
+text-align: center;
+    margin-top: 3px;
+    margin-bottom: 2px;
+    font-size: 12.8px;
+    color: #6fb2b4;
+}

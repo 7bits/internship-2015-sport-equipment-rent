@@ -6,13 +6,13 @@ block depending
 	link(rel="stylesheet", href="resources/pages/add-update-confirm-announcement/add-update-confirm-announcement.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
 	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
+	link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
 block scripts
-	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
-	//- должен подгружаться тут
-	script(src="resources/pages/add-update-confirm-announcement/scripts/image-photo-script.js")
 	//- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений и заполняет название файла
 	//- должен подгружаться тут
 	script(src="resources/pages/add-update-confirm-announcement/scripts/past-filename-hide-delete-ico.js")
+	script(src='resources/pages/add-update-confirm-announcement/scripts/add-photo.js')
 block content
 	form(role="form", action="/add", method="post", enctype="multipart/form-data")
 		.b-form-crud-announcement
@@ -85,5 +85,3 @@ block content
 		.b-form-crud-announcement-button
 			a(href="/")
 				input.b-button__default.b-button__yellow(type='submit', value='ОТМЕНА')
-block dynamic-scripts
-	script(src='resources/pages/add-update-confirm-announcement/scripts/add-photo.js')

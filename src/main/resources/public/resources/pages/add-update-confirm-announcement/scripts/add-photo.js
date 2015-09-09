@@ -24,8 +24,7 @@
     			}
     		}
     	});
-
-	$('.b-download-mask').on('click', '.b-delete-photo_input-delete',  function() {
+		$('.b-download-mask').on('click', '.b-delete-photo_input-delete',  function() {
 		    $(this).closest('.b-download-mask').find('.b-download-mask_input-file-name').val('');
 
 		    $(this).closest('.b-download-mask').find('.b-photo-image-default img').show();
@@ -35,10 +34,7 @@
             $(this).closest('.b-download-mask').find('.b-delete-photo_input-delete').hide();
 			$(this).closest('.b-download-mask').find('.b-delete-photo').hide();
 			$(this).closest('.b-photo').children('.b-download-mask_real-file-input').val('');
-            });
-
-
+        });
 	});
-
 })(jQuery);
 
