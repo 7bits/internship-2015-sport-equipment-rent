@@ -60,5 +60,5 @@ CREATE TABLE announcement_image(
  grant all privileges on table deals to root;
  grant all privileges on table announcement_image to root;
 
-
+alter table users add column image_url varchar(2048);
 
