@@ -1,5 +1,6 @@
-.idea/*
+.idea
 target
 *.iml
 *.log
+application.yml
 src/main/resources/public/img
