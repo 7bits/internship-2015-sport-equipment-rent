@@ -1,4 +1,4 @@
-.login-form{
+.b-login{
     width: 270px;
     position: absolute;
     top: 45%;
@@ -6,7 +6,7 @@
     transform: translate(-50%, -50%)
 }
 
-.login-form-logo{
+.b-login_logo{
     width: 170px;
     min-width: 170px;
     max-width: 170px;
@@ -14,7 +14,7 @@
     min-height:74px;
 }
 
-.forgot-pass-text{
+.b-login_forgot-pass{
     width: 100%;
     font-size: 14px;
     color: #5dc8cd;
@@ -23,7 +23,7 @@
     text-align: right;
 }
 
-.registration-text{
+.b-login_to-registration{
     width: 100%;
     font-size: 14px;
     color: white;
@@ -32,6 +32,7 @@
     padding-right: -10px;
     text-align: left;
 }
+
 
 a.registration-a-color:visited{
     color: #5dc8cd;

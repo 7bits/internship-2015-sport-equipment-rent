@@ -1,0 +1,21 @@
+
+
+.b-container,
+.b-reg-auth-container{
+    width: 100%;
+    min-width: 320px;
+    min-height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+
+.b-reg-auth-container{
+    background-image: url("../images/reg-bk.jpg");
+}
+
+
+.b-container{
+    background-image: url("../images/layout/pattern-gr.jpg");
+}

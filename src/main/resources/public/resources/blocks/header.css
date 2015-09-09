@@ -92,14 +92,27 @@
 
 
 a.header-a-color{
-   padding-top: 2px;
-   padding-bottom: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #019199;
+}
 
-   }
+
 a.header-a-color:visited{
     color: #019199;
 }
 
+
+a.header-a-color:active{
+    color: #949494;
+}
+
+
 a.header-a-color:hover{
+    color: #949494;
+}
+
+
+a.header-a-color:focus{
     color: #949494;
 }

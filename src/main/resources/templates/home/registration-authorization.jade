@@ -5,25 +5,24 @@ html
 			title Дай погонять
 		meta(charset='utf-8')
 		meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-		link(rel='shortcut icon', href='resources/images/favicon/favicon-16.png', type='image/x-icon')
-		link(rel='icon', href='resources/images/favicon/favicon-32.png', type='image/x-icon')
-		link(rel='shortcut icon', href='resources/favicon/images/favicon-16.ico', type='image/x-icon')
-		link(rel='icon', href='resources/images/favicon/favicon-32.ico', type='image/x-icon')
+		include mixins/mixin_favicon.jade
 		link(rel="stylesheet", href="resources/library/reset.css", type="text/css", media="all")
 		link(rel="stylesheet", href="resources/library/normalize.css", type="text/css", media="all")
 		link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-		script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-		link(rel="stylesheet", href="resources/pages/registration-authorization/registration-authorization.css", type="text/css", media="all")
 		link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
+		link(rel="stylesheet", href="resources/blocks/container.css", type="text/css", media="all")
+		link(rel="stylesheet", href="resources/template.css", type="text/css", media="all")
+		link(rel="stylesheet", href="resources/blocks/form-authentication.css", type="text/css", media="all")
+		link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
+		link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
 		block scripts
 		block depending
 	body
-		.my-container
-			.my-header
-				.my-center-of-header
-					.to-main
-						a.local-a-color(href="/")
-							b
-								p
-									< НА ГЛАВНУЮ
-			block content
+		.b-reg-auth-container
+			.b-login
+				.b-login_logo
+					a(href="/")
+						img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
+				include mixins/mixin_er.jade
+				+err(errors)
+				block form

@@ -5,6 +5,8 @@
     -moz--box-sizing: border-box;
     box-sizing: border-box;
 }
+
+
 /*убирает рамку пунктиром вокруг кнопок*/
 button::-moz-focus-inner,
 	input[type="reset"]::-moz-focus-inner,
@@ -15,39 +17,33 @@ button::-moz-focus-inner,
 	border: none;
 }
 
+
 /*убирает выделени input в хроме и сафари*/
 input, textarea {
     outline:none;
 }
 
+
 body{
     height: 100%;
 }
+
 
 html{
     height: 100%;
 }
 
+
 a{
     text-decoration: none;
 }
+
 
 .profile, .personal, .exit a:hover{
     color: #949494;
 }
 
+
 p{
     font-family: 'Roboto', sans-serif;
 }
-
-
-.container{
-    width: 100%;
-    min-width: 320px;
-    min-height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    background-image: url("images/layout/pattern-gr.jpg");
-}
-
