@@ -9,6 +9,7 @@
     height: 40px;
     padding: 1px 0 2px 0;
     margin-top: 10px;
+    margin-bottom: 10px;
 
     border: none;
     -webkit-border-radius: 5px; /* Safari, Chrome */
@@ -59,7 +60,6 @@
     font-size: 16px;
 
     height: 45px;
-    box-shadow: 0 1px 1px #454545;
     color: white;
     background: #6ccdd3;
     margin-top:0px;
@@ -74,4 +74,11 @@
 
 .b-button__blue:focus{
     color: #949494;
+}
+
+.b-button__half-size,
+.b-button__half-size:hover,
+.b-button__half-size:focus{
+    width: 48%;
+    margin-right: 2%;
 }

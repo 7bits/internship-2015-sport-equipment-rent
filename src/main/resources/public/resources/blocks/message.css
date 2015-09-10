@@ -16,7 +16,6 @@
     top: 40%;
     left: 50%;
 
-    width: 301px;
     padding-top: 50px;
 
     transform: translate(-50%, -50%);
@@ -29,6 +28,7 @@
     float: left;
 
     padding-top: 3px;
+    margin-right: 3px;
 
     text-align: center;
 

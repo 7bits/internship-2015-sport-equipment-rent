@@ -1,9 +1,8 @@
-create_message(message-text,message-src)
+mixin create-message(messageText,messageSrc)
 	.b-message
 		.b-message-text
 			.base
 				.order
 					.b-message-text_text
-						p=message-text
-					.b-message-block-text_ico
-						img(src="#{message-src}")
+						text(style="margin-right: 3px; vertical-align: super;")=messageText
+						img(src="#{messageSrc}")

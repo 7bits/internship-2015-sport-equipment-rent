@@ -8,6 +8,4 @@ block header
 	+create-header()
 block content
 	include mixins/mixin_message.jade
-	- message-src = "resources/pages/message/images/application_is_rejected.png";
-	- message-text = "Вы отклонили заявку";
-	+create_message(message-text,message-src)
+	+create-message("Вы отклонили заявку","resources/pages/message/images/application_is_rejected.png")

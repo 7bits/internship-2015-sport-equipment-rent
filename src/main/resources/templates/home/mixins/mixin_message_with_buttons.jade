@@ -1,0 +1,13 @@
+mixin create-message(textFirstPart,textSecondPart, firstButton, secondButton)
+	.b-message
+		.b-message-text(style="width: 400px;")
+			.b-message-text_text(style="margin-bottom: 20px;")
+				p=textFirstPart
+				br
+				p=textSecondPart
+			.base 
+				.order
+					a(href="/")
+						input.b-button__default.b-button__blue.b-button__half-size(type='button', value='#{firstButton}')
+					a(href="/")
+						input.b-button__default.b-button__blue.b-button__half-size(type='button', value='#{secondButton}')
