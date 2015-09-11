@@ -1,66 +1,66 @@
 extends layout.jade
 block title
-	title Дай погонять
+    title Дай погонять
 block depending
-	link(rel="stylesheet", href="resources/blocks/header.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/history-link.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/header.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/history-link.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block header
-	.b-header
-		.b-header-content
-			.base
-				.order
-					.b-logo
-						a(href="/")
-							img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
-					.b-header_exit
-						a.header-a-color(href="/logout")
-							b
-								p
-									ВЫХОД
-					.b-header_give-announcement
-						a.header-a-color(href="/add")
-							b
-								p
-									ДАТЬ ОБЪЯВЛЕНИЕ
+    .b-header
+        .b-header-content
+            .base
+                .order
+                    .b-logo
+                        a(href="/")
+                            img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
+                    .b-header_exit
+                        a.header-a-color(href="/logout")
+                            b
+                                p
+                                    ВЫХОД
+                    .b-header_give-announcement
+                        a.header-a-color(href="/add")
+                            b
+                                p
+                                    ДАТЬ ОБЪЯВЛЕНИЕ
 block content
-	.b-content-inside
-		.base
-			.order
-				.b-user-info
-					.b-user-info_ava
-						img(src=user.imageUrl, width="120", height="120")
-					.b-personal-area-title
-						.base
-							.order
-								.b-personal-area-title_title
-									p
-										Ваши данные
-								.b-personal-area-title_ico-update
-									a(href="/update_profile")
-										img(src="resources/images/update-personal-area.png", width="17", height="17")
-					.b-user-info_dividing-line
-					.b-user-info_info
-						p=user.firstName
-					if user.phone!=null
-						.b-user-info_dividing-line
-						.b-user-info_info
-							p=user.phone
-						.b-user-info_dividing-line.b-user-info_dividing-line__last
-				include mixins/mixin_users_announcement_list.jade
-				.b-user-list-announcements
-					.b-title__default.b-title__unindented
-						.b-user-list-announcements_title
-							b
-								p
-								Ваши объявления
-					.b-history-link
-						a.a-history(href="/history")
-							p
-								История
-					+list(goods)
+    .b-content-inside
+        .base
+            .order
+                .b-user-info
+                    .b-user-info_ava
+                        img(src=user.imageUrl, width="120", height="120")
+                    .b-personal-area-title
+                        .base
+                            .order
+                                .b-personal-area-title_title
+                                    p
+                                        Ваши данные
+                                .b-personal-area-title_ico-update
+                                    a(href="/update_profile")
+                                        img(src="resources/images/update-personal-area.png", width="17", height="17")
+                    .b-user-info_dividing-line
+                    .b-user-info_info
+                        p=user.firstName
+                    if user.phone!=null
+                        .b-user-info_dividing-line
+                        .b-user-info_info
+                            p=user.phone
+                        .b-user-info_dividing-line.b-user-info_dividing-line__last
+                include mixins/mixin_users_announcement_list.jade
+                .b-user-list-announcements
+                    .b-title__default.b-title__unindented
+                        .b-user-list-announcements_title
+                            b
+                                p
+                                Ваши объявления
+                    .b-history-link
+                        a.a-history(href="/history")
+                            p
+                                История
+                    +list(goods)

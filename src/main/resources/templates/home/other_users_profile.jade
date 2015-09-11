@@ -1,30 +1,30 @@
 extends layout.jade
 block title
-	title Дай погонять
+    title Дай погонять
 block depending
-	link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block content
-	.b-content-inside
-		.base
-			.order
-				a(href="/profile?user_id=#{user.id}")
-					.b-user-info
-						.b-user-info_ava
-							img(src=user.imageUrl, width="120", height="120")
-						.b-user-info_dividing-line
-						.b-user-info_info
-							p=user.firstName
-				include mixins/mixin_users_announcement_list.jade
-				.b-user-list-announcements
-					.b-title__default.b-title__unindented
-						.b-user-list-announcements_title
-							b
-								p
-								Объявления пользователя
-								text(style="margin-left: 2px;")=user.firstName
-					+list(goods)
+    .b-content-inside
+        .base
+            .order
+                a(href="/profile?user_id=#{user.id}")
+                    .b-user-info
+                        .b-user-info_ava
+                            img(src=user.imageUrl, width="120", height="120")
+                        .b-user-info_dividing-line
+                        .b-user-info_info
+                            p=user.firstName
+                include mixins/mixin_users_announcement_list.jade
+                .b-user-list-announcements
+                    .b-title__default.b-title__unindented
+                        .b-user-list-announcements_title
+                            b
+                                p
+                                Объявления пользователя
+                                text(style="margin-left: 2px;")=user.firstName
+                    +list(goods)

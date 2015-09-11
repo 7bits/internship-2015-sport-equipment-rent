@@ -1,19 +1,19 @@
 extends registration-authorization.jade
 block title
-	title Авторизация
+    title Авторизация
 block depending
 block form
-	form(role="form", action="/login", method="post")
-		input.b-input__default#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
-		input.b-input__default#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
-		.b-login_forgot-pass
-			a.registration-a-color(href="/")
-				p
-					Забыли пароль?
-		input.b-button__default.b-button__blue(type='submit', value='ВОЙТИ')
-		.b-login_to-registration
-			text
-				Еще не зарегистрированы?
-			a.registration-a-color(href="/registration",style="padding-left: 3px;")
-				text
-					Регистрация.
+    form(role="form", action="/login", method="post")
+        input.b-input__default#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
+        input.b-input__default#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+        .b-login_forgot-pass
+            a.registration-a-color(href="/")
+                p
+                    Забыли пароль?
+        input.b-button__default.b-button__blue(type='submit', value='ВОЙТИ')
+        .b-login_to-registration
+            text
+                Еще не зарегистрированы?
+            a.registration-a-color(href="/registration",style="padding-left: 3px;")
+                text
+                    Регистрация.

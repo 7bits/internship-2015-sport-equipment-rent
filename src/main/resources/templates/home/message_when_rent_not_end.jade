@@ -1,14 +1,14 @@
 extends layout.jade
 block title
-	title Подтвердить окончание аренды
+    title Подтвердить окончание аренды
 block depending
-	link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
 block header
-	include mixins/mixin_message_header.jade
-	+create-header()
+    include mixins/mixin_message_header.jade
+    +create-header()
 block content
-	include mixins/mixin_message_with_buttons.jade
-	- textFirstPart = "Срок аренды еще не закончен."
-	- textSecondPart = "Вы уверены, что хотите закончить аренду?"
-	+create-message(textFirstPart,textSecondPart, "Да", "Нет")
+    include mixins/mixin_message_with_buttons.jade
+    - textFirstPart = "Срок аренды еще не закончен."
+    - textSecondPart = "Вы уверены, что хотите закончить аренду?"
+    +create-message(textFirstPart,textSecondPart, "Да", "Нет")

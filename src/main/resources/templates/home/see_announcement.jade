@@ -1,108 +1,107 @@
 extends layout.jade
 block title
-	title Просмотр объявление
+    title Просмотр объявление
 block depending
-	link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
-	link(rel="stylesheet", href="resources/error.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/ad-details.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/form-product-book.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/pages/see_announcement/see_announcement.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
+    link(rel="stylesheet", href="resources/blocks/error.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/ad-details.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/form-product-book.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
 block scripts
-	script(src="resources/vendor/scripts/qb/js/qb.js")
+    script(src="resources/vendor/scripts/qb/js/qb.js")
 block content
-	.b-content-inside
-		.base
-			.order
-				a(href="/profile?user_id=#{user.id}")
-					.b-user-info
-						.b-user-info_ava
-							img(src=user.imageUrl, width="120", height="120")
-						.b-user-info_dividing-line
-						.b-user-info_info
-							p=user.firstName
-				.b-ad-details
-					.b-ad-details-content
-						.b-title__default
-							.base
-								.order
-									.b-ad-details_time
-										b
-											p
-												Час:
-												text=Goods.pricePerHour
-									.b-ad-details_time
-										b
-											p
-												Сутки:
-												text=Goods.pricePerDay
-									.b-ad-details_time
-										b
-											p
-												Неделя:
-												text=Goods.pricePerWeek
-						.b-ad-details_product-title
-							p=Goods.title
-						.b-ad-details_product-description
-							text=Goods.description
-						.b-status
-							if (Goods.status)
-								.b-status_text
-									p
-										К аренде готов!
-								.b-status_ico
-									img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
-							else
-								.b-status_text
-									p
-										Уже арендован.
-								.b-status_ico
-									img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-					.b-photo-set
-						.base
-							.order
-								each image in Goods.imageUrl
-									.b-photo-set_photo
-										if image=="resources/images/photo-ico.png"
-											.b-photo-set_ico
-												img(src=image, width="42", height="42")
-										else
-											a.quickbox(href="#{image}")
-												img(src=image)
-				if !isAuthor
-					.b-form-product-book
-						form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
-							.b-form-product-book-backing
-								.b-title__default
-									.base
-										.order
-											.b-form-product-book_title
-												b
-													p
-														Время аренды
-											.b-form-product-book_ico
-												img(src="resources/images/calendar-ico.png")
-								if !isAuthor
-									include mixins/mixin_er.jade
-									+err(errors)
-								.b-form-product-book-input
-									.b-form-product-book-input_title
-										p
-											Начало
-									.b-form-product-book-input_input
-										input.b-input__default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
-								.b-form-product-book-input
-									.b-form-product-book-input_title
-										p
-											Завершение
-									.b-form-product-book-input_input
-										input.b-input__default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
-							.b-form-product-book_button
-								input.b-button__default.b-button__blue(type='submit', value='Забронировать')
-				else
-					.b-form-product-book
-						a(href="/update?announcement_id=#{Goods.id}")
-							input.b-button__default.b-button__blue(type='button', value='Редактировать')
+    .b-content-inside
+        .base
+            .order
+                a(href="/profile?user_id=#{user.id}")
+                    .b-user-info
+                        .b-user-info_ava
+                            img(src=user.imageUrl, width="120", height="120")
+                        .b-user-info_dividing-line
+                        .b-user-info_info
+                            p=user.firstName
+                .b-ad-details
+                    .b-ad-details-content
+                        .b-title__default
+                            .base
+                                .order
+                                    .b-ad-details_time
+                                        b
+                                            p
+                                                Час:
+                                                text=Goods.pricePerHour
+                                    .b-ad-details_time
+                                        b
+                                            p
+                                                Сутки:
+                                                text=Goods.pricePerDay
+                                    .b-ad-details_time
+                                        b
+                                            p
+                                                Неделя:
+                                                text=Goods.pricePerWeek
+                        .b-ad-details_product-title
+                            p=Goods.title
+                        .b-ad-details_product-description
+                            text=Goods.description
+                        .b-status
+                            if (Goods.status)
+                                .b-status_text
+                                    p
+                                        К аренде готов!
+                                .b-status_ico
+                                    img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
+                            else
+                                .b-status_text
+                                    p
+                                        Уже арендован.
+                                .b-status_ico
+                                    img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+                    .b-photo-set
+                        .base
+                            .order
+                                each image in Goods.imageUrl
+                                    .b-photo-set_photo
+                                        if image=="resources/images/photo-ico.png"
+                                            .b-photo-set_ico
+                                                img(src=image, width="42", height="42")
+                                        else
+                                            a.quickbox(href="#{image}")
+                                                img(src=image)
+                if !isAuthor
+                    .b-form-product-book
+                        form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+                            .b-form-product-book-backing
+                                .b-title__default
+                                    .base
+                                        .order
+                                            .b-form-product-book_title
+                                                b
+                                                    p
+                                                        Время аренды
+                                            .b-form-product-book_ico
+                                                img(src="resources/images/calendar-ico.png")
+                                if !isAuthor
+                                    include mixins/mixin_er.jade
+                                    +err(errors)
+                                .b-form-product-book-input
+                                    .b-form-product-book-input_title
+                                        p
+                                            Начало
+                                    .b-form-product-book-input_input
+                                        input.b-input__default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+                                .b-form-product-book-input
+                                    .b-form-product-book-input_title
+                                        p
+                                            Завершение
+                                    .b-form-product-book-input_input
+                                        input.b-input__default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+                            .b-form-product-book_button
+                                input.b-button__default.b-button__blue(type='submit', value='Забронировать')
+                else
+                    .b-form-product-book
+                        a(href="/update?announcement_id=#{Goods.id}")
+                            input.b-button__default.b-button__blue(type='button', value='Редактировать')
