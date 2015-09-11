@@ -1,30 +1,33 @@
 .b-error{
+    font-family: 'Roboto', sans-serif;
+    font-size: .750em;
+
     width: 98%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 8%;
-    padding-right: 8%;
     margin-top: 13px;
+    margin-right: 1%;
     margin-bottom: 13px;
     margin-left: 1%;
-    margin-right: 1%;
+    padding-top: 10px;
+    padding-right: 8%;
+    padding-bottom: 10px;
+    padding-left: 8%;
+
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+
+    color: #77787a;
     border: 1px solid #eed256;
     background-color: #fffdda;
-    color: #77787a;
-        white-space: pre-wrap;
-        white-space: -moz-pre-wrap;
-        white-space: -o-pre-wrap;
-        word-wrap: break-word;
-    font-size: 0.750em;
-    font-family: 'Roboto', sans-serif;
 }
 
 .b-error p{
-
     margin-bottom: 10px;
+
     text-alight: center;
 }
 
-.b-error li {
+.b-error li{
     list-style-type: none; /* Убираем маркеры */
-   }
+}

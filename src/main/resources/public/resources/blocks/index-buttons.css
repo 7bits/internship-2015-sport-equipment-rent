@@ -3,24 +3,30 @@
 .b-button-add-announcement:hover,
 .b-button-see-announcement,
 .b-button-see-announcement:hover,
-.b-button-see-announcement:focus {
-    width: 212px;
-    height:58px;
-    padding: 1px 0 2px 0;
+.b-button-see-announcement:focus{
     font-size: 14.5px;
+
+    width: 212px;
+    height: 58px;
+    padding: 1px 0 2px 0;
+
     border-width: 3px;
-    border-color: #0e5e63;
     border-style: solid;
-    border-radius: 10px;
-    box-shadow: none;
-    -moz-border-radius: 10px; /* Firefox */
+    border-color: #0e5e63;
     -webkit-border-radius: 10px; /* Safari, Chrome */
+       -moz-border-radius: 10px; /* Firefox */
+            border-radius: 10px;
+    box-shadow: none;
+
     -khtml-border-radius: 10px; /* KHTML */
 }
 
-.b-button-add-announcement, .b-button-add-announcement:focus, .b-button-add-announcement:hover {
-    background: #edd04e;
+.b-button-add-announcement,
+.b-button-add-announcement:focus,
+.b-button-add-announcement:hover{
     float: left;
+
+    background: #edd04e;
 }
 
 .b-button-add-announcement{
@@ -28,21 +34,27 @@
 }
 
 .b-button-add-announcement:hover,
-.b-button-add-announcement:focus  {
-    color: white;
+.b-button-add-announcement:focus{
     cursor: pointer;
+
+    color: white;
 }
 
-.b-button-see-announcement, .b-button-see-announcement:focus, .b-button-see-announcement:hover {
-    background: white;
+.b-button-see-announcement,
+.b-button-see-announcement:focus,
+.b-button-see-announcement:hover{
     float: right;
+
+    background: white;
 }
 
 .b-button-see-announcement{
     color: #5cc9cc;
 }
 
-.b-button-see-announcement:hover, .b-button-see-announcement:focus  {
-    color: #0e5e63;
+.b-button-see-announcement:hover,
+.b-button-see-announcement:focus{
     cursor: pointer;
+
+    color: #0e5e63;
 }

@@ -7,8 +7,9 @@
 
 .b-ad-details-content{
     width: 400px;
-    padding-bottom: 20px;
     min-height: 155px;
+    padding-bottom: 20px;
+
     background-color: white;
 }
 
@@ -41,15 +42,16 @@
     padding-left: 32px;
 
     white-space: nowrap;
-    -o-text-overflow: ellipsis;
-        text-overflow: ellipsis;
+       text-overflow: ellipsis;
 
     color: #019199;
+
+    -o-text-overflow: ellipsis;
 }
 
 
 .b-ad-details_product-description{
-    font-size: 0.875em;
+    font-size: .875em;
 
     width: 100%
     min-height: 570px;
@@ -88,10 +90,11 @@
     border-style: solid;
     border-color: rgba(212, 212, 212, 1);
     -webkit-border-radius: 3px; /* Safari, Chrome */
-     -khtml-border-radius: 3px; /* KHTML */
        -moz-border-radius: 3px; /* Firefox */
             border-radius: 3px;
     background-color: rgba(249, 249, 249, 1);
+
+    -khtml-border-radius: 3px; /* KHTML */
 }
 
 
@@ -101,13 +104,11 @@
     left: 50%;
 
     max-width: 131px;
-    max-height: 100px;
-
-    transform: translate(-50%, -50%);
-
     max-width: 128px;
+    max-height: 100px;
     max-height: 98px;
 
+    transform: translate(-50%, -50%);
 }
 
 
