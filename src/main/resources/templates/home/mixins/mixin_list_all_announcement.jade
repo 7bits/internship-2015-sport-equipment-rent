@@ -1,71 +1,63 @@
 mixin list(goods)
-	.list-content
-		.list-content-inside
-			a(name="seeAll")
-				each Goods in goods
-					- announcement_id = Goods.id;
-					a(href="/see_announcement?announcement_id=#{announcement_id}")
-						.list-content-inside-one-position
-							.list-block-separate-line
-							.list-block
-								.base
-									.order
-										.info-block
-											.announcement-title
-												.base
-													.order
-														.announcement-title-text
-															b
-																p=Goods.title
+	.b-list-content
+		a(name="seeAll")
+			each Goods in goods
+				- announcement_id = Goods.id;
+				a(href="/see_announcement?announcement_id=#{announcement_id}")
+					.b-list-content-elem
+						.b-list-block_separate-line
+						.b-list-content-elem-inside
+							.base
+								.order
+									.b-list-content-elem-inside-info
+										.b-list-content-elem-inside-info-title
+											.base
+												.order
+													.b-list-content-elem-inside-info-title_product-title
+														b
+															p=Goods.title
+													.b-status.b-status__no-padding-top
 														if (Goods.status)
-															.status-text
+															.b-status_text
 																p
 																	К аренде готов!
-															.status-ico
+															.b-status_ico
 																img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
 														else
-															.status-text
+															.b-status_text
 																p
 																	Уже арендован.
-															.status-ico
+															.b-status_ico
 																img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-											.announcement-discription
-												p=Goods.description
-											.price-block
-												.base
-													.order
-														.price-block-hour
-															text(style="padding-right: 4px;")
-																Час:
-															b
-																text(style="padding-right: 2px;")=Goods.pricePerHour
-																text
-																	р
-														.price-block-day
-															text(style="padding-right: 4px;")
-																Сутки:
-															b
-																text(style="padding-right: 2px;")=Goods.pricePerDay
-																text
-																	р
-														.price-block-week
-															text(style="padding-right: 4px;")
-																Неделя:
-															b
-																text(style="padding-right: 4px;")=Goods.pricePerWeek
-																text
-																	р
-										.photo-block
-											each image in Goods.imageUrl
-												.photo-inventory
-													if image=="resources/images/photo-ico.png"
-														.one-foto-box-ico
-															img(src=image, width="42", height="42")
-													else
-														.one-foto-box-photo
-															img(src=image)
-							a(href="/profile?user_id=#{Goods.authorId}")
-								.avatar-border
-									.avatar-photo
-										img(src=Goods.authorImage, width="52", height="52")
-							.list-block-separate-end-line
+										.b-list-content-elem-inside-info_discription
+											p=Goods.description
+										.b-list-content-elem-inside-info-price
+											.base
+												.order
+													.b-list-content-elem-inside-info-price_price
+														text(style="padding-right: 4px;")
+															Час:
+														b
+															text(style="padding-right: 2px;")=Goods.pricePerHour
+													.b-list-content-elem-inside-info-price_price
+														text(style="padding-right: 4px;")
+															Сутки:
+														b
+															text(style="padding-right: 2px;")=Goods.pricePerDay
+													.b-list-content-elem-inside-info-price_price
+														text(style="padding-right: 4px;")
+															Неделя:
+														b
+															text(style="padding-right: 4px;")=Goods.pricePerWeek
+									.b-list-content-elem-inside-photo
+										each image in Goods.imageUrl
+											if image=="resources/images/photo-ico.png"
+												.b-list-content-elem-inside-photo_default-photo
+													img(src=image, width="42", height="42")
+											else
+												.b-list-content-elem-inside-photo_product-photo
+													img(src=image)
+										a(href="/profile?user_id=#{Goods.authorId}")
+											.b-list-content-elem-inside-photo_author-photo
+												img(src=Goods.authorImage, width="52", height="52")
+						.b-list-block_end-separate-line
