@@ -21,7 +21,6 @@ mail:
        debug: true
 resources:
    path: #path for your resources on local computer
-logging.path: ~/spring
 
 ---
 
@@ -49,4 +48,3 @@ mail:
        debug: true
 resources:
    path: #path to your resources on server
-logging.path: ~/spring
