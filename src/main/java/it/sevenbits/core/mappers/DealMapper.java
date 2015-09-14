@@ -9,6 +9,7 @@ import java.util.List;
  * Created by awemath on 7/21/15.
  */
 public interface DealMapper {
+    @Options(useGeneratedKeys = true)
     @Insert("INSERT INTO deals (landlord_id, renting_id, goods_id, handed, is_answered, estimated_start_date, " +
             "estimated_end_date, is_closed, accepted_renting, accepted_return)" +
             " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{estimateStartDate}, #{estimateEndDate}, #{isClosed}" +

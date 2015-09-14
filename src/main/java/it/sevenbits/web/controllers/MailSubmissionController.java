@@ -8,10 +8,13 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
 import it.sevenbits.web.service.users.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +33,8 @@ public class MailSubmissionController {
 
     private final JavaMailSender javaMailSender;
 
+    Logger LOG = Logger.getLogger(MailSubmissionController.class);
+
     @Autowired
     UserService userService;
 
@@ -47,22 +52,23 @@ public class MailSubmissionController {
 
     @ResponseStatus(HttpStatus.CREATED)
     public void sendEmail(String html, String title, String to) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        JavaMailSenderImpl sender = (JavaMailSenderImpl) javaMailSender;
 
         try {
-            MimeMessage message = javaMailSender.createMimeMessage();
-            MimeMessageHelper helper = null;
-
-            helper = new MimeMessageHelper(message, true, "UTF-8");
+            MimeMessage mimeMessage = sender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
+            mimeMessage.setContent(html, "text/html; charset=\"UTF-8\"");
 
             helper.setTo(to);
-            helper.setFrom("sportequipmentrent@gmail.com");
             helper.setSubject(title);
-            helper.setText(html);
-            javaMailSender.send(mailMessage);
+            helper.setFrom(sender.getUsername());
+
+            sender.send(mimeMessage);
+        } catch (MailException e) {
+            LOG.error("Email didn`t send", e);
 
         } catch (MessagingException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -149,7 +155,7 @@ public class MailSubmissionController {
                 User landlord = userService.getUser(deal.getLandlordId());
                 User renting = userService.getUser(deal.getRentingId());
                 Goods goods = goodsService.getGoods(deal.getGoodsId());
-                JadeTemplate template = jade.getTemplate("home/letter/letter_confirm_start_rent");
+                JadeTemplate template = jade.getTemplate("home/letter/letter");
                 HashMap<String, Object> model = new HashMap<String, Object>();
                 String title = "";
                 model.put("denyLink", "sport-equipment-rent.7bits.it");
