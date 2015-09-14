@@ -10,10 +10,6 @@ block depending
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/form-product-book.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
-block scripts
-    //-сторонний плагин, должен подгружаться в момент загрузки старницы
-    //- иначе не работает 
-    script(src="resources/vendor/scripts/qb/js/qb.js")
 block content
     .b-content-inside
         .base
@@ -96,3 +92,5 @@ block content
                     .b-form-product-book
                         a(href="/update?announcement_id=#{Goods.id}")
                             input.b-button__default.b-button__blue(type='button', value='Редактировать')
+block dynamic-scripts
+    script(src="resources/vendor/scripts/qb/js/qb.js")    
