@@ -129,3 +129,24 @@ a.header-a-color:hover{
 a.header-a-color:focus{
     color: #949494;
 }
+
+
+@media(max-width: 942px){
+    .b-header_to-personal-area{
+        display: none;
+    }
+
+    .b-header_exit{
+        display: none;
+    }
+
+    .b-header_give-announcement{
+        display: none;
+    }
+}
+
+@media(max-width: 455px){
+    .b-header-content{
+        width: 100%;
+    }  
+}

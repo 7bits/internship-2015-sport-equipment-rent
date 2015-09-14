@@ -8,12 +8,13 @@ block depending
     link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
 block scripts
-    //- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений
-    //- должен отрабатывать в момент загрузки страницы, поэтому подгружается тут
-    script(src='resources/vendor/scripts/add-update-confirm-announcement/add-photo.js')
-    script(src='resources/vendor/scripts/add-update-confirm-announcement/add-announcement-hide-delete-ico.js')
+    //- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений 
+    //- должен подгружаться тут
+    script(src='resources/scripts/add-update-confirm-announcement/add-announcement-hide-delete-ico.js')
 block content
     form(role="form", action="/add", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade
         .b-form-crud-announcement-button
             input.b-button__default.b-button__yellow(type='submit', value='РАЗМЕСТИТЬ')
+block dynamic-scripts
+    script(src='resources/scripts/add-update-confirm-announcement/add-photo.js')    
