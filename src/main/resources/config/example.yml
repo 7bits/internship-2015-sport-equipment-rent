@@ -23,6 +23,7 @@ resources:
    path: #path for your resources on local computer
    images: #path for your images from resources path on local computer
    default-announcement-image: #path to your default images for annoucement
+   default-users-avatar: #path (or link) to default users avatar
 
 ---
 
@@ -51,4 +52,5 @@ mail:
 resources:
    path: #path to your resources on server
    images: #path for your images from resources path on server
-   default-announcement-image: #path to your default images for annoucement
+   default-announcement-image: #path (or link) to your default images for annoucement
+   default-users-avatar: #path (or link) to default users avatar
