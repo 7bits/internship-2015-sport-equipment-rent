@@ -1,0 +1,8 @@
+mixin create-message(messageText,messageSrc)
+    .b-message
+        .b-message-text
+            .base
+                .order
+                    .b-message-text_text
+                        text(style="margin-right: 3px; vertical-align: super;")=messageText
+                        img(src="#{messageSrc}")

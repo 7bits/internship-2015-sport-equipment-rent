@@ -1,0 +1,138 @@
+.b-ad-details{
+    float: left;
+
+    width: 415px;
+}
+
+
+.b-ad-details-content{
+    width: 400px;
+    min-height: 155px;
+    padding-bottom: 20px;
+
+    background-color: white;
+}
+
+
+.b-ad-details_time{
+    font-size: .875em;
+
+    float: left;
+    overflow: hidden;
+
+    width: 127px;
+    margin-right: 5px;
+    padding-right: 2px;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
+}
+
+
+.b-ad-details_product-title{
+    font-size: 1.125em;
+
+    overflow: hidden;
+
+    width: 100%
+    margin-top: 10px;
+    padding-right: 32px;
+    padding-left: 32px;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    color: #019199;
+
+    -o-text-overflow: ellipsis;
+}
+
+.b-ad-details_product-title p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+
+.b-ad-details_product-description{
+    font-size: .875em;
+
+    width: 100%
+    min-height: 570px;
+    margin-top: 10px;
+    padding-right: 27px;
+    padding-left: 32px;
+    /*для переноса слов*/
+
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+
+    color: #6b6b6b;
+}
+
+.b-ad-details_product-description p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+
+.b-photo-set{
+    width: 405px;
+    height: 100px;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+
+
+.b-photo-set_photo{
+    position: relative;
+
+    float: left;
+
+    width: 131px;
+    height: 100px;
+    margin-right: 4px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(212, 212, 212, 1);
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+       -moz-border-radius: 3px; /* Firefox */
+            border-radius: 3px;
+    background-color: rgba(249, 249, 249, 1);
+
+    -khtml-border-radius: 3px; /* KHTML */
+}
+
+
+.b-photo-set_photo img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    max-width: 131px;
+    max-width: 128px;
+    max-height: 100px;
+    max-height: 98px;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.b-photo-set_ico img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    max-width: 42px;
+    max-height: 42px;
+
+    transform: translate(-50%, -50%);
+}

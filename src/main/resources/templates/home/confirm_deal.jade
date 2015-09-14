@@ -1,21 +1,11 @@
 extends layout.jade
 block title
-	title Заявка подтверждена
+    title Заявка подтверждена
 block depending
-	link(rel="stylesheet", href="resources/pages/message/message-all.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/pages/message/confirm_deal.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
 block header
-	include mixins/mixin_message_header.jade
-	+create-header()
+    include mixins/mixin_message_header.jade
+    +create-header()
 block content
-	.my-content
-		.message-block
-			.message-block-inside
-				.message-block-text
-					.base
-						.order
-							.message-block-text-info
-								p
-									Заявка подтверждена
-							.message-block-text-ico
-								img(src="resources/style/message/images/confirm_deal.png")
+    include mixins/mixin_message.jade
+    +create-message("Заявка подтверждена","resources/images/message/confirm_deal.png")

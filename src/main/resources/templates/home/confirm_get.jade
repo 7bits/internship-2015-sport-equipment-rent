@@ -1,21 +1,11 @@
 extends layout.jade
 block title
-	title Взятие в аренду подтверждено
+    title Заявка отправлена
 block depending
-	link(rel="stylesheet", href="resources/pages/message/message-all.css", type="text/css", media="all")
-	link(rel="stylesheet", href="resources/pages/message/confirm_get.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
 block header
-	include mixins/mixin_message_header.jade
-	+create-header()
+    include mixins/mixin_message_header.jade
+    +create-header()
 block content
-	.my-content
-		.message-block
-			.message-block-inside
-				.message-block-text
-					.base
-						.order
-							.message-block-text-info
-								p
-									Взятие в аренду подтверждено
-							.message-block-text-ico
-								img(src="resources/style/message/images/confirm_deal.png")
+    include mixins/mixin_message.jade
+    +create-message("Взятие в аренду подтверждено","resources/images/message/confirm_deal.png")

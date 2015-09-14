@@ -1,29 +1,31 @@
 extends layout.jade
 block title
-	title Дай погонять
-block scripts
-	//- скрипт подгоняет добавленнные поль-лем изображения с сохранением пропорций под блок
-	//- должен подгружаться тут
-	script(src='resources/pages/personal-area/image-photo-script.js')
+    title Дай погонять
 block depending
-	link(rel="stylesheet", href="resources/pages/profile/profile.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block content
-	.my-content
-		.my-content-inside
-			.base
-				.order
-					.user-info
-						.ava-image-position
-							img.round(src=user.imageUrl, height="120", width="120")
-						.user-info-line
-						.user-name
-							p.size-text-norap=user.firstName
-					include mixins/mixin_users_announcement_list.jade
-					.user-announcement
-						.user-announcement-title
-							.user-announcement-title-text
-								b
-									p
-									Объявления пользователя
-									text.size-text-norap(style="margin-left: 4px;")=user.firstName
-						+list(goods)
+    .b-content-inside
+        .base
+            .order
+                a(href="/profile?user_id=#{user.id}")
+                    .b-user-info
+                        .b-user-info_ava
+                            img(src=user.imageUrl, width="120", height="120")
+                        .b-user-info_dividing-line
+                        .b-user-info_info
+                            p=user.firstName
+                include mixins/mixin_users_announcement_list.jade
+                .b-user-list-announcements
+                    .b-title__default.b-title__unindented
+                        .b-user-list-announcements_title
+                            b
+                                p
+                                    text(style="margin-right: 2px;")
+                                        Объявления пользователя
+                                    | #{user.firstName}
+                    +list(goods)

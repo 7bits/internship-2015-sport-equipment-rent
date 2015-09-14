@@ -1,0 +1,41 @@
+.b-update{
+    width: 343px;
+    margin: 0 auto;
+    margin-top: 19px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+
+    background-color: white;
+}
+
+
+.b-update-form{
+    width: 306px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+
+.b-update-form_title{
+    font-size: .953em;
+
+    width: 100%;
+    margin-bottom: 10px;
+
+    color: #7cced1;
+    text-shadow: 0 1px 1px #d4cfcf;
+}
+
+
+.b-avatar-recommendation{
+    font-size: 12.8px;
+
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 2px;
+
+    text-align: center;
+
+    color: #6fb2b4;
+}

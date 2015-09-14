@@ -1,0 +1,52 @@
+.b-login{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+
+    width: 270px;
+
+    transform: translate(-50%, -50%);
+}
+
+.b-login_logo{
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+    height: 74px;
+    min-height: 74px;
+}
+
+.b-login_forgot-pass{
+    font-size: 14px;
+
+    width: 100%;
+    margin-top: -6px;
+    margin-bottom: 10px;
+
+    text-align: right;
+
+    color: #5dc8cd;
+}
+
+.b-login_to-registration{    
+    font-size: 14px;
+
+    width: 100%;
+    margin-top: 3px;
+    padding-right: -10px;
+    padding-left: -10px;
+
+    text-align: left;
+
+    color: white;
+}
+
+
+a.registration-a-color:visited{
+    color: #5dc8cd;
+}
+
+
+a.registration-a-color:hover{
+    color: #949494;
+}
