@@ -13,7 +13,7 @@ block scripts
     script(src="resources/vendor/scripts/add-update-confirm-announcement/update-announcement-past-filename-hide-delete-ico.js")
     script(src='resources/vendor/scripts/add-update-confirm-announcement/add-photo.js')
 block content
-    form(role="form", action="/add", method="post", enctype="multipart/form-data")
+    form(role="form", action="/update", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade
         .b-form-crud-announcement-button
             input.b-button__default.b-button__yellow(type='submit', value='РАЗМЕСТИТЬ')
