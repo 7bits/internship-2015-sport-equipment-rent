@@ -1,8 +1,7 @@
 server:
   port: 9000
 spring:
- profiles:
-  active: dev
+ profiles: dev
  datasource:
   url: jdbc:postgresql://localhost:5432/sportequipmentrent
   username: #your username at data base
@@ -28,7 +27,7 @@ server:
   port: 9000
 spring:
  profiles:
-  active: prod
+  active: staging
  datasource:
   url: jdbc:postgresql://localhost:5432/sportequipmentrent
   username: #your username at data base
