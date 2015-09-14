@@ -6,15 +6,20 @@
 
 
 .b-user-list-announcements_title{
-    overflow: hidden;
-
     width: 680px;
     margin-bottom: -10px;
     padding-right: 15px;
     padding-left: 15px;
 
     text-align: left;
+}
+
+
+.b-user-list-announcements_title p{
+    overflow: hidden;
+
     white-space: nowrap;
-    -o-text-overflow: ellipsis;
        text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
 }

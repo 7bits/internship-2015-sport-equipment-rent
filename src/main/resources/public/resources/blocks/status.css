@@ -2,16 +2,10 @@
     float: right;
 
     width: 140px;
-    height: 22px;
     margin-right: 0;
-    padding-top: 10px;
+    padding-top: 0;
     padding-bottom: 8px;
 }
-
-.b-status__no-padding-top{
-    padding-top: 0;
-}
-
 
 .b-status_ico{
     float: right;

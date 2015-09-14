@@ -49,6 +49,13 @@
     -o-text-overflow: ellipsis;
 }
 
+.b-ad-details_product-title p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
 
 .b-ad-details_product-description{
     font-size: .875em;
@@ -66,6 +73,13 @@
     word-wrap: break-word;
 
     color: #6b6b6b;
+}
+
+.b-ad-details_product-description p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
 }
 
 

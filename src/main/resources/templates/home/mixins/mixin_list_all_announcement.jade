@@ -16,19 +16,8 @@ mixin list(goods)
                                                     .b-list-content-elem-inside-info-title_product-title
                                                         b
                                                             p=Goods.title
-                                                    .b-status.b-status__no-padding-top
-                                                        if (Goods.status)
-                                                            .b-status_text
-                                                                p
-                                                                    К аренде готов!
-                                                            .b-status_ico
-                                                                img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
-                                                        else
-                                                            .b-status_text
-                                                                p
-                                                                    Уже арендован.
-                                                            .b-status_ico
-                                                                img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+                                                    .b-status
+                                                        include mixin_full_status.jade
                                         .b-list-content-elem-inside-info_discription
                                             p=Goods.description
                                         .b-list-content-elem-inside-info-price

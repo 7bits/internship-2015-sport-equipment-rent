@@ -46,20 +46,9 @@ block content
                         .b-ad-details_product-title
                             p=Goods.title
                         .b-ad-details_product-description
-                            text=Goods.description
+                            p=Goods.description
                         .b-status
-                            if (Goods.status)
-                                .b-status_text
-                                    p
-                                        К аренде готов!
-                                .b-status_ico
-                                    img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
-                            else
-                                .b-status_text
-                                    p
-                                        Уже арендован.
-                                .b-status_ico
-                                    img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+                            include mixins/mixin_full_status.jade
                     .b-photo-set
                         .base
                             .order

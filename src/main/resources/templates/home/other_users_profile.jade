@@ -25,6 +25,7 @@ block content
                         .b-user-list-announcements_title
                             b
                                 p
-                                Объявления пользователя
-                                text(style="margin-left: 2px;")=user.firstName
+                                    text(style="margin-right: 2px;")
+                                        Объявления пользователя
+                                    | #{user.firstName}
                     +list(goods)
