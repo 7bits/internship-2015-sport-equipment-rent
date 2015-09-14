@@ -36,6 +36,8 @@ public class AddAnnouncementController {
     private String resourcesPath;
     @Value("${resources.images}")
     private String imagesPath;
+    @Value("${resources.default-announcement-image}")
+    private String defaultImage;
 
     @Autowired
     AddNewGoodsFormValidator validator;
@@ -147,7 +149,7 @@ public class AddAnnouncementController {
                 LOG.error(e.getMessage());
             }
         } else{
-            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
+            service.addImage(goods.get(0).getId(), defaultImage);
         }
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
@@ -159,7 +161,7 @@ public class AddAnnouncementController {
                 LOG.error(e.getMessage());
             }
         }else{
-            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
+            service.addImage(goods.get(0).getId(), defaultImage);
         }
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
@@ -171,7 +173,7 @@ public class AddAnnouncementController {
                 LOG.error(e.getMessage());
             }
         }else{
-            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
+            service.addImage(goods.get(0).getId(), defaultImage);
         }
         return "redirect:/see_announcement?announcement_id="+goods.get(0).getId();
     }

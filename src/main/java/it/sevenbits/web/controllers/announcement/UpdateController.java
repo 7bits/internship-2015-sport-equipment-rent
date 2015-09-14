@@ -34,6 +34,8 @@ public class UpdateController {
     private String resourcesPath;
     @Value("${resources.images}")
     private String imagesPath;
+    @Value("${resources.default-announcement-image}")
+    private String defaultImage;
 
     @Autowired
     GoodsService goodsService;
@@ -99,23 +101,23 @@ public class UpdateController {
         form.setId(announcementId);
         if(firstImageDelete){
             if(images.size()>0) {
-                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(0));
+                goodsService.updateImage(announcementId, defaultImage, images.get(0));
             }else{
-                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+                goodsService.addImage(announcementId, defaultImage);
             }
         }
         if(secondImageDelete){
             if(images.size()>1) {
-                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(1));
+                goodsService.updateImage(announcementId, defaultImage, images.get(1));
             }else{
-                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+                goodsService.addImage(announcementId, defaultImage);
             }
         }
         if(thirdImageDelete){
             if(images.size()>2) {
-                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(2));
+                goodsService.updateImage(announcementId, defaultImage, images.get(2));
             }else{
-                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+                goodsService.addImage(announcementId, defaultImage);
             }
         }
         if(firstImage!=null && !firstImage.isEmpty()) {
