@@ -1,3 +1,4 @@
+drop table announcement_image;
 drop table deals;
 drop table goods;
 drop table users;
@@ -43,7 +44,7 @@ CREATE TABLE deals(
 insert into users (first_name, second_name, pass, phone, email, users_role) values
 ('admin', 'admin', 'pass', '123456', 'admin', 'ADMIN');
 
-CREATE TABLE image_url(
+CREATE TABLE announcement_image(
 	id bigserial PRIMARY KEY,
 	goods_id integer REFERENCES goods(id) not null,
 	image_url varchar(1024)
@@ -52,10 +53,12 @@ CREATE TABLE image_url(
  grant all privileges on sequence goods_id_seq to root;
  grant all privileges on sequence users_id_seq to root;
  grant all privileges on sequence deals_id_seq to root;
+ grant all privileges on sequence announcement_image_id_seq to root;
 
  grant all privileges on table goods to root;
  grant all privileges on table users to root;
  grant all privileges on table deals to root;
+ grant all privileges on table announcement_image to root;
 
-
+alter table users add column image_url varchar(2048);
 

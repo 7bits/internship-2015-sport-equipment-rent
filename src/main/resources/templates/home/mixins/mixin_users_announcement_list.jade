@@ -1,0 +1,28 @@
+mixin list(goods)
+    .base
+        .order
+            each Goods in goods
+                - announcement_id = Goods.id;
+                a(href="/see_announcement?announcement_id=#{announcement_id}")
+                    .b-user-announcement
+                        each image in Goods.imageUrl
+                            .b-user-announcement-photo
+                                if image=="resources/images/photo-ico.png"
+                                    .b-user-announcement-photo__ico
+                                        img(src=image, width="42", height="42")
+                                else
+                                    .b-user-announcement-photo__image
+                                        img(src=image)
+                        .b-user-announcement-product-title-status
+                            .base
+                                .order
+                                    .b-user-announcement__product-title
+                                        b
+                                            p=Goods.title
+                                    .b-status__ico
+                                        if (Goods.status)
+                                            img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
+                                        else
+                                            img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+                        .b-user-announcement__product-description
+                            p=Goods.description

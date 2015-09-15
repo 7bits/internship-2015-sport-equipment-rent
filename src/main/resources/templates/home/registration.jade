@@ -1,0 +1,13 @@
+extends registration-authorization.jade
+block title
+    title Авторизация
+block depending
+    link(rel="stylesheet", href="resources/blocks/form-registration.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
+block form
+    form(role="form", action="/registration", method="post")
+        input.b-input--default#name.form-control(type="text", name='firstName', placeholder="ИМЯ")
+        input.b-input--default#userEmail.form-control(type="email", name='eMail',placeholder="E-MAIL")
+        input.b-input--default#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+        input.b-button--default.b-button--blue(type='submit', value='РЕГИСТРАЦИЯ')

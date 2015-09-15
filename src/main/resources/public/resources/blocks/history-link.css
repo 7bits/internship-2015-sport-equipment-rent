@@ -1,0 +1,21 @@
+.b-history-link{
+    width: 100%;
+    margin-bottom: -5px;
+    padding-top: 8px;
+
+    text-align: right;
+    text-decoration: underline;
+
+    color: #6fb2b4;
+    text-shadow: 0 1px 1px #b1b0b1;
+
+    font-width: 13px;
+}
+
+.a-history{
+    color: #6fb2b4;
+}
+
+.a-history:hover{
+    text-shadow: none;
+}

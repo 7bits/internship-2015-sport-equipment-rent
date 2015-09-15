@@ -1,0 +1,44 @@
+.b-message{
+    position: relative;
+
+    width: 560px;
+    height: 416px;
+    margin: 0 auto;
+    margin-top: 60px;
+
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+
+.b-message-text{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+
+    padding-top: 50px;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.b-message-text__text{
+    font-size: 24px;
+
+    float: left;
+
+    margin-right: 3px;
+    padding-top: 3px;
+
+    text-align: center;
+
+    color: #b6b6b6;
+}
+
+
+.b-message-block-text__ico{
+    float: left;
+
+    width: 36px;
+    height: 35px;
+}

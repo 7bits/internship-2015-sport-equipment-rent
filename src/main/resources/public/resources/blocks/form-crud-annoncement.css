@@ -1,0 +1,220 @@
+.b-form-crud-announcement{
+    width: 429px;
+    margin: 0 auto;
+    margin-top: 17px;
+    margin-bottom: 10px;
+
+    background-color: white;
+}
+
+
+.b-form-crud-announcement-header p{
+    padding-top: 12px;
+}
+
+
+.b-form-crud-announcement-content{
+    width: 360px;
+    margin: 0 auto;
+}
+
+
+.b-form-crud-announcement-content__title{
+    font-size: .953em;
+
+    width: 100%;
+    height: 40px;
+    padding-bottom: 13px;
+
+    color: #7cced1;
+    text-shadow: 0 1px 1px #d4cfcf;
+}
+
+
+.b-input__name-announcement{
+    width: 70%;
+}
+
+
+.b-form__textarea{
+    width: 100%;
+    min-height: 152px;
+    margin-bottom: 19px;
+}
+
+
+.b-set-fields{
+    width: 370px;
+    margin-bottom: 10px;
+    margin-left: 34.5px;
+}
+
+
+.b-set-fields__input{
+    float: left;
+
+    width: 113px;
+    margin-right: 10px;
+}
+
+
+/*!базовый! блок 1 для вывода 1 фотки*/
+.b-photo{
+    float: left;
+
+    width: 113px;
+    height: 128px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c5c5c5;
+    background-color: #f6f6f6;
+}
+
+
+.b-photo:hover{
+    -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+       -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+            box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+}
+
+
+/*само изображение*/
+.b-photo-image{
+    width: 100%;
+    height: 100%;
+}
+
+
+.b-photo-image img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    max-width: 111px;
+    max-height: 126px;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/*дефолтная иконка (блок)*/
+.b-photo-image-default{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 42px;
+    height: 42px;
+
+    transform: translate(-50%, -50%);
+}
+
+
+/*контейнер для маски*/
+.b-download-mask{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/*для вывода текста названия подргуженного файла*/
+.b-download-mask__input-file-name{
+    font-size: 14px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    float: left;
+    overflow: hidden;
+
+    width: 100%;
+    margin-right: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*обрезка с многоточнием*/
+    white-space: nowrap;
+    text-decoration: none;
+       text-overflow: ellipsis;
+
+    color: #c7c7c7;
+    border: none;
+    background-color: transparent;
+    background-image: none;
+
+    -o-text-overflow: ellipsis;
+}
+
+
+/*реальная кнопка*/
+.b-download-mask__real-file-input{
+    position: relative;
+    z-index: 99998;
+    top: -128px;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    filter: alpha(opacity=0);
+}
+
+
+/*иконка удаления и ее input*/
+.b-delete-photo__input-delete{
+    position: relative;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+}
+
+
+.b-delete-photo__input-delete:hover{
+    cursor: pointer;
+}
+
+
+.b-delete-photo__input-delete:focus{
+    cursor: pointer;
+}
+
+
+
+.b-delete-photo{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 19px;
+    height: 19px;
+
+    background-image: url('../images/delete-photo-icon.png');
+}
+
+
+.b-form-crud-announcement-button{
+    width: 429px;
+    height: 40px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}

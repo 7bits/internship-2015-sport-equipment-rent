@@ -1,0 +1,37 @@
+extends layout.jade
+block title
+    title История сделок
+block depending
+    link(rel="stylesheet", href="resources/blocks/history.css", type="text/css", media="all")
+block content
+    .b-table
+        if userHistory
+            table(style='border: 30px; solid #6eb2b3; border-left: none; border-right: none; border-top: none;')
+                tr(height="44", style='background-color: #6eb2b3; border: 2px solid rgba(207, 207, 207, 0.5); border-left: none; border-right: none; border-top: none;')
+                    th
+                        p.head-table
+                            Дата начала
+                    th
+                        p.head-table
+                            Дата завершения
+                    th
+                        p.head-table
+                            Название объявления
+                    th
+                        p.head-table
+                            Арендатор
+                tr(height="40")
+                    each row in userHistory
+                        tr(height="40")
+                            td.b-table__col.b-table__col--start
+                                p.size-text-norap=row.startDate
+                            td.b-table__col.b-table__col--end
+                                p.size-text-norap=row.endDate
+                            td.b-table__col.b-table__col--product
+                                p.size-text-norap=row.title
+                            td.b-table__col.b-table__col--renter
+                                p.size-text-norap=row.renting
+        else
+            .b-table--empty
+                p
+                    Здесь могла бы быть история ваших сделок

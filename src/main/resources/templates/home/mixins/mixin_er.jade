@@ -1,0 +1,7 @@
+mixin err(errors)
+    if errors!=null
+        ul
+            .b-error
+                each item in errors
+                    li
+                        p=item

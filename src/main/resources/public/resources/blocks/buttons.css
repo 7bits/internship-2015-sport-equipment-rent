@@ -1,0 +1,86 @@
+.b-button--default,
+.b-button--default:focus,
+.b-button--default:hover{
+    font-family: 'Roboto', sans-serif;
+    font-size: .875em;
+
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 1px 0 2px 0;
+
+    border: none;
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+       -moz-border-radius: 5px; /* Firefox */
+            border-radius: 5px;
+    box-shadow: 0 3px 3px #d4cfcf;
+
+    -khtml-border-radius: 5px; /* KHTML */
+}
+
+
+.b-button--default:focus{
+    cursor: pointer;
+}
+
+
+.b-button--default:hover{
+    cursor: pointer;
+}
+
+
+/*желтая кнопка*/
+.b-button--yellow,
+.b-button--yellow:focus,
+.b-button--yellow:hover{
+    float: right;
+
+    width: 162px;
+
+    color: white;
+    background: #edd04e;
+}
+
+
+.b-button--yellow:hover{
+    color: #949494;
+}
+
+
+.b-button--yellow:focus{
+    color: #949494;
+}
+
+
+/*#blue button*/
+.b-button--blue,
+.b-button--blue:focus,
+.b-button--blue:hover{
+    font-size: 16px;
+
+    height: 45px;
+    margin-top: 0;
+
+    color: white;
+    background: #6ccdd3;
+
+    align: center;
+}
+
+
+.b-button--blue:hover{
+    color: #949494;
+}
+
+
+.b-button--blue:focus{
+    color: #949494;
+}
+
+.b-button--half-size,
+.b-button--half-size:hover,
+.b-button--half-size:focus{
+    width: 48%;
+    margin-right: 2%;
+}

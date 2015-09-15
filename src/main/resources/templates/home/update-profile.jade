@@ -1,0 +1,48 @@
+extends layout.jade
+block title
+    title Редактирование профиля
+block depending
+    link(rel="stylesheet", href="resources/blocks/header.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/form-update-profile.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/error.css", type="text/css", media="all")
+block header
+    .b-header
+        .b-header__content
+            .base
+                .order
+                    .b-logo
+                        a(href="/")
+                            img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
+                    .b-header__exit
+                        a.header-a-color(href="/logout")
+                            b
+                                p
+                                    ВЫХОД
+block content
+    .b-content-inside
+        .b-update
+            .b-title--default.b-title--unindented
+                p
+                    Редактирование профиля
+            form(role="form", action="/update_profile", method="post")
+                .b-update-form
+                    include mixins/mixin_er.jade
+                    +err(errors)
+                    input.b-input--default#from.form-control(type="text", value="#{user.firstName}", name="firstName",placeholder="Имя")
+                    input.b-input--default#from.form-control(type="text", value="#{user.phone}", name="phone",placeholder="Телефон")
+                    .b-avatar-recommendation
+                        p
+                            Рекомендуем использовать квадратную аватарку
+                    input.b-input--default#from.form-control(type="text", value="#{user.imageUrl}", name="imageUrl",placeholder="URL изображения")
+                    .b-update-form__title
+                        p
+                            Смена пароля
+                    .base
+                        .order
+                            input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.pass}", name="pass",placeholder="Текущий пароль")
+                            input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.newPass}", name="newPass",placeholder="Новый пароль")
+                input.b-button--default.b-button--yellow(type='submit', value='CОХРАНИТЬ')

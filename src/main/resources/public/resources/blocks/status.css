@@ -1,0 +1,29 @@
+.b-status{
+    float: right;
+
+    width: 140px;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 8px;
+}
+
+.b-status__ico{
+    float: right;
+
+    width: 22px;
+    height: 22px;
+}
+
+.b-status__text{
+    font-size: 14px;
+
+    float: right;
+    clear: both;
+
+    width: 118px;
+    height: 22px;
+    padding-top: 4px;
+    padding-left: 7px;
+
+    color: #707070;
+}

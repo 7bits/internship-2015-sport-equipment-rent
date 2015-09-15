@@ -1,0 +1,76 @@
+/*все от header*/
+.b-header{
+    position: relative;
+
+    width: 100%;
+    min-width: 320px;
+    height: 74px;
+    margin: 0 auto;
+
+    background-color: white;
+    box-shadow: 0 3px 30px #d4cfcf;
+}
+
+.b-header__content{
+    width: 67%;
+    max-width: 938px;
+    height: 100%;
+    min-height: 74px;
+    margin: 0 auto;
+}
+.b-header__login,
+.b-header__to-personal-area,
+.b-header__exit,
+.b-header__give-announcement
+{
+    font-size: 0.875em;
+    float: right;
+    height: 74px;
+    width: auto;
+    padding-top: 27px;
+}
+
+.b-header__login{
+    width: 60px;
+}
+
+.b-header__to-personal-area{
+    width: 170px;
+}
+
+.b-header__exit{
+    width: 80px;
+}
+
+
+.b-header__give-announcement{
+    width: 170px;
+}
+
+
+a.header-a-color{
+    padding-top: 2px;
+    padding-bottom: 2px;
+
+    color: #019199;
+}
+
+
+a.header-a-color:visited{
+    color: #019199;
+}
+
+
+a.header-a-color:active{
+    color: #949494;
+}
+
+
+a.header-a-color:hover{
+    color: #949494;
+}
+
+
+a.header-a-color:focus{
+    color: #949494;
+}

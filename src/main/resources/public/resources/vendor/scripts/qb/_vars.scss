@@ -1,0 +1,26 @@
+$zIndex: 1500;
+$bgLight: #fff;
+$bgDark: #000;
+$colorTxt: #000;
+$colorWhite: #fff;
+$fontSize: 13px;
+
+@mixin border-radius($radius) { 
+	-webkit-border-radius: $radius; 
+	-moz-border-radius: $radius; 
+	-ms-border-radius: $radius; 
+	border-radius: $radius; 
+}
+@mixin box-shadow($left, $top, $blur, $color){ 
+	-moz-box-shadow: $left $top $blur $color; 
+	-webkit-box-shadow: $left $top $blur $color; 
+	box-shadow: $left $top $blur $color; 
+}
+@mixin opacity($p) {
+	opacity: $p*0.01;
+	-webkit-opacity: $p*0.01;
+	-khtml-opacity: $p*0.01;
+	-moz-opacity: $p*0.01;
+	filter:alpha(opacity=$p);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$p)";
+}
