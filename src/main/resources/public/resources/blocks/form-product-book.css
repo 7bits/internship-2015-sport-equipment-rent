@@ -14,7 +14,7 @@
 }
 
 
-.b-form-product-book_title{
+.b-form-product-book__title{
     float: left;
 
     width: 150px;
@@ -25,7 +25,7 @@
 }
 
 
-.b-form-product-book_ico{
+.b-form-product-book__ico{
     float: right;
 
     width: 25px;
@@ -42,7 +42,7 @@
 
 
 /*блок для input*/
-.b-form-product-book-input_title{
+.b-form-product-book-input__title{
     width: 100%;
     margin-top: -18px;
     margin-bottom: 10px;
@@ -52,14 +52,14 @@
 }
 
 
-.b-form-product-book-input_input{
+.b-form-product-book-input__input{
     width: 230px;
     margin-right: 10px;
     margin-left: 10px;
 }
 
 
-.b-form-product-book_button{
+.b-form-product-book__button{
     width: 100%;
     margin-top: 10px;
 }

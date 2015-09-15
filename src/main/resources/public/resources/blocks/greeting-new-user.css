@@ -16,7 +16,7 @@
 }
 
 
-.b-greeting-new-user_name-service{
+.b-greeting-new-user__name-service{
     font-family: RoundsBlack, 'RoundsBlack';
     font-size: 58px;
 
@@ -29,7 +29,7 @@
     color: white;
 }
 
-.b-greeting-new-user_motto{
+.b-greeting-new-user__motto{
     font-size: 18.4px;
 
     width: 100%;
@@ -48,7 +48,7 @@
     src: url('../vendor/fonts/RoundsBlack/RoundsBlack.ttf')  format('truetype');
 }
 
-.b-greeting-new-user_name-service p{
+.b-greeting-new-user__name-service p{
     font-family: RoundsBlack, 'RoundsBlack';
 }
 

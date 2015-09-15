@@ -1,4 +1,4 @@
-.b-input__default{
+.b-input--default{
     font-size: 0.875em;
 
     width: 100%;
@@ -18,15 +18,15 @@ textarea{
 }
 
 
-.b-input__default:focus,
-.b-input__default:hover{
+.b-input--default:focus,
+.b-input--default:hover{
     border-width: 1px;
     border-style: solid;
     border-color: #c7c7c7;
 }
 
 
-.b-input__default:focus{
+.b-input--default:focus{
     box-shadow: 0 0 8px #d7e9e9 inset;
 }
 
@@ -67,7 +67,7 @@ textarea:focus:placeholder-shown{
     color: transparent;
 }
 
-.b-input__half-size{
+.b-input--half-size{
     font-size: 0.875em;
     width: 49%;
     margin-right: 1%;

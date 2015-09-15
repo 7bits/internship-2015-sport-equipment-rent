@@ -18,12 +18,12 @@ block header
                     .b-logo
                         a(href="/")
                             img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
-                    .b-header_exit
+                    .b-header__exit
                         a.header-a-color(href="/logout")
                             b
                                 p
                                     ВЫХОД
-                    .b-header_give-announcement
+                    .b-header__give-announcement
                         a.header-a-color(href="/add")
                             b
                                 p
@@ -33,29 +33,29 @@ block content
         .base
             .order
                 .b-user-info
-                    .b-user-info_ava
+                    .b-user-info__ava
                         img(src=user.imageUrl, width="120", height="120")
                     .b-personal-area-title
                         .base
                             .order
-                                .b-personal-area-title_title
+                                .b-personal-area-title__title
                                     p
                                         Ваши данные
-                                .b-personal-area-title_ico-update
+                                .b-personal-area-title__ico-update
                                     a(href="/update_profile")
                                         img(src="resources/images/update-personal-area.png", width="17", height="17")
-                    .b-user-info_dividing-line
-                    .b-user-info_info
+                    .b-user-info__dividing-line
+                    .b-user-info__info
                         p=user.firstName
                     if user.phone!=null
-                        .b-user-info_dividing-line
-                        .b-user-info_info
+                        .b-user-info__dividing-line
+                        .b-user-info__info
                             p=user.phone
-                        .b-user-info_dividing-line.b-user-info_dividing-line__last
+                        .b-user-info__dividing-line.b-user-info__dividing-line--last
                 include mixins/mixin_users_announcement_list.jade
                 .b-user-list-announcements
-                    .b-title__default.b-title__unindented
-                        .b-user-list-announcements_title
+                    .b-title--default.b-title--unindented
+                        .b-user-list-announcements__title
                             b
                                 p
                                 Ваши объявления

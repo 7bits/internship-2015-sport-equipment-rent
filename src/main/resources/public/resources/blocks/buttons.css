@@ -1,6 +1,6 @@
-.b-button__default,
-.b-button__default:focus,
-.b-button__default:hover{
+.b-button--default,
+.b-button--default:focus,
+.b-button--default:hover{
     font-family: 'Roboto', sans-serif;
     font-size: .875em;
 
@@ -20,20 +20,20 @@
 }
 
 
-.b-button__default:focus{
+.b-button--default:focus{
     cursor: pointer;
 }
 
 
-.b-button__default:hover{
+.b-button--default:hover{
     cursor: pointer;
 }
 
 
 /*желтая кнопка*/
-.b-button__yellow,
-.b-button__yellow:focus,
-.b-button__yellow:hover{
+.b-button--yellow,
+.b-button--yellow:focus,
+.b-button--yellow:hover{
     float: right;
 
     width: 162px;
@@ -43,20 +43,20 @@
 }
 
 
-.b-button__yellow:hover{
+.b-button--yellow:hover{
     color: #949494;
 }
 
 
-.b-button__yellow:focus{
+.b-button--yellow:focus{
     color: #949494;
 }
 
 
 /*#blue button*/
-.b-button__blue,
-.b-button__blue:focus,
-.b-button__blue:hover{
+.b-button--blue,
+.b-button--blue:focus,
+.b-button--blue:hover{
     font-size: 16px;
 
     height: 45px;
@@ -69,18 +69,18 @@
 }
 
 
-.b-button__blue:hover{
+.b-button--blue:hover{
     color: #949494;
 }
 
 
-.b-button__blue:focus{
+.b-button--blue:focus{
     color: #949494;
 }
 
-.b-button__half-size,
-.b-button__half-size:hover,
-.b-button__half-size:focus{
+.b-button--half-size,
+.b-button--half-size:hover,
+.b-button--half-size:focus{
     width: 48%;
     margin-right: 2%;
 }

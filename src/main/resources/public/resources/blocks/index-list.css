@@ -23,19 +23,19 @@
             box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
 }
 
-.b-list-block_separate-line{
+.b-list-block__separate-line{
     width: 100%;
     height: 1px;
 
     background-color: #5cc9cc;
 }
 
-.b-list-content-elem:hover .b-list-block_separate-line{
+.b-list-content-elem:hover .b-list-block__separate-line{
     background-color: white;
 }
 
 
-.b-list-block_end-separate-line{
+.b-list-block__end-separate-line{
     width: 100%;
     height: 1px;
     margin-top: -15px;
@@ -44,7 +44,7 @@
     background-color: #5cc9cc;
 }
 
-.b-list-content-elem:hover .b-list-block_end-separate-line{
+.b-list-content-elem:hover .b-list-block__end-separate-line{
     background-color: white;
 }
 
@@ -71,7 +71,7 @@
     margin-bottom: 22px;
 }
 
-.b-list-content-elem-inside-info-title_product-title{
+.b-list-content-elem-inside-info-title__product-title{
     font-size: 18px;
 
     float: left;
@@ -82,7 +82,7 @@
     color: #278b8f;
 }
 
-.b-list-content-elem-inside-info-title_product-title p{
+.b-list-content-elem-inside-info-title__product-title p{
     overflow: hidden;
 
     padding-right: 5px;
@@ -94,7 +94,7 @@
     -o-text-overflow: ellipsis;
 }
 
-.b-list-content-elem-inside-info_discription{
+.b-list-content-elem-inside-info__discription{
     font-size: 14px;
 
     float: left;
@@ -107,7 +107,7 @@
 }
 
 
-.b-list-content-elem-inside-info_discription p{
+.b-list-content-elem-inside-info__discription p{
     overflow: hidden;
 
     padding-right: 5px;
@@ -139,7 +139,7 @@
     -khtml-border-radius: 5px; /* KHTML */
 }
 
-.b-list-content-elem-inside-info-price_price{
+.b-list-content-elem-inside-info-price__price{
     float: left;
 
     width: 160px;
@@ -166,12 +166,12 @@
             box-shadow: 2px 4px 5px 0 rgba(158,158,158,.5);
 }
 
-.b-list-content-elem-inside-photo_product-photo{
+.b-list-content-elem-inside-photo__product-photo{
     width: 100%;
     height: 100%;
 }
 
-.b-list-content-elem-inside-photo_product-photo img{
+.b-list-content-elem-inside-photo__product-photo img{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -182,7 +182,7 @@
     transform: translate(-50%, -50%);
 }
 
-.b-list-content-elem-inside-photo_default-photo{
+.b-list-content-elem-inside-photo__default-photo{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -192,12 +192,12 @@
 
     transform: translate(-50%, -50%);
 }
-.b-list-content-elem-inside-photo_default-photo img{
+.b-list-content-elem-inside-photo__default-photo img{
     max-width: 42px;
     max-height: 42px;
 }
 
-.b-list-content-elem-inside-photo_author-photo{
+.b-list-content-elem-inside-photo__author-photo{
     position: relative;
     z-index: 99998;
 
@@ -222,7 +222,7 @@
     behavior: url(border-radius.htc); /*IE */
 }
 
-.b-list-content-elem-inside-photo_author-photo img{
+.b-list-content-elem-inside-photo__author-photo img{
     -webkit-border-radius: 56px; /* Safari, Chrome */
     /*закругление*/
        -moz-border-radius: 56px; /* Firefox */

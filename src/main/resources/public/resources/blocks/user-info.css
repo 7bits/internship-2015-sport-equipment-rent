@@ -15,14 +15,14 @@
 
 }
 
-.b-user-info_ava{
+.b-user-info__ava{
     width: 120px;
     height: 120px;
     margin: 0 auto;
     margin-top: 10px;
 }
 
-.b-user-info_ava img{
+.b-user-info__ava img{
     border-width: 3px;
     border-style: solid;
     border-color: white;
@@ -36,7 +36,7 @@
             box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
 }
 
-.b-user-info_dividing-line{
+.b-user-info__dividing-line{
     width: 132px;
     height: 1px;
     margin: 0 auto;
@@ -47,7 +47,7 @@
 }
 
 
-.b-user-info_dividing-line__last{
+.b-user-info__dividing-line--last{
     margin-bottom:10px;
 }
 
@@ -58,7 +58,7 @@
     src: url('../../vendor/fonts/MyriadProRegular/MyriadProRegular.ttf')  format('truetype');
 }
 
-.b-user-info_info p{
+.b-user-info__info p{
     font-family: MyriadProRegular, 'MyriadProRegular';
 
     overflow: hidden;
@@ -70,7 +70,7 @@
 }
 
 
-.b-user-info_info{
+.b-user-info__info{
     font-size: 12px;
 
 
@@ -87,7 +87,7 @@
 }
 
 
-/*#personal_area*/
+/*#personal__area*/
 .b-personal-area-title
 {
     width: 100%;
@@ -96,7 +96,7 @@
     padding-left: 8px;
 }
 
-.b-personal-area-title_title{
+.b-personal-area-title__title{
     font-size: 16px;
 
     float: left;
@@ -108,12 +108,12 @@
 }
 
 
-.b-personal-area-title_title p{
+.b-personal-area-title__title p{
     font-family: MyriadProRegular, 'MyriadProRegular';
 }
 
 
-.b-personal-area-title_ico-update{
+.b-personal-area-title__ico-update{
     float: right;
 
     width: 17px;

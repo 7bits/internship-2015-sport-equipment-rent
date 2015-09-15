@@ -22,7 +22,7 @@
 }
 
 
-.b-message-text_text{
+.b-message-text__text{
     font-size: 24px;
 
     float: left;
@@ -36,7 +36,7 @@
 }
 
 
-.b-message-block-text_ico{
+.b-message-block-text__ico{
     float: left;
 
     width: 36px;

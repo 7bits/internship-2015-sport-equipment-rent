@@ -14,7 +14,7 @@
 }
 
 
-.b-ad-details_time{
+.b-ad-details__time{
     font-size: .875em;
 
     float: left;
@@ -31,7 +31,7 @@
 }
 
 
-.b-ad-details_product-title{
+.b-ad-details__product-title{
     font-size: 1.125em;
 
     overflow: hidden;
@@ -49,7 +49,7 @@
     -o-text-overflow: ellipsis;
 }
 
-.b-ad-details_product-title p{
+.b-ad-details__product-title p{
     white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
     white-space:   -o-pre-wrap;
@@ -57,7 +57,7 @@
 }
 
 
-.b-ad-details_product-description{
+.b-ad-details__product-description{
     font-size: .875em;
 
     width: 100%
@@ -75,7 +75,7 @@
     color: #6b6b6b;
 }
 
-.b-ad-details_product-description p{
+.b-ad-details__product-description p{
     white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
     white-space:   -o-pre-wrap;
@@ -91,7 +91,7 @@
 }
 
 
-.b-photo-set_photo{
+.b-photo-set__photo{
     position: relative;
 
     float: left;
@@ -112,7 +112,7 @@
 }
 
 
-.b-photo-set_photo img{
+.b-photo-set__photo img{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -126,7 +126,7 @@
 }
 
 
-.b-photo-set_ico img{
+.b-photo-set__ico img{
     position: absolute;
     top: 50%;
     left: 50%;

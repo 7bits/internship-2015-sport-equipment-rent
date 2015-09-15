@@ -8,7 +8,7 @@
     transform: translate(-50%, -50%);
 }
 
-.b-login_logo{
+.b-login__logo{
     width: 170px;
     min-width: 170px;
     max-width: 170px;
@@ -16,7 +16,7 @@
     min-height: 74px;
 }
 
-.b-login_forgot-pass{
+.b-login__forgot-pass{
     font-size: 14px;
 
     width: 100%;
@@ -28,7 +28,7 @@
     color: #5dc8cd;
 }
 
-.b-login_to-registration{    
+.b-login__to-registration{
     font-size: 14px;
 
     width: 100%;

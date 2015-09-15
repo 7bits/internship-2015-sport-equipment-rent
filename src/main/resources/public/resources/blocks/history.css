@@ -10,7 +10,7 @@ table{
 }
 
 
-.b-table_head{
+.b-table__head{
     font-size: 18px;
 
     height: 44px;
@@ -23,7 +23,7 @@ table{
 }
 
 
-.b-table_col{
+.b-table__col{
     font-size: 14px;
 
     height: 40px;
@@ -37,7 +37,7 @@ table{
 }
 
 
-.b-table_col p{
+.b-table__col p{
     overflow: hidden;
 
     padding-right: 8px;
@@ -50,18 +50,18 @@ table{
 }
 
 
-.b-table_col__start,
-.b-table_col__end{
+.b-table__col--start,
+.b-table__col--end{
     width: 174px;
 }
 
 
-.b-table_col__product{
+.b-table__col--product{
     width: 350px;
 }
 
 
-.b-table_col__renter{
+.b-table__col--renter{
     width: 218px;
 }
 
@@ -70,7 +70,7 @@ tbody tr:nth-child (odd){
     background-color: #fcfcfc;/* фон нечетных строк */
 }
 
-.b-table__empty{
+.b-table--empty{
     font-size: 36px;
 
     padding-top: 50px;

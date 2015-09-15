@@ -23,15 +23,15 @@ block content
                 tr(height="40")
                     each row in userHistory
                         tr(height="40")
-                            td.b-table_col.b-table_col__start
+                            td.b-table__col.b-table__col--start
                                 p.size-text-norap=row.startDate
-                            td.b-table_col.b-table_col__end
+                            td.b-table__col.b-table__col--end
                                 p.size-text-norap=row.endDate
-                            td.b-table_col.b-table_col__product
+                            td.b-table__col.b-table__col--product
                                 p.size-text-norap=row.title
-                            td.b-table_col.b-table_col__renter
+                            td.b-table__col.b-table__col--renter
                                 p.size-text-norap=row.renting
         else
-            .b-table__empty
+            .b-table--empty
                 p
                     Здесь могла бы быть история ваших сделок

@@ -8,21 +8,21 @@ mixin list(goods)
                         each image in Goods.imageUrl
                             .b-user-announcement-photo
                                 if image=="resources/images/photo-ico.png"
-                                    .b-user-announcement-photo_ico
+                                    .b-user-announcement-photo__ico
                                         img(src=image, width="42", height="42")
                                 else
-                                    .b-user-announcement-photo_image
+                                    .b-user-announcement-photo__image
                                         img(src=image)
                         .b-user-announcement-product-title-status
                             .base
                                 .order
-                                    .b-user-announcement_product-title
+                                    .b-user-announcement__product-title
                                         b
                                             p=Goods.title
-                                    .b-status_ico
+                                    .b-status__ico
                                         if (Goods.status)
                                             img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
                                         else
                                             img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
-                        .b-user-announcement_product-description
+                        .b-user-announcement__product-description
                             p=Goods.description

@@ -16,34 +16,34 @@ block content
             .order
                 a(href="/profile?user_id=#{user.id}")
                     .b-user-info
-                        .b-user-info_ava
+                        .b-user-info__ava
                             img(src=user.imageUrl, width="120", height="120")
-                        .b-user-info_dividing-line
-                        .b-user-info_info
+                        .b-user-info__dividing-line
+                        .b-user-info__info
                             p=user.firstName
                 .b-ad-details
                     .b-ad-details-content
-                        .b-title__default
+                        .b-title--default
                             .base
                                 .order
-                                    .b-ad-details_time
+                                    .b-ad-details__time
                                         b
                                             p
                                                 Час:
                                                 text=Goods.pricePerHour
-                                    .b-ad-details_time
+                                    .b-ad-details__time
                                         b
                                             p
                                                 Сутки:
                                                 text=Goods.pricePerDay
-                                    .b-ad-details_time
+                                    .b-ad-details__time
                                         b
                                             p
                                                 Неделя:
                                                 text=Goods.pricePerWeek
-                        .b-ad-details_product-title
+                        .b-ad-details__product-title
                             p=Goods.title
-                        .b-ad-details_product-description
+                        .b-ad-details__product-description
                             p=Goods.description
                         .b-status
                             include mixins/mixin_full_status.jade
@@ -51,9 +51,9 @@ block content
                         .base
                             .order
                                 each image in Goods.imageUrl
-                                    .b-photo-set_photo
+                                    .b-photo-set__photo
                                         if image=="resources/images/photo-ico.png"
-                                            .b-photo-set_ico
+                                            .b-photo-set__ico
                                                 img(src=image, width="42", height="42")
                                         else
                                             a.quickbox(href="#{image}")
@@ -62,35 +62,35 @@ block content
                     .b-form-product-book
                         form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
                             .b-form-product-book-backing
-                                .b-title__default
+                                .b-title--default
                                     .base
                                         .order
                                             .b-form-product-book_title
                                                 b
                                                     p
                                                         Время аренды
-                                            .b-form-product-book_ico
+                                            .b-form-product-book__ico
                                                 img(src="resources/images/calendar-ico.png")
                                 if !isAuthor
                                     include mixins/mixin_er.jade
                                     +err(errors)
                                 .b-form-product-book-input
-                                    .b-form-product-book-input_title
+                                    .b-form-product-book-input__title
                                         p
                                             Начало
-                                    .b-form-product-book-input_input
-                                        input.b-input__default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+                                    .b-form-product-book-input__input
+                                        input.b-input--default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
                                 .b-form-product-book-input
-                                    .b-form-product-book-input_title
+                                    .b-form-product-book-input__title
                                         p
                                             Завершение
-                                    .b-form-product-book-input_input
-                                        input.b-input__default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
-                            .b-form-product-book_button
-                                input.b-button__default.b-button__blue(type='submit', value='Забронировать')
+                                    .b-form-product-book-input__input
+                                        input.b-input--default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+                            .b-form-product-book__button
+                                input.b-button--default.b-button--blue(type='submit', value='Забронировать')
                 else
                     .b-form-product-book
                         a(href="/update?announcement_id=#{Goods.id}")
-                            input.b-button__default.b-button__blue(type='button', value='Редактировать')
+                            input.b-button--default.b-button--blue(type='button', value='Редактировать')
 block dynamic-scripts
     script(src="resources/vendor/scripts/qb/js/qb.js")    

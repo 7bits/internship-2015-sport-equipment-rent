@@ -16,9 +16,9 @@ block content
     form(role="form", action="/add", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade
         .b-form-crud-announcement-button
-            input.b-button__default.b-button__yellow(type='submit', value='РАЗМЕСТИТЬ')
+            input.b-button--default.b-button--yellow(type='submit', value='РАЗМЕСТИТЬ')
         .b-form-crud-announcement-button
             a(href="/")
-                input.b-button__default.b-button__yellow(type='submit', value='ОТМЕНА')
+                input.b-button--default.b-button--yellow(type='submit', value='ОТМЕНА')
 block dynamic-scripts
     script(src='resources/scripts/add-update-confirm-announcement/add-photo.js')

@@ -1,4 +1,4 @@
-.b-title__default{
+.b-title--default{
     font-size: 1.125em;
 
     width: 100%;
@@ -16,6 +16,6 @@
 }
 
 
-.b-title__unindented{
+.b-title--unindented{
     margin-bottom: 0px;
 }

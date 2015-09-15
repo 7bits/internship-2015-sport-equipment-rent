@@ -6,23 +6,23 @@
                     a(href="/")
                         img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
                 if (!isAuth)
-                    .b-header_login
+                    .b-header__login
                         a.header-a-color(href="/login")
                             b
                                 p
                                     ВХОД
                 else
-                    .b-header_exit
+                    .b-header__exit
                         a.header-a-color(href="/logout")
                             b
                                 p
                                     ВЫХОД
-                    .b-header_to-personal-area
+                    .b-header__to-personal-area
                         a.header-a-color(href="/personal_area")
                             b
                                 p
                                     ЛИЧНЫЙ КАБИНЕТ
-                    .b-header_give-announcement
+                    .b-header__give-announcement
                         a.header-a-color(href="/add")
                             b
                                 p

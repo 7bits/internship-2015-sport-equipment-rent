@@ -14,15 +14,15 @@ block content
             .order
                 a(href="/profile?user_id=#{user.id}")
                     .b-user-info
-                        .b-user-info_ava
+                        .b-user-info__ava
                             img(src=user.imageUrl, width="120", height="120")
-                        .b-user-info_dividing-line
-                        .b-user-info_info
+                        .b-user-info__dividing-line
+                        .b-user-info__info
                             p=user.firstName
                 include mixins/mixin_users_announcement_list.jade
                 .b-user-list-announcements
-                    .b-title__default.b-title__unindented
-                        .b-user-list-announcements_title
+                    .b-title--default.b-title--unindented
+                        .b-user-list-announcements__title
                             b
                                 p
                                     text(style="margin-right: 2px;")

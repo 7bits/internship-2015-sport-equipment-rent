@@ -19,7 +19,7 @@
 }
 
 
-.b-form-crud-announcement-content_title{
+.b-form-crud-announcement-content__title{
     font-size: .953em;
 
     width: 100%;
@@ -31,12 +31,12 @@
 }
 
 
-.b-input_name-announcement{
+.b-input__name-announcement{
     width: 70%;
 }
 
 
-.b-form_textarea{
+.b-form__textarea{
     width: 100%;
     min-height: 152px;
     margin-bottom: 19px;
@@ -50,7 +50,7 @@
 }
 
 
-.b-set-fields_input{
+.b-set-fields__input{
     float: left;
 
     width: 113px;
@@ -125,7 +125,7 @@
 
 
 /*для вывода текста названия подргуженного файла*/
-.b-download-mask_input-file-name{
+.b-download-mask__input-file-name{
     font-size: 14px;
 
     position: absolute;
@@ -157,7 +157,7 @@
 
 
 /*реальная кнопка*/
-.b-download-mask_real-file-input{
+.b-download-mask__real-file-input{
     position: relative;
     z-index: 99998;
     top: -128px;
@@ -176,7 +176,7 @@
 
 
 /*иконка удаления и ее input*/
-.b-delete-photo_input-delete{
+.b-delete-photo__input-delete{
     position: relative;
     z-index: 99999;
     top: 0;
@@ -189,12 +189,12 @@
 }
 
 
-.b-delete-photo_input-delete:hover{
+.b-delete-photo__input-delete:hover{
     cursor: pointer;
 }
 
 
-.b-delete-photo_input-delete:focus{
+.b-delete-photo__input-delete:focus{
     cursor: pointer;
 }
 

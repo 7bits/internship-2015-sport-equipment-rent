@@ -5,7 +5,7 @@ mixin list(goods)
                 - announcement_id = Goods.id;
                 a(href="/see_announcement?announcement_id=#{announcement_id}")
                     .b-list-content-elem
-                        .b-list-block_separate-line
+                        .b-list-block__separate-line
                         .b-list-content-elem-inside
                             .base
                                 .order
@@ -13,27 +13,27 @@ mixin list(goods)
                                         .b-list-content-elem-inside-info-title
                                             .base
                                                 .order
-                                                    .b-list-content-elem-inside-info-title_product-title
+                                                    .b-list-content-elem-inside-info-title__product-title
                                                         b
                                                             p=Goods.title
                                                     .b-status
                                                         include mixin_full_status.jade
-                                        .b-list-content-elem-inside-info_discription
+                                        .b-list-content-elem-inside-info__discription
                                             p=Goods.description
                                         .b-list-content-elem-inside-info-price
                                             .base
                                                 .order
-                                                    .b-list-content-elem-inside-info-price_price
+                                                    .b-list-content-elem-inside-info-price__price
                                                         text(style="padding-right: 4px;")
                                                             Час:
                                                         b
                                                             text(style="padding-right: 2px;")=Goods.pricePerHour
-                                                    .b-list-content-elem-inside-info-price_price
+                                                    .b-list-content-elem-inside-info-price__price
                                                         text(style="padding-right: 4px;")
                                                             Сутки:
                                                         b
                                                             text(style="padding-right: 2px;")=Goods.pricePerDay
-                                                    .b-list-content-elem-inside-info-price_price
+                                                    .b-list-content-elem-inside-info-price__price
                                                         text(style="padding-right: 4px;")
                                                             Неделя:
                                                         b
@@ -41,12 +41,12 @@ mixin list(goods)
                                     .b-list-content-elem-inside-photo
                                         each image in Goods.imageUrl
                                             if image=="resources/images/photo-ico.png"
-                                                .b-list-content-elem-inside-photo_default-photo
+                                                .b-list-content-elem-inside-photo__default-photo
                                                     img(src=image, width="42", height="42")
                                             else
-                                                .b-list-content-elem-inside-photo_product-photo
+                                                .b-list-content-elem-inside-photo__product-photo
                                                     img(src=image)
                                         a(href="/profile?user_id=#{Goods.authorId}")
-                                            .b-list-content-elem-inside-photo_author-photo
+                                            .b-list-content-elem-inside-photo__author-photo
                                                 img(src=Goods.authorImage, width="52", height="52")
-                        .b-list-block_end-separate-line
+                        .b-list-block__end-separate-line

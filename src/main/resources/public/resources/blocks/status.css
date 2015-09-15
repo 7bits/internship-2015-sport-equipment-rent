@@ -7,14 +7,14 @@
     padding-bottom: 8px;
 }
 
-.b-status_ico{
+.b-status__ico{
     float: right;
 
     width: 22px;
     height: 22px;
 }
 
-.b-status_text{
+.b-status__text{
     font-size: 14px;
 
     float: right;

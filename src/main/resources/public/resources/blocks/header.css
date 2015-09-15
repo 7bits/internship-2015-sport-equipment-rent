@@ -47,7 +47,7 @@
     min-height: 74px;
 }
 /*блок "Вход"*/
-.b-header_login{
+.b-header__login{
     font-size: .875em;
 
     float: right;
@@ -61,7 +61,7 @@
 }
 
 /*блок "Личный кабинет"*/
-.b-header_to-personal-area{
+.b-header__to-personal-area{
     font-size: .875em;
 
     float: right;
@@ -75,7 +75,7 @@
 }
 
 /*блок "Выход"*/
-.b-header_exit{
+.b-header__exit{
     font-size: .875em;
 
     float: right;
@@ -89,7 +89,7 @@
 }
 
 
-.b-header_give-announcement{
+.b-header__give-announcement{
     font-size: .875em;
 
     float: right;
@@ -132,15 +132,15 @@ a.header-a-color:focus{
 
 
 @media(max-width: 942px){
-    .b-header_to-personal-area{
+    .b-header__to-personal-area{
         display: none;
     }
 
-    .b-header_exit{
+    .b-header__exit{
         display: none;
     }
 
-    .b-header_give-announcement{
+    .b-header__give-announcement{
         display: none;
     }
 }
