@@ -2,17 +2,17 @@
     float: left;
 
     width: 156px;
-    margin-right:12px;
+    margin-right: 12px;
 
     border-width: 1px;
     border-style: solid;
     border-color: rgba(212, 212, 212, .4);
     -webkit-border-radius: 3px; /* Safari, Chrome */
-    -khtml-border-radius: 3px; /* KHTML */
-        -moz-border-radius: 3px; /* Firefox */
+       -moz-border-radius: 3px; /* Firefox */
             border-radius: 3px;
     background-color: rgba(249, 249, 249, .8);
 
+    -khtml-border-radius: 3px; /* KHTML */
 }
 
 .b-user-info__ava{
@@ -27,13 +27,14 @@
     border-style: solid;
     border-color: white;
     -webkit-border-radius: 120px; /* Safari, Chrome */
-    -khtml-border-radius: 120px; /* KHTML */
-    behavior: url(border-radius.htc); /*IE */
        -moz-border-radius: 120px; /* Firefox */
             border-radius: 120px; /* CSS3 */
     -webkit-box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
        -moz-box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
             box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
+
+    -khtml-border-radius: 120px; /* KHTML */
+    behavior: url(border-radius.htc); /*IE */
 }
 
 .b-user-info__dividing-line{
@@ -48,7 +49,7 @@
 
 
 .b-user-info__dividing-line--last{
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 
@@ -73,7 +74,6 @@
 .b-user-info__info{
     font-size: 12px;
 
-
     width: 100%;
     margin-bottom: 8px;
     padding-right: 2px;
@@ -88,8 +88,7 @@
 
 
 /*#personal__area*/
-.b-personal-area-title
-{
+.b-personal-area-title{
     width: 100%;
     padding-top: 3px;
     padding-right: 8px;

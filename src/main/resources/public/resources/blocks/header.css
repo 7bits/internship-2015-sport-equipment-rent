@@ -21,12 +21,13 @@
 .b-header__login,
 .b-header__to-personal-area,
 .b-header__exit,
-.b-header__give-announcement
-{
-    font-size: 0.875em;
+.b-header__give-announcement{
+    font-size: .875em;
+
     float: right;
-    height: 74px;
+
     width: auto;
+    height: 74px;
     padding-top: 27px;
 }
 

@@ -44,13 +44,14 @@
     border-style: solid;
     border-color: rgba(212, 212, 212, 1);
     -webkit-border-radius: 3px; /* Safari, Chrome */
-    -khtml-border-radius: 3px; /* KHTML */
        -moz-border-radius: 3px; /* Firefox */
             border-radius: 3px;
     background-color: rgba(249, 249, 249, 1);
     -webkit-box-shadow: 0 1px 1px 1px rgba(153,151,153,.1);
        -moz-box-shadow: 0 1px 1px 1px rgba(153,151,153,.1);
             box-shadow: 0 1px 1px 1px rgba(153,151,153,.1);
+
+    -khtml-border-radius: 3px; /* KHTML */
 }
 
 .b-user-announcement-photo__ico{
