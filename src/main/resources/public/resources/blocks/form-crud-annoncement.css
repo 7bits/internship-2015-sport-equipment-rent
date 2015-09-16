@@ -7,20 +7,14 @@
     background-color: white;
 }
 
-
-.b-form-crud-announcement-header p{
-    padding-top: 12px;
-}
-
-
-.b-form-crud-announcement-content{
+.b-form-crud-announcement__content{
     width: 360px;
     margin: 0 auto;
 }
 
 
-.b-form-crud-announcement-content__title{
-    font-size: .953em;
+.b-form-crud-announcement__title{
+    font-size: 0.953em;
 
     width: 100%;
     height: 40px;
@@ -82,13 +76,13 @@
 
 
 /*само изображение*/
-.b-photo-image{
+.b-photo__product-image{
     width: 100%;
     height: 100%;
 }
 
 
-.b-photo-image img{
+.b-photo__product-image img{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -101,7 +95,7 @@
 
 
 /*дефолтная иконка (блок)*/
-.b-photo-image-default{
+.b-photo__image-default{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -114,7 +108,7 @@
 
 
 /*контейнер для маски*/
-.b-download-mask{
+.b-photo__download-mask{
     position: relative;
     top: 0;
     left: 0;

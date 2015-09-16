@@ -1,4 +1,4 @@
-.b-greeting-new-user-base-color{
+.b-greeting-new-user__base-color{
     width: 100%;
     margin-bottom: 19px;
 
@@ -6,7 +6,7 @@
 }
 
 
-.b-greeting-new-user-background-image{
+.b-greeting-new-user__background-image{
     width: 100%;
     max-width: 1336px;
     height: 582px;
@@ -52,7 +52,7 @@
     font-family: RoundsBlack, 'RoundsBlack';
 }
 
-.b-greeting-new-user-button-content{
+.b-greeting-new-user__button-content{
     width: 486px;
     margin: 0 auto;
 }
