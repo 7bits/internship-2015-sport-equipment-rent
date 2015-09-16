@@ -5,7 +5,7 @@
 }
 
 
-.b-ad-details-content{
+.b-ad-details__content{
     width: 400px;
     min-height: 155px;
     padding-bottom: 20px;
@@ -117,9 +117,7 @@
     top: 50%;
     left: 50%;
 
-    max-width: 131px;
     max-width: 128px;
-    max-height: 100px;
     max-height: 98px;
 
     transform: translate(-50%, -50%);
