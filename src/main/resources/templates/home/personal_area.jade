@@ -27,7 +27,20 @@ block header
                         a.header-a-color(href="/add")
                             b
                                 p
-                                    ДАТЬ ОБЪЯВЛЕНИЕ
+                                    ДАТЬ ОБЪЯВЛЕНИЕ\
+                    .b-header__dropdown-menu-ico.js-dropdown-ico
+                            h1
+                                img(src="resources/images/layout/menu.png", width="25", height="15")
+        .b-header__dropdown-menu.js-dropdown-menu
+                ul
+                    li
+                        a.header-a-color(href="/add") 
+                            p 
+                                ДАТЬ ОБЪЯВЛЕНИЕ
+                    li
+                        a.header-a-color(href="/logout") 
+                            p 
+                                ВЫХОД
 block content
     .b-content-inside
         .base
