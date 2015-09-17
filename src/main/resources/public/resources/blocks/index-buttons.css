@@ -4,21 +4,21 @@
 .b-button-see-announcement,
 .b-button-see-announcement:hover,
 .b-button-see-announcement:focus{
-    font-size: 14.5px;
+    font-size: 18px;
 
-    width: 212px;
-    height: 58px;
+    width: 230px;
+    height: 55px;
     padding: 1px 0 2px 0;
 
-    border-width: 3px;
+    border-width: 2px;
     border-style: solid;
-    border-color: #0e5e63;
-    -webkit-border-radius: 10px; /* Safari, Chrome */
-       -moz-border-radius: 10px; /* Firefox */
-            border-radius: 10px;
+    border-color: #365f63;
+    -webkit-border-radius: 8px; /* Safari, Chrome */
+       -moz-border-radius: 8px; /* Firefox */
+            border-radius: 8px;
     box-shadow: none;
 
-    -khtml-border-radius: 10px; /* KHTML */
+    -khtml-border-radius: 8px; /* KHTML */
 }
 
 .b-button-add-announcement,
@@ -26,11 +26,11 @@
 .b-button-add-announcement:hover{
     float: left;
 
-    background: #edd04e;
+    background: #e3cf56;
 }
 
 .b-button-add-announcement{
-    color: #0e5e63;
+    color: #365f63;
 }
 
 .b-button-add-announcement:hover,
@@ -49,12 +49,12 @@
 }
 
 .b-button-see-announcement{
-    color: #5cc9cc;
+    color: #365f63;
 }
 
 .b-button-see-announcement:hover,
 .b-button-see-announcement:focus{
     cursor: pointer;
 
-    color: #0e5e63;
+    color: #e3cf56;
 }
