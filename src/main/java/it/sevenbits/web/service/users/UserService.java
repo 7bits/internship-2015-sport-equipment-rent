@@ -20,6 +20,10 @@ public class UserService {
     @Autowired
     @Qualifier(value="userInPostgreSQLrepository")
     private UserRepository repository;
+    
+    @Value("${resources.default-users-avatar}")
+    private String defaultUserAvatar;
+
 
     public User getUser(long id) throws GoodsException {
         User user;
