@@ -6,7 +6,7 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.goods.ImageController;
+import it.sevenbits.web.service.goods.ImageService;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +101,7 @@ public class AddAnnouncementController {
             if(firstImage!=null && !firstImage.isEmpty()) {
                 try {
                     String firstImagePath = imagesPath + hash + firstImage.getOriginalFilename();
-                    ImageController.saveImage(firstImage, resourcesPath + firstImagePath);
+                    ImageService.saveImage(firstImage, resourcesPath + firstImagePath);
                     form.setFirstImageUrl(firstImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -111,7 +111,7 @@ public class AddAnnouncementController {
             if(secondImage!=null && !secondImage.isEmpty()) {
                 try {
                     String secondImagePath = imagesPath + hash + secondImage.getOriginalFilename();
-                    ImageController.saveImage(secondImage, resourcesPath + secondImagePath);
+                    ImageService.saveImage(secondImage, resourcesPath + secondImagePath);
                     form.setSecondImageUrl(secondImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -120,7 +120,7 @@ public class AddAnnouncementController {
             if(thirdImage!=null && !thirdImage.isEmpty()) {
                 try {
                     String thirdImagePath = imagesPath + hash + thirdImage.getOriginalFilename();
-                    ImageController.saveImage(thirdImage, resourcesPath + thirdImagePath);
+                    ImageService.saveImage(thirdImage, resourcesPath + thirdImagePath);
                     form.setThirdImageUrl(thirdImagePath);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -143,7 +143,7 @@ public class AddAnnouncementController {
             try {
                 String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 String nameForBase = imagesPath + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
-                ImageController.saveImage(firstImage, fileName);
+                ImageService.saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
@@ -155,7 +155,7 @@ public class AddAnnouncementController {
             try {
                 String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 String nameForBase = imagesPath + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
-                ImageController.saveImage(secondImage, fileName);
+                ImageService.saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
@@ -167,7 +167,7 @@ public class AddAnnouncementController {
             try {
                 String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 String nameForBase = imagesPath + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
-                ImageController.saveImage(thirdImage, fileName);
+                ImageService.saveImage(thirdImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
