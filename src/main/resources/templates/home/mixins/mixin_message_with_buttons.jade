@@ -1,10 +1,10 @@
 mixin create-message(textFirstPart,textSecondPart, firstButton, secondButton)
     .b-message
-        .b-message-text(style="width: 400px;")
-            .b-message-text__text(style="margin-bottom: 20px;")
+        .b-message__text.b-message__text--with-buttons
                 p=textFirstPart
                 br
                 p=textSecondPart
+        .b-message__buttons    
             .base 
                 .order
                     a(href="/")
