@@ -12,6 +12,9 @@ block scripts
     //- и заполняет название файла
     //- должен подгружаться тут
     script(src="resources/scripts/add-update-confirm-announcement/update-announcement-past-filename-hide-delete-ico.js")
+block header
+    include mixins/mixin_message_header.jade
+    +create-header()
 block content
     form(role="form", action="/add", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade

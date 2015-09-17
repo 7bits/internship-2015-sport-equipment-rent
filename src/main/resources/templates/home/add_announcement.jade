@@ -11,6 +11,9 @@ block scripts
     //- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений 
     //- должен подгружаться тут
     script(src='resources/scripts/add-update-confirm-announcement/add-announcement-hide-delete-ico.js')
+block header
+    include mixins/mixin_message_header.jade
+    +create-header()
 block content
     form(role="form", action="/add", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade
