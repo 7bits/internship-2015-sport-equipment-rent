@@ -25,10 +25,6 @@ public class UserService {
     @Value("${resources.default-users-avatar}")
     private String defaultUserAvatar;
 
-
-    @Value("${default-users-avatar}")
-    private String defaultUserAvatar;
-
     public User getUser(long id) throws GoodsException {
         User user;
         try{

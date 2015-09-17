@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by awemath on 8/18/15.
  */
-public class ImageController {
+public class ImageService {
     public static void saveImage(MultipartFile image, String path) throws IOException {
         byte[] bytes = image.getBytes();
 
