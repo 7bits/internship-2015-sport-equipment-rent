@@ -26,6 +26,9 @@ public class UserService {
     private String defaultUserAvatar;
 
 
+    @Value("${default-users-avatar}")
+    private String defaultUserAvatar;
+
     public User getUser(long id) throws GoodsException {
         User user;
         try{
@@ -57,7 +60,7 @@ public class UserService {
         user.setEmail(form.geteMail());
         user.setFirstName(form.getFirstName());
         user.setPass(BCrypt.hashpw(form.getPassword(), BCrypt.gensalt()));
-        user.setImageUrl("http://s017.radikal.ru/i424/1508/69/880c33f843b3.jpg");
+        user.setImageUrl(defaultUserAvatar);
         try {
             repository.save(user);
         } catch (Exception e) {
