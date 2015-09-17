@@ -1,4 +1,4 @@
-.b-update{
+.b-update-profile{
     width: 343px;
     margin: 0 auto;
     margin-top: 19px;
@@ -9,7 +9,7 @@
 }
 
 
-.b-update-form{
+.b-update-profile__form{
     width: 306px;
     margin: 0 auto;
     margin-bottom: 10px;
@@ -17,7 +17,20 @@
 }
 
 
-.b-update-form__title{
+.b-update-profile__avatar-recommendation{
+    font-size: 12.8px;
+
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 2px;
+
+    text-align: center;
+
+    color: #6fb2b4;
+}
+
+
+.b-update-profile__title{
     font-size: .953em;
 
     width: 100%;
@@ -28,14 +41,8 @@
 }
 
 
-.b-avatar-recommendation{
-    font-size: 12.8px;
-
-    width: 100%;
-    margin-top: 3px;
-    margin-bottom: 2px;
-
-    text-align: center;
-
-    color: #6fb2b4;
+@media(max-width: 346px){
+    .b-update-profile{
+        width: 320px;
+    }
 }
