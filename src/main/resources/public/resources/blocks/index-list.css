@@ -1,188 +1,148 @@
-/*ВЫВОД СПИСКА ДЛЯ МИКСИНА*/
-.b-list-content{
-    max-width: 860px;
-    margin: 0 auto;
-    padding-top: 52px;
-}
-
-/*need link's hover*/
-.b-list-content-elem{
-    width: 100%;
-}
-
-.b-list-content-elem:hover{
-    -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-       -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-            box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-}
-
-
-.b-list-content-elem:focus{
-    -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-       -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-            box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-}
-
-.b-list-block__separate-line{
-    width: 100%;
-    height: 1px;
-
-    background-color: #5cc9cc;
-}
-
-.b-list-content-elem:hover .b-list-block__separate-line{
-    background-color: white;
-}
-
-
-.b-list-block__end-separate-line{
-    width: 100%;
-    height: 1px;
-    margin-top: -15px;
-    margin-bottom: 12px;
-
-    background-color: #5cc9cc;
-}
-
-.b-list-content-elem:hover .b-list-block__end-separate-line{
-    background-color: white;
-}
-
-/*внутренность блока*/
-.b-list-content-elem-inside{
-    width: 766px;
-    height: 203px;
+.b-list__content{
+    width: 937px;
     margin: 0 auto;
 }
 
-
-.b-list-content-elem-inside-info{
-    float: left;
-
-    width: 577px;
-    height: 100%;
-    padding-right: 25px;
-}
-/*содержимое info-block*/
-.b-list-content-elem-inside-info-title{
+.b-list-elem{
     width: 100%;
-    height: 22px;
-    margin-top: 12px;
-    margin-bottom: 22px;
-}
+    height: 238px;
 
-.b-list-content-elem-inside-info-title__product-title{
-    font-size: 18px;
-
-    float: left;
-
-    width: 70.66%;
-    height: 22px;
-
-    color: #278b8f;
-}
-
-.b-list-content-elem-inside-info-title__product-title p{
-    overflow: hidden;
-
-    padding-right: 5px;
-    /*обрезка с многоточнием*/
-
-    white-space: nowrap;
-       text-overflow: ellipsis;
-
-    -o-text-overflow: ellipsis;
-}
-
-.b-list-content-elem-inside-info__discription{
-    font-size: 14px;
-
-    float: left;
-
-    width: 100%;
-    height: 42px;
-    margin-bottom: 30px;
-
-    color: #626262;
-}
-
-
-.b-list-content-elem-inside-info__discription p{
-    overflow: hidden;
-
-    padding-right: 5px;
-    /*обрезка с многоточнием*/
-
-    white-space: nowrap;
-       text-overflow: ellipsis;
-
-    -o-text-overflow: ellipsis;
-}
-
-.b-list-content-elem-inside-info-price{
-    font-size: 16px;
-
-    float: left;
-
-    min-width: 90%;
-    height: 40px;
-    padding-top: 8px;
-
-    color: #278b8f;
-    border-width: 2px;
+    border-width: 2.78px;
     border-style: solid;
-    border-color: #b3e5e7;
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-       -moz-border-radius: 5px; /* Firefox */
-            border-radius: 5px;
-
-    -khtml-border-radius: 5px; /* KHTML */
-}
-
-.b-list-content-elem-inside-info-price__price{
-    float: left;
-
-    width: 160px;
-    height: 40px;
-    margin-right: 5px;
-    padding-right: 3px;
-    padding-left: 3px;
-}
-
-/*фото блок*/
-.b-list-content-elem-inside-photo{
+    border-color: #5cc9cc;
+    margin-top: 40px;
     position: relative;
-
-    float: left;
-    float: left;
-
-    width: 147px;
-    height: 147px;
-    margin-top: 12px;
-    margin-bottom: 15px;
-
-    -webkit-box-shadow: 2px 4px 5px 0 rgba(158,158,158,.5);
-       -moz-box-shadow: 2px 4px 5px 0 rgba(158,158,158,.5);
-            box-shadow: 2px 4px 5px 0 rgba(158,158,158,.5);
 }
 
-.b-list-content-elem-inside-photo__product-photo{
-    width: 100%;
-    height: 100%;
+.b-list-elem:hover,
+.b-list-elem:focus{
+    -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+       -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+            box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
 }
 
-.b-list-content-elem-inside-photo__product-photo img{
+
+.b-list-elem__content{
     position: absolute;
     top: 50%;
     left: 50%;
 
-    max-width: 145px;
-    max-height: 145px;
+    width: 891px;
+    height: 190px;
 
     transform: translate(-50%, -50%);
 }
 
-.b-list-content-elem-inside-photo__default-photo{
+/*#productInfo*/
+
+.b-product-info{
+    float: left;
+
+    width: 641px;
+    height: 100%;
+    margin-right: 58px;
+}
+
+
+.b-product-info__title{
+    width: 100%;
+    height: 34px;
+    margin-bottom: 27px;
+}
+
+.b-product-info__product-name{
+    font-size: 24px;
+
+    float: left;
+
+    width: 460px;
+    margin-right: 3px;
+    padding-bottom: 11px;
+    padding-right: 5px;
+
+    color: #365f63;
+}
+
+.b-product-info__product-name p{
+    overflow: hidden;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
+}
+
+.b-product-info__discription{
+    font-size: 16px;
+
+    width: 100%;
+    height: 40px;
+    margin-bottom: 48px;
+
+    color: #3c3a3a;
+}
+
+/*DEKETE IT AFTER SCRIPT*/
+.b-product-info__discription__discription p{
+    overflow: hidden;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
+}
+
+.b-product-info__set-price{
+    width: 100%;
+    height: 40px;
+}
+
+.b-product-info__price{
+    font-size: 16px;
+
+    float: left;
+
+    width: 125px;
+    height: 40px;
+    margin-right: 2.5px;
+    padding-top: 12px;
+    padding-right: 3px;
+    padding-left: 3px;
+
+    color: #365f63;
+    -webkit-border-radius: 3px; /* Safari, Chrome */
+       -moz-border-radius: 3px; /* Firefox */
+            border-radius: 3px;
+    background-color: #e3cf56;
+
+    -khtml-border-radius: 3px; /* KHTML */
+}
+
+@font-face{
+    font-family: RUBSN;
+
+    src: url('../vendor/fonts/Rub/RUBSN.otf')  format("opentype");
+}
+
+.b-product-photo{
+    float: left;
+position: relative;
+    width: 192px;
+    height: 192px;
+}
+
+.b-product-photo__photo img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    max-width: 192px;
+    max-height: 192px;
+
+    transform: translate(-50%, -50%);
+}
+
+.b-product-photo__default-photo{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -192,10 +152,16 @@
 
     transform: translate(-50%, -50%);
 }
-.b-list-content-elem-inside-photo__default-photo img{
+
+
+.b-product-photo__default-photo img{
     max-width: 42px;
     max-height: 42px;
 }
+
+
+
+
 
 .b-list-content-elem-inside-photo__author-photo{
     position: relative;

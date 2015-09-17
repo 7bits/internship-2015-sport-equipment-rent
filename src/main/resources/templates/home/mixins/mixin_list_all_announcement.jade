@@ -1,52 +1,53 @@
 mixin list(goods)
-    .b-list-content
+    .b-list__content
         a(name="seeAll")
             each Goods in goods
                 - announcement_id = Goods.id;
                 a(href="/see_announcement?announcement_id=#{announcement_id}")
-                    .b-list-content-elem
-                        .b-list-block__separate-line
-                        .b-list-content-elem-inside
+                    .b-list-elem
+                        .b-list-elem__content
                             .base
                                 .order
-                                    .b-list-content-elem-inside-info
-                                        .b-list-content-elem-inside-info-title
+                                    .b-product-info
+                                        .b-product-info__title
                                             .base
                                                 .order
-                                                    .b-list-content-elem-inside-info-title__product-title
+                                                    .b-product-info__product-name
                                                         b
                                                             p=Goods.title
                                                     .b-status
                                                         include mixin_full_status.jade
-                                        .b-list-content-elem-inside-info__discription
+                                        .b-product-info__discription
                                             p=Goods.description
-                                        .b-list-content-elem-inside-info-price
+                                        .b-product-info__set-price
                                             .base
                                                 .order
-                                                    .b-list-content-elem-inside-info-price__price
-                                                        text(style="padding-right: 4px;")
+                                                    .b-product-info__price
+                                                        text(style="padding-right: 3px;")
                                                             Час:
                                                         b
                                                             text(style="padding-right: 2px;")=Goods.pricePerHour
-                                                    .b-list-content-elem-inside-info-price__price
-                                                        text(style="padding-right: 4px;")
+                                                            text(style="font-family: RUBSN, 'RUBSN';")
+                                                                Р
+                                                    .b-product-info__price
+                                                        text(style="padding-right: 3px;")
                                                             Сутки:
                                                         b
                                                             text(style="padding-right: 2px;")=Goods.pricePerDay
-                                                    .b-list-content-elem-inside-info-price__price
-                                                        text(style="padding-right: 4px;")
+                                                            text(style="font-family: RUBSN, 'RUBSN';")
+                                                                Р
+                                                    .b-product-info__price
+                                                        text(style="padding-right: 3px;")
                                                             Неделя:
                                                         b
                                                             text(style="padding-right: 4px;")=Goods.pricePerWeek
-                                    .b-list-content-elem-inside-photo
+                                                            text(style="font-family: RUBSN, 'RUBSN';")
+                                                                Р
+                                    .b-product-photo
                                         each image in Goods.imageUrl
                                             if image=="resources/images/photo-ico.png"
-                                                .b-list-content-elem-inside-photo__default-photo
+                                                .b-product-photo__default-photo
                                                     img(src=image, width="42", height="42")
                                             else
-                                                .b-list-content-elem-inside-photo__product-photo
+                                                .b-product-photo__photo
                                                     img(src=image)
-                                        a(href="/profile?user_id=#{Goods.authorId}")
-                                            .b-list-content-elem-inside-photo__author-photo
-                                                img(src=Goods.authorImage, width="52", height="52")
-                        .b-list-block__end-separate-line
