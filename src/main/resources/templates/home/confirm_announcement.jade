@@ -15,9 +15,9 @@ block scripts
 block content
     form(role="form", action="/add", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade
-        .b-form-crud-announcement-button
+        .b-form-crud-announcement__button
             input.b-button--default.b-button--yellow(type='submit', value='РАЗМЕСТИТЬ')
-        .b-form-crud-announcement-button
+        .b-form-crud-announcement__button
             a(href="/")
                 input.b-button--default.b-button--yellow(type='submit', value='ОТМЕНА')
 block dynamic-scripts

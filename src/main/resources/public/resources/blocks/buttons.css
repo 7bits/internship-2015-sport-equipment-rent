@@ -84,3 +84,12 @@
     width: 48%;
     margin-right: 2%;
 }
+
+
+@media(max-width: 443px){
+    .b-button--yellow,
+    .b-button--yellow:focus,
+    .b-button--yellow:hover{
+        width: 100%;
+    }
+}   

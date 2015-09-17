@@ -206,9 +206,39 @@
 }
 
 
-.b-form-crud-announcement-button{
+.b-form-crud-announcement__button{
     width: 429px;
     height: 40px;
     margin: 0 auto;
     margin-bottom: 20px;
+}
+
+@media(max-width: 443px){
+    .b-form-crud-announcement{
+        width: 320px;
+    }
+    
+    .b-form-crud-announcement__content{
+        width: 310px;   
+    }
+    
+    .b-set-fields{
+        width: 315px;
+        margin-left: 5px;
+    }
+    
+    .b-set-fields__input {
+        width: 101.3px;
+        margin-right: 3px;
+    }
+
+    .b-photo {
+        width: 101.3px;
+        height: 128px;
+        margin-right: 3px;
+    }
+    
+    .b-form-crud-announcement__button{
+        width: 320px;
+    }
 }
