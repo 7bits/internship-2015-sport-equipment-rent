@@ -16,9 +16,9 @@
 
 .b-list-elem:hover,
 .b-list-elem:focus{
-    -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-       -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
-            box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
+-webkit-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
+-moz-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
+box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
 }
 
 
@@ -82,15 +82,6 @@
     color: #3c3a3a;
 }
 
-/*DEKETE IT AFTER SCRIPT*/
-.b-product-info__discription__discription p{
-    overflow: hidden;
-
-    white-space: nowrap;
-       text-overflow: ellipsis;
-
-    -o-text-overflow: ellipsis;
-}
 
 .b-product-info__set-price{
     width: 100%;
@@ -105,9 +96,9 @@
     width: 125px;
     height: 40px;
     margin-right: 2.5px;
-    padding-top: 12px;
-    padding-right: 3px;
-    padding-left: 3px;
+    padding-top: 13px;
+    padding-right: 13px;
+    padding-left: 13px;
 
     color: #365f63;
     -webkit-border-radius: 3px; /* Safari, Chrome */
@@ -122,6 +113,10 @@
     font-family: RUBSN;
 
     src: url('../vendor/fonts/Rub/RUBSN.otf')  format("opentype");
+}
+
+.b-product-info__rub-price{
+    font-family: RUBSN, 'RUBSN';
 }
 
 .b-product-photo{
@@ -158,10 +153,6 @@ position: relative;
     max-width: 42px;
     max-height: 42px;
 }
-
-
-
-
 
 .b-list-content-elem-inside-photo__author-photo{
     position: relative;

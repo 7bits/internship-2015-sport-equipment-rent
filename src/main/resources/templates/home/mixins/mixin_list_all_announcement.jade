@@ -17,31 +17,31 @@ mixin list(goods)
                                                             p=Goods.title
                                                     .b-status
                                                         include mixin_full_status.jade
-                                        .b-product-info__discription
+                                        .b-product-info__discription.js-cut-text                                            
                                             p=Goods.description
                                         .b-product-info__set-price
                                             .base
                                                 .order
                                                     .b-product-info__price
-                                                        text(style="padding-right: 3px;")
+                                                        text(style="padding-right: 8px;")
                                                             Час:
                                                         b
-                                                            text(style="padding-right: 2px;")=Goods.pricePerHour
-                                                            text(style="font-family: RUBSN, 'RUBSN';")
+                                                            text(style="padding-right: 8px;")=Goods.pricePerHour
+                                                            text.b-product-info__rub-price
                                                                 Р
                                                     .b-product-info__price
                                                         text(style="padding-right: 3px;")
                                                             Сутки:
                                                         b
                                                             text(style="padding-right: 2px;")=Goods.pricePerDay
-                                                            text(style="font-family: RUBSN, 'RUBSN';")
+                                                            text.b-product-info__rub-price
                                                                 Р
                                                     .b-product-info__price
                                                         text(style="padding-right: 3px;")
                                                             Неделя:
                                                         b
                                                             text(style="padding-right: 4px;")=Goods.pricePerWeek
-                                                            text(style="font-family: RUBSN, 'RUBSN';")
+                                                            text.b-product-info__rub-price
                                                                 Р
                                     .b-product-photo
                                         each image in Goods.imageUrl

@@ -19,7 +19,6 @@
 
 
 .b-header__content{
-    width: 937px;
     max-width: 938px;
     height: 100%;
     min-height: 74px;
@@ -31,7 +30,7 @@
 .b-header__to-personal-area,
 .b-header__exit,
 .b-header__give-announcement{
-    font-size: 19px;
+    font-size: 15px;
 
     float: right;
 
@@ -92,9 +91,9 @@
 
 
 .b-header__dropdown-menu ul li{
-    font-size: 14px;
+    font-size: 18px;
 
-    padding: 5px;
+    padding: 10px;
 
     list-style-type: none;
 
@@ -139,12 +138,12 @@
 @media(max-width: 947px){
     .b-header__to-personal-area,
     .b-header__give-announcement{
-        width: 150px;
+        width: 160px;
     }
 
 
     .b-header__exit{
-        width: 50px;
+        width: 60px;
     }
 }
 
@@ -156,7 +155,7 @@
 }
 
 
-@media(max-width: 620px){
+@media(max-width: 640px){
     .b-header__to-personal-area,
     .b-header__give-announcement,
     .b-header__exit{
