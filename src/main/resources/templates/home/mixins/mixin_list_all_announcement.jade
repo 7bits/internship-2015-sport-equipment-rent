@@ -30,17 +30,17 @@ mixin list(goods)
                                                             text.b-product-info__rub-price
                                                                 Р
                                                     .b-product-info__price
-                                                        text(style="padding-right: 3px;")
+                                                        text(style="padding-right: 8px;")
                                                             Сутки:
                                                         b
-                                                            text(style="padding-right: 2px;")=Goods.pricePerDay
+                                                            text(style="padding-right: 8px;")=Goods.pricePerDay
                                                             text.b-product-info__rub-price
                                                                 Р
                                                     .b-product-info__price
-                                                        text(style="padding-right: 3px;")
+                                                        text(style="padding-right: 8px;")
                                                             Неделя:
                                                         b
-                                                            text(style="padding-right: 4px;")=Goods.pricePerWeek
+                                                            text(style="padding-right: 8px;")=Goods.pricePerWeek
                                                             text.b-product-info__rub-price
                                                                 Р
                                     .b-product-photo
@@ -51,3 +51,9 @@ mixin list(goods)
                                             else
                                                 .b-product-photo__photo
                                                     img(src=image)
+                                    .b-product-photo__author-ava
+                                        a(href="/profile?user_id=#{Goods.authorId}")
+                                            img(src=Goods.authorImage)
+                                    .b-product-photo__update-button
+                                        a(href="/update?announcement_id=#{Goods.id}")
+                                            input.b-button--default.b-button--update(type='button', value='РЕДАКТИРОВАТЬ')

@@ -6,7 +6,6 @@
 .b-list-elem{
     width: 100%;
     height: 238px;
-
     border-width: 2.78px;
     border-style: solid;
     border-color: #5cc9cc;
@@ -26,7 +25,6 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
     position: absolute;
     top: 50%;
     left: 50%;
-
     width: 891px;
     height: 190px;
 
@@ -130,7 +128,6 @@ position: relative;
     position: absolute;
     top: 50%;
     left: 50%;
-
     max-width: 192px;
     max-height: 192px;
 
@@ -141,7 +138,6 @@ position: relative;
     position: absolute;
     top: 50%;
     left: 50%;
-
     width: 42px;
     height: 42px;
 
@@ -154,37 +150,35 @@ position: relative;
     max-height: 42px;
 }
 
-.b-list-content-elem-inside-photo__author-photo{
-    position: relative;
+.b-product-photo__update-button{
+    width: 149px;
+    height: 31px;
+    position: absolute;
+    z-index: 99997;
+    top: -40px;
+    right: 69px;
+}
+
+
+.b-product-photo__author-ava{
+    width: 84px;
+    height: 84px;
+    position: absolute;
     z-index: 99998;
+    top: -67px;
+    right: 0;
+}
 
-    float: right;
 
-    width: 52px;
-    height: 52px;
-    margin-top: -160px;
-    margin-right: -20px;
-
-    border-width: 3px;
+.b-product-photo__author-ava img{
+    max-width: 84px;
+    max-height: 84px;
+    -webkit-border-radius: 84px; /* Safari, Chrome */
+       -moz-border-radius: 84px; /* Firefox */
+            border-radius: 84px; /* CSS3 */
+    -khtml-border-radius: 84px; /* KHTML */
     border-style: solid;
-    border-color: white;
-    -webkit-border-radius: 56px; /* Safari, Chrome */
-       -moz-border-radius: 56px; /* Firefox */
-            border-radius: 56px; /* CSS3 */
-    -webkit-box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
-       -moz-box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
-            box-shadow: 0 0 5px 1px rgba(207,205,207,.2);
-
-    -khtml-border-radius: 56px; /* KHTML */
-    behavior: url(border-radius.htc); /*IE */
+    border-width: 2.87px;
+    border-color: #5cc9cc;
 }
 
-.b-list-content-elem-inside-photo__author-photo img{
-    -webkit-border-radius: 56px; /* Safari, Chrome */
-    /*закругление*/
-       -moz-border-radius: 56px; /* Firefox */
-            border-radius: 56px; /* CSS3 */
-
-    -khtml-border-radius: 56px; /* KHTML */
-    behavior: url(border-radius.htc); /*IE */
-}
