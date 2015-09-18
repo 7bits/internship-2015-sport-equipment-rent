@@ -4,20 +4,22 @@
 }
 
 .b-list-elem{
+    position: relative;
+
     width: 100%;
     height: 238px;
+    margin-top: 40px;
+
     border-width: 2.78px;
     border-style: solid;
     border-color: #5cc9cc;
-    margin-top: 40px;
-    position: relative;
 }
 
 .b-list-elem:hover,
 .b-list-elem:focus{
--webkit-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
--moz-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
+    -webkit-box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
+       -moz-box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
+            box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
 }
 
 
@@ -25,6 +27,7 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
     position: absolute;
     top: 50%;
     left: 50%;
+
     width: 891px;
     height: 190px;
 
@@ -55,8 +58,8 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
 
     width: 460px;
     margin-right: 3px;
-    padding-bottom: 11px;
     padding-right: 5px;
+    padding-bottom: 11px;
 
     color: #365f63;
 }
@@ -110,7 +113,7 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
 @font-face{
     font-family: RUBSN;
 
-    src: url('../vendor/fonts/Rub/RUBSN.otf')  format("opentype");
+    src: url('../vendor/fonts/Rub/RUBSN.otf')  format('opentype');
 }
 
 .b-product-info__rub-price{
@@ -118,8 +121,10 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
 }
 
 .b-product-photo{
+    position: relative;
+
     float: left;
-position: relative;
+
     width: 192px;
     height: 192px;
 }
@@ -128,6 +133,7 @@ position: relative;
     position: absolute;
     top: 50%;
     left: 50%;
+
     max-width: 192px;
     max-height: 192px;
 
@@ -138,6 +144,7 @@ position: relative;
     position: absolute;
     top: 50%;
     left: 50%;
+
     width: 42px;
     height: 42px;
 
@@ -151,34 +158,37 @@ position: relative;
 }
 
 .b-product-photo__update-button{
-    width: 149px;
-    height: 31px;
     position: absolute;
     z-index: 99997;
     top: -40px;
     right: 69px;
+
+    width: 149px;
+    height: 31px;
 }
 
 
 .b-product-photo__author-ava{
-    width: 84px;
-    height: 84px;
     position: absolute;
     z-index: 99998;
     top: -67px;
     right: 0;
+
+    width: 84px;
+    height: 84px;
 }
 
 
 .b-product-photo__author-ava img{
     max-width: 84px;
     max-height: 84px;
+
+    border-width: 2.87px;
+    border-style: solid;
+    border-color: #5cc9cc;
     -webkit-border-radius: 84px; /* Safari, Chrome */
        -moz-border-radius: 84px; /* Firefox */
             border-radius: 84px; /* CSS3 */
-    -khtml-border-radius: 84px; /* KHTML */
-    border-style: solid;
-    border-width: 2.87px;
-    border-color: #5cc9cc;
-}
 
+    -khtml-border-radius: 84px; /* KHTML */
+}

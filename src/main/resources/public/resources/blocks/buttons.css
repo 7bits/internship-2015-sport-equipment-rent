@@ -35,8 +35,9 @@
 .b-button--yellow:focus,
 .b-button--yellow:hover{
     float: right;
-height: 40px;
+
     width: 162px;
+    height: 40px;
 
     color: white;
     background: #edd04e;
@@ -89,14 +90,17 @@ height: 40px;
 .b-button--update,
 .b-button--update:hover,
 .b-button--update:focus{
+    font-size: 14px;
+
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 14px;
-    background-color: #5cc9cc;
+
     text-align: center;
+
     -webkit-border-radius: 200px; /* Safari, Chrome */
        -moz-border-radius: 200px; /* Firefox */
             border-radius: 200px;
+    background-color: #5cc9cc;
     box-shadow: none;
 
     -khtml-border-radius: 200px; /* KHTML */
