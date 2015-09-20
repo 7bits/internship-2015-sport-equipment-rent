@@ -12,6 +12,7 @@ import it.sevenbits.web.service.goods.GoodsException;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +21,9 @@ public class UserService {
     @Autowired
     @Qualifier(value="userInPostgreSQLrepository")
     private UserRepository repository;
+    
+    @Value("${resources.default-users-avatar}")
+    private String defaultUserAvatar;
 
     public User getUser(long id) throws GoodsException {
         User user;
@@ -52,7 +56,7 @@ public class UserService {
         user.setEmail(form.geteMail());
         user.setFirstName(form.getFirstName());
         user.setPass(BCrypt.hashpw(form.getPassword(), BCrypt.gensalt()));
-        user.setImageUrl("http://s017.radikal.ru/i424/1508/69/880c33f843b3.jpg");
+        user.setImageUrl(defaultUserAvatar);
         try {
             repository.save(user);
         } catch (Exception e) {

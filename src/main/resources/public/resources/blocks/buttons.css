@@ -2,10 +2,10 @@
 .b-button--default:focus,
 .b-button--default:hover{
     font-family: 'Roboto', sans-serif;
-    font-size: .875em;
+    font-size: 14px;
 
     width: 100%;
-    height: 40px;
+    height: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 1px 0 2px 0;
@@ -35,7 +35,7 @@
 .b-button--yellow:focus,
 .b-button--yellow:hover{
     float: right;
-
+height: 40px;
     width: 162px;
 
     color: white;
@@ -83,4 +83,44 @@
 .b-button--half-size:focus{
     width: 48%;
     margin-right: 2%;
+}
+
+
+.b-button--update,
+.b-button--update:hover,
+.b-button--update:focus{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    background-color: #5cc9cc;
+    text-align: center;
+    -webkit-border-radius: 200px; /* Safari, Chrome */
+       -moz-border-radius: 200px; /* Firefox */
+            border-radius: 200px;
+    box-shadow: none;
+
+    -khtml-border-radius: 200px; /* KHTML */
+}
+
+
+.b-button--update{
+    color: white;
+}
+
+
+.b-button--update:hover{
+    color: #949494;
+}
+
+
+.b-button--update:focus{
+    color: #949494;
+}
+
+@media(max-width: 443px){
+    .b-button--yellow,
+    .b-button--yellow:focus,
+    .b-button--yellow:hover{
+        width: 100%;
+    }
 }

@@ -22,7 +22,7 @@ block content
                         .b-user-info__info
                             p=user.firstName
                 .b-ad-details
-                    .b-ad-details-content
+                    .b-ad-details__content
                         .b-title--default
                             .base
                                 .order
@@ -61,7 +61,7 @@ block content
                 if !isAuthor
                     .b-form-product-book
                         form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
-                            .b-form-product-book-backing
+                            .b-form-product-book__backing
                                 .b-title--default
                                     .base
                                         .order

@@ -9,6 +9,7 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,8 @@ public class GoodsService {
     @Qualifier(value="goodsInPostgreSQLrepository")
     private GoodsRepository repository;
 
-
+    @Value("${resources.default-announcement-image}")
+    private String defaultImage;
     @Autowired
     private UserService userService;
 
@@ -59,7 +61,7 @@ public class GoodsService {
             if(url!=null)
                 images.add(url);
             if(images.size()==0 || images.get(0)==null){
-                images.add("resources/images/photo-ico.png");
+                images.add(defaultImage);
             }
             goods.get(i).setImageUrl(images);
             checkStatus(goods.get(i));
@@ -88,7 +90,7 @@ public class GoodsService {
                 if(image!=null)
                     images.add(image.getUrl());
                 if(images.size()==0){
-                    images.add("resources/images/photo-ico.png");
+                    images.add(defaultImage);
                 }
                 goods.get(i).setImageUrl(images);
                 checkStatus(goods.get(i));
@@ -115,7 +117,7 @@ public class GoodsService {
             }
             int bufSize = images.size();
             for(int i=0;i<3-bufSize; i++) {
-                imagesUrl.add("resources/images/photo-ico.png");
+                imagesUrl.add(defaultImage);
             }
             checkStatus(goods);
 
@@ -161,7 +163,7 @@ public class GoodsService {
         images.sort(new Comparator<Image>() {
             @Override
             public int compare(Image o1, Image o2) {
-                return o1.getUrl()=="resources/images/photo-ico.png"?-1:1;
+                return o1.getUrl()==defaultImage?-1:1;
             }
         });
         return images;

@@ -16,13 +16,35 @@ html
         link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/blocks/greeting-new-user.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/blocks/index-buttons.css", type="text/css", media="all")
+        link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/blocks/index-list.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/blocks/logo.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/menu.css", type="text/css", media="all")
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+        script(src='resources/scripts/header.js')
+        script(src='resources/scripts/cut-text.js')
+        script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
     body
         .b-index-container
             include mixins/mixin_header.jade
             if(!isAuth)
-                include mixins/mixin_greeting_new_user.jade
+                .b-greeting-new-user__base-color
+                    .b-greeting-new-user__background-image
+                        .b-greeting-new-user__name-service
+                            p
+                                Дай погонять
+                        .b-greeting-new-user__motto
+                            p
+                                Сервис по поиску и аренде спортивного оборудования
+                        .b-greeting-new-user__button-content
+                            a(href="/add")
+                                button.b-button-add-announcement(type='button')
+                                    b
+                                        p
+                                            ДАТЬ ОБЪЯВЛЕНИЕ
+                                a(href="/#seeAll")
+                                    button.b-button-see-announcement(type='button')
+                                        b
+                                            p
+                                                ВСЕ ОБЪЯВЛЕНИЯ
             include mixins/mixin_list_all_announcement.jade
             +list(goods)

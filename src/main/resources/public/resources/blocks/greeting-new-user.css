@@ -1,28 +1,36 @@
-.b-greeting-new-user-base-color{
+.b-greeting-new-user__base-color{
+    position: relative;
+
     width: 100%;
-    margin-bottom: 19px;
+    height: 710px;
+    margin-bottom: 64px;
 
     background-color: #5cc9cc;
 }
 
 
-.b-greeting-new-user-background-image{
-    width: 100%;
-    max-width: 1336px;
+.b-greeting-new-user__background-image{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    width: 1400px;
     height: 582px;
-    margin: 0 auto;
+
+    transform: translate(-50%, 0);
 
     background-image: url('../images/greeting-new-user.png');
+    background-repeat: no-repeat;
 }
 
 
 .b-greeting-new-user__name-service{
     font-family: RoundsBlack, 'RoundsBlack';
-    font-size: 58px;
+    font-size: 57px;
 
     width: 100%;
+    margin-top: -15px;
     margin-bottom: 8px;
-    padding-top: 90px;
 
     text-align: center;
 
@@ -30,12 +38,11 @@
 }
 
 .b-greeting-new-user__motto{
-    font-size: 18.4px;
+    font-size: 19px;
 
     width: 100%;
     height: 18px;
-    margin-bottom: 35px;
-    padding-top: 8px;
+    margin-bottom: 41px;
 
     text-align: center;
 
@@ -52,7 +59,7 @@
     font-family: RoundsBlack, 'RoundsBlack';
 }
 
-.b-greeting-new-user-button-content{
+.b-greeting-new-user__button-content{
     width: 486px;
     margin: 0 auto;
 }

@@ -7,19 +7,13 @@
     background-color: white;
 }
 
-
-.b-form-crud-announcement-header p{
-    padding-top: 12px;
-}
-
-
-.b-form-crud-announcement-content{
+.b-form-crud-announcement__content{
     width: 360px;
     margin: 0 auto;
 }
 
 
-.b-form-crud-announcement-content__title{
+.b-form-crud-announcement__title{
     font-size: .953em;
 
     width: 100%;
@@ -82,13 +76,13 @@
 
 
 /*само изображение*/
-.b-photo-image{
+.b-photo__product-image{
     width: 100%;
     height: 100%;
 }
 
 
-.b-photo-image img{
+.b-photo__product-image img{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -101,7 +95,7 @@
 
 
 /*дефолтная иконка (блок)*/
-.b-photo-image-default{
+.b-photo__image-default{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -114,7 +108,7 @@
 
 
 /*контейнер для маски*/
-.b-download-mask{
+.b-photo__download-mask{
     position: relative;
     top: 0;
     left: 0;
@@ -212,9 +206,39 @@
 }
 
 
-.b-form-crud-announcement-button{
+.b-form-crud-announcement__button{
     width: 429px;
     height: 40px;
     margin: 0 auto;
     margin-bottom: 20px;
+}
+
+@media(max-width: 443px){
+    .b-form-crud-announcement{
+        width: 320px;
+    }
+    
+    .b-form-crud-announcement__content{
+        width: 310px;   
+    }
+    
+    .b-set-fields{
+        width: 315px;
+        margin-left: 5px;
+    }
+    
+    .b-set-fields__input {
+        width: 101.3px;
+        margin-right: 3px;
+    }
+
+    .b-photo {
+        width: 101.3px;
+        height: 128px;
+        margin-right: 3px;
+    }
+    
+    .b-form-crud-announcement__button{
+        width: 320px;
+    }
 }

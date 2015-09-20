@@ -34,6 +34,10 @@ public class AddAnnouncementController {
 
     @Value("${resources.path}")
     private String resourcesPath;
+    @Value("${resources.images}")
+    private String imagesPath;
+    @Value("${resources.default-announcement-image}")
+    private String defaultImage;
 
     @Autowired
     AddNewGoodsFormValidator validator;
@@ -96,7 +100,7 @@ public class AddAnnouncementController {
 
             if(firstImage!=null && !firstImage.isEmpty()) {
                 try {
-                    String firstImagePath = "img/upload/" + hash + firstImage.getOriginalFilename();
+                    String firstImagePath = imagesPath + hash + firstImage.getOriginalFilename();
                     ImageController.saveImage(firstImage, resourcesPath + firstImagePath);
                     form.setFirstImageUrl(firstImagePath);
                 } catch (IOException e) {
@@ -106,7 +110,7 @@ public class AddAnnouncementController {
 
             if(secondImage!=null && !secondImage.isEmpty()) {
                 try {
-                    String secondImagePath = "img/upload/" + hash + secondImage.getOriginalFilename();
+                    String secondImagePath = imagesPath + hash + secondImage.getOriginalFilename();
                     ImageController.saveImage(secondImage, resourcesPath + secondImagePath);
                     form.setSecondImageUrl(secondImagePath);
                 } catch (IOException e) {
@@ -115,7 +119,7 @@ public class AddAnnouncementController {
             }
             if(thirdImage!=null && !thirdImage.isEmpty()) {
                 try {
-                    String thirdImagePath = "img/upload/" + hash + thirdImage.getOriginalFilename();
+                    String thirdImagePath = imagesPath + hash + thirdImage.getOriginalFilename();
                     ImageController.saveImage(thirdImage, resourcesPath + thirdImagePath);
                     form.setThirdImageUrl(thirdImagePath);
                 } catch (IOException e) {
@@ -137,39 +141,39 @@ public class AddAnnouncementController {
 
         if(firstImage!=null && !firstImage.isEmpty()) {
             try {
-                String fileName = resourcesPath + "/img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
+                String nameForBase = imagesPath + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
                 ImageController.saveImage(firstImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
         } else{
-            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
+            service.addImage(goods.get(0).getId(), defaultImage);
         }
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
-                String fileName = resourcesPath + "/img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
+                String nameForBase = imagesPath + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
                 ImageController.saveImage(secondImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
         }else{
-            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
+            service.addImage(goods.get(0).getId(), defaultImage);
         }
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
-                String fileName = resourcesPath + "/img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
+                String nameForBase = imagesPath + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
                 ImageController.saveImage(thirdImage, fileName);
                 service.addImage(goods.get(0).getId(), nameForBase);
             } catch (Exception e) {
                 LOG.error(e.getMessage());
             }
         }else{
-            service.addImage(goods.get(0).getId(), "resources/images/photo-ico.png");
+            service.addImage(goods.get(0).getId(), defaultImage);
         }
         return "redirect:/see_announcement?announcement_id="+goods.get(0).getId();
     }

@@ -1,8 +1,8 @@
 (function($) {
 $(document).ready(function(){
-    $("ul").hide();
-    $(this).find("h1 img").click(function(){
-        $(this).parent().next().slideToggle();
+    $('.js-dropdown-ico').click(function(){
+        $('.js-dropdown-menu').show();
+        $('.js-dropdown-menu').find('ul').slideToggle();
     });
 });
 })(jQuery);

@@ -11,6 +11,7 @@ import it.sevenbits.web.service.goods.ImageController;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,12 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/update")
 public class UpdateController {
+    @Value("${resources.path}")
+    private String resourcesPath;
+    @Value("${resources.images}")
+    private String imagesPath;
+    @Value("${resources.default-announcement-image}")
+    private String defaultImage;
 
     @Autowired
     GoodsService goodsService;
@@ -94,29 +101,29 @@ public class UpdateController {
         form.setId(announcementId);
         if(firstImageDelete){
             if(images.size()>0) {
-                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(0));
+                goodsService.updateImage(announcementId, defaultImage, images.get(0));
             }else{
-                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+                goodsService.addImage(announcementId, defaultImage);
             }
         }
         if(secondImageDelete){
             if(images.size()>1) {
-                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(1));
+                goodsService.updateImage(announcementId, defaultImage, images.get(1));
             }else{
-                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+                goodsService.addImage(announcementId, defaultImage);
             }
         }
         if(thirdImageDelete){
             if(images.size()>2) {
-                goodsService.updateImage(announcementId, "resources/images/photo-ico.png", images.get(2));
+                goodsService.updateImage(announcementId, defaultImage, images.get(2));
             }else{
-                goodsService.addImage(announcementId, "resources/images/photo-ico.png");
+                goodsService.addImage(announcementId, defaultImage);
             }
         }
         if(firstImage!=null && !firstImage.isEmpty()) {
             try {
-                String fileName = "/home/sport-equipment-rent/public/img/upload/" + announcementId + "_1" + firstImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + announcementId + "_1" + firstImage.getOriginalFilename();
+                String fileName = resourcesPath+imagesPath + announcementId + "_1" + firstImage.getOriginalFilename();
+                String nameForBase = imagesPath + announcementId + "_1" + firstImage.getOriginalFilename();
                 ImageController.saveImage(firstImage, fileName);
                 if(images.size()>0) {
                     goodsService.updateImage(announcementId, nameForBase, images.get(0));
@@ -130,8 +137,8 @@ public class UpdateController {
         }
         if(secondImage!=null && !secondImage.isEmpty()) {
             try {
-                String fileName = "/home/sport-equipment-rent/public/img/upload/" + announcementId + "_2" + secondImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + announcementId + "_2" + secondImage.getOriginalFilename();
+                String fileName = resourcesPath + imagesPath + announcementId + "_2" + secondImage.getOriginalFilename();
+                String nameForBase = imagesPath + announcementId + "_2" + secondImage.getOriginalFilename();
                 ImageController.saveImage(secondImage, fileName);
                 if(images.size()>1) {
                     goodsService.updateImage(announcementId, nameForBase, images.get(1));
@@ -146,8 +153,8 @@ public class UpdateController {
 
         if(thirdImage!=null && !thirdImage.isEmpty()) {
             try {
-                String fileName = "/home/sport-equipment-rent/public/img/upload/" + announcementId + "_3" + thirdImage.getOriginalFilename();
-                String nameForBase = "img/upload/" + announcementId + "_3" + thirdImage.getOriginalFilename();
+                String fileName = resourcesPath + imagesPath + announcementId + "_3" + thirdImage.getOriginalFilename();
+                String nameForBase = imagesPath + announcementId + "_3" + thirdImage.getOriginalFilename();
                 ImageController.saveImage(thirdImage, fileName);
                 if(images.size()>2) {
                     goodsService.updateImage(announcementId, nameForBase, images.get(2));
