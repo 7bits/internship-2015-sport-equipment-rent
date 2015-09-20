@@ -1,15 +1,16 @@
-package it.sevenbits.sport_rent_equipment;
+package it.sevenbits.qa_tests;
 
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class MainSignInTestLink extends TestCase {
+//Проверка наличия кнопки "Авторизоваться" на странице авторизации
+public class _10571_01_03 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -17,22 +18,21 @@ public class MainSignInTestLink extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "http://localhost:9000";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+        driver = new ChromeDriver();
+        baseUrl = "http://localhost:9000/";
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testMainSignInTestLink() throws Exception {
-    driver.get(baseUrl + "/");
-    assertEquals("Дай погонять", driver.getTitle());
-    try {
-      assertTrue(isElementPresent(By.cssSelector("p")));
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
+  public void test105710103() throws Exception {
+    driver.get(baseUrl + "/login");
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.cssSelector("input.b-button--default.b-button--blue"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
     }
-    driver.findElement(By.cssSelector("p")).click();
-    assertEquals("Авторизация", driver.getTitle());
+
   }
 
   @After

@@ -1,6 +1,6 @@
 package it.sevenbits;
 
-
+import it.sevenbits.qa_tests.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -27,6 +27,22 @@ public class AppTest
     public static Test suite()
     {
         return new TestSuite(
+                _10571_00_00.class,
+                _10571_01_00.class,
+                _10571_01_01.class,
+                _10571_01_02.class,
+                _10571_01_03.class,
+                _10571_01_04.class,
+                _10571_02_00.class,
+                _10571_02_01.class,
+                _10571_02_02.class,
+                _10571_02_03.class,
+                _10571_02_04.class,
+                _10571_03_00.class,
+                _10571_03_01.class,
+                _10571_05_00.class,
+                _10571_05_01.class,
+                _10571_07_00.class
         );
     }
 

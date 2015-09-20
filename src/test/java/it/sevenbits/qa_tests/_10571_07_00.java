@@ -1,4 +1,4 @@
-package it.sevenbits.sport_rent_equipment;
+package it.sevenbits.qa_tests;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,7 +9,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class MainPageElementsAreAvailable extends TestCase {
+// Проверка рабатоспособности ссылки-логотипа на странице авторизации
+public class _10571_07_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,31 +19,21 @@ public class MainPageElementsAreAvailable extends TestCase {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://localhost:9000";
+    baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testMainPageElementsAreAvailable() throws Exception {
-    driver.get(baseUrl + "/");
-    // // verify elements are there
+  public void test105710700() throws Exception {
+    driver.get(baseUrl + "login");
     try {
       assertTrue(isElementPresent(By.cssSelector("img")));
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
+    driver.findElement(By.cssSelector("img")).click();
     try {
-      assertTrue(isElementPresent(By.cssSelector("p")));
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
-    try {
-      assertTrue(isElementPresent(By.cssSelector("button.button-add-announcement")));
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
-    try {
-      assertTrue(isElementPresent(By.cssSelector("button.button-see-announcement")));
+      assertEquals("Дай погонять", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
