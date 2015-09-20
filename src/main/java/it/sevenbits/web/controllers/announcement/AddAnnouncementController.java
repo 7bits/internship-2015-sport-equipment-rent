@@ -73,7 +73,7 @@ public class AddAnnouncementController {
 
         long goodsId = 0;
         try {
-            goodsId = service.submitGoods(form, images, errors);
+            goodsId = service.submitGoods(form, images, errors, session);
         } catch (GoodsException e) {
             LOG.error(e.getMessage());
             //exception
@@ -87,7 +87,6 @@ public class AddAnnouncementController {
             return "home/add_announcement";
         }
         if(!isAuth) {
-            session.setAttribute("addNewGoods", form);
             return "redirect:/login";
         }
 

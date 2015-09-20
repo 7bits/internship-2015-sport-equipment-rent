@@ -16,7 +16,7 @@ block header
     include mixins/mixin_message_header.jade
     +create-header()
 block content
-    form(role="form", action="/add", method="post", enctype="multipart/form-data")
+    form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
         include mixins/mixin_form_add_announcement.jade
         .b-form-crud-announcement__button
             input.b-button--default.b-button--yellow(type='submit', value='РАЗМЕСТИТЬ')

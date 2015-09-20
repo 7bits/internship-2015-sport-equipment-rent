@@ -1,6 +1,5 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
 import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
@@ -14,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
@@ -56,9 +56,14 @@ public class ConfirmController {
     public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
         final Map<String, String> errors = validator.validate(form);
 
-        form.setImageUrl((LinkedList) session.getAttribute("images"));
 
-
+        long goodsId = 0;
+        try {
+            goodsId = service.submitGoods(form, new LinkedList<MultipartFile>(), errors, session);
+        } catch (GoodsException e) {
+            LOG.error(e.getMessage());
+            //error
+        }
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
@@ -69,25 +74,14 @@ public class ConfirmController {
             return "home/confirm_announcement";
         }
 
-
-        Goods goods = null;
-        try {
-            goods = form.toGoods(userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()));
-        } catch (GoodsException e) {
-            e.printStackTrace();
-        }
-        try {
-            service.save(goods);
-        } catch (GoodsException e) {
-            LOG.info(e.getMessage());
-        }
         /*if(form.getFirstImageUrl()!=null)
             service.addImage(goods.getId(), form.getFirstImageUrl());
         if(form.getSecondImageUrl()!=null)
             service.addImage(goods.getId(), form.getSecondImageUrl());
         if(form.getThirdImageUrl()!=null)
             service.addImage(goods.getId(), form.getThirdImageUrl());
-*/
-        return "redirect:/see_announcement?announcement_id="+goods.getId();
+        */
+
+        return "redirect:/see_announcement?announcement_id="+goodsId;
     }
 }

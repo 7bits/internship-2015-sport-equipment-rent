@@ -18,6 +18,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
@@ -215,7 +216,7 @@ public class GoodsService {
         goods.setStatus(repository.checkStatus(goods));
     }
 
-    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images, Map<String, String> errors) throws GoodsException {
+    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images, Map<String, String> errors, HttpSession session) throws GoodsException {
         TransactionStatus status;
         //start transaction
         status  = transactionManager.getTransaction(customTransaction);
@@ -231,22 +232,14 @@ public class GoodsService {
             save(goods);
         }
         try {
-            for (MultipartFile i : images) {
-                if (i != null && !i.isEmpty()) {
-                    if (!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
-                            !i.getOriginalFilename().endsWith(".png") && !i.getOriginalFilename().endsWith(".bmp")) {
-                        errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
-                        return -1;
-                    }
-                    String imagePath = imagesPath + hash + i.getOriginalFilename();
-                    ImageService.saveImage(i, resourcesPath + imagePath);
-                    if (!isAuth) {
-                        goodsForm.addImageUrl(imagePath);
-                    } else {
-                        addImage(goods.getId(), imagePath);
-                    }
+            ImageService.saveImages(images, hash, goodsForm, errors);
+            if(!isAuth) {
+                session.setAttribute("addNewGoods", goodsForm);
+            }
+            if(isAuth) {
+                for(String bufImageUrl:goodsForm.getImageUrl()) {
+                    addImage(goods.getId(), bufImageUrl);
                 }
-                throw new IOException("hello");
             }
             transactionManager.commit(status);
         } catch (IOException e) {
@@ -257,6 +250,9 @@ public class GoodsService {
         }
 
         //end transaction
+        if(!isAuth) {
+            return 0;
+        }
         return goods.getId();
     }
 
