@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -46,9 +47,7 @@ public class ConfirmController {
         if(form==null) {
             return "redirect:/";
         }else{
-            session.setAttribute("firstImage", form.getFirstImageUrl());
-            session.setAttribute("secondImage", form.getSecondImageUrl());
-            session.setAttribute("thirdImage", form.getThirdImageUrl());
+            session.setAttribute("images", form.getImageUrl());
             model.addAttribute("goods", form);
         }
         return "home/confirm_announcement";
@@ -57,9 +56,8 @@ public class ConfirmController {
     public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
         final Map<String, String> errors = validator.validate(form);
 
-        form.setFirstImageUrl((String) session.getAttribute("firstImage"));
-        form.setSecondImageUrl((String) session.getAttribute("secondImage"));
-        form.setThirdImageUrl((String) session.getAttribute("thirdImage"));
+        form.setImageUrl((LinkedList) session.getAttribute("images"));
+
 
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
@@ -83,14 +81,13 @@ public class ConfirmController {
         } catch (GoodsException e) {
             LOG.info(e.getMessage());
         }
-
-        if(form.getFirstImageUrl()!=null)
+        /*if(form.getFirstImageUrl()!=null)
             service.addImage(goods.getId(), form.getFirstImageUrl());
         if(form.getSecondImageUrl()!=null)
             service.addImage(goods.getId(), form.getSecondImageUrl());
         if(form.getThirdImageUrl()!=null)
             service.addImage(goods.getId(), form.getThirdImageUrl());
-
+*/
         return "redirect:/see_announcement?announcement_id="+goods.getId();
     }
 }

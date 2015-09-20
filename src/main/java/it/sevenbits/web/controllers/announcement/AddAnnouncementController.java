@@ -1,12 +1,9 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.goods.ImageService;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 /**
  * Created by awemath on 7/23/15.
@@ -88,109 +84,26 @@ public class AddAnnouncementController {
             LOG.info("Adding form contains errors.");
             return "home/add_announcement";
         }
-        if(isAuth){
-            try {
-                service.save(form);
-            } catch (GoodsException e) {
-                LOG.info(e.getMessage());
-            }
-        }else{
-
-            String hash = getHash();
-
-            if(firstImage!=null && !firstImage.isEmpty()) {
-                try {
-                    String firstImagePath = imagesPath + hash + firstImage.getOriginalFilename();
-                    ImageService.saveImage(firstImage, resourcesPath + firstImagePath);
-                    form.setFirstImageUrl(firstImagePath);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if(secondImage!=null && !secondImage.isEmpty()) {
-                try {
-                    String secondImagePath = imagesPath + hash + secondImage.getOriginalFilename();
-                    ImageService.saveImage(secondImage, resourcesPath + secondImagePath);
-                    form.setSecondImageUrl(secondImagePath);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(thirdImage!=null && !thirdImage.isEmpty()) {
-                try {
-                    String thirdImagePath = imagesPath + hash + thirdImage.getOriginalFilename();
-                    ImageService.saveImage(thirdImage, resourcesPath + thirdImagePath);
-                    form.setThirdImageUrl(thirdImagePath);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        List<MultipartFile> images = new LinkedList<MultipartFile>();
+        images.add(firstImage);
+        images.add(secondImage);
+        images.add(thirdImage);
+        long goodsId = 0;
+        try {
+            goodsId = service.submitGoods(form, images);
+        } catch (GoodsException e) {
+            LOG.error(e.getMessage());
+            //exception
+        }
+        if(!isAuth) {
             session.setAttribute("addNewGoods", form);
             return "redirect:/login";
         }
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = null;
-        try {
-            user = userService.getUser(name);
-        } catch (GoodsException e) {
-            e.printStackTrace();
-        }
-        List<Goods> goods = service.getGoodsByAuthorId(user.getId());
-        goods.sort((o1, o2) -> o1.getId() < o2.getId() ? 1 : -1);
 
-        if(firstImage!=null && !firstImage.isEmpty()) {
-            try {
-                String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
-                String nameForBase = imagesPath + goods.get(0).getId() + "_1" + firstImage.getOriginalFilename();
-                ImageService.saveImage(firstImage, fileName);
-                service.addImage(goods.get(0).getId(), nameForBase);
-            } catch (Exception e) {
-                LOG.error(e.getMessage());
-            }
-        } else{
-            service.addImage(goods.get(0).getId(), defaultImage);
-        }
-        if(secondImage!=null && !secondImage.isEmpty()) {
-            try {
-                String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
-                String nameForBase = imagesPath + goods.get(0).getId() + "_2" + secondImage.getOriginalFilename();
-                ImageService.saveImage(secondImage, fileName);
-                service.addImage(goods.get(0).getId(), nameForBase);
-            } catch (Exception e) {
-                LOG.error(e.getMessage());
-            }
-        }else{
-            service.addImage(goods.get(0).getId(), defaultImage);
-        }
-        if(thirdImage!=null && !thirdImage.isEmpty()) {
-            try {
-                String fileName = resourcesPath + imagesPath + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
-                String nameForBase = imagesPath + goods.get(0).getId() + "_3" + thirdImage.getOriginalFilename();
-                ImageService.saveImage(thirdImage, fileName);
-                service.addImage(goods.get(0).getId(), nameForBase);
-            } catch (Exception e) {
-                LOG.error(e.getMessage());
-            }
-        }else{
-            service.addImage(goods.get(0).getId(), defaultImage);
-        }
-        return "redirect:/see_announcement?announcement_id="+goods.get(0).getId();
+        return "redirect:/see_announcement?announcement_id="+goodsId;
     }
 
 
-    public String getHash(){
-        Random random = new Random();
-        char[] bufArray = new char[32];
-        for(int i=0;i<32;i++){
-            int buf =(48+random.nextInt(122-48));
-            while((buf<65&&buf>57) || (buf>90 && buf<97)){
-                buf = (48+random.nextInt(122-48));
-            }
-            bufArray[i] = (char) buf;
-        }
-        return String.valueOf(bufArray);
-    }
 
 
 

@@ -1,5 +1,8 @@
 package it.sevenbits.web.domain;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by awemath on 7/8/15.
  */
@@ -11,7 +14,7 @@ public class GoodsForm {
     private String pricePerHour, pricePerDay, pricePerWeek;
     private String author;
     private String authorPhone;
-    private String firstImageUrl, secondImageUrl, thirdImageUrl;
+    private List<String> imageUrl = new LinkedList<>();
 
 
     public long getId() {
@@ -98,29 +101,15 @@ public class GoodsForm {
         form.setPricePerWeek(String.valueOf((int)goods.getPricePerWeek()));
         return form;
     }
-
-    public String getFirstImageUrl() {
-        return firstImageUrl;
+    public List<String> getImageUrl() {
+        return imageUrl;
     }
 
-    public void setFirstImageUrl(String firstImageUrl) {
-        this.firstImageUrl = firstImageUrl;
+    public void setImageUrl(List<String> imageUrl) {
+        this.imageUrl = imageUrl;
     }
-
-    public String getSecondImageUrl() {
-        return secondImageUrl;
-    }
-
-    public void setSecondImageUrl(String secondImageUrl) {
-        this.secondImageUrl = secondImageUrl;
-    }
-
-    public String getThirdImageUrl() {
-        return thirdImageUrl;
-    }
-
-    public void setThirdImageUrl(String thirdImageUrl) {
-        this.thirdImageUrl = thirdImageUrl;
+    public void addImageUrl(String imageUrl){
+        this.imageUrl.add(imageUrl);
     }
 
     public Goods toGoods(User user){

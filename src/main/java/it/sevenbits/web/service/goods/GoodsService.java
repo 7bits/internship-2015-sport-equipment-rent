@@ -12,10 +12,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by awemath on 7/8/15.
@@ -28,6 +31,13 @@ public class GoodsService {
 
     @Value("${resources.default-announcement-image}")
     private String defaultImage;
+
+
+    @Value("${resources.path}")
+    private String resourcesPath;
+    @Value("${resources.images}")
+    private String imagesPath;
+
     @Autowired
     private UserService userService;
 
@@ -68,7 +78,7 @@ public class GoodsService {
         }
         goods.sort(new Comparator<Goods>() {
             @Override
-            public int compare(Goods o1, Goods o2) {
+            public int compare(final Goods o1, final Goods o2) {
                 return o1.getId() < o2.getId() ? 1 : -1;
             }
         });
@@ -84,7 +94,7 @@ public class GoodsService {
                     return o1.getId() < o2.getId() ? 1 : -1;
                 }
             });
-            for(int i=0;i<goods.size();i++){
+            for(int i = 0; i < goods.size(); i++){
                 List<String> images = new LinkedList<String>();
                 Image image =getImageForGoods(goods.get(i).getId());
                 if(image!=null)
@@ -124,7 +134,8 @@ public class GoodsService {
             goods.setImageUrl(imagesUrl);
 
         } catch (RepositoryException e) {
-            throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
+            throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "
+                    +e.getMessage(), e);
         }
         return goods;
     }
@@ -135,7 +146,7 @@ public class GoodsService {
 
 
     public void updateImage(long announcementId, String nameForBase, Image image) {
-        repository.updateImage(nameForBase ,image);
+        repository.updateImage(nameForBase, image);
     }
 
     public void update(GoodsForm form) throws GoodsException {
@@ -163,7 +174,7 @@ public class GoodsService {
         images.sort(new Comparator<Image>() {
             @Override
             public int compare(Image o1, Image o2) {
-                return o1.getUrl()==defaultImage?-1:1;
+                return o1.getUrl() == defaultImage ? -1 : 1;
             }
         });
         return images;
@@ -188,4 +199,47 @@ public class GoodsService {
     public void checkStatus(Goods goods){
         goods.setStatus(repository.checkStatus(goods));
     }
+
+    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images) throws GoodsException {
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        boolean isAuth =  userName != "anonymousUser";
+        User user = userService.getUser(userName);
+        String hash = getHash();
+        Goods goods = null;
+        if(isAuth){
+            goods = goodsForm.toGoods(user);
+            save(goods);
+        }
+        for(MultipartFile i: images){
+            if(i!=null && !i.isEmpty()) {
+                try {
+                    String imagePath = imagesPath + hash + i.getOriginalFilename();
+                    ImageService.saveImage(i, resourcesPath + imagePath);
+                    if(!isAuth) {
+                        goodsForm.addImageUrl(imagePath);
+                    } else{
+                        addImage(goods.getId(), imagePath);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return goods.getId();
+    }
+
+
+    public String getHash(){
+        Random random = new Random();
+        char[] bufArray = new char[32];
+        for(int i=0;i<32;i++){
+            int buf =(48+random.nextInt(122-48));
+            while((buf<65&&buf>57) || (buf>90 && buf<97)){
+                buf = (48+random.nextInt(122-48));
+            }
+            bufArray[i] = (char) buf;
+        }
+        return String.valueOf(bufArray);
+    }
+
 }
