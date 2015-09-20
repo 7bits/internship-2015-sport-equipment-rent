@@ -15,10 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by awemath on 7/8/15.
@@ -32,6 +29,9 @@ public class GoodsService {
     @Value("${resources.default-announcement-image}")
     private String defaultImage;
 
+
+    @Autowired
+    AddNewGoodsFormValidator validator;
 
     @Value("${resources.path}")
     private String resourcesPath;
@@ -200,9 +200,10 @@ public class GoodsService {
         goods.setStatus(repository.checkStatus(goods));
     }
 
-    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images) throws GoodsException {
+    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images, Map<String, String> errors) throws GoodsException {
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean isAuth =  userName != "anonymousUser";
+        errors = validator.validate(goodsForm);
         User user = userService.getUser(userName);
         String hash = getHash();
         Goods goods = null;
@@ -213,6 +214,11 @@ public class GoodsService {
         for(MultipartFile i: images){
             if(i!=null && !i.isEmpty()) {
                 try {
+                    if(!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
+                            !i.getOriginalFilename().endsWith(".png") && !i.getOriginalFilename().endsWith(".bmp")){
+                        errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
+                        return -1;
+                    }
                     String imagePath = imagesPath + hash + i.getOriginalFilename();
                     ImageService.saveImage(i, resourcesPath + imagePath);
                     if(!isAuth) {

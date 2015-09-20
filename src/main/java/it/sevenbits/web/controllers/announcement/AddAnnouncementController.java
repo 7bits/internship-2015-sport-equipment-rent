@@ -1,7 +1,6 @@
 package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
 import it.sevenbits.web.service.users.UserService;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +35,6 @@ public class AddAnnouncementController {
     @Value("${resources.default-announcement-image}")
     private String defaultImage;
 
-    @Autowired
-    AddNewGoodsFormValidator validator;
 
     @Autowired
     GoodsService service;
@@ -64,36 +62,29 @@ public class AddAnnouncementController {
                          @RequestParam("secondImage") MultipartFile secondImage,
                          @RequestParam("thirdImage") MultipartFile thirdImage, HttpSession session) {
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-        final Map<String, String> errors = validator.validate(form);
-        if(!firstImage.getOriginalFilename().endsWith(".jpeg") && !firstImage.getOriginalFilename().endsWith(".jpg") &&
-                !firstImage.getOriginalFilename().endsWith(".png") && !firstImage.getOriginalFilename().endsWith(".bmp") &&
-                !secondImage.getOriginalFilename().endsWith(".jpeg") && !secondImage.getOriginalFilename().endsWith(".jpg") &&
-                !secondImage.getOriginalFilename().endsWith(".png") && !secondImage.getOriginalFilename().endsWith(".bmp") &&
-                !thirdImage.getOriginalFilename().endsWith(".jpeg") && !thirdImage.getOriginalFilename().endsWith(".jpg") &&
-                !thirdImage.getOriginalFilename().endsWith(".png") && !thirdImage.getOriginalFilename().endsWith(".bmp")){
-            if((firstImage!=null && !firstImage.isEmpty())||(secondImage!=null && !secondImage.isEmpty())||(thirdImage!=null && !thirdImage.isEmpty()))
-            errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
-        }
+        final Map<String, String> errors = new HashMap<>();
 
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
-        if (errors.size() != 0) {
+
+        List<MultipartFile> images = new LinkedList<MultipartFile>();
+        images.add(firstImage);
+        images.add(secondImage);
+        images.add(thirdImage);
+
+        long goodsId = 0;
+        try {
+            goodsId = service.submitGoods(form, images, errors);
+        } catch (GoodsException e) {
+            LOG.error(e.getMessage());
+            //exception
+        }
+        if (errors.size() != 0 || goodsId == -1) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", isAuth);
             LOG.info("Adding form contains errors.");
             return "home/add_announcement";
-        }
-        List<MultipartFile> images = new LinkedList<MultipartFile>();
-        images.add(firstImage);
-        images.add(secondImage);
-        images.add(thirdImage);
-        long goodsId = 0;
-        try {
-            goodsId = service.submitGoods(form, images);
-        } catch (GoodsException e) {
-            LOG.error(e.getMessage());
-            //exception
         }
         if(!isAuth) {
             session.setAttribute("addNewGoods", form);
