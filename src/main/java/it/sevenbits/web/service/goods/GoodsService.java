@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -25,6 +29,17 @@ public class GoodsService {
     @Autowired
     @Qualifier(value="goodsInPostgreSQLrepository")
     private GoodsRepository repository;
+
+    private static final String TRANSACTION_NAME = "transactionService";
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+    private DefaultTransactionDefinition customTransaction;
+
+    public GoodsService() {
+        this.customTransaction = new DefaultTransactionDefinition();
+        this.customTransaction.setName(TRANSACTION_NAME);
+        this.customTransaction.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+    }
 
     @Value("${resources.default-announcement-image}")
     private String defaultImage;
@@ -201,47 +216,58 @@ public class GoodsService {
     }
 
     public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images, Map<String, String> errors) throws GoodsException {
+        TransactionStatus status;
+        //start transaction
+        status  = transactionManager.getTransaction(customTransaction);
+
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean isAuth =  userName != "anonymousUser";
         errors = validator.validate(goodsForm);
         User user = userService.getUser(userName);
         String hash = getHash();
         Goods goods = null;
-        if(isAuth){
+        if (isAuth) {
             goods = goodsForm.toGoods(user);
             save(goods);
         }
-        for(MultipartFile i: images){
-            if(i!=null && !i.isEmpty()) {
-                try {
-                    if(!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
-                            !i.getOriginalFilename().endsWith(".png") && !i.getOriginalFilename().endsWith(".bmp")){
+        try {
+            for (MultipartFile i : images) {
+                if (i != null && !i.isEmpty()) {
+                    if (!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
+                            !i.getOriginalFilename().endsWith(".png") && !i.getOriginalFilename().endsWith(".bmp")) {
                         errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
                         return -1;
                     }
                     String imagePath = imagesPath + hash + i.getOriginalFilename();
                     ImageService.saveImage(i, resourcesPath + imagePath);
-                    if(!isAuth) {
+                    if (!isAuth) {
                         goodsForm.addImageUrl(imagePath);
-                    } else{
+                    } else {
                         addImage(goods.getId(), imagePath);
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+                throw new IOException("hello");
             }
+            transactionManager.commit(status);
+        } catch (IOException e) {
+            transactionManager.rollback(status);
+            e.printStackTrace();
+            errors.put("Извините, у нас возникли проблемы. Попробуйте позже", "Извините, у нас возникли проблемы. Попробуйте позже");
+            return -1;
         }
+
+        //end transaction
         return goods.getId();
     }
 
 
-    public String getHash(){
+    public String getHash() {
         Random random = new Random();
         char[] bufArray = new char[32];
-        for(int i=0;i<32;i++){
+        for(int i=0; i<32; i++) {
             int buf =(48+random.nextInt(122-48));
-            while((buf<65&&buf>57) || (buf>90 && buf<97)){
-                buf = (48+random.nextInt(122-48));
+            while((buf < 65 && buf > 57) || (buf > 90 && buf < 97)) {
+                buf = (48 + random.nextInt(122 - 48));
             }
             bufArray[i] = (char) buf;
         }
