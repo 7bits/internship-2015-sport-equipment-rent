@@ -4,26 +4,36 @@ var gulp  = require('gulp'),
     autoprefixer = require('autoprefixer'),
     minifyCss = require('gulp-minify-css'),
     concatCss = require('gulp-concat-css'),
-    rename = require("gulp-rename");
-    yaml = require('js-yaml');
+    rename = require("gulp-rename"),
+    yaml = require('js-yaml'),
+    concat = require('gulp-concat'),
     fs = require('fs');
 
 
-gulp.task('prod', [
+/*gulp.task('prod',[
     'css:concat',
     'css:autoprefixer',
-    'css:minify'
-    'css:hash'
-]);
+    'css:minify',
+    'hash'
+]);*/
 
 gulp.task('dev', [
 
 ]);
 
+gulp.task('prod', function () {
+    var version = readAssetsVersion();
+  return gulp.src('src/main/resources/public/resources/*/*.css')
+    .pipe(concat('bundle'+version+'.css'))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+    .pipe(minifyCss())
+    .pipe(gulp.dest('src/main/resources/public/resources/build/'));
+    });
+
+
 gulp.task('css:concat', function () {
   return gulp.src('src/main/resources/public/resources/*/*.css')
     .pipe(concatCss("result.css"))
-    .pipe(rename('result.min.css'))
     .pipe(gulp.dest('src/main/resources/public/resources/build/'));
 });
 
@@ -56,11 +66,11 @@ function readAssetsVersion() {
 }
 
 
-gulp.task('css:hash', function() {
+gulp.task('hash', function() {
   var version = readAssetsVersion();
   return gulp
     .src('src/main/resources/public/resources/build/result.min.css')
-    .pipe(concatCss('bundle'+version+'.css'))
+    .pipe(concat('bundle'+version+'.css'))
     .pipe(gulp.dest('src/main/resources/public/resources/build/'));
 });
 
