@@ -256,6 +256,53 @@ public class GoodsService {
         return goods.getId();
     }
 
+    public void updateAnnouncement(List<MultipartFile> images, boolean[] deletedImages, GoodsForm form, long announcementId,Map<String, String> errors){
+        TransactionStatus status;
+        //start transaction
+        status  = transactionManager.getTransaction(customTransaction);
+
+        errors = validator.validate(form);
+        if(errors.size()!=0){
+            return;
+        }
+        form.setId(announcementId);
+        List<Image> currentImages = getImagesForGoods(announcementId);
+        for(int i = 0; i < images.size(); i++) {
+            if (deletedImages[i]) {
+                if(currentImages.size() > i) {
+                    updateImage(announcementId, defaultImage, currentImages.get(i));
+                } else {
+                    addImage(announcementId, defaultImage);
+                }
+
+            }
+        }
+        try {
+            for(int i = 0; i < images.size(); i++) {
+                if(images.get(i) !=null && !images.get(i).isEmpty()) {
+                    String fileName = resourcesPath+imagesPath + announcementId + "_" + i + images.get(i).getOriginalFilename();
+                    String nameForBase = imagesPath + announcementId + "_" + i + images.get(i).getOriginalFilename();
+                    ImageService.saveImage(images.get(i), fileName);
+                    if(images.size()>i) {
+                        updateImage(announcementId, nameForBase, currentImages.get(i));
+                    }else{
+                        addImage(announcementId, nameForBase);
+                    }
+
+                }
+            }
+            update(form);
+        } catch(IOException e) {
+            transactionManager.rollback(status);
+        } catch (GoodsException e) {
+            transactionManager.rollback(status);
+        }
+
+
+        transactionManager.commit(status);
+
+    }
+
 
     public String getHash() {
         Random random = new Random();
