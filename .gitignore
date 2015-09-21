@@ -4,3 +4,5 @@ target
 *.log
 application.yml
 src/main/resources/public/img
+node_modules
+src/main/resources/public/resources/build/*
