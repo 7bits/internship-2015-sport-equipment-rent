@@ -7,7 +7,7 @@ import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.goods.ImageController;
+import it.sevenbits.web.service.goods.ImageService;
 import it.sevenbits.web.service.users.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,9 +66,9 @@ public class UpdateController {
         }
         GoodsForm form = GoodsForm.valueOf(goods);
         form.setId(Long.valueOf(announcementId));
-        form.setFirstImageUrl(goods.getImageUrl().get(0));
+        /*form.setFirstImageUrl(goods.getImageUrl().get(0));
         form.setSecondImageUrl(goods.getImageUrl().get(1));
-        form.setThirdImageUrl(goods.getImageUrl().get(2));
+        form.setThirdImageUrl(goods.getImageUrl().get(2));*/
 
         model.addAttribute("goods", form);
         return "home/update_announcement";
@@ -124,7 +124,7 @@ public class UpdateController {
             try {
                 String fileName = resourcesPath+imagesPath + announcementId + "_1" + firstImage.getOriginalFilename();
                 String nameForBase = imagesPath + announcementId + "_1" + firstImage.getOriginalFilename();
-                ImageController.saveImage(firstImage, fileName);
+                ImageService.saveImage(firstImage, fileName);
                 if(images.size()>0) {
                     goodsService.updateImage(announcementId, nameForBase, images.get(0));
                 }else{
@@ -139,7 +139,7 @@ public class UpdateController {
             try {
                 String fileName = resourcesPath + imagesPath + announcementId + "_2" + secondImage.getOriginalFilename();
                 String nameForBase = imagesPath + announcementId + "_2" + secondImage.getOriginalFilename();
-                ImageController.saveImage(secondImage, fileName);
+                ImageService.saveImage(secondImage, fileName);
                 if(images.size()>1) {
                     goodsService.updateImage(announcementId, nameForBase, images.get(1));
                 }else{
@@ -155,7 +155,7 @@ public class UpdateController {
             try {
                 String fileName = resourcesPath + imagesPath + announcementId + "_3" + thirdImage.getOriginalFilename();
                 String nameForBase = imagesPath + announcementId + "_3" + thirdImage.getOriginalFilename();
-                ImageController.saveImage(thirdImage, fileName);
+                ImageService.saveImage(thirdImage, fileName);
                 if(images.size()>2) {
                     goodsService.updateImage(announcementId, nameForBase, images.get(2));
                 }else{
