@@ -4,6 +4,7 @@ block title
 block depending
 block form
     form(role="form", action="/login", method="post")
+        input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
         input.b-input--default#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
         input.b-input--default#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
         .b-login__forgot-pass
