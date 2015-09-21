@@ -65,9 +65,9 @@ public class UpdateController {
         }
         GoodsForm form = GoodsForm.valueOf(goods);
         form.setId(Long.valueOf(announcementId));
-        /*form.setFirstImageUrl(goods.getImageUrl().get(0));
-        form.setSecondImageUrl(goods.getImageUrl().get(1));
-        form.setThirdImageUrl(goods.getImageUrl().get(2));*/
+        form.addImageUrl(goods.getImageUrl().get(0));
+        form.addImageUrl(goods.getImageUrl().get(1));
+        form.addImageUrl(goods.getImageUrl().get(2));
 
         model.addAttribute("goods", form);
         return "home/update_announcement";
