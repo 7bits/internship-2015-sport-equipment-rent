@@ -17,6 +17,7 @@ block header
     +create-header()
 block content
     form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
+        input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
         include mixins/mixin_form_add_announcement.jade
         .b-form-crud-announcement__button
             input.b-button--default.b-button--yellow(type='submit', value='РАЗМЕСТИТЬ')
