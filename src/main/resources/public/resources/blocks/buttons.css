@@ -36,17 +36,22 @@
 
     height: 60px;
     
-    color: white;
     background: #5cc9cc;
 
     align: center;
 }
 
-.b-button--blue:hover{
+.b-button--blue{
+    color: white;
+}
+
+.b-button--blue:hover,
+.b-button--green:hover{
     color: #949494;
 }
 
-.b-button--blue:focus{
+.b-button--blue:focus,
+.b-button--green:focus{
     color: #949494;
 }
 
@@ -57,6 +62,25 @@
     font-size: 17px;
     box-shadow: 0 1px 2px #626262;
 }
+
+
+/*#green button*/
+.b-button--green,
+.b-button--green:focus,
+.b-button--green:hover{
+
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #278b8f;
+
+    align: center;
+}
+
+.b-button--green{
+    color: white;
+}
+
 
 /*желтая кнопка*/
 .b-button--yellow,

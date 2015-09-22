@@ -1,25 +1,32 @@
 .b-form-product-book{
     float: left;
 
-    width: 250px;
+    width: 273px;
 }
 
 
 .b-form-product-book__backing{
-    font-size: .875em;
+    min-height: 210px;
+    margin-bottom: 12px;
 
-    height: 200px;
-
+    border-width: 3px;
+    border-style: solid;
+    border-color: #278b8f;
     background-color: white;
 }
 
 
+.b-form-product-book__content{
+    width: 242px;
+    margin: 0 auto;
+}
+
 .b-form-product-book__title{
     float: left;
 
-    width: 150px;
-    margin-right: 5px;
-    margin-left: 15px;
+    width: 100px;
+    margin-top: 14px;
+    margin-left: 16px;
 
     text-align: left;
 }
@@ -30,34 +37,16 @@
 
     width: 25px;
     height: 25px;
-    margin-top: -2px;
+    margin-top: 10px;
     margin-right: 15px;
 }
 
-
-.b-form-product-book-input{
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-
 /*блок для input*/
-.b-form-product-book-input__title{
-    width: 100%;
-    margin-top: -18px;
+.b-form-product-book__input-title{
     margin-bottom: 10px;
-    padding-left: 10px;
 
-    color: #019199;
+    color: #278b8f;
 }
-
-
-.b-form-product-book-input__input{
-    width: 230px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
 
 .b-form-product-book__button{
     width: 100%;

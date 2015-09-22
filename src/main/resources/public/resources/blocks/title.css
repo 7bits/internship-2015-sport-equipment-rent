@@ -17,6 +17,18 @@
     color: white;
 }
 
+.b-title--dark-green{
+    background-color: #278b8f;
+    color: white;
+
+    padding-top: 0;
+}
+
+
+.b-title--padding-none{
+    padding-top: 0;
+}
+
 .b-title--unindented{
     margin-bottom: 0;
 }

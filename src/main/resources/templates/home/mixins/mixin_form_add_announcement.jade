@@ -6,14 +6,14 @@
     .b-form-crud-announcement__content
         include mixin_er.jade
         +err(errors)
-        .b-form-crud-announcement__title
+        .b-title--form
             b
                 p
                     Ваш инвентарь
         input.b-input--default#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
         textarea.b-input--default.b-form__textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
             #{goods.description}
-        .b-form-crud-announcement__title
+        .b-title--form
             b
                 p
                     Цена
@@ -27,7 +27,7 @@
                 .b-set-fields__input
                     input.b-input--default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
     .b-form-crud-announcement__content
-        .b-form-crud-announcement__title
+        .b-title--form
             b
                 p
                     Фотографии
