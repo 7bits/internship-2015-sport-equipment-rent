@@ -2,21 +2,20 @@
 .b-button--default:focus,
 .b-button--default:hover{
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
 
     width: 100%;
     height: 100%;
-    margin-top: 10px;
     margin-bottom: 10px;
     padding: 1px 0 2px 0;
 
     border: none;
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-       -moz-border-radius: 5px; /* Firefox */
-            border-radius: 5px;
+    -webkit-border-radius: 2px; /* Safari, Chrome */
+       -moz-border-radius: 2px; /* Firefox */
+            border-radius: 2px;
     box-shadow: 0 3px 3px #d4cfcf;
 
-    -khtml-border-radius: 5px; /* KHTML */
+    -khtml-border-radius: 2px; /* KHTML */
 }
 
 
@@ -57,13 +56,11 @@ height: 40px;
 .b-button--blue,
 .b-button--blue:focus,
 .b-button--blue:hover{
-    font-size: 16px;
 
-    height: 45px;
-    margin-top: 0;
-
+    height: 60px;
+    
     color: white;
-    background: #6ccdd3;
+    background: #5cc9cc;
 
     align: center;
 }
