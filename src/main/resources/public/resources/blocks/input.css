@@ -12,6 +12,11 @@
     border-color: rgba(98, 98, 98, 0.8);
 }
 
+.b-input--border-none,
+.b-input--border-none:hover,
+.b-input--border-none:focus{
+    border:none;
+}
 
 textarea{
     padding-top: 13px;

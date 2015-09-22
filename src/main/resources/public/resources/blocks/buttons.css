@@ -29,6 +29,35 @@
 }
 
 
+/*#blue button*/
+.b-button--blue,
+.b-button--blue:focus,
+.b-button--blue:hover{
+
+    height: 60px;
+    
+    color: white;
+    background: #5cc9cc;
+
+    align: center;
+}
+
+.b-button--blue:hover{
+    color: #949494;
+}
+
+.b-button--blue:focus{
+    color: #949494;
+}
+
+.b-button--authentication,
+.b-button--authentication:hover,
+.b-button--authentication:focus{
+    height: 42px;
+    font-size: 17px;
+    box-shadow: 0 1px 2px #626262;
+}
+
 /*желтая кнопка*/
 .b-button--yellow,
 .b-button--yellow:focus,
@@ -51,29 +80,6 @@ height: 40px;
     color: #949494;
 }
 
-
-/*#blue button*/
-.b-button--blue,
-.b-button--blue:focus,
-.b-button--blue:hover{
-
-    height: 60px;
-    
-    color: white;
-    background: #5cc9cc;
-
-    align: center;
-}
-
-
-.b-button--blue:hover{
-    color: #949494;
-}
-
-
-.b-button--blue:focus{
-    color: #949494;
-}
 
 .b-button--half-size,
 .b-button--half-size:hover,
@@ -112,12 +118,4 @@ height: 40px;
 
 .b-button--update:focus{
     color: #949494;
-}
-
-@media(max-width: 443px){
-    .b-button--yellow,
-    .b-button--yellow:focus,
-    .b-button--yellow:hover{
-        width: 100%;
-    }
 }
