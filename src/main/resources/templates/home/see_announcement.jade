@@ -10,38 +10,40 @@ block depending
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/form-product-book.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title-with-devision.css", type="text/css", media="all")
 block content
     .b-content-inside
         .base
             .order
                 a(href="/profile?user_id=#{user.id}")
                     .b-user-info
-                        .b-user-info__owner
-                            b 
-                                p 
-                                    Владелец:
-                        .b-user-info__ava
-                            img(src=user.imageUrl, width="114", height="114")
-                        .b-user-info__info
-                            p=user.firstName
+                        .b-user-info__content
+                            .b-user-info__owner
+                                b 
+                                    p 
+                                        Владелец:
+                            .b-user-info__ava
+                                img(src=user.imageUrl, width="114", height="114")
+                            .b-user-info__info
+                                p=user.firstName
                 .b-ad-details
                     .b-ad-details__content
                         .b-title--default.b-title--blue.b-title--padding-none
                             .base
                                 .order
-                                    .b-ad-details__time
+                                    .title-with-devision__text
                                         b
                                             p
                                                 Час:
                                                 text=Goods.pricePerHour
-                                    .b-ad-details__devide-line
-                                    .b-ad-details__time
+                                    .title-with-devision__devide-line
+                                    .title-with-devision__text
                                         b
                                             p
                                                 Сутки:
                                                 text=Goods.pricePerDay
-                                    .b-ad-details__devide-line
-                                    .b-ad-details__time
+                                    .title-with-devision__devide-line
+                                    .title-with-devision__text
                                         b
                                             p
                                                 Неделя:

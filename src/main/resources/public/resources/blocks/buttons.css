@@ -81,6 +81,13 @@
     color: white;
 }
 
+.b-button--update-profile,
+.b-button--update-profile:hover,
+.b-button--update-profile:focus{
+    height: 25px;
+    font-size: 9px;
+
+}
 
 /*желтая кнопка*/
 .b-button--yellow,

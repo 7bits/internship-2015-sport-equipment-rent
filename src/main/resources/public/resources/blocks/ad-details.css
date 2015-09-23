@@ -7,7 +7,7 @@
 
 
 .b-ad-details__content{
-    width: 452px;
+    width: 455px;
     min-height: 155px;
     padding-bottom: 13px;
     border-style: solid;
@@ -17,39 +17,6 @@
     margin-bottom: 13px;
 }
 
-
-.b-ad-details__time{
-    font-size: 16px;
-
-    float: left;
-
-    width: 148.66px;
-    height: 38px;
-    padding-top: 14px;
-    padding-right: 3px;
-    padding-left: 3px;
-}
-
-.b-ad-details__time p{
-    overflow: hidden;
-
-    white-space: nowrap;
-       text-overflow: ellipsis;
-
-    -o-text-overflow: ellipsis;
-}
-
-
-.b-ad-details__devide-line{
-    float: left;
-
-    width: 2px;
-    height: 28px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    background-color: white;
-}
 
 .b-ad-details__product-title{
     font-size: 24px;

@@ -3,16 +3,20 @@
 
     width: 136px;
     margin-right: 32px;
-
-    background-color: rgba(242, 242, 242, 1);
 }
 
+.b-user-info__content{
+    background-color: rgba(242, 242, 242, 1);
+    width: 100%;
+    margin-bottom: 17px;
+
+}
 
 .b-user-info__owner{
     font-size: 18px;
 
     width: 100%;
-    margin-top: 10px;
+    padding-top: 12px;
     margin-bottom: 13px;
 
     text-align: center;
@@ -45,7 +49,7 @@
     font-size: 18px;
 
     width: 100%;
-    margin-bottom: 11px;
+    padding-bottom: 12px;
     padding-right: 3px;
     padding-left: 3px;
 

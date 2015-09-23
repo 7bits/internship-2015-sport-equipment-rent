@@ -8,6 +8,7 @@ block depending
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/history-link.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title-with-devision.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block header
     .b-header
@@ -16,7 +17,7 @@ block header
                 .order
                     .b-logo
                         a(href="/")
-                            img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
+                            img(src="resources/images/layout/logo.png", width="220", height="55", style="margin-top: 12px")
                     .b-header__exit
                         a.header-a-color(href="/logout")
                             b
@@ -45,34 +46,32 @@ block content
         .base
             .order
                 .b-user-info
-                    .b-user-info__ava
-                        img(src=user.imageUrl, width="114", height="114")
-                    .b-personal-area-title
-                        .base
-                            .order
-                                .b-personal-area-title__title
-                                    p
-                                        Ваши данные
-                                .b-personal-area-title__ico-update
-                                    a(href="/update_profile")
-                                        img(src="resources/images/update-personal-area.png", width="17", height="17")
-                    .b-user-info__dividing-line
-                    .b-user-info__info
-                        p=user.firstName
-                    if user.phone!=null
-                        .b-user-info__dividing-line
-                        .b-user-info__info
-                            p=user.phone
-                        .b-user-info__dividing-line.b-user-info__dividing-line--last
-                include mixins/mixin_users_announcement_list.jade
-                .b-user-list-announcements
-                    .b-title--default.b-title--unindented
-                        .b-user-list-announcements__title
+                    .b-user-info__content
+                        .b-user-info__owner
                             b
                                 p
-                                Ваши объявления
-                    .b-history-link
-                        a.a-history(href="/history")
-                            p
-                                История
+                                    Владелец:
+                        .b-user-info__ava
+                            img(src=user.imageUrl, width="114", height="114")
+                        .b-user-info__info
+                            p=user.firstName
+                        if user.phone!=null
+                            .b-user-info__info
+                                p=user.phone
+                    a(href="/update_profile")
+                        input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')
+                include mixins/mixin_users_announcement_list.jade
+                .b-user-list-announcements
+                    .b-title--default.b-title--blue.b-title--text-left.b-title--padding-none
+                        .base
+                            .order
+                                .title-with-devision__text
+                                    b
+                                        p
+                                            Объявления
+                                .title-with-devision__text.title-with-devision__text--right
+                                    a.a-history(href="/history")
+                                        p
+                                            История
+                                .title-with-devision__devide-line.title-with-devision__devide-line--right
                     +list(goods)
