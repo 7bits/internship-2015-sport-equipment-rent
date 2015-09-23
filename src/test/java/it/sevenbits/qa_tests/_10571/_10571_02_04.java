@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,8 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод пустого е-майла
-public class _10666_02_00 extends TestCase {
+//import org.openqa.selenium.firefox.FirefoxDriver;
+
+//Проверка на ввод e-mail, оканчивающегося точкой, одинарным дефисом или нижним подчеркиванием (страница авторизации)
+public class _10571_02_04 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,27 +20,32 @@ public class _10666_02_00 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
-    driver = new ChromeDriver();
-    baseUrl = "http://localhost:9000/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+      driver = new ChromeDriver();
+      baseUrl = "http://localhost:9000/";
+      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test106660200() throws Exception {
-    driver.get(baseUrl + "registration");
-    driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("test");
+  public void test105710204() throws Exception {
+    driver.get(baseUrl + "/login");
+    driver.findElement(By.id("userEmail")).clear();
+    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf-@gmail.com");
     driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("123");
+    driver.findElement(By.id("passtext")).sendKeys("1");
+    try {
+      assertTrue(isElementPresent(By.cssSelector("input.b-button--default.b-button--blue")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Поле email не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Авторизация", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("неверный email или пароль", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

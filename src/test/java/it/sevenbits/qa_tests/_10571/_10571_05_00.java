@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;

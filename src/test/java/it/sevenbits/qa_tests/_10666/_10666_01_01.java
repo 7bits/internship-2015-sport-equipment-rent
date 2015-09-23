@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10666;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод email с повторным @
-public class _10666_02_03 extends TestCase {
+// Проверка на ввод имени длиной >50 символов
+public class _10666_01_01 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -25,12 +25,12 @@ public class _10666_02_03 extends TestCase {
   }
 
   @Test
-  public void test106660203() throws Exception {
+  public void test106660101() throws Exception {
     driver.get(baseUrl + "registration");
     driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("test");
+    driver.findElement(By.id("name")).sendKeys("testtesttesttesttesttesttesttesttesttesttesttesttest");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("me@@test.com");
+    driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
     driver.findElement(By.id("passtext")).clear();
     driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();

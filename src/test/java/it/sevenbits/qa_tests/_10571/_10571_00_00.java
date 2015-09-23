@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,10 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-//import org.openqa.selenium.firefox.FirefoxDriver;
-
-// Проверка сочетания несуществующего в базе логина и пароля на странице авторизации
-public class _10571_05_01 extends TestCase {
+public class _10571_00_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -22,33 +19,26 @@ public class _10571_05_01 extends TestCase {
   public void setUp() throws Exception {
       System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
       driver = new ChromeDriver();
-      baseUrl = "http://localhost:9000/";
-      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    baseUrl = "http://localhost:9000/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test105710501() throws Exception {
-    driver.get(baseUrl + "/login");
-    driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("test@gmail.com");
-    driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("123");
-    try {
-      assertTrue(isElementPresent(By.cssSelector("input.b-button--default.b-button--blue")));
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
+  public void test105710000() throws Exception {
+    driver.get(baseUrl + "/");
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.cssSelector("p"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
     }
-    driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
-    try {
-      assertEquals("Авторизация", driver.getTitle());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
+
+    driver.findElement(By.cssSelector("p")).click();
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if ("Авторизация".equals(driver.getTitle())) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
     }
-    try {
-      assertEquals("неверный email или пароль", driver.findElement(By.cssSelector("p")).getText());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
+
   }
 
   @After

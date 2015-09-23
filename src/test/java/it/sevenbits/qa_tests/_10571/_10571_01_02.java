@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод пустого пароля
-public class _10666_03_00 extends TestCase {
+// Проверка наличия поля "Пароль" на странице авторизации
+public class _10571_01_02 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -25,23 +25,14 @@ public class _10666_03_00 extends TestCase {
   }
 
   @Test
-  public void test106660300() throws Exception {
-    driver.get(baseUrl + "registration");
-    driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("test");
-    driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
-    driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
-    try {
-      assertEquals("Поле пароль не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
+  public void test105710102() throws Exception {
+    driver.get(baseUrl + "login");
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("passtext"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
     }
-    try {
-      assertEquals("Авторизация", driver.getTitle());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
+
   }
 
   @After

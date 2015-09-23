@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10666;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,11 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-//import org.openqa.selenium.firefox.FirefoxDriver;
-
-// Проверка на ввод емайл с повторным @ (страница авторизации)
-// На странице авторизации ввести логин: meliannaelf@@gmail.com, пароль: 1
-public class _10571_02_01 extends TestCase {
+// Проверка на ввод пустого пароля
+public class _10666_03_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -21,32 +18,27 @@ public class _10571_02_01 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
-      driver = new ChromeDriver();
-      baseUrl = "http://localhost:9000/";
-      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    driver = new ChromeDriver();
+    baseUrl = "http://localhost:9000/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test105710201() throws Exception {
-    driver.get(baseUrl + "/login");
+  public void test106660300() throws Exception {
+    driver.get(baseUrl + "registration");
+    driver.findElement(By.id("name")).clear();
+    driver.findElement(By.id("name")).sendKeys("test");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf@@gmail.com");
-    driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("1");
-    try {
-      assertTrue(isElementPresent(By.cssSelector("input.b-button--default.b-button--blue")));
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
+    driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("Поле пароль не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("неверный email или пароль", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Авторизация", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

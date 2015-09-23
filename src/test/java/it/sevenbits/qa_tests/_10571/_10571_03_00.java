@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.firefox.FirefoxDriver;
 
-//Проверка на ввод e-mail, начинающегося с точки, одинарного дефиса или нижнего подчеркивания (страница авторизации)
-public class _10571_02_03 extends TestCase {
+//Проверка поля «логин» на пустой ввод на странице авторизации
+public class _10571_03_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -27,10 +27,10 @@ public class _10571_02_03 extends TestCase {
   }
 
   @Test
-  public void test105710203() throws Exception {
+  public void test105710300() throws Exception {
     driver.get(baseUrl + "/login");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("_meliannaelf@gmail.com");
+    driver.findElement(By.id("userEmail")).sendKeys("");
     driver.findElement(By.id("passtext")).clear();
     driver.findElement(By.id("passtext")).sendKeys("1");
     try {

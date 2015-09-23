@@ -1,4 +1,4 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;
@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод пароля длиной >50 символов
-public class _10666_03_02 extends TestCase {
+// Проверка наличия поля "Логин" на странице авторизации
+public class _10571_01_01 extends TestCase{
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -25,24 +25,12 @@ public class _10666_03_02 extends TestCase {
   }
 
   @Test
-  public void test106660302() throws Exception {
-    driver.get(baseUrl + "registration");
-    driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("test");
-    driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
-    driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("123456789012345678901234567890123456789012345678901");
-    driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
-    try {
-      assertEquals("Поле пароль должно быть короче 50 символов", driver.findElement(By.cssSelector("p")).getText());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
-    try {
-      assertEquals("Авторизация", driver.getTitle());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
+  public void test105710101() throws Exception {
+    driver.get(baseUrl + "login");
+    for (int second = 0;; second++) {
+      if (second >= 60) fail("timeout");
+      try { if (isElementPresent(By.id("userEmail"))) break; } catch (Exception e) {}
+      Thread.sleep(1000);
     }
   }
 

@@ -1,16 +1,16 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка наличия ссылки "Войти" на странице авторизации
-public class _10571_01_00 extends TestCase {
+// Проверка рабатоспособности ссылки-логотипа на странице авторизации
+public class _10571_07_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,23 +18,26 @@ public class _10571_01_00 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
-        driver = new ChromeDriver();
-        baseUrl = "http://localhost:9000/";
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver = new FirefoxDriver();
+    baseUrl = "http://localhost:9000/";
+    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test105710100() throws Exception {
+  public void test105710700() throws Exception {
     driver.get(baseUrl + "login");
-      for (int second = 0;; second++) {
-          if (second >= 60) fail("timeout");
-          try { if (isElementPresent(By.cssSelector("img"))) break; } catch (Exception e) {}
-          Thread.sleep(1000);
-      }
+    try {
+      assertTrue(isElementPresent(By.cssSelector("img")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    driver.findElement(By.cssSelector("img")).click();
+    try {
+      assertEquals("Дай погонять", driver.getTitle());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
   }
-
-
 
   @After
   public void tearDown() throws Exception {

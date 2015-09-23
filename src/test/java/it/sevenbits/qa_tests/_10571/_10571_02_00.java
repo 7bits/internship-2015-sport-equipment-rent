@@ -1,5 +1,6 @@
-package it.sevenbits.qa_tests;
+package it.sevenbits.qa_tests._10571;
 
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,11 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+//import org.openqa.selenium.firefox.FirefoxDriver;
 
-// проверка работоспособности логотипа сервиса на странице регистрации
-public class _10666_05_00 {
+// Проверка на ввод e-mail без «@» (страница авторизации)
+public class _10571_02_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -20,24 +20,32 @@ public class _10666_05_00 {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
-    driver = new ChromeDriver();
-    baseUrl = "http://localhost:9000/";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+      driver = new ChromeDriver();
+      baseUrl = "http://localhost:9000/";
+      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test106660500() throws Exception {
-    driver.get(baseUrl + "registration");
-    for (int second = 0;; second++) {
-    	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.cssSelector("img"))) break; } catch (Exception e) {}
-    	Thread.sleep(1000);
-    }
-
-    driver.findElement(By.cssSelector("img")).click();
+  public void test105710200() throws Exception {
+    driver.get(baseUrl + "/login");
+    driver.findElement(By.id("userEmail")).clear();
+    driver.findElement(By.id("userEmail")).sendKeys("meliannaelfgmail.com");
+    driver.findElement(By.id("passtext")).clear();
+    driver.findElement(By.id("passtext")).sendKeys("1");
     try {
-      assertEquals("Дай погонять", driver.getTitle());
+      assertTrue(isElementPresent(By.cssSelector("input.b-button--default.b-button--blue")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
+    try {
+      assertEquals("Авторизация", driver.getTitle());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertEquals("неверный email или пароль", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

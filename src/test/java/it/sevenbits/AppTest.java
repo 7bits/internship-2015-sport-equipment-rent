@@ -1,6 +1,6 @@
 package it.sevenbits;
 
-import it.sevenbits.qa_tests.*;
+import it.sevenbits.qa_tests._10571.*;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
