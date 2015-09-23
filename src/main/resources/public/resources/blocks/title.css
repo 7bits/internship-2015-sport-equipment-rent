@@ -29,6 +29,7 @@
     padding-top: 0;
 }
 
-.b-title--unindented{
-    margin-bottom: 0;
+.b-title--text-left{
+    text-align: left;
+    padding-left: 12px;
 }
