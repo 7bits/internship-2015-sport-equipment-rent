@@ -1,45 +1,62 @@
 .b-update-profile{
-    width: 343px;
+    width: 441px;
     margin: 0 auto;
-    margin-top: 19px;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
+    margin-top: 27px;
+}
 
+
+.b-update-profile-form{
+    width: 100%;
+
+
+        border-style: solid;
+    border-width: 3px;
+    border-color: #5cc9cc;
+        margin-bottom: 15px;
     background-color: white;
 }
 
 
-.b-update-profile__form{
-    width: 306px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    padding-top: 10px;
+.b-update-profile-form__content{
+width: 409px;
+margin: 0 auto;
+padding-top: 5px;
+padding-bottom: 5px;
 }
 
+.b-update-profile__button{
+    width: 441px;
+}
 
-.b-update-profile__avatar-recommendation{
-    font-size: 12.8px;
-
+.b-update-profile__user-avatar{
     width: 100%;
-    margin-top: 3px;
-    margin-bottom: 2px;
-
-    text-align: center;
-
-    color: #6fb2b4;
 }
 
-
-.b-update-profile__title{
-    font-size: .953em;
-
-    width: 100%;
-    margin-bottom: 10px;
-
-    color: #7cced1;
-    text-shadow: 0 1px 1px #d4cfcf;
+.b-update-profile__user-photo{
+    width: 43px;
+    height: 43px;
+    float: left;
+    margin-right: 11px;
 }
 
+.b-update-profile__url{
+    float: left;
+    width: 354px;
+}
+
+.b-update-profile__user-photo img{
+    border-style: solid;
+    border-color: #626262;
+    border-width: 1px;
+    max-width: 43px;
+    max-height: 43px;
+    -webkit-border-radius: 43px; /* Safari, Chrome */
+       -moz-border-radius: 43px; /* Firefox */
+            border-radius: 43px; /* CSS3 */
+
+    -khtml-border-radius: 43px; /* KHTML */
+    behavior: url(border-radius.htc); /*IE */
+}
 
 @media(max-width: 346px){
     .b-update-profile{

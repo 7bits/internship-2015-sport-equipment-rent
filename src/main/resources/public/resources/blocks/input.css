@@ -71,7 +71,9 @@ textarea:focus:placeholder-shown{
     color: transparent;
 }
 
-.b-input--half-size{
+.b-input--half-size,
+.b-input--half-size:hover,
+.b-input--half-size:focus{
     font-size: 0.875em;
     width: 49%;
     margin-right: 1%;

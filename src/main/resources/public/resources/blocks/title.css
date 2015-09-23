@@ -34,3 +34,13 @@
     padding-left: 12px;
     padding-right: 12px;
 }
+
+.b-title--form{
+    font-size: 14px;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+    
+    color: #5cc9cc;
+}

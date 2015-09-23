@@ -16,17 +16,6 @@
 }
 
 
-.b-form-crud-announcement__title{
-    font-size: 14px;
-
-    width: 100%;
-
-    margin-bottom: 10px;
-    
-    color: #5cc9cc;
-}
-
-
 .b-form__textarea{
     min-height: 111px;
 }
