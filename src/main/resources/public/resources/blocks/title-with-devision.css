@@ -12,6 +12,7 @@
 
 .title-with-devision__text--right{
     float: right;
+
     width: auto;
 }
 
@@ -38,5 +39,6 @@
 
 .title-with-devision__devide-line--right{
     float: right;
+
     margin-right: 16px;
 }

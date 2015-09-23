@@ -6,18 +6,18 @@
 }
 
 .b-user-info__content{
-    background-color: rgba(242, 242, 242, 1);
     width: 100%;
     margin-bottom: 17px;
 
+    background-color: rgba(242, 242, 242, 1);
 }
 
 .b-user-info__owner{
     font-size: 18px;
 
     width: 100%;
-    padding-top: 12px;
     margin-bottom: 13px;
+    padding-top: 12px;
 
     text-align: center;
 
@@ -49,8 +49,8 @@
     font-size: 18px;
 
     width: 100%;
-    padding-bottom: 12px;
     padding-right: 3px;
+    padding-bottom: 12px;
     padding-left: 3px;
 
     text-align: center;

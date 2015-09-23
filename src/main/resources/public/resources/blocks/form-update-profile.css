@@ -7,21 +7,20 @@
 
 .b-update-profile-form{
     width: 100%;
+    margin-bottom: 15px;
 
-
-        border-style: solid;
     border-width: 3px;
+    border-style: solid;
     border-color: #5cc9cc;
-        margin-bottom: 15px;
     background-color: white;
 }
 
 
 .b-update-profile-form__content{
-width: 409px;
-margin: 0 auto;
-padding-top: 5px;
-padding-bottom: 5px;
+    width: 409px;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .b-update-profile__button{
@@ -33,23 +32,26 @@ padding-bottom: 5px;
 }
 
 .b-update-profile__user-photo{
+    float: left;
+
     width: 43px;
     height: 43px;
-    float: left;
     margin-right: 11px;
 }
 
 .b-update-profile__url{
     float: left;
+
     width: 354px;
 }
 
 .b-update-profile__user-photo img{
-    border-style: solid;
-    border-color: #626262;
-    border-width: 1px;
     max-width: 43px;
     max-height: 43px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #626262;
     -webkit-border-radius: 43px; /* Safari, Chrome */
        -moz-border-radius: 43px; /* Firefox */
             border-radius: 43px; /* CSS3 */
@@ -58,8 +60,18 @@ padding-bottom: 5px;
     behavior: url(border-radius.htc); /*IE */
 }
 
-@media(max-width: 346px){
+@media(max-width: 415px){
     .b-update-profile{
         width: 320px;
+    }
+    .b-update-profile-form__content{
+        width: 310px;
+    }
+
+    .b-update-profile__button{
+        width: 320px;
+    }
+    .b-update-profile__url{
+        width: 255px;
     }
 }

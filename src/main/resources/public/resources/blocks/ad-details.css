@@ -9,12 +9,13 @@
 .b-ad-details__content{
     width: 455px;
     min-height: 155px;
+    margin-bottom: 13px;
     padding-bottom: 13px;
+
+    border-width: 3px;
     border-style: solid;
     border-color: #5cc9cc;
-    border-width: 3px;
     background-color: white;
-    margin-bottom: 13px;
 }
 
 
@@ -56,8 +57,9 @@
     width: 100%;
     min-height: 160px;
     padding-right: 36px;
-    padding-left: 36px;
     padding-bottom: 10px;
+    padding-left: 36px;
+
     color: #6b6b6b;
 }
 
@@ -112,7 +114,7 @@
 @font-face{
     font-family: RUBSN;
 
-    src: url('../vendor/fonts/Rub/RUBSN.otf')  format("opentype");
+    src: url('../vendor/fonts/Rub/RUBSN.otf')  format('opentype');
 }
 
 .b-price__rub-price{

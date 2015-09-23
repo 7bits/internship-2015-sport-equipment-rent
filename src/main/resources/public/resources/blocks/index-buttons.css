@@ -36,8 +36,9 @@
 .b-button-add-announcement:hover,
 .b-button-add-announcement:focus{
     cursor: pointer;
-outline: none;
+
     color: white;
+    outline: none;
 }
 
 .b-button-see-announcement,
@@ -55,6 +56,7 @@ outline: none;
 .b-button-see-announcement:hover,
 .b-button-see-announcement:focus{
     cursor: pointer;
-outline: none;
+
     color: #e3cf56;
+    outline: none;
 }
