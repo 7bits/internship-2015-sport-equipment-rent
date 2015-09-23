@@ -10,43 +10,55 @@ block depending
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/form-product-book.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title-with-devision.css", type="text/css", media="all")
 block content
     .b-content-inside
         .base
             .order
                 a(href="/profile?user_id=#{user.id}")
                     .b-user-info
-                        .b-user-info__ava
-                            img(src=user.imageUrl, width="120", height="120")
-                        .b-user-info__dividing-line
-                        .b-user-info__info
-                            p=user.firstName
+                        .b-user-info__content
+                            .b-user-info__owner
+                                b 
+                                    p 
+                                        Владелец:
+                            .b-user-info__ava
+                                img(src=user.imageUrl, width="114", height="114")
+                            .b-user-info__info
+                                p=user.firstName
                 .b-ad-details
                     .b-ad-details__content
-                        .b-title--default
+                        .b-title--default.b-title--blue.b-title--padding-none
                             .base
                                 .order
-                                    .b-ad-details__time
+                                    .title-with-devision__text
+                                        text(style="padding-right: 5px;")
+                                            Час:
                                         b
-                                            p
-                                                Час:
-                                                text=Goods.pricePerHour
-                                    .b-ad-details__time
+                                            text(style="padding-right: 5px;")=Goods.pricePerHour
+                                            text.b-price__rub-price
+                                                Р
+                                    .title-with-devision__devide-line
+                                    .title-with-devision__text
+                                        text(style="padding-right: 5px;")
+                                            Час:
                                         b
-                                            p
-                                                Сутки:
-                                                text=Goods.pricePerDay
-                                    .b-ad-details__time
+                                            text(style="padding-right: 5px;")=Goods.pricePerDay
+                                            text.b-price__rub-price
+                                                Р
+                                    .title-with-devision__devide-line
+                                    .title-with-devision__text
+                                        text(style="padding-right: 5px;")
+                                            Час:
                                         b
-                                            p
-                                                Неделя:
-                                                text=Goods.pricePerWeek
+                                            text(style="padding-right: 5px;")=Goods.pricePerWeek
+                                            text.b-price__rub-price
+                                                Р
                         .b-ad-details__product-title
-                            p=Goods.title
+                            b
+                                p=Goods.title
                         .b-ad-details__product-description
                             p=Goods.description
-                        .b-status
-                            include mixins/mixin_full_status.jade
                     .b-photo-set
                         .base
                             .order
@@ -62,32 +74,28 @@ block content
                     .b-form-product-book
                         form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
                             .b-form-product-book__backing
-                                .b-title--default
+                                .b-title--default.b-title--dark-green
                                     .base
                                         .order
-                                            .b-form-product-book_title
+                                            .b-form-product-book__title
                                                 b
                                                     p
                                                         Время аренды
                                             .b-form-product-book__ico
                                                 img(src="resources/images/calendar-ico.png")
-                                if !isAuthor
-                                    include mixins/mixin_er.jade
-                                    +err(errors)
-                                .b-form-product-book-input
-                                    .b-form-product-book-input__title
+                                include mixins/mixin_er.jade
+                                +err(errors)
+                                .b-form-product-book__content
+                                    .b-form-product-book__input-title
                                         p
                                             Начало
-                                    .b-form-product-book-input__input
-                                        input.b-input--default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
-                                .b-form-product-book-input
-                                    .b-form-product-book-input__title
+                                    input.b-input--default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+                                    .b-form-product-book__input-title
                                         p
                                             Завершение
-                                    .b-form-product-book-input__input
-                                        input.b-input--default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+                                    input.b-input--default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
                             .b-form-product-book__button
-                                input.b-button--default.b-button--blue(type='submit', value='Забронировать')
+                                input.b-button--default.b-button--green(type='submit', value='ЗАБРОНИРОВАТЬ')
                 else
                     .b-form-product-book
                         a(href="/update?announcement_id=#{Goods.id}")

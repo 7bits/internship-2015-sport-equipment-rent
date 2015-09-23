@@ -10,7 +10,7 @@
     height: 55px;
     padding: 1px 0 2px 0;
 
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-color: #365f63;
     -webkit-border-radius: 8px; /* Safari, Chrome */
@@ -36,7 +36,7 @@
 .b-button-add-announcement:hover,
 .b-button-add-announcement:focus{
     cursor: pointer;
-
+outline: none;
     color: white;
 }
 
@@ -55,6 +55,6 @@
 .b-button-see-announcement:hover,
 .b-button-see-announcement:focus{
     cursor: pointer;
-
+outline: none;
     color: #e3cf56;
 }

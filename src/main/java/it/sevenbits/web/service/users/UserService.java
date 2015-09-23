@@ -5,11 +5,11 @@ package it.sevenbits.web.service.users;
  */
 
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.core.repository.userrepository.UserRepository;
 import it.sevenbits.web.domain.RegistrationForm;
 import it.sevenbits.web.domain.User;
 import it.sevenbits.web.service.goods.GoodsException;
 import org.mindrot.jbcrypt.BCrypt;
+import it.sevenbits.core.repository.userrepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

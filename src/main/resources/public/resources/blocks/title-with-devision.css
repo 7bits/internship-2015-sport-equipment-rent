@@ -1,0 +1,42 @@
+.title-with-devision__text{
+    font-size: 16px;
+
+    float: left;
+
+    width: 148.66px;
+    height: 38px;
+    padding-top: 12px;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.title-with-devision__text--right{
+    float: right;
+    width: auto;
+}
+
+.title-with-devision__text p{
+    overflow: hidden;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
+}
+
+
+.title-with-devision__devide-line{
+    float: left;
+
+    width: 2px;
+    height: 28px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    background-color: white;
+}
+
+.title-with-devision__devide-line--right{
+    float: right;
+    margin-right: 16px;
+}

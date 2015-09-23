@@ -5,27 +5,26 @@ block depending
     link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block content
     .b-content-inside
         .base
             .order
-                a(href="/profile?user_id=#{user.id}")
-                    .b-user-info
+                .b-user-info
+                    .b-user-info__content
+                        .b-user-info__owner
+                            b
+                                p
+                                    Владелец:
                         .b-user-info__ava
-                            img(src=user.imageUrl, width="120", height="120")
-                        .b-user-info__dividing-line
+                            img(src=user.imageUrl, width="114", height="114")
                         .b-user-info__info
                             p=user.firstName
                 include mixins/mixin_users_announcement_list.jade
                 .b-user-list-announcements
-                    .b-title--default.b-title--unindented
-                        .b-user-list-announcements__title
-                            b
-                                p
-                                    text(style="margin-right: 2px;")
-                                        Объявления пользователя
-                                    | #{user.firstName}
+                    .b-title--default.b-title--blue.b-title--text-left
+                        b
+                            p
+                                Объявления
                     +list(goods)

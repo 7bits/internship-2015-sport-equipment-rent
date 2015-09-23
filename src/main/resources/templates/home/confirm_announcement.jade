@@ -16,12 +16,10 @@ block header
     include mixins/mixin_message_header.jade
     +create-header()
 block content
-    form(role="form", action="/add", method="post", enctype="multipart/form-data")
+    form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
+        input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
         include mixins/mixin_form_add_announcement.jade
         .b-form-crud-announcement__button
-            input.b-button--default.b-button--yellow(type='submit', value='РАЗМЕСТИТЬ')
-        .b-form-crud-announcement__button
-            a(href="/")
-                input.b-button--default.b-button--yellow(type='submit', value='ОТМЕНА')
+            input.b-button--default.b-button--blue(type='submit', value='РАЗМЕСТИТЬ')
 block dynamic-scripts
     script(src='resources/scripts/add-update-confirm-announcement/add-photo.js')

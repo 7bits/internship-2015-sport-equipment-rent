@@ -1,19 +1,22 @@
 .b-form-crud-announcement
-    .b-title--default
-        p
-            Ваше объявление
+    .b-title--default.b-title--blue
+        b
+            p
+                Ваше объявление
     .b-form-crud-announcement__content
         include mixin_er.jade
         +err(errors)
-        .b-form-crud-announcement__title
-            p
-                Ваш инвентарь
-        input.b-input--default.b-input__name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+        .b-title--form
+            b
+                p
+                    Ваш инвентарь
+        input.b-input--default#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
         textarea.b-input--default.b-form__textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
             #{goods.description}
-        .b-form-crud-announcement__title
-            p
-                Цена
+        .b-title--form
+            b
+                p
+                    Цена
     .b-set-fields
         .base
             .order
@@ -24,9 +27,10 @@
                 .b-set-fields__input
                     input.b-input--default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
     .b-form-crud-announcement__content
-        .b-form-crud-announcement__title
-            p
-                Фотографии
+        .b-title--form
+            b
+                p
+                    Фотографии
     .b-set-fields
         .order
             .base

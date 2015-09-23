@@ -1,53 +1,46 @@
 .b-ad-details{
     float: left;
 
-    width: 415px;
+    width: 463px;
+    margin-right: 33px;
 }
 
 
 .b-ad-details__content{
-    width: 400px;
+    width: 455px;
     min-height: 155px;
-    padding-bottom: 20px;
-
+    padding-bottom: 13px;
+    border-style: solid;
+    border-color: #5cc9cc;
+    border-width: 3px;
     background-color: white;
-}
-
-
-.b-ad-details__time{
-    font-size: .875em;
-
-    float: left;
-    overflow: hidden;
-
-    width: 127px;
-    margin-right: 5px;
-    padding-right: 2px;
-
-    white-space: nowrap;
-       text-overflow: ellipsis;
-
-    -o-text-overflow: ellipsis;
+    margin-bottom: 13px;
 }
 
 
 .b-ad-details__product-title{
-    font-size: 1.125em;
+    font-size: 24px;
 
     overflow: hidden;
 
-    width: 100%
-    margin-top: 10px;
-    padding-right: 32px;
-    padding-left: 32px;
+    width: 100%;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    padding-right: 36px;
+    padding-left: 36px;
+
+    color: #278b8f;
+}
+
+.b-ad-details__product-title p{
+    overflow: hidden;
 
     white-space: nowrap;
        text-overflow: ellipsis;
 
-    color: #019199;
-
     -o-text-overflow: ellipsis;
 }
+
 
 .b-ad-details__product-title p{
     white-space:      pre-wrap;
@@ -58,22 +51,16 @@
 
 
 .b-ad-details__product-description{
-    font-size: .875em;
+    font-size: 16px;
 
-    width: 100%
-    min-height: 570px;
-    margin-top: 10px;
-    padding-right: 27px;
-    padding-left: 32px;
-    /*для переноса слов*/
-
-    white-space:      pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space:   -o-pre-wrap;
-    word-wrap: break-word;
-
+    width: 100%;
+    min-height: 160px;
+    padding-right: 36px;
+    padding-left: 36px;
+    padding-bottom: 10px;
     color: #6b6b6b;
 }
+
 
 .b-ad-details__product-description p{
     white-space:      pre-wrap;
@@ -82,33 +69,20 @@
     word-wrap: break-word;
 }
 
-
 .b-photo-set{
-    width: 405px;
-    height: 100px;
-    margin-top: 4px;
-    margin-bottom: 5px;
+    width: 463px;
+    height: 149.7px;
+    margin-bottom: 20px;
 }
-
 
 .b-photo-set__photo{
     position: relative;
 
     float: left;
 
-    width: 131px;
-    height: 100px;
-    margin-right: 4px;
-
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(212, 212, 212, 1);
-    -webkit-border-radius: 3px; /* Safari, Chrome */
-       -moz-border-radius: 3px; /* Firefox */
-            border-radius: 3px;
-    background-color: rgba(249, 249, 249, 1);
-
-    -khtml-border-radius: 3px; /* KHTML */
+    width: 143px;
+    height: 149.7px;
+    margin-right: 11px;
 }
 
 
@@ -117,8 +91,8 @@
     top: 50%;
     left: 50%;
 
-    max-width: 128px;
-    max-height: 98px;
+    max-width: 143px;
+    max-height: 149.7px;
 
     transform: translate(-50%, -50%);
 }
@@ -133,4 +107,14 @@
     max-height: 42px;
 
     transform: translate(-50%, -50%);
+}
+
+@font-face{
+    font-family: RUBSN;
+
+    src: url('../vendor/fonts/Rub/RUBSN.otf')  format("opentype");
+}
+
+.b-price__rub-price{
+    font-family: RUBSN, 'RUBSN';
 }

@@ -2,21 +2,20 @@
 .b-button--default:focus,
 .b-button--default:hover{
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
 
     width: 100%;
     height: 100%;
-    margin-top: 10px;
     margin-bottom: 10px;
     padding: 1px 0 2px 0;
 
     border: none;
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-       -moz-border-radius: 5px; /* Firefox */
-            border-radius: 5px;
+    -webkit-border-radius: 2px; /* Safari, Chrome */
+       -moz-border-radius: 2px; /* Firefox */
+            border-radius: 2px;
     box-shadow: 0 3px 3px #d4cfcf;
 
-    -khtml-border-radius: 5px; /* KHTML */
+    -khtml-border-radius: 2px; /* KHTML */
 }
 
 
@@ -29,54 +28,64 @@
     cursor: pointer;
 }
 
-
-/*желтая кнопка*/
-.b-button--yellow,
-.b-button--yellow:focus,
-.b-button--yellow:hover{
-    float: right;
-
-    width: 162px;
-    height: 40px;
-
-    color: white;
-    background: #edd04e;
-}
-
-
-.b-button--yellow:hover{
-    color: #949494;
-}
-
-
-.b-button--yellow:focus{
-    color: #949494;
-}
-
-
 /*#blue button*/
 .b-button--blue,
 .b-button--blue:focus,
 .b-button--blue:hover{
-    font-size: 16px;
 
-    height: 45px;
-    margin-top: 0;
-
-    color: white;
-    background: #6ccdd3;
+    height: 60px;
+    
+    background: #5cc9cc;
 
     align: center;
 }
 
+.b-button--blue{
+    color: white;
+}
 
-.b-button--blue:hover{
+.b-button--blue:hover,
+.b-button--green:hover{
     color: #949494;
 }
 
-
-.b-button--blue:focus{
+.b-button--blue:focus,
+.b-button--green:focus{
     color: #949494;
+}
+
+.b-button--authentication,
+.b-button--authentication:hover,
+.b-button--authentication:focus{
+    height: 42px;
+    font-size: 17px;
+    box-shadow: 0 1px 2px #626262;
+}
+
+
+/*#green button*/
+.b-button--green,
+.b-button--green:focus,
+.b-button--green:hover{
+
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #278b8f;
+
+    align: center;
+}
+
+.b-button--green{
+    color: white;
+}
+
+.b-button--update-profile,
+.b-button--update-profile:hover,
+.b-button--update-profile:focus{
+    height: 25px;
+    font-size: 9px;
+
 }
 
 .b-button--half-size,
@@ -119,12 +128,4 @@
 
 .b-button--update:focus{
     color: #949494;
-}
-
-@media(max-width: 443px){
-    .b-button--yellow,
-    .b-button--yellow:focus,
-    .b-button--yellow:hover{
-        width: 100%;
-    }
 }

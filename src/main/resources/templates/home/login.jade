@@ -4,13 +4,14 @@ block title
 block depending
 block form
     form(role="form", action="/login", method="post")
-        input.b-input--default#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
-        input.b-input--default#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
+        input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
+        input.b-input--default.b-input--border-none#userEmail.form-control(type="email", name='username',placeholder="E-MAIL")
+        input.b-input--default.b-input--border-none#passtext.form-control(type="password", name='password',placeholder="ПАРОЛЬ")
         .b-login__forgot-pass
             a.registration-a-color(href="/")
                 p
                     Забыли пароль?
-        input.b-button--default.b-button--blue(type='submit', value='ВОЙТИ')
+        input.b-button--default.b-button--blue.b-button--authentication(type='submit', value='ВОЙТИ')
         .b-login__to-registration
             text
                 Еще не зарегистрированы?
