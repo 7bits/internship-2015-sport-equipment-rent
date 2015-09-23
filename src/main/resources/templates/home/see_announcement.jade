@@ -32,22 +32,28 @@ block content
                             .base
                                 .order
                                     .title-with-devision__text
+                                        text(style="padding-right: 5px;")
+                                            Час:
                                         b
-                                            p
-                                                Час:
-                                                text=Goods.pricePerHour
+                                            text(style="padding-right: 5px;")=Goods.pricePerHour
+                                            text.b-price__rub-price
+                                                Р
                                     .title-with-devision__devide-line
                                     .title-with-devision__text
+                                        text(style="padding-right: 5px;")
+                                            Час:
                                         b
-                                            p
-                                                Сутки:
-                                                text=Goods.pricePerDay
+                                            text(style="padding-right: 5px;")=Goods.pricePerDay
+                                            text.b-price__rub-price
+                                                Р
                                     .title-with-devision__devide-line
                                     .title-with-devision__text
+                                        text(style="padding-right: 5px;")
+                                            Час:
                                         b
-                                            p
-                                                Неделя:
-                                                text=Goods.pricePerWeek
+                                            text(style="padding-right: 5px;")=Goods.pricePerWeek
+                                            text.b-price__rub-price
+                                                Р
                         .b-ad-details__product-title
                             b
                                 p=Goods.title
