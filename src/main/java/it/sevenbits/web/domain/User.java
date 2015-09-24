@@ -1,5 +1,7 @@
 package it.sevenbits.web.domain;
 
+import it.sevenbits.web.forms.UpdateUserForm;
+
 import java.io.Serializable;
 
 /**

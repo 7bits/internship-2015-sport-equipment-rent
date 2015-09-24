@@ -1,6 +1,6 @@
-package it.sevenbits.web.service.users;
+package it.sevenbits.service;
 
-import it.sevenbits.web.domain.GoodsForm;
+import it.sevenbits.web.forms.GoodsForm;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 

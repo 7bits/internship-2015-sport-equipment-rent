@@ -1,4 +1,4 @@
-package it.sevenbits.web.service.goods;
+package it.sevenbits.service.exceptions;
 
 
 /**

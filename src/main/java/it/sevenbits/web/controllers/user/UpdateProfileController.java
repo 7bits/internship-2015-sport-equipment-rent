@@ -1,10 +1,10 @@
 package it.sevenbits.web.controllers.user;
 
-import it.sevenbits.web.domain.UpdateUserForm;
+import it.sevenbits.web.forms.UpdateUserForm;
 import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.users.UpdateFieldValidator;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.validators.UpdateFieldValidator;
+import it.sevenbits.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

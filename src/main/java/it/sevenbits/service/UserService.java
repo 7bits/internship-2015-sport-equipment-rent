@@ -1,13 +1,13 @@
-package it.sevenbits.web.service.users;
+package it.sevenbits.service;
 
 /**
  * Created by awemath on 7/14/15.
  */
 
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.web.domain.RegistrationForm;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.web.forms.RegistrationForm;
 import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.GoodsException;
 import org.mindrot.jbcrypt.BCrypt;
 import it.sevenbits.core.repository.userrepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class UserService {
         return user;
     }
 
-    public int getCountOfUsersWithThatEmail(String email){
+    public int getCountOfUsersWithEmail(String email){
         return repository.getCountOfUsersWithThatEmail(email);
     }
 

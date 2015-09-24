@@ -1,9 +1,9 @@
-package it.sevenbits.web.domain;
+package it.sevenbits.web.views;
 
 /**
  * Created by awemath on 8/19/15.
  */
-public class HistoryTable {
+public class HistoryRowView {
     String startDate, endDate, renting, title;
 
     public String getStartDate() {

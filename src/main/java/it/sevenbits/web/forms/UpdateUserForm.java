@@ -1,4 +1,6 @@
-package it.sevenbits.web.domain;
+package it.sevenbits.web.forms;
+
+import it.sevenbits.web.domain.User;
 
 /**
  * Created by awemath on 8/7/15.

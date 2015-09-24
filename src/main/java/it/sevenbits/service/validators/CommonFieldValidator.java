@@ -1,4 +1,4 @@
-package it.sevenbits.web.service;
+package it.sevenbits.service.validators;
 
 /**
  * Created by awemath on 7/9/15.
@@ -6,8 +6,8 @@ package it.sevenbits.web.service;
 
 
 import it.sevenbits.web.domain.Deal;
-import it.sevenbits.web.service.goods.DealService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.service.DealService;
+import it.sevenbits.service.UserService;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
@@ -162,7 +162,7 @@ public class CommonFieldValidator {
             final String field
     ) {
         if (!errors.containsKey(key))
-            if (userService.getCountOfUsersWithThatEmail(email) != 0) {
+            if (userService.getCountOfUsersWithEmail(email) != 0) {
                 errors.put(key, field);
             }
     }

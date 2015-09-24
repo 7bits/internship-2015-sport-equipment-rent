@@ -1,10 +1,10 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.web.forms.GoodsForm;
+import it.sevenbits.service.validators.AddNewGoodsFormValidator;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;

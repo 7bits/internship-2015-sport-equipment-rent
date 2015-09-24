@@ -1,4 +1,4 @@
-package it.sevenbits.web.service.goods;
+package it.sevenbits.service;
 
 import it.sevenbits.core.repository.dealrepository.DealRepository;
 import it.sevenbits.web.domain.Deal;

@@ -1,6 +1,6 @@
-package it.sevenbits.web.service.goods;
+package it.sevenbits.service;
 
-import it.sevenbits.web.domain.GoodsForm;
+import it.sevenbits.web.forms.GoodsForm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
 

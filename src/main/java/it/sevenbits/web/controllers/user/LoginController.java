@@ -5,7 +5,7 @@ package it.sevenbits.web.controllers.user;
  */
 
 import it.sevenbits.web.controllers.HomeController;
-import it.sevenbits.web.service.goods.GoodsService;
+import it.sevenbits.service.GoodsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

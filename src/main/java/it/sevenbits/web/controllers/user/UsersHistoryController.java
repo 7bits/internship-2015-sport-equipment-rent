@@ -2,12 +2,12 @@ package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.HistoryTable;
+import it.sevenbits.web.views.HistoryRowView;
 import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.DealService;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.service.DealService;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -44,9 +44,9 @@ public class UsersHistoryController {
             e.printStackTrace();
         }
         List<Deal> deals= dealService.getDealsOfUser(user.getId());
-        List<HistoryTable> table = new LinkedList<HistoryTable>();
+        List<HistoryRowView> table = new LinkedList<HistoryRowView>();
         for(int i=0;i<deals.size();i++){
-            HistoryTable row = new HistoryTable();
+            HistoryRowView row = new HistoryRowView();
             row.setStartDate(deals.get(i).getRealStartDate().substring(0, deals.get(i).getRealStartDate().indexOf('.')));
             row.setEndDate(deals.get(i).getRealEndDate().substring(0, deals.get(i).getRealEndDate().indexOf('.')));
             User renting = null;
