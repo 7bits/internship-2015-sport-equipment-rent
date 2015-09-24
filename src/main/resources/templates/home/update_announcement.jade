@@ -15,8 +15,7 @@ block scripts
 block content
     form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
-        include mixins/mixin_form_add_announcement.jade
-        .b-form-crud-announcement__button
-            input.b-button--default.b-button--blue(type='submit', value='СОХРАНИТЬ')
+        include mixins/mixin_form_crud_announcement.jade
+        +form("СОХРАНИТЬ")
 block dynamic-scripts
     script(src='resources/scripts/add-update-confirm-announcement/add-photo.js')

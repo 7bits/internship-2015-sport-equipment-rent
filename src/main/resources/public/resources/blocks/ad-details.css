@@ -110,13 +110,3 @@
 
     transform: translate(-50%, -50%);
 }
-
-@font-face{
-    font-family: RUBSN;
-
-    src: url('../vendor/fonts/Rub/RUBSN.otf')  format('opentype');
-}
-
-.b-price__rub-price{
-    font-family: RUBSN, 'RUBSN';
-}

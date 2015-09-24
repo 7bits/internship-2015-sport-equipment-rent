@@ -1,36 +1,32 @@
 mixin list(goods)
     .b-user-list-announcement__content
-        .base
-            .order
-                each Goods in goods
-                    - announcement_id = Goods.id;
-                    a(href="/see_announcement?announcement_id=#{announcement_id}")
-                        .b-user-announcement
-                            .b-user-announcement-title
-                                .base
-                                    .order
-                                        .b-user-announcement-title__price
-                                            text(style="padding-right: 8px;")
-                                                Час:
-                                            b
-                                                text(style="padding-right: 3px;")=Goods.pricePerHour
-                                                text.b-user-announcement-title__rub-price
-                                                    Р
-                                        .b-user-announcement-title__status
-                                            if (Goods.status)
-                                                img(src="resources/images/status-announcement/ready-ico.png", width="16", height="16")
-                                            else
-                                                img(src="resources/images/status-announcement/not-ready-ico.png", width="16", height="16")
-                            each image in Goods.imageUrl
-                                .b-user-announcement__photo
-                                    if image=="resources/images/photo-ico.png"
-                                        .b-user-announcement__photo-ico
-                                            img(src=image, width="42", height="42")
-                                    else
-                                        .b-user-announcement__photo-image
-                                            img(src=image)
-                            .b-user-announcement__product-title
-                                b
-                                    p=Goods.title
-                            .b-user-announcement__product-description.js-cut-text
-                                p=Goods.description
+        each Goods in goods
+            - announcement_id = Goods.id;
+            a(href="/see_announcement?announcement_id=#{announcement_id}")
+                .b-user-announcement
+                    .b-user-announcement-title
+                        .b-user-announcement-title__price
+                            text(style="padding-right: 8px;")
+                                Час:
+                            b
+                                text(style="padding-right: 3px;")=Goods.pricePerHour
+                                text.b-user-announcement-title__rub-price
+                                    Р
+                        .b-user-announcement-title__status
+                            if (Goods.status)
+                                img(src="resources/images/status-announcement/ready-ico.png", width="16", height="16")
+                            else
+                                img(src="resources/images/status-announcement/not-ready-ico.png", width="16", height="16")
+                    each image in Goods.imageUrl
+                        .b-user-announcement__photo
+                            if image=="resources/images/photo-ico.png"
+                                .b-user-announcement__photo-ico
+                                    img(src=image, width="42", height="42")
+                            else
+                                .b-user-announcement__photo-image
+                                    img(src=image)
+                    .b-user-announcement__product-title
+                        b
+                            p=Goods.title
+                    .b-user-announcement__product-description.js-cut-text
+                        p=Goods.description

@@ -20,7 +20,7 @@
 
 textarea{
     padding-top: 13px;
-
+    min-height: 111px;
     resize: none;
 }
 
@@ -74,13 +74,6 @@ textarea:focus:placeholder-shown{
 .b-input--half-size,
 .b-input--half-size:hover,
 .b-input--half-size:focus{
-    font-size: 0.875em;
     width: 49%;
     margin-right: 1%;
-    height: 34px;
-    margin-bottom: 10px;
-
-    border-width: 1px;
-    border-style: solid;
-    border-color: #c7c7c7;
 }

@@ -9,7 +9,7 @@
     width: 100%;
     margin-bottom: 17px;
 
-    background-color: rgba(242, 242, 242, 1);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .b-user-info__owner{
@@ -56,7 +56,7 @@
     text-align: center;
 
     color: #278b8f;
-    text-shadow: 0 2px 5px #b1b1b1;
+
 }
 
 .b-user-info__info p{
@@ -85,7 +85,7 @@
     width: 110px;
 
     color: #747474;
-    text-shadow: 0 2px 5px #b1b1b1;
+
 }
 
 

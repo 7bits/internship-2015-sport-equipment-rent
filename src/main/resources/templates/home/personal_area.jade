@@ -13,24 +13,22 @@ block depending
 block header
     .b-header
         .b-header__content
-            .base
-                .order
-                    .b-logo
-                        a(href="/")
-                            img(src="resources/images/layout/logo.png", width="220", height="55", style="margin-top: 12px")
-                    .b-header__exit
-                        a.header-a-color(href="/logout")
-                            b
-                                p
-                                    ВЫХОД
-                    .b-header__give-announcement
-                        a.header-a-color(href="/add")
-                            b
-                                p
-                                    ДАТЬ ОБЪЯВЛЕНИЕ
-                    .b-header__dropdown-menu-ico.js-dropdown-ico
-                            h1
-                                img(src="resources/images/layout/menu.png", width="25", height="15")
+            .b-logo
+                a(href="/")
+                    img(src="resources/images/layout/logo.png", width="220", height="55", style="margin-top: 12px")
+            .b-header__menu
+                a.header-a-color(href="/logout")
+                    b
+                        p
+                            ВЫХОД
+            .b-header__menu
+                a.header-a-color(href="/add")
+                    b
+                        p
+                            ДАТЬ ОБЪЯВЛЕНИЕ
+            .b-header__dropdown-menu-ico.js-dropdown-ico
+                    h1
+                        img(src="resources/images/layout/menu.png", width="25", height="15")
         .b-header__dropdown-menu.js-dropdown-menu
                 ul
                     li
@@ -43,35 +41,31 @@ block header
                                 ВЫХОД
 block content
     .b-content-inside
-        .base
-            .order
-                .b-user-info
-                    .b-user-info__content
-                        .b-user-info__owner
-                            b
-                                p
-                                    Владелец:
-                        .b-user-info__ava
-                            img(src=user.imageUrl, width="114", height="114")
-                        .b-user-info__info
-                            p=user.firstName
-                        if user.phone!=null
-                            .b-user-info__info
-                                p=user.phone
-                    a(href="/update_profile")
-                        input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')
-                include mixins/mixin_users_announcement_list.jade
-                .b-user-list-announcements
-                    .b-title--default.b-title--blue.b-title--text-left.b-title--padding-none
-                        .base
-                            .order
-                                .title-with-devision__text
-                                    b
-                                        p
-                                            Объявления
-                                .title-with-devision__text.title-with-devision__text--right
-                                    a.a-history(href="/history")
-                                        p
-                                            История
-                                .title-with-devision__devide-line.title-with-devision__devide-line--right
-                    +list(goods)
+        .b-user-info
+            .b-user-info__content
+                .b-user-info__owner
+                    b
+                        p
+                            Владелец:
+                .b-user-info__ava
+                    img(src=user.imageUrl, width="114", height="114")
+                .b-user-info__info
+                    p=user.firstName
+                if user.phone!=null
+                    .b-user-info__info
+                        p=user.phone
+            a(href="/update_profile")
+                input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')
+        include mixins/mixin_users_announcement_list.jade
+        .b-user-list-announcements
+            .b-title--default.b-title--blue.b-title--padding-none
+                .title-with-devision__text
+                    b
+                        p
+                            Объявления
+                .title-with-devision__text.title-with-devision__text--right
+                    a.a-history(href="/history")
+                        p
+                            История
+                .title-with-devision__devide-line.title-with-devision__devide-line--right
+            +list(goods)

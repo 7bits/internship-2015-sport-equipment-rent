@@ -12,7 +12,7 @@ block content
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
         .b-update-profile
             .b-update-profile-form
-                .b-title--default.b-title--blue.b-title--text-left
+                .b-title--default.b-title--blue
                     b
                         p
                             Редактирование профиля
@@ -26,19 +26,15 @@ block content
                             p
                                 Фото вашего профиля
                     .b-update-profile__user-avatar
-                        .base
-                            .order
-                                .b-update-profile__user-photo
-                                    img(src=user.imageUrl)
-                                .b-update-profile__url
-                                    input.b-input--default#from.form-control(type="text", value="#{user.imageUrl}", name="imageUrl",placeholder="URL изображения")
+                        .b-update-profile__user-photo
+                            img(src=user.imageUrl)
+                        .b-update-profile__url
+                            input.b-input--default#from.form-control(type="text", value="#{user.imageUrl}", name="imageUrl",placeholder="URL изображения")
                     .b-title--form
                         b
                             p
                                 Смена пароля
-                    .base
-                        .order
-                            input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.pass}", name="pass",placeholder="Текущий пароль")
-                            input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.newPass}", name="newPass",placeholder="Новый пароль")
+                    input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.pass}", name="pass",placeholder="Текущий пароль")
+                    input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.newPass}", name="newPass",placeholder="Новый пароль")
             .b-update-profile__button
                 input.b-button--default.b-button--blue(type='submit', value='CОХРАНИТЬ')
