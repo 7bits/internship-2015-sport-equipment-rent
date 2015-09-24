@@ -1,8 +1,8 @@
 package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.web.controllers.MailSubmissionController;
-import it.sevenbits.web.domain.Deal;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.Deal;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.UserService;

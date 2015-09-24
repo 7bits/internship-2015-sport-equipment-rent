@@ -1,7 +1,7 @@
 package it.sevenbits.web.controllers.user;
 
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
 import org.apache.log4j.Logger;

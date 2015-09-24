@@ -7,7 +7,7 @@ package it.sevenbits.service;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.web.forms.RegistrationForm;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.User;
 import org.mindrot.jbcrypt.BCrypt;
 import it.sevenbits.core.repository.userrepository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package it.sevenbits.web.forms;
 
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
 
 import java.util.LinkedList;
 import java.util.List;

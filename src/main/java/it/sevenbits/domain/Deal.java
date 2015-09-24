@@ -1,4 +1,4 @@
-package it.sevenbits.web.domain;
+package it.sevenbits.domain;
 
 /**
  * Created by awemath on 7/21/15.

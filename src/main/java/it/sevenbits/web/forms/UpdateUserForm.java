@@ -1,6 +1,6 @@
 package it.sevenbits.web.forms;
 
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.User;
 
 /**
  * Created by awemath on 8/7/15.

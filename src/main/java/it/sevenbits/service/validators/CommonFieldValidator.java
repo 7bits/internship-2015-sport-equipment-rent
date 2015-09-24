@@ -5,7 +5,7 @@ package it.sevenbits.service.validators;
  */
 
 
-import it.sevenbits.web.domain.Deal;
+import it.sevenbits.domain.Deal;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.UserService;
 import org.joda.time.DateTime;

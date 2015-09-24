@@ -1,6 +1,6 @@
 package it.sevenbits.web.controllers;
 
-import it.sevenbits.web.domain.Goods;
+import it.sevenbits.domain.Goods;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;

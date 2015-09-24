@@ -1,6 +1,6 @@
 package it.sevenbits.web.controllers.user;
 
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;

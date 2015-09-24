@@ -1,4 +1,4 @@
-package it.sevenbits.web.domain;
+package it.sevenbits.domain;
 
 import it.sevenbits.web.forms.UpdateUserForm;
 

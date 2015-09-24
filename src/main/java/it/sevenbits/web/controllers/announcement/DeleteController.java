@@ -1,7 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;

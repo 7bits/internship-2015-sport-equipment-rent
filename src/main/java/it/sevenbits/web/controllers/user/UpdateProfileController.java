@@ -1,7 +1,7 @@
 package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.web.forms.UpdateUserForm;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.validators.UpdateFieldValidator;
 import it.sevenbits.service.UserService;

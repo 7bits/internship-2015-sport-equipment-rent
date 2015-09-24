@@ -2,9 +2,9 @@ package it.sevenbits.web.controllers;
 
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.template.JadeTemplate;
-import it.sevenbits.web.domain.Deal;
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.Deal;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
