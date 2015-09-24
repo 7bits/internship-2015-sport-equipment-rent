@@ -1,9 +1,8 @@
 .b-header
     .b-header__header
         .b-header__content
-            .b-logo
-                a(href="/")
-                    img(src="resources/images/layout/logo.png", width="220", height="55", style="margin-top: 12px")
+            a(href="/")
+                .b-logo
             if (!isAuth)
                 .b-header__login
                     a.header-a-color(href="/login")

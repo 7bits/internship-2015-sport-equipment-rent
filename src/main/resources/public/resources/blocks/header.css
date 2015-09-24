@@ -26,6 +26,13 @@
 
 .b-logo{
     float: left;
+    background-image: url('../images/layout/logo.png');
+    width: 220px;
+    height: 55px;
+    margin-top: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 
@@ -34,7 +41,7 @@
     float: right;
 
     height: 74px;
-    padding: 23px 13px 0px;
+    padding: 30px 13px 0px;
 }
 
 
@@ -157,5 +164,11 @@
     }
     .b-header__dropdown-menu{
         display: none;
+    }
+}
+
+@media(max-width: 540px){
+    .b-logo{
+        height: 45px;
     }
 }
