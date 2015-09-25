@@ -13,8 +13,7 @@ block scripts
     //- должен подгружаться тут
     script(src="resources/scripts/add-update-confirm-announcement/update-announcement-past-filename-hide-delete-ico.js")
 block header
-    include mixins/mixin_message_header.jade
-    +create-header()
+    include partial/mixin_message_header.jade
 block content
     form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')

@@ -4,8 +4,7 @@ block title
 block depending
     link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
 block header
-    include mixins/mixin_message_header.jade
-    +create-header()
+    include partial/mixin_message_header.jade
 block content
     include mixins/mixin_message.jade
     +create-message("Ваша заявка отправлена","resources/images/message/application_submitted.png")
