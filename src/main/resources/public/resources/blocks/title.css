@@ -1,21 +1,58 @@
 .b-title--default{
-    font-size: 1.125em;
+    font-size: 16px;
 
     width: 100%;
-    height: 45px;
-    margin-bottom: 30px;
-    padding-top: 14px;
+    height: 38px;
+    margin-bottom: 10px;
+    padding-top: 11px;
+    padding-right: 12px;
+    padding-left: 12px;
+}
 
-    text-align: center;
-    vertical-align: top;
+.b-title--blue{
+    color: white;
+    background-color: #5cc9cc;
+}
+
+.b-title--dark-green{
+    padding-top: 0;
 
     color: white;
-    background-color: #6fb2b4;
-    box-shadow: 0 2px 3px #e6e6e6;
-    text-shadow: 0 2px 3px #a19d9d;
+    background-color: #278b8f;
+}
+
+.b-title--text-centered{
+    text-align: center;
+}
+
+/*title in form*/
+.b-title--form{
+    font-size: 14px;
+
+    width: 100%;
+    margin-bottom: 10px;
+
+    color: #5cc9cc;
 }
 
 
-.b-title--unindented{
-    margin-bottom: 0;
+/*use together for title with icons*/
+.b-title--padding-none{
+    padding-top: 0;
+}
+
+.b-title__text{
+    float: left;
+
+    margin-top: 11px;
+}
+
+.b-title__ico-calendar{
+    float: right;
+
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+
+    background-image: url('../images/calendar-ico.png');
 }

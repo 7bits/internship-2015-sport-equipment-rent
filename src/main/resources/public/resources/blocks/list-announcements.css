@@ -1,39 +1,36 @@
-.b-list__content{
-    width: 937px;
-    margin: 0 auto;
-}
+.b-list-announcements-elem{
+    position: relative;
 
-.b-list-elem{
     width: 100%;
     height: 238px;
+    margin-top: 60px;
+
     border-width: 2.78px;
     border-style: solid;
     border-color: #5cc9cc;
-    margin-top: 40px;
-    position: relative;
 }
 
-.b-list-elem:hover,
-.b-list-elem:focus{
--webkit-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
--moz-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
-box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
+.b-list-announcements-elem:hover,
+.b-list-announcements-elem:focus{
+    -webkit-box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
+       -moz-box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
+            box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
 }
 
 
-.b-list-elem__content{
+.b-list-announcements-elem__content{
     position: absolute;
     top: 50%;
     left: 50%;
+
     width: 891px;
     height: 190px;
 
     transform: translate(-50%, -50%);
 }
 
-/*#productInfo*/
-
-.b-product-info{
+/*#product-info*/
+.b-list-announcements-elem-product-info{
     float: left;
 
     width: 641px;
@@ -42,26 +39,26 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
 }
 
 
-.b-product-info__title{
+.b-list-announcements-elem-product-info__title{
     width: 100%;
     height: 34px;
     margin-bottom: 27px;
 }
 
-.b-product-info__product-name{
+.b-list-announcements-elem-product-info__product-name{
     font-size: 24px;
 
     float: left;
 
     width: 460px;
     margin-right: 3px;
-    padding-bottom: 11px;
     padding-right: 5px;
+    padding-bottom: 11px;
 
     color: #365f63;
 }
 
-.b-product-info__product-name p{
+.b-list-announcements-elem-product-info__product-name p{
     overflow: hidden;
 
     white-space: nowrap;
@@ -70,7 +67,7 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
     -o-text-overflow: ellipsis;
 }
 
-.b-product-info__discription{
+.b-list-announcements-elem-product-info__discription{
     font-size: 16px;
 
     width: 100%;
@@ -81,12 +78,12 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
 }
 
 
-.b-product-info__set-price{
+.b-list-announcements-elem-product-info__set-price{
     width: 100%;
     height: 40px;
 }
 
-.b-product-info__price{
+.b-list-announcements-elem-product-info__price{
     font-size: 16px;
 
     float: left;
@@ -107,78 +104,55 @@ box-shadow: 0px 0px 10px 5px rgba(54,95,99,0.5);
     -khtml-border-radius: 3px; /* KHTML */
 }
 
-@font-face{
-    font-family: RUBSN;
 
-    src: url('../vendor/fonts/Rub/RUBSN.otf')  format("opentype");
-}
-
-.b-product-info__rub-price{
-    font-family: RUBSN, 'RUBSN';
-}
-
-.b-product-photo{
+/*#product-photo*/
+.b-list-announcements-elem__product-photo{
     float: left;
-position: relative;
+
     width: 192px;
     height: 192px;
 }
 
-.b-product-photo__photo img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
+.b-list-announcements-elem__product-photo img{
     max-width: 192px;
-    max-height: 192px;
-
-    transform: translate(-50%, -50%);
-}
-
-.b-product-photo__default-photo{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 42px;
-    height: 42px;
-
-    transform: translate(-50%, -50%);
 }
 
 
-.b-product-photo__default-photo img{
-    max-width: 42px;
-    max-height: 42px;
-}
-
-.b-product-photo__update-button{
-    width: 149px;
-    height: 31px;
+.b-list-announcements-elem__update-button{
     position: absolute;
     z-index: 99997;
     top: -40px;
     right: 69px;
+
+    width: 149px;
+    height: 31px;
 }
 
 
-.b-product-photo__author-ava{
-    width: 84px;
-    height: 84px;
+.b-list-announcements-elem__author-ava{
     position: absolute;
     z-index: 99998;
     top: -67px;
     right: 0;
+
+    width: 84px;
+    height: 84px;
 }
 
 
-.b-product-photo__author-ava img{
+.b-list-announcements-elem__author-ava img{
     max-width: 84px;
     max-height: 84px;
+
+    border-width: 2.87px;
+    border-style: solid;
+    border-color: #5cc9cc;
     -webkit-border-radius: 84px; /* Safari, Chrome */
        -moz-border-radius: 84px; /* Firefox */
             border-radius: 84px; /* CSS3 */
-    -khtml-border-radius: 84px; /* KHTML */
-    border-style: solid;
-    border-width: 2.87px;
-    border-color: #5cc9cc;
-}
+    -webkit-box-shadow: 0 0 3px 0 rgba(143,140,143,.5);
+       -moz-box-shadow: 0 0 3px 0 rgba(143,140,143,.5);
+            box-shadow: 0 0 3px 0 rgba(143,140,143,.5);
 
+    -khtml-border-radius: 84px; /* KHTML */
+}

@@ -1,35 +1,39 @@
-.b-form-crud-announcement
-    .b-title--default
-        p
-            Ваше объявление
-    .b-form-crud-announcement__content
-        include mixin_er.jade
-        +err(errors)
-        .b-form-crud-announcement__title
-            p
-                Ваш инвентарь
-        input.b-input--default.b-input__name-announcement#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
-        textarea.b-input--default.b-form__textarea#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
-            #{goods.description}
-        .b-form-crud-announcement__title
-            p
-                Цена
-    .b-set-fields
-        .base
-            .order
+mixin form(buttonText)
+    .b-crud-announcement
+        .b-crud-announcement-form
+            .b-title--default.b-title--blue
+                b
+                    p
+                        Ваше объявление
+            .b-crud-announcement-form__content
+                include mixin_er.jade
+                +err(errors)
+                .b-title--form
+                    b
+                        p
+                            Ваш инвентарь
+                input.b-input--default#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
+                textarea.b-input--default#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+                    #{goods.description}
+                .b-title--form
+                    b
+                        text(style="padding-right: 5px;")
+                            Цена,
+                        text.set-rub-price
+                            Р
+            .b-set-fields
                 .b-set-fields__input
                     input.b-input--default#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
                 .b-set-fields__input
                     input.b-input--default#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
                 .b-set-fields__input
                     input.b-input--default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
-    .b-form-crud-announcement__content
-        .b-form-crud-announcement__title
-            p
-                Фотографии
-    .b-set-fields
-        .order
-            .base
+            .b-crud-announcement-form__content
+                .b-title--form
+                    b
+                        p
+                            Фотографии
+            .b-set-fields
                 .b-photo
                     .b-photo__download-mask
                         .b-photo__image-default
@@ -63,3 +67,4 @@
                                 img(src=goods.thirdImageUrl)
                         input.b-download-mask__input-file-name(type='text', disabled='')
                     input#third-file.b-download-mask__real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+        input.b-button--default.b-button--blue(type='submit', value="#{buttonText}")
