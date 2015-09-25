@@ -1,7 +1,7 @@
 package it.sevenbits.core.repository.userrepository;
 
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.web.domain.User;
+import it.sevenbits.domain.User;
 
 /**
  * Created by awemath on 7/14/15.
