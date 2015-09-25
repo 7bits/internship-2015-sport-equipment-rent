@@ -1,4 +1,4 @@
-.b-login{
+.b-form-authentication{
     position: absolute;
     top: 45%;
     left: 50%;
@@ -8,7 +8,7 @@
     transform: translate(-50%, -50%);
 }
 
-.b-login__forgot-pass{
+.b-form-authentication__forgot-pass{
     font-size: 14px;
 
     width: 100%;
@@ -20,7 +20,7 @@
     color: #5dc8cd;
 }
 
-.b-login__to-registration{
+.b-form-authentication__to-registration{
     font-size: 14px;
 
     width: 100%;
@@ -34,11 +34,12 @@
 }
 
 
-a.registration-a-color:visited{
+.registration-a-color:visited{
     color: #5dc8cd;
 }
 
 
-a.registration-a-color:hover{
+.registration-a-color:hover,
+.registration-a-color:focus{
     color: #949494;
 }

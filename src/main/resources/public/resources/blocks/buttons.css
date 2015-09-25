@@ -18,11 +18,9 @@
     -khtml-border-radius: 2px; /* KHTML */
 }
 
-
 .b-button--default:focus{
     cursor: pointer;
 }
-
 
 .b-button--default:hover{
     cursor: pointer;
@@ -43,16 +41,16 @@
     color: white;
 }
 
-.b-button--blue:hover,
-.b-button--green:hover{
+.b-button--blue:hover{
     color: #949494;
 }
 
-.b-button--blue:focus,
-.b-button--green:focus{
+.b-button--blue:focus{
     color: #949494;
 }
 
+
+/*use at registration & login page*/
 .b-button--authentication,
 .b-button--authentication:hover,
 .b-button--authentication:focus{
@@ -82,6 +80,16 @@
     color: white;
 }
 
+.b-button--green:hover{
+    color: #949494;
+}
+
+.b-button--green:focus{
+    color: #949494;
+}
+
+
+/*use at personal_area page*/
 .b-button--update-profile,
 .b-button--update-profile:hover,
 .b-button--update-profile:focus{
@@ -98,9 +106,10 @@
 }
 
 
-.b-button--update,
-.b-button--update:hover,
-.b-button--update:focus{
+/*use at index page*/
+.b-button--update-announcement,
+.b-button--update-announcement:hover,
+.b-button--update-announcement:focus{
     font-size: 14px;
 
     margin-top: 0;
@@ -118,16 +127,16 @@
 }
 
 
-.b-button--update{
+.b-button--update-announcement{
     color: white;
 }
 
 
-.b-button--update:hover{
+.b-button--update-announcement:hover{
     color: #949494;
 }
 
 
-.b-button--update:focus{
+.b-button--update-announcement:focus{
     color: #949494;
 }

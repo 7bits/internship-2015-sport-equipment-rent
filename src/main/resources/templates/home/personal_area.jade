@@ -39,7 +39,7 @@ block header
                             p 
                                 ВЫХОД
 block content
-    .b-content-inside
+    .b-content
         .b-user-info
             .b-user-info__content
                 .b-user-info__owner
@@ -58,13 +58,13 @@ block content
         include mixins/mixin_users_announcement_list.jade
         .b-user-list-announcements
             .b-title--default.b-title--blue.b-title--padding-none
-                .title-with-devision__text
+                .b-title-with-devision__text
                     b
                         p
                             Объявления
-                .title-with-devision__text.title-with-devision__text--right
+                .b-title-with-devision__text.b-title-with-devision__text--right
                     a.a-history(href="/history")
                         p
                             История
-                .title-with-devision__devide-line.title-with-devision__devide-line--right
+                .b-title-with-devision__devide-line.b-title-with-devision__devide-line--right
             +list(goods)

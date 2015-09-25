@@ -10,22 +10,17 @@ mixin list(goods)
                                 Час:
                             b
                                 text(style="padding-right: 3px;")=Goods.pricePerHour
-                                text.b-user-announcement-title__rub-price
+                                text.set-rub-price
                                     Р
                         .b-user-announcement-title__status
                             if (Goods.status)
                                 img(src="resources/images/status-announcement/ready-ico.png", width="16", height="16")
                             else
                                 img(src="resources/images/status-announcement/not-ready-ico.png", width="16", height="16")
-                    each image in Goods.imageUrl
-                        .b-user-announcement__photo
-                            if image=="resources/images/photo-ico.png"
-                                .b-user-announcement__photo-ico
-                                    img(src=image, width="42", height="42")
-                            else
-                                .b-user-announcement__photo-image
-                                    img(src=image)
-                    .b-user-announcement__product-title
+                    .b-user-announcement__photo
+                        each image in Goods.imageUrl
+                            img(src=image)
+                    .b-user-announcement__product-name
                         b
                             p=Goods.title
                     .b-user-announcement__product-description.js-cut-text

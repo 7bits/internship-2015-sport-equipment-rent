@@ -1,11 +1,11 @@
 mixin form(buttonText)
-    .b-form-crud-announcement
-        .b-form-crud-announcement__form
+    .b-crud-announcement
+        .b-crud-announcement-form
             .b-title--default.b-title--blue
                 b
                     p
                         Ваше объявление
-            .b-form-crud-announcement__content
+            .b-crud-announcement-form__content
                 include mixin_er.jade
                 +err(errors)
                 .b-title--form
@@ -28,7 +28,7 @@ mixin form(buttonText)
                     input.b-input--default#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
                 .b-set-fields__input
                     input.b-input--default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
-            .b-form-crud-announcement__content
+            .b-crud-announcement-form__content
                 .b-title--form
                     b
                         p

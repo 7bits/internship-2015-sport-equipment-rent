@@ -1,11 +1,11 @@
-.b-form-crud-announcement{
+.b-crud-announcement{
     width: 441px;
     margin: 0 auto;
-    margin-top: 27px;
     margin-bottom: 40px;
+    margin-top: 27px;
 }
 
-.b-form-crud-announcement__form{
+.b-crud-announcement-form{
     margin-bottom: 10px;
 
     border-width: 3px;
@@ -14,19 +14,19 @@
     background-color: white;
 }
 
-
-.b-form-crud-announcement__content{
+.b-crud-announcement-form__content{
     width: 408px;
     margin: 0 auto;
 }
 
 
+/*use for input set and photo set in form*/
 .b-set-fields{
+    display: inline-block;
+
     width: 421px;
     margin-left: 13px;
-    display: inline-block;
 }
-
 
 .b-set-fields__input{
     float: left;
@@ -35,8 +35,12 @@
     margin-right: 14.3px;
 }
 
+/*for download photo 
+use stylized input block,
+when real input is invisible,
+but user see download-mask*/
 
-/*!базовый! блок 1 для вывода 1 фотки*/
+/*base photo block*/
 .b-photo{
     float: left;
 
@@ -51,7 +55,6 @@
     background-color: #f6f6f6;
 }
 
-
 .b-photo:hover{
     -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
        -moz-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
@@ -59,12 +62,12 @@
 }
 
 
-/*само изображение*/
+/*need to output user's product photo 
+at update_announcement*/
 .b-photo__product-image{
     width: 100%;
     height: 100%;
 }
-
 
 .b-photo__product-image img{
     position: absolute;
@@ -78,7 +81,7 @@
 }
 
 
-/*дефолтная иконка (блок)*/
+/*default photo ico*/
 .b-photo__image-default{
     position: absolute;
     top: 50%;
@@ -91,7 +94,7 @@
 }
 
 
-/*контейнер для маски*/
+/*download mask*/
 .b-photo__download-mask{
     position: relative;
     top: 0;
@@ -102,7 +105,7 @@
 }
 
 
-/*для вывода текста названия подргуженного файла*/
+/*for white user which photo was choosed*/
 .b-download-mask__input-file-name{
     font-size: 14px;
 
@@ -134,7 +137,7 @@
 }
 
 
-/*реальная кнопка*/
+/*real input*/
 .b-download-mask__real-file-input{
     position: relative;
     z-index: 99998;
@@ -153,7 +156,18 @@
 }
 
 
-/*иконка удаления и ее input*/
+/*delete ico*/
+.b-delete-photo{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 19px;
+    height: 19px;
+
+    background-image: url('../images/delete-photo-icon.png');
+}
+
 .b-delete-photo__input-delete{
     position: relative;
     z-index: 99999;
@@ -166,43 +180,20 @@
     opacity: 0;
 }
 
-
 .b-delete-photo__input-delete:hover{
     cursor: pointer;
 }
-
 
 .b-delete-photo__input-delete:focus{
     cursor: pointer;
 }
 
-
-
-.b-delete-photo{
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    width: 19px;
-    height: 19px;
-
-    background-image: url('../images/delete-photo-icon.png');
-}
-
-
-.b-form-crud-announcement__button{
-    width: 441px;
-    height: 60px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-
 @media(max-width: 443px){
-    .b-form-crud-announcement{
+    .b-crud-announcement{
         width: 320px;
     }
 
-    .b-form-crud-announcement__content{
+    .b-crud-announcement-form__content{
         width: 300px;
     }
 
@@ -222,7 +213,7 @@
         margin-right: 5px;
     }
 
-    .b-form-crud-announcement__button{
+    .b-crud-announcement__button{
         width: 320px;
     }
 }

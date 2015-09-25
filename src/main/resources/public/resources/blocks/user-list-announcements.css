@@ -8,6 +8,7 @@
     border-color: #5cc9cc;
     background-color: white;
 }
+
 .b-user-list-announcement__content{
     width: 755px;
     margin-bottom: 15px;
@@ -15,6 +16,7 @@
 }
 
 
+/*one announcement*/
 .b-user-announcement{
     float: left;
 
@@ -23,22 +25,9 @@
     margin-right: 12px;
 }
 
-
-.b-user-announcement:hover{
-    -webkit-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
-       -moz-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
-            box-shadow: 0 0 11px 2px rgba(207,207,207,1);
-}
-
-
+.b-user-announcement:hover,
+.b-user-announcement:active,
 .b-user-announcement:focus{
-    -webkit-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
-       -moz-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
-            box-shadow: 0 0 11px 2px rgba(207,207,207,1);
-}
-
-
-.b-user-announcement:active{
     -webkit-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
        -moz-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
             box-shadow: 0 0 11px 2px rgba(207,207,207,1);
@@ -61,16 +50,6 @@
     padding-top: 3px;
 }
 
-@font-face{
-    font-family: RUBSN;
-
-    src: url('../vendor/fonts/Rub/RUBSN.otf')  format('opentype');
-}
-
-.b-user-announcement-title__rub-price{
-    font-family: RUBSN, 'RUBSN';
-}
-
 .b-user-announcement-title__status{
     float: right;
 
@@ -80,46 +59,19 @@
     margin-right: 8px;
 }
 
-.b-user-announcement__photo{
-    position: relative;
 
+.b-user-announcement__photo{
     width: 239.66px;
     height: 239.66px;
     margin-bottom: 8px;
 }
 
-.b-user-announcement__photo-ico{
-    position: absolute;
-    top: 50%;
-    left: 50%;
 
-    width: 42px;
-    height: 42px;
-
-    transform: translate(-50%, -50%);
-}
-
-
-.b-user-announcement__photo-image{
-    width: 100%;
-    height: 100%;
-}
-
-
-.b-user-announcement__photo-image img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
+.b-user-announcement__photo img{
     max-width: 216px;
-    max-height: 144px;
-
-    transform: translate(-50%, -50%);
 }
 
-
-
-.b-user-announcement__product-title{
+.b-user-announcement__product-name{
     font-size: 18px;
 
     width: 100%;
@@ -131,7 +83,7 @@
     color: #278b8f;
 }
 
-.b-user-announcement__product-title p{
+.b-user-announcement__product-name p{
     overflow: hidden;
 
     white-space: nowrap;

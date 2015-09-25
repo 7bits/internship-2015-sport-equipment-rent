@@ -23,15 +23,8 @@
     padding-bottom: 5px;
 }
 
-.b-update-profile__button{
-    width: 441px;
-}
 
 .b-update-profile__user-avatar{
-    width: 100%;
-}
-
-.b-update-profile__user-photo{
     float: left;
 
     width: 43px;
@@ -39,13 +32,13 @@
     margin-right: 11px;
 }
 
-.b-update-profile__url{
+.b-update-profile__user-avatar-url{
     float: left;
 
     width: 354px;
 }
 
-.b-update-profile__user-photo img{
+.b-update-profile__user-avatar img{
     max-width: 43px;
     max-height: 43px;
 

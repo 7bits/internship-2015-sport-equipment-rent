@@ -26,15 +26,13 @@ block content
                             p
                                 Фото вашего профиля
                     .b-update-profile__user-avatar
-                        .b-update-profile__user-photo
-                            img(src=user.imageUrl)
-                        .b-update-profile__url
-                            input.b-input--default#from.form-control(type="text", value="#{user.imageUrl}", name="imageUrl",placeholder="URL изображения")
+                        img(src=user.imageUrl)
+                    .b-update-profile__user-avatar-url
+                        input.b-input--default#from.form-control(type="text", value="#{user.imageUrl}", name="imageUrl",placeholder="URL изображения")
                     .b-title--form
                         b
                             p
                                 Смена пароля
                     input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.pass}", name="pass",placeholder="Текущий пароль")
                     input.b-input--default.b-input--half-size#from.form-control(type="password", value="#{user.newPass}", name="newPass",placeholder="Новый пароль")
-            .b-update-profile__button
-                input.b-button--default.b-button--blue(type='submit', value='CОХРАНИТЬ')
+            input.b-button--default.b-button--blue(type='submit', value='CОХРАНИТЬ')

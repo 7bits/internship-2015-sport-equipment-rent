@@ -1,4 +1,4 @@
-.title-with-devision__text{
+.b-title-with-devision__text{
     font-size: 16px;
 
     float: left;
@@ -9,13 +9,13 @@
     padding-left: 3px;
 }
 
-.title-with-devision__text--right{
+.b-title-with-devision__text--right{
     float: right;
 
     width: auto;
 }
 
-.title-with-devision__text p{
+.b-title-with-devision__text p{
     overflow: hidden;
 
     white-space: nowrap;
@@ -25,7 +25,7 @@
 }
 
 
-.title-with-devision__devide-line{
+.b-title-with-devision__devide-line{
     float: left;
 
     width: 2px;
@@ -36,7 +36,7 @@
     background-color: white;
 }
 
-.title-with-devision__devide-line--right{
+.b-title-with-devision__devide-line--right{
     float: right;
 
     margin-right: 16px;

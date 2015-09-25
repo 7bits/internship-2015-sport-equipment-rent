@@ -1,12 +1,16 @@
-.b-ad-details{
+/*#page see_announcement 
+  (when it was open user, 
+  who itsn't owner of announcement)
+  #block detail view announcement info*/
+
+.b-detailed-view-announcement{
     float: left;
 
     width: 463px;
     margin-right: 33px;
 }
 
-
-.b-ad-details__content{
+.b-detailed-view-announcement__content{
     width: 455px;
     min-height: 155px;
     margin-bottom: 13px;
@@ -18,8 +22,7 @@
     background-color: white;
 }
 
-
-.b-ad-details__product-title{
+.b-detailed-view-announcement__product-title{
     font-size: 24px;
 
     overflow: hidden;
@@ -33,7 +36,7 @@
     color: #278b8f;
 }
 
-.b-ad-details__product-title p{
+.b-detailed-view-announcement__product-title p{
     overflow: hidden;
 
     white-space: nowrap;
@@ -42,16 +45,14 @@
     -o-text-overflow: ellipsis;
 }
 
-
-.b-ad-details__product-title p{
+.b-detailed-view-announcement__product-title p{
     white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
     white-space:   -o-pre-wrap;
     word-wrap: break-word;
 }
 
-
-.b-ad-details__product-description{
+.b-detailed-view-announcement__product-description{
     font-size: 16px;
 
     width: 100%;
@@ -63,14 +64,15 @@
     color: #6b6b6b;
 }
 
-
-.b-ad-details__product-description p{
+.b-detailed-view-announcement__product-description p{
     white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
     white-space:   -o-pre-wrap;
     word-wrap: break-word;
 }
 
+
+/*#photo set*/
 .b-photo-set{
     width: 463px;
     height: 149.7px;
@@ -87,26 +89,6 @@
     margin-right: 11px;
 }
 
-
 .b-photo-set__photo img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
     max-width: 143px;
-    max-height: 149.7px;
-
-    transform: translate(-50%, -50%);
-}
-
-
-.b-photo-set__ico img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    max-width: 42px;
-    max-height: 42px;
-
-    transform: translate(-50%, -50%);
 }

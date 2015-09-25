@@ -6,7 +6,7 @@
 
 function quickBox() {
 	var data = {
-		"folder": 			"qb", // folder
+		"folder": 			"vendor/scripts/qb", // folder
 		"template": 		"tpl.html" // template name
 	}
 
