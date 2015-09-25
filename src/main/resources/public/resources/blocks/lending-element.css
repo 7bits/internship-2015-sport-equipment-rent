@@ -14,12 +14,14 @@
     bottom: 0;
     left: 50%;
 
-    width: 1400px;
+    max-width: 1400px;
+    min-width: 320px;
+    width: 100%;
     height: 582px;
 
     transform: translate(-50%, 0);
 
-    background-image: url('../images/greeting-new-user.png');
+    background-image: url('../images/lending-elements/lending-element-bk.png');
     background-repeat: no-repeat;
 }
 
@@ -29,6 +31,7 @@
     font-size: 57px;
 
     width: 100%;
+    min-width: 320px;
     margin-top: -15px;
     margin-bottom: 8px;
 
@@ -63,6 +66,7 @@
     width: 486px;
     margin: 0 auto;
 }
+
 .b-lending-element__button-add-announcement,
 .b-lending-element__button-add-announcement:focus,
 .b-lending-element__button-add-announcement:hover,
@@ -72,18 +76,18 @@
     font-size: 18px;
 
     width: 230px;
-    height: 55px;
+    height: 58px;
     padding: 1px 0 2px 0;
 
     border-width: 3px;
     border-style: solid;
     border-color: #365f63;
-    -webkit-border-radius: 8px; /* Safari, Chrome */
-       -moz-border-radius: 8px; /* Firefox */
-            border-radius: 8px;
+    -webkit-border-radius: 15px; /* Safari, Chrome */
+       -moz-border-radius: 15px; /* Firefox */
+            border-radius: 15px;
     box-shadow: none;
 
-    -khtml-border-radius: 8px; /* KHTML */
+    -khtml-border-radius: 15px; /* KHTML */
 }
 
 .b-lending-element__button-add-announcement,
@@ -124,4 +128,162 @@
 
     color: #e3cf56;
     outline: none;
+}
+
+@media(max-width: 854px){
+    
+    .b-lending-element__base-color{
+        height: 582px;
+    }
+    
+    .b-lending-element__background-image{
+        height: 582px;
+        background-image: url('../images/lending-elements/lending-element-pattern.png');
+        background-repeat: repeat;
+    }
+
+    .b-lending-element__name-service{
+        margin-top: 113px;
+        font-size: 53px;
+    }
+    
+    .b-lending-element__motto{
+        font-size: 17px;
+    }
+    
+    .b-lending-element__button-content{
+        width: 445px;
+    }
+    
+    .b-lending-element__button-add-announcement,
+    .b-lending-element__button-add-announcement:focus,
+    .b-lending-element__button-add-announcement:hover,
+    .b-lending-element__button-see-announcement,
+    .b-lending-element__button-see-announcement:hover,
+    .b-lending-element__button-see-announcement:focus{
+        font-size: 17px;
+        width: 220px;
+    }
+}
+
+@media(max-width: 540px){
+    .b-lending-element__base-color{
+        height: 400px;
+    }
+    
+    .b-lending-element__background-image{
+        height: 400px;
+    }
+
+    .b-lending-element__name-service{
+        margin-top: 50px;
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+    
+    .b-lending-element__motto{
+        font-size: 29.8px;
+    }
+    
+    .b-lending-element__button-content{
+        width: 300px;
+        padding-top: 35px;
+    }
+    
+    .b-lending-element__button-add-announcement,
+    .b-lending-element__button-add-announcement:focus,
+    .b-lending-element__button-add-announcement:hover,
+    .b-lending-element__button-see-announcement,
+    .b-lending-element__button-see-announcement:hover,
+    .b-lending-element__button-see-announcement:focus{
+        font-size: 18px;
+        width: 300px;
+        height: 65px;
+    }
+    .b-lending-element__button-add-announcement,
+    .b-lending-element__button-add-announcement:focus,
+    .b-lending-element__button-add-announcement:hover{
+        margin-bottom: 13px;
+    }
+}
+
+@media(max-width: 480px){
+    .b-lending-element__name-service{
+        font-size: 45px;
+    }
+    
+    .b-lending-element__motto{
+        font-size: 26.8px;
+    }
+    
+    .b-lending-element__button-content{
+        width: 280px;
+        padding-top: 35px;
+    }
+    
+    .b-lending-element__button-add-announcement,
+    .b-lending-element__button-add-announcement:focus,
+    .b-lending-element__button-add-announcement:hover,
+    .b-lending-element__button-see-announcement,
+    .b-lending-element__button-see-announcement:hover,
+    .b-lending-element__button-see-announcement:focus{
+        width: 280px;
+    }
+}
+
+@media(max-width: 437px){
+    .b-lending-element__name-service{
+        font-size: 40px;
+    }
+    
+    .b-lending-element__motto{
+        font-size: 22.8px;
+    }
+    
+    .b-lending-element__button-content{
+        width: 228px;
+        padding-top: 40px;
+    }
+    
+    .b-lending-element__button-add-announcement,
+    .b-lending-element__button-add-announcement:focus,
+    .b-lending-element__button-add-announcement:hover,
+    .b-lending-element__button-see-announcement,
+    .b-lending-element__button-see-announcement:hover,
+    .b-lending-element__button-see-announcement:focus{
+        width: 228px;
+    }
+}
+
+@media(max-width: 382px){
+    .b-lending-element__base-color{
+        height: 347px;
+    }
+    
+    .b-lending-element__background-image{
+        height: 347px;
+    }
+
+    .b-lending-element__name-service{
+        font-size: 35px;
+    }
+    
+    .b-lending-element__motto{
+        font-size: 19.8px;
+    }
+    
+    .b-lending-element__button-content{
+        width: 228px;
+        padding-top: 10px;
+    }
+    
+    .b-lending-element__button-add-announcement,
+    .b-lending-element__button-add-announcement:focus,
+    .b-lending-element__button-add-announcement:hover,
+    .b-lending-element__button-see-announcement,
+    .b-lending-element__button-see-announcement:hover,
+    .b-lending-element__button-see-announcement:focus{
+        width: 228px;
+        height: 58px;
+    }
 }
