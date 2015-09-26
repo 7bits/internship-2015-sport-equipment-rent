@@ -5,6 +5,12 @@
     margin-right: 32px;
 }
 
+.b-user-info:hover,
+.b-user-info:focus,
+.b-user-info:active{
+    cursor: pointer;
+}
+
 .b-user-info__content{
     width: 100%;
     margin-bottom: 17px;

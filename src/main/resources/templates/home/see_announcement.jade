@@ -14,9 +14,8 @@ block depending
     script(src="resources/vendor/scripts/qb/js/qb.js")  
 block content
     .b-content
-        a(href="/profile?user_id=#{user.id}")
-            include mixins/mixin_user_info.jade
-            +create-user-info(isAuthor)
+        include mixins/mixin_user_info.jade
+        +create-user-info(isAuthor)
         .b-detailed-view-announcement
             .b-detailed-view-announcement__content
                 .b-title--default.b-title--blue.b-title--padding-none.b-title--text-centered

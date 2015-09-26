@@ -12,7 +12,9 @@
 }
 
 .b-list-announcements-elem:hover,
-.b-list-announcements-elem:focus{
+.b-list-announcements-elem:focus,
+.b-list-announcements-elem:active{
+    cursor: pointer;
     -webkit-box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
        -moz-box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
             box-shadow: 0 0 10px 5px rgba(54,95,99,.5);
@@ -160,7 +162,7 @@
 
 .b-adaptive-title{
     display: none;
-
+    color: white;
     width: 100%;
 }
 

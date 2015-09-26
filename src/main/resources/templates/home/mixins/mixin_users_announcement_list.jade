@@ -2,22 +2,21 @@ mixin list(goods)
     .b-user-list-announcements__list-content
         each Goods in goods
             - announcement_id = Goods.id;
-            a(href="/see_announcement?announcement_id=#{announcement_id}")
-                .b-user-announcement
-                    .b-user-announcement-title
-                        .b-user-announcement-title__price
-                            text(style="padding-right: 8px;")
-                                Час:
-                            b
-                                text(style="padding-right: 3px;")=Goods.pricePerHour
-                                text.set-rub-price
-                                    Р
-                        include mixin_status.jade
-                    .b-user-announcement__photo
-                        each image in Goods.imageUrl
-                            img(src=image)
-                    .b-user-announcement__product-name
+            .b-user-announcement(onclick="location.href='/see_announcement?announcement_id=#{announcement_id}'")
+                .b-user-announcement-title
+                    .b-user-announcement-title__price
+                        text(style="padding-right: 8px;")
+                            Час:
                         b
-                            p=Goods.title
-                    .b-user-announcement__product-description.js-cut-text
-                        p=Goods.description
+                            text(style="padding-right: 3px;")=Goods.pricePerHour
+                            text.set-rub-price
+                                Р
+                    include mixin_status.jade
+                .b-user-announcement__photo
+                    each image in Goods.imageUrl
+                        img(src=image)
+                .b-user-announcement__product-name
+                    b
+                        p=Goods.title
+                .b-user-announcement__product-description.js-cut-text
+                    p=Goods.description

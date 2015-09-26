@@ -34,6 +34,7 @@
 .b-user-announcement:hover,
 .b-user-announcement:active,
 .b-user-announcement:focus{
+    cursor: pointer;
     -webkit-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
        -moz-box-shadow: 0 0 11px 2px rgba(207,207,207,1);
             box-shadow: 0 0 11px 2px rgba(207,207,207,1);
