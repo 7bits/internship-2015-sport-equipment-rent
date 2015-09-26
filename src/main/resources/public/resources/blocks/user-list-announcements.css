@@ -212,6 +212,7 @@
 
     .b-user-announcement__photo{
         width: 304px;
+        margin-bottom: 15px;
         height: 304px;
     }
 
