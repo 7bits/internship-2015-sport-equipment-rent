@@ -5,7 +5,8 @@ mixin create-user-info(isAuthor)
                 b
                     p
                         Владелец:
-                        .b-user-info__edit-info(onclick="location.href='/update_profile'")
+                        if isAuthor
+                            .b-user-info__edit-info(onclick="location.href='/update_profile'")
             .b-user-info__ava
                 img(src=user.imageUrl, width="114", height="114")
             .b-user-info__info
