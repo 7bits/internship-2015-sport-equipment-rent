@@ -7,4 +7,5 @@ public class GoodsRepositoryException extends Exception {
     public GoodsRepositoryException(String message, Exception e) {
         super(message, e);
     }
+    public GoodsRepositoryException(String message){ super(message);}
 }

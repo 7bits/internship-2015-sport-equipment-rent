@@ -1,7 +1,8 @@
-package it.sevenbits.core.repository.dealrepository;
+package it.sevenbits.core.repository.postgresql;
 
 import it.sevenbits.core.mappers.DealMapper;
-import it.sevenbits.web.domain.Deal;
+import it.sevenbits.core.repository.DealRepository;
+import it.sevenbits.domain.Deal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -21,6 +22,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
     public void save(Deal deal) {
         mapper.save(deal);
     }
+
     public Deal getDeal(long dealId) {
         return mapper.getDeal(dealId);
     }

@@ -1,6 +1,6 @@
-package it.sevenbits.core.repository.dealrepository;
+package it.sevenbits.core.repository;
 
-import it.sevenbits.web.domain.Deal;
+import it.sevenbits.domain.Deal;
 
 import java.util.List;
 

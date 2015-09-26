@@ -9,7 +9,7 @@ import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.web.forms.RegistrationForm;
 import it.sevenbits.domain.User;
 import org.mindrot.jbcrypt.BCrypt;
-import it.sevenbits.core.repository.userrepository.UserRepository;
+import it.sevenbits.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

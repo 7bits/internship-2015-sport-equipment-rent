@@ -1,9 +1,11 @@
-package it.sevenbits.core.repository.goodsrepository;
+package it.sevenbits.core.repository.postgresql;
 
+import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.mappers.GoodsMapper;
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.Image;
+import it.sevenbits.core.repository.GoodsRepository;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.Image;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +18,7 @@ import java.util.List;
  */
 @Repository
 @Qualifier(value="goodsInPostgreSQLrepository")
-public class GoodsInPostgreSQLRepository implements GoodsRepository{
+public class GoodsInPostgreSQLRepository implements GoodsRepository {
 
     private static Logger LOG= Logger.getLogger(GoodsInPostgreSQLRepository.class);
 
@@ -25,34 +27,33 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository{
 
 
     @Override
-    public void save(Goods goods) throws RepositoryException {
+    public void save(Goods goods) throws  GoodsRepositoryException {
         if(goods==null){
             LOG.error("Goods is null");
-            throw new RepositoryException("goods is null");
         }
         try{
             mapper.save(goods);
             LOG.info("New goods saved: " + goods.toString());
         } catch (Exception e){
-            LOG.error("An error occurred while saving subscription: " + e.getMessage());
-            throw new RepositoryException("An error occurred while saving subscription: " + e.getMessage());
+            LOG.error("An error occurred while saving subscription: " + goods.toString() + e.getMessage());
+            throw new GoodsRepositoryException("An error occurred while saving subscription: ", e);
         }
     }
 
     @Override
-    public List<Goods> findAll() throws RepositoryException {
+    public List<Goods> findAll() throws GoodsRepositoryException{
         try{
             return mapper.findAll();
         } catch(Exception e){
             LOG.error(e.getMessage());
-            throw new RepositoryException("An error occurred while selected subscription: " + e.getMessage());
+            throw new GoodsRepositoryException("An error occurred while selected subscription: ", e);
         }
     }
 
 
 
 
-    public Goods getGoods(long id) throws RepositoryException{
+    public Goods getGoods(long id) {
 
         return mapper.getGoods(id);
     }

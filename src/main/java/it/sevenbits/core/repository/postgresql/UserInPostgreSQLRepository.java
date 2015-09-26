@@ -1,7 +1,8 @@
-package it.sevenbits.core.repository.userrepository;
+package it.sevenbits.core.repository.postgresql;
 
 import it.sevenbits.core.mappers.UserMapper;
 import it.sevenbits.core.repository.RepositoryException;
+import it.sevenbits.core.repository.UserRepository;
 import it.sevenbits.web.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Qualifier(value="userInPostgreSQLrepository")
-public class UserInPostgreSQLRepository implements UserRepository{
+public class UserInPostgreSQLRepository implements UserRepository {
 
     @Autowired
     private UserMapper mapper;

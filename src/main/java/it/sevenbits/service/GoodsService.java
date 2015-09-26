@@ -1,7 +1,7 @@
 package it.sevenbits.service;
 
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.core.repository.goodsrepository.GoodsRepository;
+import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.validators.AddNewGoodsFormValidator;
 import it.sevenbits.domain.Goods;
