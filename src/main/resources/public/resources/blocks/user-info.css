@@ -67,3 +67,32 @@
 
     -o-text-overflow: ellipsis;
 }
+
+@media(max-width: 947px){
+    .b-user-info{
+        margin-right: 22px;
+    }
+}
+
+@media(max-width: 920px){
+    .b-user-info{
+        margin-right: 12px;
+    }
+}
+
+@media(max-width: 900px){
+    .b-user-info{
+        margin-right: 5px;
+    }
+}
+
+@media(max-width: 877px){
+    .b-user-info{
+        width: 455px;
+        margin: 0 auto;
+        float: none;
+    }
+    .b-user-info__owner{
+        width: 298px;
+    }
+}

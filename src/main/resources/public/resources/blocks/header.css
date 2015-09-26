@@ -172,3 +172,10 @@
         height: 45px;
     }
 }
+
+@media(max-width: 480px){
+    .b-logo{
+        background-image: url('../images/layout/small-logo.png');
+        width: 74px;
+    }
+}
