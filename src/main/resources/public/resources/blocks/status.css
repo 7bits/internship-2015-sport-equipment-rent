@@ -8,8 +8,15 @@
     padding-bottom: 8px;
 }
 
-.b-status__ico{
+.b-status__ico--right{
     float: right;
+
+    width: 22px;
+    height: 22px;
+}
+
+.b-status__ico--left{
+    float: left;
 
     width: 22px;
     height: 22px;
@@ -27,4 +34,19 @@
     padding-left: 7px;
 
     color: #626262;
+}
+
+@media(max-width: 793px){
+    .b-status{
+        width: 22px;
+    }
+    .b-status__text{
+        display: none;
+    }
+}
+
+@media(max-width: 731px){
+    .b-status{
+        display: none;
+    }
 }

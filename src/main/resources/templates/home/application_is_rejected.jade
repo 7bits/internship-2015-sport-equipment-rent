@@ -4,7 +4,7 @@ block title
 block depending
     link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
 block header
-    include partial/mixin_message_header.jade
+    include mixins/mixin_message_header.jade
 block content
     include mixins/mixin_message.jade
     +create-message("Вы отклонили заявку","resources/images/message/application_is_rejected.png")

@@ -5,14 +5,24 @@ mixin list(goods)
                 - announcement_id = Goods.id;
                 a(href="/see_announcement?announcement_id=#{announcement_id}")
                     .b-list-announcements-elem
+                        .b-adaptive-title
+                            .b-title--default.b-title--blue
+                                .b-title__text.b-title__text--top
+                                    text(style="padding-right: 8px;")
+                                        Час:
+                                    b
+                                        text(style="padding-right: 8px;")=Goods.pricePerHour
+                                        text.set-rub-price
+                                            Р
+                                include mixin_status.jade
+                                .b-adaptive-title__edit-icon
                         .b-list-announcements-elem__content
                             .b-list-announcements-elem-product-info
                                 .b-list-announcements-elem-product-info__title
                                     .b-list-announcements-elem-product-info__product-name
                                         b
                                             p=Goods.title
-                                    .b-status
-                                        include mixin_full_status.jade
+                                    include mixin_full_status.jade
                                 .b-list-announcements-elem-product-info__discription.js-cut-text
                                     p=Goods.description
                                 .b-list-announcements-elem-product-info__set-price
@@ -21,7 +31,7 @@ mixin list(goods)
                                             Час:
                                         b
                                             text(style="padding-right: 8px;")=Goods.pricePerHour
-                                            text.set-rub-price
+                                            text(style="padding-right: 8px;").set-rub-price
                                                 Р
                                     .b-list-announcements-elem-product-info__price
                                         text(style="padding-right: 8px;")

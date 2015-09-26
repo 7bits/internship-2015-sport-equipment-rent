@@ -47,6 +47,10 @@
     margin-top: 11px;
 }
 
+.b-title__text--top{
+    margin-top: 0;
+}
+
 .b-title__ico-calendar{
     float: right;
 
