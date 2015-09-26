@@ -15,16 +15,8 @@ block depending
 block content
     .b-content
         a(href="/profile?user_id=#{user.id}")
-            .b-user-info
-                .b-user-info__content
-                    .b-user-info__owner
-                        b
-                            p
-                                Владелец:
-                    .b-user-info__ava
-                        img(src=user.imageUrl)
-                    .b-user-info__info
-                        p=user.firstName
+            include mixins/mixin_user_info.jade
+            +create-user-info(isAuthor)
         .b-detailed-view-announcement
             .b-detailed-view-announcement__content
                 .b-title--default.b-title--blue.b-title--padding-none.b-title--text-centered

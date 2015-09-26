@@ -149,6 +149,7 @@
     .b-user-list-announcements{
         float: none;
         margin: 0 auto;
+        margin-top: 40px;
     }
 }
 

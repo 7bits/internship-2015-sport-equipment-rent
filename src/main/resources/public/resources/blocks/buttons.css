@@ -140,3 +140,11 @@
 .b-button--update-announcement:focus{
     color: #949494;
 }
+
+
+@media(max-width: 877px){
+    .b-button--update-profile{
+        display: none;
+    }
+
+}

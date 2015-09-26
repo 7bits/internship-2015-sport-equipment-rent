@@ -40,21 +40,8 @@ block header
                                 ВЫХОД
 block content
     .b-content
-        .b-user-info
-            .b-user-info__content
-                .b-user-info__owner
-                    b
-                        p
-                            Владелец:
-                .b-user-info__ava
-                    img(src=user.imageUrl, width="114", height="114")
-                .b-user-info__info
-                    p=user.firstName
-                if user.phone!=null
-                    .b-user-info__info
-                        p=user.phone
-            a(href="/update_profile")
-                input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')
+        include mixins/mixin_user_info.jade
+        +create-user-info(true)
         include mixins/mixin_users_announcement_list.jade
         .b-user-list-announcements
             .b-user-list-announcements__content
