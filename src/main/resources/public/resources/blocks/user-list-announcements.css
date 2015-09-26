@@ -181,3 +181,41 @@
         width: 210px;
     }
 }
+
+@media(max-width: 467px){
+    .b-user-list-announcements{
+        width: 304px;
+        margin: 0 auto;
+    }
+    
+    .b-user-list-announcements__content{
+        width: 304px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .b-user-list-announcements__list-content{
+        width: 328px;
+        margin-left: 0;
+    }
+
+    .b-user-list-announcements__content .b-title--default{
+        display: none;
+    }
+
+    .b-user-announcement{
+        width: 304px;
+        margin-top: 18px;
+        margin-right: 0;
+        background-color: white;
+    }
+
+    .b-user-announcement__photo{
+        width: 304px;
+        height: 304px;
+    }
+
+    .b-user-announcement__photo img{
+        width: 304px;
+    }
+}
