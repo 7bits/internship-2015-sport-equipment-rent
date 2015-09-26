@@ -12,11 +12,7 @@ mixin list(goods)
                                 text(style="padding-right: 3px;")=Goods.pricePerHour
                                 text.set-rub-price
                                     Р
-                        .b-user-announcement-title__status
-                            if (Goods.status)
-                                img(src="resources/images/status-announcement/ready-ico.png", width="16", height="16")
-                            else
-                                img(src="resources/images/status-announcement/not-ready-ico.png", width="16", height="16")
+                        include mixin_status.jade
                     .b-user-announcement__photo
                         each image in Goods.imageUrl
                             img(src=image)

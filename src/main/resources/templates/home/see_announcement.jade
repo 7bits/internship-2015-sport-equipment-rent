@@ -33,7 +33,7 @@ block content
                             Час:
                         b
                             text(style="padding-right: 5px;")=Goods.pricePerHour
-                            text.b-price__rub-price
+                            text.set-rub-price
                                 Р
                     .b-title-with-devision__devide-line
                     .b-title-with-devision__text
@@ -41,7 +41,7 @@ block content
                             Сутки:
                         b
                             text(style="padding-right: 5px;")=Goods.pricePerDay
-                            text.b-price__rub-price
+                            text.set-rub-price
                                 Р
                     .b-title-with-devision__devide-line
                     .b-title-with-devision__text
@@ -49,11 +49,12 @@ block content
                             Неделя:
                         b
                             text(style="padding-right: 5px;")=Goods.pricePerWeek
-                            text.b-price__rub-price
+                            text.set-rub-price
                                 Р
                 .b-detailed-view-announcement__product-title
                     b
                         p=Goods.title
+                        include mixins/mixin_status.jade
                 .b-detailed-view-announcement__product-description
                     p=Goods.description
             .b-photo-set
