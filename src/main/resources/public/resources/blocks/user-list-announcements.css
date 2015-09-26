@@ -1,5 +1,11 @@
 .b-user-list-announcements{
     float: left;
+    width: 770px;
+    margin-bottom: 40px;
+}
+
+.b-user-list-announcements__content{
+    float: left;
 
     width: 770px;
     margin-bottom: 40px;
@@ -9,7 +15,7 @@
     background-color: white;
 }
 
-.b-user-list-announcement__content{
+.b-user-list-announcements__list-content{
     width: 755px;
     margin-bottom: 15px;
     margin-left: 12px;
@@ -111,7 +117,11 @@
         margin-left: 30px;
     }
 
-    .b-user-list-announcement__content{
+    .b-user-list-announcements__content{
+        width: 700px;
+    }
+
+    .b-user-list-announcements__list-content{
         width: 685px;
     }
 
@@ -137,42 +147,37 @@
 
 @media(max-width: 877px){
     .b-user-list-announcements{
-        position: relative;
-        margin-left:0;
-        left: 50%;
-        transform: translate(-50%,0);
+        float: none;
+        margin: 0 auto;
     }
 }
 
 @media(max-width: 737px){
     .b-user-list-announcements{
         width: 455px;
-        margin-left: -29.5%;
         margin-top: 15px;
     }
+    
+    .b-user-list-announcements__content{
+        width: 455px;
+    }
 
-    .b-user-list-announcement__content{
-        width: 385px;
+    .b-user-list-announcements__list-content{
+        width: 438px;
     }
 
     .b-user-announcement{
-        width: 180.5px;
+        width: 210px;
+        margin-top: 12px;
+        margin-right: 9px;
     }
 
     .b-user-announcement__photo{
-        width: 180.5px;
-        height: 180.5px;
+        width: 210px;
+        height: 210px;
     }
 
     .b-user-announcement__photo img{
-        width: 180.5px;
-    }
-}
-
-@media(max-width: 737px){
-    .b-user-list-announcements{
-        width: 455px;
-        margin-left: -28.5%;
-        margin-top: 15px;
+        width: 210px;
     }
 }

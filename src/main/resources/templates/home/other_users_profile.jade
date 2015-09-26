@@ -21,8 +21,9 @@ block content
                     p=user.firstName
         include mixins/mixin_users_announcement_list.jade
         .b-user-list-announcements
-            .b-title--default.b-title--blue
-                b
-                    p
-                        Объявления
-            +list(goods)
+            .b-user-list-announcements__content
+                .b-title--default.b-title--blue
+                    b
+                        p
+                            Объявления
+                +list(goods)

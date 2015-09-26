@@ -1,5 +1,5 @@
 mixin list(goods)
-    .b-user-list-announcement__content
+    .b-user-list-announcements__list-content
         each Goods in goods
             - announcement_id = Goods.id;
             a(href="/see_announcement?announcement_id=#{announcement_id}")

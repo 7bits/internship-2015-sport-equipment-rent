@@ -57,14 +57,15 @@ block content
                 input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')
         include mixins/mixin_users_announcement_list.jade
         .b-user-list-announcements
-            .b-title--default.b-title--blue.b-title--padding-none
-                .b-title-with-devision__text
-                    b
-                        p
-                            Объявления
-                .b-title-with-devision__text.b-title-with-devision__text--right
-                    a.a-history(href="/history")
-                        p
-                            История
-                .b-title-with-devision__devide-line.b-title-with-devision__devide-line--right
-            +list(goods)
+            .b-user-list-announcements__content
+                .b-title--default.b-title--blue.b-title--padding-none
+                    .b-title-with-devision__text
+                        b
+                            p
+                                Объявления
+                    .b-title-with-devision__text.b-title-with-devision__text--right
+                        a.a-history(href="/history")
+                            p
+                                История
+                    .b-title-with-devision__devide-line.b-title-with-devision__devide-line--right
+                +list(goods)
