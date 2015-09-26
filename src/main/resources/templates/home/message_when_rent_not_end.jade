@@ -5,8 +5,7 @@ block depending
     link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
 block header
-    include mixins/mixin_message_header.jade
-    +create-header()
+    include partial/mixin_message_header.jade
 block content
     include mixins/mixin_message_with_buttons.jade
     - textFirstPart = "Срок аренды еще не закончен."

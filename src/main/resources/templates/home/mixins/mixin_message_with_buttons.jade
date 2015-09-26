@@ -5,9 +5,7 @@ mixin create-message(textFirstPart,textSecondPart, firstButton, secondButton)
                 br
                 p=textSecondPart
         .b-message__buttons    
-            .base 
-                .order
-                    a(href="/")
-                        input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{firstButton}')
-                    a(href="/")
-                        input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{secondButton}')
+            a(href="/")
+                input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{firstButton}')
+            a(href="/")
+                input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{secondButton}')

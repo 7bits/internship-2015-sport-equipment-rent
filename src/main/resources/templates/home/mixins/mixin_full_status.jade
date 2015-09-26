@@ -1,18 +1,14 @@
 if (Goods.status)
-    .base
-        .oder
-        .b-status__text
-            b
-                p
-                    К аренде готов!
-        .b-status__ico
-            img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
+    .b-status__text
+        b
+            p
+                К аренде готов!
+    .b-status__ico
+        img(src="resources/images/status-announcement/ready-ico.png", width="22", height="22")
 else
-    .base
-        .order
-            .b-status__text
-                b
-                    p
-                        Уже арендован.
-            .b-status__ico
-                img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")
+    .b-status__text
+        b
+            p
+                Уже арендован.
+    .b-status__ico
+        img(src="resources/images/status-announcement/not-ready-ico.png", width="22", height="22")

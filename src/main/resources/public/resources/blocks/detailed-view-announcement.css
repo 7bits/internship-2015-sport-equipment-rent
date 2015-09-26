@@ -1,0 +1,94 @@
+/*#page see_announcement 
+  (when it was open user, 
+  who itsn't owner of announcement)
+  #block detail view announcement info*/
+
+.b-detailed-view-announcement{
+    float: left;
+
+    width: 463px;
+    margin-right: 33px;
+}
+
+.b-detailed-view-announcement__content{
+    width: 455px;
+    min-height: 155px;
+    margin-bottom: 13px;
+    padding-bottom: 13px;
+
+    border-width: 3px;
+    border-style: solid;
+    border-color: #5cc9cc;
+    background-color: white;
+}
+
+.b-detailed-view-announcement__product-title{
+    font-size: 24px;
+
+    overflow: hidden;
+
+    width: 100%;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    padding-right: 36px;
+    padding-left: 36px;
+
+    color: #278b8f;
+}
+
+.b-detailed-view-announcement__product-title p{
+    overflow: hidden;
+
+    white-space: nowrap;
+       text-overflow: ellipsis;
+
+    -o-text-overflow: ellipsis;
+}
+
+.b-detailed-view-announcement__product-title p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.b-detailed-view-announcement__product-description{
+    font-size: 16px;
+
+    width: 100%;
+    min-height: 160px;
+    padding-right: 36px;
+    padding-bottom: 10px;
+    padding-left: 36px;
+
+    color: #6b6b6b;
+}
+
+.b-detailed-view-announcement__product-description p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+
+/*#photo set*/
+.b-photo-set{
+    width: 463px;
+    height: 149.7px;
+    margin-bottom: 20px;
+}
+
+.b-photo-set__photo{
+    position: relative;
+
+    float: left;
+
+    width: 143px;
+    height: 149.7px;
+    margin-right: 11px;
+}
+
+.b-photo-set__photo img{
+    max-width: 143px;
+}

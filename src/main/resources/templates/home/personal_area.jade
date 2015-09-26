@@ -6,31 +6,28 @@ block depending
     link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/user-announcement.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/history-link.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/title-with-devision.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block header
     .b-header
         .b-header__content
-            .base
-                .order
-                    .b-logo
-                        a(href="/")
-                            img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
-                    .b-header__exit
-                        a.header-a-color(href="/logout")
-                            b
-                                p
-                                    ВЫХОД
-                    .b-header__give-announcement
-                        a.header-a-color(href="/add")
-                            b
-                                p
-                                    ДАТЬ ОБЪЯВЛЕНИЕ
-                    .b-header__dropdown-menu-ico.js-dropdown-ico
-                            h1
-                                img(src="resources/images/layout/menu.png", width="25", height="15")
+            a(href="/")
+                .b-logo
+            .b-header__menu
+                a.header-a-color(href="/logout")
+                    b
+                        p
+                            ВЫХОД
+            .b-header__menu
+                a.header-a-color(href="/add")
+                    b
+                        p
+                            ДАТЬ ОБЪЯВЛЕНИЕ
+            .b-header__dropdown-menu-ico.js-dropdown-ico
+                    h1
+                        img(src="resources/images/layout/menu.png", width="25", height="15")
         .b-header__dropdown-menu.js-dropdown-menu
                 ul
                     li
@@ -42,38 +39,32 @@ block header
                             p 
                                 ВЫХОД
 block content
-    .b-content-inside
-        .base
-            .order
-                .b-user-info
-                    .b-user-info__ava
-                        img(src=user.imageUrl, width="120", height="120")
-                    .b-personal-area-title
-                        .base
-                            .order
-                                .b-personal-area-title__title
-                                    p
-                                        Ваши данные
-                                .b-personal-area-title__ico-update
-                                    a(href="/update_profile")
-                                        img(src="resources/images/update-personal-area.png", width="17", height="17")
-                    .b-user-info__dividing-line
+    .b-content
+        .b-user-info
+            .b-user-info__content
+                .b-user-info__owner
+                    b
+                        p
+                            Владелец:
+                .b-user-info__ava
+                    img(src=user.imageUrl, width="114", height="114")
+                .b-user-info__info
+                    p=user.firstName
+                if user.phone!=null
                     .b-user-info__info
-                        p=user.firstName
-                    if user.phone!=null
-                        .b-user-info__dividing-line
-                        .b-user-info__info
-                            p=user.phone
-                        .b-user-info__dividing-line.b-user-info__dividing-line--last
-                include mixins/mixin_users_announcement_list.jade
-                .b-user-list-announcements
-                    .b-title--default.b-title--unindented
-                        .b-user-list-announcements__title
-                            b
-                                p
-                                Ваши объявления
-                    .b-history-link
-                        a.a-history(href="/history")
-                            p
-                                История
-                    +list(goods)
+                        p=user.phone
+            a(href="/update_profile")
+                input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')
+        include mixins/mixin_users_announcement_list.jade
+        .b-user-list-announcements
+            .b-title--default.b-title--blue.b-title--padding-none
+                .b-title-with-devision__text
+                    b
+                        p
+                            Объявления
+                .b-title-with-devision__text.b-title-with-devision__text--right
+                    a.a-history(href="/history")
+                        p
+                            История
+                .b-title-with-devision__devide-line.b-title-with-devision__devide-line--right
+            +list(goods)

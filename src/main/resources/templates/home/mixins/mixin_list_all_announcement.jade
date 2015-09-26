@@ -1,59 +1,48 @@
 mixin list(goods)
-    .b-list__content
+    .b-content
         a(name="seeAll")
             each Goods in goods
                 - announcement_id = Goods.id;
                 a(href="/see_announcement?announcement_id=#{announcement_id}")
-                    .b-list-elem
-                        .b-list-elem__content
-                            .base
-                                .order
-                                    .b-product-info
-                                        .b-product-info__title
-                                            .base
-                                                .order
-                                                    .b-product-info__product-name
-                                                        b
-                                                            p=Goods.title
-                                                    .b-status
-                                                        include mixin_full_status.jade
-                                        .b-product-info__discription.js-cut-text                                            
-                                            p=Goods.description
-                                        .b-product-info__set-price
-                                            .base
-                                                .order
-                                                    .b-product-info__price
-                                                        text(style="padding-right: 8px;")
-                                                            Час:
-                                                        b
-                                                            text(style="padding-right: 8px;")=Goods.pricePerHour
-                                                            text.b-product-info__rub-price
-                                                                Р
-                                                    .b-product-info__price
-                                                        text(style="padding-right: 8px;")
-                                                            Сутки:
-                                                        b
-                                                            text(style="padding-right: 8px;")=Goods.pricePerDay
-                                                            text.b-product-info__rub-price
-                                                                Р
-                                                    .b-product-info__price
-                                                        text(style="padding-right: 8px;")
-                                                            Неделя:
-                                                        b
-                                                            text(style="padding-right: 8px;")=Goods.pricePerWeek
-                                                            text.b-product-info__rub-price
-                                                                Р
-                                    .b-product-photo
-                                        each image in Goods.imageUrl
-                                            if image=="resources/images/photo-ico.png"
-                                                .b-product-photo__default-photo
-                                                    img(src=image, width="42", height="42")
-                                            else
-                                                .b-product-photo__photo
-                                                    img(src=image)
-                                    .b-product-photo__author-ava
-                                        a(href="/profile?user_id=#{Goods.authorId}")
-                                            img(src=Goods.authorImage)
-                                    .b-product-photo__update-button
-                                        a(href="/update?announcement_id=#{Goods.id}")
-                                            input.b-button--default.b-button--update(type='button', value='РЕДАКТИРОВАТЬ')
+                    .b-list-announcements-elem
+                        .b-list-announcements-elem__content
+                            .b-list-announcements-elem-product-info
+                                .b-list-announcements-elem-product-info__title
+                                    .b-list-announcements-elem-product-info__product-name
+                                        b
+                                            p=Goods.title
+                                    .b-status
+                                        include mixin_full_status.jade
+                                .b-list-announcements-elem-product-info__discription.js-cut-text
+                                    p=Goods.description
+                                .b-list-announcements-elem-product-info__set-price
+                                    .b-list-announcements-elem-product-info__price
+                                        text(style="padding-right: 8px;")
+                                            Час:
+                                        b
+                                            text(style="padding-right: 8px;")=Goods.pricePerHour
+                                            text.set-rub-price
+                                                Р
+                                    .b-list-announcements-elem-product-info__price
+                                        text(style="padding-right: 8px;")
+                                            Сутки:
+                                        b
+                                            text(style="padding-right: 8px;")=Goods.pricePerDay
+                                            text.set-rub-price
+                                                Р
+                                    .b-list-announcements-elem-product-info__price
+                                        text(style="padding-right: 8px;")
+                                            Неделя:
+                                        b
+                                            text(style="padding-right: 8px;")=Goods.pricePerWeek
+                                            text.set-rub-price
+                                                Р
+                            .b-list-announcements-elem__product-photo
+                                each image in Goods.imageUrl
+                                    img(src=image)
+                            .b-list-announcements-elem__author-ava
+                                a(href="/profile?user_id=#{Goods.authorId}")
+                                    img(src=Goods.authorImage)
+                            .b-list-announcements-elem__update-button
+                                a(href="/update?announcement_id=#{Goods.id}")
+                                    input.b-button--default.b-button--update-announcement(type='button', value='РЕДАКТИРОВАТЬ')

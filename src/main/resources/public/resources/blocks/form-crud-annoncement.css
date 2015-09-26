@@ -1,72 +1,59 @@
-.b-form-crud-announcement{
-    width: 429px;
+.b-crud-announcement{
+    width: 441px;
     margin: 0 auto;
-    margin-top: 17px;
+    margin-bottom: 40px;
+    margin-top: 27px;
+}
+
+.b-crud-announcement-form{
     margin-bottom: 10px;
 
+    border-width: 3px;
+    border-style: solid;
+    border-color: #5cc9cc;
     background-color: white;
 }
 
-.b-form-crud-announcement__content{
-    width: 360px;
+.b-crud-announcement-form__content{
+    width: 408px;
     margin: 0 auto;
 }
 
 
-.b-form-crud-announcement__title{
-    font-size: .953em;
-
-    width: 100%;
-    height: 40px;
-    padding-bottom: 13px;
-
-    color: #7cced1;
-    text-shadow: 0 1px 1px #d4cfcf;
-}
-
-
-.b-input__name-announcement{
-    width: 70%;
-}
-
-
-.b-form__textarea{
-    width: 100%;
-    min-height: 152px;
-    margin-bottom: 19px;
-}
-
-
+/*use for input set and photo set in form*/
 .b-set-fields{
-    width: 370px;
-    margin-bottom: 10px;
-    margin-left: 34.5px;
-}
+    display: inline-block;
 
+    width: 421px;
+    margin-left: 13px;
+}
 
 .b-set-fields__input{
     float: left;
 
-    width: 113px;
-    margin-right: 10px;
+    width: 126px;
+    margin-right: 14.3px;
 }
 
+/*for download photo 
+use stylized input block,
+when real input is invisible,
+but user see download-mask*/
 
-/*!базовый! блок 1 для вывода 1 фотки*/
+/*base photo block*/
 .b-photo{
     float: left;
 
-    width: 113px;
-    height: 128px;
-    margin-right: 10px;
+    width: 126px;
+    height: 130px;
+    margin-right: 14.3px;
     margin-bottom: 20px;
 
     border-width: 1px;
     border-style: solid;
-    border-color: #c5c5c5;
+    border-color: #626262;
     background-color: #f6f6f6;
 }
-
 
 .b-photo:hover{
     -webkit-box-shadow: 0 0 5px 3px rgba(214,214,214,.39);
@@ -75,12 +62,12 @@
 }
 
 
-/*само изображение*/
+/*need to output user's product photo 
+at update_announcement*/
 .b-photo__product-image{
     width: 100%;
     height: 100%;
 }
-
 
 .b-photo__product-image img{
     position: absolute;
@@ -94,7 +81,7 @@
 }
 
 
-/*дефолтная иконка (блок)*/
+/*default photo ico*/
 .b-photo__image-default{
     position: absolute;
     top: 50%;
@@ -107,7 +94,7 @@
 }
 
 
-/*контейнер для маски*/
+/*download mask*/
 .b-photo__download-mask{
     position: relative;
     top: 0;
@@ -118,7 +105,7 @@
 }
 
 
-/*для вывода текста названия подргуженного файла*/
+/*for white user which photo was choosed*/
 .b-download-mask__input-file-name{
     font-size: 14px;
 
@@ -141,7 +128,7 @@
     text-decoration: none;
        text-overflow: ellipsis;
 
-    color: #c7c7c7;
+    color: #626262;
     border: none;
     background-color: transparent;
     background-image: none;
@@ -150,7 +137,7 @@
 }
 
 
-/*реальная кнопка*/
+/*real input*/
 .b-download-mask__real-file-input{
     position: relative;
     z-index: 99998;
@@ -169,7 +156,18 @@
 }
 
 
-/*иконка удаления и ее input*/
+/*delete ico*/
+.b-delete-photo{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 19px;
+    height: 19px;
+
+    background-image: url('../images/delete-photo-icon.png');
+}
+
 .b-delete-photo__input-delete{
     position: relative;
     z-index: 99999;
@@ -182,63 +180,40 @@
     opacity: 0;
 }
 
-
 .b-delete-photo__input-delete:hover{
     cursor: pointer;
 }
-
 
 .b-delete-photo__input-delete:focus{
     cursor: pointer;
 }
 
-
-
-.b-delete-photo{
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    width: 19px;
-    height: 19px;
-
-    background-image: url('../images/delete-photo-icon.png');
-}
-
-
-.b-form-crud-announcement__button{
-    width: 429px;
-    height: 40px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-
 @media(max-width: 443px){
-    .b-form-crud-announcement{
+    .b-crud-announcement{
         width: 320px;
     }
-    
-    .b-form-crud-announcement__content{
-        width: 310px;   
-    }
-    
-    .b-set-fields{
-        width: 315px;
-        margin-left: 5px;
-    }
-    
-    .b-set-fields__input {
-        width: 101.3px;
-        margin-right: 3px;
+
+    .b-crud-announcement-form__content{
+        width: 300px;
     }
 
-    .b-photo {
-        width: 101.3px;
-        height: 128px;
-        margin-right: 3px;
+    .b-set-fields{
+        width: 305px;
+        margin-left: 10px;
     }
-    
-    .b-form-crud-announcement__button{
+
+    .b-set-fields__input{
+        width: 96.66px;
+        margin-right: 5px;
+    }
+
+    .b-photo{
+        width: 96.66px;
+        height: 128px;
+        margin-right: 5px;
+    }
+
+    .b-crud-announcement__button{
         width: 320px;
     }
 }
