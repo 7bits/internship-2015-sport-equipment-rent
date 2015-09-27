@@ -1,7 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.web.forms.GoodsForm;
-import it.sevenbits.service.validators.AddNewGoodsFormValidator;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;

@@ -1,5 +1,6 @@
-package it.sevenbits.service.validators;
+package it.sevenbits.web.validators;
 
+import it.sevenbits.service.validators.CommonFieldValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

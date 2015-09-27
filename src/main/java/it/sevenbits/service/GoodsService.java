@@ -1,9 +1,9 @@
 package it.sevenbits.service;
 
-import it.sevenbits.core.repository.RepositoryException;
+import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.service.exceptions.GoodsException;
-import it.sevenbits.service.validators.AddNewGoodsFormValidator;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.domain.Image;
@@ -19,7 +19,6 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
@@ -150,7 +149,7 @@ public class GoodsService {
 
             goods.setImageUrl(imagesUrl);
 
-        } catch (RepositoryException e) {
+        } catch (GoodsRepositoryException e) {
             throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "
                     +e.getMessage(), e);
         }
@@ -208,7 +207,7 @@ public class GoodsService {
     public void save(Goods goods) throws GoodsException {
         try {
             repository.save(goods);
-        } catch (RepositoryException e) {
+        } catch (GoodsRepositoryException e) {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
@@ -217,14 +216,13 @@ public class GoodsService {
         goods.setStatus(repository.checkStatus(goods));
     }
 
-    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images, Map<String, String> errors, HttpSession session) throws GoodsException {
+    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images) throws GoodsException {
         TransactionStatus status;
         //start transaction
         status  = transactionManager.getTransaction(customTransaction);
 
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean isAuth =  userName != "anonymousUser";
-        errors = validator.validate(goodsForm);
         User user = userService.getUser(userName);
         String hash = getHash();
         Goods goods = null;
@@ -234,9 +232,6 @@ public class GoodsService {
         }
         try {
             ImageService.saveImages(images, hash, goodsForm, errors);
-            if(!isAuth) {
-                session.setAttribute("addNewGoods", goodsForm);
-            }
             if(isAuth) {
                 for(String bufImageUrl:goodsForm.getImageUrl()) {
                     addImage(goods.getId(), bufImageUrl);

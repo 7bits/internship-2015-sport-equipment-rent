@@ -1,7 +1,7 @@
 package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.web.forms.RegistrationForm;
-import it.sevenbits.service.validators.AddNewRegistrationFormValidator;
+import it.sevenbits.web.validators.AddNewRegistrationFormValidator;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;

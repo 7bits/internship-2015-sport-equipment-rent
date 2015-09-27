@@ -4,6 +4,7 @@ import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,6 +36,8 @@ public class AddAnnouncementController {
     @Value("${resources.default-announcement-image}")
     private String defaultImage;
 
+    @Autowired
+    AddNewGoodsFormValidator validator;
 
     @Autowired
     GoodsService service;
@@ -62,7 +65,7 @@ public class AddAnnouncementController {
                          @RequestParam("secondImage") MultipartFile secondImage,
                          @RequestParam("thirdImage") MultipartFile thirdImage, HttpSession session) {
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-        final Map<String, String> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
 
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
 
@@ -70,21 +73,26 @@ public class AddAnnouncementController {
         images.add(firstImage);
         images.add(secondImage);
         images.add(thirdImage);
+        errors = validator.validate(form);
 
-        long goodsId = 0;
-        try {
-            goodsId = service.submitGoods(form, images, errors, session);
-        } catch (GoodsException e) {
-            LOG.error(e.getMessage());
-            //exception
-        }
-        if (errors.size() != 0 || goodsId == -1) {
+        if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", isAuth);
             LOG.info("Adding form contains errors.");
             return "home/add_announcement";
+        }
+
+        long goodsId = 0;
+        if(!isAuth) {
+            session.setAttribute("addNewGoods", form);
+        }
+        try {
+            goodsId = service.submitGoods(form, images);
+        } catch (GoodsException e) {
+            LOG.error(e.getMessage());
+            //exception
         }
         if(!isAuth) {
             return "redirect:/login";
