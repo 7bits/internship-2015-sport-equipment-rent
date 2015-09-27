@@ -2,7 +2,6 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.service.exceptions.DealServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
-import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.web.forms.DateForm;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
@@ -30,34 +29,34 @@ import java.util.Map;
 public class SeeAnnouncementController {
 
     @Autowired
-    GoodsService goodsService;
+    private GoodsService goodsService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    DealService dealService;
+    private DealService dealService;
 
-    Logger LOG = Logger.getLogger(SeeAnnouncementController.class);
+    private Logger LOG = Logger.getLogger(SeeAnnouncementController.class);
 
 
 
 
 
     @RequestMapping(value = "/see_announcement", method = RequestMethod.GET)
-    public String announcementPage(@RequestParam(value="announcement_id", required = false) String announcementId,  final Model model) {
+    public String announcementPage(
+            @RequestParam(value = "announcement_id", required = false) final String announcementId,
+            final Model model) {
         try {
             String name = SecurityContextHolder.getContext().getAuthentication().getName();
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             User user = userService.getUser(name);
             User landlord = userService.getUser(goods.getAuthorId());
             model.addAttribute("Goods", goods);
-            if(name!="anonymousUser") {
-                model.addAttribute("isAuthor", user.getId().equals(goods.getAuthorId()));
-            }else{
-                model.addAttribute("isAuthor", false);
-            }
-            model.addAttribute("isAuth", name!="anonymousUser");
+
+            model.addAttribute("isAuthor", goodsService.isAuthor(Long.valueOf(announcementId)));
+
+            model.addAttribute("isAuth", name != "anonymousUser");
             model.addAttribute("user", landlord);
         } catch (GoodsException e) {
             e.printStackTrace();
@@ -69,13 +68,16 @@ public class SeeAnnouncementController {
     }
 
     @Autowired
-    TakeGoodsValidator validator;
+    private TakeGoodsValidator validator;
 
-    @RequestMapping(value="/getIt", method = RequestMethod.POST)
-    public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model, final DateForm form) {
+    @RequestMapping(value = "/getIt", method = RequestMethod.POST)
+    public String getIt(
+            final Model model,
+            final DateForm form,
+            @RequestParam(value = "announcement_id", required = false) final String announcementId) {
         try {
-            final Map<String, String> errors =validator.validate(form, Long.valueOf(announcementId));
-            if(errors.isEmpty()) {
+            final Map<String, String> errors = validator.validate(form, Long.valueOf(announcementId));
+            if (errors.isEmpty()) {
                 //parse form
                 String from = form.getFrom();
                 String to = form.getTo();
@@ -90,7 +92,7 @@ public class SeeAnnouncementController {
                 model.addAttribute("isAuthor", goodsService.isAuthor(Long.valueOf(announcementId)));
                 String name = SecurityContextHolder.getContext().getAuthentication().getName();
                 User landlord = userService.getUser(goods.getAuthorId());
-                model.addAttribute("isAuth", name!="anonymousUser");
+                model.addAttribute("isAuth", name != "anonymousUser");
                 model.addAttribute("user", landlord);
                 model.addAttribute("errors", errors);
                 model.addAttribute("date", new DateForm());
@@ -99,13 +101,13 @@ public class SeeAnnouncementController {
 
 
         } catch (GoodsException e) {
-            LOG.error("An error occured on the creating a deal: "+e.getMessage());
+            LOG.error("An error occured on the creating a deal: " + e.getMessage());
         } catch (UserServiceException e) {
             e.printStackTrace();
         } catch (DealServiceException e) {
             e.printStackTrace();
-        } catch(NumberFormatException e) {
-            return "/";//exception
+        } catch (NumberFormatException e) {
+            return "/"; //exception
         }
         return "home/application_submitted";
     }
