@@ -129,4 +129,15 @@ public class GoodsForm {
         goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
         return goods;
     }
+    public Goods toGoods(){
+        GoodsForm form = this;
+        Goods goods = new Goods();
+        goods.setTitle(form.getTitle());
+        goods.setDescription(form.getDescription());
+        goods.setPledge(form.getPledge());
+        goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
+        goods.setPricePerDay(Double.valueOf(form.getPricePerDay()));
+        goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
+        return goods;
+    }
 }

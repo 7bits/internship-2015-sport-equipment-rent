@@ -93,10 +93,6 @@ public class AddAnnouncementController {
             LOG.info("Adding form contains errors.");
             return "home/add_announcement";
         }
-        //feature: add announcement without auth
-        if (!isAuth) {
-            session.setAttribute("addNewGoods", form);
-        }
 
         //adding announcement
         long goodsId = 0;
@@ -106,7 +102,12 @@ public class AddAnnouncementController {
         } catch (UserServiceException e) {
             //exception
         }
-        Goods goods = form.toGoods(user);
+        Goods goods = null;
+        if(isAuth) {
+            goods = form.toGoods(user);
+        }else{
+            goods = form.toGoods();
+        }
         try {
             goodsId = service.submitGoods(goods, images);
         } catch (GoodsException e) {
@@ -119,6 +120,7 @@ public class AddAnnouncementController {
             for(String i:goods.getImageUrl()) {
                 form.addImageUrl(i);
             }
+            session.setAttribute("addNewGoods", form);
             return "redirect:/login";
         }
 
