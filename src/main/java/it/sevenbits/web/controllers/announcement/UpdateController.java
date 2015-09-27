@@ -1,12 +1,13 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.GoodsForm;
+import it.sevenbits.domain.User;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,7 +51,7 @@ public class UpdateController {
         User user = null;
         try {
             user = userService.getUser(name);
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         Goods goods = null;
@@ -59,6 +60,8 @@ public class UpdateController {
         } catch (GoodsException e) {
             LOG.error("An error occured while picking goods from database at UpdateController class: "+e.getMessage());
             return "home/error";
+        } catch (UserServiceException e) {
+            e.printStackTrace();
         }
         if(user.getId()!= goods.getAuthorId()){
             return "redirect:/see_announcement?announcement_id="+announcementId;
@@ -78,7 +81,7 @@ public class UpdateController {
     private AddNewGoodsFormValidator validator;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@RequestParam(value="announcement_id", required = false) long announcementId,
+    public String submit(@RequestParam(value="announcement_id", required = false) String announcementId,
                          @RequestParam("firstImage") MultipartFile firstImage,
                          @RequestParam("secondImage") MultipartFile secondImage,
                          @RequestParam("thirdImage") MultipartFile thirdImage,
@@ -97,14 +100,20 @@ public class UpdateController {
         deleted[1] = secondImageDelete;
         deleted[2] = thirdImageDelete;
         if (errors.size() != 0) {
-            // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
             LOG.info("Update form contains errors.");
             return "home/update_announcement";
         }
-        goodsService.updateAnnouncement(images, deleted, form, announcementId, errors);
+        User user = null;
+        try {
+            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (UserServiceException e) {
+            //exception
+        }
+        Goods goods = form.toGoods(user);
+        goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
         return "redirect:/see_announcement?announcement_id="+announcementId;
     }
 

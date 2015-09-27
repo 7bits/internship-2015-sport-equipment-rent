@@ -1,10 +1,13 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.GoodsForm;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,7 +46,6 @@ public class ConfirmController {
     public String confirm(final Model model, HttpSession session){
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
         session.removeAttribute("addNewGoods");
-
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         if(form==null) {
             return "redirect:/";
@@ -52,18 +55,14 @@ public class ConfirmController {
         }
         return "home/confirm_announcement";
     }
+
+
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
+    public String submit(@ModelAttribute final GoodsForm form,
+                         final Model model,
+                         final HttpSession session) {
         final Map<String, String> errors = validator.validate(form);
-
-
         long goodsId = 0;
-        try {
-            goodsId = service.submitGoods(form, new LinkedList<MultipartFile>(), errors, session);
-        } catch (GoodsException e) {
-            LOG.error(e.getMessage());
-            //error
-        }
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
@@ -73,7 +72,22 @@ public class ConfirmController {
             LOG.info("Adding form contains errors.");
             return "home/confirm_announcement";
         }
-
+        try {
+            User user = null;
+            try {
+                user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+            } catch (UserServiceException e) {
+                //exception
+            }
+            Goods goods = form.toGoods(user);
+            goods.setImageUrl((List<String>) session.getAttribute("images"));
+            goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
+        } catch (GoodsException e) {
+            LOG.error(e.getMessage());
+            //error
+        } catch (UserServiceException e) {
+            //error
+        }
         /*if(form.getFirstImageUrl()!=null)
             service.addImage(goods.getId(), form.getFirstImageUrl());
         if(form.getSecondImageUrl()!=null)
