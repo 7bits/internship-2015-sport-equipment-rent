@@ -94,42 +94,83 @@
     max-width: 143px;
 }
 
+.b-detailed-view-announcement__update-botton{
+    display: none;
+}
 
 @media(max-width: 947px){
-    .b-detailed-view-announcement{
+    .b-detailed-view-announcement--default{
         margin-right: 12px;
     }
 }
 
+@media(max-width: 928px){
+    .b-detailed-view-announcement--owner{
+        width: 700px;
+    }
+
+    .b-detailed-view-announcement__content--owner{
+        width: 692px;
+    }
+}
+
 @media(max-width: 920px){
-    .b-detailed-view-announcement{
+    .b-detailed-view-announcement--default{
         margin-right: 2px;
     }
 }
 
 @media(max-width: 900px){
-    .b-detailed-view-announcement{
+    .b-detailed-view-announcement--default{
         margin-right: 0;
     }
 }
 
 
 @media(max-width: 877px){
-    .b-detailed-view-announcement{
+    .b-detailed-view-announcement--default{
         float: none;
 
         margin: 0 auto;
         padding-top: 15px;
     }
+
+    .b-detailed-view-announcement--owner{
+        padding-top: 30px;
+    }
 }
 
 
+@media(max-width: 705px){
+    .b-detailed-view-announcement--owner{
+        float: none;
+        margin: 0 auto;
+        width: 463px;
+    }
+
+    .b-detailed-view-announcement__content--owner{
+        width: 455px;
+    }
+    
+    .b-detailed-view-announcement-update-botton{
+        display: block;
+        padding-bottom: 30px;
+        padding-top: 15px;
+        margin: 0 auto;
+        width:  463px;
+    }
+    
+    .b-detailed-view-announcement-update-botton__botton{
+        width: 455px;
+    }
+}
+
 @media(max-width: 467px){
-    .b-detailed-view-announcement{
+    .b-detailed-view-announcement--default{
         width: 312px;
     }
 
-    .b-detailed-view-announcement__content{
+    .b-detailed-view-announcement__content--default{
         width: 307px;
     }
 
@@ -165,5 +206,12 @@
         padding-right: 20px;
         padding-bottom: 20px;
         padding-left: 20px;
+    }
+    .b-detailed-view-announcement-update-botton{
+        width:  312px;
+    }
+    
+    .b-detailed-view-announcement-update-botton__botton{
+        width: 307px;
     }
 }
