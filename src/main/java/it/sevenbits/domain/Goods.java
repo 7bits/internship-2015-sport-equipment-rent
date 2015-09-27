@@ -1,6 +1,7 @@
 package it.sevenbits.domain;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Goods implements Serializable {
     String author;//name
     String authorPhone;
     boolean visible;
-    List<String> imageUrl;
+    List<String> imageUrl = new LinkedList<String>();
     String authorImage;
 
     public boolean isVisible() {

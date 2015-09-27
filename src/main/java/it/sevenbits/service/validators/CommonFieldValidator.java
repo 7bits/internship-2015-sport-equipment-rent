@@ -204,69 +204,72 @@ public class CommonFieldValidator {
     public void isEarlierThenWeek(String from, HashMap<String, String> errors, String key, String value) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
-            if(DateTime.now().plusWeeks(1).getMillis()<start.getMillis()){
+            if (DateTime.now().plusWeeks(1).getMillis() < start.getMillis()) {
                 errors.put(key, value);
             }
         }
     }
 
     public void isRentTimeLessMonth(String from, String to, HashMap<String, String> errors, String key, String field) {
-        if(errors.isEmpty()){
+        if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime finish = DateTime.parse(to);
-            if(start.plusMonths(1).getMillis()<finish.getMillis()){
+            if (start.plusMonths(1).getMillis() < finish.getMillis()) {
                 errors.put(key, field);
             }
         }
     }
 
     public void isRentTimeMoreHour(String from, String to, HashMap<String, String> errors, String key, String field) {
-        if(errors.isEmpty()){
+        if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime finish = DateTime.parse(to);
-            if(start.plusHours(1).getMillis()>finish.getMillis()){
+            if (start.plusHours(1).getMillis() > finish.getMillis()) {
                 errors.put(key, field);
             }
         }
     }
 
     public void isImage(String imageUrl, HashMap<String, String> errors, String key, String field) {
-        if (errors.containsKey(key) || imageUrl=="") {
+        if (errors.containsKey(key) || imageUrl == "") {
             return;
         }
         if (!(imageUrl.contains(".jpg") || imageUrl.contains(".bmp") || imageUrl.contains(".jpeg") || imageUrl.contains(".png") || imageUrl.contains(".gif"))) {
             errors.put(key, field);
         }
     }
-    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field){
-         if(errors.isEmpty()){
-             DateTime start = DateTime.parse(from);
-             DateTime end = DateTime.parse(to);
-             List<Deal> openDeals = service.getOpenWithId(goodsId);
-             Deal deal;
-             for(int i=0;i<openDeals.size();i++){
-                 deal=openDeals.get(i);
-                 DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
-                 DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
-                 if(estimatedStart.getMillis()<=start.getMillis() && estimatedEnd.getMillis()>=start.getMillis()){
-                     errors.put(key, field);
-                     return;
-                 }
-                 if(start.getMillis()<=estimatedStart.getMillis() && end.getMillis()>=estimatedStart.getMillis()){
-                     errors.put(key, field);
-                     return;
-                 }
 
-             }
-         }
+    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field) {
+        if (errors.isEmpty()) {
+            DateTime start = DateTime.parse(from);
+            DateTime end = DateTime.parse(to);
+            List<Deal> openDeals = service.getOpenWithId(goodsId);
+            Deal deal;
+            for (int i = 0; i < openDeals.size(); i++) {
+                deal = openDeals.get(i);
+                DateTime estimatedStart = DateTime.parse(deal.getEstimateStartDate());
+                DateTime estimatedEnd = DateTime.parse(deal.getEstimateEndDate());
+                if (estimatedStart.getMillis() <= start.getMillis() && estimatedEnd.getMillis() >= start.getMillis()) {
+                    errors.put(key, field);
+                    return;
+                }
+                if (start.getMillis() <= estimatedStart.getMillis() && end.getMillis() >= estimatedStart.getMillis()) {
+                    errors.put(key, field);
+                    return;
+                }
+
+            }
+        }
     }
 
     public void isImages(List<String> imageUrl, HashMap<String, String> errors, String key, String field) {
-        for(String i:imageUrl) {
-            if (!i.endsWith(".jpeg") && !i.endsWith(".jpg") &&
-                    !i.endsWith(".png") && !i.endsWith(".bmp")) {
-                errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
-                return;
+        for (String i : imageUrl) {
+            if (i != null && !i.isEmpty()) {
+                if (!i.endsWith(".jpeg") && !i.endsWith(".jpg") &&
+                        !i.endsWith(".png") && !i.endsWith(".bmp")) {
+                    errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
+                    return;
+                }
             }
         }
     }

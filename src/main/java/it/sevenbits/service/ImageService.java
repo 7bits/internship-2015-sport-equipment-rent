@@ -4,6 +4,7 @@ import it.sevenbits.domain.Goods;
 import it.sevenbits.service.exceptions.ImageServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
@@ -16,11 +17,12 @@ import java.util.Map;
 /**
  * Created by awemath on 8/18/15.
  */
+@Service
 public class ImageService {
     @Value("${resources.path}")
-    private static String resourcesPath;
+    private  String resourcesPath;
     @Value("${resources.images}")
-    private static String imagesPath;
+    private  String imagesPath;
 
     public static void saveImage(MultipartFile image, String path) throws IOException {
 
@@ -33,10 +35,10 @@ public class ImageService {
         stream.write(bytes);
         stream.close();
     }
-    public static void saveImages(List<MultipartFile> images, String hash, Goods goods) throws ImageServiceException {
+    public void saveImages(List<MultipartFile> images, String hash, Goods goods) throws ImageServiceException {
         for (MultipartFile i : images) {
             if (i != null && !i.isEmpty()) {
-                String imagePath = imagesPath + i.getOriginalFilename();
+                String imagePath = imagesPath + hash + i.getOriginalFilename();
                 try {
                     ImageService.saveImage(i, resourcesPath + imagePath);
                 } catch (IOException e) {

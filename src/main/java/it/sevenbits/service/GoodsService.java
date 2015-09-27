@@ -38,6 +38,9 @@ public class GoodsService {
     private PlatformTransactionManager transactionManager;
     private DefaultTransactionDefinition customTransaction;
 
+    @Autowired
+    private ImageService imageService;
+
     public GoodsService() {
         this.customTransaction = new DefaultTransactionDefinition();
         this.customTransaction.setName(TRANSACTION_NAME);
@@ -235,7 +238,7 @@ public class GoodsService {
             save(goods);
         }
         try {
-            ImageService.saveImages(images, hash, goods);
+            imageService.saveImages(images, hash, goods);
             if (isAuth) {
                 for (String bufImageUrl : goods.getImageUrl()) {
                     addImage(goods.getId(), bufImageUrl);

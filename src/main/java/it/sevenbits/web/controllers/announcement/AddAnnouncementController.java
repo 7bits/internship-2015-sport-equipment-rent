@@ -81,9 +81,7 @@ public class AddAnnouncementController {
         images.add(firstImage);
         images.add(secondImage);
         images.add(thirdImage);
-        for(MultipartFile i:images) {
-            form.addImageUrl(i.getOriginalFilename());
-        }
+
 
         //form validation
         errors = validator.validate(form);
@@ -118,6 +116,9 @@ public class AddAnnouncementController {
             e.printStackTrace();
         }
         if (!isAuth) {
+            for(String i:goods.getImageUrl()) {
+                form.addImageUrl(i);
+            }
             return "redirect:/login";
         }
 
