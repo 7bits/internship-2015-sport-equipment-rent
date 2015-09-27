@@ -3,7 +3,10 @@ block title
     title Просмотр объявление
 block depending
     link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
-    script(src="resources/vendor/scripts/qb/js/qb.js")  
+    script(src="resources/vendor/scripts/qb/js/qb.js")
+    link(rel='stylesheet', type='text/css', href='resources/vendor/scripts/datetimepicker/jquery.datetimepicker.css')
+    script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
+    script(src="resources/scripts/data-time.js")  
 block content
     .b-content
         include mixins/mixin_user_info.jade
@@ -44,9 +47,9 @@ block content
                             .b-form-book-product__input-title
                                 p
                                     Начало
-                            input.b-input--default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+                            input.js-datatime-from.b-input--default#from.form-control(type="text", value="#{date.from}", name="from")
                             .b-form-book-product__input-title
                                 p
                                     Завершение
-                            input.b-input--default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
+                            input.js-datatime-to.b-input--default#to.form-control(type="text", value="#{date.to}", name="to")
                     input.b-button--default.b-button--green(type='submit', value='ЗАБРОНИРОВАТЬ')
