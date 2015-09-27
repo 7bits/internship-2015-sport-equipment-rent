@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.User;
@@ -41,11 +42,11 @@ public class DealController {
         User landlord = null;
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             LOG.error("An error ocured on getting landlord from the database: "+e.getMessage());
             return "home/error_message";
         }
-        if(deal.getLandlordId() != landlord.getId()){
+        if(deal.getLandlordId() != landlord.getId()) {
             return "home/error_message";
         }
         if(deal.isAnswered()){
@@ -75,7 +76,7 @@ public class DealController {
         User renting = null;
         try {
             renting = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         if(renting.getId()!= deal.getRentingId()){
@@ -103,7 +104,7 @@ public class DealController {
         User user = null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         if(user.getId()!= deal.getLandlordId()){
@@ -125,7 +126,7 @@ public class DealController {
         Deal deal= dealService.getDeal(dealId);
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         dealService.updateRealEndDate(dealId);

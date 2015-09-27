@@ -1,5 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
@@ -61,7 +63,14 @@ public class ConfirmController {
         final Map<String, String> errors = validator.validate(form);
         long goodsId = 0;
         try {
-            goodsId = service.submitGoods(form, new LinkedList<MultipartFile>());
+            User user = null;
+            try {
+                user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+            } catch (UserServiceException e) {
+                //exception
+            }
+            Goods goods = form.toGoods(user);
+            goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
         } catch (GoodsException e) {
             LOG.error(e.getMessage());
             //error

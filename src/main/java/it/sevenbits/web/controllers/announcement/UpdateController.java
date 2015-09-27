@@ -1,6 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.domain.User;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
@@ -50,7 +51,7 @@ public class UpdateController {
         User user = null;
         try {
             user = userService.getUser(name);
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         Goods goods = null;
@@ -59,6 +60,8 @@ public class UpdateController {
         } catch (GoodsException e) {
             LOG.error("An error occured while picking goods from database at UpdateController class: "+e.getMessage());
             return "home/error";
+        } catch (UserServiceException e) {
+            e.printStackTrace();
         }
         if(user.getId()!= goods.getAuthorId()){
             return "redirect:/see_announcement?announcement_id="+announcementId;

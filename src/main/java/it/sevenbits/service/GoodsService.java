@@ -221,7 +221,7 @@ public class GoodsService {
         goods.setStatus(repository.checkStatus(goods));
     }
 
-    public long submitGoods(final GoodsForm goodsForm,
+    public long submitGoods(final Goods goods,
                             final List<MultipartFile> images)
             throws GoodsException, UserServiceException {
         TransactionStatus status;
@@ -230,17 +230,14 @@ public class GoodsService {
 
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean isAuth = userName != "anonymousUser";
-        User user = userService.getUser(userName);
         String hash = getHash();
-        Goods goods = null;
         if (isAuth) {
-            goods = goodsForm.toGoods(user);
             save(goods);
         }
         try {
             ImageService.saveImages(images, hash, goods);
             if (isAuth) {
-                for (String bufImageUrl : goodsForm.getImageUrl()) {
+                for (String bufImageUrl : goods.getImageUrl()) {
                     addImage(goods.getId(), bufImageUrl);
                 }
             }

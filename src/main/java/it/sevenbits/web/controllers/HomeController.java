@@ -5,6 +5,7 @@ import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +37,8 @@ public class HomeController {
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
             model.addAttribute("goods", goods);
         } catch (GoodsException e) {
+            e.printStackTrace();
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
 

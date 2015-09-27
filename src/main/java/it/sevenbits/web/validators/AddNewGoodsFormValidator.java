@@ -41,6 +41,8 @@ public class AddNewGoodsFormValidator {
         validator.isPositiveNum(String.valueOf(form.getPricePerHour()), errors, "Поле цена за час", "Поле цена за час должно содержать положительное значение");
         validator.isPositiveNum(String.valueOf(form.getPricePerDay()), errors, "Поле цена за день", "Поле цена за день должно содержать положительное значение");
         validator.isPositiveNum(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "Поле цена за неделю должно содержать положительное значение");
+
+        validator.isImages(form.getImageUrl(), errors, "Поле цена за неделю", "Поле цена за неделю должно содержать положительное значение");
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));

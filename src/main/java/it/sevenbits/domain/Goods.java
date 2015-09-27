@@ -134,6 +134,9 @@ public class Goods implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    public void addImageUrl(String imageUrl) {
+        this.imageUrl.add(imageUrl);
+    }
 
     public String getAuthorImage() {
         return authorImage;

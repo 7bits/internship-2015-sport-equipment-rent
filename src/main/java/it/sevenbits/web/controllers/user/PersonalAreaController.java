@@ -4,6 +4,7 @@ import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,11 +23,11 @@ public class PersonalAreaController {
     @Autowired
     private UserService userService;
     @RequestMapping(method= RequestMethod.GET)
-    public String login(final Model model){
+    public String seePersonalArea(final Model model){
         User user = null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         model.addAttribute("goods", goodsService.getGoodsByAuthorId(user.getId()));

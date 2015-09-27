@@ -6,6 +6,7 @@ import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,14 +35,16 @@ public class DeleteController {
         User user= null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (GoodsException e) {
-            LOG.error("An error occured at delete on getting user: "+e.getMessage());
+        } catch (UserServiceException e) {
+            e.printStackTrace();
         }
         Goods goods = null;
         try {
             goods = goodsService.getGoods(Long.valueOf(announcementId));
         } catch (GoodsException e) {
             LOG.error("An error occured at delete on getting goods: " + e.getMessage());
+        } catch (UserServiceException e) {
+            e.printStackTrace();
         }
         if(goods.getAuthorId()!=user.getId()){
             return "home/error_message";

@@ -1,5 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.service.exceptions.GoodsException;
@@ -38,44 +40,53 @@ public class AddAnnouncementController {
     private String defaultImage;
 
     @Autowired
-    AddNewGoodsFormValidator validator;
+    private AddNewGoodsFormValidator validator;
 
     @Autowired
-    GoodsService service;
+    private GoodsService service;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    Logger LOG=Logger.getLogger(AddAnnouncementController.class);
+    private Logger LOG = Logger.getLogger(AddAnnouncementController.class);
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String index(final Model model) {
         // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
+        model.addAttribute("isAuth",
+                SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
         // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
         // Если шаблона не будет найдено, то вернется 404 ошибка
         return "home/add_announcement";
     }
 
 
-    @RequestMapping(value= "/add", method = RequestMethod.POST)
-    public String submit(@ModelAttribute GoodsForm form, final Model model,
-                         @RequestParam("firstImage") MultipartFile firstImage,
-                         @RequestParam("secondImage") MultipartFile secondImage,
-                         @RequestParam("thirdImage") MultipartFile thirdImage, HttpSession session) {
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-        Map<String, String> errors = new HashMap<>();
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String submit(@ModelAttribute final GoodsForm form,
+                         final Model model,
+                         @RequestParam("firstImage") final MultipartFile firstImage,
+                         @RequestParam("secondImage") final MultipartFile secondImage,
+                         @RequestParam("thirdImage") final MultipartFile thirdImage,
+                         HttpSession session) {
+
+        model.addAttribute("isAuth",
+                SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
+        Map<String, String> errors;
 
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
-
+        //create list of images
         List<MultipartFile> images = new LinkedList<MultipartFile>();
         images.add(firstImage);
         images.add(secondImage);
         images.add(thirdImage);
-        errors = validator.validate(form);
+        for(MultipartFile i:images) {
+            form.addImageUrl(i.getOriginalFilename());
+        }
 
+        //form validation
+        errors = validator.validate(form);
         if (errors.size() != 0) {
             // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
@@ -84,29 +95,34 @@ public class AddAnnouncementController {
             LOG.info("Adding form contains errors.");
             return "home/add_announcement";
         }
-
-        long goodsId = 0;
-        if(!isAuth) {
+        //feature: add announcement without auth
+        if (!isAuth) {
             session.setAttribute("addNewGoods", form);
         }
+
+        //adding announcement
+        long goodsId = 0;
+        User user = null;
         try {
-            goodsId = service.submitGoods(form, images);
+            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (UserServiceException e) {
+            //exception
+        }
+        Goods goods = form.toGoods(user);
+        try {
+            goodsId = service.submitGoods(goods, images);
         } catch (GoodsException e) {
             LOG.error(e.getMessage());
             //exception
         } catch (UserServiceException e) {
             e.printStackTrace();
         }
-        if(!isAuth) {
+        if (!isAuth) {
             return "redirect:/login";
         }
 
-        return "redirect:/see_announcement?announcement_id="+goodsId;
+        return "redirect:/see_announcement?announcement_id=" + goodsId;
     }
-
-
-
-
 
 
 }

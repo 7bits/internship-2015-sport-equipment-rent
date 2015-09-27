@@ -36,18 +36,13 @@ public class ImageService {
     public static void saveImages(List<MultipartFile> images, String hash, Goods goods) throws ImageServiceException {
         for (MultipartFile i : images) {
             if (i != null && !i.isEmpty()) {
-                /*if (!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
-                        !i.getOriginalFilename().endsWith(".png") && !i.getOriginalFilename().endsWith(".bmp")) {
-                    errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
-                    return;
-                }*/
                 String imagePath = imagesPath + i.getOriginalFilename();
                 try {
                     ImageService.saveImage(i, resourcesPath + imagePath);
                 } catch (IOException e) {
                     throw new ImageServiceException("Exception at the saving images", e);
                 }
-                //goodsForm.addImageUrl(imagePath);
+                goods.addImageUrl(imagePath);
 
             }
         }

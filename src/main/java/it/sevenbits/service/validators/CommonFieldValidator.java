@@ -260,5 +260,15 @@ public class CommonFieldValidator {
              }
          }
     }
+
+    public void isImages(List<String> imageUrl, HashMap<String, String> errors, String key, String field) {
+        for(String i:imageUrl) {
+            if (!i.endsWith(".jpeg") && !i.endsWith(".jpg") &&
+                    !i.endsWith(".png") && !i.endsWith(".bmp")) {
+                errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
+                return;
+            }
+        }
+    }
 }
 
