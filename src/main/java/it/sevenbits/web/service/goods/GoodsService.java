@@ -216,7 +216,13 @@ public class GoodsService {
         goods.setStatus(repository.checkStatus(goods));
     }
 
+<<<<<<< Updated upstream:src/main/java/it/sevenbits/web/service/goods/GoodsService.java
     public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images, Map<String, String> errors, HttpSession session) throws GoodsException {
+=======
+    public long submitGoods(final Goods goods,
+                            final List<MultipartFile> images)
+            throws GoodsException{
+>>>>>>> Stashed changes:src/main/java/it/sevenbits/service/GoodsService.java
         TransactionStatus status;
         //start transaction
         status  = transactionManager.getTransaction(customTransaction);

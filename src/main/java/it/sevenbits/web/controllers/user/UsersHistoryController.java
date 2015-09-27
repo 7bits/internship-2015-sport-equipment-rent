@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers.user;
 
+<<<<<<< Updated upstream
 import it.sevenbits.web.domain.Deal;
 import it.sevenbits.web.domain.Goods;
 import it.sevenbits.web.domain.HistoryTable;
@@ -8,6 +9,11 @@ import it.sevenbits.web.service.goods.DealService;
 import it.sevenbits.web.service.goods.GoodsException;
 import it.sevenbits.web.service.goods.GoodsService;
 import it.sevenbits.web.service.users.UserService;
+=======
+import it.sevenbits.service.HistoryService;
+import it.sevenbits.service.exceptions.UserServiceException;
+import org.apache.log4j.Logger;
+>>>>>>> Stashed changes
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -35,13 +41,21 @@ public class UsersHistoryController {
     DealService dealService;
 
 
+    private Logger LOG = Logger.getLogger(UsersHistoryController.class);
     @RequestMapping(method = RequestMethod.GET)
     public String history(final Model model){
         User user = null;
         try {
+<<<<<<< Updated upstream
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (GoodsException e) {
             e.printStackTrace();
+=======
+            model.addAttribute("userHistory", historyService.getUsersHistory());
+        } catch (UserServiceException e) {
+            LOG.error("Cant to show history to user " + e.getMessage());
+            return "/error";
+>>>>>>> Stashed changes
         }
         List<Deal> deals= dealService.getDealsOfUser(user.getId());
         List<HistoryTable> table = new LinkedList<HistoryTable>();

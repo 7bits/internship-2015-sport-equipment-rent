@@ -70,9 +70,9 @@ public class ConfirmController {
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", isAuth);
-            LOG.info("Adding form contains errors.");
             return "home/confirm_announcement";
         }
+<<<<<<< Updated upstream
 
         /*if(form.getFirstImageUrl()!=null)
             service.addImage(goods.getId(), form.getFirstImageUrl());
@@ -81,6 +81,23 @@ public class ConfirmController {
         if(form.getThirdImageUrl()!=null)
             service.addImage(goods.getId(), form.getThirdImageUrl());
         */
+=======
+        try {
+            User user = null;
+            try {
+                user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+            } catch (UserServiceException e) {
+                LOG.error("An error appeared on getting user from repository "+e.getMessage());
+            }
+            Goods goods = form.toGoods(user);
+            goods.setImageUrl((List<String>) session.getAttribute("images"));
+            goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
+        } catch (GoodsException e) {
+            LOG.error("An error appeared on submitting goods " + e.getMessage());
+            //exception
+
+        }
+>>>>>>> Stashed changes
 
         return "redirect:/see_announcement?announcement_id="+goodsId;
     }
