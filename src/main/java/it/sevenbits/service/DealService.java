@@ -21,74 +21,76 @@ import java.util.List;
 @Service
 public class DealService {
     @Autowired
-    @Qualifier(value="dealInPostgreSQLRepository")
+    @Qualifier(value = "dealInPostgreSQLRepository")
     private DealRepository repository;
 
     @Autowired
-    GoodsService goodsService;
+    private GoodsService goodsService;
     @Autowired
-    MailSubmissionController mailSubmissionController;
+    private MailSubmissionController mailSubmissionController;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    public void save(Deal deal){
+    public void save(final Deal deal) {
         repository.save(deal);
     }
 
-    public Deal getDeal(long dealId) {
+    public Deal getDeal(final long dealId) {
         return repository.getDeal(dealId);
     }
 
-    public long getId(Deal deal){
+    public long getId(final Deal deal) {
         return repository.getId(deal);
     }
 
 
-    public void update(Deal deal){
+    public void update(final Deal deal) {
         repository.update(deal);
     }
 
 
-    public boolean isExist(Deal deal) {
+    public boolean isExist(final Deal deal) {
         return repository.isExist(deal);
     }
 
-    public void deleteAllOnGoods(long goodsId) {
+    public void deleteAllOnGoods(final long goodsId) {
         repository.deleteAllOnGoods(goodsId);
     }
 
-    public void updateRealStartDate(long dealId) {
+    public void updateRealStartDate(final long dealId) {
         repository.updateRealStartDate(dealId);
     }
 
-    public void updateRealEndDate(long dealId) {
+    public void updateRealEndDate(final long dealId) {
         repository.updateRealEndDate(dealId);
     }
 
-    public List<Deal> getOpenWithId(long goodsId) {
+    public List<Deal> getOpenWithId(final long goodsId) {
         return repository.getOpenWithId(goodsId);
     }
 
-    public List<Deal> getDealsOfUser(Long id) {
+    public List<Deal> getDealsOfUser(final Long id) {
         return repository.getDealsOfUser(id);
     }
 
 
-    public void submitDeal(Deal deal, String announcementId) throws GoodsException, UserServiceException, DealServiceException {
+    public void submitDeal(final Deal deal,
+                           final String announcementId)
+            throws GoodsException, UserServiceException, DealServiceException {
         Goods goods = null;
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUser(name);
         goods = goodsService.getGoods(Long.valueOf(announcementId));
         User landlord = userService.getUser(goods.getAuthorId());
-        if(user.getEmail().equals(landlord.getEmail())){
+        if (user.getEmail().equals(landlord.getEmail())) {
             throw new DealServiceException("You cant pick your announcement");
         }
         if (!isExist(deal)) {
             save(deal);
             mailSubmissionController.sendHtmlEmail(deal);
         } else {
-
+            throw new DealServiceException("You already tried to pick it up");
         }
 
 
