@@ -1,5 +1,7 @@
 package it.sevenbits.service;
 
+import it.sevenbits.domain.Goods;
+import it.sevenbits.service.exceptions.ImageServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,17 +33,21 @@ public class ImageService {
         stream.write(bytes);
         stream.close();
     }
-    public static void saveImages(List<MultipartFile> images, String hash, GoodsForm goodsForm, Map<String, String> errors) throws IOException{
+    public static void saveImages(List<MultipartFile> images, String hash, Goods goods) throws ImageServiceException {
         for (MultipartFile i : images) {
             if (i != null && !i.isEmpty()) {
-                if (!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
+                /*if (!i.getOriginalFilename().endsWith(".jpeg") && !i.getOriginalFilename().endsWith(".jpg") &&
                         !i.getOriginalFilename().endsWith(".png") && !i.getOriginalFilename().endsWith(".bmp")) {
                     errors.put("Изображения", "Допускаются только изображения в форматах png, bmp, jpg, jpeg");
                     return;
-                }
+                }*/
                 String imagePath = imagesPath + i.getOriginalFilename();
-                ImageService.saveImage(i, resourcesPath + imagePath);
-                goodsForm.addImageUrl(imagePath);
+                try {
+                    ImageService.saveImage(i, resourcesPath + imagePath);
+                } catch (IOException e) {
+                    throw new ImageServiceException("Exception at the saving images", e);
+                }
+                //goodsForm.addImageUrl(imagePath);
 
             }
         }

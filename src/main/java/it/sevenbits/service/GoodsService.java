@@ -3,6 +3,7 @@ package it.sevenbits.service;
 import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.ImageServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import it.sevenbits.domain.Goods;
@@ -29,7 +30,7 @@ import java.util.*;
 @Service
 public class GoodsService {
     @Autowired
-    @Qualifier(value="goodsInPostgreSQLrepository")
+    @Qualifier(value = "goodsInPostgreSQLrepository")
     private GoodsRepository repository;
 
     private static final String TRANSACTION_NAME = "transactionService";
@@ -48,7 +49,7 @@ public class GoodsService {
 
 
     @Autowired
-    AddNewGoodsFormValidator validator;
+    private AddNewGoodsFormValidator validator;
 
     @Value("${resources.path}")
     private String resourcesPath;
@@ -58,7 +59,7 @@ public class GoodsService {
     @Autowired
     private UserService userService;
 
-    public void save(final GoodsForm form) throws GoodsException {
+    public void save(final GoodsForm form) throws GoodsException, UserServiceException {
         final Goods goods = new Goods();
         User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         goods.setTitle(form.getTitle());
@@ -77,17 +78,19 @@ public class GoodsService {
         }
     }
 
-    public List<Goods> getGoodsByAuthorId(long id){
+    public List<Goods> getGoodsByAuthorId(final long id) {
         List<Goods> goods = repository.getGoodsByAuthorId(id);
-        for(int i=0;i<goods.size();i++){
+        for (int i = 0; i < goods.size(); i++) {
             List<String> images = new LinkedList<String>();
-            Image image =getImageForGoods(goods.get(i).getId());
+            Image image = getImageForGoods(goods.get(i).getId());
             String url = null;
-            if(image!=null)
+            if (image != null) {
                 url = image.getUrl();
-            if(url!=null)
+            }
+            if (url != null) {
                 images.add(url);
-            if(images.size()==0 || images.get(0)==null){
+            }
+            if (images.size() == 0 || images.get(0) == null) {
                 images.add(defaultImage);
             }
             goods.get(i).setImageUrl(images);
@@ -107,16 +110,17 @@ public class GoodsService {
             List<Goods> goods = repository.findAll();
             goods.sort(new Comparator<Goods>() {
                 @Override
-                public int compare(Goods o1, Goods o2) {
+                public int compare(final Goods o1, final Goods o2) {
                     return o1.getId() < o2.getId() ? 1 : -1;
                 }
             });
-            for(int i = 0; i < goods.size(); i++){
+            for (int i = 0; i < goods.size(); i++) {
                 List<String> images = new LinkedList<String>();
-                Image image =getImageForGoods(goods.get(i).getId());
-                if(image!=null)
+                Image image = getImageForGoods(goods.get(i).getId());
+                if (image != null) {
                     images.add(image.getUrl());
-                if(images.size()==0){
+                }
+                if (images.size() == 0) {
                     images.add(defaultImage);
                 }
                 goods.get(i).setImageUrl(images);
@@ -129,7 +133,7 @@ public class GoodsService {
 
     }
 
-    public Goods getGoods(long id) throws GoodsException{
+    public Goods getGoods(final long id) throws GoodsException, UserServiceException {
         Goods goods;
         try {
             goods = repository.getGoods(id);
@@ -139,11 +143,11 @@ public class GoodsService {
 
             List<Image> images = getImagesForGoods(goods.getId());
             List<String> imagesUrl = new LinkedList<String>();
-            for(int i=0;i<images.size();i++){
+            for (int i = 0; i < images.size(); i++) {
                 imagesUrl.add(images.get(i).getUrl());
             }
             int bufSize = images.size();
-            for(int i=0;i<3-bufSize; i++) {
+            for (int i = 0; i < 3 - bufSize; i++) {
                 imagesUrl.add(defaultImage);
             }
             checkStatus(goods);
@@ -151,22 +155,22 @@ public class GoodsService {
             goods.setImageUrl(imagesUrl);
 
         } catch (GoodsRepositoryException e) {
-            throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "
-                    +e.getMessage(), e);
+            throw new GoodsException("Ann error occurred while retrieving one goods with id " + id + ": "
+                    + e.getMessage(), e);
         }
         return goods;
     }
 
-    public void addImage(long goodsId, String url){
+    public void addImage(final long goodsId, final String url) {
         repository.addImage(goodsId, url);
     }
 
 
-    public void updateImage(long announcementId, String nameForBase, Image image) {
+    public void updateImage(final long announcementId, final String nameForBase, final Image image) {
         repository.updateImage(nameForBase, image);
     }
 
-    public void update(GoodsForm form) throws GoodsException {
+    public void update(final GoodsForm form) throws GoodsException, UserServiceException {
         final Goods goods = new Goods();
         User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         goods.setId(form.getId());
@@ -186,26 +190,26 @@ public class GoodsService {
         }
     }
 
-    public List<Image> getImagesForGoods(long id){
+    public List<Image> getImagesForGoods(final long id) {
         List<Image> images = repository.imageUrl(id);
         images.sort(new Comparator<Image>() {
             @Override
-            public int compare(Image o1, Image o2) {
+            public int compare(final Image o1, final Image o2) {
                 return o1.getUrl() == defaultImage ? -1 : 1;
             }
         });
         return images;
     }
 
-    public Image getImageForGoods(long id){
+    public Image getImageForGoods(final long id) {
         return repository.getImageForGoods(id);
     }
 
-    public void delete(Long id) {
+    public void delete(final Long id) {
         repository.delete(id);
     }
 
-    public void save(Goods goods) throws GoodsException {
+    public void save(final Goods goods) throws GoodsException {
         try {
             repository.save(goods);
         } catch (GoodsRepositoryException e) {
@@ -213,17 +217,19 @@ public class GoodsService {
         }
     }
 
-    public void checkStatus(Goods goods){
+    public void checkStatus(final Goods goods) {
         goods.setStatus(repository.checkStatus(goods));
     }
 
-    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images) throws GoodsException, UserServiceException {
+    public long submitGoods(final GoodsForm goodsForm,
+                            final List<MultipartFile> images)
+            throws GoodsException, UserServiceException {
         TransactionStatus status;
         //start transaction
-        status  = transactionManager.getTransaction(customTransaction);
+        status = transactionManager.getTransaction(customTransaction);
 
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        boolean isAuth =  userName != "anonymousUser";
+        boolean isAuth = userName != "anonymousUser";
         User user = userService.getUser(userName);
         String hash = getHash();
         Goods goods = null;
@@ -232,41 +238,45 @@ public class GoodsService {
             save(goods);
         }
         try {
-            ImageService.saveImages(images, hash, goodsForm);
-            if(isAuth) {
-                for(String bufImageUrl:goodsForm.getImageUrl()) {
+            ImageService.saveImages(images, hash, goods);
+            if (isAuth) {
+                for (String bufImageUrl : goodsForm.getImageUrl()) {
                     addImage(goods.getId(), bufImageUrl);
                 }
             }
             transactionManager.commit(status);
-        } catch (IOException e) {
+        } catch (ImageServiceException e) {
             transactionManager.rollback(status);
             e.printStackTrace();
-            errors.put("Извините, у нас возникли проблемы. Попробуйте позже", "Извините, у нас возникли проблемы. Попробуйте позже");
+            //errors.put("Извините, у нас возникли проблемы. Попробуйте позже", "Извините, у нас возникли проблемы. Попробуйте позже");
             return -1;
         }
 
         //end transaction
-        if(!isAuth) {
+        if (!isAuth) {
             return 0;
         }
         return goods.getId();
     }
 
-    public void updateAnnouncement(List<MultipartFile> images, boolean[] deletedImages, GoodsForm form, long announcementId,Map<String, String> errors){
+    public void updateAnnouncement(final List<MultipartFile> images,
+                                   final boolean[] deletedImages,
+                                   final GoodsForm form,
+                                   final long announcementId,
+                                   Map<String, String> errors) {
         TransactionStatus status;
         //start transaction
-        status  = transactionManager.getTransaction(customTransaction);
+        status = transactionManager.getTransaction(customTransaction);
 
         errors = validator.validate(form);
-        if(errors.size()!=0){
+        if (errors.size() != 0) {
             return;
         }
         form.setId(announcementId);
         List<Image> currentImages = getImagesForGoods(announcementId);
-        for(int i = 0; i < images.size(); i++) {
+        for (int i = 0; i < images.size(); i++) {
             if (deletedImages[i]) {
-                if(currentImages.size() > i) {
+                if (currentImages.size() > i) {
                     updateImage(announcementId, defaultImage, currentImages.get(i));
                 } else {
                     addImage(announcementId, defaultImage);
@@ -275,23 +285,26 @@ public class GoodsService {
             }
         }
         try {
-            for(int i = 0; i < images.size(); i++) {
-                if(images.get(i) !=null && !images.get(i).isEmpty()) {
-                    String fileName = resourcesPath+imagesPath + announcementId + "_" + i + images.get(i).getOriginalFilename();
+            for (int i = 0; i < images.size(); i++) {
+                if (images.get(i) != null && !images.get(i).isEmpty()) {
+                    String fileName = resourcesPath + imagesPath + announcementId + "_"
+                            + i + images.get(i).getOriginalFilename();
                     String nameForBase = imagesPath + announcementId + "_" + i + images.get(i).getOriginalFilename();
                     ImageService.saveImage(images.get(i), fileName);
-                    if(images.size()>i) {
+                    if (images.size() > i) {
                         updateImage(announcementId, nameForBase, currentImages.get(i));
-                    }else{
+                    } else {
                         addImage(announcementId, nameForBase);
                     }
 
                 }
             }
             update(form);
-        } catch(IOException e) {
-            transactionManager.rollback(status);
         } catch (GoodsException e) {
+            transactionManager.rollback(status);
+        } catch (UserServiceException e) {
+            transactionManager.rollback(status);
+        } catch (IOException e) {
             transactionManager.rollback(status);
         }
 
@@ -304,9 +317,9 @@ public class GoodsService {
     public String getHash() {
         Random random = new Random();
         char[] bufArray = new char[32];
-        for(int i=0; i<32; i++) {
-            int buf =(48+random.nextInt(122-48));
-            while((buf < 65 && buf > 57) || (buf > 90 && buf < 97)) {
+        for (int i = 0; i < 32; i++) {
+            int buf = (48 + random.nextInt(122 - 48));
+            while ((buf < 65 && buf > 57) || (buf > 90 && buf < 97)) {
                 buf = (48 + random.nextInt(122 - 48));
             }
             bufArray[i] = (char) buf;
@@ -314,14 +327,15 @@ public class GoodsService {
         return String.valueOf(bufArray);
     }
 
-    public boolean isAuthor(Long announcementId) throws GoodsException, UserServiceException {
+    public boolean isAuthor(final Long announcementId)
+            throws GoodsException, UserServiceException {
 
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Goods goods = getGoods(announcementId);
-        if(name!="anonymousUser") {
+        if (name != "anonymousUser") {
             User user = userService.getUser(name);
             return user.getId().equals(goods.getAuthorId());
-        }else{
+        } else {
             return false;
         }
 
