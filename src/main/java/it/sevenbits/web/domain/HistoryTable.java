@@ -4,7 +4,7 @@ package it.sevenbits.web.domain;
  * Created by awemath on 8/19/15.
  */
 public class HistoryTable {
-    String startDate, endDate, renting, title;
+    String startDate, endDate, renting, rentingId, rentingImage, title;
 
     public String getStartDate() {
         return startDate;
@@ -36,5 +36,21 @@ public class HistoryTable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getRentingId() {
+        return rentingId;
+    }
+
+    public void setRentingId(String rentingId) {
+        this.rentingId = rentingId;
+    }
+
+    public String getRentingImage() {
+        return rentingImage;
+    }
+
+    public void setRentingImage(String rentingImage) {
+        this.rentingImage = rentingImage;
     }
 }

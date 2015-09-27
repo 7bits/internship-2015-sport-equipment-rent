@@ -56,6 +56,8 @@ public class UsersHistoryController {
                 e.printStackTrace();
             }
             row.setRenting(renting.getFirstName());
+            row.setRentingId(String.valueOf(renting.getId()));
+            row.setRentingImage(renting.getImageUrl());
             Goods goods = null;
             try {
                 goods = goodsService.getGoods(deals.get(i).getGoodsId());
