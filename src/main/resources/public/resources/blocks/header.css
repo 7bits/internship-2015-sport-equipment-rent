@@ -35,6 +35,12 @@
     background-size: contain;
 }
 
+.b-logo:hover,
+.b-logo:focus,
+.b-logo:active{
+    cursor: pointer;
+}
+
 
 .b-header__menu,
 .b-header__login{

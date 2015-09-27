@@ -11,8 +11,7 @@ mixin list(Goods, userId, userAva, buttonText, isHistory)
                         text.set-rub-price
                             Р
                 include mixin_status.jade
-                a(href="/update?announcement_id=#{Goods.id}")
-                    .b-adaptive-title__edit-icon
+                .b-adaptive-title__edit-icon(onclick="location.href='/update?announcement_id=#{Goods.id}")
         .b-list-announcements-elem__content
             .b-list-announcements-elem-product-info
                 .b-list-announcements-elem-product-info__title

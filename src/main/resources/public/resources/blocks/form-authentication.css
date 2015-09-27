@@ -34,12 +34,18 @@
 }
 
 
+.registration-a-color{
+    color: #5dc8cd;
+}
+
+
 .registration-a-color:visited{
     color: #5dc8cd;
 }
 
 
 .registration-a-color:hover,
-.registration-a-color:focus{
+.registration-a-color:focus,
+.registration-a-color:active{
     color: #949494;
 }

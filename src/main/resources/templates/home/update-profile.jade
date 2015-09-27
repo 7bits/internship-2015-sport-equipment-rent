@@ -1,12 +1,6 @@
 extends layout.jade
 block title
     title Редактирование профиля
-block depending
-    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/form-update-profile.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/error.css", type="text/css", media="all")
 block content
     form(role="form", action="/update_profile", method="post")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
