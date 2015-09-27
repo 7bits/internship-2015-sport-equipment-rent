@@ -361,7 +361,7 @@
 
 @media(max-width: 626px){
     .b-list-announcements{
-        width: 100%;
+        width: 310px;
         padding-left: 0;
     }
     
@@ -374,11 +374,11 @@
     }
 
     .b-list-announcements-elem__content{
-        width: 300px;
+        width: 290px;
     }
 
     .b-list-announcements-elem-product-info{
-        width: 290px;
+        width: 286px;
         padding-left: 11px;
     }
 
@@ -395,3 +395,8 @@
         height: 67px;
     }
 }
+
+@media(max-width: 334px){
+    .b-list-announcements{
+        float: left;
+    }
