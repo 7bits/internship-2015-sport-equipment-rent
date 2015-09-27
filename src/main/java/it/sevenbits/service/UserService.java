@@ -14,6 +14,10 @@ import it.sevenbits.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,7 +26,10 @@ public class UserService {
     @Autowired
     @Qualifier(value="userInPostgreSQLrepository")
     private UserRepository repository;
-    
+
+    @Autowired
+    protected AuthenticationManager authenticationManager;
+
     @Value("${resources.default-users-avatar}")
     private String defaultUserAvatar;
 
@@ -52,17 +59,17 @@ public class UserService {
         return repository.getCountOfUsersWithThatEmail(email);
     }
 
-    public void save(RegistrationForm form) throws UserServiceException {
-        final User user = new User();
-        user.setEmail(form.geteMail());
-        user.setFirstName(form.getFirstName());
-        user.setPass(BCrypt.hashpw(form.getPassword(), BCrypt.gensalt()));
+    public void save(User user) throws UserServiceException {
         user.setImageUrl(defaultUserAvatar);
+
         try {
             repository.save(user);
         } catch (Exception e) {
             throw new UserServiceException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPass());
+        Authentication auth = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
     public void update(User user) {

@@ -26,7 +26,7 @@ public class LoginController {
     private GoodsService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String login(@RequestParam(value = "error", required = false) String error, final Model model) {
+    public String login(@RequestParam(value = "error", required = false) final String error, final Model model) {
         if (error != null) {
             final Map<String, String> errors = new HashMap<String, String>();
             errors.put("Invalid username", "неверный email или пароль");
@@ -35,7 +35,7 @@ public class LoginController {
         return "home/login";
     }
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(){
+    public String submit() {
         return "/";
     }
 }

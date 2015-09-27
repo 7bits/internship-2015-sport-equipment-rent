@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import it.sevenbits.service.exceptions.GoodsException;
@@ -42,7 +43,6 @@ public class ConfirmController {
     public String confirm(final Model model, HttpSession session){
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
         session.removeAttribute("addNewGoods");
-
         model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
         if(form==null) {
             return "redirect:/";
@@ -52,16 +52,20 @@ public class ConfirmController {
         }
         return "home/confirm_announcement";
     }
+
+
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute GoodsForm form, final Model model, HttpSession session) {
+    public String submit(@ModelAttribute final GoodsForm form,
+                         final Model model,
+                         final HttpSession session) {
         final Map<String, String> errors = validator.validate(form);
-
-
         long goodsId = 0;
         try {
-            goodsId = service.submitGoods(form, new LinkedList<MultipartFile>(), errors, session);
+            goodsId = service.submitGoods(form, new LinkedList<MultipartFile>());
         } catch (GoodsException e) {
             LOG.error(e.getMessage());
+            //error
+        } catch (UserServiceException e) {
             //error
         }
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";

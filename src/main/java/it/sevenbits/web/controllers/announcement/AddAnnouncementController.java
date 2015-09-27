@@ -1,5 +1,6 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
@@ -93,6 +94,8 @@ public class AddAnnouncementController {
         } catch (GoodsException e) {
             LOG.error(e.getMessage());
             //exception
+        } catch (UserServiceException e) {
+            e.printStackTrace();
         }
         if(!isAuth) {
             return "redirect:/login";
