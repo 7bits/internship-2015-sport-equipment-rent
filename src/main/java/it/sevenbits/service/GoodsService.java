@@ -3,6 +3,7 @@ package it.sevenbits.service;
 import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.web.forms.GoodsForm;
@@ -216,7 +217,7 @@ public class GoodsService {
         goods.setStatus(repository.checkStatus(goods));
     }
 
-    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images) throws GoodsException {
+    public long submitGoods(GoodsForm goodsForm, List<MultipartFile> images) throws GoodsException, UserServiceException {
         TransactionStatus status;
         //start transaction
         status  = transactionManager.getTransaction(customTransaction);
@@ -231,7 +232,7 @@ public class GoodsService {
             save(goods);
         }
         try {
-            ImageService.saveImages(images, hash, goodsForm, errors);
+            ImageService.saveImages(images, hash, goodsForm);
             if(isAuth) {
                 for(String bufImageUrl:goodsForm.getImageUrl()) {
                     addImage(goods.getId(), bufImageUrl);
@@ -311,6 +312,19 @@ public class GoodsService {
             bufArray[i] = (char) buf;
         }
         return String.valueOf(bufArray);
+    }
+
+    public boolean isAuthor(Long announcementId) throws GoodsException, UserServiceException {
+
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        Goods goods = getGoods(announcementId);
+        if(name!="anonymousUser") {
+            User user = userService.getUser(name);
+            return user.getId().equals(goods.getAuthorId());
+        }else{
+            return false;
+        }
+
     }
 
 }

@@ -1,5 +1,7 @@
 package it.sevenbits.web.controllers.announcement;
 
+import it.sevenbits.service.exceptions.DealServiceException;
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.web.forms.DateForm;
 import it.sevenbits.domain.Deal;
@@ -39,8 +41,7 @@ public class SeeAnnouncementController {
     Logger LOG = Logger.getLogger(SeeAnnouncementController.class);
 
 
-    @Autowired
-    MailSubmissionController mailSubmissionController;
+
 
 
     @RequestMapping(value = "/see_announcement", method = RequestMethod.GET)
@@ -60,6 +61,8 @@ public class SeeAnnouncementController {
             model.addAttribute("user", landlord);
         } catch (GoodsException e) {
             e.printStackTrace();
+        } catch (UserServiceException e) {
+            e.printStackTrace();
         }
         model.addAttribute("date", new DateForm());
         return "home/see_announcement";
@@ -71,39 +74,24 @@ public class SeeAnnouncementController {
     @RequestMapping(value="/getIt", method = RequestMethod.POST)
     public String getIt(@RequestParam(value="announcement_id", required = false) String announcementId, final Model model, final DateForm form) {
         try {
-            Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
-            Deal deal = new Deal(goods.getAuthorId(), userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName()).getId(),
-                    goods.getId());
             final Map<String, String> errors =validator.validate(form, Long.valueOf(announcementId));
             if(errors.isEmpty()) {
+                //parse form
                 String from = form.getFrom();
                 String to = form.getTo();
-
+                Deal deal = new Deal();
                 deal.setEstimateStartDate(from);
                 deal.setEstimateEndDate(to);
-
-                if (!dealService.isExist(deal)) {
-                    dealService.save(deal);
-                    mailSubmissionController.sendHtmlEmail(deal);
-                } else {
-                    return "home/error_message";
-                }
-            }else{
-                String name = SecurityContextHolder.getContext().getAuthentication().getName();
-                User user = userService.getUser(name);
-                User landlord = userService.getUser(goods.getAuthorId());
-                if(user.getEmail().equals(landlord.getEmail())){
-                    return "redirect:/";
-                }
+                dealService.submitDeal(deal, announcementId);
+            } else {
+                //create model with exceptions
+                Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
                 model.addAttribute("Goods", goods);
-                if(name!="anonymousUser") {
-                    model.addAttribute("isAuthor", user.getId().equals(goods.getAuthorId()));
-                }else{
-                    model.addAttribute("isAuthor", false);
-                }
+                model.addAttribute("isAuthor", goodsService.isAuthor(Long.valueOf(announcementId)));
+                String name = SecurityContextHolder.getContext().getAuthentication().getName();
+                User landlord = userService.getUser(goods.getAuthorId());
                 model.addAttribute("isAuth", name!="anonymousUser");
                 model.addAttribute("user", landlord);
-                model.addAttribute(goods);
                 model.addAttribute("errors", errors);
                 model.addAttribute("date", new DateForm());
                 return "home/see_announcement";
@@ -112,12 +100,12 @@ public class SeeAnnouncementController {
 
         } catch (GoodsException e) {
             LOG.error("An error occured on the creating a deal: "+e.getMessage());
-        }
-        try {
-            model.addAttribute("Goods", goodsService.getGoods(Long.valueOf(announcementId)));
-            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
+        } catch (DealServiceException e) {
+            e.printStackTrace();
+        } catch(NumberFormatException e) {
+            return "/";//exception
         }
         return "home/application_submitted";
     }

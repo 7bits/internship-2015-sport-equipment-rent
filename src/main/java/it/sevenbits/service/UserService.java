@@ -6,6 +6,7 @@ package it.sevenbits.service;
 
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.RegistrationForm;
 import it.sevenbits.domain.User;
 import org.mindrot.jbcrypt.BCrypt;
@@ -25,24 +26,24 @@ public class UserService {
     @Value("${resources.default-users-avatar}")
     private String defaultUserAvatar;
 
-    public User getUser(long id) throws GoodsException {
+    public User getUser(long id) throws UserServiceException {
         User user;
         try{
             user = repository.getUserById(id);
         } catch (RepositoryException e) {
-            throw new GoodsException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
+            throw new UserServiceException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);
         }
         return user;
     }
 
-    public User getUser(String email) throws GoodsException {
+    public User getUser(String email) throws UserServiceException {
         User user;
         try {
             user = repository.getUser(email);
         } catch (RepositoryException e) {
-            throw new GoodsException("Ann error occurred while retrieving one goods with id: "+e.getMessage(), e);
+            throw new UserServiceException("Ann error occurred while retrieving one goods with id: "+e.getMessage(), e);
         } catch(NullPointerException e){
-            throw new GoodsException("null pointer exception", e);
+            throw new UserServiceException("null pointer exception", e);
         }
         return user;
     }
@@ -51,7 +52,7 @@ public class UserService {
         return repository.getCountOfUsersWithThatEmail(email);
     }
 
-    public void save(RegistrationForm form) throws GoodsException {
+    public void save(RegistrationForm form) throws UserServiceException {
         final User user = new User();
         user.setEmail(form.geteMail());
         user.setFirstName(form.getFirstName());
@@ -60,7 +61,7 @@ public class UserService {
         try {
             repository.save(user);
         } catch (Exception e) {
-            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
+            throw new UserServiceException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
 
