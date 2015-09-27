@@ -94,9 +94,10 @@
     max-width: 143px;
 }
 
-.b-detailed-view-announcement__update-botton{
+.b-detailed-view-announcement-update-botton{
     display: none;
 }
+
 
 @media(max-width: 947px){
     .b-detailed-view-announcement--default{
@@ -162,6 +163,15 @@
     
     .b-detailed-view-announcement-update-botton__botton{
         width: 455px;
+    }
+}
+
+@media(min-width: 705px){
+    .b-detailed-view-announcement__update-botton{
+        display: none;
+    }
+    .b-detailed-view-announcement__update-botton .b-button--blue{
+        display: none;
     }
 }
 

@@ -5,12 +5,6 @@
     margin-right: 32px;
 }
 
-.b-user-info:hover,
-.b-user-info:focus,
-.b-user-info:active{
-    cursor: pointer;
-}
-
 .b-user-info__content{
     width: 100%;
     margin-bottom: 17px;
@@ -46,6 +40,15 @@
     height: 114px;
     margin: 0 auto;
     margin-bottom: 10px;
+}
+
+.b-user-info__ava:hover,
+.b-user-info__ava:focus,
+.b-user-info__ava:active,
+.b-user-info__edit-info:hover,
+.b-user-info__edit-info:focus,
+.b-user-info__edit-info:active{
+    cursor: pointer;
 }
 
 .b-user-info__ava img{
