@@ -14,23 +14,15 @@ block depending
     script(src="resources/vendor/scripts/qb/js/qb.js")  
 block content
     .b-content
-        a(href="/profile?user_id=#{user.id}")
-            .b-user-info
-                .b-user-info__content
-                    .b-user-info__owner
-                        b
-                            p
-                                Владелец:
-                    .b-user-info__ava
-                        img(src=user.imageUrl, width="114", height="114")
-                    .b-user-info__info
-                        p=user.firstName
+        include mixins/mixin_user_info.jade
+        +create-user-info(isAuthor)
         .b-detailed-view-announcement
             .b-detailed-view-announcement__content
                 .b-title--default.b-title--blue.b-title--padding-none.b-title--text-centered
                     .b-title-with-devision__text
                         text(style="padding-right: 5px;")
                             Час:
+                        br.b-title-with-devision__text--line-break
                         b
                             text(style="padding-right: 5px;")=Goods.pricePerHour
                             text.set-rub-price
@@ -39,6 +31,7 @@ block content
                     .b-title-with-devision__text
                         text(style="padding-right: 5px;")
                             Сутки:
+                        br.b-title-with-devision__text--line-break
                         b
                             text(style="padding-right: 5px;")=Goods.pricePerDay
                             text.set-rub-price
@@ -47,6 +40,7 @@ block content
                     .b-title-with-devision__text
                         text(style="padding-right: 5px;")
                             Неделя:
+                        br.b-title-with-devision__text--line-break
                         b
                             text(style="padding-right: 5px;")=Goods.pricePerWeek
                             text.set-rub-price
@@ -71,7 +65,7 @@ block content
                                 b
                                     p
                                         Время аренды
-                            .b-title__ico
+                            .b-title__ico-calendar
                         include mixins/mixin_er.jade
                         +err(errors)
                         .b-form-book-product__content

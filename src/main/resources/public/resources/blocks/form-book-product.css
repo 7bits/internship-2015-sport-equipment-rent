@@ -25,3 +25,29 @@
 
     color: #278b8f;
 }
+
+
+@media(max-width: 877px){
+    .b-form-book-product{
+        float: none;
+
+        width: 455px;
+        margin: 0 auto;
+        padding-top: 15px;
+    }
+
+    .b-form-book-product__content{
+        width: 424px;
+    }
+}
+
+@media(max-width: 467px){
+    .b-form-book-product{
+        width: 304px;
+    }
+
+    .b-form-book-product__content{
+        width: 273px;
+        font-size: 15.24px;
+    }
+}

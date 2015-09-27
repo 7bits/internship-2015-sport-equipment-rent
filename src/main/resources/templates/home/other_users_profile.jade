@@ -9,20 +9,13 @@ block depending
     link(rel="stylesheet", href="resources/blocks/user-list-announcements.css", type="text/css", media="all")
 block content
     .b-content
-        .b-user-info
-            .b-user-info__content
-                .b-user-info__owner
+        include mixins/mixin_user_info.jade
+        include mixins/mixin_users_announcement_list.jade
+        +create-user-info(false)
+        .b-user-list-announcements
+            .b-user-list-announcements__content
+                .b-title--default.b-title--blue
                     b
                         p
-                            Владелец:
-                .b-user-info__ava
-                    img(src=user.imageUrl, width="114", height="114")
-                .b-user-info__info
-                    p=user.firstName
-        include mixins/mixin_users_announcement_list.jade
-        .b-user-list-announcements
-            .b-title--default.b-title--blue
-                b
-                    p
-                        Объявления
-            +list(goods)
+                            Объявления
+                +list(goods)

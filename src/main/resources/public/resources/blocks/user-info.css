@@ -5,11 +5,17 @@
     margin-right: 32px;
 }
 
+.b-user-info:hover,
+.b-user-info:focus,
+.b-user-info:active{
+    cursor: pointer;
+}
+
 .b-user-info__content{
     width: 100%;
     margin-bottom: 17px;
 
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, .4);
 }
 
 .b-user-info__owner{
@@ -25,6 +31,15 @@
     text-shadow: none;
 }
 
+.b-user-info__edit-info{
+    width: 28px;
+    display: none;
+    height: 28px;
+    background-image: url('../images/edit-profile.png');
+    float: right;
+    margin-top: -26px;
+    margin-right: 5px;   
+}
 
 .b-user-info__ava{
     width: 114px;
@@ -34,6 +49,9 @@
 }
 
 .b-user-info__ava img{
+    width: 114px;
+    height: 114px;
+
     border-width: 5px;
     border-style: solid;
     border-color: #278b8f;
@@ -56,7 +74,6 @@
     text-align: center;
 
     color: #278b8f;
-
 }
 
 .b-user-info__info p{
@@ -88,11 +105,70 @@
 
 @media(max-width: 877px){
     .b-user-info{
-        width: 455px;
-        margin: 0 auto;
         float: none;
+
+        width: 455px;
+        height: 81px;
+        margin: 0 auto;
     }
+
+    .b-user-info__content{
+        background-color: transparent;
+    }
+
     .b-user-info__owner{
-        width: 298px;
+        float: right;
+
+        width: 361px;
+        margin-bottom: 0;
+        padding-bottom: 10px;
+
+        background-color: rgba(255, 255, 255, .4);
+    }
+
+    .b-user-info__ava{
+        float: left;
+
+        width: 81px;
+        height: 81px;
+    }
+
+    .b-user-info__ava img{
+        width: 81px;
+        height: 81px;
+
+        -webkit-border-radius: 81px; /* Safari, Chrome */
+           -moz-border-radius: 81px; /* Firefox */
+                border-radius: 81px; /* CSS3 */
+
+        -khtml-border-radius: 81px; /* KHTML */
+        behavior: url(border-radius.htc); /*IE */
+    }
+
+    .b-user-info__info{
+        float: right;
+
+        width: 361px;
+
+        background-color: rgba(255, 255, 255, .4);
+    }
+    
+    .b-user-info__edit-info{
+        display: block;
+    }
+}
+
+
+@media(max-width: 467px){
+    .b-user-info{
+        width: 304px;
+    }
+
+    .b-user-info__owner{
+        width: 210px;
+    }
+
+    .b-user-info__info{
+        width: 210px;
     }
 }

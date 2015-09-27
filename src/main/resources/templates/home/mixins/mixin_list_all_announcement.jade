@@ -1,10 +1,10 @@
 mixin list(goods)
     .b-content
         a(name="seeAll")
-            each Goods in goods
-                - announcement_id = Goods.id;
-                a(href="/see_announcement?announcement_id=#{announcement_id}")
-                    .b-list-announcements-elem
+            .b-list-announcements
+                each Goods in goods
+                    - announcement_id = Goods.id;
+                    .b-list-announcements-elem(onclick="location.href='/see_announcement?announcement_id=#{announcement_id}';")
                         .b-adaptive-title
                             .b-title--default.b-title--blue
                                 .b-title__text.b-title__text--top
@@ -15,7 +15,8 @@ mixin list(goods)
                                         text.set-rub-price
                                             Р
                                 include mixin_status.jade
-                                .b-adaptive-title__edit-icon
+                                a(href="/update?announcement_id=#{Goods.id}")
+                                    .b-adaptive-title__edit-icon
                         .b-list-announcements-elem__content
                             .b-list-announcements-elem-product-info
                                 .b-list-announcements-elem-product-info__title
