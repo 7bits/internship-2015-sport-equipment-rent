@@ -7,6 +7,7 @@ block depending
     link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/detailed-view-announcement.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
+    link(rel="stylesheet", href="resources/blocks/history-link.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/form-book-product.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/blocks/title-with-devision.css", type="text/css", media="all")
@@ -16,47 +17,24 @@ block content
     .b-content
         include mixins/mixin_user_info.jade
         +create-user-info(isAuthor)
-        .b-detailed-view-announcement
-            .b-detailed-view-announcement__content
-                .b-title--default.b-title--blue.b-title--padding-none.b-title--text-centered
-                    .b-title-with-devision__text
-                        text(style="padding-right: 5px;")
-                            Час:
-                        br.b-title-with-devision__text--line-break
-                        b
-                            text(style="padding-right: 5px;")=Goods.pricePerHour
-                            text.set-rub-price
-                                Р
-                    .b-title-with-devision__devide-line
-                    .b-title-with-devision__text
-                        text(style="padding-right: 5px;")
-                            Сутки:
-                        br.b-title-with-devision__text--line-break
-                        b
-                            text(style="padding-right: 5px;")=Goods.pricePerDay
-                            text.set-rub-price
-                                Р
-                    .b-title-with-devision__devide-line
-                    .b-title-with-devision__text
-                        text(style="padding-right: 5px;")
-                            Неделя:
-                        br.b-title-with-devision__text--line-break
-                        b
-                            text(style="padding-right: 5px;")=Goods.pricePerWeek
-                            text.set-rub-price
-                                Р
-                .b-detailed-view-announcement__product-title
-                    b
-                        p=Goods.title
-                        include mixins/mixin_status.jade
-                .b-detailed-view-announcement__product-description
-                    p=Goods.description
-            .b-photo-set
-                each image in Goods.imageUrl
-                    .b-photo-set__photo
-                        a.quickbox(href="#{image}")
-                            img(src=image)
-        if !isAuthor
+        if isAuthor
+            .b-detailed-view-announcement--default.b-detailed-view-announcement--owner
+                .b-detailed-view-announcement__content--default.b-detailed-view-announcement__content--owner
+                    include mixins/mixin_detail_see_announcement.jade
+                .b-photo-set
+                    each image in Goods.imageUrl
+                        .b-photo-set__photo
+                            a.quickbox(href="#{image}")
+                                img(src=image)
+        else
+            .b-detailed-view-announcement--default
+                .b-detailed-view-announcement__content--default
+                    include mixins/mixin_detail_see_announcement.jade
+                .b-photo-set
+                    each image in Goods.imageUrl
+                        .b-photo-set__photo
+                            a.quickbox(href="#{image}")
+                                img(src=image)
             .b-form-book-product
                 form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
                     .b-form-book-product__form
@@ -78,7 +56,3 @@ block content
                                     Завершение
                             input.b-input--default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
                     input.b-button--default.b-button--green(type='submit', value='ЗАБРОНИРОВАТЬ')
-        else
-            .b-form-book-product
-                a(href="/update?announcement_id=#{Goods.id}")
-                    input.b-button--default.b-button--blue(type='button', value='Редактировать')  

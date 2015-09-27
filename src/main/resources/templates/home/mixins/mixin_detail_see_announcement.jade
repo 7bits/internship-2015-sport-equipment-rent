@@ -1,0 +1,39 @@
+.b-title--default.b-title--blue.b-title--padding-none.b-title--text-centered
+    .b-title-with-devision__text
+        text(style="padding-right: 5px;")
+            Час:
+        br.b-title-with-devision__text--line-break
+        b
+            text(style="padding-right: 5px;")=Goods.pricePerHour
+            text.set-rub-price
+                Р
+    .b-title-with-devision__devide-line
+    .b-title-with-devision__text
+        text(style="padding-right: 5px;")
+            Сутки:
+        br.b-title-with-devision__text--line-break
+        b
+            text(style="padding-right: 5px;")=Goods.pricePerDay
+            text.set-rub-price
+                Р
+    .b-title-with-devision__devide-line
+    .b-title-with-devision__text
+        text(style="padding-right: 5px;")
+            Неделя:
+        br.b-title-with-devision__text--line-break
+        b
+            text(style="padding-right: 5px;")=Goods.pricePerWeek
+            text.set-rub-price
+                Р
+    if isAuthor
+        .b-title-with-devision__text.b-title-with-devision__text--right
+            a.a-history(href="/update?announcement_id=#{Goods.id}")
+                p
+                    Редатировать
+        .b-title-with-devision__devide-line.b-title-with-devision__devide-line--right
+.b-detailed-view-announcement__product-title
+    b
+        p=Goods.title
+        include mixin_status.jade
+.b-detailed-view-announcement__product-description
+    p=Goods.description
