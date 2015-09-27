@@ -1,0 +1,10 @@
+@font-face{
+    font-family: RUBSN;
+
+    src: url('../vendor/fonts/Rub/RUBSN.otf')  format('opentype');
+}
+
+.set-rub-price{
+    margin-right: 3px;
+    font-family: RUBSN, 'RUBSN';
+}

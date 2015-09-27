@@ -2,80 +2,100 @@
 .b-button--default:focus,
 .b-button--default:hover{
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
 
     width: 100%;
     height: 100%;
-    margin-top: 10px;
     margin-bottom: 10px;
     padding: 1px 0 2px 0;
 
     border: none;
-    -webkit-border-radius: 5px; /* Safari, Chrome */
-       -moz-border-radius: 5px; /* Firefox */
-            border-radius: 5px;
+    -webkit-border-radius: 2px; /* Safari, Chrome */
+       -moz-border-radius: 2px; /* Firefox */
+            border-radius: 2px;
     box-shadow: 0 3px 3px #d4cfcf;
 
-    -khtml-border-radius: 5px; /* KHTML */
+    -khtml-border-radius: 2px; /* KHTML */
 }
-
 
 .b-button--default:focus{
     cursor: pointer;
 }
 
-
 .b-button--default:hover{
     cursor: pointer;
 }
-
-
-/*желтая кнопка*/
-.b-button--yellow,
-.b-button--yellow:focus,
-.b-button--yellow:hover{
-    float: right;
-height: 40px;
-    width: 162px;
-
-    color: white;
-    background: #edd04e;
-}
-
-
-.b-button--yellow:hover{
-    color: #949494;
-}
-
-
-.b-button--yellow:focus{
-    color: #949494;
-}
-
 
 /*#blue button*/
 .b-button--blue,
 .b-button--blue:focus,
 .b-button--blue:hover{
-    font-size: 16px;
+    height: 60px;
 
-    height: 45px;
-    margin-top: 0;
-
-    color: white;
-    background: #6ccdd3;
+    background: #5cc9cc;
 
     align: center;
 }
 
+.b-button--blue{
+    color: white;
+}
 
 .b-button--blue:hover{
     color: #949494;
 }
 
-
 .b-button--blue:focus{
     color: #949494;
+}
+
+
+/*use at registration & login page*/
+.b-button--authentication,
+.b-button--authentication:hover,
+.b-button--authentication:focus{
+    font-size: 17px;
+
+    height: 42px;
+
+    box-shadow: 0 1px 2px #626262;
+}
+
+
+/*#green button*/
+.b-button--green,
+.b-button--green:focus,
+.b-button--green:hover{
+    font-size: 20px;
+    font-weight: bold;
+
+    height: 60px;
+
+    background: #278b8f;
+
+    align: center;
+}
+
+.b-button--green{
+    color: white;
+}
+
+.b-button--green:hover{
+    color: #949494;
+}
+
+.b-button--green:focus{
+    color: #949494;
+}
+
+
+/*use at personal_area page*/
+.b-button--update-profile,
+.b-button--update-profile:hover,
+.b-button--update-profile:focus{
+    font-size: 9px;
+
+    height: 25px;
 }
 
 .b-button--half-size,
@@ -86,41 +106,45 @@ height: 40px;
 }
 
 
-.b-button--update,
-.b-button--update:hover,
-.b-button--update:focus{
+/*use at index page*/
+.b-button--update-announcement,
+.b-button--update-announcement:hover,
+.b-button--update-announcement:focus{
+    font-size: 14px;
+
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 14px;
-    background-color: #5cc9cc;
+
     text-align: center;
+
     -webkit-border-radius: 200px; /* Safari, Chrome */
        -moz-border-radius: 200px; /* Firefox */
             border-radius: 200px;
+    background-color: #5cc9cc;
     box-shadow: none;
 
     -khtml-border-radius: 200px; /* KHTML */
 }
 
 
-.b-button--update{
+.b-button--update-announcement{
     color: white;
 }
 
 
-.b-button--update:hover{
+.b-button--update-announcement:hover{
     color: #949494;
 }
 
 
-.b-button--update:focus{
+.b-button--update-announcement:focus{
     color: #949494;
 }
 
-@media(max-width: 443px){
-    .b-button--yellow,
-    .b-button--yellow:focus,
-    .b-button--yellow:hover{
-        width: 100%;
+
+@media(max-width: 877px){
+    .b-button--update-profile{
+        display: none;
     }
+
 }

@@ -1,6 +1,6 @@
-.b-content-inside{
-    width: 860px;
-    height: auto;
+/*base content block this website*/
+.b-content{
+    max-width: 938px;
     margin: 0 auto;
-    padding-top: 18px;
+    padding-top: 27px;
 }

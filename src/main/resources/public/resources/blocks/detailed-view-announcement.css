@@ -1,0 +1,227 @@
+/*#page see_announcement 
+  (when it was open user, 
+  who itsn't owner of announcement)
+  #block detail view announcement info*/
+
+.b-detailed-view-announcement--default{
+    float: left;
+
+    width: 463px;
+    margin-right: 20px;
+}
+
+.b-detailed-view-announcement__content--default{
+    width: 455px;
+    min-height: 155px;
+    margin-bottom: 13px;
+    padding-bottom: 13px;
+
+    border-width: 3px;
+    border-style: solid;
+    border-color: #5cc9cc;
+    background-color: white;
+}
+
+.b-detailed-view-announcement--owner{
+    width: 770px;
+    margin-right: 0;
+}
+
+.b-detailed-view-announcement__content--owner{
+    width: 762px;
+    min-height: 100px;
+}
+
+.b-detailed-view-announcement__product-title{
+    font-size: 24px;
+
+    overflow: hidden;
+
+    width: 100%;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    padding-right: 36px;
+    padding-left: 36px;
+
+    color: #278b8f;
+}
+
+.b-detailed-view-announcement__product-title p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.b-detailed-view-announcement__product-description{
+    font-size: 16px;
+
+    width: 100%;
+/*    min-height: 160px;*/
+    padding-right: 36px;
+    padding-bottom: 10px;
+    padding-left: 36px;
+
+    color: #6b6b6b;
+}
+
+.b-detailed-view-announcement__product-description p{
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+
+/*#photo set*/
+.b-photo-set{
+    width: 463px;
+    height: 149.7px;
+    margin-bottom: 20px;
+}
+
+.b-photo-set__photo{
+    position: relative;
+
+    float: left;
+
+    width: 143px;
+    height: 149.7px;
+    margin-right: 11px;
+}
+
+.b-photo-set__photo img{
+    max-width: 143px;
+}
+
+.b-detailed-view-announcement-update-botton{
+    display: none;
+}
+
+
+@media(max-width: 947px){
+    .b-detailed-view-announcement--default{
+        margin-right: 12px;
+    }
+}
+
+@media(max-width: 928px){
+    .b-detailed-view-announcement--owner{
+        width: 700px;
+    }
+
+    .b-detailed-view-announcement__content--owner{
+        width: 692px;
+    }
+}
+
+@media(max-width: 920px){
+    .b-detailed-view-announcement--default{
+        margin-right: 2px;
+    }
+}
+
+@media(max-width: 900px){
+    .b-detailed-view-announcement--default{
+        margin-right: 0;
+    }
+}
+
+
+@media(max-width: 877px){
+    .b-detailed-view-announcement--default{
+        float: none;
+
+        margin: 0 auto;
+        padding-top: 15px;
+    }
+
+    .b-detailed-view-announcement--owner{
+        padding-top: 30px;
+    }
+}
+
+
+@media(max-width: 705px){
+    .b-detailed-view-announcement--owner{
+        float: none;
+        margin: 0 auto;
+        width: 463px;
+    }
+
+    .b-detailed-view-announcement__content--owner{
+        width: 455px;
+    }
+    
+    .b-detailed-view-announcement-update-botton{
+        display: block;
+        padding-bottom: 30px;
+        padding-top: 15px;
+        margin: 0 auto;
+        width:  463px;
+    }
+    
+    .b-detailed-view-announcement-update-botton__botton{
+        width: 455px;
+    }
+}
+
+@media(min-width: 705px){
+    .b-detailed-view-announcement__update-botton{
+        display: none;
+    }
+    .b-detailed-view-announcement__update-botton .b-button--blue{
+        display: none;
+    }
+}
+
+@media(max-width: 467px){
+    .b-detailed-view-announcement--default{
+        width: 312px;
+    }
+
+    .b-detailed-view-announcement__content--default{
+        width: 307px;
+    }
+
+    .b-photo-set{
+        width: 315px;
+        height: 96px;
+        margin-bottom: 15px;
+    }
+
+    .b-photo-set__photo{
+        width: 96px;
+        height: 96px;
+        margin-right: 9px;
+    }
+
+    .b-photo-set__photo img{
+        width: 96px;
+    }
+
+    .b-detailed-view-announcement__product-title{
+        font-size: 17.78px;
+
+        margin-top: 14px;
+        margin-bottom: 12px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .b-detailed-view-announcement__product-description{
+        font-size: 12.7px;
+
+        min-height: 60px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+    }
+    .b-detailed-view-announcement-update-botton{
+        width:  312px;
+    }
+    
+    .b-detailed-view-announcement-update-botton__botton{
+        width: 307px;
+    }
+}

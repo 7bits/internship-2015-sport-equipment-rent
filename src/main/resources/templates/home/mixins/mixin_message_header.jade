@@ -1,31 +1,27 @@
-mixin create-header()
-    .b-header
-        .b-header__content
-            .base
-                .order
-                    .b-logo
-                        a(href="/")
-                            img(src="resources/images/layout/logo.png", width="170", height="45", style="margin-top: 12px")
-                    .b-header__exit
-                        a.header-a-color(href="/logout")
-                            b
-                                p
-                                    ВЫХОД
-                    .b-header__to-personal-area
-                        a.header-a-color(href="/personal_area")
-                            b
-                                p
-                                    ЛИЧНЫЙ КАБИНЕТ
-                    .b-header__dropdown-menu-ico.js-dropdown-ico
-                            h1
-                                img(src="resources/images/layout/menu.png", width="25", height="15")
-        .b-header__dropdown-menu.js-dropdown-menu
-                ul
-                    li
-                        a.header-a-color(href="/personal_area") 
-                            p 
-                                ЛИЧНЫЙ КАБИНЕТ
-                    li
-                        a.header-a-color(href="/logout") 
-                            p 
-                                ВЫХОД
+.b-header
+    .b-header__content
+        a(href="/")
+            .b-logo
+        .b-header__menu
+            a.header-a-color(href="/logout")
+                b
+                    p
+                        ВЫХОД
+        .b-header__menu
+            a.header-a-color(href="/personal_area")
+                b
+                    p
+                        ЛИЧНЫЙ КАБИНЕТ
+        .b-header__dropdown-menu-ico.js-dropdown-ico
+                h1
+                    img(src="resources/images/layout/menu.png", width="25", height="15")
+    .b-header__dropdown-menu.js-dropdown-menu
+            ul
+                li
+                    a.header-a-color(href="/personal_area")
+                        p
+                            ЛИЧНЫЙ КАБИНЕТ
+                li
+                    a.header-a-color(href="/logout")
+                        p
+                            ВЫХОД
