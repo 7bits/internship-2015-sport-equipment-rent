@@ -81,7 +81,7 @@ public class UpdateController {
     private AddNewGoodsFormValidator validator;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@RequestParam(value="announcement_id", required = false) long announcementId,
+    public String submit(@RequestParam(value="announcement_id", required = false) String announcementId,
                          @RequestParam("firstImage") MultipartFile firstImage,
                          @RequestParam("secondImage") MultipartFile secondImage,
                          @RequestParam("thirdImage") MultipartFile thirdImage,
@@ -100,14 +100,20 @@ public class UpdateController {
         deleted[1] = secondImageDelete;
         deleted[2] = thirdImageDelete;
         if (errors.size() != 0) {
-            // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
             LOG.info("Update form contains errors.");
             return "home/update_announcement";
         }
-        goodsService.updateAnnouncement(images, deleted, form, announcementId, errors);
+        User user = null;
+        try {
+            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (UserServiceException e) {
+            //exception
+        }
+        Goods goods = form.toGoods(user);
+        goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
         return "redirect:/see_announcement?announcement_id="+announcementId;
     }
 

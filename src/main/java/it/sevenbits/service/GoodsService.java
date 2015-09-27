@@ -173,19 +173,7 @@ public class GoodsService {
         repository.updateImage(nameForBase, image);
     }
 
-    public void update(final GoodsForm form) throws GoodsException, UserServiceException {
-        final Goods goods = new Goods();
-        User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        goods.setId(form.getId());
-        goods.setTitle(form.getTitle());
-        goods.setAuthorId(user.getId());
-        goods.setAuthorPhone(user.getPhone());
-        goods.setAuthor(user.getFirstName());
-        goods.setDescription(form.getDescription());
-        goods.setPledge(form.getPledge());
-        goods.setPricePerHour(Double.valueOf(form.getPricePerHour()));
-        goods.setPricePerDay(Double.valueOf(form.getPricePerDay()));
-        goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
+    public void update(final Goods goods) throws GoodsException, UserServiceException {
         try {
             repository.update(goods);
         } catch (Exception e) {
@@ -261,18 +249,13 @@ public class GoodsService {
 
     public void updateAnnouncement(final List<MultipartFile> images,
                                    final boolean[] deletedImages,
-                                   final GoodsForm form,
-                                   final long announcementId,
-                                   Map<String, String> errors) {
+                                   final Goods goods,
+                                   final long announcementId) {
         TransactionStatus status;
         //start transaction
         status = transactionManager.getTransaction(customTransaction);
 
-        errors = validator.validate(form);
-        if (errors.size() != 0) {
-            return;
-        }
-        form.setId(announcementId);
+        goods.setId(announcementId);
         List<Image> currentImages = getImagesForGoods(announcementId);
         for (int i = 0; i < images.size(); i++) {
             if (deletedImages[i]) {
@@ -290,8 +273,8 @@ public class GoodsService {
                     String fileName = resourcesPath + imagesPath + announcementId + "_"
                             + i + images.get(i).getOriginalFilename();
                     String nameForBase = imagesPath + announcementId + "_" + i + images.get(i).getOriginalFilename();
-                    ImageService.saveImage(images.get(i), fileName);
-                    if (images.size() > i) {
+                    imageService.saveImage(images.get(i), fileName);
+                    if (currentImages.size() > i) {
                         updateImage(announcementId, nameForBase, currentImages.get(i));
                     } else {
                         addImage(announcementId, nameForBase);
@@ -299,7 +282,7 @@ public class GoodsService {
 
                 }
             }
-            update(form);
+            update(goods);
         } catch (GoodsException e) {
             transactionManager.rollback(status);
         } catch (UserServiceException e) {
