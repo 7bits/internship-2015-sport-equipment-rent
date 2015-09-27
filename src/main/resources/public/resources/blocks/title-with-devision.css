@@ -46,6 +46,14 @@
 .b-title-with-devision__text--line-break{
     display: none;
 }
+@media(max-width: 705px){
+    .b-title-with-devision__text--right{
+        display: none;
+    }
+    .b-title-with-devision__devide-line--right{
+        display: none;
+    }
+}
 
 @media(max-width: 467px){
     .b-title-with-devision__text{

@@ -1,5 +1,5 @@
 mixin create-user-info(isAuthor)
-    .b-user-info(onclick="location.href='/profile?user_id=#{user.id}'")
+    .b-user-info
         .b-user-info__content
             .b-user-info__owner
                 b
@@ -7,13 +7,14 @@ mixin create-user-info(isAuthor)
                         Владелец:
                         if isAuthor
                             .b-user-info__edit-info(onclick="location.href='/update_profile'")
-            .b-user-info__ava
+            .b-user-info__ava(onclick="location.href='/profile?user_id=#{user.id}'")
                 img(src=user.imageUrl, width="114", height="114")
             .b-user-info__info
                 p=user.firstName
+            if isAuthor
+                if user.phone!=null
+                    .b-user-info__info
+                        p=user.phone
         if isAuthor
-            if user.phone!=null
-                .b-user-info__info
-                    p=user.phone
             a(href="/update_profile")
                 input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')

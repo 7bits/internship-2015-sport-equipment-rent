@@ -8,7 +8,12 @@
   <version>1.0-SNAPSHOT</version>
   <name>sport-rent-equipment</name>
   <packaging>war</packaging>
+    <properties>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+    </properties>
   <url>http://maven.apache.org</url>
+
   <parent>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-parent</artifactId>
@@ -16,7 +21,6 @@
   </parent>
 
   <dependencies>
-
 
       <!-- flyway migration tool-->
       <dependency>
@@ -88,6 +92,16 @@
       </dependency>
 
       <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-configuration-processor</artifactId>
+          <optional>true</optional>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+      </dependency>
+      <dependency>
           <groupId>com.sun.mail</groupId>
           <artifactId>javax.mail</artifactId>
       </dependency>
@@ -110,7 +124,22 @@
 
     <!-- Package as an executable jar -->
     <build>
-
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>config/application-prod.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

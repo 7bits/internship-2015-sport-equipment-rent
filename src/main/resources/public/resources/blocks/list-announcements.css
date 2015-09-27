@@ -79,7 +79,7 @@
 
     width: 100%;
     height: 40px;
-    margin-bottom: 48px;
+    margin-bottom: 38px;
 
     color: #3c3a3a;
 }
@@ -136,7 +136,7 @@
 }
 
 
-.b-list-announcements-elem__author-ava{
+.b-list-announcements-elem__user-ava{
     position: absolute;
     z-index: 99998;
     top: -67px;
@@ -147,7 +147,7 @@
 }
 
 
-.b-list-announcements-elem__author-ava img{
+.b-list-announcements-elem__user-ava img{
     width: 84px;
     height: 84px;
 
@@ -176,6 +176,36 @@
     margin-top: -7px;
     float: right;
     background-image: url('../images/edit-icon-white.png');
+}
+
+.b-rental-period{
+    width: 100%;
+    color: #365f63;
+    margin-top: -5px;
+    font-size: 18px;
+    float: left;
+}
+.b-rental-period__text{
+    margin-right: 7px;
+    float: left;
+}
+
+.b-rental-period__data{
+    background-color: #365f63;
+    padding-top: 4px;
+    font-size: 16px;
+    padding-left: 6px;
+    padding-right: 6px;
+    -webkit-border-radius: 2px; /* Safari, Chrome */
+       -moz-border-radius: 2px; /* Firefox */
+            border-radius: 2px; /* CSS3 */
+    -khtml-border-radius: 2px; /* KHTML */
+    float: left;
+    padding: 2px, 4px, 4px;
+    margin-right: 4px;
+    margin-top: -3px; 
+    height: 25px;
+    color: white;
 }
 
 @media(max-width: 965px){
@@ -261,7 +291,7 @@
         font-size: 15.24px;
     }
     
-    .b-list-announcements-elem__author-ava{
+    .b-list-announcements-elem__user-ava{
         display: none;
     }
 
@@ -331,7 +361,7 @@
 
 @media(max-width: 626px){
     .b-list-announcements{
-        width: 100%;
+        width: 310px;
         padding-left: 0;
     }
     
@@ -344,11 +374,11 @@
     }
 
     .b-list-announcements-elem__content{
-        width: 300px;
+        width: 290px;
     }
 
     .b-list-announcements-elem-product-info{
-        width: 290px;
+        width: 286px;
         padding-left: 11px;
     }
 
@@ -363,5 +393,11 @@
 
     .b-list-announcements-elem-product-info__discription{
         height: 67px;
+    }
+}
+
+@media(max-width: 334px){
+    .b-list-announcements{
+        float: left;
     }
 }

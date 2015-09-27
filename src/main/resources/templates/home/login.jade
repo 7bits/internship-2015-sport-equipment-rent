@@ -1,7 +1,6 @@
 extends registration-authorization.jade
 block title
     title Авторизация
-block depending
 block form
     form(role="form", action="/login", method="post")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
@@ -14,7 +13,6 @@ block form
         input.b-button--default.b-button--blue.b-button--authentication(type='submit', value='ВОЙТИ')
         .b-form-authentication__to-registration
             text
-                Еще не зарегистрированы?
-            a.registration-a-color(href="/registration",style="padding-left: 3px;")
-                text
+                Не зарегистрированы?
+                a.registration-a-color(href="/registration", style="color: #5dc8cd;")
                     Регистрация.
