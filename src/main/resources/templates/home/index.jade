@@ -47,4 +47,10 @@ html
                                             p
                                                 ВСЕ ОБЪЯВЛЕНИЯ
             include mixins/mixin_list_all_announcement.jade
-            +list(goods)
+            .b-content
+                a(name="seeAll")
+                    .b-list-announcements
+                        each Goods in goods
+                            - userId = Goods.authorId;
+                            - userAva = Goods.authorImage;
+                            +list(Goods, userId, userAva, "Редактировать", false)
