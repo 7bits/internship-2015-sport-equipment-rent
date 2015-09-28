@@ -53,7 +53,7 @@ mixin list(Goods, userId, userAva, buttonText, isHistory)
                 if !isHistory
                     a(href="/update?announcement_id=#{Goods.id}")
                         input.b-button--default.b-button--update-announcement(type='button', value='#{buttonText}')
-                else
+                if Goods.isAuthor
                     input.b-button--default.b-button--update-announcement(type='button', value='#{buttonText}')
             if isHistory
                 .b-rental-period
