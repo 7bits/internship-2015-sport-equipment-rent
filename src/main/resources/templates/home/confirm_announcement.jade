@@ -6,7 +6,7 @@ block header
 block content
     form(role="form", action="/confirm", method="post", enctype="multipart/form-data")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
-         include mixins/mixin_form_crud_announcement.jade
+        include mixins/mixin_form_crud_announcement.jade
         +form("РАЗМЕСТИТЬ")
 block local-scripts
     script(src='resources/scripts/crud-announcement/add-photo.js')
