@@ -210,7 +210,7 @@ public class GoodsService {
 
     public long submitGoods(final Goods goods,
                             final List<MultipartFile> images)
-            throws GoodsException, UserServiceException {
+            throws GoodsException{
         TransactionStatus status;
         //start transaction
         status = transactionManager.getTransaction(customTransaction);

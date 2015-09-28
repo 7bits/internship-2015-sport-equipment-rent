@@ -90,7 +90,6 @@ public class AddAnnouncementController {
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", isAuth);
-            LOG.info("Adding form contains errors.");
             return "home/add_announcement";
         }
 
@@ -100,7 +99,11 @@ public class AddAnnouncementController {
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
+
+            LOG.error("An error appeared on getting user from repository" + e.getMessage());
+
             //exception
+
         }
         Goods goods = null;
         if(isAuth) {
@@ -111,15 +114,14 @@ public class AddAnnouncementController {
         try {
             goodsId = service.submitGoods(goods, images);
         } catch (GoodsException e) {
-            LOG.error(e.getMessage());
+
+            LOG.error("An error appeared on submting goods " + e.getMessage());
             //exception
-        } catch (UserServiceException e) {
-            e.printStackTrace();
         }
         if (!isAuth) {
-            for(String i:goods.getImageUrl()) {
-                form.addImageUrl(i);
-            }
+
+            goods.getImageUrl().forEach(form::addImageUrl);
+
             session.setAttribute("addNewGoods", form);
             return "redirect:/login";
         }

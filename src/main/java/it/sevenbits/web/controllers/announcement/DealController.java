@@ -1,6 +1,8 @@
 package it.sevenbits.web.controllers.announcement;
 
+
 import it.sevenbits.service.exceptions.DealServiceException;
+
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.domain.Deal;
@@ -46,6 +48,7 @@ public class DealController {
         }
         if (isHanded) {
             return "home/confirm_deal";
+
         } else {
 
             return "home/application_is_rejected";
@@ -64,6 +67,7 @@ public class DealController {
         } catch (DealServiceException e) {
             LOG.error(e.getMessage());
             return "home/error";
+
         }
         if (isGet) {
             return "home/confirm_get";
@@ -80,6 +84,7 @@ public class DealController {
             dealService.close(dealId, deal);
         } catch (DealServiceException e) {
             return "home/error";
+
         }
         model.addAttribute("id", deal.getId());
         if ( DateTime.parse(deal.getEstimateEndDate()).getMillis() > DateTime.now().getMillis()) {
