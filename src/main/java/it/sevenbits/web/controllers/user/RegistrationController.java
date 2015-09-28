@@ -1,15 +1,14 @@
 package it.sevenbits.web.controllers.user;
 
-import it.sevenbits.web.domain.RegistrationForm;
-import it.sevenbits.web.service.users.AddNewRegistrationFormValidator;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.domain.User;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.RegistrationForm;
+import it.sevenbits.web.validators.AddNewRegistrationFormValidator;
 import org.apache.log4j.Logger;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,45 +34,37 @@ public class RegistrationController {
 
     @Autowired
     private AddNewRegistrationFormValidator validator;
-    Logger LOG = Logger.getLogger(RegistrationController.class);
+    private Logger LOG = Logger.getLogger(RegistrationController.class);
 
-    @RequestMapping(method= RequestMethod.GET)
-    public String login(final Model model){
+    @RequestMapping(method = RequestMethod.GET)
+    public String login(final Model model) {
         model.addAttribute("registration", new RegistrationForm());
         return "home/registration";
     }
 
-
-    @Autowired
-    protected AuthenticationManager authenticationManager;
-
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute RegistrationForm form, final Model model){
+    public String submit(@ModelAttribute final RegistrationForm form,
+                         final Model model) {
         final Map<String, String> errors = validator.validate(form);
         if (errors.size() != 0) {
-            // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("user", form);
             model.addAttribute("errors", errors);
-            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+            model.addAttribute("isAuth",
+                    SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
             LOG.info("Registration form contains errors.");
             return "home/registration";
         }
-
+        //create model
+        final User user = new User();
+        user.setEmail(form.geteMail());
+        user.setFirstName(form.getFirstName());
+        user.setPass(BCrypt.hashpw(form.getPassword(), BCrypt.gensalt()));
+        //save model
         try {
-            userService.save(form);
-        } catch (GoodsException e) {
-            LOG.error(e);
+            userService.save(user);
+        } catch (UserServiceException e) {
+            e.printStackTrace(); //exception
         }
-        try {
-            model.addAttribute("goods", goodsService.findAll());
-        } catch (GoodsException e) {
-            e.printStackTrace();
-        }
-
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(form.geteMail(), form.getPassword());
-        Authentication auth = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(auth);
-
         return "redirect:/confirm";
     }
 }

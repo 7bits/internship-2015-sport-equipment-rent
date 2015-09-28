@@ -1,10 +1,11 @@
 package it.sevenbits.web.controllers.user;
 
-import it.sevenbits.web.domain.UpdateUserForm;
-import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.users.UpdateFieldValidator;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.UpdateUserForm;
+import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.validators.UpdateFieldValidator;
+import it.sevenbits.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,7 +35,7 @@ public class UpdateProfileController {
         User user = null;
         try {
             user = userService.getUser(name);
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         UpdateUserForm updateUserForm = UpdateUserForm.valueOf(user);
@@ -50,7 +51,7 @@ public class UpdateProfileController {
             User user = null;
             try {
                 user = userService.getUser(name);
-            } catch (GoodsException e) {
+            } catch (UserServiceException e) {
                 e.printStackTrace();
             }
             if(BCrypt.checkpw(form.getPass(), user.getPass())){
@@ -73,7 +74,7 @@ public class UpdateProfileController {
         User user = User.valueOf(form);
         try {
             user.setId(userService.getUser(name).getId());
-        } catch (GoodsException e) {
+        } catch (UserServiceException e) {
             e.printStackTrace();
         }
         userService.update(user);
