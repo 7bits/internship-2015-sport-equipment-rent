@@ -31,6 +31,7 @@ block content
                                 img(src=image)
             .b-form-book-product
                 form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+                    input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
                     .b-form-book-product__form
                         .b-title--default.b-title--dark-green
                             .b-title__text
