@@ -40,7 +40,7 @@ html
                         each Goods in goods
                             - userId = Goods.authorId;
                             - userAva = Goods.authorImage;
-                            +list(Goods, userId, userAva, "Редактировать", false)
+                            +list(Goods, userId, userAva, "РЕДАКТИРОВАТЬ", false)
         block scripts
             script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
             script(src='resources/scripts/header.js')

@@ -7,6 +7,8 @@ var gulp  = require('gulp'),
     rename = require("gulp-rename"),
     yaml = require('js-yaml'),
     concat = require('gulp-concat'),
+    notify = require("gulp-notify"),
+    clean = require('gulp-clean'),
     fs = require('fs');
 
 
@@ -24,6 +26,17 @@ gulp.task('prod', function () {
     .pipe(gulp.dest('src/main/resources/public/resources/build/'));
     });
 
+gulp.task('dev', function () {
+  return gulp.src('src/main/resources/public/resources/blocks/*.css')
+    .pipe(concatCss("bundle.css"))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+    .pipe(gulp.dest('src/main/resources/public/resources/build/'))
+    .pipe(notify("Update!"));
+    });
+
+gulp.task('watch', function () {
+    gulp.watch('src/main/resources/public/resources/blocks/*.css', ['dev'])
+});
 
 function readAssetsVersion() {
   var version = '';
