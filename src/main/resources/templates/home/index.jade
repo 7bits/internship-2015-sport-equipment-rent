@@ -5,14 +5,14 @@ html
             title Дай погонять
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-        include mixins/mixin_favicon.jade
+        include partial/favicon.jade
         link(rel="stylesheet", href="resources/library/reset.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/library/normalize.css", type="text/css", media="all")
         link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
         link(rel="stylesheet", href=assets.getVersionedResourceUrl("resources/build/bundle#version.css"), type="text/css", media="all")
     body
         .b-index-container
-            include mixins/mixin_header.jade
+            include partial/header.jade
             if(!isAuth)
                 .b-lending-element__base-color
                     .b-lending-element__background-image

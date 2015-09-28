@@ -10,7 +10,7 @@ mixin list(Goods, userId, userAva, buttonText, isHistory)
                         text(style="padding-right: 8px;")=Goods.pricePerHour
                         text.set-rub-price
                             Р
-                include mixin_status.jade
+                include ../partial/status.jade
                 .b-adaptive-title__edit-icon(onclick="location.href='/update?announcement_id=#{Goods.id}")
         .b-list-announcements-elem__content
             .b-list-announcements-elem-product-info
@@ -18,7 +18,7 @@ mixin list(Goods, userId, userAva, buttonText, isHistory)
                     .b-list-announcements-elem-product-info__product-name
                         b
                             p=Goods.title
-                    include mixin_full_status.jade
+                    include ../partial/full_status.jade
                 .b-list-announcements-elem-product-info__discription.js-cut-text
                     p=Goods.description
                 .b-list-announcements-elem-product-info__set-price
