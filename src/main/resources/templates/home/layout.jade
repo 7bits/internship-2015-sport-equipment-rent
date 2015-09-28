@@ -12,15 +12,15 @@ html
         link(rel="stylesheet", href="resources/library/normalize.css", type="text/css", media="all")
         link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
         link(rel="stylesheet", href=assets.getVersionedResourceUrl("resources/build/bundle#version.css"), type="text/css", media="all")
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-        script(src='resources/scripts/header.js')
-        script(src='resources/scripts/cut-text.js')
-        script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
-        block scripts
         block depending
     body
         .b-container
             block header
                 include mixins/mixin_header.jade
             block content
-        block dynamic-scripts
+        block scripts
+            script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+            script(src='resources/scripts/header.js')
+            script(src='resources/scripts/cut-text.js')
+            script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
+        block local-scripts

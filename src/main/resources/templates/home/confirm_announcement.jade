@@ -1,11 +1,6 @@
 extends layout.jade
 block title
     title Подтвердить объявление
-block scripts
-    //- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений 
-    //- и заполняет название файла
-    //- должен подгружаться тут
-    script(src="resources/scripts/add-update-confirm-announcement/update-announcement-past-filename-hide-delete-ico.js")
 block header
     include mixins/mixin_message_header.jade
 block content
@@ -13,5 +8,6 @@ block content
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
          include mixins/mixin_form_crud_announcement.jade
         +form("РАЗМЕСТИТЬ")
-lock dynamic-scripts
-    script(src='resources/scripts/add-update-confirm-announcement/add-photo.js')
+block local-scripts
+    script(src='resources/scripts/crud-announcement/add-photo.js')
+    script(src="resources/scripts/crud-announcement/hide-backet.js")
