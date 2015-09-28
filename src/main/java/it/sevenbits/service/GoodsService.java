@@ -279,12 +279,6 @@ public class GoodsService {
                 }
             }
             update(goods);
-        } catch (GoodsException e) {
-            transactionManager.rollback(status);
-            throw new GoodsException("An error appeared on saving goods: ", e);
-        } catch (UserServiceException e) {
-            transactionManager.rollback(status);
-            throw new UserServiceException("An error appeared on getting user from repository: ", e);
         } catch (ImageServiceException e) {
             transactionManager.rollback(status);
             throw new GoodsException("An error appeared on saving image", e);
