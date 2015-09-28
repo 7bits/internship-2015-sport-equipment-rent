@@ -76,7 +76,7 @@ public class GoodsService {
         goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
         try {
             repository.save(goods);
-        } catch (Exception e) {
+        } catch (GoodsRepositoryException e) {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
@@ -130,7 +130,7 @@ public class GoodsService {
                 checkStatus(goods.get(i));
             }
             return goods;
-        } catch (Exception e) {
+        } catch (GoodsRepositoryException e) {
             throw new GoodsException("An error occurred while retrieving all goods: " + e.getMessage(), e);
         }
 
@@ -173,12 +173,8 @@ public class GoodsService {
         repository.updateImage(nameForBase, image);
     }
 
-    public void update(final Goods goods) throws GoodsException, UserServiceException {
-        try {
-            repository.update(goods);
-        } catch (Exception e) {
-            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
-        }
+    public void update(final Goods goods)  {
+        repository.update(goods);
     }
 
     public List<Image> getImagesForGoods(final long id) {
@@ -250,7 +246,7 @@ public class GoodsService {
     public void updateAnnouncement(final List<MultipartFile> images,
                                    final boolean[] deletedImages,
                                    final Goods goods,
-                                   final long announcementId) {
+                                   final long announcementId) throws GoodsException, UserServiceException {
         TransactionStatus status;
         //start transaction
         status = transactionManager.getTransaction(customTransaction);
@@ -283,12 +279,9 @@ public class GoodsService {
                 }
             }
             update(goods);
-        } catch (GoodsException e) {
+        } catch (ImageServiceException e) {
             transactionManager.rollback(status);
-        } catch (UserServiceException e) {
-            transactionManager.rollback(status);
-        } catch (IOException e) {
-            transactionManager.rollback(status);
+            throw new GoodsException("An error appeared on saving image", e);
         }
 
 

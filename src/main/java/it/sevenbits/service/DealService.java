@@ -8,6 +8,7 @@ import it.sevenbits.service.exceptions.DealServiceException;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +32,9 @@ public class DealService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    MailSubmissionController mail;
 
     public void save(final Deal deal) {
         repository.save(deal);
@@ -95,5 +99,66 @@ public class DealService {
 
 
 
+    }
+
+    public void handed(long dealId, boolean isHanded) throws DealServiceException {
+        Deal deal = getDeal(dealId);
+        User landlord = null;
+        try {
+            landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (UserServiceException e) {
+            throw new DealServiceException("An error appeared on getting user from repo", e);
+        }
+        if (deal.getLandlordId() != landlord.getId()) {
+            throw new DealServiceException("");
+        }
+        if (deal.isAnswered()) {
+            throw new DealServiceException("This announcement is allready answered");
+        } else {
+            deal.setIsHanded(isHanded);
+            deal.setIsAnswered(true);
+            update(deal);
+            if (isHanded) {
+                mail.sendConfirmationMail(deal);
+            } else {
+                mail.sendDeny(deal);
+            }
+        }
+    }
+
+    public void accept(long dealId, boolean isGet) throws DealServiceException {
+        Deal deal = getDeal(dealId);
+        User renting = null;
+        try {
+            renting = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (UserServiceException e) {
+            throw new DealServiceException("An error appeared on getting user from repo", e);
+        }
+        if (renting.getId() != deal.getRentingId()) {
+            throw new DealServiceException("");
+        }
+        if (isGet) {
+            try {
+                mail.sendClose(deal);
+                updateRealStartDate(dealId);
+            } catch (Exception e) {
+                throw new DealServiceException("An error appeared on accepting deal: ", e);
+            }
+        }
+    }
+
+    public void close(long dealId, Deal deal) throws DealServiceException {
+        deal = getDeal(dealId);
+        User user = null;
+        try {
+            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+        } catch (UserServiceException e) {
+            throw new DealServiceException("An error appeared on getting user from repo", e);
+        }
+        if (user.getId() != deal.getLandlordId()) {
+            throw new DealServiceException("");
+        }
+        DateTime estimateStart = DateTime.parse(deal.getEstimateStartDate());
+        DateTime estimateEnd = DateTime.parse(deal.getEstimateEndDate());
     }
 }

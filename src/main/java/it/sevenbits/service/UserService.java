@@ -35,7 +35,7 @@ public class UserService {
 
     public User getUser(long id) throws UserServiceException {
         User user;
-        try{
+        try {
             user = repository.getUserById(id);
         } catch (RepositoryException e) {
             throw new UserServiceException("Ann error occurred while retrieving one goods with id "+id+": "+e.getMessage(), e);

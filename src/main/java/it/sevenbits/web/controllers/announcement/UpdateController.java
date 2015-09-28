@@ -113,7 +113,13 @@ public class UpdateController {
             //exception
         }
         Goods goods = form.toGoods(user);
-        goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
+        try {
+            goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        } catch (UserServiceException e) {
+            e.printStackTrace();
+        }
         return "redirect:/see_announcement?announcement_id="+announcementId;
     }
 
