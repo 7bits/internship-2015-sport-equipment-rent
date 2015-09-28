@@ -1,6 +1,34 @@
 extends layout.jade
 block title
     title Редактирование профиля
+block header
+    .b-header
+        .b-header__content
+            a(href="/")
+                .b-logo
+            .b-header__menu
+                a.header-a-color(href="/logout")
+                    b
+                        p
+                            ВЫХОД
+            .b-header__menu
+                a.header-a-color(href="/add")
+                    b
+                        p
+                            ДАТЬ ОБЪЯВЛЕНИЕ
+            .b-header__dropdown-menu-ico.js-dropdown-ico
+                    h1
+                        img(src="resources/images/layout/menu.png", width="25", height="15")
+        .b-header__dropdown-menu.js-dropdown-menu
+                ul
+                    li
+                        a.header-a-color(href="/add")
+                            p
+                                ДАТЬ ОБЪЯВЛЕНИЕ
+                    li
+                        a.header-a-color(href="/logout")
+                            p
+                                ВЫХОД
 block content
     form(role="form", action="/update_profile", method="post")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
