@@ -12,6 +12,7 @@
     border-style: solid;
     border-color: #5cc9cc;
     background-color: white;
+    box-shadow: 0 3px 3px #d4cfcf;
 }
 
 .b-crud-announcement-form__content{
@@ -52,7 +53,7 @@ but user see download-mask*/
     border-width: 1px;
     border-style: solid;
     border-color: #626262;
-    background-color: #f6f6f6;
+    background-color: white;
 }
 
 .b-photo:hover{
