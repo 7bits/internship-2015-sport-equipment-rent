@@ -1,5 +1,8 @@
 package it.sevenbits.web.controllers.announcement;
 
+
+import it.sevenbits.service.exceptions.DealServiceException;
+
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.domain.Deal;
@@ -35,95 +38,68 @@ public class DealController {
     MailSubmissionController mail;
 
     @RequestMapping(value = "/handed", method = RequestMethod.GET)
-    public String deal(@RequestParam(value="deal_id", required = false) long dealId,
-                       @RequestParam(value="accept", required = false) boolean isHanded,
+    public String deal(@RequestParam(value = "deal_id", required = false) final long dealId,
+                       @RequestParam(value = "accept", required = false) final boolean isHanded,
                        final Model model) {
-        Deal deal = dealService.getDeal(dealId);
-        User landlord = null;
         try {
-            landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            LOG.error("An error appeared on getting landlord from the database: " + e.getMessage());
-            return "home/error_message";
+            dealService.handed(dealId, isHanded);
+        } catch (DealServiceException e) {
+            //error
         }
-        if(deal.getLandlordId() != landlord.getId()) {
-            return "home/error_message";
-        }
-        if(deal.isAnswered()){
-            return "home/error_message";
+        if (isHanded) {
+            return "home/confirm_deal";
+
         } else {
-            deal.setIsHanded(isHanded);
-            deal.setIsAnswered(true);
-            dealService.update(deal);
-            if(isHanded) {
-                mail.sendConfirmationMail(deal);
-                return "home/confirm_deal";
-            }else{
-                mail.sendDeny(deal);
-                return "home/application_is_rejected";
-            }
+
+            return "home/application_is_rejected";
         }
+
 
     }
 
 
+    @RequestMapping(value = "/accept", method = RequestMethod.GET)
+    public String accept(@RequestParam(value = "deal_id", required = false) long dealId,
+                         @RequestParam(value = "accept", required = false) boolean isGet) {
 
-
-    @RequestMapping(value="/accept", method = RequestMethod.GET)
-    public String accept(@RequestParam(value="deal_id", required = false) long dealId,
-                         @RequestParam(value="accept", required = false) boolean isGet){
-        Deal deal = dealService.getDeal(dealId);
-        User renting = null;
         try {
-            renting = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            e.printStackTrace();
+            dealService.accept(dealId, isGet);
+        } catch (DealServiceException e) {
+            LOG.error(e.getMessage());
+            return "home/error";
+
         }
-        if(renting.getId()!= deal.getRentingId()){
-            return "home/error_message";
-        }
-        if(isGet) {
-            try {
-                mail.sendClose(deal);
-                dealService.updateRealStartDate(dealId);
-            } catch (Exception e) {
-                LOG.error("An error occured on accepting deal: " + e.getMessage());
-            }
-        }else{
+        if (isGet) {
+            return "home/confirm_get";
+        } else {
             return "home/message_deny_in_rent";
         }
-        return "home/confirm_get"; //start of the using
+
     }
 
-    @RequestMapping(value="/close", method = RequestMethod.GET)
-    public String closeFirstStep(@RequestParam(value="deal_id", required = false) long dealId, final Model model) {
-
-
-
-        Deal deal= dealService.getDeal(dealId);
-        User user = null;
+    @RequestMapping(value = "/close", method = RequestMethod.GET)
+    public String closeFirstStep(@RequestParam(value = "deal_id", required = false) long dealId, final Model model) {
+        Deal deal = null;
         try {
-            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            e.printStackTrace();
+            dealService.close(dealId, deal);
+        } catch (DealServiceException e) {
+            return "home/error";
+
         }
-        if(user.getId()!= deal.getLandlordId()){
-            return "home/error_message";
-        }
-        DateTime estimateStart = DateTime.parse(deal.getEstimateStartDate());
-        DateTime estimateEnd = DateTime.parse(deal.getEstimateEndDate());
-        if(estimateEnd.getMillis() > DateTime.now().getMillis()){
-            model.addAttribute("id", deal.getId());
+        model.addAttribute("id", deal.getId());
+        if ( DateTime.parse(deal.getEstimateEndDate()).getMillis() > DateTime.now().getMillis()) {
             return "home/message_when_rent_not_end";
-        }else{
-            return "redirect:/finally_close?deal_id="+deal.getId();
+        } else {
+            return "redirect:/finally_close?deal_id=" + deal.getId();
         }
+
+
     }
 
     @RequestMapping(value = "/finally_close", method = RequestMethod.GET)
-    public String closeEnd(@RequestParam(value="deal_id", required = false) long dealId, final Model model){
+    public String closeEnd(@RequestParam(value = "deal_id", required = false) long dealId, final Model model) {
         User landlord = null;
-        Deal deal= dealService.getDeal(dealId);
+        Deal deal = dealService.getDeal(dealId);
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
@@ -131,7 +107,7 @@ public class DealController {
         }
         dealService.updateRealEndDate(dealId);
         deal.setIsClosed(true);
-        if(landlord.getId()!= deal.getLandlordId()){
+        if (landlord.getId() != deal.getLandlordId()) {
             return "home/error_message";
         }
         dealService.update(deal);

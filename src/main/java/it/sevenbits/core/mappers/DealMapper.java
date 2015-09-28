@@ -1,6 +1,6 @@
 package it.sevenbits.core.mappers;
 
-import it.sevenbits.web.domain.Deal;
+import it.sevenbits.domain.Deal;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

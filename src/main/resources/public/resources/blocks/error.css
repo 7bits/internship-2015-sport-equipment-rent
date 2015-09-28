@@ -1,6 +1,6 @@
 .b-error{
     font-family: 'Roboto', sans-serif;
-    font-size: .750em;
+    font-size: 0.750em;
 
     width: 98%;
     margin-top: 13px;
@@ -17,9 +17,9 @@
     white-space:   -o-pre-wrap;
     word-wrap: break-word;
 
-    color: #77787a;
-    border: 1px solid #eed256;
-    background-color: #fffdda;
+    color: #626262;
+    border: 1px solid red;
+    background-color: white;
 }
 
 .b-error p{

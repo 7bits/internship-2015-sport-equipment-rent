@@ -2,12 +2,13 @@ package it.sevenbits.web.controllers;
 
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.template.JadeTemplate;
-import it.sevenbits.web.domain.Deal;
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.domain.Deal;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -96,6 +97,8 @@ public class MailSubmissionController {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (UserServiceException e) {
+                e.printStackTrace();
             }
         }
 
@@ -122,6 +125,8 @@ public class MailSubmissionController {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (UserServiceException e) {
+                e.printStackTrace();
             }
         }
 
@@ -142,6 +147,8 @@ public class MailSubmissionController {
                 String html = jade.renderTemplate(template, model);
                 sendEmail(html, title, landlord.getEmail());
             } catch (GoodsException e) {
+                e.printStackTrace();
+            } catch (UserServiceException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -168,6 +175,8 @@ public class MailSubmissionController {
             } catch (GoodsException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (UserServiceException e) {
                 e.printStackTrace();
             }
         }

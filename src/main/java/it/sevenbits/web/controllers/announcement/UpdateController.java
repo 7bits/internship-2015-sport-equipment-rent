@@ -1,12 +1,13 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.GoodsForm;
-import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.AddNewGoodsFormValidator;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.goods.GoodsService;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.GoodsForm;
+import it.sevenbits.domain.User;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,14 +51,10 @@ public class UpdateController {
         User user = null;
         try {
             user = userService.getUser(name);
-<<<<<<< Updated upstream
-        } catch (GoodsException e) {
-            e.printStackTrace();
-=======
+
         } catch (UserServiceException e) {
             LOG.error("An error appeared on getting user from repository: " + e.getMessage());
             return "home/error";
->>>>>>> Stashed changes
         }
         Goods goods = null;
         try {
@@ -65,12 +62,9 @@ public class UpdateController {
         } catch (GoodsException e) {
             LOG.error("An error appeared while picking goods from repository: " + e.getMessage());
             return "home/error";
-<<<<<<< Updated upstream
-=======
         } catch (UserServiceException e) {
             LOG.error("An error appeared while getting user from repository: " + e.getMessage());
             return "home/error";
->>>>>>> Stashed changes
         }
         if (user.getId() != goods.getAuthorId()) {
             return "redirect:/see_announcement?announcement_id=" + announcementId;
@@ -109,7 +103,6 @@ public class UpdateController {
         deleted[1] = secondImageDelete;
         deleted[2] = thirdImageDelete;
         if (errors.size() != 0) {
-            // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
@@ -120,12 +113,21 @@ public class UpdateController {
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
+
             LOG.error("An error appeared while getting user from repository: " + e.getMessage());
             //exception
         }
         Goods goods = form.toGoods(user);
-        goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
+        try {
+            goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
+        } catch (GoodsException e) {
+            e.printStackTrace();
+        } catch (UserServiceException e) {
+            e.printStackTrace();
+        }
         return "redirect:/see_announcement?announcement_id=" + announcementId;
+        //exception
     }
+
 
 }
