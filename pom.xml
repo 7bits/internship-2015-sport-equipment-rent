@@ -41,6 +41,12 @@
           <artifactId>spring-boot-starter-web</artifactId>
       </dependency>
 
+      <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <version>1.2.17</version>
+      </dependency>
+
       <!-- spring-jdbc for embedded db auto-configuration -->
       <dependency>
           <groupId>org.springframework.boot</groupId>

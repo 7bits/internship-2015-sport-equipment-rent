@@ -24,26 +24,27 @@ public class ImageService {
     @Value("${resources.images}")
     private  String imagesPath;
 
-    public static void saveImage(MultipartFile image, String path) throws IOException {
+    public static void saveImage(MultipartFile image, String path) throws ImageServiceException {
+        try {
+            byte[] bytes = image.getBytes();
 
-        byte[] bytes = image.getBytes();
 
-
-        File file = new File(path);
-        BufferedOutputStream stream =
-                new BufferedOutputStream(new FileOutputStream(file));
-        stream.write(bytes);
-        stream.close();
+            File file = new File(path);
+            BufferedOutputStream stream =
+                    new BufferedOutputStream(new FileOutputStream(file));
+            stream.write(bytes);
+            stream.close();
+        } catch(IOException e){
+            throw new ImageServiceException("An error appeared on saving image", e);
+        }
     }
     public void saveImages(List<MultipartFile> images, String hash, Goods goods) throws ImageServiceException {
         for (MultipartFile i : images) {
             if (i != null && !i.isEmpty()) {
                 String imagePath = imagesPath + hash + i.getOriginalFilename();
-                try {
-                    ImageService.saveImage(i, resourcesPath + imagePath);
-                } catch (IOException e) {
-                    throw new ImageServiceException("Exception at the saving images", e);
-                }
+
+                ImageService.saveImage(i, resourcesPath + imagePath);
+
                 goods.addImageUrl(imagePath);
 
             }

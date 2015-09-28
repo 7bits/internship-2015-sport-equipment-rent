@@ -59,9 +59,10 @@ public class SeeAnnouncementController {
             model.addAttribute("isAuth", name != "anonymousUser");
             model.addAttribute("user", landlord);
         } catch (GoodsException e) {
-            e.printStackTrace();
+
+            LOG.error("An error appeared on the getting goods from repository: " + e.getMessage());
         } catch (UserServiceException e) {
-            e.printStackTrace();
+            LOG.error("An error appeared on the getting user from repository: " + e.getMessage());
         }
         model.addAttribute("date", new DateForm());
         return "home/see_announcement";
@@ -101,14 +102,16 @@ public class SeeAnnouncementController {
 
 
         } catch (GoodsException e) {
-            LOG.error("An error occured on the creating a deal: " + e.getMessage());
+            LOG.error("An error appeared on the getting goods from repository: " + e.getMessage());
         } catch (UserServiceException e) {
-            e.printStackTrace();
+            LOG.error("An error appeared on the getting user from repository: " + e.getMessage());
         } catch (DealServiceException e) {
-            e.printStackTrace();
+            LOG.error("An error appeared on the submitting deal to repository: " + e.getMessage());
         } catch (NumberFormatException e) {
-            return "/"; //exception
+            LOG.error("An error occured on the creating a deal: " + e.getMessage());
+            return "/error"; //exception
         }
+
         return "home/application_submitted";
     }
 
