@@ -10,11 +10,13 @@ mixin create-user-info(isAuthor)
             .b-user-info__ava(onclick="location.href='/profile?user_id=#{user.id}'")
                 img(src=user.imageUrl, width="114", height="114")
             .b-user-info__info
-                p=user.firstName
+                b
+                    p=user.firstName
             if isAuthor
                 if user.phone!=null
                     .b-user-info__info
-                        p=user.phone
+                        b
+                            p=user.phone
         if isAuthor
             a(href="/update_profile")
                 input.b-button--default.b-button--green.b-button--update-profile(type='submit', value='РЕДАКТИРОВАТЬ ПРОФИЛЬ')

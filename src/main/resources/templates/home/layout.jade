@@ -7,20 +7,20 @@ html
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
         meta(name="_csrf", content="#{_csrf.token}")
         meta(name="_csrf_header", content="#{_csrf.headerName}")
-        include mixins/mixin_favicon.jade
+        include partial/favicon.jade
         link(rel="stylesheet", href="resources/library/reset.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/library/normalize.css", type="text/css", media="all")
         link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-        link(rel="stylesheet", href=assets.getVersionedResourceUrl("resources/build/bundle#version.css"), type="text/css", media="all")
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-        script(src='resources/scripts/header.js')
-        script(src='resources/scripts/cut-text.js')
-        script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
-        block scripts
+        link(rel="stylesheet", href="resources/build/bundle.css", type="text/css", media="all")
         block depending
     body
         .b-container
             block header
-                include mixins/mixin_header.jade
+                include partial/header.jade
             block content
-        block dynamic-scripts
+        block scripts
+            script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+            script(src='resources/scripts/header.js')
+            script(src='resources/scripts/cut-text.js')
+            script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
+        block local-scripts

@@ -76,7 +76,7 @@
 
     width: 230px;
     height: 58px;
-    padding: 1px 0 2px 0;
+    padding: 5px 0 2px 0;
 
     border-width: 3px;
     border-style: solid;
@@ -136,8 +136,11 @@
     
     .b-lending-element__background-image{
         height: 582px;
-        background-image: url('../images/lending-elements/lending-element-pattern.png');
+        background: url('../images/lending-elements/pattern.png');
         background-repeat: repeat;
+        background-size: 70%; 
+        background-color: rgba(92, 201, 204, 1);
+   
     }
 
     .b-lending-element__name-service{

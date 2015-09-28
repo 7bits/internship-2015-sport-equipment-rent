@@ -16,7 +16,7 @@
 
 .b-title--dark-green{
     padding-top: 0;
-
+    
     color: white;
     background-color: #278b8f;
 }
@@ -44,7 +44,7 @@
 .b-title__text{
     float: left;
 
-    margin-top: 13px;
+    margin-top: 10px;
 }
 
 .b-title__text--top{
@@ -56,7 +56,7 @@
 
     width: 25px;
     height: 25px;
-    margin-top: 10px;
+    margin-top: 7px;
 
     background-image: url('../images/calendar-ico.png');
 }

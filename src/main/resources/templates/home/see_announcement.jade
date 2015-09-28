@@ -3,10 +3,7 @@ block title
     title Просмотр объявление
 block depending
     link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
-    script(src="resources/vendor/scripts/qb/js/qb.js")
     link(rel='stylesheet', type='text/css', href='resources/vendor/scripts/datetimepicker/jquery.datetimepicker.css')
-    script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
-    script(src="resources/scripts/data-time.js")  
 block content
     .b-content
         include mixins/mixin_user_info.jade
@@ -14,7 +11,7 @@ block content
         if isAuthor
             .b-detailed-view-announcement--default.b-detailed-view-announcement--owner
                 .b-detailed-view-announcement__content--default.b-detailed-view-announcement__content--owner
-                    include mixins/mixin_detail_see_announcement.jade
+                    include partial/detail_see_announcement.jade
                 .b-photo-set
                     each image in Goods.imageUrl
                         .b-photo-set__photo
@@ -26,7 +23,7 @@ block content
         else
             .b-detailed-view-announcement--default
                 .b-detailed-view-announcement__content--default
-                    include mixins/mixin_detail_see_announcement.jade
+                    include partial/detail_see_announcement.jade
                 .b-photo-set
                     each image in Goods.imageUrl
                         .b-photo-set__photo
@@ -53,3 +50,7 @@ block content
                                     Завершение
                             input.js-datatime-to.b-input--default#to.form-control(type="text", value="#{date.to}", name="to")
                     input.b-button--default.b-button--green(type='submit', value='ЗАБРОНИРОВАТЬ')
+block local-scripts
+    script(src="resources/vendor/scripts/qb/js/qb.js")
+    script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
+    script(src="resources/scripts/data-time.js")  
