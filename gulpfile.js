@@ -9,11 +9,13 @@ var gulp  = require('gulp'),
     concat = require('gulp-concat'),
     notify = require("gulp-notify"),
     clean = require('gulp-clean'),
-    fs = require('fs');
+    fs = require('fs'),
+    gulp = require('gulp'),
+    imageminOptipng = require('imagemin-optipng');
 
-
-gulp.task('dev', [
-
+gulp.task('develop', [
+    'minpng',
+    'dev'
 ]);
 
 gulp.task('prod', function () {
@@ -36,6 +38,13 @@ gulp.task('dev', function () {
 
 gulp.task('watch', function () {
     gulp.watch('src/main/resources/public/resources/blocks/*.css', ['dev'])
+});
+
+
+gulp.task('minpng', function () {
+    return gulp.src('src/main/resources/public/resources/images/*.png')
+        .pipe(imageminOptipng({optimizationLevel: 3})())
+        .pipe(gulp.dest('src/main/resources/public/resources/images'));
 });
 
 function readAssetsVersion() {
