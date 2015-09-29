@@ -37,6 +37,7 @@
     "js-yaml": "^3.4.2"
   },
   "dependencies": {
+    "imagemin-jpegtran": "^4.3.0",
     "imagemin-optipng": "^4.3.0"
   }
 }
