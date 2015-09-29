@@ -20,7 +20,7 @@ public class _10571_03_01 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+      System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
       driver = new ChromeDriver();
       baseUrl = "http://localhost:9000/";
       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -30,7 +30,7 @@ public class _10571_03_01 extends TestCase {
   public void test105710301() throws Exception {
     driver.get(baseUrl + "/login");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("_meliannaelf@gmail.com");
+    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf@gmail.com");
     driver.findElement(By.id("passtext")).clear();
     driver.findElement(By.id("passtext")).sendKeys("");
     try {

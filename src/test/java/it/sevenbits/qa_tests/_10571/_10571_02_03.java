@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.firefox.FirefoxDriver;
 
-//Проверка на ввод e-mail, начинающегося с точки, одинарного дефиса или нижнего подчеркивания (страница авторизации)
+//Проверка на ввод e-mail, начинающегося с точки (страница авторизации)
 public class _10571_02_03 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
@@ -20,7 +20,7 @@ public class _10571_02_03 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+      System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
       driver = new ChromeDriver();
       baseUrl = "http://localhost:9000/";
       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

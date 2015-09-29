@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.firefox.FirefoxDriver;
 
-// Проверка сочетания несуществующего в базе логина и пароля на странице авторизации
-public class _10571_05_01 extends TestCase {
+//Проверка на ввод e-mail, логин содержит русские символы (страница авторизации)
+public class _10571_02_10 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -20,19 +20,19 @@ public class _10571_05_01 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+      System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
       driver = new ChromeDriver();
       baseUrl = "http://localhost:9000/";
       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test105710501() throws Exception {
+  public void test105710210() throws Exception {
     driver.get(baseUrl + "/login");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("test@gmail.com");
+    driver.findElement(By.id("userEmail")).sendKeys("тест1@gmail.com");
     driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("123");
+    driver.findElement(By.id("passtext")).sendKeys("1");
     try {
       assertTrue(isElementPresent(By.cssSelector("input.b-button--default.b-button--blue")));
     } catch (Error e) {

@@ -9,8 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-//import org.openqa.selenium.firefox.FirefoxDriver;
-
 //Проверка поля «логин» на пустой ввод на странице авторизации
 public class _10571_03_00 extends TestCase {
   private WebDriver driver;
@@ -20,7 +18,7 @@ public class _10571_03_00 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+      System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
       driver = new ChromeDriver();
       baseUrl = "http://localhost:9000/";
       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

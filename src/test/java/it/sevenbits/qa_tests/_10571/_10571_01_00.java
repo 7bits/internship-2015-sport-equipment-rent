@@ -18,7 +18,7 @@ public class _10571_01_00 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
         driver = new ChromeDriver();
         baseUrl = "http://localhost:9000/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

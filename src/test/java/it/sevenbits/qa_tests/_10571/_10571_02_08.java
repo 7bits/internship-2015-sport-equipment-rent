@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.firefox.FirefoxDriver;
 
-// Проверка на ввод e-mail cо спецсимволами, кроме разрешенных (страница авторизации)
-public class _10571_02_02 extends TestCase {
+//Проверка на ввод e-mail, оканчивающегося "-" (страница авторизации)
+public class _10571_02_08 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -27,10 +27,10 @@ public class _10571_02_02 extends TestCase {
   }
 
   @Test
-  public void test105710202() throws Exception {
+  public void test105710208() throws Exception {
     driver.get(baseUrl + "/login");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf#0@gmail.com");
+    driver.findElement(By.id("userEmail")).sendKeys("test1-@gmail.com");
     driver.findElement(By.id("passtext")).clear();
     driver.findElement(By.id("passtext")).sendKeys("1");
     try {
