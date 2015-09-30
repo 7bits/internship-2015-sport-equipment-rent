@@ -45,12 +45,12 @@ block content
                             .b-form-book-product__input-title
                                 p
                                     Начало
-                            input.js-datatime-from.b-input--default#from.form-control(type="text", value="#{date.from}", name="from")
+                            input.js-datatime-from.b-input--default.js-from#from.form-control(type="text", value="#{date.from}", name="from")
                             .b-form-book-product__input-title
                                 p
                                     Завершение
-                            input.js-datatime-to.b-input--default#to.form-control(type="text", value="#{date.to}", name="to")
-                    input.b-button--default.b-button--green(type='submit', value='ЗАБРОНИРОВАТЬ')
+                            input.js-datatime-to.b-input--default.js-to#to.form-control(type="text", value="#{date.to}", name="to")
+                    input.b-button--default.b-button--green.js-sublit(type='submit', value='ЗАБРОНИРОВАТЬ')
 block local-scripts
     script(src="resources/vendor/scripts/qb/js/qb.js")
     script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
