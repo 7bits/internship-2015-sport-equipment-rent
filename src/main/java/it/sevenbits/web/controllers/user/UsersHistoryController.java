@@ -1,6 +1,9 @@
 package it.sevenbits.web.controllers.user;
 
+import it.sevenbits.domain.HistoryRow;
+import it.sevenbits.domain.User;
 import it.sevenbits.service.UserService;
+import it.sevenbits.web.views.HistoryRowView;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import it.sevenbits.service.HistoryService;
@@ -11,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by awemath on 8/19/15.
@@ -29,10 +35,16 @@ public class UsersHistoryController {
     public String history(final Model model) {
         model.addAttribute("isAuth", true);
         try {
-            model.addAttribute("userHistory", historyService.getUsersHistory(userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName())));
+            User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+            List<HistoryRow> historyTable = historyService.getUsersHistory(user);
+            List<HistoryRowView> historyTableView = new LinkedList<HistoryRowView>();
+            for(int i = 0; i < historyTable.size(); i++) {
+                historyTableView.add(i, HistoryRowView.valueOf(historyTable.get(i)));
+            }
+            model.addAttribute("userHistory", historyTableView);
         } catch (UserServiceException e) {
             LOG.error("Cant show history of user " + e.getMessage());
-            return "/error";
+            return "home/error";
         }
         return "home/history";
     }

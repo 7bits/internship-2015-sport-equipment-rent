@@ -2,12 +2,12 @@ package it.sevenbits.service;
 
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.HistoryRow;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.views.HistoryRowView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -27,11 +27,11 @@ public class HistoryService {
     @Autowired
     private GoodsService goodsService;
 
-    public List<HistoryRowView> getUsersHistory(User user) throws UserServiceException {
+    public List<HistoryRow> getUsersHistory(User user) throws UserServiceException {
         List<Deal> deals = dealService.getDealsOfUser(user.getId());
-        List<HistoryRowView> table = new LinkedList<HistoryRowView>();
+        List<HistoryRow> table = new LinkedList<HistoryRow>();
         for (int i = 0; i < deals.size(); i++) {
-            HistoryRowView row = new HistoryRowView();
+            HistoryRow row = new HistoryRow();
             row.setStartDate(deals.get(i).getRealStartDate()
                     .substring(0, deals.get(i).getRealStartDate().indexOf('.')));
             row.setEndDate(deals.get(i).getRealEndDate().substring(0, deals.get(i).getRealEndDate().indexOf('.')));
