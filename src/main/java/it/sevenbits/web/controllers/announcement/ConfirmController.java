@@ -30,16 +30,16 @@ import java.util.Map;
 @RequestMapping(value = "/confirm")
 public class ConfirmController {
 
-    Logger LOG = Logger.getLogger(ConfirmController.class);
+    private Logger LOG = Logger.getLogger(ConfirmController.class);
 
     @Autowired
-    GoodsService service;
+    private GoodsService service;
 
     @Autowired
-    AddNewGoodsFormValidator validator;
+    private AddNewGoodsFormValidator validator;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
 
     @RequestMapping(method = RequestMethod.GET)
@@ -61,17 +61,19 @@ public class ConfirmController {
     public String submit(@ModelAttribute final GoodsForm form,
                          final Model model,
                          final HttpSession session) {
-        final Map<String, String> errors = validator.validate(form);
         long goodsId = 0;
         boolean isAuth = SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser";
+
+        //form validation
+        final Map<String, String> errors = validator.validate(form);
         if (errors.size() != 0) {
-            // Если есть ошибки в форме, то снова рендерим главную страницу
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth", isAuth);
             return "home/confirm_announcement";
         }
         try {
+            //adding announcement
             User user = null;
             try {
                 user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -83,8 +85,7 @@ public class ConfirmController {
             goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
         } catch (GoodsException e) {
             LOG.error("An error appeared on submitting goods " + e.getMessage());
-            //exception
-
+            return "home/error";
         }
 
         return "redirect:/see_announcement?announcement_id="+goodsId;

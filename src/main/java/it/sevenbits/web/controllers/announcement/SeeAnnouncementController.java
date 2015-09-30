@@ -50,7 +50,6 @@ public class SeeAnnouncementController {
         try {
             String name = SecurityContextHolder.getContext().getAuthentication().getName();
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
-            User user = userService.getUser(name);
             User landlord = userService.getUser(goods.getAuthorId());
             model.addAttribute("Goods", goods);
 
@@ -59,10 +58,11 @@ public class SeeAnnouncementController {
             model.addAttribute("isAuth", name != "anonymousUser");
             model.addAttribute("user", landlord);
         } catch (GoodsException e) {
-
             LOG.error("An error appeared on the getting goods from repository: " + e.getMessage());
+            return "home/error";
         } catch (UserServiceException e) {
             LOG.error("An error appeared on the getting user from repository: " + e.getMessage());
+            return "home/error";
         }
         model.addAttribute("date", new DateForm());
         return "home/see_announcement";
@@ -103,13 +103,16 @@ public class SeeAnnouncementController {
 
         } catch (GoodsException e) {
             LOG.error("An error appeared on the getting goods from repository: " + e.getMessage());
+            return "home/error";
         } catch (UserServiceException e) {
             LOG.error("An error appeared on the getting user from repository: " + e.getMessage());
+            return "home/error";
         } catch (DealServiceException e) {
             LOG.error("An error appeared on the submitting deal to repository: " + e.getMessage());
+            return "home/error";
         } catch (NumberFormatException e) {
             LOG.error("An error occured on the creating a deal: " + e.getMessage());
-            return "/error"; //exception
+            return "home/error";
         }
 
         return "home/application_submitted";

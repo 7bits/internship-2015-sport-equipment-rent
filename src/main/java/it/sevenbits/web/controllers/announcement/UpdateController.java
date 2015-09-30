@@ -115,18 +115,17 @@ public class UpdateController {
         } catch (UserServiceException e) {
 
             LOG.error("An error appeared while getting user from repository: " + e.getMessage());
-            //exception
+            return "home/error";
         }
         Goods goods = form.toGoods(user);
         try {
             goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
         } catch (GoodsException e) {
-            e.printStackTrace();
-        } catch (UserServiceException e) {
-            e.printStackTrace();
+            LOG.error(e.getMessage());
+            return "home/error";
         }
         return "redirect:/see_announcement?announcement_id=" + announcementId;
-        //exception
+
     }
 
 
