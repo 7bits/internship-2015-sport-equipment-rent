@@ -30,7 +30,7 @@ block content
                             a.quickbox(href="#{image}")
                                 img(src=image)
             .b-form-book-product
-                form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+                form(role="form", method="post")
                     input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
                     .b-form-book-product__form
                         .b-title--default.b-title--dark-green
@@ -50,8 +50,12 @@ block content
                                 p
                                     Завершение
                             input.js-datatime-to.b-input--default.js-to#to.form-control(type="text", value="#{date.to}", name="to")
-                    input.b-button--default.b-button--green.js-sublit(type='submit', value='ЗАБРОНИРОВАТЬ')
+                    input.b-button--default.b-button--green.js-submit(type='button', value='ЗАБРОНИРОВАТЬ')
+                .b-status-bar.js-status-bar
+                    p
+                        Товар забронирован!
 block local-scripts
     script(src="resources/vendor/scripts/qb/js/qb.js")
     script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
     script(src="resources/scripts/data-time.js")  
+    script(src="resources/scripts/submit.js")

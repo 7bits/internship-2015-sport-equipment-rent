@@ -1,28 +1,21 @@
-.b-error{
+.b-status-bar{
     font-family: 'Roboto', sans-serif;
-    font-size: 0.750em;
+    font-size: 14px;
+
+    display: none;
 
     width: 100%;
     margin-top: 13px;
     margin-bottom: 13px;
     padding-top: 10px;
     padding-bottom: 10px;
-    text-align: center;
+	text-align: center;
     white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
     white-space:   -o-pre-wrap;
     word-wrap: break-word;
 
     color: #626262;
-    border: 1px solid red;
+    border: 1px solid green;
     background-color: white;
-    display: none;
-}
-
-.b-error p{
-    margin-bottom: 10px;
-}
-
-.b-error li{
-    list-style-type: none; /* Убираем маркеры */
 }
