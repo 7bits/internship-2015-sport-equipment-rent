@@ -39,8 +39,6 @@ block content
                                     p
                                         Время аренды
                             .b-title__ico-calendar
-                        include mixins/mixin_er.jade
-                        +err(errors)
                         .b-form-book-product__content
                             .b-form-book-product__input-title
                                 p
@@ -54,6 +52,8 @@ block content
                 .b-status-bar.js-status-bar
                     p
                         Товар забронирован!
+                include mixins/mixin_er.jade
+                +err()
 block local-scripts
     script(src="resources/vendor/scripts/qb/js/qb.js")
     script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')

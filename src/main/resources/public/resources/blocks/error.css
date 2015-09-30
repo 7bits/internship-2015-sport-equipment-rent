@@ -1,7 +1,7 @@
 .b-error{
     font-family: 'Roboto', sans-serif;
     font-size: 0.750em;
-
+    min-height: 50px;
     width: 100%;
     margin-top: 13px;
     margin-bottom: 13px;
@@ -26,3 +26,4 @@
 .b-error li{
     list-style-type: none; /* Убираем маркеры */
 }
+
