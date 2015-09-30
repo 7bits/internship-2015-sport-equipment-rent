@@ -18,7 +18,7 @@ public class _10666_03_00 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -31,6 +31,8 @@ public class _10666_03_00 extends TestCase {
     driver.findElement(By.id("name")).sendKeys("test");
     driver.findElement(By.id("userEmail")).clear();
     driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
+    driver.findElement(By.id("passtext")).clear();
+    driver.findElement(By.id("passtext")).sendKeys("");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
       assertEquals("Поле пароль не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
@@ -38,7 +40,7 @@ public class _10666_03_00 extends TestCase {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("Регистрация", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

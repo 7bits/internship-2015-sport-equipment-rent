@@ -18,7 +18,7 @@ public class _10666_02_10 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -35,12 +35,12 @@ public class _10666_02_10 extends TestCase {
     driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Email должен быть короче 50 символов", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Логин должен начинаться и оканчиваться латинской буквой или цифрой", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("Регистрация", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

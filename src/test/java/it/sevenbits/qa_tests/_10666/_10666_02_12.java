@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод пароля длиной >50 символов
-public class _10666_03_02 extends TestCase {
+// Проверка на ввод email, содержащего русские буквы, на странице регистрации
+public class _10666_02_12 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -25,17 +25,17 @@ public class _10666_03_02 extends TestCase {
   }
 
   @Test
-  public void test106660302() throws Exception {
+  public void test106660212() throws Exception {
     driver.get(baseUrl + "registration");
     driver.findElement(By.id("name")).clear();
     driver.findElement(By.id("name")).sendKeys("test");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
+    driver.findElement(By.id("userEmail")).sendKeys("тест@test.com");
     driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("123456789012345678901234567890123456789012345678901");
+    driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Поле пароль должно быть короче 50 символов", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Логин может содержать латинские буквы, цифры, точку, дефис или нижнее подчеркивание", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

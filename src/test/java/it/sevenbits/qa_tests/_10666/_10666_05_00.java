@@ -20,7 +20,7 @@ public class _10666_05_00 {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -31,7 +31,8 @@ public class _10666_05_00 {
     driver.get(baseUrl + "registration");
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.cssSelector("img"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.cssSelector("img")))
+          break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
 

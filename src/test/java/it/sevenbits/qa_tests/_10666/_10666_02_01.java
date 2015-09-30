@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод емайл с повторным @ на странице регистрации
+// Проверка на ввод корректного набора имени, email и пароля на странице регистрации
 public class _10666_02_01 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
@@ -18,7 +18,7 @@ public class _10666_02_01 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -30,17 +30,18 @@ public class _10666_02_01 extends TestCase {
     driver.findElement(By.id("name")).clear();
     driver.findElement(By.id("name")).sendKeys("test");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf@@gmail.com");
+    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf-test@@gmail.com");
     driver.findElement(By.id("passtext")).clear();
     driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
+
     try {
-      assertEquals("Некорректный формат email", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Дай погонять", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("ЛИЧНЫЙ КАБИНЕТ", driver.findElement(By.xpath("//div[2]/a/b/p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

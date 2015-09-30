@@ -18,7 +18,7 @@ public class _10666_01_00 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -27,7 +27,8 @@ public class _10666_01_00 extends TestCase {
   @Test
   public void test106660100() throws Exception {
     driver.get(baseUrl + "registration");
-    // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
+    driver.findElement(By.id("name")).clear();
+    driver.findElement(By.id("name")).sendKeys("");
     driver.findElement(By.id("userEmail")).clear();
     driver.findElement(By.id("userEmail")).sendKeys("ovsyannikovam1510@gmail.com");
     driver.findElement(By.id("passtext")).clear();
@@ -39,7 +40,7 @@ public class _10666_01_00 extends TestCase {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("Регистрация", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

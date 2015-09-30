@@ -9,8 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод имени длиной >50 символов
-public class _10666_01_01 extends TestCase {
+// Проверка на ввод email, оканчивающегося нижним подчеркиванием, на странице регистрации
+public class _10666_02_13 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -18,29 +18,29 @@ public class _10666_01_01 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void test106660101() throws Exception {
+  public void test106660213() throws Exception {
     driver.get(baseUrl + "registration");
     driver.findElement(By.id("name")).clear();
-    driver.findElement(By.id("name")).sendKeys("testtesttesttesttesttesttesttesttesttesttesttesttest");
+    driver.findElement(By.id("name")).sendKeys("test");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("me@test.com");
+    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf@gmail.com");
     driver.findElement(By.id("passtext")).clear();
     driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Поле имя должно быть короче 50 символов", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Такой e-mail уже существует", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Авторизация", driver.getTitle());
+      assertEquals("Регистрация", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
