@@ -113,7 +113,6 @@ public class UpdateController {
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
-
             LOG.error("An error appeared while getting user from repository: " + e.getMessage());
             return "home/error";
         }

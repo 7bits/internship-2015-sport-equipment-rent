@@ -4,8 +4,12 @@ import it.sevenbits.service.validators.CommonFieldValidator;
 import it.sevenbits.web.forms.GoodsForm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.web.servlet.LocaleContextResolver;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,10 +24,17 @@ public class AddNewGoodsFormValidator {
 
     private static final Logger LOG = Logger.getLogger(AddNewGoodsFormValidator.class);
 
+    @Autowired
+    MessageSource messageSource;
+
+    @Autowired
+    LocaleResolver localeResolver;
     public HashMap<String, String> validate(final GoodsForm form) {
-        LOG.info("SubscriptionFormValidator started for: " + form.toString());
+        LOG.info("GoodsFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
-        validator.isNotNullOrEmpty(form.getTitle(), errors, "message.field.title", "message.field.title"+"message.error.empty");
+        validator.isNotNullOrEmpty(form.getTitle(), errors, "",
+                messageSource.getMessage("message.field.title", null, LocaleContextHolder.getLocale()) + " " +
+                        messageSource.getMessage("message.error.empty", null, LocaleContextHolder.getLocale()));
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerHour()), errors, "Поле цена за час", "Поле цена за час не может быть пустым");
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerDay()), errors, "Поле цена за день", "Поле цена за день не может быть пустым");
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "Поле цена за неделю не может быть пустым");
