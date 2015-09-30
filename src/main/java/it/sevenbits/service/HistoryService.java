@@ -27,11 +27,7 @@ public class HistoryService {
     @Autowired
     private GoodsService goodsService;
 
-    public List<HistoryRowView> getUsersHistory() throws UserServiceException {
-        User user = null;
-
-        user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-
+    public List<HistoryRowView> getUsersHistory(User user) throws UserServiceException {
         List<Deal> deals = dealService.getDealsOfUser(user.getId());
         List<HistoryRowView> table = new LinkedList<HistoryRowView>();
         for (int i = 0; i < deals.size(); i++) {

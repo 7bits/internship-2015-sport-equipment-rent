@@ -1,5 +1,7 @@
 package it.sevenbits.web.controllers.user;
 
+import it.sevenbits.service.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import it.sevenbits.service.HistoryService;
 import it.sevenbits.service.exceptions.UserServiceException;
@@ -19,12 +21,15 @@ public class UsersHistoryController {
     @Autowired
     private HistoryService historyService;
 
+    @Autowired
+    private UserService userService;
+
     private Logger LOG = Logger.getLogger(UsersHistoryController.class);
     @RequestMapping(method = RequestMethod.GET)
     public String history(final Model model) {
         model.addAttribute("isAuth", true);
         try {
-            model.addAttribute("userHistory", historyService.getUsersHistory());
+            model.addAttribute("userHistory", historyService.getUsersHistory(userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName())));
         } catch (UserServiceException e) {
             LOG.error("Cant show history of user " + e.getMessage());
             return "/error";
