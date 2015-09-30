@@ -99,11 +99,8 @@ public class AddAnnouncementController {
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
-
             LOG.error("An error appeared on getting user from repository" + e.getMessage());
-
-            //exception
-
+            return "home/error";
         }
         Goods goods = null;
         if(isAuth) {
@@ -114,10 +111,11 @@ public class AddAnnouncementController {
         try {
             goodsId = service.submitGoods(goods, images);
         } catch (GoodsException e) {
-
             LOG.error("An error appeared on submting goods " + e.getMessage());
-            //exception
+            return "home/error";
         }
+
+        //web feature (submit announcement without auth)
         if (!isAuth) {
 
             goods.getImageUrl().forEach(form::addImageUrl);

@@ -246,7 +246,7 @@ public class GoodsService {
     public void updateAnnouncement(final List<MultipartFile> images,
                                    final boolean[] deletedImages,
                                    final Goods goods,
-                                   final long announcementId) throws GoodsException, UserServiceException {
+                                   final long announcementId) throws GoodsException {
         TransactionStatus status;
         //start transaction
         status = transactionManager.getTransaction(customTransaction);

@@ -21,14 +21,14 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/profile")
-public class ProfileOfOtherUsers {
+public class ProfileOfOtherUsersController {
     @Autowired
     private UserService userService;
 
     @Autowired
     private GoodsService goodsService;
 
-    Logger LOG = Logger.getLogger(ProfileOfOtherUsers.class);
+    Logger LOG = Logger.getLogger(ProfileOfOtherUsersController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(@RequestParam(value="user_id", required = false) String userId, final Model model) {

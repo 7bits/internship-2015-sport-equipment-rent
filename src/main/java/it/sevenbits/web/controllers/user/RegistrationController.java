@@ -63,7 +63,8 @@ public class RegistrationController {
         try {
             userService.save(user);
         } catch (UserServiceException e) {
-            e.printStackTrace(); //exception
+            LOG.error("An error appeared on saving user: "+e.getMessage());
+            return "home/error";
         }
         return "redirect:/confirm";
     }

@@ -26,7 +26,7 @@ public class UsersHistoryController {
         try {
             model.addAttribute("userHistory", historyService.getUsersHistory());
         } catch (UserServiceException e) {
-            LOG.error("Cant to show history to user " + e.getMessage());
+            LOG.error("Cant show history of user " + e.getMessage());
             return "/error";
         }
         return "home/history";

@@ -34,13 +34,13 @@ public class MailSubmissionController {
 
     private final JavaMailSender javaMailSender;
 
-    Logger LOG = Logger.getLogger(MailSubmissionController.class);
+    private Logger LOG = Logger.getLogger(MailSubmissionController.class);
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    GoodsService goodsService;
+    private GoodsService goodsService;
 
 
     @Autowired
@@ -67,117 +67,116 @@ public class MailSubmissionController {
             sender.send(mimeMessage);
         } catch (MailException e) {
             LOG.error("Email didn`t send", e);
-
         } catch (MessagingException e) {
-
+            LOG.error("Email didn`t send", e);
         }
     }
 
     //letter_deny
-        @ResponseStatus(HttpStatus.CREATED)
-        public void sendDeny (Deal deal){
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            try {
-                User landlord = userService.getUser(deal.getLandlordId());
-                User renting = userService.getUser(deal.getRentingId());
-                Goods goods = goodsService.getGoods(deal.getGoodsId());
-                JadeTemplate template = jade.getTemplate("home/letter/letter_deny");
-                HashMap<String, Object> model = new HashMap<String, Object>();
-                String title = "";
-                model.put("confirmLink", "sport-equipment-rent.7bits.it");
-                model.put("landlord", landlord);
-                model.put("renting", renting);
-                model.put("goods", goods);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendDeny(Deal deal) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        try {
+            User landlord = userService.getUser(deal.getLandlordId());
+            User renting = userService.getUser(deal.getRentingId());
+            Goods goods = goodsService.getGoods(deal.getGoodsId());
+            JadeTemplate template = jade.getTemplate("home/letter/letter_deny");
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            String title = "";
+            model.put("confirmLink", "sport-equipment-rent.7bits.it");
+            model.put("landlord", landlord);
+            model.put("renting", renting);
+            model.put("goods", goods);
 
-                String html = jade.renderTemplate(template, model);
+            String html = jade.renderTemplate(template, model);
 
-                sendEmail(html, title, renting.getEmail());
+            sendEmail(html, title, renting.getEmail());
 
-            } catch (GoodsException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (UserServiceException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //letter_confirm_start_rent
-        @ResponseStatus(HttpStatus.CREATED)
-        public void sendConfirmationMail (Deal deal){
-            try {
-                User landlord = userService.getUser(deal.getLandlordId());
-                User renting = userService.getUser(deal.getRentingId());
-                Goods goods = goodsService.getGoods(deal.getGoodsId());
-
-
-                JadeTemplate template = jade.getTemplate("home/letter/letter_confirm_start_rent");
-                HashMap<String, Object> model = new HashMap<String, Object>();
-                String title = "";
-                model.put("denyLink", "sport-equipment-rent.7bits.it");
-                model.put("confirmLink", "sport-equipment-rent.7bits.it");
-                model.put("landlord", landlord);
-                model.put("renting", renting);
-                model.put("goods", goods);
-                String html = jade.renderTemplate(template, model);
-                sendEmail(html, title, renting.getEmail());
-            } catch (GoodsException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (UserServiceException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //letter_end_of_rent
-        @ResponseStatus(HttpStatus.CREATED)
-        public void sendClose (Deal deal){
-            try {
-                User landlord = userService.getUser(deal.getLandlordId());
-                User renting = userService.getUser(deal.getRentingId());
-                Goods goods = goodsService.getGoods(deal.getGoodsId());
-                JadeTemplate template = jade.getTemplate("home/letter/letter_confirm_start_rent");
-                HashMap<String, Object> model = new HashMap<String, Object>();
-                String title = "";
-                model.put("confirmLink", "sport-equipment-rent.7bits.it");
-                model.put("landlord", landlord);
-                model.put("renting", renting);
-                model.put("goods", goods);
-                String html = jade.renderTemplate(template, model);
-                sendEmail(html, title, landlord.getEmail());
-            } catch (GoodsException e) {
-                e.printStackTrace();
-            } catch (UserServiceException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //letter
-        @ResponseStatus(HttpStatus.CREATED)
-        public void sendHtmlEmail (Deal deal){
-            try {
-                User landlord = userService.getUser(deal.getLandlordId());
-                User renting = userService.getUser(deal.getRentingId());
-                Goods goods = goodsService.getGoods(deal.getGoodsId());
-                JadeTemplate template = jade.getTemplate("home/letter/letter");
-                HashMap<String, Object> model = new HashMap<String, Object>();
-                String title = "";
-                model.put("denyLink", "sport-equipment-rent.7bits.it");
-                model.put("confirmLink", "sport-equipment-rent.7bits.it");
-                model.put("renting", renting);
-                model.put("goods", goods);
-                String html = jade.renderTemplate(template, model);
-                sendEmail(html, title, landlord.getEmail());
-
-            } catch (GoodsException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (UserServiceException e) {
-                e.printStackTrace();
-            }
+        } catch (GoodsException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (IOException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (UserServiceException e) {
+            LOG.error("Email didn`t send", e);
         }
     }
+
+    //letter_confirm_start_rent
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendConfirmationMail(Deal deal) {
+        try {
+            User landlord = userService.getUser(deal.getLandlordId());
+            User renting = userService.getUser(deal.getRentingId());
+            Goods goods = goodsService.getGoods(deal.getGoodsId());
+
+
+            JadeTemplate template = jade.getTemplate("home/letter/letter_confirm_start_rent");
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            String title = "";
+            model.put("denyLink", "sport-equipment-rent.7bits.it");
+            model.put("confirmLink", "sport-equipment-rent.7bits.it");
+            model.put("landlord", landlord);
+            model.put("renting", renting);
+            model.put("goods", goods);
+            String html = jade.renderTemplate(template, model);
+            sendEmail(html, title, renting.getEmail());
+        } catch (GoodsException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (IOException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (UserServiceException e) {
+            LOG.error("Email didn`t send", e);
+        }
+    }
+
+    //letter_end_of_rent
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendClose(Deal deal) {
+        try {
+            User landlord = userService.getUser(deal.getLandlordId());
+            User renting = userService.getUser(deal.getRentingId());
+            Goods goods = goodsService.getGoods(deal.getGoodsId());
+            JadeTemplate template = jade.getTemplate("home/letter/letter_confirm_start_rent");
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            String title = "";
+            model.put("confirmLink", "sport-equipment-rent.7bits.it");
+            model.put("landlord", landlord);
+            model.put("renting", renting);
+            model.put("goods", goods);
+            String html = jade.renderTemplate(template, model);
+            sendEmail(html, title, landlord.getEmail());
+        } catch (GoodsException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (UserServiceException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (IOException e) {
+            LOG.error("Email didn`t send", e);
+        }
+    }
+
+    //letter
+    @ResponseStatus(HttpStatus.CREATED)
+    public void sendHtmlEmail(Deal deal) {
+        try {
+            User landlord = userService.getUser(deal.getLandlordId());
+            User renting = userService.getUser(deal.getRentingId());
+            Goods goods = goodsService.getGoods(deal.getGoodsId());
+            JadeTemplate template = jade.getTemplate("home/letter/letter");
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            String title = "";
+            model.put("denyLink", "sport-equipment-rent.7bits.it");
+            model.put("confirmLink", "sport-equipment-rent.7bits.it");
+            model.put("renting", renting);
+            model.put("goods", goods);
+            String html = jade.renderTemplate(template, model);
+            sendEmail(html, title, landlord.getEmail());
+
+        } catch (GoodsException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (IOException e) {
+            LOG.error("Email didn`t send", e);
+        } catch (UserServiceException e) {
+            LOG.error("Email didn`t send", e);
+        }
+    }
+}

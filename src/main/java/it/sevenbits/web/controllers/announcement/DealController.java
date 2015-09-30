@@ -8,7 +8,6 @@ import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.DealService;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.UserService;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
@@ -26,16 +25,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DealController {
     @Autowired
-    DealService dealService;
+    private DealService dealService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    Logger LOG = Logger.getLogger(DealController.class);
+    private Logger LOG = Logger.getLogger(DealController.class);
 
 
     @Autowired
-    MailSubmissionController mail;
+    private MailSubmissionController mail;
 
     @RequestMapping(value = "/handed", method = RequestMethod.GET)
     public String deal(@RequestParam(value = "deal_id", required = false) final long dealId,
@@ -44,7 +43,7 @@ public class DealController {
         try {
             dealService.handed(dealId, isHanded);
         } catch (DealServiceException e) {
-            //error
+            return "home/error";
         }
         if (isHanded) {
             return "home/confirm_deal";
@@ -59,15 +58,14 @@ public class DealController {
 
 
     @RequestMapping(value = "/accept", method = RequestMethod.GET)
-    public String accept(@RequestParam(value = "deal_id", required = false) long dealId,
-                         @RequestParam(value = "accept", required = false) boolean isGet) {
+    public String accept(@RequestParam(value = "deal_id", required = false) final long dealId,
+                         @RequestParam(value = "accept", required = false) final boolean isGet) {
 
         try {
             dealService.accept(dealId, isGet);
         } catch (DealServiceException e) {
             LOG.error(e.getMessage());
             return "home/error";
-
         }
         if (isGet) {
             return "home/confirm_get";
@@ -78,7 +76,8 @@ public class DealController {
     }
 
     @RequestMapping(value = "/close", method = RequestMethod.GET)
-    public String closeFirstStep(@RequestParam(value = "deal_id", required = false) long dealId, final Model model) {
+    public String closeFirstStep(@RequestParam(value = "deal_id", required = false) final long dealId,
+                                 final Model model) {
         Deal deal = null;
         try {
             dealService.close(dealId, deal);
@@ -87,7 +86,7 @@ public class DealController {
 
         }
         model.addAttribute("id", deal.getId());
-        if ( DateTime.parse(deal.getEstimateEndDate()).getMillis() > DateTime.now().getMillis()) {
+        if (DateTime.parse(deal.getEstimateEndDate()).getMillis() > DateTime.now().getMillis()) {
             return "home/message_when_rent_not_end";
         } else {
             return "redirect:/finally_close?deal_id=" + deal.getId();
@@ -97,7 +96,8 @@ public class DealController {
     }
 
     @RequestMapping(value = "/finally_close", method = RequestMethod.GET)
-    public String closeEnd(@RequestParam(value = "deal_id", required = false) long dealId, final Model model) {
+    public String closeEnd(@RequestParam(value = "deal_id", required = false) final long dealId,
+                           final Model model) {
         User landlord = null;
         Deal deal = dealService.getDeal(dealId);
         try {
