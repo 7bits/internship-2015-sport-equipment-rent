@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка полей "Цена..." на пустой ввод на тсранице подачи объявления
+// Проверка на пустоту полей ввода цен на странице подачи объявления
 public class _10676_06_00 extends TestCase{
   private WebDriver driver;
   private String baseUrl;
@@ -18,60 +18,116 @@ public class _10676_06_00 extends TestCase{
 
   @Before
   public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "/home/marina/chromedriver");
-        driver = new ChromeDriver();
-    baseUrl = "http://localhost:9000/";
+    //driver = new FirefoxDriver();
+      System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
+      driver = new ChromeDriver();
+      baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void test106760600() throws Exception {
-    driver.get(baseUrl + "/login");
+    driver.get(baseUrl + "login");
+    try {
+      assertEquals("Авторизация", driver.getTitle());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertTrue(isElementPresent(By.id("userEmail")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
     driver.findElement(By.id("userEmail")).clear();
     driver.findElement(By.id("userEmail")).sendKeys("meliannaelf@gmail.com");
-    driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("1");
+    try {
+      assertTrue(isElementPresent(By.id("passtext")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+      driver.findElement(By.id("passtext")).clear();
+      driver.findElement(By.id("passtext")).sendKeys("1");
+    try {
+      assertTrue(isElementPresent(By.xpath("//input[@value='ВОЙТИ']")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    driver.findElement(By.xpath("//input[@value='ВОЙТИ']")).click();
+    try {
+      assertEquals("Дай погонять", driver.getTitle());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertTrue(isElementPresent(By.xpath("//div[3]/a/b/p")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertEquals("ДАТЬ ОБЪЯВЛЕНИЕ", driver.findElement(By.xpath("//div[3]/a/b/p")).getText());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    driver.findElement(By.xpath("//div[3]/a/b/p")).click();
+    try {
+      assertEquals("Добавить объявление", driver.getTitle());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("from"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
+
+    driver.findElement(By.id("from")).clear();
+    driver.findElement(By.id("from")).sendKeys("Палатка туристическая");
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("announcementsDescription"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
+
+    driver.findElement(By.id("announcementsDescription")).clear();
+    driver.findElement(By.id("announcementsDescription")).sendKeys("Двухместная");
+    try {
+      assertTrue(isElementPresent(By.id("PriceForHour")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertTrue(isElementPresent(By.id("PriceForDay")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertTrue(isElementPresent(By.id("PriceForWeek")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertTrue(isElementPresent(By.cssSelector("input.b-button--default.b-button--blue")));
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertTrue(isElementPresent(By.cssSelector("div.b-header__give-announcement > a.header-a-color > b > p")));
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
-    driver.findElement(By.cssSelector("div.b-header__give-announcement > a.header-a-color > b > p")).click();
-    try {
       assertEquals("Добавить объявление", driver.getTitle());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
-    driver.findElement(By.id("from")).clear();
-    driver.findElement(By.id("from")).sendKeys("Название инвентаря");
-    driver.findElement(By.id("announcementsDescription")).clear();
-    driver.findElement(By.id("announcementsDescription")).sendKeys("какое-то описание some text with description");
-    driver.findElement(By.id("PriceForHour")).clear();
-    driver.findElement(By.id("PriceForHour")).sendKeys("");
-    driver.findElement(By.id("PriceForDay")).clear();
-    driver.findElement(By.id("PriceForDay")).sendKeys("");
-    driver.findElement(By.id("PriceForWeek")).clear();
-    driver.findElement(By.id("PriceForWeek")).sendKeys("");
-    driver.findElement(By.cssSelector("input.b-button--default.b-button--yellow")).click();
     try {
-      assertEquals("Добавить объявление", driver.getTitle());
-    } catch (Error e) {
-      verificationErrors.append(e.toString());
-    }
-    // Warning: verifyTextPresent may require manual changes
-      try {
-          assertEquals("Поле Цена за час не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
-      } catch (Error e) {
-          verificationErrors.append(e.toString());
-      }
-    try {
-      assertEquals("Поле Цена за сутки не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Поле цена за час не может быть пустым", driver.findElement(By.cssSelector("li > p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
     try {
-      assertEquals("Поле Цена за неделю не может быть пустым", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Поле цена за день не может быть пустым", driver.findElement(By.xpath("//li[2]/p")).getText());
+    } catch (Error e) {
+      verificationErrors.append(e.toString());
+    }
+    try {
+      assertEquals("Поле цена за неделю не может быть пустым", driver.findElement(By.xpath("//li[3]/p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }
