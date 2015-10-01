@@ -1,7 +1,7 @@
-(function($) {
-    $(document).ready(function(){
-        $('.js-submit').click(function(){
-            var sendInfo = {
+var submit = flight.component(function() {
+  // click event handler
+  this.onClick = function(event) {
+    var sendInfo = {
                 form: $('.js-from').val(),
                 to: $('.js-to').val()
             }
@@ -28,6 +28,10 @@
                 var data = $xhr.responseJSON;
                 console.log(data);
             });
-        });
-    });
-})(jQuery);
+        };
+  
+  // initialize
+  this.after('initialize', function() {
+    this.on('click', this.onClick);
+  });
+});
