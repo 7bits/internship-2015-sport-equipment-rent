@@ -109,7 +109,7 @@ public class CommonFieldValidator {
         if (errors.containsKey(field)) {
             return;
         }
-        char buf[] = value.toCharArray();
+        char[] buf = value.toCharArray();
         if (buf[0] == '-' || (buf[0] <= '9' && buf[0] >= '0')) {
             for (int i = 1; i < value.length(); i++) {
                 c = buf[i];
@@ -131,7 +131,7 @@ public class CommonFieldValidator {
         if (errors.containsKey(field)) {
             return;
         }
-        char buf[] = value.toCharArray();
+        char[] buf = value.toCharArray();
         if (value.length() > 0) {
             if (buf[0] == '-' || Double.valueOf(value) <= 0) {
                 errors.put(field, key);
@@ -161,10 +161,11 @@ public class CommonFieldValidator {
             final String key,
             final String field
     ) {
-        if (!errors.containsKey(key))
+        if (!errors.containsKey(key)) {
             if (userService.getCountOfUsersWithEmail(email) != 0) {
                 errors.put(key, field);
             }
+        }
     }
 
     public void isNotEqualStrings(
@@ -174,13 +175,19 @@ public class CommonFieldValidator {
             final String key,
             final String field
     ) {
-        if (!errors.containsKey(key))
+        if (!errors.containsKey(key)) {
             if (firstString.equals(secondString)) {
                 errors.put(key, field);
             }
+        }
     }
 
-    public void isTooEarlyDate(String from, String to, HashMap<String, String> errors, String key, String field) {
+    public void isTooEarlyDate(
+            final String from,
+            final String to,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime end = DateTime.parse(to);
@@ -190,7 +197,12 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isEndAfterStart(String from, String to, HashMap<String, String> errors, String key, String field) {
+    public void isEndAfterStart(
+            final String from,
+            final String to,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime end = DateTime.parse(to);
@@ -201,7 +213,11 @@ public class CommonFieldValidator {
     }
 
 
-    public void isEarlierThenWeek(String from, HashMap<String, String> errors, String key, String value) {
+    public void isEarlierThenWeek(
+            final String from,
+            final HashMap<String, String> errors,
+            final String key,
+            final String value) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             if (DateTime.now().plusWeeks(1).getMillis() < start.getMillis()) {
@@ -210,7 +226,12 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isRentTimeLessMonth(String from, String to, HashMap<String, String> errors, String key, String field) {
+    public void isRentTimeLessMonth(
+            final String from,
+            final String to,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime finish = DateTime.parse(to);
@@ -220,7 +241,12 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isRentTimeMoreHour(String from, String to, HashMap<String, String> errors, String key, String field) {
+    public void isRentTimeMoreHour(
+            final String from,
+            final String to,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime finish = DateTime.parse(to);
@@ -230,16 +256,31 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isImage(String imageUrl, HashMap<String, String> errors, String key, String field) {
+    public void isImage(
+            final String imageUrl,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         if (errors.containsKey(key) || imageUrl == "") {
             return;
         }
-        if (!(imageUrl.contains(".jpg") || imageUrl.contains(".bmp") || imageUrl.contains(".jpeg") || imageUrl.contains(".png") || imageUrl.contains(".gif"))) {
+        if (!(imageUrl.contains(".jpg") ||
+                imageUrl.contains(".bmp") ||
+                imageUrl.contains(".jpeg") ||
+                imageUrl.contains(".png") ||
+                imageUrl.contains(".gif"))) {
             errors.put(key, field);
         }
     }
 
-    public void isGoodsAlreadyEngage(String from, String to, long goodsId, final DealService service, HashMap<String, String> errors, String key, String field) {
+    public void isGoodsAlreadyEngage(
+            final String from,
+            final String to,
+            final long goodsId,
+            final DealService service,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime end = DateTime.parse(to);
@@ -262,7 +303,11 @@ public class CommonFieldValidator {
         }
     }
 
-    public void isImages(List<String> imageUrl, HashMap<String, String> errors, String key, String field) {
+    public void isImages(
+            final List<String> imageUrl,
+            final HashMap<String, String> errors,
+            final String key,
+            final String field) {
         for (String i : imageUrl) {
             if (i != null && !i.isEmpty()) {
                 if (!i.endsWith(".jpeg") && !i.endsWith(".jpg") &&

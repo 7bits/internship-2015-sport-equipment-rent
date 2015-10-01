@@ -30,7 +30,7 @@ import java.util.Map;
 @RequestMapping(value = "/confirm")
 public class ConfirmController {
 
-    private Logger LOG = Logger.getLogger(ConfirmController.class);
+    private Logger logger = Logger.getLogger(ConfirmController.class);
 
     @Autowired
     private GoodsService service;
@@ -43,13 +43,16 @@ public class ConfirmController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String confirm(final Model model, HttpSession session){
+    public String confirm(
+            final Model model,
+            final HttpSession session) {
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
         session.removeAttribute("addNewGoods");
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
-        if(form==null) {
+        model.addAttribute("isAuth",
+                !SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"));
+        if (form == null) {
             return "redirect:/";
-        }else{
+        } else {
             session.setAttribute("images", form.getImageUrl());
             model.addAttribute("goods", form);
         }
@@ -78,16 +81,16 @@ public class ConfirmController {
             try {
                 user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
             } catch (UserServiceException e) {
-                LOG.error("An error appeared on getting user from repository "+e.getMessage());
+                logger.error("An error appeared on getting user from repository " + e.getMessage());
             }
             Goods goods = form.toGoods(user);
             goods.setImageUrl((List<String>) session.getAttribute("images"));
             goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
         } catch (GoodsException e) {
-            LOG.error("An error appeared on submitting goods " + e.getMessage());
+            logger.error("An error appeared on submitting goods " + e.getMessage());
             return "home/error";
         }
 
-        return "redirect:/see_announcement?announcement_id="+goodsId;
+        return "redirect:/see_announcement?announcement_id=" + goodsId;
     }
 }

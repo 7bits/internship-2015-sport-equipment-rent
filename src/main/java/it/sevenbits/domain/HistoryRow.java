@@ -4,13 +4,13 @@ package it.sevenbits.domain;
  * Created by awemath on 9/30/15.
  */
 public class HistoryRow {
-    String startDate, endDate, renting, rentingId, rentingImage, title;
+    private String startDate, endDate, renting, rentingId, rentingImage, title;
 
     public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
@@ -18,7 +18,7 @@ public class HistoryRow {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(final String endDate) {
         this.endDate = endDate;
     }
 
@@ -26,7 +26,7 @@ public class HistoryRow {
         return renting;
     }
 
-    public void setRenting(String renting) {
+    public void setRenting(final String renting) {
         this.renting = renting;
     }
 
@@ -34,7 +34,7 @@ public class HistoryRow {
         return rentingId;
     }
 
-    public void setRentingId(String rentingId) {
+    public void setRentingId(final String rentingId) {
         this.rentingId = rentingId;
     }
 
@@ -42,7 +42,7 @@ public class HistoryRow {
         return rentingImage;
     }
 
-    public void setRentingImage(String rentingImage) {
+    public void setRentingImage(final String rentingImage) {
         this.rentingImage = rentingImage;
     }
 
@@ -50,7 +50,7 @@ public class HistoryRow {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 }

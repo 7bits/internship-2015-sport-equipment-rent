@@ -2,7 +2,6 @@ package it.sevenbits.core.repository.postgresql;
 
 import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.mappers.GoodsMapper;
-import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.Image;
@@ -17,85 +16,83 @@ import java.util.List;
  * Created by awemath on 7/8/15.
  */
 @Repository
-@Qualifier(value="goodsInPostgreSQLrepository")
+@Qualifier(value = "goodsInPostgreSQLrepository")
 public class GoodsInPostgreSQLRepository implements GoodsRepository {
 
-    private static Logger LOG= Logger.getLogger(GoodsInPostgreSQLRepository.class);
+    private static Logger logger = Logger.getLogger(GoodsInPostgreSQLRepository.class);
 
     @Autowired
     private GoodsMapper mapper;
 
 
     @Override
-    public void save(Goods goods) throws  GoodsRepositoryException {
-        if(goods==null){
-            LOG.error("Goods is null");
+    public void save(final Goods goods) throws GoodsRepositoryException {
+        if (goods == null) {
+            logger.error("Goods is null");
         }
-        try{
+        try {
             mapper.save(goods);
-            LOG.info("New goods saved: " + goods.toString());
-        } catch (Exception e){
-            LOG.error("An error occurred while saving subscription: " + goods.toString() + e.getMessage());
+            logger.info("New goods saved: " + goods.toString());
+        } catch (Exception e) {
+            logger.error("An error occurred while saving subscription: " + goods.toString() + e.getMessage());
             throw new GoodsRepositoryException("An error occurred while saving subscription: ", e);
         }
     }
 
     @Override
-    public List<Goods> findAll() throws GoodsRepositoryException{
-        try{
+    public List<Goods> findAll() throws GoodsRepositoryException {
+        try {
             return mapper.findAll();
-        } catch(Exception e){
-            LOG.error(e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getMessage());
             throw new GoodsRepositoryException("An error occurred while selected subscription: ", e);
         }
     }
 
 
-
-
-    public Goods getGoods(long id) {
+    public Goods getGoods(final long id) {
 
         return mapper.getGoods(id);
     }
 
     @Override
-    public List<Goods> getGoodsByAuthorId(long id) {
+    public List<Goods> getGoodsByAuthorId(final long id) {
         return mapper.getGoodsByAuthorId(id);
     }
 
     @Override
-    public void update(Goods form) {
+    public void update(final Goods form) {
         mapper.update(form);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(final Long id) {
         mapper.delete(id);
     }
 
     @Override
-    public List<Image> imageUrl(long goodsId) {
+    public List<Image> imageUrl(final long goodsId) {
         List<Image> images = mapper.getImages(goodsId);
         return images;
     }
 
     @Override
-    public Image getImageForGoods(long id) {
+    public Image getImageForGoods(final long id) {
         return mapper.getImageForGoods(id);
     }
 
     @Override
-    public void addImage(long goodsId, String url) {
+    public void addImage(final long goodsId, final String url) {
         mapper.addImage(goodsId, url);
     }
 
     @Override
-    public void updateImage(String nameForBase, Image image) {
+    public void updateImage(final String nameForBase, final Image image) {
         mapper.updateImage(nameForBase, image.getId());
     }
 
     @Override
-    public boolean checkStatus(Goods goods) {
-        return mapper.dealsCount(goods)==0;
+    public boolean checkStatus(final Goods goods) {
+        return mapper.dealsCount(goods) == 0;
     }
 }

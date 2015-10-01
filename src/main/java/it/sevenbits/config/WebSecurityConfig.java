@@ -19,13 +19,14 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    private DataSource dataSource;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/profile", "/see_announcement", "/see_announcement/**", "/resources/public/**", "/registration", "/add", "/add_announcement")
+                .antMatchers("/", "/index", "/profile", "/see_announcement", "/see_announcement/**",
+                        "/resources/public/**", "/registration", "/add", "/add_announcement")
                 .permitAll()
                 .anyRequest().authenticated()
             .and()
@@ -40,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    public void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
                         "select email, pass, '1' from users where email=?")
@@ -50,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception {
+    public void configure(final WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring().antMatchers("/resources/**");
     }
 

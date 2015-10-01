@@ -20,7 +20,7 @@ public class AssetsResolver {
         return version;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(final String version) {
         this.version = version;
     }
 }

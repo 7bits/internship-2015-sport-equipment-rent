@@ -12,42 +12,42 @@ import org.springframework.stereotype.Repository;
  * Created by awemath on 7/14/15.
  */
 @Repository
-@Qualifier(value="userInPostgreSQLrepository")
+@Qualifier(value = "userInPostgreSQLrepository")
 public class UserInPostgreSQLRepository implements UserRepository {
 
     @Autowired
     private UserMapper mapper;
     @Override
-    public void save(User user) throws RepositoryException {
-        try{
+    public void save(final User user) throws RepositoryException {
+        try {
             mapper.save(user);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new RepositoryException(e.getMessage());
         }
     }
 
     @Override
-    public User getUser(String email) throws RepositoryException {
+    public User getUser(final String email) throws RepositoryException {
         return mapper.getUser(email);
     }
 
     @Override
-    public User getUserById(long id) throws RepositoryException {
+    public User getUserById(final long id) throws RepositoryException {
         return mapper.getUserById(id);
     }
 
     @Override
-    public int getCountOfUsersWithThatEmail(String email) {
+    public int getCountOfUsersWithThatEmail(final String email) {
         return mapper.getCountOfUserWithThatEmail(email);
     }
 
     @Override
-    public void update(User user) {
+    public void update(final User user) {
         mapper.update(user);
     }
 
     @Override
-    public void updatePass(User user) {
+    public void updatePass(final User user) {
         mapper.updatePass(user);
     }
 }

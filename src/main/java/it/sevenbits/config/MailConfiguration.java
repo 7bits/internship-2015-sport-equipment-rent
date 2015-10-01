@@ -4,7 +4,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.JavaMailSender;
-import java.util.Properties;@Configuration
+import java.util.Properties;
+
+@Configuration
 public class MailConfiguration {
     @Value("${mail.protocol}")
     private String protocol;

@@ -37,7 +37,7 @@ public class SeeAnnouncementController {
     @Autowired
     private DealService dealService;
 
-    private Logger LOG = Logger.getLogger(SeeAnnouncementController.class);
+    private Logger logger = Logger.getLogger(SeeAnnouncementController.class);
 
 
 
@@ -58,10 +58,10 @@ public class SeeAnnouncementController {
             model.addAttribute("isAuth", name != "anonymousUser");
             model.addAttribute("user", landlord);
         } catch (GoodsException e) {
-            LOG.error("An error appeared on the getting goods from repository: " + e.getMessage());
+            logger.error("An error appeared on the getting goods from repository: " + e.getMessage());
             return "home/error";
         } catch (UserServiceException e) {
-            LOG.error("An error appeared on the getting user from repository: " + e.getMessage());
+            logger.error("An error appeared on the getting user from repository: " + e.getMessage());
             return "home/error";
         }
         model.addAttribute("date", new DateForm());
@@ -102,16 +102,16 @@ public class SeeAnnouncementController {
 
 
         } catch (GoodsException e) {
-            LOG.error("An error appeared on the getting goods from repository: " + e.getMessage());
+            logger.error("An error appeared on the getting goods from repository: " + e.getMessage());
             return "home/error";
         } catch (UserServiceException e) {
-            LOG.error("An error appeared on the getting user from repository: " + e.getMessage());
+            logger.error("An error appeared on the getting user from repository: " + e.getMessage());
             return "home/error";
         } catch (DealServiceException e) {
-            LOG.error("An error appeared on the submitting deal to repository: " + e.getMessage());
+            logger.error("An error appeared on the submitting deal to repository: " + e.getMessage());
             return "home/error";
         } catch (NumberFormatException e) {
-            LOG.error("An error occured on the creating a deal: " + e.getMessage());
+            logger.error("An error occured on the creating a deal: " + e.getMessage());
             return "home/error";
         }
 

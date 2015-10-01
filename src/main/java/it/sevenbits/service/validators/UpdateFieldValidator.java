@@ -24,7 +24,8 @@ public class UpdateFieldValidator {
     public HashMap<String, String> validate(final UpdateUserForm form) {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
-        validator.isNotNullOrEmpty(String.valueOf(form.getFirstName()), errors, "Поле имя", "Поле имя не может быть пустым");
+        validator.isNotNullOrEmpty(String.valueOf(form.getFirstName()), errors, "Поле имя",
+                "Поле имя не может быть пустым");
         validator.shorterThan(form.getFirstName(), 50, errors, "Поле имя", "Поле имя должно быть короче 50 символов");
         validator.isImage(form.getImageUrl(), errors, "", "");
         validator.shorterThan(form.getPhone(), 50, errors, "Поле телефон", "Поле телефон должно быть короче 50 символов");

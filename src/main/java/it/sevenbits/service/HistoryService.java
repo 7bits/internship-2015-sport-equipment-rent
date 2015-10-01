@@ -6,7 +6,6 @@ import it.sevenbits.domain.HistoryRow;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.UserServiceException;
-import it.sevenbits.web.views.HistoryRowView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,7 @@ public class HistoryService {
     @Autowired
     private GoodsService goodsService;
 
-    public List<HistoryRow> getUsersHistory(User user) throws UserServiceException {
+    public List<HistoryRow> getUsersHistory(final User user) throws UserServiceException {
         List<Deal> deals = dealService.getDealsOfUser(user.getId());
         List<HistoryRow> table = new LinkedList<HistoryRow>();
         for (int i = 0; i < deals.size(); i++) {

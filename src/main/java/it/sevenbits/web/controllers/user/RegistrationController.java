@@ -34,7 +34,7 @@ public class RegistrationController {
 
     @Autowired
     private AddNewRegistrationFormValidator validator;
-    private Logger LOG = Logger.getLogger(RegistrationController.class);
+    private Logger logger = Logger.getLogger(RegistrationController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(final Model model) {
@@ -51,7 +51,7 @@ public class RegistrationController {
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth",
                     SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-            LOG.info("Registration form contains errors.");
+            logger.info("Registration form contains errors.");
             return "home/registration";
         }
         //create model
@@ -63,7 +63,7 @@ public class RegistrationController {
         try {
             userService.save(user);
         } catch (UserServiceException e) {
-            LOG.error("An error appeared on saving user: "+e.getMessage());
+            logger.error("An error appeared on saving user: " + e.getMessage());
             return "home/error";
         }
         return "redirect:/confirm";

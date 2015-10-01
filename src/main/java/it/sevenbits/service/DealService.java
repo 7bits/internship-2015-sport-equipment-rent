@@ -34,7 +34,7 @@ public class DealService {
     private UserService userService;
 
     @Autowired
-    MailSubmissionController mail;
+    private MailSubmissionController mail;
 
     public void save(final Deal deal) {
         repository.save(deal);
@@ -101,7 +101,9 @@ public class DealService {
 
     }
 
-    public void handed(long dealId, boolean isHanded) throws DealServiceException {
+    public void handed(
+            final long dealId,
+            final boolean isHanded) throws DealServiceException {
         Deal deal = getDeal(dealId);
         User landlord = null;
         try {
@@ -126,7 +128,9 @@ public class DealService {
         }
     }
 
-    public void accept(long dealId, boolean isGet) throws DealServiceException {
+    public void accept(
+            final long dealId,
+            final boolean isGet) throws DealServiceException {
         Deal deal = getDeal(dealId);
         User renting = null;
         try {
@@ -147,7 +151,9 @@ public class DealService {
         }
     }
 
-    public void close(long dealId, Deal deal) throws DealServiceException {
+    public void close(
+            final long dealId) throws DealServiceException {
+        Deal deal = null;
         deal = getDeal(dealId);
         User user = null;
         try {

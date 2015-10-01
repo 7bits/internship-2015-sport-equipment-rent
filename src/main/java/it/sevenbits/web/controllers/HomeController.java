@@ -1,10 +1,9 @@
 package it.sevenbits.web.controllers;
 
 import it.sevenbits.domain.Goods;
-import it.sevenbits.service.DealService;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,36 +21,31 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private static Logger LOG = Logger.getLogger(HomeController.class);
+    private static Logger logger = Logger.getLogger(HomeController.class);
     @Autowired
     private GoodsService service;
 
+    @Autowired
+    private UserService userService;
 
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public String mainPage(final Model model){
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String mainPage(final Model model) {
         try {
             List<Goods> goods = service.findAll();
-            for(int i=0;i<goods.size();i++){
+            for (int i = 0; i < goods.size(); i++) {
                 goods.get(i).setAuthorImage(userService.getUser(goods.get(i).getAuthorId()).getImageUrl());
             }
-            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
+            model.addAttribute("isAuth",
+                    !SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"));
             model.addAttribute("goods", goods);
         } catch (GoodsException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         } catch (UserServiceException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
         return "home/index";
     }
 
-
-
-
-
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    DealService dealService;
 }

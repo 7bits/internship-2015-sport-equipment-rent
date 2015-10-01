@@ -2,14 +2,13 @@ package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.domain.HistoryRow;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.UserService;
-import it.sevenbits.web.views.HistoryRowView;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
 import it.sevenbits.service.HistoryService;
+import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.views.HistoryRowView;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +29,7 @@ public class UsersHistoryController {
     @Autowired
     private UserService userService;
 
-    private Logger LOG = Logger.getLogger(UsersHistoryController.class);
+    private Logger logger = Logger.getLogger(UsersHistoryController.class);
     @RequestMapping(method = RequestMethod.GET)
     public String history(final Model model) {
         model.addAttribute("isAuth", true);
@@ -38,12 +37,12 @@ public class UsersHistoryController {
             User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
             List<HistoryRow> historyTable = historyService.getUsersHistory(user);
             List<HistoryRowView> historyTableView = new LinkedList<HistoryRowView>();
-            for(int i = 0; i < historyTable.size(); i++) {
+            for (int i = 0; i < historyTable.size(); i++) {
                 historyTableView.add(i, HistoryRowView.valueOf(historyTable.get(i)));
             }
             model.addAttribute("userHistory", historyTableView);
         } catch (UserServiceException e) {
-            LOG.error("Cant show history of user " + e.getMessage());
+            logger.error("Cant show history of user " + e.getMessage());
             return "home/error";
         }
         return "home/history";

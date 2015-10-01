@@ -1,6 +1,5 @@
 package it.sevenbits.core.repository;
 
-import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.User;
 
 /**

@@ -6,13 +6,13 @@ import it.sevenbits.domain.HistoryRow;
  * Created by awemath on 8/19/15.
  */
 public class HistoryRowView {
-    String startDate, endDate, renting, rentingId, rentingImage, title;
+    private String startDate, endDate, renting, rentingId, rentingImage, title;
 
     public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
@@ -20,7 +20,7 @@ public class HistoryRowView {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(final String endDate) {
         this.endDate = endDate;
     }
 
@@ -28,23 +28,15 @@ public class HistoryRowView {
         return renting;
     }
 
-    public void setRenting(String renting) {
+    public void setRenting(final String renting) {
         this.renting = renting;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getRentingId() {
         return rentingId;
     }
 
-    public void setRentingId(String rentingId) {
+    public void setRentingId(final String rentingId) {
         this.rentingId = rentingId;
     }
 
@@ -52,11 +44,19 @@ public class HistoryRowView {
         return rentingImage;
     }
 
-    public void setRentingImage(String rentingImage) {
+    public void setRentingImage(final String rentingImage) {
         this.rentingImage = rentingImage;
     }
 
-    public static HistoryRowView valueOf(HistoryRow historyRow) {
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(final String title) {
+        this.title = title;
+    }
+
+    public static HistoryRowView valueOf(final HistoryRow historyRow) {
         HistoryRowView historyRowView = new HistoryRowView();
         historyRowView.setTitle(historyRow.getTitle());
         historyRowView.setRentingId(historyRow.getRentingId());

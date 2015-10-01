@@ -9,12 +9,12 @@ public class RegistrationForm {
     private String eMail;
     private String password;
     private String passwordVerification;
-
+    
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -22,7 +22,7 @@ public class RegistrationForm {
         return secondName;
     }
 
-    public void setSecondName(String secondName) {
+    public void setSecondName(final String secondName) {
         this.secondName = secondName;
     }
 
@@ -30,7 +30,7 @@ public class RegistrationForm {
         return eMail;
     }
 
-    public void seteMail(String eMail) {
+    public void seteMail(final String eMail) {
         this.eMail = eMail;
     }
 
@@ -38,7 +38,7 @@ public class RegistrationForm {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -46,7 +46,7 @@ public class RegistrationForm {
         return passwordVerification;
     }
 
-    public void setPasswordVerification(String passwordVerification) {
+    public void setPasswordVerification(final String passwordVerification) {
         this.passwordVerification = passwordVerification;
     }
 }

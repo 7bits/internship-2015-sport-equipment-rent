@@ -4,15 +4,15 @@ package it.sevenbits.domain;
  * Created by awemath on 8/12/15.
  */
 public class Image {
-    String url;
-    long id;
-    long goodsId;
+    private String url;
+    private long id;
+    private long goodsId;
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(final String url) {
         this.url = url;
     }
 
@@ -20,7 +20,7 @@ public class Image {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -28,7 +28,7 @@ public class Image {
         return goodsId;
     }
 
-    public void setGoodsId(long goodsId) {
+    public void setGoodsId(final long goodsId) {
         this.goodsId = goodsId;
     }
 }

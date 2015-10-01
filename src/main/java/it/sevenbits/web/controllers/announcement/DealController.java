@@ -30,7 +30,7 @@ public class DealController {
     @Autowired
     private UserService userService;
 
-    private Logger LOG = Logger.getLogger(DealController.class);
+    private Logger logger = Logger.getLogger(DealController.class);
 
 
     @Autowired
@@ -64,7 +64,7 @@ public class DealController {
         try {
             dealService.accept(dealId, isGet);
         } catch (DealServiceException e) {
-            LOG.error(e.getMessage());
+            logger.error(e.getMessage());
             return "home/error";
         }
         if (isGet) {
@@ -80,7 +80,7 @@ public class DealController {
                                  final Model model) {
         Deal deal = null;
         try {
-            dealService.close(dealId, deal);
+            dealService.close(dealId);
         } catch (DealServiceException e) {
             return "home/error";
 

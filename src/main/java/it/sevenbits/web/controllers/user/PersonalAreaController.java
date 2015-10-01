@@ -1,7 +1,6 @@
 package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.UserServiceException;
@@ -22,8 +21,8 @@ public class PersonalAreaController {
     private GoodsService goodsService;
     @Autowired
     private UserService userService;
-    @RequestMapping(method= RequestMethod.GET)
-    public String seePersonalArea(final Model model){
+    @RequestMapping(method = RequestMethod.GET)
+    public String seePersonalArea(final Model model) {
         User user = null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());

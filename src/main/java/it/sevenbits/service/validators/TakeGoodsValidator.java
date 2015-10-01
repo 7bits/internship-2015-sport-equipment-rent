@@ -18,13 +18,15 @@ public class TakeGoodsValidator {
     @Autowired
     private CommonFieldValidator validator;
 
-    private static final Logger LOG = Logger.getLogger(TakeGoodsValidator.class);
+    private static final Logger logger = Logger.getLogger(TakeGoodsValidator.class);
 
     @Autowired
-    DealService dealService;
+    private DealService dealService;
 
-    public HashMap<String, String> validate(final DateForm form, long goodsId) {
-        LOG.info("SubscriptionFormValidator started for: " + form.toString());
+    public HashMap<String, String> validate(final DateForm form,
+                                            final long goodsId) {
+
+        logger.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
         validator.isNotNullOrEmpty(form.getFrom(), errors,"Поле начало", "Начало аренды не может быть пустым!");
         validator.isNotNullOrEmpty(form.getTo(), errors, "Поле окончание", "Окончание аренды не может быть пустым!");
@@ -44,7 +46,7 @@ public class TakeGoodsValidator {
         validator.isRentTimeMoreHour(form.getFrom(), form.getTo(), errors, "", "Продолжительность аренды может составлять от 1 часа до 1 месяца.");
 
         for (Map.Entry<String, String> entry : errors.entrySet()) {
-            LOG.info(String.format("Error found: Filed=%s, Error=%s",
+            logger.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));
         }
 

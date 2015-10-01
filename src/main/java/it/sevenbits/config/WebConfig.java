@@ -21,7 +21,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
+    public void addInterceptors(final InterceptorRegistry registry) {
         registry.addInterceptor(csrfInterceptor);
         registry.addInterceptor(handlerInterceptor);
     }

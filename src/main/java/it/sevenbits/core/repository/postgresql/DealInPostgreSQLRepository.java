@@ -14,56 +14,56 @@ import java.util.List;
  */
 
 @Repository
-@Qualifier(value="dealInPostgreSQLRepository")
+@Qualifier(value = "dealInPostgreSQLRepository")
 public class DealInPostgreSQLRepository implements DealRepository {
     @Autowired
-    DealMapper mapper;
+    private DealMapper mapper;
     @Override
-    public void save(Deal deal) {
+    public void save(final Deal deal) {
         mapper.save(deal);
     }
 
-    public Deal getDeal(long dealId) {
+    public Deal getDeal(final long dealId) {
         return mapper.getDeal(dealId);
     }
 
     @Override
-    public void update(Deal deal) {
+    public void update(final Deal deal) {
         mapper.update(deal);
     }
 
     @Override
-    public long getId(Deal deal) {
+    public long getId(final Deal deal) {
         return mapper.getId(deal);
     }
 
     @Override
-    public boolean isExist(Deal deal) {
-        return mapper.isExist(deal)!=0;
+    public boolean isExist(final Deal deal) {
+        return mapper.isExist(deal) != 0;
     }
 
     @Override
-    public void deleteAllOnGoods(long goodsId) {
+    public void deleteAllOnGoods(final long goodsId) {
         mapper.deleteAllOnGoods(goodsId);
     }
 
     @Override
-    public void updateRealStartDate(long dealId) {
+    public void updateRealStartDate(final long dealId) {
         mapper.updateRealStartDate(dealId);
     }
 
     @Override
-    public void updateRealEndDate(long dealId) {
+    public void updateRealEndDate(final long dealId) {
         mapper.updateRealEndDate(dealId);
     }
 
     @Override
-    public List<Deal> getOpenWithId(long goodsId) {
+    public List<Deal> getOpenWithId(final long goodsId) {
         return mapper.getOpenWithId(goodsId);
     }
 
     @Override
-    public List<Deal> getDealsOfUser(Long id) {
+    public List<Deal> getDealsOfUser(final Long id) {
         return mapper.getDealsOfUser(id);
     }
 
