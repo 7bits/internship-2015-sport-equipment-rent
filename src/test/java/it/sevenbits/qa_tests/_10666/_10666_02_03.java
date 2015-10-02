@@ -18,7 +18,7 @@ public class _10666_02_03 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -35,7 +35,7 @@ public class _10666_02_03 extends TestCase {
     driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Поле имя должно быть короче 50 символов", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Некорректный формат email", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

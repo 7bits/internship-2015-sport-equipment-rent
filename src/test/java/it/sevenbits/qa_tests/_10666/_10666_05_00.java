@@ -1,5 +1,6 @@
 package it.sevenbits.qa_tests._10666;
 
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,11 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 // проверка работоспособности логотипа сервиса на странице регистрации
-public class _10666_05_00 {
+public class _10666_05_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -20,7 +18,7 @@ public class _10666_05_00 {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

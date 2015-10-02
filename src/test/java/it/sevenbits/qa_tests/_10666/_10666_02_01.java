@@ -18,7 +18,7 @@ public class _10666_02_01 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -30,9 +30,9 @@ public class _10666_02_01 extends TestCase {
     driver.findElement(By.id("name")).clear();
     driver.findElement(By.id("name")).sendKeys("test");
     driver.findElement(By.id("userEmail")).clear();
-    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf-test@@gmail.com");
+    driver.findElement(By.id("userEmail")).sendKeys("meliannaelf-test@gmail.com");
     driver.findElement(By.id("passtext")).clear();
-    driver.findElement(By.id("passtext")).sendKeys("123");
+    driver.findElement(By.id("passtext")).sendKeys("1");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
 
     try {

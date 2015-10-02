@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка на ввод email, оканчивающийся точкой, на странице регистрации
+// Проверка на ввод email, содержащий неразрешенные символы, на странице регистрации
 public class _10666_02_04 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
@@ -18,7 +18,7 @@ public class _10666_02_04 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -35,7 +35,7 @@ public class _10666_02_04 extends TestCase {
     driver.findElement(By.id("passtext")).sendKeys("123");
     driver.findElement(By.cssSelector("input.b-button--default.b-button--blue")).click();
     try {
-      assertEquals("Логин должен начинаться и оканчиваться латинской буквой или цифрой", driver.findElement(By.cssSelector("p")).getText());
+      assertEquals("Некорректный формат email", driver.findElement(By.cssSelector("p")).getText());
     } catch (Error e) {
       verificationErrors.append(e.toString());
     }

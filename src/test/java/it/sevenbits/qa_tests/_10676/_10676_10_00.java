@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-// Проверка работоспособности ссылки "Выход" на странице
+// Проверка работоспособности ссылки "Выход" на странице подачи объявления
 public class _10676_10_00 extends TestCase {
   private WebDriver driver;
   private String baseUrl;
@@ -19,7 +19,7 @@ public class _10676_10_00 extends TestCase {
   @Before
   public void setUp() throws Exception {
     //driver = new FirefoxDriver();
-    System.setProperty("webdriver.chrome.driver", "~/src/test/resources/chromedriver");
+    System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
     driver = new ChromeDriver();
     baseUrl = "http://localhost:9000/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
