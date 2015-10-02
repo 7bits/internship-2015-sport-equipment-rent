@@ -16,7 +16,7 @@
 
 .b-title--dark-green{
     padding-top: 0;
-
+    
     color: white;
     background-color: #278b8f;
 }
@@ -44,7 +44,7 @@
 .b-title__text{
     float: left;
 
-    margin-top: 11px;
+    margin-top: 10px;
 }
 
 .b-title__text--top{
@@ -56,7 +56,26 @@
 
     width: 25px;
     height: 25px;
-    margin-top: 10px;
+    margin-top: 7px;
 
     background-image: url('../images/calendar-ico.png');
+}
+
+
+@media(max-width: 467px){
+    .b-title--default{
+        font-size: 15.24px;
+
+        height: 52px;
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    .b-title__text{
+        font-size: 17.78px;
+        padding-left: 12px;
+    }
+    .b-title__ico-calendar{
+        margin-right: 8px;
+    }
 }

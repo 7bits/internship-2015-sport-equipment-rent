@@ -2,89 +2,56 @@ extends layout.jade
 block title
     title Просмотр объявление
 block depending
-    link(rel="stylesheet", href="resources/blocks/error.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/user-info.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/detailed-view-announcement.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/form-book-product.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/title-with-devision.css", type="text/css", media="all")
     link(rel="stylesheet", href="resources/vendor/scripts/qb/qb.css", type="text/css")
-    script(src="resources/vendor/scripts/qb/js/qb.js")  
+    link(rel='stylesheet', type='text/css', href='resources/vendor/scripts/datetimepicker/jquery.datetimepicker.css')
 block content
     .b-content
-        a(href="/profile?user_id=#{user.id}")
-            .b-user-info
-                .b-user-info__content
-                    .b-user-info__owner
-                        b
-                            p
-                                Владелец:
-                    .b-user-info__ava
-                        img(src=user.imageUrl, width="114", height="114")
-                    .b-user-info__info
-                        p=user.firstName
-        .b-detailed-view-announcement
-            .b-detailed-view-announcement__content
-                .b-title--default.b-title--blue.b-title--padding-none.b-title--text-centered
-                    .b-title-with-devision__text
-                        text(style="padding-right: 5px;")
-                            Час:
-                        b
-                            text(style="padding-right: 5px;")=Goods.pricePerHour
-                            text.set-rub-price
-                                Р
-                    .b-title-with-devision__devide-line
-                    .b-title-with-devision__text
-                        text(style="padding-right: 5px;")
-                            Сутки:
-                        b
-                            text(style="padding-right: 5px;")=Goods.pricePerDay
-                            text.set-rub-price
-                                Р
-                    .b-title-with-devision__devide-line
-                    .b-title-with-devision__text
-                        text(style="padding-right: 5px;")
-                            Неделя:
-                        b
-                            text(style="padding-right: 5px;")=Goods.pricePerWeek
-                            text.set-rub-price
-                                Р
-                .b-detailed-view-announcement__product-title
-                    b
-                        p=Goods.title
-                        include mixins/mixin_status.jade
-                .b-detailed-view-announcement__product-description
-                    p=Goods.description
-            .b-photo-set
-                each image in Goods.imageUrl
-                    .b-photo-set__photo
-                        a.quickbox(href="#{image}")
-                            img(src=image)
-        if !isAuthor
+        include mixins/mixin_user_info.jade
+        +create-user-info(isAuthor)
+        if isAuthor
+            .b-detailed-view-announcement--default.b-detailed-view-announcement--owner
+                .b-detailed-view-announcement__content--default.b-detailed-view-announcement__content--owner
+                    include partial/detail_see_announcement.jade
+                .b-photo-set
+                    each image in Goods.imageUrl
+                        .b-photo-set__photo
+                            a.quickbox(href="#{image}")
+                                img(src=image)
+                .b-detailed-view-announcement-update-botton
+                    .b-detailed-view-announcement-update-botton__botton
+                        input.b-button--default.b-button--blue(type='submit', value='РЕДАКТИРОВАТЬ')
+        else
+            .b-detailed-view-announcement--default
+                .b-detailed-view-announcement__content--default
+                    include partial/detail_see_announcement.jade
+                .b-photo-set
+                    each image in Goods.imageUrl
+                        .b-photo-set__photo
+                            a.quickbox(href="#{image}")
+                                img(src=image)
             .b-form-book-product
                 form(role="form", action="/getIt?announcement_id=#{Goods.id}", method="post")
+                    input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
                     .b-form-book-product__form
                         .b-title--default.b-title--dark-green
                             .b-title__text
                                 b
                                     p
                                         Время аренды
-                            .b-title__ico
+                            .b-title__ico-calendar
                         include mixins/mixin_er.jade
                         +err(errors)
                         .b-form-book-product__content
                             .b-form-book-product__input-title
                                 p
                                     Начало
-                            input.b-input--default#from.form-control(type="datetime-local", value="#{date.from}", name="from")
+                            input.js-datatime-from.b-input--default.js-from#from.form-control(type="text", value="#{date.from}", name="from")
                             .b-form-book-product__input-title
                                 p
                                     Завершение
-                            input.b-input--default#to.form-control(type="datetime-local", value="#{date.to}", name="to")
-                    input.b-button--default.b-button--green(type='submit', value='ЗАБРОНИРОВАТЬ')
-        else
-            .b-form-book-product
-                a(href="/update?announcement_id=#{Goods.id}")
-                    input.b-button--default.b-button--blue(type='button', value='Редактировать')  
+                            input.js-datatime-to.b-input--default.js-to#to.form-control(type="text", value="#{date.to}", name="to")
+                    input.b-button--default.b-button--green.js-sublit(type='submit', value='ЗАБРОНИРОВАТЬ')
+block local-scripts
+    script(src="resources/vendor/scripts/qb/js/qb.js")
+    script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
+    script(src="resources/scripts/data-time.js")  

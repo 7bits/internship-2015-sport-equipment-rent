@@ -1,7 +1,7 @@
 package it.sevenbits.core.mappers;
 
-import it.sevenbits.web.domain.Goods;
-import it.sevenbits.web.domain.Image;
+import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.Image;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

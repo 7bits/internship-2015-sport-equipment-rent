@@ -1,0 +1,1 @@
+insert into users (first_name, second_name, pass, phone, email, users_role) values ('admin', 'admin', 'admin', '123456', 'admin@admin.admin', 'ADMIN');

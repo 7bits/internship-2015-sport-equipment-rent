@@ -5,27 +5,14 @@ html
             title Дай погонять
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
-        include mixins/mixin_favicon.jade
+        include partial/favicon.jade
         link(rel="stylesheet", href="resources/library/reset.css", type="text/css", media="all")
         link(rel="stylesheet", href="resources/library/normalize.css", type="text/css", media="all")
         link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-        link(rel="stylesheet", href="resources/template.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/header.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/content.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/container.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/status.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/lending-element.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/list-announcements.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/blocks/rub-price.css", type="text/css", media="all")
-        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-        script(src='resources/scripts/header.js')
-        script(src='resources/scripts/cut-text.js')
-        script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
+        link(rel="stylesheet", href="resources/build/bundle.css", type="text/css", media="all")
     body
         .b-index-container
-            include mixins/mixin_header.jade
+            include partial/header.jade
             if(!isAuth)
                 .b-lending-element__base-color
                     .b-lending-element__background-image
@@ -47,4 +34,15 @@ html
                                             p
                                                 ВСЕ ОБЪЯВЛЕНИЯ
             include mixins/mixin_list_all_announcement.jade
-            +list(goods)
+            .b-content
+                a(name="seeAll")
+                    .b-list-announcements
+                        each Goods in goods
+                            - userId = Goods.authorId;
+                            - userAva = Goods.authorImage;
+                            +list(Goods, userId, userAva, "РЕДАКТИРОВАТЬ", false)
+        block scripts
+            script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+            script(src='resources/scripts/header.js')
+            script(src='resources/scripts/cut-text.js')
+            script(src="resources/vendor/scripts/cut-text/dotdotdot.js")

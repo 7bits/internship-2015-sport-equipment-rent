@@ -24,13 +24,17 @@
     font-size: 14px;
 
     width: 100%;
-    margin-top: 3px;
     padding-right: -10px;
     padding-left: -10px;
 
-    text-align: left;
+    text-align: center;
 
     color: white;
+}
+
+
+.registration-a-color{
+    color: #5dc8cd;
 }
 
 
@@ -40,6 +44,7 @@
 
 
 .registration-a-color:hover,
-.registration-a-color:focus{
+.registration-a-color:focus,
+.registration-a-color:active{
     color: #949494;
 }

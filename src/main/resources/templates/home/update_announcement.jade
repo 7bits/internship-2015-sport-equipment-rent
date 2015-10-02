@@ -1,21 +1,11 @@
 extends layout.jade
 block title
     title Обновить объявление
-block depending
-    link(rel="stylesheet", href="resources/blocks/form-crud-annoncement.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/error.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/title.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/buttons.css", type="text/css", media="all")
-    link(rel="stylesheet", href="resources/blocks/input.css", type="text/css", media="all")
-block scripts
-    //- скрипт скрывает в момент загрузки страницы значки удаления с дефолтных изображений 
-    //- и заполняет название файла
-    //- должен подгружаться тут
-    script(src="resources/scripts/add-update-confirm-announcement/update-announcement-past-filename-hide-delete-ico.js")
 block content
     form(role="form", action="/update?announcement_id=#{goods.id}", method="post", enctype="multipart/form-data")
         input(type='hidden', name='#{_csrf.parameterName}', value='#{_csrf.token}')
         include mixins/mixin_form_crud_announcement.jade
         +form("СОХРАНИТЬ")
-block dynamic-scripts
-    script(src='resources/scripts/add-update-confirm-announcement/add-photo.js')
+block local-scripts
+    script(src='resources/scripts/crud-announcement/add-photo.js')
+    script(src="resources/scripts/crud-announcement/hide-backet.js")

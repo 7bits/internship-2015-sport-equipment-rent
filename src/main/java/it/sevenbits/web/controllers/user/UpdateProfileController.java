@@ -1,10 +1,12 @@
 package it.sevenbits.web.controllers.user;
 
-import it.sevenbits.web.domain.UpdateUserForm;
-import it.sevenbits.web.domain.User;
-import it.sevenbits.web.service.goods.GoodsException;
-import it.sevenbits.web.service.users.UpdateFieldValidator;
-import it.sevenbits.web.service.users.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.UpdateUserForm;
+import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.validators.UpdateFieldValidator;
+import it.sevenbits.service.UserService;
+import org.apache.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,19 +25,22 @@ import java.util.Map;
 @RequestMapping(value = "/update_profile")
 public class UpdateProfileController {
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    UpdateFieldValidator validator;
+    private UpdateFieldValidator validator;
+
+    private Logger LOG = Logger.getLogger(UpdateProfileController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String update(final Model model){
+    public String update(final Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = null;
         try {
             user = userService.getUser(name);
-        } catch (GoodsException e) {
-            e.printStackTrace();
+        } catch (UserServiceException e) {
+            LOG.error("An error appeared on getting user: " + e.getMessage());
+            return "home/error";
         }
         UpdateUserForm updateUserForm = UpdateUserForm.valueOf(user);
         model.addAttribute("user", updateUserForm);
@@ -43,28 +48,28 @@ public class UpdateProfileController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@ModelAttribute UpdateUserForm form, final Model model){
-        final Map<String, String> errors =validator.validate(form);
+    public String submit(@ModelAttribute UpdateUserForm form, final Model model) {
+        final Map<String, String> errors = validator.validate(form);
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        if (form.getPass() != "" && form.getPass()!=null) {
+        if (form.getPass() != "" && form.getPass() != null) {
             User user = null;
             try {
                 user = userService.getUser(name);
-            } catch (GoodsException e) {
-                e.printStackTrace();
+            } catch (UserServiceException e) {
+                LOG.error("An error appeared on getting user: " + e.getMessage());
             }
-            if(BCrypt.checkpw(form.getPass(), user.getPass())){
-                if(form.getNewPass().length()>0){
+            if (BCrypt.checkpw(form.getPass(), user.getPass())) {
+                if (form.getNewPass().length() > 0) {
                     user.setPass(form.getNewPass());
                     userService.updatePass(user);
-                }else{
+                } else {
                     errors.put("", "Заполните новый пароль");
                 }
-            }else{
+            } else {
                 errors.put("", "Неверно введен текущий пароль");
             }
         }
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             model.addAttribute("errors", errors);
             model.addAttribute("user", form);
             return "home/update-profile";
@@ -73,8 +78,8 @@ public class UpdateProfileController {
         User user = User.valueOf(form);
         try {
             user.setId(userService.getUser(name).getId());
-        } catch (GoodsException e) {
-            e.printStackTrace();
+        } catch (UserServiceException e) {
+            LOG.error("An error appeared on getting user: " + e.getMessage());
         }
         userService.update(user);
         return "redirect:/personal_area";

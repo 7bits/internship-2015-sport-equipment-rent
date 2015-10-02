@@ -25,6 +25,9 @@ resources:
    default-announcement-image: #path to your default images for annoucement
    default-users-avatar: #path (or link) to default users avatar
 
+assets:
+  version:
+
 ---
 
 server:
@@ -54,3 +57,6 @@ resources:
    images: #path for your images from resources path on server
    default-announcement-image: #path (or link) to your default images for annoucement
    default-users-avatar: #path (or link) to default users avatar
+
+assets:
+  version:

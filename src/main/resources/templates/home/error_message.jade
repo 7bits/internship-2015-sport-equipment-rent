@@ -1,10 +1,8 @@
 extends layout.jade
 block title
     title Ошибка
-block depending
-    link(rel="stylesheet", href="resources/blocks/message.css", type="text/css", media="all")
 block header
-    include mixins/mixin_message_header.jade
+    include partial/message_header.jade
 block content
     include mixins/mixin_message.jade
     +create-message("OOPS! Похоже что-то пошло не так.","")

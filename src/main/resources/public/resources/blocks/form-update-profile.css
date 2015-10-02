@@ -13,6 +13,7 @@
     border-style: solid;
     border-color: #5cc9cc;
     background-color: white;
+    box-shadow: 0 3px 3px #d4cfcf;
 }
 
 
@@ -53,7 +54,7 @@
     behavior: url(border-radius.htc); /*IE */
 }
 
-@media(max-width: 415px){
+@media(max-width: 449px){
     .b-update-profile{
         width: 320px;
     }
@@ -64,7 +65,7 @@
     .b-update-profile__button{
         width: 320px;
     }
-    .b-update-profile__url{
+    .b-update-profile__user-avatar-url{
         width: 255px;
     }
 }

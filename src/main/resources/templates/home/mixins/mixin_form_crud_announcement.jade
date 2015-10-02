@@ -33,38 +33,38 @@ mixin form(buttonText)
                     b
                         p
                             Фотографии
-            .b-set-fields
-                .b-photo
-                    .b-photo__download-mask
-                        .b-photo__image-default
+            .b-set-fields.js-set-fields
+                .b-photo.js-photo
+                    .b-photo__download-mask.js-download-mask
+                        .b-photo__image-default.js-default-image
                             img(id='ico', src="resources/images/photo-ico.png", width="42", height="42")
-                        .b-delete-photo
-                            input.b-delete-photo__input-delete(type='radio', name='firstImageDelete')
-                        .b-photo__product-image
+                        .b-delete-photo.js-backet
+                            input.b-delete-photo__input-delete.js-input-delete(type='radio', name='firstImageDelete')
+                        .b-photo__product-image.js-product-image
                             if goods.firstImage!="resources/images/photo-ico.png"
                                 img(src=goods.firstImageUrl)
-                        input.b-download-mask__input-file-name(type='text', disabled='')
-                    input#first-file.b-download-mask__real-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-                .b-photo
-                    .b-photo__download-mask
-                        .b-photo__image-default
+                        input.b-download-mask__input-file-name.js-input-file-name(type='text', disabled='')
+                    input#first-file.b-download-mask__real-file-input.js-real-file-input(type='file', name='firstImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+                .b-photo.js-photo
+                    .b-photo__download-mask.js-download-mask
+                        .b-photo__image-default.js-default-image
                             img(src=src="resources/images/photo-ico.png", width="42", height="42")
-                        .b-delete-photo
-                            input.b-delete-photo__input-delete(type='radio', name='secondImageDelete')
-                        .b-photo__product-image
+                        .b-delete-photo.js-backet
+                            input.b-delete-photo__input-delete.js-input-delete(type='radio', name='secondImageDelete')
+                        .b-photo__product-image.js-product-image
                             if goods.secondImage!="resources/images/photo-ico.png"
                                 img(src=goods.secondImageUrl)
-                        input.b-download-mask__input-file-name(type='text', disabled='')
-                    input#second-file.b-download-mask__real-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
-                .b-photo
-                    .b-photo__download-mask
-                        .b-photo__image-default
+                        input.b-download-mask__input-file-name.js-input-file-name(type='text', disabled='')
+                    input#second-file.b-download-mask__real-file-input.js-real-file-input(type='file', name='secondImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+                .b-photo.js-photo
+                    .b-photo__download-mask.js-download-mask
+                        .b-photo__image-default.js-default-image
                             img(src=src="resources/images/photo-ico.png", width="42", height="42")
-                        .b-delete-photo
-                            input.b-delete-photo__input-delete(type='radio', name='thirdImageDelete')
-                        .b-photo__product-image
+                        .b-delete-photo.js-backet
+                            input.b-delete-photo__input-delete.js-input-delete(type='radio', name='thirdImageDelete')
+                        .b-photo__product-image.js-product-image
                             if goods.thirdImage!="resources/images/photo-ico.png"
                                 img(src=goods.thirdImageUrl)
-                        input.b-download-mask__input-file-name(type='text', disabled='')
-                    input#third-file.b-download-mask__real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
+                        input.b-download-mask__input-file-name.js-input-file-name(type='text', disabled='')
+                    input#third-file.b-download-mask__real-file-input.js-real-file-input(type='file',  name='thirdImage', title='', accept="image/jpeg,image/png,image/jpg,image/bmp")
         input.b-button--default.b-button--blue(type='submit', value="#{buttonText}")
