@@ -1,28 +1,22 @@
-var submit = flight.component(function() {
-  // click event handler
+var formData = flight.component(function() {
   this.onClick = function(event) {
     var sendInfo = {
                 form: $('.js-from').val(),
                 to: $('.js-to').val()
             }
-            /*isSuccess=true https://api.myjson.com/bins/2mree
-            isSucces=false  https://api.myjson.com/bins/4d4rq*/
+            /*isSuccess=true https://api.myjson.com/bins/4fihu
+            isSucces=false  https://api.myjson.com/bins/10wwy*/
             $.ajax({
-                url: "https://api.myjson.com/bins/4d4rq",
+                url: "https://api.myjson.com/bins/4fihu",
                 dataType: 'json',
                 type: 'GET', /*POST*/
                 data: sendInfo,
                 /*headers: {'X-CSRF-TOKEN': $('meta[name = _csrf]').attr('content') }, */
                 success: function(data, textStatus, jqXHR) {
-                    if (data.isSuccess)
-                        $('.js-status-bar').show();
+                    if (data.isSuccess==true)
+                        $('.js-status-bar').trigger('showSuccess', "");
                     else
-                        for (var i in data.errors){
-                            var buf = data.errors[i];
-                                $('input[name='+buf.key+']').addClass("js-input--with-error");
-                                $('.js-error').text(buf.value);
-                        }
-                    $('.js-errors').show();
+                        $('.js-errors').trigger('showErrors', {errors: data.errors});          
                 }
             }).fail(function($xhr) {
                 var data = $xhr.responseJSON;

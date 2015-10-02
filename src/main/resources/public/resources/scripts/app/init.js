@@ -1,3 +1,5 @@
 $(document).ready(function(){
-    submit.attachTo('.js-submit');
+    formData.attachTo('.js-submit');
+    formUI.attachTo('.js-errors');
+    formUI.attachTo('.js-status-bar');
 });
