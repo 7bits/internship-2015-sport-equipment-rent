@@ -1,0 +1,13 @@
+mixin error-page(errorTitle,errorText)
+    block title
+        title=errorTitle
+    block content
+        .b-message
+            .b-message-form
+                .b-title--default.b-title--blue
+                    p=errorTitle
+                .b-message-form__text--error
+                    p=errorText
+                .b-message-form__picture
+            a(href="/")
+                input.b-button--default.b-button--blue(type='button', value='НА ГЛАВНУЮ')

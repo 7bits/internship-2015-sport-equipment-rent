@@ -1,5 +1,3 @@
-
-
 .b-container,
 .b-reg-auth-container,
 .b-index-container{
@@ -15,6 +13,7 @@
 
 .b-reg-auth-container{
     background-image: url('../images/reg-bk.jpg');
+    background-size: cover;
 }
 
 

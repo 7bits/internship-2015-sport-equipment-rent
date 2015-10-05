@@ -1,11 +1,12 @@
 mixin create-message(textFirstPart,textSecondPart, firstButton, secondButton)
     .b-message
-        .b-message__text.b-message__text--with-buttons
-                p=textFirstPart
-                br
-                p=textSecondPart
-        .b-message__buttons    
-            a(href="/")
-                input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{firstButton}')
-            a(href="/")
-                input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{secondButton}')
+        .b-message-form
+            .b-message-form__text.b-message-form__text--with-buttons
+                    p=textFirstPart
+                    br
+                    p=textSecondPart
+            .b-message-form__buttons    
+                a(href="/")
+                    input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{firstButton}')
+                a(href="/")
+                    input.b-button--default.b-button--blue.b-button--half-size(type='button', value='#{secondButton}')
