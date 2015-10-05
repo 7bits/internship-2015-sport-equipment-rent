@@ -14,7 +14,7 @@ public interface GoodsMapper {
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "title", property = "title"),
-            @Result(column="description", property="description"),
+            @Result(column = "description", property = "description"),
             @Result(column = "price_per_hour", property = "pricePerHour"),
             @Result(column = "price_per_day", property = "pricePerDay"),
             @Result(column = "price_per_week", property = "pricePerWeek"),
@@ -26,7 +26,7 @@ public interface GoodsMapper {
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "title", property = "title"),
-            @Result(column="description", property="description"),
+            @Result(column = "description", property = "description"),
             @Result(column = "pledge", property = "pledge"),
             @Result(column = "price_per_hour", property = "pricePerHour"),
             @Result(column = "price_per_day", property = "pricePerDay"),
@@ -41,7 +41,7 @@ public interface GoodsMapper {
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "title", property = "title"),
-            @Result(column="description", property="description"),
+            @Result(column = "description", property = "description"),
             @Result(column = "pledge", property = "pledge"),
             @Result(column = "price_per_hour", property = "pricePerHour"),
             @Result(column = "price_per_day", property = "pricePerDay"),
@@ -52,12 +52,16 @@ public interface GoodsMapper {
     List<Goods> getGoodsByAuthorId(long id);
 
     @Options(useGeneratedKeys = true)
-    @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, price_per_day, price_per_week, status, author_id)" +
-            " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
+    @Insert("INSERT INTO goods (title, description, pledge, price_per_hour, " +
+            "price_per_day, price_per_week, status, author_id)" +
+            " VALUES (#{title}, #{description}, #{pledge}, #{pricePerHour}, " +
+            "#{pricePerDay}, #{pricePerWeek}, true, #{authorId})")
     void save(final Goods goods);
 
-    @Update("UPDATE goods SET (title, description, pledge, price_per_hour, price_per_day, price_per_week)=" +
-            "(#{title}, #{description}, #{pledge}, #{pricePerHour}, #{pricePerDay}, #{pricePerWeek})" +
+    @Update("UPDATE goods SET (title, description, pledge, price_per_hour, " +
+            "price_per_day, price_per_week)=" +
+            "(#{title}, #{description}, #{pledge}, #{pricePerHour}, " +
+            "#{pricePerDay}, #{pricePerWeek})" +
             "  where id=#{id}")
     void update(Goods goods);
 
@@ -72,7 +76,8 @@ public interface GoodsMapper {
                 @Result(column = "goods_id", property = "goodsId")})
     List<Image> getImages(@Param("goodsId") long goodsId);
 
-    @Select("SELECT * FROM announcement_image where goods_id = #{id} and image_url!='resources/images/photo-ico.png' ORDER BY id LIMIT 1")
+    @Select("SELECT * FROM announcement_image where goods_id = #{id} and " +
+            "image_url!='resources/images/photo-ico.png' ORDER BY id LIMIT 1")
     @Results({
             @Result(column = "image_url", property = "url"),
             @Result(column = "id", property = "id"),

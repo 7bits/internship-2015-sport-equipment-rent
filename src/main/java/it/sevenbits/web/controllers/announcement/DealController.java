@@ -30,7 +30,7 @@ public class DealController {
     @Autowired
     private UserService userService;
 
-    private Logger LOG = Logger.getLogger(DealController.class);
+    private Logger logger = Logger.getLogger(DealController.class);
 
 
     @Autowired
@@ -64,7 +64,7 @@ public class DealController {
         try {
             dealService.accept(dealId, isGet);
         } catch (DealServiceException e) {
-            LOG.error(e.getMessage());
+            logger.error(e.getMessage());
             return "home/error";
         }
         if (isGet) {
@@ -80,7 +80,7 @@ public class DealController {
                                  final Model model) {
         Deal deal = null;
         try {
-            dealService.close(dealId, deal);
+            dealService.close(dealId);
         } catch (DealServiceException e) {
             return "home/error";
 
@@ -99,18 +99,32 @@ public class DealController {
     public String closeEnd(@RequestParam(value = "deal_id", required = false) final long dealId,
                            final Model model) {
         User landlord = null;
-        Deal deal = dealService.getDeal(dealId);
+        Deal deal = null;
+        try {
+            deal = dealService.getDeal(dealId);
+        } catch (DealServiceException e) {
+            logger.error("An error appeared on getting deal");
+            return "home/error";
+        }
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
             e.printStackTrace();
         }
-        dealService.updateRealEndDate(dealId);
+        try {
+            dealService.updateRealEndDate(dealId);
+        } catch (DealServiceException e) {
+            return "home/error";
+        }
         deal.setIsClosed(true);
         if (landlord.getId() != deal.getLandlordId()) {
             return "home/error_message";
         }
-        dealService.update(deal);
+        try {
+            dealService.update(deal);
+        } catch (DealServiceException e) {
+            return "home/error";
+        }
         return "home/message_when_rent_is_end";
     }
 

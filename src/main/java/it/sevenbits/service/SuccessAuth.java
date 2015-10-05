@@ -13,12 +13,15 @@ import java.io.IOException;
 /**
  * Created by awemath on 7/23/15.
  */
-public class SuccessAuth implements AuthenticationSuccessHandler{
+public class SuccessAuth implements AuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(
+            final HttpServletRequest httpServletRequest,
+            final HttpServletResponse httpServletResponse,
+            final Authentication authentication) throws IOException, ServletException {
         HttpSession session = httpServletRequest.getSession();
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
-        if(form != null){
+        if (form != null) {
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
             httpServletResponse.sendRedirect("home/confirm");
         }

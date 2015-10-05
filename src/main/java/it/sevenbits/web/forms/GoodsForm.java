@@ -19,12 +19,11 @@ public class GoodsForm {
     private String authorPhone;
     private List<String> imageUrl = new LinkedList<>();
 
-
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -32,7 +31,7 @@ public class GoodsForm {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -40,7 +39,7 @@ public class GoodsForm {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -48,7 +47,7 @@ public class GoodsForm {
         return pledge;
     }
 
-    public void setPledge(String pledge) {
+    public void setPledge(final String pledge) {
         this.pledge = pledge;
     }
 
@@ -56,7 +55,7 @@ public class GoodsForm {
         return pricePerHour;
     }
 
-    public void setPricePerHour(String pricePerHour) {
+    public void setPricePerHour(final String pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
@@ -64,7 +63,7 @@ public class GoodsForm {
         return pricePerDay;
     }
 
-    public void setPricePerDay(String pricePerDay) {
+    public void setPricePerDay(final String pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
 
@@ -72,7 +71,7 @@ public class GoodsForm {
         return pricePerWeek;
     }
 
-    public void setPricePerWeek(String pricePerWeek) {
+    public void setPricePerWeek(final String pricePerWeek) {
         this.pricePerWeek = pricePerWeek;
     }
 
@@ -80,7 +79,7 @@ public class GoodsForm {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(final String author) {
         this.author = author;
     }
 
@@ -88,34 +87,36 @@ public class GoodsForm {
         return authorPhone;
     }
 
-    public void setAuthorPhone(String authorPhone) {
+    public void setAuthorPhone(final String authorPhone) {
         this.authorPhone = authorPhone;
     }
 
-    public static GoodsForm valueOf(Goods goods) {
+    public static GoodsForm valueOf(final Goods goods) {
         GoodsForm form = new GoodsForm();
         form.setId(goods.getId());
         form.setTitle(goods.getTitle());
         form.setAuthor(goods.getAuthor());
         form.setPledge(goods.getPledge());
         form.setDescription(goods.getDescription());
-        form.setPricePerHour(String.valueOf((int)goods.getPricePerHour()));
-        form.setPricePerDay(String.valueOf((int)goods.getPricePerDay()));
-        form.setPricePerWeek(String.valueOf((int)goods.getPricePerWeek()));
+        form.setPricePerHour(String.valueOf((int) goods.getPricePerHour()));
+        form.setPricePerDay(String.valueOf((int) goods.getPricePerDay()));
+        form.setPricePerWeek(String.valueOf((int) goods.getPricePerWeek()));
         return form;
     }
+
     public List<String> getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(List<String> imageUrl) {
+    public void setImageUrl(final List<String> imageUrl) {
         this.imageUrl = imageUrl;
     }
-    public void addImageUrl(String imageUrl){
+
+    public void addImageUrl(final String imageUrl) {
         this.imageUrl.add(imageUrl);
     }
 
-    public Goods toGoods(User user){
+    public Goods toGoods(final User user) {
         GoodsForm form = this;
         Goods goods = new Goods();
         goods.setTitle(form.getTitle());
@@ -129,7 +130,8 @@ public class GoodsForm {
         goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
         return goods;
     }
-    public Goods toGoods(){
+
+    public Goods toGoods() {
         GoodsForm form = this;
         Goods goods = new Goods();
         goods.setTitle(form.getTitle());

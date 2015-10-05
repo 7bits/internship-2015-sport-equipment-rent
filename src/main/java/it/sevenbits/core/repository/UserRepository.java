@@ -1,6 +1,5 @@
 package it.sevenbits.core.repository;
 
-import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.User;
 
 /**
@@ -10,9 +9,9 @@ public interface UserRepository {
     void save(final User user) throws RepositoryException;
     User getUser(final String email) throws RepositoryException;
     User getUserById(final long id) throws RepositoryException;
-    int getCountOfUsersWithThatEmail(String email);
+    int getCountOfUsersWithThatEmail(String email) throws RepositoryException;
 
-    void update(User user);
+    void update(User user) throws RepositoryException;
 
-    void updatePass(User user);
+    void updatePass(User user) throws RepositoryException;
 }

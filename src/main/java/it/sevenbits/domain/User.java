@@ -8,26 +8,19 @@ import java.io.Serializable;
  * Created by awemath on 7/14/15.
  */
 public class User implements Serializable {
-    Long id;
-    String firstName;
-    String secondName;
-    String phone;
-    String email;
-    String pass;
-    String imageUrl;
+    private Long id;
+    private String firstName;
+    private String secondName;
+    private String phone;
+    private String email;
+    private String pass;
+    private String imageUrl;
+
     public Long getId() {
         return id;
     }
 
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -35,7 +28,7 @@ public class User implements Serializable {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -43,7 +36,7 @@ public class User implements Serializable {
         return secondName;
     }
 
-    public void setSecondName(String secondName) {
+    public void setSecondName(final String secondName) {
         this.secondName = secondName;
     }
 
@@ -51,7 +44,7 @@ public class User implements Serializable {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 
@@ -59,19 +52,27 @@ public class User implements Serializable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(final String pass) {
+        this.pass = pass;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(final String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    public static User valueOf(UpdateUserForm form) {
+    public static User valueOf(final UpdateUserForm form) {
         User user = new User();
         user.setFirstName(form.getFirstName());
         user.setPhone(form.getPhone());

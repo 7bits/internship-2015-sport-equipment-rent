@@ -38,32 +38,33 @@ public class UpdateController {
     private String defaultImage;
 
     @Autowired
-    GoodsService goodsService;
+    private GoodsService goodsService;
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    Logger LOG = Logger.getLogger(UpdateController.class);
+    private Logger logger = Logger.getLogger(UpdateController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String update(@RequestParam(value = "announcement_id", required = false) String announcementId, final Model model) {
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
+    public String update(@RequestParam(value = "announcement_id", required = false) final String announcementId,
+                         final Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("isAuth",
+                !name.equals("anonymousUser"));
         User user = null;
         try {
             user = userService.getUser(name);
-
         } catch (UserServiceException e) {
-            LOG.error("An error appeared on getting user from repository: " + e.getMessage());
+            logger.error("An error appeared on getting user from repository: " + e.getMessage());
             return "home/error";
         }
         Goods goods = null;
         try {
             goods = goodsService.getGoods(Long.valueOf(announcementId));
         } catch (GoodsException e) {
-            LOG.error("An error appeared while picking goods from repository: " + e.getMessage());
+            logger.error("An error appeared while picking goods from repository: " + e.getMessage());
             return "home/error";
         } catch (UserServiceException e) {
-            LOG.error("An error appeared while getting user from repository: " + e.getMessage());
+            logger.error("An error appeared while getting user from repository: " + e.getMessage());
             return "home/error";
         }
         if (user.getId() != goods.getAuthorId()) {
@@ -84,29 +85,32 @@ public class UpdateController {
     private AddNewGoodsFormValidator validator;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submit(@RequestParam(value = "announcement_id", required = false) String announcementId,
-                         @RequestParam("firstImage") MultipartFile firstImage,
-                         @RequestParam("secondImage") MultipartFile secondImage,
-                         @RequestParam("thirdImage") MultipartFile thirdImage,
-                         @RequestParam(value = "firstImageDelete", required = false) boolean firstImageDelete,
-                         @RequestParam(value = "secondImageDelete", required = false) boolean secondImageDelete,
-                         @RequestParam(value = "thirdImageDelete", required = false) boolean thirdImageDelete,
-                         final Model model, @ModelAttribute GoodsForm form) {
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
+    public String submit(@RequestParam(value = "announcement_id", required = false) final String announcementId,
+                         @RequestParam("firstImage") final MultipartFile firstImage,
+                         @RequestParam("secondImage") final MultipartFile secondImage,
+                         @RequestParam("thirdImage") final MultipartFile thirdImage,
+                         @RequestParam(value = "firstImageDelete", required = false) final boolean firstImageDelete,
+                         @RequestParam(value = "secondImageDelete", required = false) final boolean secondImageDelete,
+                         @RequestParam(value = "thirdImageDelete", required = false) final boolean thirdImageDelete,
+                         final Model model,
+                         @ModelAttribute final GoodsForm form) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("isAuth",
+                 !name.equals("anonymousUser"));
         final Map<String, String> errors = validator.validate(form);
         List<MultipartFile> images = new LinkedList<MultipartFile>();
         images.add(firstImage);
         images.add(secondImage);
         images.add(thirdImage);
-        boolean deleted[] = new boolean[3];
+        boolean[] deleted = new boolean[3];
         deleted[0] = firstImageDelete;
         deleted[1] = secondImageDelete;
         deleted[2] = thirdImageDelete;
+
         if (errors.size() != 0) {
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
-            model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-            LOG.info("Update form contains errors.");
+            logger.info("Update form contains errors.");
             return "home/update_announcement";
         }
         User user = null;
@@ -114,14 +118,14 @@ public class UpdateController {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
 
-            LOG.error("An error appeared while getting user from repository: " + e.getMessage());
+            logger.error("An error appeared while getting user from repository: " + e.getMessage());
             return "home/error";
         }
         Goods goods = form.toGoods(user);
         try {
             goodsService.updateAnnouncement(images, deleted, goods, Long.valueOf(announcementId));
         } catch (GoodsException e) {
-            LOG.error(e.getMessage());
+            logger.error(e.getMessage());
             return "home/error";
         }
         return "redirect:/see_announcement?announcement_id=" + announcementId;

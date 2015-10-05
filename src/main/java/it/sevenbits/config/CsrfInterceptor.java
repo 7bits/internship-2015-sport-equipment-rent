@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 public class CsrfInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            Object handler,
-            ModelAndView mav
+            final HttpServletRequest request,
+            final HttpServletResponse response,
+            final Object handler,
+            final ModelAndView mav
     ) throws Exception {
         if (mav != null) {
             mav.addObject("_csrf", request.getAttribute("_csrf"));

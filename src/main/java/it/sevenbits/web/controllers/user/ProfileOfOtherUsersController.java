@@ -28,22 +28,22 @@ public class ProfileOfOtherUsersController {
     @Autowired
     private GoodsService goodsService;
 
-    Logger LOG = Logger.getLogger(ProfileOfOtherUsersController.class);
+    private Logger logger = Logger.getLogger(ProfileOfOtherUsersController.class);
 
     @RequestMapping(method = RequestMethod.GET)
-    public String login(@RequestParam(value="user_id", required = false) String userId, final Model model) {
+    public String login(@RequestParam(value = "user_id", required = false) final String userId, final Model model) {
         User user = null;
         try {
             user = userService.getUser(Long.valueOf(userId));
         } catch (Exception e) {
-            LOG.error("An error at class ProfileOfOtherUsers: "+e.getMessage());
+            logger.error("An error at class ProfileOfOtherUsers: " + e.getMessage());
         }
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        if(name.equals(user.getEmail())){
+        if (name.equals(user.getEmail())) {
             return "redirect:/personal_area";
         }
-        model.addAttribute("isAuth", name!="anonymousUser");
+        model.addAttribute("isAuth", !name.equals("anonymousUser"));
         model.addAttribute("user", user);
         List<Goods> goods = goodsService.getGoodsByAuthorId(user.getId());
         model.addAttribute("goods", goods);

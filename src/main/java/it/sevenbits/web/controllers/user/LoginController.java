@@ -20,7 +20,7 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/login")
 public class LoginController {
-    private static Logger LOG = Logger.getLogger(HomeController.class);
+    private static Logger logger = Logger.getLogger(HomeController.class);
 
     @Autowired
     private GoodsService service;

@@ -1,7 +1,6 @@
 package it.sevenbits.core.repository;
 
 import it.sevenbits.core.exceptions.GoodsRepositoryException;
-import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.Image;
 
@@ -11,9 +10,9 @@ import java.util.List;
  * Created by awemath on 7/8/15.
  */
 public interface GoodsRepository {
-        void save(final Goods goods) throws GoodsRepositoryException;
-        List<Goods> findAll() throws GoodsRepositoryException;
-        Goods getGoods(long id) throws GoodsRepositoryException;
+        void save(final Goods goods) throws  RepositoryException;
+        List<Goods> findAll() throws  RepositoryException;
+        Goods getGoods(long id) throws  RepositoryException;
         List <Goods> getGoodsByAuthorId(long id);
         void update(Goods form);
 

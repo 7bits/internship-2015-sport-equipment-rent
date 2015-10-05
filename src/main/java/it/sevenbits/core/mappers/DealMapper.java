@@ -3,6 +3,7 @@ package it.sevenbits.core.mappers;
 import it.sevenbits.domain.Deal;
 import org.apache.ibatis.annotations.*;
 
+
 import java.util.List;
 
 /**
@@ -12,12 +13,13 @@ public interface DealMapper {
     @Options(useGeneratedKeys = true)
     @Insert("INSERT INTO deals (landlord_id, renting_id, goods_id, handed, is_answered, estimated_start_date, " +
             "estimated_end_date, is_closed, accepted_renting, accepted_return)" +
-            " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{estimateStartDate}, #{estimateEndDate}, #{isClosed}" +
-            ", #{acceptedRenting}, #{acceptedReturn})")
+            " VALUES (#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{estimateStartDate}, " +
+            "#{estimateEndDate}, #{isClosed}, #{acceptedRenting}, #{acceptedReturn})")
 
     void save(final Deal deal);
 
-    @Update("UPDATE deals SET (landlord_id, renting_id,  goods_id, handed, is_answered, is_closed)=(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{isClosed})" +
+    @Update("UPDATE deals SET (landlord_id, renting_id,  goods_id, handed, is_answered, is_closed) = " +
+            "(#{landlordId}, #{rentingId}, #{goodsId}, #{isHanded}, #{isAnswered}, #{isClosed})" +
             " WHERE id = #{id}")
     void update(final Deal deal);
 
@@ -39,10 +41,12 @@ public interface DealMapper {
     })
     Deal getDeal(long dealId);
 
-    @Select("SELECT id FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and renting_id=#{rentingId} and is_answered=#{isAnswered}")
+    @Select("SELECT id FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and " +
+            "renting_id=#{rentingId} and is_answered=#{isAnswered}")
     long getId(Deal deal);
 
-    @Select("SELECT count(id) FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and renting_id=#{rentingId} and is_answered=false")
+    @Select("SELECT count(id) FROM deals where landlord_id=#{landlordId} and goods_id=#{goodsId} and" +
+            " renting_id=#{rentingId} and is_answered=false")
     long isExist(Deal deal);
 
     @Delete("DELETE FROM deals where goods_id=#{goodsId}")

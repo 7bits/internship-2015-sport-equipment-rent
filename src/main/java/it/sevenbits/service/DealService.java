@@ -1,6 +1,8 @@
 package it.sevenbits.service;
 
 import it.sevenbits.core.repository.DealRepository;
+import it.sevenbits.core.repository.RepositoryException;
+import it.sevenbits.core.repository.postgresql.DealInPostgreSQLRepository;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
@@ -8,6 +10,7 @@ import it.sevenbits.service.exceptions.DealServiceException;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
+import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,48 +37,100 @@ public class DealService {
     private UserService userService;
 
     @Autowired
-    MailSubmissionController mail;
+    private MailSubmissionController mail;
 
-    public void save(final Deal deal) {
-        repository.save(deal);
+    private Logger logger = Logger.getLogger(DealService.class);
+
+    public void save(final Deal deal) throws DealServiceException {
+        try {
+            repository.save(deal);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on saving deal", e);
+            throw new DealServiceException("An error appeared on saving deal", e);
+        }
     }
 
-    public Deal getDeal(final long dealId) {
-        return repository.getDeal(dealId);
+    public Deal getDeal(final long dealId) throws DealServiceException {
+        try {
+            return repository.getDeal(dealId);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on getting deal", e);
+            throw new DealServiceException("An error appeared on getting deal", e);
+        }
     }
 
-    public long getId(final Deal deal) {
-        return repository.getId(deal);
+    public long getId(final Deal deal) throws DealServiceException {
+        try {
+            return repository.getId(deal);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on getting deals id", e);
+            throw new DealServiceException("An error appeared on getting deals id", e);
+        }
     }
 
 
-    public void update(final Deal deal) {
-        repository.update(deal);
+    public void update(final Deal deal) throws DealServiceException {
+        try {
+            repository.update(deal);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on updating deal", e);
+            throw new DealServiceException("An error appeared on updating deal", e);
+        }
     }
 
 
-    public boolean isExist(final Deal deal) {
-        return repository.isExist(deal);
+    public boolean isExist(final Deal deal) throws DealServiceException {
+        try {
+            return repository.isExist(deal);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on checking exist deal", e);
+            throw new DealServiceException("An error appeared on checking exist deal", e);
+        }
     }
 
-    public void deleteAllOnGoods(final long goodsId) {
-        repository.deleteAllOnGoods(goodsId);
+    public void deleteAllOnGoods(final long goodsId) throws DealServiceException {
+        try {
+            repository.deleteAllOnGoods(goodsId);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on deleting deals of the goods", e);
+            throw new DealServiceException("An error appeared on deleting deals of the goods", e);
+        }
     }
 
-    public void updateRealStartDate(final long dealId) {
-        repository.updateRealStartDate(dealId);
+    public void updateRealStartDate(final long dealId) throws DealServiceException {
+        try {
+            repository.updateRealStartDate(dealId);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on updating real start date of the deals", e);
+            throw new DealServiceException("An error appeared on updating real start date of the deals", e);
+        }
     }
 
-    public void updateRealEndDate(final long dealId) {
-        repository.updateRealEndDate(dealId);
+    public void updateRealEndDate(final long dealId) throws DealServiceException {
+        try {
+            repository.updateRealEndDate(dealId);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on updating real end date of the deals", e);
+            throw new DealServiceException("An error appeared on updating real end date of the deals", e);
+        }
     }
 
-    public List<Deal> getOpenWithId(final long goodsId) {
-        return repository.getOpenWithId(goodsId);
+    public List<Deal> getOpenWithId(final long goodsId) throws DealServiceException {
+        try {
+            return repository.getOpenWithId(goodsId);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on getting open deals of the goods", e);
+            throw new DealServiceException("An error appeared on getting open deals of the goods", e);
+        }
     }
 
-    public List<Deal> getDealsOfUser(final Long id) {
-        return repository.getDealsOfUser(id);
+    public List<Deal> getDealsOfUser(final Long id) throws DealServiceException {
+        try {
+            return repository.getDealsOfUser(id);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on getting deals of the user", e);
+            throw new DealServiceException("An error appeared on getting deals of the user", e);
+        }
     }
 
 
@@ -101,7 +156,9 @@ public class DealService {
 
     }
 
-    public void handed(long dealId, boolean isHanded) throws DealServiceException {
+    public void handed(
+            final long dealId,
+            final boolean isHanded) throws DealServiceException {
         Deal deal = getDeal(dealId);
         User landlord = null;
         try {
@@ -126,7 +183,9 @@ public class DealService {
         }
     }
 
-    public void accept(long dealId, boolean isGet) throws DealServiceException {
+    public void accept(
+            final long dealId,
+            final boolean isGet) throws DealServiceException {
         Deal deal = getDeal(dealId);
         User renting = null;
         try {
@@ -147,7 +206,9 @@ public class DealService {
         }
     }
 
-    public void close(long dealId, Deal deal) throws DealServiceException {
+    public void close(
+            final long dealId) throws DealServiceException {
+        Deal deal = null;
         deal = getDeal(dealId);
         User user = null;
         try {

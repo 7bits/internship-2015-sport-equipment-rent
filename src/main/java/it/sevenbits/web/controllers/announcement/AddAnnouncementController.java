@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -48,17 +47,14 @@ public class AddAnnouncementController {
     @Autowired
     private UserService userService;
 
-    private Logger LOG = Logger.getLogger(AddAnnouncementController.class);
+    private Logger logger = Logger.getLogger(AddAnnouncementController.class);
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String index(final Model model) {
-        // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
         model.addAttribute("isAuth",
                 SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-        // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
-        // Если шаблона не будет найдено, то вернется 404 ошибка
         return "home/add_announcement";
     }
 
@@ -69,7 +65,7 @@ public class AddAnnouncementController {
                          @RequestParam("firstImage") final MultipartFile firstImage,
                          @RequestParam("secondImage") final MultipartFile secondImage,
                          @RequestParam("thirdImage") final MultipartFile thirdImage,
-                         HttpSession session) {
+                         final HttpSession session) {
 
         model.addAttribute("isAuth",
                 SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
@@ -99,19 +95,19 @@ public class AddAnnouncementController {
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         } catch (UserServiceException e) {
-            LOG.error("An error appeared on getting user from repository" + e.getMessage());
+            logger.error("An error appeared on getting user from repository" + e.getMessage());
             return "home/error";
         }
         Goods goods = null;
-        if(isAuth) {
+        if (isAuth) {
             goods = form.toGoods(user);
-        }else{
+        } else {
             goods = form.toGoods();
         }
         try {
             goodsId = service.submitGoods(goods, images);
         } catch (GoodsException e) {
-            LOG.error("An error appeared on submting goods " + e.getMessage());
+            logger.error("An error appeared on submting goods " + e.getMessage());
             return "home/error";
         }
 
