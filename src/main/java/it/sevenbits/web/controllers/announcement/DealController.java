@@ -1,9 +1,8 @@
 package it.sevenbits.web.controllers.announcement;
 
 
-import it.sevenbits.service.exceptions.DealServiceException;
+import it.sevenbits.service.exceptions.*;
 
-import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.User;
@@ -40,9 +39,15 @@ public class DealController {
     public String deal(@RequestParam(value = "deal_id", required = false) final long dealId,
                        @RequestParam(value = "accept", required = false) final boolean isHanded,
                        final Model model) {
+
         try {
-            dealService.handed(dealId, isHanded);
-        } catch (DealServiceException e) {
+            User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+            dealService.handed(dealId, isHanded, user);
+        } catch (ServiceException e) {
+            return "home/error";
+        } catch (AccessDeniedException e) {
+            return "home/error";
+        } catch (AllreadyAnsweredException e) {
             return "home/error";
         }
         if (isHanded) {
@@ -63,7 +68,10 @@ public class DealController {
 
         try {
             dealService.accept(dealId, isGet);
-        } catch (DealServiceException e) {
+        } catch (ServiceException e) {
+            logger.error(e.getMessage());
+            return "home/error";
+        } catch (AccessDeniedException e) {
             logger.error(e.getMessage());
             return "home/error";
         }
@@ -81,9 +89,11 @@ public class DealController {
         Deal deal = null;
         try {
             dealService.close(dealId);
-        } catch (DealServiceException e) {
+        } catch (ServiceException e) {
+            logger.error(e.getMessage());
             return "home/error";
-
+        } catch (AccessDeniedException e) {
+            return "home/error";
         }
         model.addAttribute("id", deal.getId());
         if (DateTime.parse(deal.getEstimateEndDate()).getMillis() > DateTime.now().getMillis()) {
@@ -102,18 +112,20 @@ public class DealController {
         Deal deal = null;
         try {
             deal = dealService.getDeal(dealId);
-        } catch (DealServiceException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on getting deal");
             return "home/error";
         }
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            e.printStackTrace();
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting user");
+            return "home/error";
         }
         try {
             dealService.updateRealEndDate(dealId);
-        } catch (DealServiceException e) {
+        } catch (ServiceException e) {
+            logger.error("An error appeared on updating deal`s real end date");
             return "home/error";
         }
         deal.setIsClosed(true);
@@ -122,7 +134,8 @@ public class DealController {
         }
         try {
             dealService.update(deal);
-        } catch (DealServiceException e) {
+        } catch (ServiceException e) {
+            logger.error("An error appeared on updating deal", e);
             return "home/error";
         }
         return "home/message_when_rent_is_end";

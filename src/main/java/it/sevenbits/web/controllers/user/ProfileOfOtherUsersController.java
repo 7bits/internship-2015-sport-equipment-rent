@@ -4,6 +4,7 @@ import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,8 +36,10 @@ public class ProfileOfOtherUsersController {
         User user = null;
         try {
             user = userService.getUser(Long.valueOf(userId));
-        } catch (Exception e) {
-            logger.error("An error at class ProfileOfOtherUsers: " + e.getMessage());
+        } catch (ServiceException e) {
+            return "home/error";
+        } catch (NumberFormatException e) {
+            return "home/error";
         }
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
 

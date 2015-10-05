@@ -2,6 +2,7 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
@@ -80,8 +81,8 @@ public class ConfirmController {
             User user = null;
             try {
                 user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-            } catch (UserServiceException e) {
-                logger.error("An error appeared on getting user from repository " + e.getMessage());
+            } catch (ServiceException e) {
+                logger.error("An error appeared on getting user from repository ", e);
             }
             Goods goods = form.toGoods(user);
             goods.setImageUrl((List<String>) session.getAttribute("images"));

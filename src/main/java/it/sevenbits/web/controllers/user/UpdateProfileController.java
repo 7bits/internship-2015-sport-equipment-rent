@@ -2,6 +2,7 @@ package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.domain.User;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.service.validators.UpdateFieldValidator;
 import it.sevenbits.web.forms.UpdateUserForm;
@@ -37,7 +38,7 @@ public class UpdateProfileController {
         User user = null;
         try {
             user = userService.getUser(name);
-        } catch (UserServiceException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on getting user: " + e.getMessage());
             return "home/error";
         }
@@ -54,8 +55,8 @@ public class UpdateProfileController {
             User user = null;
             try {
                 user = userService.getUser(name);
-            } catch (UserServiceException e) {
-                logger.error("An error appeared on getting user: " + e.getMessage());
+            } catch (ServiceException e) {
+                logger.error("An error appeared on getting user: ", e);
             }
             if (BCrypt.checkpw(form.getPass(), user.getPass())) {
                 if (form.getNewPass().length() > 0) {
@@ -77,8 +78,8 @@ public class UpdateProfileController {
         User user = User.valueOf(form);
         try {
             user.setId(userService.getUser(name).getId());
-        } catch (UserServiceException e) {
-            logger.error("An error appeared on getting user: " + e.getMessage());
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting user: ", e);
         }
         userService.update(user);
         return "redirect:/personal_area";

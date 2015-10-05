@@ -2,6 +2,7 @@ package it.sevenbits.service.validators;
 
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.DealServiceException;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.web.forms.DateForm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class TakeGoodsValidator {
     private DealService dealService;
 
     public HashMap<String, String> validate(final DateForm form,
-                                            final long goodsId) throws DealServiceException {
+                                            final long goodsId) throws ServiceException {
 
         logger.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();

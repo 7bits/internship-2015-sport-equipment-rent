@@ -35,7 +35,7 @@ public class HistoryService {
         List<Deal> deals = null;
         try {
             deals = dealService.getDealsOfUser(user.getId());
-        } catch (DealServiceException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on getting users history", e);
             throw new ServiceException("An error appeared on getting users history", e);
         }
@@ -48,7 +48,7 @@ public class HistoryService {
             User renting = null;
             try {
                 renting = userService.getUser(deals.get(i).getRentingId());
-            } catch (UserServiceException e) {
+            } catch (ServiceException e) {
                 e.printStackTrace();
             }
             row.setRenting(renting.getFirstName());
@@ -57,9 +57,7 @@ public class HistoryService {
             Goods goods = null;
             try {
                 goods = goodsService.getGoods(deals.get(i).getGoodsId());
-            } catch (UserServiceException e) {
-                e.printStackTrace();
-            } catch (GoodsException e) {
+            } catch (ServiceException e) {
                 e.printStackTrace();
             }
             row.setTitle(goods.getTitle());

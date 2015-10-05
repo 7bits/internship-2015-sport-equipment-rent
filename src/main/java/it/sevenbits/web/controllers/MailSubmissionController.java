@@ -8,6 +8,7 @@ import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,11 +95,9 @@ public class MailSubmissionController {
 
             sendEmail(html, title, renting.getEmail());
 
-        } catch (GoodsException e) {
-            logger.error("Email didn`t send", e);
         } catch (IOException e) {
             logger.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
+        } catch (ServiceException e) {
             logger.error("Email didn`t send", e);
         }
     }
@@ -122,11 +121,9 @@ public class MailSubmissionController {
             model.put("goods", goods);
             String html = jade.renderTemplate(template, model);
             sendEmail(html, title, renting.getEmail());
-        } catch (GoodsException e) {
+        } catch (ServiceException e) {
             logger.error("Email didn`t send", e);
         } catch (IOException e) {
-            logger.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
             logger.error("Email didn`t send", e);
         }
     }
@@ -147,9 +144,7 @@ public class MailSubmissionController {
             model.put("goods", goods);
             String html = jade.renderTemplate(template, model);
             sendEmail(html, title, landlord.getEmail());
-        } catch (GoodsException e) {
-            logger.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
+        } catch (ServiceException e) {
             logger.error("Email didn`t send", e);
         } catch (IOException e) {
             logger.error("Email didn`t send", e);
@@ -173,11 +168,9 @@ public class MailSubmissionController {
             String html = jade.renderTemplate(template, model);
             sendEmail(html, title, landlord.getEmail());
 
-        } catch (GoodsException e) {
-            logger.error("Email didn`t send", e);
         } catch (IOException e) {
             logger.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
+        } catch (ServiceException e) {
             logger.error("Email didn`t send", e);
         }
     }

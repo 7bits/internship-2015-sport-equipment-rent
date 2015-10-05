@@ -45,9 +45,6 @@ public class UsersHistoryController {
         } catch (ServiceException e) {
             logger.error("Cant show history of user " + e.getMessage());
             return "home/error";
-        } catch (UserServiceException e) {
-            logger.error("An error appeared on getting user", e);
-            return "home/error";
         }
         return "home/history";
     }

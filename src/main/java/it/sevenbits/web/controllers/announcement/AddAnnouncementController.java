@@ -2,6 +2,7 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.service.exceptions.GoodsException;
@@ -94,7 +95,7 @@ public class AddAnnouncementController {
         User user = null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on getting user from repository" + e.getMessage());
             return "home/error";
         }
