@@ -1,8 +1,8 @@
 package it.sevenbits.core.repository.postgresql;
 
-import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.mappers.GoodsMapper;
 import it.sevenbits.core.repository.GoodsRepository;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.Image;
 import org.apache.log4j.Logger;
@@ -26,7 +26,7 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository {
 
 
     @Override
-    public void save(final Goods goods) throws GoodsRepositoryException {
+    public void save(final Goods goods) throws RepositoryException {
         if (goods == null) {
             logger.error("Goods is null");
         }
@@ -35,24 +35,28 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository {
             logger.info("New goods saved: " + goods.toString());
         } catch (Exception e) {
             logger.error("An error occurred while saving subscription: " + goods.toString() + e.getMessage());
-            throw new GoodsRepositoryException("An error occurred while saving subscription: ", e);
+            throw new RepositoryException("An error occurred while saving subscription: ", e);
         }
     }
 
     @Override
-    public List<Goods> findAll() throws GoodsRepositoryException {
+    public List<Goods> findAll() throws RepositoryException {
         try {
             return mapper.findAll();
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new GoodsRepositoryException("An error occurred while selected subscription: ", e);
+            throw new RepositoryException("An error occurred while selected subscription: ", e);
         }
     }
 
 
-    public Goods getGoods(final long id) {
-
-        return mapper.getGoods(id);
+    public Goods getGoods(final long id) throws RepositoryException {
+        try {
+            return mapper.getGoods(id);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error occurred while selected goods: ", e);
+        }
     }
 
     @Override

@@ -52,12 +52,9 @@ public class AddAnnouncementController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String index(final Model model) {
-        // В модель добавим новый объект формы подписки
         model.addAttribute("goods", new GoodsForm());
         model.addAttribute("isAuth",
                 SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-        // Так как нет аннотации @ResponseBody, то spring будет искать шаблон по адресу home/index
-        // Если шаблона не будет найдено, то вернется 404 ошибка
         return "home/add_announcement";
     }
 

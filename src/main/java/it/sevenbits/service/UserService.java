@@ -8,6 +8,7 @@ import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.core.repository.UserRepository;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.UserServiceException;
+import org.apache.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +31,8 @@ public class UserService {
 
     @Value("${resources.default-users-avatar}")
     private String defaultUserAvatar;
+
+    private Logger logger = Logger.getLogger(UserService.class);
 
     public User getUser(final long id) throws UserServiceException {
         User user;
@@ -56,7 +59,12 @@ public class UserService {
     }
 
     public int getCountOfUsersWithEmail(final String email) {
-        return repository.getCountOfUsersWithThatEmail(email);
+        try {
+            return repository.getCountOfUsersWithThatEmail(email);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on getting users count with email", e);
+            
+        }
     }
 
     public void save(final User user) throws UserServiceException {
@@ -74,11 +82,20 @@ public class UserService {
     }
 
     public void update(final User user) {
-        repository.update(user);
+        try {
+            repository.update(user);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on updating user", e);
+        }
     }
 
     public void updatePass(final User user) {
         user.setPass(BCrypt.hashpw(user.getPass(), BCrypt.gensalt()));
-        repository.updatePass(user);
+        try {
+            repository.updatePass(user);
+        } catch (RepositoryException e) {
+            logger.error("An error appeared on updating users password", e);
+
+        }
     }
 }

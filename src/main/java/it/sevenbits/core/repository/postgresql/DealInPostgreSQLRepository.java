@@ -2,7 +2,9 @@ package it.sevenbits.core.repository.postgresql;
 
 import it.sevenbits.core.mappers.DealMapper;
 import it.sevenbits.core.repository.DealRepository;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Deal;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -18,53 +20,106 @@ import java.util.List;
 public class DealInPostgreSQLRepository implements DealRepository {
     @Autowired
     private DealMapper mapper;
-    @Override
-    public void save(final Deal deal) {
-        mapper.save(deal);
-    }
 
-    public Deal getDeal(final long dealId) {
-        return mapper.getDeal(dealId);
-    }
+    private Logger logger = Logger.getLogger(DealInPostgreSQLRepository.class);
 
     @Override
-    public void update(final Deal deal) {
-        mapper.update(deal);
+    public void save(final Deal deal) throws RepositoryException {
+        try {
+            mapper.save(deal);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while saving deals: ", e);
+        }
     }
 
-    @Override
-    public long getId(final Deal deal) {
-        return mapper.getId(deal);
-    }
-
-    @Override
-    public boolean isExist(final Deal deal) {
-        return mapper.isExist(deal) != 0;
-    }
-
-    @Override
-    public void deleteAllOnGoods(final long goodsId) {
-        mapper.deleteAllOnGoods(goodsId);
+    public Deal getDeal(final long dealId) throws RepositoryException {
+        try {
+            return mapper.getDeal(dealId);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while getting deals: ", e);
+        }
     }
 
     @Override
-    public void updateRealStartDate(final long dealId) {
-        mapper.updateRealStartDate(dealId);
+    public void update(final Deal deal) throws RepositoryException {
+        try {
+            mapper.update(deal);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while updating deals: ", e);
+        }
     }
 
     @Override
-    public void updateRealEndDate(final long dealId) {
-        mapper.updateRealEndDate(dealId);
+    public long getId(final Deal deal) throws RepositoryException {
+        try {
+            return mapper.getId(deal);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while getting deals id: ", e);
+        }
     }
 
     @Override
-    public List<Deal> getOpenWithId(final long goodsId) {
-        return mapper.getOpenWithId(goodsId);
+    public boolean isExist(final Deal deal) throws RepositoryException {
+        try {
+            return mapper.isExist(deal) != 0;
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while checking deals existing: ", e);
+        }
     }
 
     @Override
-    public List<Deal> getDealsOfUser(final Long id) {
-        return mapper.getDealsOfUser(id);
+    public void deleteAllOnGoods(final long goodsId) throws RepositoryException {
+        try {
+            mapper.deleteAllOnGoods(goodsId);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while deleting all delas on goods", e);
+        }
+    }
+
+    @Override
+    public void updateRealStartDate(final long dealId) throws RepositoryException {
+        try {
+            mapper.updateRealStartDate(dealId);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while updating real start date on deal: ", e);
+        }
+    }
+
+    @Override
+    public void updateRealEndDate(final long dealId) throws RepositoryException {
+        try {
+            mapper.updateRealEndDate(dealId);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while updating real end date on deal: ", e);
+        }
+    }
+
+    @Override
+    public List<Deal> getOpenWithId(final long goodsId) throws RepositoryException {
+        try {
+            return mapper.getOpenWithId(goodsId);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while getting open deals: ", e);
+        }
+    }
+
+    @Override
+    public List<Deal> getDealsOfUser(final Long id) throws RepositoryException {
+        try {
+            return mapper.getDealsOfUser(id);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            throw new RepositoryException("An error appeared while getting users deals: ", e);
+        }
     }
 
 }

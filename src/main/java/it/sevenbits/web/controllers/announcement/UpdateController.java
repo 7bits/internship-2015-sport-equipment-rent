@@ -106,6 +106,7 @@ public class UpdateController {
         deleted[0] = firstImageDelete;
         deleted[1] = secondImageDelete;
         deleted[2] = thirdImageDelete;
+
         if (errors.size() != 0) {
             model.addAttribute("goods", form);
             model.addAttribute("errors", errors);
