@@ -45,7 +45,13 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.POST)
     public String submit(@ModelAttribute final RegistrationForm form,
                          final Model model) {
-        final Map<String, String> errors = validator.validate(form);
+        Map<String, String> errors = null;
+        try {
+            errors = validator.validate(form);
+        } catch (UserServiceException e) {
+            logger.error("An error appeared on validating registration form", e);
+            return "home/error";
+        }
         if (errors.size() != 0) {
             model.addAttribute("user", form);
             model.addAttribute("errors", errors);

@@ -8,6 +8,8 @@ package it.sevenbits.service.validators;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.DealServiceException;
+import it.sevenbits.service.exceptions.UserServiceException;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
@@ -160,7 +162,7 @@ public class CommonFieldValidator {
             final Map<String, String> errors,
             final String key,
             final String field
-    ) {
+    ) throws UserServiceException {
         if (!errors.containsKey(key)) {
             if (userService.getCountOfUsersWithEmail(email) != 0) {
                 errors.put(key, field);
@@ -280,7 +282,7 @@ public class CommonFieldValidator {
             final DealService service,
             final HashMap<String, String> errors,
             final String key,
-            final String field) {
+            final String field) throws DealServiceException {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
             DateTime end = DateTime.parse(to);

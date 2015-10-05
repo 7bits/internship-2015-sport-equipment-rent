@@ -4,8 +4,11 @@ import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.HistoryRow;
 import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.DealServiceException;
 import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +29,16 @@ public class HistoryService {
     @Autowired
     private GoodsService goodsService;
 
-    public List<HistoryRow> getUsersHistory(final User user) throws UserServiceException {
-        List<Deal> deals = dealService.getDealsOfUser(user.getId());
+    Logger logger = Logger.getLogger(HistoryService.class);
+
+    public List<HistoryRow> getUsersHistory(final User user) throws ServiceException {
+        List<Deal> deals = null;
+        try {
+            deals = dealService.getDealsOfUser(user.getId());
+        } catch (DealServiceException e) {
+            logger.error("An error appeared on getting users history", e);
+            throw new ServiceException("An error appeared on getting users history", e);
+        }
         List<HistoryRow> table = new LinkedList<HistoryRow>();
         for (int i = 0; i < deals.size(); i++) {
             HistoryRow row = new HistoryRow();

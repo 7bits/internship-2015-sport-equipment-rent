@@ -2,6 +2,7 @@ package it.sevenbits.service;
 
 import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.Image;
 import it.sevenbits.domain.User;
@@ -75,7 +76,7 @@ public class GoodsService {
         goods.setPricePerWeek(Double.valueOf(form.getPricePerWeek()));
         try {
             repository.save(goods);
-        } catch (GoodsRepositoryException e) {
+        } catch (RepositoryException e) {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
@@ -129,7 +130,7 @@ public class GoodsService {
                 checkStatus(goods.get(i));
             }
             return goods;
-        } catch (GoodsRepositoryException e) {
+        } catch (RepositoryException e) {
             throw new GoodsException("An error occurred while retrieving all goods: " + e.getMessage(), e);
         }
 
@@ -156,7 +157,7 @@ public class GoodsService {
 
             goods.setImageUrl(imagesUrl);
 
-        } catch (GoodsRepositoryException e) {
+        } catch (RepositoryException e) {
             throw new GoodsException("Ann error occurred while retrieving one goods with id " + id + ": "
                     + e.getMessage(), e);
         }
@@ -198,7 +199,7 @@ public class GoodsService {
     public void save(final Goods goods) throws GoodsException {
         try {
             repository.save(goods);
-        } catch (GoodsRepositoryException e) {
+        } catch (RepositoryException e) {
             throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }

@@ -58,12 +58,12 @@ public class UserService {
         return user;
     }
 
-    public int getCountOfUsersWithEmail(final String email) {
+    public int getCountOfUsersWithEmail(final String email) throws UserServiceException {
         try {
             return repository.getCountOfUsersWithThatEmail(email);
         } catch (RepositoryException e) {
             logger.error("An error appeared on getting users count with email", e);
-            
+            throw new UserServiceException("An error appeared on getting users count with email", e);
         }
     }
 
