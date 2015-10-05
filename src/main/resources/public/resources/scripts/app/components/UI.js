@@ -1,12 +1,21 @@
 var formUI = flight.component(function() {
         
         this.showErrors = function(e, data){
-            for (var i in data.errors){
-                var buf = data.errors[i];
-                    $('input[name='+buf.key+']').addClass("js-input--with-error");
-                    $('.js-error').text(buf.value);
+            var theTemplateScript = $("#statusBar").html();
+            // Compile the template
+            var theTemplate = Handlebars.compile(theTemplateScript);
+            // This is the default context, which is passed to the template
+            var errors = data.errors;
+            var statusBar = {errors};
+            for (var i in errors){
+                $('input[name='+errors[i].key+']').addClass("js-input--with-error");
             }
-        $('.js-errors').show();}
+            // Pass our data to the template
+            var theCompiledHtml = theTemplate(statusBar);
+            // Add the compiled html to the page
+            $('.js-status-bar').append(theCompiledHtml);
+            $('.js-status-bar').show();
+        }
 
         this.showSuccess = function(e, data){
             // Grab the template script

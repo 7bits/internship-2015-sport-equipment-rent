@@ -4,10 +4,10 @@ var formData = flight.component(function() {
                 form: $('.js-from').val(),
                 to: $('.js-to').val()
             }
-            /*isSuccess=true https://api.myjson.com/bins/4fihu
-            isSucces=false  https://api.myjson.com/bins/10wwy*/
+            /*isSuccess=true https://api.myjson.com/bins/2pylm
+            isSucces=false  https://api.myjson.com/bins/256wy*/
             $.ajax({
-                url: "https://api.myjson.com/bins/2pylm",
+                url: "https://api.myjson.com/bins/256wy",
                 dataType: 'json',
                 type: 'GET', /*POST*/
                 data: sendInfo,

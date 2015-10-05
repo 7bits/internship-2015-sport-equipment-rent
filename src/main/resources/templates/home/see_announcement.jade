@@ -51,6 +51,9 @@ block content
                     input.b-button--default.b-button--green.js-submit(type='button', value='ЗАБРОНИРОВАТЬ')
                     script#statusBar(type='text/x-handlebars-template').
                         {{status}}
+                        {{#each errors}}
+                            {{value}}
+                        {{/each}}
                     .b-status-bar.js-status-bar
 block local-scripts
     script(src="resources/vendor/scripts/qb/js/qb.js")
