@@ -8,7 +8,7 @@ var formUI = flight.component(function() {
                 $('input[name='+errors[i].key+']').addClass("js-input--with-error");
             }
             var theCompiledHtml = theTemplate(statusBar);
-            $('.js-status-bar').append(theCompiledHtml);
+            $('.js-status-bar').html(theCompiledHtml);
             $('.js-status-bar').addClass("js-status-bar--error");
             $('.js-status-bar').show();
         }

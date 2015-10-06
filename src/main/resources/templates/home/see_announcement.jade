@@ -43,12 +43,12 @@ block content
                             .b-form-book-product__input-title
                                 p
                                     Начало
-                            input.js-datatime-from.b-input--default.js-from#from.form-control(type="text", value="#{date.from}", name="from")
+                            input.js-datatime.b-input--default.js-from.js-form-input#from.form-control(type="text", value="#{date.from}", name="from")
                             .b-form-book-product__input-title
                                 p
                                     Завершение
-                            input.js-datatime-to.b-input--default.js-to#to.form-control(type="text", value="#{date.to}", name="to")
-                    input.b-button--default.b-button--green.js-submit(type='button', value='ЗАБРОНИРОВАТЬ')
+                            input.js-datatime.b-input--default.js-to.js-form-input#to.form-control(type="text", value="#{date.to}", name="to")
+                    input.b-button--default.b-button--green.js-form-submit(type='button', value='ЗАБРОНИРОВАТЬ')
                     script(id='statusBar', type='text/x-handlebars-template').
                         {{#list errors}}
                             {{value}}
@@ -59,6 +59,7 @@ block local-scripts
     script(src='resources/vendor/scripts/datetimepicker/build/jquery.datetimepicker.full.min.js')
     script(src="resources/scripts/data-time.js")  
     script(src="resources/scripts/app/components/form-data.js")
+    script(src="resources/scripts/app/components/form-input.js")
     script(src="resources/scripts/app/components/UI.js")
     script(src="resources/scripts/app/helpers/errorList.js")
     script(src="resources/scripts/app/init.js")
