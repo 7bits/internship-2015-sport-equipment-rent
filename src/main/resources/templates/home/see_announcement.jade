@@ -49,11 +49,10 @@ block content
                                     Завершение
                             input.js-datatime-to.b-input--default.js-to#to.form-control(type="text", value="#{date.to}", name="to")
                     input.b-button--default.b-button--green.js-submit(type='button', value='ЗАБРОНИРОВАТЬ')
-                    script#statusBar(type='text/x-handlebars-template').
-                        {{status}}
-                        {{#each errors}}
+                    script(id='statusBar', type='text/x-handlebars-template').
+                        {{#list errors}}
                             {{value}}
-                        {{/each}}
+                        {{/list}}
                     .b-status-bar.js-status-bar
 block local-scripts
     script(src="resources/vendor/scripts/qb/js/qb.js")
@@ -61,4 +60,5 @@ block local-scripts
     script(src="resources/scripts/data-time.js")  
     script(src="resources/scripts/app/components/form-data.js")
     script(src="resources/scripts/app/components/UI.js")
+    script(src="resources/scripts/app/helpers/errorList.js")
     script(src="resources/scripts/app/init.js")
