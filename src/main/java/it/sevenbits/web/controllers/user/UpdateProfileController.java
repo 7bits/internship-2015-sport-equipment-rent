@@ -3,7 +3,6 @@ package it.sevenbits.web.controllers.user;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.ServiceException;
-import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.service.validators.UpdateFieldValidator;
 import it.sevenbits.web.forms.UpdateUserForm;
 import org.apache.log4j.Logger;
@@ -57,6 +56,7 @@ public class UpdateProfileController {
                 user = userService.getUser(name);
             } catch (ServiceException e) {
                 logger.error("An error appeared on getting user: ", e);
+                return "home/error";
             }
             if (BCrypt.checkpw(form.getPass(), user.getPass())) {
                 if (form.getNewPass().length() > 0) {
@@ -80,6 +80,7 @@ public class UpdateProfileController {
             user.setId(userService.getUser(name).getId());
         } catch (ServiceException e) {
             logger.error("An error appeared on getting user: ", e);
+            return "home/error";
         }
         userService.update(user);
         return "redirect:/personal_area";

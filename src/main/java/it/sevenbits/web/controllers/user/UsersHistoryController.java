@@ -5,7 +5,6 @@ import it.sevenbits.domain.User;
 import it.sevenbits.service.HistoryService;
 import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.ServiceException;
-import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.views.HistoryRowView;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package it.sevenbits.service;
 
-import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Goods;
@@ -9,7 +8,6 @@ import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.ImageServiceException;
 import it.sevenbits.service.exceptions.ServiceException;
-import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,10 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by awemath on 7/8/15.
@@ -64,7 +65,7 @@ public class GoodsService {
     private UserService userService;
 
     public void save(final GoodsForm form, User user) throws ServiceException {
-        if(user==null){
+        if (user == null) {
             throw new NullPointerException();
         }
         final Goods goods = new Goods();
@@ -175,7 +176,7 @@ public class GoodsService {
         repository.updateImage(nameForBase, image);
     }
 
-    public void update(final Goods goods)  {
+    public void update(final Goods goods) {
         repository.update(goods);
     }
 

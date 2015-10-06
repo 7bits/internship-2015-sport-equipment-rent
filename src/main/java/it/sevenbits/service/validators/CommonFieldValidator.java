@@ -8,7 +8,6 @@ package it.sevenbits.service.validators;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.UserService;
-import it.sevenbits.service.exceptions.DealServiceException;
 import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import org.joda.time.DateTime;

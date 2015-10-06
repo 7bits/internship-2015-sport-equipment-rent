@@ -2,7 +2,6 @@ package it.sevenbits.service;
 
 import it.sevenbits.core.repository.DealRepository;
 import it.sevenbits.core.repository.RepositoryException;
-import it.sevenbits.core.repository.postgresql.DealInPostgreSQLRepository;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
@@ -152,7 +151,7 @@ public class DealService {
         try {
             Deal deal = getDeal(dealId);
 
-            if (landlord!=null && deal.getLandlordId() != landlord.getId()) {
+            if (landlord != null && deal.getLandlordId() != landlord.getId()) {
                 throw new AccessDeniedException();
             }
             if (deal.isAnswered()) {
