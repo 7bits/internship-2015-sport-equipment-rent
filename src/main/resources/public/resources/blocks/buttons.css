@@ -45,10 +45,6 @@
     color: #949494;
 }
 
-.b-button--blue:focus{
-    color: #949494;
-}
-
 
 /*use at registration & login page*/
 .b-button--authentication,
@@ -81,10 +77,6 @@
 }
 
 .b-button--green:hover{
-    color: #949494;
-}
-
-.b-button--green:focus{
     color: #949494;
 }
 
@@ -136,10 +128,6 @@
     color: #278b8f;
 }
 
-
-.b-button--update-announcement:focus{
-    color: #278b8f;
-}
 
 
 @media(max-width: 877px){
