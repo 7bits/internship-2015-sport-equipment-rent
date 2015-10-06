@@ -1,13 +1,13 @@
 package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
-import it.sevenbits.service.exceptions.UserServiceException;
-import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.domain.User;
-import it.sevenbits.web.validators.AddNewGoodsFormValidator;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.ServiceException;
+import it.sevenbits.web.forms.GoodsForm;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,18 +53,15 @@ public class UpdateController {
         User user = null;
         try {
             user = userService.getUser(name);
-        } catch (UserServiceException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on getting user from repository: " + e.getMessage());
             return "home/error";
         }
         Goods goods = null;
         try {
             goods = goodsService.getGoods(Long.valueOf(announcementId));
-        } catch (GoodsException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared while picking goods from repository: " + e.getMessage());
-            return "home/error";
-        } catch (UserServiceException e) {
-            logger.error("An error appeared while getting user from repository: " + e.getMessage());
             return "home/error";
         }
         if (user.getId() != goods.getAuthorId()) {
@@ -116,8 +113,7 @@ public class UpdateController {
         User user = null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-
+        } catch (ServiceException e) {
             logger.error("An error appeared while getting user from repository: " + e.getMessage());
             return "home/error";
         }

@@ -4,7 +4,7 @@ import it.sevenbits.domain.Goods;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.GoodsException;
-import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.service.exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +23,7 @@ public class HomeController {
 
     private static Logger logger = Logger.getLogger(HomeController.class);
     @Autowired
-    private GoodsService service;
+    private GoodsService goodsService;
 
     @Autowired
     private UserService userService;
@@ -32,7 +32,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String mainPage(final Model model) {
         try {
-            List<Goods> goods = service.findAll();
+            List<Goods> goods = goodsService.findAll();
             for (int i = 0; i < goods.size(); i++) {
                 goods.get(i).setAuthorImage(userService.getUser(goods.get(i).getAuthorId()).getImageUrl());
             }
@@ -41,8 +41,8 @@ public class HomeController {
             model.addAttribute("goods", goods);
         } catch (GoodsException e) {
             logger.error(e.getMessage());
-        } catch (UserServiceException e) {
-            logger.error(e.getMessage());
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting user", e);
         }
 
         return "home/index";

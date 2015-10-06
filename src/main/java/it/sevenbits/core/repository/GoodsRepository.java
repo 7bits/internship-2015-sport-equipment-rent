@@ -1,6 +1,5 @@
 package it.sevenbits.core.repository;
 
-import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.Image;
 

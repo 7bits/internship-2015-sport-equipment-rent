@@ -7,16 +7,13 @@ package it.sevenbits.service;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.core.repository.UserRepository;
 import it.sevenbits.domain.User;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import org.apache.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,34 +23,29 @@ public class UserService {
     @Qualifier(value = "userInPostgreSQLrepository")
     private UserRepository repository;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+
 
     @Value("${resources.default-users-avatar}")
     private String defaultUserAvatar;
 
     private Logger logger = Logger.getLogger(UserService.class);
 
-    public User getUser(final long id) throws UserServiceException {
+    public User getUser(final long id) throws ServiceException {
         User user;
         try {
             user = repository.getUserById(id);
         } catch (RepositoryException e) {
-            throw new UserServiceException(
-                    "Ann error occurred while retrieving one goods with id " + id + ": " + e.getMessage(), e);
+            throw new ServiceException(e);
         }
         return user;
     }
 
-    public User getUser(final String email) throws UserServiceException {
+    public User getUser(final String email) throws ServiceException {
         User user;
         try {
             user = repository.getUser(email);
         } catch (RepositoryException e) {
-            throw new UserServiceException(
-                    "Ann error occurred while retrieving one goods with id: " + e.getMessage(), e);
-        } catch (NullPointerException e) {
-            throw new UserServiceException("null pointer exception", e);
+            throw new ServiceException(e);
         }
         return user;
     }
@@ -62,7 +54,6 @@ public class UserService {
         try {
             return repository.getCountOfUsersWithThatEmail(email);
         } catch (RepositoryException e) {
-            logger.error("An error appeared on getting users count with email", e);
             throw new UserServiceException("An error appeared on getting users count with email", e);
         }
     }
@@ -75,10 +66,6 @@ public class UserService {
         } catch (Exception e) {
             throw new UserServiceException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
-        UsernamePasswordAuthenticationToken token =
-                new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPass());
-        Authentication auth = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
     public void update(final User user) {

@@ -5,7 +5,6 @@ import it.sevenbits.domain.User;
 import it.sevenbits.service.HistoryService;
 import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.ServiceException;
-import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.views.HistoryRowView;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +43,6 @@ public class UsersHistoryController {
             model.addAttribute("userHistory", historyTableView);
         } catch (ServiceException e) {
             logger.error("Cant show history of user " + e.getMessage());
-            return "home/error";
-        } catch (UserServiceException e) {
-            logger.error("An error appeared on getting user", e);
             return "home/error";
         }
         return "home/history";

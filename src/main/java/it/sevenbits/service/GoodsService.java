@@ -1,6 +1,5 @@
 package it.sevenbits.service;
 
-import it.sevenbits.core.exceptions.GoodsRepositoryException;
 import it.sevenbits.core.repository.GoodsRepository;
 import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Goods;
@@ -8,7 +7,7 @@ import it.sevenbits.domain.Image;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.ImageServiceException;
-import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,10 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by awemath on 7/8/15.
@@ -62,9 +64,11 @@ public class GoodsService {
     @Autowired
     private UserService userService;
 
-    public void save(final GoodsForm form) throws GoodsException, UserServiceException {
+    public void save(final GoodsForm form, User user) throws ServiceException {
+        if (user == null) {
+            throw new NullPointerException();
+        }
         final Goods goods = new Goods();
-        User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         goods.setTitle(form.getTitle());
         goods.setAuthorId(user.getId());
         goods.setAuthorPhone(user.getPhone());
@@ -77,7 +81,7 @@ public class GoodsService {
         try {
             repository.save(goods);
         } catch (RepositoryException e) {
-            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
+            throw new ServiceException(e);
         }
     }
 
@@ -136,7 +140,7 @@ public class GoodsService {
 
     }
 
-    public Goods getGoods(final long id) throws GoodsException, UserServiceException {
+    public Goods getGoods(final long id) throws ServiceException {
         Goods goods;
         try {
             goods = repository.getGoods(id);
@@ -158,8 +162,7 @@ public class GoodsService {
             goods.setImageUrl(imagesUrl);
 
         } catch (RepositoryException e) {
-            throw new GoodsException("Ann error occurred while retrieving one goods with id " + id + ": "
-                    + e.getMessage(), e);
+            throw new ServiceException(e);
         }
         return goods;
     }
@@ -173,7 +176,7 @@ public class GoodsService {
         repository.updateImage(nameForBase, image);
     }
 
-    public void update(final Goods goods)  {
+    public void update(final Goods goods) {
         repository.update(goods);
     }
 
@@ -294,7 +297,7 @@ public class GoodsService {
     }
 
     public boolean isAuthor(final Long announcementId)
-            throws GoodsException, UserServiceException {
+            throws ServiceException {
 
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Goods goods = getGoods(announcementId);

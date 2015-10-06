@@ -1,13 +1,11 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.service.exceptions.DealServiceException;
-import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.service.exceptions.*;
 import it.sevenbits.web.forms.DateForm;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.DealService;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.validators.TakeGoodsValidator;
 import it.sevenbits.service.UserService;
@@ -57,11 +55,8 @@ public class SeeAnnouncementController {
 
             model.addAttribute("isAuth", name != "anonymousUser");
             model.addAttribute("user", landlord);
-        } catch (GoodsException e) {
-            logger.error("An error appeared on the getting goods from repository: " + e.getMessage());
-            return "home/error";
-        } catch (UserServiceException e) {
-            logger.error("An error appeared on the getting user from repository: " + e.getMessage());
+        } catch (ServiceException e) {
+            logger.error("An error appeared on the getting goods from repository: ", e);
             return "home/error";
         }
         model.addAttribute("date", new DateForm());
@@ -101,17 +96,15 @@ public class SeeAnnouncementController {
             }
 
 
-        } catch (GoodsException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on the getting goods from repository: " + e.getMessage());
-            return "home/error";
-        } catch (UserServiceException e) {
-            logger.error("An error appeared on the getting user from repository: " + e.getMessage());
-            return "home/error";
-        } catch (DealServiceException e) {
-            logger.error("An error appeared on the submitting deal to repository: " + e.getMessage());
             return "home/error";
         } catch (NumberFormatException e) {
             logger.error("An error occured on the creating a deal: " + e.getMessage());
+            return "home/error";
+        } catch (YourAnnouncementException e) {
+            return "home/error";
+        } catch (RepeatedDealException e) {
             return "home/error";
         }
 
