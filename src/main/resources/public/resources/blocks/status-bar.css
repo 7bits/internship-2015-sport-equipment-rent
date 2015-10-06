@@ -5,17 +5,31 @@
     display: none;
 
     width: 100%;
-    margin-top: 13px;
     margin-bottom: 13px;
     padding-top: 10px;
     padding-bottom: 10px;
-	text-align: center;
-    white-space:      pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space:   -o-pre-wrap;
-    word-wrap: break-word;
+
+    text-align: center;
 
     color: #626262;
     border: 1px solid green;
     background-color: white;
+}
+
+.js-status-bar--error{
+    border: 1px solid red;
+}
+
+
+.b-status-bar p{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.b-status-bar li{
+    list-style-type: none; /* Убираем маркеры */
 }
