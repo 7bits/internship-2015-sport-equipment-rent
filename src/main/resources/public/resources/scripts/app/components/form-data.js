@@ -4,14 +4,13 @@ var formData = flight.component(function() {
             form: $('.js-from').val(),
             to: $('.js-to').val()
         }
-        /*isSuccess=true https://api.myjson.com/bins/2pylm
-        isSucces=false  https://api.myjson.com/bins/256wy*/
+        /*структура json  https://api.myjson.com/bins/256wy*/
         $.ajax({
-            url: "https://api.myjson.com/bins/256wy",
+            url: "/getIt?announcement_id=#{Goods.id}",
             dataType: 'json',
-            type: 'GET', /*POST*/
+            type: 'POST',
             data: sendInfo,
-            /*headers: {'X-CSRF-TOKEN': $('meta[name = _csrf]').attr('content') }, */
+            headers: {'X-CSRF-TOKEN': $('meta[name = _csrf]').attr('content') }, 
             success: function(data, textStatus, jqXHR) {
                 if (data.isSuccess)
                     $('.js-status-bar').trigger('showSuccess', "");
