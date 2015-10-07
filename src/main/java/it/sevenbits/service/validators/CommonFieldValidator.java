@@ -11,6 +11,10 @@ import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -21,6 +25,9 @@ import java.util.regex.Pattern;
 
 @Service
 public class CommonFieldValidator {
+
+    @Value("${date-time-format}")
+    private String dateTimeFormat;
 
     /**
      * Email exists pattern
@@ -191,8 +198,9 @@ public class CommonFieldValidator {
             final String key,
             final String field) {
         if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
-            DateTime end = DateTime.parse(to);
+            DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
+            DateTime start = format.parseDateTime(from);
+            DateTime end = format.parseDateTime(to);
             if (start.getMillis() < DateTime.now().getMillis()) {
                 errors.put(key, field);
             }
@@ -206,8 +214,9 @@ public class CommonFieldValidator {
             final String key,
             final String field) {
         if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
-            DateTime end = DateTime.parse(to);
+            DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
+            DateTime start = format.parseDateTime(from);
+            DateTime end = format.parseDateTime(to);
             if (start.getMillis() > end.getMillis()) {
                 errors.put(key, field);
             }
@@ -221,7 +230,8 @@ public class CommonFieldValidator {
             final String key,
             final String value) {
         if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
+            DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
+            DateTime start = format.parseDateTime(from);
             if (DateTime.now().plusWeeks(1).getMillis() < start.getMillis()) {
                 errors.put(key, value);
             }
@@ -235,9 +245,10 @@ public class CommonFieldValidator {
             final String key,
             final String field) {
         if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
-            DateTime finish = DateTime.parse(to);
-            if (start.plusMonths(1).getMillis() < finish.getMillis()) {
+            DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
+            DateTime start = format.parseDateTime(from);
+            DateTime end = format.parseDateTime(to);
+            if (start.plusMonths(1).getMillis() < end.getMillis()) {
                 errors.put(key, field);
             }
         }
@@ -250,8 +261,9 @@ public class CommonFieldValidator {
             final String key,
             final String field) {
         if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
-            DateTime finish = DateTime.parse(to);
+            DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
+            DateTime start = format.parseDateTime(from);
+            DateTime finish = format.parseDateTime(to);
             if (start.plusHours(1).getMillis() > finish.getMillis()) {
                 errors.put(key, field);
             }
@@ -284,8 +296,9 @@ public class CommonFieldValidator {
             final String key,
             final String field) throws ServiceException {
         if (errors.isEmpty()) {
-            DateTime start = DateTime.parse(from);
-            DateTime end = DateTime.parse(to);
+            DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
+            DateTime start = format.parseDateTime(from);
+            DateTime end = format.parseDateTime(to);
             List<Deal> openDeals = service.getOpenWithId(goodsId);
             Deal deal;
             for (int i = 0; i < openDeals.size(); i++) {

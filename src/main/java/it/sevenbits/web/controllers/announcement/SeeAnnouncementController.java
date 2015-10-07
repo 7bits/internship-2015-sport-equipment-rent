@@ -78,7 +78,7 @@ public class SeeAnnouncementController {
 
 
     @RequestMapping(value = "/getIt", method = RequestMethod.POST)
-    public @ResponseBody GetAnnouncementView getIt(
+    @ResponseBody public GetAnnouncementView getIt(
             final HttpServletRequest request) {
         DateForm form = new DateForm();
         form.setFrom((String) request.getParameter("from"));

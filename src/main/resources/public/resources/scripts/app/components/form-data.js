@@ -1,8 +1,9 @@
 var formData = flight.component(function() {
     this.onClick = function(event) {
+        var id=$('.js-announcement-id').val();
         var sendInfo = {
+            announcementId: id,
             from: $('.js-from').val(),
-            announcementId: $('.js-announcement-id').val(),
             to: $('.js-to').val()
         }
         /*структура json  https://api.myjson.com/bins/256wy*/
@@ -16,7 +17,7 @@ var formData = flight.component(function() {
                 if (data.isSuccess)
                     $('.js-status-bar').trigger('showSuccess', "");
                 else
-                    $('.js-status-bar').trigger('showErrors', {errors: data.errors});          
+                    $('.js-status-bar').trigger('showErrors', {errors: data.errors});
             }
         }).fail(function($xhr){
                 var data = $xhr.responseJSON;
