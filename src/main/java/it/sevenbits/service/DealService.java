@@ -147,7 +147,7 @@ public class DealService {
     public void handed(
             final long dealId,
             final boolean isHanded,
-            final User landlord) throws AccessDeniedException, AllreadyAnsweredException, ServiceException {
+            final User landlord) throws AccessDeniedException, AlreadyAnsweredException, ServiceException {
         try {
             Deal deal = getDeal(dealId);
 
@@ -155,7 +155,7 @@ public class DealService {
                 throw new AccessDeniedException();
             }
             if (deal.isAnswered()) {
-                throw new AllreadyAnsweredException();
+                throw new AlreadyAnsweredException();
             } else {
                 deal.setIsHanded(isHanded);
                 deal.setIsAnswered(true);
