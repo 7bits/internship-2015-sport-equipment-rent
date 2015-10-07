@@ -58,7 +58,7 @@
     height: 25px;
     margin-top: 7px;
 
-    background-image: url('../images/calendar-ico.png');
+    background: inline('../images/calendar-ico.png');
 }
 
 

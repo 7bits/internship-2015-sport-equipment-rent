@@ -29,7 +29,7 @@
     width: 28px;
     display: none;
     height: 28px;
-    background-image: url('../images/edit-profile.png');
+    background: inline('../images/edit-profile.png');
     float: right;
     margin-top: -26px;
     margin-right: 5px;   

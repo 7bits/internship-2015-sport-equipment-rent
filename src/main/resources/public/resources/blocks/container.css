@@ -12,8 +12,9 @@
 
 
 .b-reg-auth-container{
-    background-image: url('../images/reg-bk.jpg');
-    background-size: cover;
+    background-image: url('../images/reg-bk.png');
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 
