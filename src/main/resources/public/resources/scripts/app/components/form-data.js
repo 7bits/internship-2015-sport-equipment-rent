@@ -1,13 +1,14 @@
 var formData = flight.component(function() {
     this.onClick = function(event) {
+        var id=$('.js-announcement-id').val();
         var sendInfo = {
-            announcementId: $('.js-announcement-id').val(),
+            announcementId: id,
             form: $('.js-from').val(),
             to: $('.js-to').val()
         }
         /*структура json  https://api.myjson.com/bins/256wy*/
         $.ajax({
-            url: "/getIt?announcement_id=#{Goods.id}",
+            url: "/getIt?"+id+"",
             dataType: 'json',
             type: 'POST',
             data: sendInfo,
