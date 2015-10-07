@@ -175,7 +175,7 @@
     height: 28px;
     margin-top: -7px;
     float: right;
-    background-image: url('../images/edit-icon-white.png');
+    background: inline('../images/edit-icon-white.png');
 }
 
 .b-rental-period{

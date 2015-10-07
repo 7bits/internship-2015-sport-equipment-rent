@@ -166,7 +166,7 @@ at update_announcement*/
     width: 19px;
     height: 19px;
 
-    background-image: url('../images/delete-photo-icon.png');
+    background: inline('../images/delete-photo-icon.png');
 }
 
 .b-delete-photo__input-delete{

@@ -82,7 +82,7 @@
     margin: 0 auto;
     margin-bottom: 20px;
 
-    background-image: url('../images/error-picture.png');
+    background: inline('../images/error-picture.png');
     background-size: cover;
 }
 

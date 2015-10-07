@@ -1,5 +1,6 @@
 var gulp  = require('gulp'),
     postcss      = require('gulp-postcss'),
+    assets  = require('postcss-assets'),
     sourcemaps   = require('gulp-sourcemaps'),
     autoprefixer = require('autoprefixer'),
     minifyCss = require('gulp-minify-css'),
@@ -9,50 +10,62 @@ var gulp  = require('gulp'),
     notify = require("gulp-notify"),
     clean = require('gulp-clean'),
     fs = require('fs'),
-    imageminOptipng = require('imagemin-optipng'),
-    imageminJpegtran = require('imagemin-jpegtran'),
-    inlineimage = require('gulp-inline-image');
+    del = require('del'),
+    imagemin = require('gulp-imagemin');
 
-gulp.task('prod', function () {
+gulp.task('prod', [
+    'clean',
+    'styles',
+    'imagemin',
+    'libcss:cross'
+]);
+
+gulp.task('dev', function () {
+  return gulp.src('src/main/resources/public/resources/blocks/*.css')
+    .pipe(concatCss("bundle.css"))
+    .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+    .pipe(postcss([assets({
+      loadPaths: ['src/main/resources/public/resources/images/']
+    })]))
+    .pipe(gulp.dest('src/main/resources/public/resources/build/'))
+    .pipe(notify("Update!"));
+});
+
+gulp.task('watch', function () {
+    gulp.watch('src/main/resources/public/resources/blocks/*.css', ['dev'])
+});
+
+gulp.task('clean', function(cb) {
+    del(['src/main/resources/public/resources/build/*'], cb)
+});
+
+gulp.task('styles', function () {
     /*var version = readAssetsVersion();*/
   return gulp.src('src/main/resources/public/resources/blocks/*.css')
     /*.pipe(concat('bundle'+version+'.css'))*/
     .pipe(concatCss("bundle.css"))
     .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
     .pipe(minifyCss())
-    .pipe(inlineimage())
+    .pipe(postcss([assets({
+      loadPaths: ['src/main/resources/public/resources/images/']
+    })]))
     .pipe(gulp.dest('src/main/resources/public/resources/build/'));
-    });
+});
 
-gulp.task('dev', function () {
-  return gulp.src('src/main/resources/public/resources/blocks/*.css')
-    .pipe(concatCss("bundle.css"))
+gulp.task('imagemin', function () {
+    return gulp.src('src/main/resources/public/resources/images/*/*.*')
+        .pipe(imagemin({
+            progressive: true,
+            optimizationLevel: 3,
+            svgoPlugins: [{removeViewBox: false}],
+        }))
+        .pipe(gulp.dest('src/main/resources/public/resources/images/'));
+});
+
+gulp.task('libcss:cross', function () {
+    return gulp.src('src/main/resources/public/resources/vendor/*/*.css')
     .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
-    .pipe(inlineimage())
-    .pipe(gulp.dest('src/main/resources/public/resources/build/'))
-    .pipe(notify("Update!"));
-    });
-
-gulp.task('watch', function () {
-    gulp.watch('src/main/resources/public/resources/blocks/*.css', ['dev'])
-});
-
-gulp.task('minpng', function () {
-    return gulp.src('src/main/resources/public/resources/images/*.png')
-        .pipe(imageminOptipng({optimizationLevel: 3})())
-        .pipe(gulp.dest('src/main/resources/public/resources/images'));
-});
-
-gulp.task('minjpg', function () {
-    return gulp.src('src/main/resources/public/resources/images/*.jpg')
-        .pipe(imageminJpegtran({progressive: true})())
-        .pipe(gulp.dest('src/main/resources/public/resources/images'));
-});
-
-gulp.task('safari', function () {
-    return gulp.src('src/main/resources/public/resources/vendor/scripts/qb/qb.css')
-    .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
-    .pipe(gulp.dest('src/main/resources/public/resources/vendor/scripts/qb1/'));
+    .pipe(gulp.dest('src/main/resources/public/resources/vendor/*/'));
 });
 
 
@@ -71,7 +84,7 @@ function readAssetsVersion() {
 }
 
 
-//хэширование скриптов (пути чужие)
+//хэширование скриптов (не впилено)
 gulp.task('scripts', function() {
   var version = readAssetsVersion();
   return gulp
