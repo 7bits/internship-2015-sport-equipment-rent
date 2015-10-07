@@ -1,17 +1,18 @@
 package it.sevenbits.web.controllers.announcement;
 
-import it.sevenbits.service.exceptions.*;
-import it.sevenbits.web.forms.DateForm;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.GoodsService;
-import it.sevenbits.service.validators.TakeGoodsValidator;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.RepeatedDealException;
+import it.sevenbits.service.exceptions.ServiceException;
+import it.sevenbits.service.exceptions.YourAnnouncementException;
+import it.sevenbits.service.validators.TakeGoodsValidator;
+import it.sevenbits.web.forms.DateForm;
 import it.sevenbits.web.views.GetAnnouncementView;
 import org.apache.log4j.Logger;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -54,7 +55,7 @@ public class SeeAnnouncementController {
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             User landlord = userService.getUser(goods.getAuthorId());
             model.addAttribute("Goods", goods);
-            if(name.equals("anonymousUser")) {
+            if (name.equals("anonymousUser")) {
                 User user = userService.getUser(name);
                 model.addAttribute("isAuthor", goodsService.isAuthor(Long.valueOf(announcementId), user));
             } else {
@@ -78,9 +79,8 @@ public class SeeAnnouncementController {
 
     @RequestMapping(value = "/getIt", method = RequestMethod.POST)
     public @ResponseBody GetAnnouncementView getIt(
-            HttpServletRequest request,
-            @RequestParam(value = "announcement_id", required = false) String announcementId) {
-        announcementId = "17";
+            final HttpServletRequest request,
+            @RequestParam(value = "announcement_id", required = false) final String announcementId) {
         DateForm form = new DateForm();
         form.setFrom((String) request.getParameter("from"));
         form.setTo((String) request.getParameter("to"));
