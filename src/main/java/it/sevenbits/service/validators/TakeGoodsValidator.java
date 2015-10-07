@@ -4,9 +4,13 @@ import it.sevenbits.service.DealService;
 import it.sevenbits.web.forms.DateForm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -18,36 +22,46 @@ public class TakeGoodsValidator {
     @Autowired
     private CommonFieldValidator validator;
 
-    private static final Logger LOG = Logger.getLogger(TakeGoodsValidator.class);
-
     @Autowired
     DealService dealService;
 
+    @Autowired
+    MessageSource messageSource;
+
+    @Autowired
+    LocaleResolver localeResolver;
+
     public HashMap<String, String> validate(final DateForm form, long goodsId) {
-        LOG.info("SubscriptionFormValidator started for: " + form.toString());
+        Locale locale = LocaleContextHolder.getLocale();
         HashMap<String, String> errors = new HashMap<String, String>();
-        validator.isNotNullOrEmpty(form.getFrom(), errors,"from", "Начало аренды не может быть пустым!");
-        validator.isNotNullOrEmpty(form.getTo(), errors, "to", "Окончание аренды не может быть пустым!");
+        validator.isNotNullOrEmpty(form.getFrom(), errors, "from",
+                messageSource.getMessage("message.field.rentStart", null, locale) + " " +
+                        messageSource.getMessage("message.error.empty", null, locale));
+        validator.isNotNullOrEmpty(form.getTo(), errors, "to",
+                messageSource.getMessage("message.field.rentEnd", null, locale) + " " +
+                        messageSource.getMessage("message.error.empty", null, locale));
 
-        validator.isNotEqualStrings(form.getTo(), form.getFrom(), errors, "to", "Начало и окончание аренды не могут совпадать!");
+        validator.isTooEarlyDate(form.getFrom(), errors, "from",
+                messageSource.getMessage("message.field.rentStart", null, locale) + " " +
+                        messageSource.getMessage("message.error.early", null, locale));
 
+        validator.isTooEarlyDate(form.getTo(), errors, "to",
+                messageSource.getMessage("message.field.rentEnd", null, locale) + " " +
+                        messageSource.getMessage("message.error.early", null, locale));
 
-        validator.isTooEarlyDate(form.getFrom(), form.getTo(), errors, "from", "Начало аренды не может быть раньше настоящего момента времени!");
-        validator.isTooEarlyDate(form.getTo(), form.getTo(), errors, "to", "Окончание аренды не может быть раньше настоящего момента времени!");
+        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "",
+                messageSource.getMessage("message.error.endAfterStart", null, locale));
 
-        validator.isEndAfterStart(form.getFrom(), form.getTo(), errors, "", "Окончание аренды должно быть после начала аренды!");
+        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "",
+                messageSource.getMessage("message.error.timeAlreadyEngage", null, locale));
 
-        validator.isGoodsAlreadyEngage(form.getFrom(), form.getTo(), goodsId, dealService, errors, "", "К сожалению, это время уже занято!");
+        validator.isEarlierThenWeek(form.getFrom(), errors, "from",
+                messageSource.getMessage("message.error.startIsTooLate", null, locale));
 
-        validator.isEarlierThenWeek(form.getFrom(), errors, "from", "Срок начала аренды не может начинаться позже, чем через неделю после момента бронирования. ");
-        validator.isRentTimeLessMonth(form.getFrom(), form.getTo(), errors, "to", "Продолжительность аренды может составлять от 1 часа до 1 месяца.");
-        validator.isRentTimeMoreHour(form.getFrom(), form.getTo(), errors, "to", "Продолжительность аренды может составлять от 1 часа до 1 месяца.");
-
-        for (Map.Entry<String, String> entry : errors.entrySet()) {
-            LOG.info(String.format("Error found: Filed=%s, Error=%s",
-                    entry.getKey(), entry.getValue()));
-        }
-
+        validator.isRentTimeLessMonth(form.getFrom(), form.getTo(), errors, "to",
+                messageSource.getMessage("message.error.badDuration", null, locale));
+        validator.isRentTimeMoreHour(form.getFrom(), form.getTo(), errors, "to",
+                messageSource.getMessage("message.error.badDuration", null, locale));
         return errors;
     }
 

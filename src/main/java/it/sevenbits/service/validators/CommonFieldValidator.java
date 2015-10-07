@@ -180,10 +180,9 @@ public class CommonFieldValidator {
             }
     }
 
-    public void isTooEarlyDate(String from, String to, HashMap<String, String> errors, String key, String field) {
+    public void isTooEarlyDate(String from, HashMap<String, String> errors, String key, String field) {
         if (errors.isEmpty()) {
             DateTime start = DateTime.parse(from);
-            DateTime end = DateTime.parse(to);
             if (start.getMillis() < DateTime.now().getMillis()) {
                 errors.put(key, field);
             }
