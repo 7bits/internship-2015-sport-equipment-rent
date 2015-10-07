@@ -14,6 +14,7 @@
 .b-reg-auth-container{
     background-image: url('../images/reg-bk.png');
     background-repeat: repeat;
+    background-size: contain;
 }
 
 

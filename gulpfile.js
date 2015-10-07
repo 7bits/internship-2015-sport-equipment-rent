@@ -49,6 +49,13 @@ gulp.task('minjpg', function () {
         .pipe(gulp.dest('src/main/resources/public/resources/images'));
 });
 
+gulp.task('safari', function () {
+    return gulp.src('src/main/resources/public/resources/vendor/scripts/qb/qb.css')
+    .pipe(postcss([ autoprefixer({ browsers: ['last 4 versions'] }) ]))
+    .pipe(gulp.dest('src/main/resources/public/resources/vendor/scripts/qb1/'));
+});
+
+
 function readAssetsVersion() {
   var version = '';
 
