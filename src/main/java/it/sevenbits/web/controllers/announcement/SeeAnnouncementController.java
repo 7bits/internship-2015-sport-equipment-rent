@@ -84,6 +84,7 @@ public class SeeAnnouncementController {
         DateForm form = new DateForm();
         form.setFrom((String) request.getParameter("from"));
         form.setTo((String) request.getParameter("to"));
+
         GetAnnouncementView view = new GetAnnouncementView();
         try {
             final Map<String, String> errors = validator.validate(form, Long.valueOf(announcementId));
@@ -105,19 +106,14 @@ public class SeeAnnouncementController {
                 view.setFrom(form.getFrom());
                 view.setTo(form.getTo());
                 view.setIsAuth(name.equals("anonymousUser"));
-
-                return view;
             }
-
-
         } catch (ServiceException e) {
-            logger.error("An error appeared on the getting goods from repository: " + e.getMessage());
+            logger.error("An error appeared on the getting goods from repository: ", e);
             view.addError("Problem", "Sorry, but we have some trouble");
             view.setIsSuccess(false);
         } catch (NumberFormatException e) {
-            logger.error("An error occured on the creating a deal: " + e.getMessage());
+            logger.error("An error occured on the creating a deal: ", e);
             view.setIsSuccess(false);
-            return view;
         } catch (YourAnnouncementException e) {
             view.setIsSuccess(false);
             view.addError("Problem", "It is your announcement");

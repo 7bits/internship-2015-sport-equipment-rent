@@ -1,7 +1,7 @@
 var formData = flight.component(function() {
     this.onClick = function(event) {
         var sendInfo = {
-            form: $('.js-from').val(),
+            from: $('.js-from').val(),
             to: $('.js-to').val()
         }
         /*структура json  https://api.myjson.com/bins/256wy*/
