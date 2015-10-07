@@ -13,11 +13,11 @@ var formData = flight.component(function() {
             type: 'POST',
             data: sendInfo,
             headers: {'X-CSRF-TOKEN': $('meta[name = _csrf]').attr('content') }, 
-            success: function(data, textStatus, jqXHR) {
-                if (data.isSuccess)
+            success: function(isSuccess, errors, textStatus, jqXHR) {
+                if (isSuccess)
                     $('.js-status-bar').trigger('showSuccess', "");
                 else
-                    $('.js-status-bar').trigger('showErrors', {errors: data.errors});
+                    $('.js-status-bar').trigger('showErrors', {errors: errors});
             }
         }).fail(function($xhr){
                 var data = $xhr.responseJSON;

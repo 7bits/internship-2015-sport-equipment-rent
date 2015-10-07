@@ -97,7 +97,8 @@ public class SeeAnnouncementController {
                 Deal deal = new Deal();
                 deal.setEstimateStartDate(from);
                 deal.setEstimateEndDate(to);
-                dealService.submitDeal(deal, String.valueOf(announcementId));
+                User user = userService.getUser(name);
+                dealService.submitDeal(deal, String.valueOf(announcementId), user);
                 view.setIsSuccess(true);
             } else {
                 //create model with exceptions
@@ -105,7 +106,7 @@ public class SeeAnnouncementController {
                 view.setErrors(errors);
                 view.setFrom(form.getFrom());
                 view.setTo(form.getTo());
-                view.setIsAuth(name.equals("anonymousUser"));
+                view.setIsAuth(!name.equals("anonymousUser"));
             }
         } catch (ServiceException e) {
             logger.error("An error appeared on the getting goods from repository: ", e);
