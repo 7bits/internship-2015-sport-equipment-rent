@@ -1,5 +1,6 @@
 package it.sevenbits.web.views;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -7,8 +8,32 @@ import java.util.Map;
  */
 public class GetAnnouncementView {
     private boolean isSuccess;
-    private Map<String, String> errors;
+
+    private Map<String, String> errors = new HashMap<>();
     private String from, to;
+
+    private boolean isAuth, isAuthor;
+
+    public void addError (final String key,
+                         final String value) {
+        errors.put(key, value);
+    }
+
+    public boolean isAuth() {
+        return isAuth;
+    }
+
+    public void setIsAuth(final boolean isAuth) {
+        this.isAuth = isAuth;
+    }
+
+    public boolean isAuthor() {
+        return isAuthor;
+    }
+
+    public void setIsAuthor(final boolean isAuthor) {
+        this.isAuthor = isAuthor;
+    }
 
     public boolean isSuccess() {
         return isSuccess;
