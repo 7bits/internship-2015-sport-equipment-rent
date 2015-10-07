@@ -14,6 +14,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
 /**
  * Created by awemath on 7/9/15.
  */
@@ -30,6 +31,7 @@ public class AddNewGoodsFormValidator {
 
     @Autowired
     LocaleResolver localeResolver;
+
     public HashMap<String, String> validate(final GoodsForm form) {
         LOG.info("GoodsFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
@@ -88,6 +90,7 @@ public class AddNewGoodsFormValidator {
         validator.isImages(form.getImageUrl(), errors, "Поле цена за неделю",
                 messageSource.getMessage("message.field.pricePerHour", null, locale) + " " +
                         messageSource.getMessage("message.error.notImage", null, locale));
+
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",
                     entry.getKey(), entry.getValue()));

@@ -2,11 +2,11 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.UserServiceException;
-import it.sevenbits.web.forms.GoodsForm;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.web.forms.GoodsForm;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
