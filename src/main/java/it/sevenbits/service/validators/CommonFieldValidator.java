@@ -191,16 +191,16 @@ public class CommonFieldValidator {
         }
     }
 
+
     public void isTooEarlyDate(
             final String from,
-            final String to,
             final HashMap<String, String> errors,
             final String key,
             final String field) {
         if (errors.isEmpty()) {
+
             DateTimeFormatter format = DateTimeFormat.forPattern(dateTimeFormat);
             DateTime start = format.parseDateTime(from);
-            DateTime end = format.parseDateTime(to);
             if (start.getMillis() < DateTime.now().getMillis()) {
                 errors.put(key, field);
             }

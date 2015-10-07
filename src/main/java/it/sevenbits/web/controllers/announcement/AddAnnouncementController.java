@@ -2,12 +2,12 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
+import it.sevenbits.service.GoodsService;
+import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.forms.GoodsForm;
-import it.sevenbits.service.exceptions.GoodsException;
-import it.sevenbits.service.GoodsService;
-import it.sevenbits.service.UserService;
 import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
