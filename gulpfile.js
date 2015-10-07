@@ -16,8 +16,7 @@ var gulp  = require('gulp'),
 gulp.task('prod', [
     'clean',
     'styles',
-    'imagemin',
-    'libcss:cross'
+    'imagemin'
 ]);
 
 gulp.task('dev', function () {
