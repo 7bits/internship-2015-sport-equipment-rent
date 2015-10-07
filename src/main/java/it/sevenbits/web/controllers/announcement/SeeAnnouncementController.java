@@ -79,15 +79,15 @@ public class SeeAnnouncementController {
 
     @RequestMapping(value = "/getIt", method = RequestMethod.POST)
     public @ResponseBody GetAnnouncementView getIt(
-            final HttpServletRequest request,
-            @RequestParam(value = "announcement_id", required = false) final String announcementId) {
+            final HttpServletRequest request) {
         DateForm form = new DateForm();
         form.setFrom((String) request.getParameter("from"));
         form.setTo((String) request.getParameter("to"));
-
+        long announcementId;
         GetAnnouncementView view = new GetAnnouncementView();
         try {
-            final Map<String, String> errors = validator.validate(form, Long.valueOf(announcementId));
+            announcementId = Long.valueOf(request.getParameter("announcementId"));
+            final Map<String, String> errors = validator.validate(form, announcementId);
 
             String name = SecurityContextHolder.getContext().getAuthentication().getName();
             if (errors.isEmpty()) {
@@ -97,7 +97,7 @@ public class SeeAnnouncementController {
                 Deal deal = new Deal();
                 deal.setEstimateStartDate(from);
                 deal.setEstimateEndDate(to);
-                dealService.submitDeal(deal, announcementId);
+                dealService.submitDeal(deal, String.valueOf(announcementId));
                 view.setIsSuccess(true);
             } else {
                 //create model with exceptions

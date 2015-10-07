@@ -8,6 +8,7 @@ block content
     .b-content
         include mixins/mixin_user_info.jade
         +create-user-info(isAuthor)
+        input.js-announcement-id(type='hidden', name='announcement_id', value='#{Goods.id}')
         if isAuthor
             .b-detailed-view-announcement--default.b-detailed-view-announcement--owner
                 .b-detailed-view-announcement__content--default.b-detailed-view-announcement__content--owner
