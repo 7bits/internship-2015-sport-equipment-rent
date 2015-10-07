@@ -4,14 +4,14 @@ package it.sevenbits.web.forms;
  * Created by awemath on 7/30/15.
  */
 public class DateForm {
-    String from;
-    String to;
+    private String from;
+    private String to;
 
     public String getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(final String from) {
         this.from = from;
     }
 
@@ -19,7 +19,7 @@ public class DateForm {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(final String to) {
         this.to = to;
     }
 }

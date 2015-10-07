@@ -13,7 +13,7 @@ public interface UserMapper {
     @Results({
             @Result(column = "id", property = "id"),
             @Result(column = "title", property = "title"),
-            @Result(column="description", property="description"),
+            @Result(column = "description", property = "description"),
             @Result(column = "price_per_hour", property = "pricePerHour"),
             @Result(column = "price_per_day", property = "pricePerDay"),
             @Result(column = "price_per_week", property = "pricePerWeek")

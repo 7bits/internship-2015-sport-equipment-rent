@@ -1,13 +1,13 @@
 package it.sevenbits.service;
 
 import it.sevenbits.core.repository.DealRepository;
+import it.sevenbits.core.repository.RepositoryException;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.DealServiceException;
-import it.sevenbits.service.exceptions.GoodsException;
-import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.service.exceptions.*;
 import it.sevenbits.web.controllers.MailSubmissionController;
+import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,129 +34,174 @@ public class DealService {
     private UserService userService;
 
     @Autowired
-    MailSubmissionController mail;
+    private MailSubmissionController mail;
 
-    public void save(final Deal deal) {
-        repository.save(deal);
+    private Logger logger = Logger.getLogger(DealService.class);
+
+    public void save(final Deal deal) throws ServiceException {
+        try {
+            repository.save(deal);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public Deal getDeal(final long dealId) {
-        return repository.getDeal(dealId);
+    public Deal getDeal(final long dealId) throws ServiceException {
+        try {
+            return repository.getDeal(dealId);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public long getId(final Deal deal) {
-        return repository.getId(deal);
+    public long getId(final Deal deal) throws ServiceException {
+        try {
+            return repository.getId(deal);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
 
-    public void update(final Deal deal) {
-        repository.update(deal);
+    public void update(final Deal deal) throws ServiceException {
+        try {
+            repository.update(deal);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
 
-    public boolean isExist(final Deal deal) {
-        return repository.isExist(deal);
+    public boolean isExist(final Deal deal) throws ServiceException {
+        try {
+            return repository.isExist(deal);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public void deleteAllOnGoods(final long goodsId) {
-        repository.deleteAllOnGoods(goodsId);
+    public void deleteAllOnGoods(final long goodsId) throws ServiceException {
+        try {
+            repository.deleteAllOnGoods(goodsId);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public void updateRealStartDate(final long dealId) {
-        repository.updateRealStartDate(dealId);
+    public void updateRealStartDate(final long dealId) throws ServiceException {
+        try {
+            repository.updateRealStartDate(dealId);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public void updateRealEndDate(final long dealId) {
-        repository.updateRealEndDate(dealId);
+    public void updateRealEndDate(final long dealId) throws ServiceException {
+        try {
+            repository.updateRealEndDate(dealId);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public List<Deal> getOpenWithId(final long goodsId) {
-        return repository.getOpenWithId(goodsId);
+    public List<Deal> getOpenWithId(final long goodsId) throws ServiceException {
+        try {
+            return repository.getOpenWithId(goodsId);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
-    public List<Deal> getDealsOfUser(final Long id) {
-        return repository.getDealsOfUser(id);
+    public List<Deal> getDealsOfUser(final Long id) throws ServiceException {
+        try {
+            return repository.getDealsOfUser(id);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
 
     public void submitDeal(final Deal deal,
                            final String announcementId)
-            throws GoodsException, UserServiceException, DealServiceException {
+            throws ServiceException, YourAnnouncementException, RepeatedDealException {
         Goods goods = null;
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userService.getUser(name);
-        goods = goodsService.getGoods(Long.valueOf(announcementId));
-        User landlord = userService.getUser(goods.getAuthorId());
-        if (user.getEmail().equals(landlord.getEmail())) {
-            throw new DealServiceException("You cant pick your announcement");
-        }
-        if (!isExist(deal)) {
-            save(deal);
-            mailSubmissionController.sendHtmlEmail(deal);
-        } else {
-            throw new DealServiceException("You already tried to pick it up");
-        }
-
-
-
-    }
-
-    public void handed(long dealId, boolean isHanded) throws DealServiceException {
-        Deal deal = getDeal(dealId);
-        User landlord = null;
         try {
-            landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            throw new DealServiceException("An error appeared on getting user from repo", e);
-        }
-        if (deal.getLandlordId() != landlord.getId()) {
-            throw new DealServiceException("");
-        }
-        if (deal.isAnswered()) {
-            throw new DealServiceException("This announcement is allready answered");
-        } else {
-            deal.setIsHanded(isHanded);
-            deal.setIsAnswered(true);
-            update(deal);
-            if (isHanded) {
-                mail.sendConfirmationMail(deal);
-            } else {
-                mail.sendDeny(deal);
+            String name = SecurityContextHolder.getContext().getAuthentication().getName();
+            User user = userService.getUser(name);
+            goods = goodsService.getGoods(Long.valueOf(announcementId));
+            User landlord = userService.getUser(goods.getAuthorId());
+            if (user.getEmail().equals(landlord.getEmail())) {
+                throw new YourAnnouncementException();
             }
+            if (!isExist(deal)) {
+                save(deal);
+                mailSubmissionController.sendHtmlEmail(deal);
+            } else {
+                throw new RepeatedDealException();
+            }
+        } catch (ServiceException e) {
+            throw new ServiceException(e);
         }
     }
 
-    public void accept(long dealId, boolean isGet) throws DealServiceException {
+    public void handed(
+            final long dealId,
+            final boolean isHanded,
+            final User landlord) throws AccessDeniedException, AllreadyAnsweredException, ServiceException {
+        try {
+            Deal deal = getDeal(dealId);
+
+            if (landlord != null && deal.getLandlordId() != landlord.getId()) {
+                throw new AccessDeniedException();
+            }
+            if (deal.isAnswered()) {
+                throw new AllreadyAnsweredException();
+            } else {
+                deal.setIsHanded(isHanded);
+                deal.setIsAnswered(true);
+                update(deal);
+                if (isHanded) {
+                    mail.sendConfirmationMail(deal);
+                } else {
+                    mail.sendDeny(deal);
+                }
+            }
+        } catch (ServiceException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void accept(
+            final long dealId,
+            final boolean isGet) throws ServiceException, AccessDeniedException {
         Deal deal = getDeal(dealId);
         User renting = null;
         try {
             renting = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            throw new DealServiceException("An error appeared on getting user from repo", e);
+        } catch (ServiceException e) {
+            throw new ServiceException(e);
         }
         if (renting.getId() != deal.getRentingId()) {
-            throw new DealServiceException("");
+            throw new AccessDeniedException();
         }
         if (isGet) {
             try {
                 mail.sendClose(deal);
                 updateRealStartDate(dealId);
             } catch (Exception e) {
-                throw new DealServiceException("An error appeared on accepting deal: ", e);
+                throw new ServiceException(e);
             }
         }
     }
 
-    public void close(long dealId, Deal deal) throws DealServiceException {
+    public void close(
+            final long dealId) throws ServiceException, AccessDeniedException {
+        Deal deal = null;
         deal = getDeal(dealId);
         User user = null;
-        try {
-            user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            throw new DealServiceException("An error appeared on getting user from repo", e);
-        }
+        user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user.getId() != deal.getLandlordId()) {
-            throw new DealServiceException("");
+            throw new AccessDeniedException();
         }
         DateTime estimateStart = DateTime.parse(deal.getEstimateStartDate());
         DateTime estimateEnd = DateTime.parse(deal.getEstimateEndDate());

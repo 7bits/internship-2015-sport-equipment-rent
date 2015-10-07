@@ -2,12 +2,12 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.UserServiceException;
-import it.sevenbits.web.forms.GoodsForm;
-import it.sevenbits.web.validators.AddNewGoodsFormValidator;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.GoodsException;
+import it.sevenbits.service.exceptions.ServiceException;
+import it.sevenbits.web.forms.GoodsForm;
+import it.sevenbits.web.validators.AddNewGoodsFormValidator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,7 +30,7 @@ import java.util.Map;
 @RequestMapping(value = "/confirm")
 public class ConfirmController {
 
-    private Logger LOG = Logger.getLogger(ConfirmController.class);
+    private Logger logger = Logger.getLogger(ConfirmController.class);
 
     @Autowired
     private GoodsService service;
@@ -43,13 +43,16 @@ public class ConfirmController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String confirm(final Model model, HttpSession session){
+    public String confirm(
+            final Model model,
+            final HttpSession session) {
         GoodsForm form = (GoodsForm) session.getAttribute("addNewGoods");
         session.removeAttribute("addNewGoods");
-        model.addAttribute("isAuth", SecurityContextHolder.getContext().getAuthentication().getName()!="anonymousUser");
-        if(form==null) {
+        model.addAttribute("isAuth",
+                !SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser"));
+        if (form == null) {
             return "redirect:/";
-        }else{
+        } else {
             session.setAttribute("images", form.getImageUrl());
             model.addAttribute("goods", form);
         }
@@ -77,17 +80,17 @@ public class ConfirmController {
             User user = null;
             try {
                 user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-            } catch (UserServiceException e) {
-                LOG.error("An error appeared on getting user from repository "+e.getMessage());
+            } catch (ServiceException e) {
+                logger.error("An error appeared on getting user from repository ", e);
             }
             Goods goods = form.toGoods(user);
             goods.setImageUrl((List<String>) session.getAttribute("images"));
             goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
         } catch (GoodsException e) {
-            LOG.error("An error appeared on submitting goods " + e.getMessage());
+            logger.error("An error appeared on submitting goods " + e.getMessage());
             return "home/error";
         }
 
-        return "redirect:/see_announcement?announcement_id="+goodsId;
+        return "redirect:/see_announcement?announcement_id=" + goodsId;
     }
 }

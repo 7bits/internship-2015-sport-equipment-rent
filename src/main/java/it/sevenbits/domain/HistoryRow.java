@@ -1,11 +1,9 @@
-package it.sevenbits.web.views;
-
-import it.sevenbits.domain.HistoryRow;
+package it.sevenbits.domain;
 
 /**
- * Created by awemath on 8/19/15.
+ * Created by awemath on 9/30/15.
  */
-public class HistoryRowView {
+public class HistoryRow {
     private String startDate, endDate, renting, rentingId, rentingImage, title;
 
     public String getStartDate() {
@@ -54,16 +52,5 @@ public class HistoryRowView {
 
     public void setTitle(final String title) {
         this.title = title;
-    }
-
-    public static HistoryRowView valueOf(final HistoryRow historyRow) {
-        HistoryRowView historyRowView = new HistoryRowView();
-        historyRowView.setTitle(historyRow.getTitle());
-        historyRowView.setRentingId(historyRow.getRentingId());
-        historyRowView.setRenting(historyRow.getRenting());
-        historyRowView.setStartDate(historyRow.getStartDate());
-        historyRowView.setEndDate(historyRow.getEndDate());
-        historyRowView.setRentingImage(historyRow.getRentingImage());
-        return historyRowView;
     }
 }

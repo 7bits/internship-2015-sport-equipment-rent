@@ -1,6 +1,7 @@
 package it.sevenbits.web.validators;
 
 import it.sevenbits.service.UserService;
+import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.service.validators.CommonFieldValidator;
 import it.sevenbits.web.forms.RegistrationForm;
 import org.apache.log4j.Logger;
@@ -24,7 +25,7 @@ import java.util.Map;
         private static final Logger LOG = Logger.getLogger(AddNewGoodsFormValidator.class);
 
 
-    public HashMap<String, String> validate(final RegistrationForm form) {
+    public HashMap<String, String> validate(final RegistrationForm form) throws UserServiceException {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
         validator.isNotNullOrEmpty(form.geteMail(), errors, "Поле email", "Поле email не может быть пустым");

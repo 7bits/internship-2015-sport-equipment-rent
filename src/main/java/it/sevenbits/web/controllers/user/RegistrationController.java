@@ -9,6 +9,9 @@ import it.sevenbits.web.validators.AddNewRegistrationFormValidator;
 import org.apache.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +36,11 @@ public class RegistrationController {
     private GoodsService goodsService;
 
     @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
     private AddNewRegistrationFormValidator validator;
-    private Logger LOG = Logger.getLogger(RegistrationController.class);
+    private Logger logger = Logger.getLogger(RegistrationController.class);
 
     @RequestMapping(method = RequestMethod.GET)
     public String login(final Model model) {
@@ -45,13 +51,19 @@ public class RegistrationController {
     @RequestMapping(method = RequestMethod.POST)
     public String submit(@ModelAttribute final RegistrationForm form,
                          final Model model) {
-        final Map<String, String> errors = validator.validate(form);
+        Map<String, String> errors = null;
+        try {
+            errors = validator.validate(form);
+        } catch (UserServiceException e) {
+            logger.error("An error appeared on validating registration form", e);
+            return "home/error";
+        }
         if (errors.size() != 0) {
             model.addAttribute("user", form);
             model.addAttribute("errors", errors);
             model.addAttribute("isAuth",
                     SecurityContextHolder.getContext().getAuthentication().getName() != "anonymousUser");
-            LOG.info("Registration form contains errors.");
+            logger.info("Registration form contains errors.");
             return "home/registration";
         }
         //create model
@@ -62,8 +74,12 @@ public class RegistrationController {
         //save model
         try {
             userService.save(user);
+            UsernamePasswordAuthenticationToken token =
+                    new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPass());
+            Authentication auth = authenticationManager.authenticate(token);
+            SecurityContextHolder.getContext().setAuthentication(auth);
         } catch (UserServiceException e) {
-            LOG.error("An error appeared on saving user: "+e.getMessage());
+            logger.error("An error appeared on saving user: " + e.getMessage());
             return "home/error";
         }
         return "redirect:/confirm";

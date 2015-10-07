@@ -5,10 +5,9 @@ import de.neuland.jade4j.template.JadeTemplate;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
-import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.service.exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +33,7 @@ public class MailSubmissionController {
 
     private final JavaMailSender javaMailSender;
 
-    private Logger LOG = Logger.getLogger(MailSubmissionController.class);
+    private Logger logger = Logger.getLogger(MailSubmissionController.class);
 
     @Autowired
     private UserService userService;
@@ -47,12 +46,14 @@ public class MailSubmissionController {
     private JadeConfiguration jade;
 
     @Autowired
-    MailSubmissionController(JavaMailSender javaMailSender) {
+    MailSubmissionController(final JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendEmail(String html, String title, String to) {
+    public void sendEmail(final String html,
+                          final String title,
+                          final String to) {
         JavaMailSenderImpl sender = (JavaMailSenderImpl) javaMailSender;
 
         try {
@@ -66,15 +67,15 @@ public class MailSubmissionController {
 
             sender.send(mimeMessage);
         } catch (MailException e) {
-            LOG.error("Email didn`t send", e);
+            logger.error("Email didn`t send", e);
         } catch (MessagingException e) {
-            LOG.error("Email didn`t send", e);
+            logger.error("Email didn`t send", e);
         }
     }
 
     //letter_deny
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendDeny(Deal deal) {
+    public void sendDeny(final Deal deal) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         try {
             User landlord = userService.getUser(deal.getLandlordId());
@@ -92,18 +93,16 @@ public class MailSubmissionController {
 
             sendEmail(html, title, renting.getEmail());
 
-        } catch (GoodsException e) {
-            LOG.error("Email didn`t send", e);
         } catch (IOException e) {
-            LOG.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
-            LOG.error("Email didn`t send", e);
+            logger.error("Email didn`t send", e);
+        } catch (ServiceException e) {
+            logger.error("Email didn`t send", e);
         }
     }
 
     //letter_confirm_start_rent
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendConfirmationMail(Deal deal) {
+    public void sendConfirmationMail(final Deal deal) {
         try {
             User landlord = userService.getUser(deal.getLandlordId());
             User renting = userService.getUser(deal.getRentingId());
@@ -120,18 +119,16 @@ public class MailSubmissionController {
             model.put("goods", goods);
             String html = jade.renderTemplate(template, model);
             sendEmail(html, title, renting.getEmail());
-        } catch (GoodsException e) {
-            LOG.error("Email didn`t send", e);
+        } catch (ServiceException e) {
+            logger.error("Email didn`t send", e);
         } catch (IOException e) {
-            LOG.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
-            LOG.error("Email didn`t send", e);
+            logger.error("Email didn`t send", e);
         }
     }
 
     //letter_end_of_rent
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendClose(Deal deal) {
+    public void sendClose(final Deal deal) {
         try {
             User landlord = userService.getUser(deal.getLandlordId());
             User renting = userService.getUser(deal.getRentingId());
@@ -145,18 +142,16 @@ public class MailSubmissionController {
             model.put("goods", goods);
             String html = jade.renderTemplate(template, model);
             sendEmail(html, title, landlord.getEmail());
-        } catch (GoodsException e) {
-            LOG.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
-            LOG.error("Email didn`t send", e);
+        } catch (ServiceException e) {
+            logger.error("Email didn`t send", e);
         } catch (IOException e) {
-            LOG.error("Email didn`t send", e);
+            logger.error("Email didn`t send", e);
         }
     }
 
     //letter
     @ResponseStatus(HttpStatus.CREATED)
-    public void sendHtmlEmail(Deal deal) {
+    public void sendHtmlEmail(final Deal deal) {
         try {
             User landlord = userService.getUser(deal.getLandlordId());
             User renting = userService.getUser(deal.getRentingId());
@@ -171,12 +166,10 @@ public class MailSubmissionController {
             String html = jade.renderTemplate(template, model);
             sendEmail(html, title, landlord.getEmail());
 
-        } catch (GoodsException e) {
-            LOG.error("Email didn`t send", e);
         } catch (IOException e) {
-            LOG.error("Email didn`t send", e);
-        } catch (UserServiceException e) {
-            LOG.error("Email didn`t send", e);
+            logger.error("Email didn`t send", e);
+        } catch (ServiceException e) {
+            logger.error("Email didn`t send", e);
         }
     }
 }

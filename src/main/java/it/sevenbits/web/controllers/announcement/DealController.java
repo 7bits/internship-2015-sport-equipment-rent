@@ -1,9 +1,8 @@
 package it.sevenbits.web.controllers.announcement;
 
 
-import it.sevenbits.service.exceptions.DealServiceException;
+import it.sevenbits.service.exceptions.*;
 
-import it.sevenbits.service.exceptions.UserServiceException;
 import it.sevenbits.web.controllers.MailSubmissionController;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.User;
@@ -30,7 +29,7 @@ public class DealController {
     @Autowired
     private UserService userService;
 
-    private Logger LOG = Logger.getLogger(DealController.class);
+    private Logger logger = Logger.getLogger(DealController.class);
 
 
     @Autowired
@@ -40,9 +39,15 @@ public class DealController {
     public String deal(@RequestParam(value = "deal_id", required = false) final long dealId,
                        @RequestParam(value = "accept", required = false) final boolean isHanded,
                        final Model model) {
+
         try {
-            dealService.handed(dealId, isHanded);
-        } catch (DealServiceException e) {
+            User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
+            dealService.handed(dealId, isHanded, user);
+        } catch (ServiceException e) {
+            return "home/error";
+        } catch (AccessDeniedException e) {
+            return "home/error";
+        } catch (AllreadyAnsweredException e) {
             return "home/error";
         }
         if (isHanded) {
@@ -63,8 +68,11 @@ public class DealController {
 
         try {
             dealService.accept(dealId, isGet);
-        } catch (DealServiceException e) {
-            LOG.error(e.getMessage());
+        } catch (ServiceException e) {
+            logger.error(e.getMessage());
+            return "home/error";
+        } catch (AccessDeniedException e) {
+            logger.error(e.getMessage());
             return "home/error";
         }
         if (isGet) {
@@ -80,10 +88,12 @@ public class DealController {
                                  final Model model) {
         Deal deal = null;
         try {
-            dealService.close(dealId, deal);
-        } catch (DealServiceException e) {
+            dealService.close(dealId);
+        } catch (ServiceException e) {
+            logger.error(e.getMessage());
             return "home/error";
-
+        } catch (AccessDeniedException e) {
+            return "home/error";
         }
         model.addAttribute("id", deal.getId());
         if (DateTime.parse(deal.getEstimateEndDate()).getMillis() > DateTime.now().getMillis()) {
@@ -99,18 +109,35 @@ public class DealController {
     public String closeEnd(@RequestParam(value = "deal_id", required = false) final long dealId,
                            final Model model) {
         User landlord = null;
-        Deal deal = dealService.getDeal(dealId);
+        Deal deal = null;
+        try {
+            deal = dealService.getDeal(dealId);
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting deal");
+            return "home/error";
+        }
         try {
             landlord = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            e.printStackTrace();
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting user");
+            return "home/error";
         }
-        dealService.updateRealEndDate(dealId);
+        try {
+            dealService.updateRealEndDate(dealId);
+        } catch (ServiceException e) {
+            logger.error("An error appeared on updating deal`s real end date");
+            return "home/error";
+        }
         deal.setIsClosed(true);
         if (landlord.getId() != deal.getLandlordId()) {
             return "home/error_message";
         }
-        dealService.update(deal);
+        try {
+            dealService.update(deal);
+        } catch (ServiceException e) {
+            logger.error("An error appeared on updating deal", e);
+            return "home/error";
+        }
         return "home/message_when_rent_is_end";
     }
 

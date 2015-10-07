@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * Created by awemath on 7/9/15.
  */
@@ -23,8 +24,14 @@ public class AddNewGoodsFormValidator {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
         HashMap<String, String> errors = new HashMap<String, String>();
         validator.isNotNullOrEmpty(form.getTitle(), errors, "Поле заголовок", "Поле заголовок не может быть пустым");
-        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerHour()), errors, "Поле цена за час", "Поле цена за час не может быть пустым");
-        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerDay()), errors, "Поле цена за день", "Поле цена за день не может быть пустым");
+        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerHour()),
+                errors,
+                "Поле цена за час",
+                "Поле цена за час не может быть пустым");
+        validator.isNotNullOrEmpty(String.valueOf(form.getPricePerDay()),
+                errors,
+                "Поле цена за день",
+                "Поле цена за день не может быть пустым");
         validator.isNotNullOrEmpty(String.valueOf(form.getPricePerWeek()), errors, "Поле цена за неделю", "Поле цена за неделю не может быть пустым");
 
         validator.shorterThan(form.getTitle(), 255, errors, "Поле заголовок", "Поле заголовок должно быть короче чем 255 символов");

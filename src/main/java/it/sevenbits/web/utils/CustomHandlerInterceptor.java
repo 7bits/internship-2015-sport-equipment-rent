@@ -18,14 +18,14 @@ public class CustomHandlerInterceptor extends HandlerInterceptorAdapter {
 
 
     @Autowired
-    AssetsResolver assetsResolver;
+    private AssetsResolver assetsResolver;
 
     @Override
     public void postHandle(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            Object handler,
-            ModelAndView mav
+            final HttpServletRequest request,
+            final HttpServletResponse response,
+            final Object handler,
+            final ModelAndView mav
     ) throws Exception {
         if (mav != null) {
             mav.addObject(ASSETS_SERVICE_NAME, assetsResolver);

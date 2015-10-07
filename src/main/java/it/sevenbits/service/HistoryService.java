@@ -2,12 +2,11 @@ package it.sevenbits.service;
 
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
+import it.sevenbits.domain.HistoryRow;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.GoodsException;
-import it.sevenbits.service.exceptions.UserServiceException;
-import it.sevenbits.web.views.HistoryRowView;
+import it.sevenbits.service.exceptions.ServiceException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -27,22 +26,26 @@ public class HistoryService {
     @Autowired
     private GoodsService goodsService;
 
-    public List<HistoryRowView> getUsersHistory() throws UserServiceException {
-        User user = null;
+    Logger logger = Logger.getLogger(HistoryService.class);
 
-        user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        List<Deal> deals = dealService.getDealsOfUser(user.getId());
-        List<HistoryRowView> table = new LinkedList<HistoryRowView>();
+    public List<HistoryRow> getUsersHistory(final User user) throws ServiceException {
+        List<Deal> deals = null;
+        try {
+            deals = dealService.getDealsOfUser(user.getId());
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting users history", e);
+            throw new ServiceException("An error appeared on getting users history", e);
+        }
+        List<HistoryRow> table = new LinkedList<HistoryRow>();
         for (int i = 0; i < deals.size(); i++) {
-            HistoryRowView row = new HistoryRowView();
+            HistoryRow row = new HistoryRow();
             row.setStartDate(deals.get(i).getRealStartDate()
                     .substring(0, deals.get(i).getRealStartDate().indexOf('.')));
             row.setEndDate(deals.get(i).getRealEndDate().substring(0, deals.get(i).getRealEndDate().indexOf('.')));
             User renting = null;
             try {
                 renting = userService.getUser(deals.get(i).getRentingId());
-            } catch (UserServiceException e) {
+            } catch (ServiceException e) {
                 e.printStackTrace();
             }
             row.setRenting(renting.getFirstName());
@@ -51,9 +54,7 @@ public class HistoryService {
             Goods goods = null;
             try {
                 goods = goodsService.getGoods(deals.get(i).getGoodsId());
-            } catch (UserServiceException e) {
-                e.printStackTrace();
-            } catch (GoodsException e) {
+            } catch (ServiceException e) {
                 e.printStackTrace();
             }
             row.setTitle(goods.getTitle());

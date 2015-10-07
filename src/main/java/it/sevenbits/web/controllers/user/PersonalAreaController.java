@@ -1,10 +1,10 @@
 package it.sevenbits.web.controllers.user;
 
 import it.sevenbits.domain.User;
-import it.sevenbits.service.exceptions.GoodsException;
 import it.sevenbits.service.GoodsService;
 import it.sevenbits.service.UserService;
-import it.sevenbits.service.exceptions.UserServiceException;
+import it.sevenbits.service.exceptions.ServiceException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,13 +22,16 @@ public class PersonalAreaController {
     private GoodsService goodsService;
     @Autowired
     private UserService userService;
-    @RequestMapping(method= RequestMethod.GET)
-    public String seePersonalArea(final Model model){
+
+    private Logger logger = Logger.getLogger(PersonalAreaController.class);
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String seePersonalArea(final Model model) {
         User user = null;
         try {
             user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
-        } catch (UserServiceException e) {
-            e.printStackTrace();
+        } catch (ServiceException e) {
+            logger.error("An error appeared on getting user", e);
         }
         model.addAttribute("goods", goodsService.getGoodsByAuthorId(user.getId()));
         model.addAttribute("user", user);
