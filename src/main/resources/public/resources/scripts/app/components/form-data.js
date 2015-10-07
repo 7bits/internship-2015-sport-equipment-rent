@@ -1,6 +1,7 @@
 var formData = flight.component(function() {
     this.onClick = function(event) {
         var sendInfo = {
+            announcementId: $('.js-announcement-id').val(),
             form: $('.js-from').val(),
             to: $('.js-to').val()
         }
