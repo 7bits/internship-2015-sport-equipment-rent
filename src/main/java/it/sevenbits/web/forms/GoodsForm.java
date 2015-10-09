@@ -112,8 +112,8 @@ public class GoodsForm {
         this.imageUrl = imageUrl;
     }
 
-    public void addImageUrl(final String imageUrl) {
-        this.imageUrl.add(imageUrl);
+    public void addImageUrl(final String value) {
+        this.imageUrl.add(value);
     }
 
     public Goods toGoods(final User user) {

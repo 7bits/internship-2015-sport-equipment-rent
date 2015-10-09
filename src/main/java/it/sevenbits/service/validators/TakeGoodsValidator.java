@@ -3,7 +3,6 @@ package it.sevenbits.service.validators;
 import it.sevenbits.service.DealService;
 import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.web.forms.DateForm;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -12,7 +11,6 @@ import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 /**
  * Created by awemath on 8/3/15.
@@ -27,13 +25,15 @@ public class TakeGoodsValidator {
     private DealService dealService;
 
     @Autowired
-    MessageSource messageSource;
+    private MessageSource messageSource;
 
     @Autowired
-    LocaleResolver localeResolver;
+    private LocaleResolver localeResolver;
 
 
-    public HashMap<String, String> validate(final DateForm form, long goodsId) throws ServiceException {
+    public HashMap<String, String> validate(
+            final DateForm form,
+            final long goodsId) throws ServiceException {
         Locale locale = LocaleContextHolder.getLocale();
         HashMap<String, String> errors = new HashMap<String, String>();
         validator.isNotNullOrEmpty(form.getFrom(), errors, "from",
