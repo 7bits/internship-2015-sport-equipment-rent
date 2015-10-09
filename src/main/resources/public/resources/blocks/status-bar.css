@@ -1,0 +1,35 @@
+.b-status-bar{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+
+    display: none;
+
+    width: 100%;
+    margin-bottom: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    text-align: center;
+
+    color: #626262;
+    border: 1px solid green;
+    background-color: white;
+}
+
+.js-status-bar--error{
+    border: 1px solid red;
+}
+
+
+.b-status-bar p{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    white-space:      pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space:   -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.b-status-bar li{
+    list-style-type: none; /* Убираем маркеры */
+}
