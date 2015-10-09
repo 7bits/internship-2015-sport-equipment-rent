@@ -38,7 +38,7 @@ public class DealService {
 
     private Logger logger = Logger.getLogger(DealService.class);
 
-    public void save(final Deal deal) throws ServiceException {
+    private void save(final Deal deal) throws ServiceException {
         try {
             repository.save(deal);
         } catch (RepositoryException e) {
@@ -122,14 +122,17 @@ public class DealService {
 
 
     public void submitDeal(final Deal deal,
-                           final String announcementId)
+                           final String announcementId,
+                           final User user)
             throws ServiceException, YourAnnouncementException, RepeatedDealException {
         Goods goods = null;
         try {
-            String name = SecurityContextHolder.getContext().getAuthentication().getName();
-            User user = userService.getUser(name);
+
             goods = goodsService.getGoods(Long.valueOf(announcementId));
             User landlord = userService.getUser(goods.getAuthorId());
+            deal.setLandlordId(landlord.getId());
+            deal.setRentingId(user.getId());
+            deal.setGoodsId(goods.getId());
             if (user.getEmail().equals(landlord.getEmail())) {
                 throw new YourAnnouncementException();
             }

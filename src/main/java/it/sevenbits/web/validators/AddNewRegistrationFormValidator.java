@@ -58,7 +58,7 @@ public class AddNewRegistrationFormValidator {
                         messageSource.getMessage("message.error.shorterThan", new Object[]{100}, locale));
 
         validator.isUniqueEmail(form.geteMail(), userService, errors, "Поле emai",
-                messageSource.getMessage("message.field.message.error.userAlreadyExist", null, locale));
+                messageSource.getMessage("message.error.userAlreadyExist", null, locale));
 
         for (Map.Entry<String, String> entry : errors.entrySet()) {
             LOG.info(String.format("Error found: Filed=%s, Error=%s",

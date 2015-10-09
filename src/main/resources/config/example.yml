@@ -19,6 +19,7 @@ mail:
            enable: true
            required: true
        debug: true
+date-time-format: yyyy/MM/DD HH:mm
 resources:
    path: #path for your resources on local computer
    images: #path for your images from resources path on local computer
@@ -52,6 +53,7 @@ mail:
            enable: true
            required: true
        debug: true
+date-time-format: yyyy/MM/DD HH:mm
 resources:
    path: #path to your resources on server
    images: #path for your images from resources path on server

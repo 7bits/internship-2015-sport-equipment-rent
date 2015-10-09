@@ -1,17 +1,13 @@
 .b-error{
     font-family: 'Roboto', sans-serif;
     font-size: 0.750em;
-
-    width: 98%;
+    min-height: 50px;
+    width: 100%;
     margin-top: 13px;
-    margin-right: 1%;
     margin-bottom: 13px;
-    margin-left: 1%;
     padding-top: 10px;
-    padding-right: 8%;
     padding-bottom: 10px;
-    padding-left: 8%;
-
+    text-align: center;
     white-space:      pre-wrap;
     white-space: -moz-pre-wrap;
     white-space:   -o-pre-wrap;
@@ -20,14 +16,14 @@
     color: #626262;
     border: 1px solid red;
     background-color: white;
+    display: none;
 }
 
 .b-error p{
     margin-bottom: 10px;
-
-    text-alight: center;
 }
 
 .b-error li{
     list-style-type: none; /* Убираем маркеры */
 }
+

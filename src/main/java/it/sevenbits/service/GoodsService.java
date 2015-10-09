@@ -296,18 +296,13 @@ public class GoodsService {
         return UUID.randomUUID().toString();
     }
 
-    public boolean isAuthor(final Long announcementId)
+    public boolean isAuthor(final Long announcementId, User user)
             throws ServiceException {
-
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Goods goods = getGoods(announcementId);
-        if (name != "anonymousUser") {
-            User user = userService.getUser(name);
-            return user.getId().equals(goods.getAuthorId());
-        } else {
-            return false;
+        if (user == null) {
+           return false;
         }
-
-    }
+        return user.getId().equals(goods.getAuthorId());
+        }
 
 }

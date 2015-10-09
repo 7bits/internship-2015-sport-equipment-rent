@@ -3,13 +3,9 @@ html
     head
         block title
             title Дай погонять
-        meta(charset='utf-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        include partial/meta.jade
         include partial/favicon.jade
-        link(rel="stylesheet", href="resources/library/reset.css", type="text/css", media="all")
-        link(rel="stylesheet", href="resources/library/normalize.css", type="text/css", media="all")
-        link(href='http://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
-        link(rel="stylesheet", href="resources/build/bundle.css", type="text/css", media="all")
+        include partial/style.jade
     body
         .b-index-container
             include partial/header.jade
@@ -42,7 +38,4 @@ html
                             - userAva = Goods.authorImage;
                             +list(Goods, userId, userAva, "РЕДАКТИРОВАТЬ", false)
         block scripts
-            script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-            script(src='resources/scripts/header.js')
-            script(src='resources/scripts/cut-text.js')
-            script(src="resources/vendor/scripts/cut-text/dotdotdot.js")
+            include partial/scripts.jade
