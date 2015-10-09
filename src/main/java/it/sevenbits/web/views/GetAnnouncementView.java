@@ -1,9 +1,7 @@
 package it.sevenbits.web.views;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by awemath on 10/6/15.
