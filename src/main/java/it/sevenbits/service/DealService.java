@@ -6,7 +6,6 @@ import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.exceptions.*;
-import it.sevenbits.web.controllers.MailSubmissionController;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +27,13 @@ public class DealService {
     @Autowired
     private GoodsService goodsService;
     @Autowired
-    private MailSubmissionController mailSubmissionController;
+    private MailSubmissionService finalMailSubmissionService;
 
     @Autowired
     private UserService userService;
 
     @Autowired
-    private MailSubmissionController mail;
+    private MailSubmissionService mail;
 
     private Logger logger = Logger.getLogger(DealService.class);
 
@@ -135,7 +134,7 @@ public class DealService {
             }
             if (!isExist(deal)) {
                 save(deal);
-                mailSubmissionController.sendHtmlEmail(deal);
+                finalMailSubmissionService.sendHtmlEmail(deal);
             } else {
                 throw new RepeatedDealException();
             }

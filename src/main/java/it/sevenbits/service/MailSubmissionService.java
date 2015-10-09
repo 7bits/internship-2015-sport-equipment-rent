@@ -1,12 +1,10 @@
-package it.sevenbits.web.controllers;
+package it.sevenbits.service;
 
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.template.JadeTemplate;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.Goods;
 import it.sevenbits.domain.User;
-import it.sevenbits.service.GoodsService;
-import it.sevenbits.service.UserService;
 import it.sevenbits.service.exceptions.ServiceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +26,9 @@ import java.util.HashMap;
  * Created by awemath on 7/17/15.
  */
 @RestController
-public class MailSubmissionController {
-
-
+public class MailSubmissionService {
+    private Logger logger = Logger.getLogger(MailSubmissionService.class);
     private final JavaMailSender javaMailSender;
-
-    private Logger logger = Logger.getLogger(MailSubmissionController.class);
-
     @Autowired
     private UserService userService;
 
@@ -46,31 +40,19 @@ public class MailSubmissionController {
     private JadeConfiguration jade;
 
     @Autowired
-    MailSubmissionController(final JavaMailSender javaMailSender) {
+    MailSubmissionService(final JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
+
+
 
     @ResponseStatus(HttpStatus.CREATED)
     public void sendEmail(final String html,
                           final String title,
                           final String to) {
-        JavaMailSenderImpl sender = (JavaMailSenderImpl) javaMailSender;
-
-        try {
-            MimeMessage mimeMessage = sender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
-            mimeMessage.setContent(html, "text/html; charset=\"UTF-8\"");
-
-            helper.setTo(to);
-            helper.setSubject(title);
-            helper.setFrom(sender.getUsername());
-
-            sender.send(mimeMessage);
-        } catch (MailException e) {
-            logger.error("Email didn`t send", e);
-        } catch (MessagingException e) {
-            logger.error("Email didn`t send", e);
-        }
+        MailSenderService mailSenderService = new MailSenderService(javaMailSender, html, title, to);
+        Thread thread = new Thread(mailSenderService);
+        thread.run();
     }
 
     //letter_deny
@@ -90,6 +72,7 @@ public class MailSubmissionController {
             model.put("goods", goods);
 
             String html = jade.renderTemplate(template, model);
+            Thread thread = new Thread();
 
             sendEmail(html, title, renting.getEmail());
 

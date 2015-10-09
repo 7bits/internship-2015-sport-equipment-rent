@@ -3,7 +3,7 @@ package it.sevenbits.web.controllers.announcement;
 
 import it.sevenbits.service.exceptions.*;
 
-import it.sevenbits.web.controllers.MailSubmissionController;
+import it.sevenbits.service.MailSubmissionService;
 import it.sevenbits.domain.Deal;
 import it.sevenbits.domain.User;
 import it.sevenbits.service.DealService;
@@ -33,7 +33,7 @@ public class DealController {
 
 
     @Autowired
-    private MailSubmissionController mail;
+    private MailSubmissionService mail;
 
     @RequestMapping(value = "/handed", method = RequestMethod.GET)
     public String deal(@RequestParam(value = "deal_id", required = false) final String dealIdVal,
