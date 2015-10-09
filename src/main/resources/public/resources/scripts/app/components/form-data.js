@@ -17,7 +17,7 @@ var formData = flight.component(function() {
                 if (data.success)
                     $('.js-status-bar').trigger('showSuccess', "");
                 else
-                    $('.js-status-bar').trigger('showErrors', data.errors);
+                    $('.js-status-bar').trigger('showErrors', {errors: data.errors});
             }
         }).fail(function($xhr){
                 var data = $xhr.responseJSON;
