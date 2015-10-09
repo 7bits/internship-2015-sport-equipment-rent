@@ -1,7 +1,9 @@
 package it.sevenbits.web.views;
 
+
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * Created by awemath on 10/6/15.

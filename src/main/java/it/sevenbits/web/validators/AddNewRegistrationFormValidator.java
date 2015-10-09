@@ -28,7 +28,7 @@ public class AddNewRegistrationFormValidator {
     private static final Logger LOG = Logger.getLogger(AddNewGoodsFormValidator.class);
 
     @Autowired
-    MessageSource messageSource;
+    private MessageSource messageSource;
 
     public HashMap<String, String> validate(final RegistrationForm form) throws UserServiceException {
         LOG.info("SubscriptionFormValidator started for: " + form.toString());
