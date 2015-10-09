@@ -299,6 +299,9 @@ public class GoodsService {
     public boolean isAuthor(final Long announcementId, User user)
             throws ServiceException {
         Goods goods = getGoods(announcementId);
+        if (user == null) {
+           return false;
+        }
         return user.getId().equals(goods.getAuthorId());
         }
 

@@ -1,6 +1,8 @@
 package it.sevenbits.web.views;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,14 +11,14 @@ import java.util.Map;
 public class GetAnnouncementView {
     private boolean isSuccess;
 
-    private Map<String, String> errors = new HashMap<>();
+    private List<ErrorView> errors = new LinkedList<>();
     private String from, to;
 
     private boolean isAuth, isAuthor;
 
     public void addError (final String key,
                          final String value) {
-        errors.put(key, value);
+        errors.add(new ErrorView(key, value));
     }
 
     public boolean isAuth() {
@@ -43,11 +45,11 @@ public class GetAnnouncementView {
         this.isSuccess = isSuccess;
     }
 
-    public Map<String, String> getErrors() {
+    public List<ErrorView> getErrors() {
         return errors;
     }
 
-    public void setErrors(final Map<String, String> errors) {
+    public void setErrors(final List<ErrorView> errors) {
         this.errors = errors;
     }
 

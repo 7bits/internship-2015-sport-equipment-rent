@@ -11,6 +11,7 @@ import it.sevenbits.service.exceptions.ServiceException;
 import it.sevenbits.service.exceptions.YourAnnouncementException;
 import it.sevenbits.service.validators.TakeGoodsValidator;
 import it.sevenbits.web.forms.DateForm;
+import it.sevenbits.web.views.ErrorView;
 import it.sevenbits.web.views.GetAnnouncementView;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +64,7 @@ public class SeeAnnouncementController {
             }
 
 
-            model.addAttribute("isAuth", name != "anonymousUser");
+            model.addAttribute("isAuth", !name.equals("anonymousUser"));
             model.addAttribute("user", landlord);
         } catch (ServiceException e) {
             logger.error("An error appeared on the getting goods from repository: ", e);
@@ -103,7 +104,11 @@ public class SeeAnnouncementController {
             } else {
                 //create model with exceptions
                 view.setIsSuccess(false);
-                view.setErrors(errors);
+                int i = 0;
+                for (String s: errors.keySet()) {
+                    view.addError(s, errors.get(s));
+                    i++;
+                }
                 view.setFrom(form.getFrom());
                 view.setTo(form.getTo());
                 view.setIsAuth(!name.equals("anonymousUser"));
