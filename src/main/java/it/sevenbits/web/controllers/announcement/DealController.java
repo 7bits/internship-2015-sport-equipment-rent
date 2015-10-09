@@ -36,18 +36,23 @@ public class DealController {
     private MailSubmissionController mail;
 
     @RequestMapping(value = "/handed", method = RequestMethod.GET)
-    public String deal(@RequestParam(value = "deal_id", required = false) final long dealId,
-                       @RequestParam(value = "accept", required = false) final boolean isHanded,
+    public String deal(@RequestParam(value = "deal_id", required = false) final String dealIdVal,
+                       @RequestParam(value = "accept", required = false) final String isHandedVal,
                        final Model model) {
-
+        int dealId;
+        boolean isHanded;
         try {
+            dealId = Integer.valueOf(dealIdVal);
+            isHanded = Boolean.valueOf(isHandedVal);
             User user = userService.getUser(SecurityContextHolder.getContext().getAuthentication().getName());
             dealService.handed(dealId, isHanded, user);
         } catch (ServiceException e) {
             return "home/error";
         } catch (AccessDeniedException e) {
             return "home/error";
-        } catch (AllreadyAnsweredException e) {
+        } catch (AlreadyAnsweredException e) {
+            return "home/error";
+        } catch (NumberFormatException e) {
             return "home/error";
         }
         if (isHanded) {
@@ -63,16 +68,22 @@ public class DealController {
 
 
     @RequestMapping(value = "/accept", method = RequestMethod.GET)
-    public String accept(@RequestParam(value = "deal_id", required = false) final long dealId,
-                         @RequestParam(value = "accept", required = false) final boolean isGet) {
+    public String accept(@RequestParam(value = "deal_id", required = false) final String dealIdVal,
+                         @RequestParam(value = "accept", required = false) final String isGetVal) {
 
+        int dealId;
+        boolean isGet;
         try {
+            dealId = Integer.valueOf(dealIdVal);
+            isGet = Boolean.valueOf(isGetVal);
             dealService.accept(dealId, isGet);
         } catch (ServiceException e) {
             logger.error(e.getMessage());
             return "home/error";
         } catch (AccessDeniedException e) {
             logger.error(e.getMessage());
+            return "home/error";
+        } catch (NumberFormatException e) {
             return "home/error";
         }
         if (isGet) {
@@ -84,15 +95,20 @@ public class DealController {
     }
 
     @RequestMapping(value = "/close", method = RequestMethod.GET)
-    public String closeFirstStep(@RequestParam(value = "deal_id", required = false) final long dealId,
+    public String closeFirstStep(@RequestParam(value = "deal_id", required = false) final String dealIdVal,
                                  final Model model) {
         Deal deal = null;
+        int dealId;
+
         try {
+            dealId = Integer.valueOf(dealIdVal);
             dealService.close(dealId);
         } catch (ServiceException e) {
             logger.error(e.getMessage());
             return "home/error";
         } catch (AccessDeniedException e) {
+            return "home/error";
+        } catch (NumberFormatException e) {
             return "home/error";
         }
         model.addAttribute("id", deal.getId());
@@ -106,11 +122,13 @@ public class DealController {
     }
 
     @RequestMapping(value = "/finally_close", method = RequestMethod.GET)
-    public String closeEnd(@RequestParam(value = "deal_id", required = false) final long dealId,
+    public String closeEnd(@RequestParam(value = "deal_id", required = false) final String dealIdVal,
                            final Model model) {
         User landlord = null;
         Deal deal = null;
+        int dealId;
         try {
+            dealId = Integer.valueOf(dealIdVal);
             deal = dealService.getDeal(dealId);
         } catch (ServiceException e) {
             logger.error("An error appeared on getting deal");
