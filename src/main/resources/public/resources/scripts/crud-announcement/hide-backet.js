@@ -8,7 +8,7 @@
                 $(this).children('.js-download-mask').find('.js-product-image img').hide();
             }
             else{
-                $(this).children('.js-real-file-input').attr('value', bufImgSrc);
+                $(this).children('.js-real-file-input').find('input').attr('value', bufImgSrc);
             }
         })
     })

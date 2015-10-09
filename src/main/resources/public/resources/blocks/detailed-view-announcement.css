@@ -99,10 +99,19 @@
 }
 
 
-@media(max-width: 947px){
+@media(max-width: 975px){
     .b-detailed-view-announcement--default{
         margin-right: 12px;
     }
+
+    .b-detailed-view-announcement--owner{
+        width: 700px;
+    }
+
+    .b-detailed-view-announcement__content--owner{
+        width: 692px;
+    }
+
 }
 
 @media(max-width: 928px){
