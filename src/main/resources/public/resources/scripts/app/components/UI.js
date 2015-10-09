@@ -20,6 +20,7 @@ var formUI = flight.component(function() {
             var theCompiledHtml = theTemplate(statusBar);
             $('.js-status-bar').html(theCompiledHtml);
             $('.js-status-bar').show();
+            setTimeout(function(){$('.js-status-bar').fadeOut('slow')},10000); 
         }
 
   // initialize
