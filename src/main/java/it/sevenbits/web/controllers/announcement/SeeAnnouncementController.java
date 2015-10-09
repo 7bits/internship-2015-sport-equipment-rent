@@ -56,7 +56,7 @@ public class SeeAnnouncementController {
             Goods goods = goodsService.getGoods(Long.valueOf(announcementId));
             User landlord = userService.getUser(goods.getAuthorId());
             model.addAttribute("Goods", goods);
-            if (name.equals("anonymousUser")) {
+            if (!name.equals("anonymousUser")) {
                 User user = userService.getUser(name);
                 model.addAttribute("isAuthor", goodsService.isAuthor(Long.valueOf(announcementId), user));
             } else {
