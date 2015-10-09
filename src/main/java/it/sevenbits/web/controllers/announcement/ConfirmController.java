@@ -86,7 +86,7 @@ public class ConfirmController {
             Goods goods = form.toGoods(user);
             goods.setImageUrl((List<String>) session.getAttribute("images"));
             goodsId = service.submitGoods(goods, new LinkedList<MultipartFile>());
-        } catch (GoodsException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on submitting goods " + e.getMessage());
             return "home/error";
         }

@@ -106,7 +106,7 @@ public class AddAnnouncementController {
         }
         try {
             goodsId = service.submitGoods(goods, images);
-        } catch (GoodsException e) {
+        } catch (ServiceException e) {
             logger.error("An error appeared on submting goods " + e.getMessage());
             return "home/error";
         }

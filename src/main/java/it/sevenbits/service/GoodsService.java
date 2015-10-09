@@ -199,11 +199,11 @@ public class GoodsService {
         repository.delete(id);
     }
 
-    public void save(final Goods goods) throws GoodsException {
+    public void save(final Goods goods) throws ServiceException {
         try {
             repository.save(goods);
         } catch (RepositoryException e) {
-            throw new GoodsException("An error occurred while saving subscription: " + e.getMessage(), e);
+            throw new ServiceException("An error occurred while saving subscription: " + e.getMessage(), e);
         }
     }
 
@@ -213,7 +213,7 @@ public class GoodsService {
 
     public long submitGoods(final Goods goods,
                             final List<MultipartFile> images)
-            throws GoodsException {
+            throws ServiceException {
         TransactionStatus status;
         //start transaction
         status = transactionManager.getTransaction(customTransaction);
