@@ -1,4 +1,4 @@
-package it.sevenbits.service;
+package it.sevenbits.web.controllers;
 
 import it.sevenbits.web.forms.GoodsForm;
 import org.springframework.security.core.Authentication;
