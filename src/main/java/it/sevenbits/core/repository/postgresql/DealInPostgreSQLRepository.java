@@ -29,7 +29,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             mapper.save(deal);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while saving deals: ", e);
+            throw new RepositoryException("An error appeared while saving deals", e);
         }
     }
 
@@ -38,7 +38,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             return mapper.getDeal(dealId);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while getting deals: ", e);
+            throw new RepositoryException("An error appeared while getting deals", e);
         }
     }
 
@@ -48,7 +48,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             mapper.update(deal);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while updating deals: ", e);
+            throw new RepositoryException("An error appeared while updating deals", e);
         }
     }
 
@@ -58,7 +58,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             return mapper.getId(deal);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while getting deals id: ", e);
+            throw new RepositoryException("An error appeared while getting deals id", e);
         }
     }
 
@@ -68,7 +68,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             return mapper.isExist(deal) != 0;
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while checking deals existing: ", e);
+            throw new RepositoryException("An error appeared while checking deals existing", e);
         }
     }
 
@@ -88,7 +88,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             mapper.updateRealStartDate(dealId);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while updating real start date on deal: ", e);
+            throw new RepositoryException("An error appeared while updating real start date on deal", e);
         }
     }
 
@@ -98,7 +98,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             mapper.updateRealEndDate(dealId);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while updating real end date on deal: ", e);
+            throw new RepositoryException("An error appeared while updating real end date on deal", e);
         }
     }
 
@@ -108,7 +108,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             return mapper.getOpenWithId(goodsId);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while getting open deals: ", e);
+            throw new RepositoryException("An error appeared while getting open deals", e);
         }
     }
 
@@ -118,7 +118,7 @@ public class DealInPostgreSQLRepository implements DealRepository {
             return mapper.getDealsOfUser(id);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while getting users deals: ", e);
+            throw new RepositoryException("An error appeared while getting users deals", e);
         }
     }
 

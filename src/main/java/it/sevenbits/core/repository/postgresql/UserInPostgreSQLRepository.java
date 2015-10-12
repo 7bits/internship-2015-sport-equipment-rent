@@ -37,7 +37,7 @@ public class UserInPostgreSQLRepository implements UserRepository {
             return mapper.getUser(email);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error appeared while saving deals: ", e);
+            throw new RepositoryException("An error appeared while saving deals", e);
         }
     }
 

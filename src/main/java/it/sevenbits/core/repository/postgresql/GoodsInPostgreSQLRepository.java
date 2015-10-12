@@ -32,10 +32,10 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository {
         }
         try {
             mapper.save(goods);
-            logger.info("New goods saved: " + goods.toString());
+            logger.info("New goods saved" + goods.toString());
         } catch (Exception e) {
-            logger.error("An error occurred while saving subscription: " + goods.toString() + e.getMessage());
-            throw new RepositoryException("An error occurred while saving subscription: ", e);
+            logger.error("An error occurred while saving subscription" + goods.toString() + e.getMessage());
+            throw new RepositoryException("An error occurred while saving subscription", e);
         }
     }
 
@@ -45,7 +45,7 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository {
             return mapper.findAll();
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error occurred while selected subscription: ", e);
+            throw new RepositoryException("An error occurred while selected subscription", e);
         }
     }
 
@@ -55,7 +55,7 @@ public class GoodsInPostgreSQLRepository implements GoodsRepository {
             return mapper.getGoods(id);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            throw new RepositoryException("An error occurred while selected goods: ", e);
+            throw new RepositoryException("An error occurred while selected goods", e);
         }
     }
 
