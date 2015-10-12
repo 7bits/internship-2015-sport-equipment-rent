@@ -31,19 +31,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return localeChangeInterceptor;
     }
 
-    @Bean
-    public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("locale/messages");
-        messageSource.setDefaultEncoding("UTF-8");
-        return messageSource;
-    }
-
-    @Bean
-    public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        return slr;
-    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
