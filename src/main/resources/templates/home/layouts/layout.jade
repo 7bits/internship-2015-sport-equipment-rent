@@ -2,7 +2,7 @@ doctype html
 html
     head
         block title
-            title Дай погонять
+            title #{jadeMessage.getMessage('template.index.title')}
         include ../partial/meta.jade
         meta(name="_csrf", content="#{_csrf.token}")
         meta(name="_csrf_header", content="#{_csrf.headerName}")

@@ -8,23 +8,23 @@
                     a.header-a-color(href="/login")
                         b
                             p
-                                ВОЙТИ
+                                #{jadeMessage.getMessage('template.header.login')}
             else
                 .b-header__menu
                     a.header-a-color(href="/logout")
                         b
                             p
-                                ВЫХОД
+                                #{jadeMessage.getMessage('template.header.logout')}
                 .b-header__menu
                     a.header-a-color(href="/personal_area")
                         b
                             p
-                                ЛИЧНЫЙ КАБИНЕТ
+                                #{jadeMessage.getMessage('template.header.personalArea')}
                 .b-header__menu
                     a.header-a-color(href="/add")
                         b
                             p
-                                ДАТЬ ОБЪЯВЛЕНИЕ
+                                #{jadeMessage.getMessage('template.index.makeAD')}
                 .b-header__dropdown-menu-ico.js-dropdown-ico
                     h1
                         img(src="resources/images/layout/menu.png", width="25", height="15")
@@ -33,13 +33,13 @@
                 li
                     a.header-a-color(href="/add") 
                         p 
-                            ДАТЬ ОБЪЯВЛЕНИЕ
+                            #{jadeMessage.getMessage('template.index.makeAD')}
                 li 
                     a.header-a-color(href="/personal_area")
                         p 
-                            ЛИЧНЫЙ КАБИНЕТ
+                            #{jadeMessage.getMessage('template.header.personalArea')}
                 li
                     a.header-a-color(href="/logout") 
                         p 
-                            ВЫХОД
+                            #{jadeMessage.getMessage('template.header.logout')}
 

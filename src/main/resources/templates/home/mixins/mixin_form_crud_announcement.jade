@@ -4,35 +4,35 @@ mixin form(buttonText)
             .b-title--default.b-title--blue
                 b
                     p
-                        Ваше объявление
+                        #{jadeMessage.getMessage('template.addAnn.yourAnnouncement')}
             .b-crud-announcement-form__content
                 include mixin_er.jade
                 +err(errors)
                 .b-title--form
                     b
                         p
-                            Ваш инвентарь
-                input.b-input--default#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="Название объявления")
-                textarea.b-input--default#announcementsDescription.form-control(type="text", name="description", placeholder="Подробное описание")
+                            #{jadeMessage.getMessage('template.addAnn.yourEquip')}
+                input.b-input--default#from.form-control(type="text", value="#{goods.title}", name="title", placeholder="#{jadeMessage.getMessage('template.addAnn.title')}")
+                textarea.b-input--default#announcementsDescription.form-control(type="text", name="description", placeholder="#{jadeMessage.getMessage('template.addAnn.description')}")
                     #{goods.description}
                 .b-title--form
                     b
                         text(style="padding-right: 5px;")
-                            Цена,
+                            #{jadeMessage.getMessage('template.addAnn.price')},
                         text.set-rub-price
                             Р
             .b-set-fields
                 .b-set-fields__input
-                    input.b-input--default#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="Час")
+                    input.b-input--default#PriceForHour.form-control(type="text", value="#{goods.pricePerHour}", name="pricePerHour", placeholder="#{jadeMessage.getMessage('template.addAnn.hour')}")
                 .b-set-fields__input
-                    input.b-input--default#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="Сутки")
+                    input.b-input--default#PriceForDay.form-control(type="text", value="#{goods.pricePerDay}", name="pricePerDay", placeholder="#{jadeMessage.getMessage('template.addAnn.day')}")
                 .b-set-fields__input
-                    input.b-input--default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="Неделя")
+                    input.b-input--default#PriceForWeek.form-control(type="text", value="#{goods.pricePerWeek}", name="pricePerWeek", placeholder="#{jadeMessage.getMessage('template.addAnn.week')}")
             .b-crud-announcement-form__content
                 .b-title--form
                     b
                         p
-                            Фотографии
+                            #{jadeMessage.getMessage('template.addAnn.photo')}
             .b-set-fields.js-set-fields
                 .b-photo.js-photo
                     .b-photo__download-mask.js-download-mask
